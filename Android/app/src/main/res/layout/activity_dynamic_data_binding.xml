@@ -1,0 +1,90 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="dimenValue"
+            type="Float" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. Dynamic (DB) - Width @{dimenValue}dp, Height 24dp, Text 20dp"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/dynamic_db_view"
+                android:layout_marginTop="8dp"
+                android:background="#3F51B5"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                app:dynamicWidthDp="@{dimenValue}"
+                app:dynamicHeightDp="@{24f}"  />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Adjusted Dynamic Text"
+
+                app:dynamicTextSizeDp="@{20f}" />
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#ccc" android:layout_marginTop="16dp" android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:id="@+id/tv_fixed_usage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2. Fixed (Non-Dynamic) - Size 64dp (Defined in Kotlin)"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/fixed_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#FF9800" />
+
+            <TextView
+                android:id="@+id/tv_percentage_usage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="3. Dynamic Percentage - 80% of Smallest Screen Dimension (Kotlin)"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/percentage_view"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginTop="8dp"
+                android:background="#4CAF50" />
+
+            <TextView
+                android:id="@+id/tv_physical_unit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="4. Physical Unit (MM) - 5mm Top Margin (Kotlin)"
+                android:textStyle="bold" />
+
+            <View
+                android:id="@+id/physical_unit_view"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginTop="8dp"
+                android:background="#F44336" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</layout>

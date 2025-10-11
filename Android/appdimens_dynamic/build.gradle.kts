@@ -1,0 +1,149 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.gradle.api.publish.maven.MavenPublication
+
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.maven.publish)
+    alias(libs.plugins.signing)
+}
+
+group = "io.github.bodenberg"
+version = "1.0.0"
+
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            groupId = group.toString()
+            artifactId = "appdimens-dynamic"
+            version = project.version.toString()
+
+            afterEvaluate {
+                from(components["release"])
+            }
+
+            pom {
+                name.set("AppDimens Dynamic")
+                description.set("Dynamic cross-platform responsiveness library (ssp and sdp).")
+                url.set("https://github.com/bodenberg/appdimens")
+
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                        distribution.set("repo")
+                    }
+                }
+
+                developers {
+                    developer {
+                        id.set("bodenberg")
+                        name.set("Jean Bodenberg")
+                        email.set("jean.bodenberg@gmail.com")
+                    }
+                }
+
+                scm {
+                    connection.set("scm:git:github.com/bodenberg/appdimens.git")
+                    developerConnection.set("scm:git:ssh://github.com/bodenberg/appdimens.git")
+                    url.set("https://github.com/bodenberg/appdimens")
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = "Sonatype"
+            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+            credentials {
+                username = project.findProperty("maven.user") as String?
+                password = project.findProperty("maven.key") as String?
+            }
+        }
+
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/bodenberg/appdimens")
+            credentials {
+                username = project.findProperty("gpr.user") as String?
+                password = project.findProperty("gpr.key") as String?
+            }
+        }
+    }
+}
+
+signing {
+    useGpgCmd()
+    sign(publishing.publications["release"])
+}
+
+android {
+    namespace = "com.appdimens.dynamic"
+    compileSdk = 36
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+
+    defaultConfig {
+        minSdk = 23
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlin {
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_17
+        }
+    }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.kotlin.get()
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
+    }
+}
+
+dependencies {
+    api(project(":appdimens_library"))
+
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.runtime)
+    implementation(libs.androidx.compose.ui.graphics)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.compose.material3)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+}
