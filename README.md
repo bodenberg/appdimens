@@ -38,9 +38,9 @@ dependencies {
 
 mavenCentral()
 ```
-
-![Descrição da Imagem](IMAGES/image_sample.png)
-
+<div align="center">
+    <img src="IMAGES/image_sample.png" alt="sample.png em 200px de altura" height="250"/>
+</div>
 ---
 
 ## 🧠 Core Dimension Models
