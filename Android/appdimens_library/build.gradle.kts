@@ -8,7 +8,7 @@ plugins {
 }
 
 mavenPublishing {
-    coordinates("io.github.bodenberg", "appdimens-lybrary", "1.0.0")
+    coordinates("io.github.bodenberg", "appdimens-library", "1.0.1")
 
     pom {
         name.set("AppDimens Dynamic")
@@ -35,7 +35,11 @@ mavenPublishing {
             url.set("https://github.com/bodenberg/appdimens")
         }
     }
-    signAllPublications()
+
+    val isJitPack = System.getenv("JITPACK") != null || System.getenv("CI") == "true"
+    if (!isJitPack && (project.findProperty("signing.keyId") != null || project.findProperty("signing.secretKey") != null)) {
+        signAllPublications()
+    }
     publishToMavenCentral()
 }
 

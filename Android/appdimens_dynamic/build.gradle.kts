@@ -8,7 +8,7 @@ plugins {
 }
 
 mavenPublishing {
-    coordinates("io.github.bodenberg", "appdimens-dynamic", "1.0.0")
+    coordinates("io.github.bodenberg", "appdimens-dynamic", "1.0.1")
 
     pom {
         name.set("AppDimens Dynamic")
