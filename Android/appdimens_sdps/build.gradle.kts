@@ -37,6 +37,19 @@ mavenPublishing {
     }
 }
 
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/bodenberg/appdimens")
+            credentials {
+                username = project.findProperty("gpr.user") as String?
+                password = project.findProperty("gpr.key") as String?
+            }
+        }
+    }
+}
+
 android {
     namespace = "com.appdimens.sdps"
     compileSdk = 36
