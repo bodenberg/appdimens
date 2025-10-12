@@ -188,12 +188,12 @@ fun WearableRadius() {
 
 # 🎯 AppDimens Scaling: Fixed (FX) vs. Dynamic (DY)
 
-Extensions `fxdp` and `dydp` are shortcuts for `Int.fixed()` and `Int.dynamic()` in dimension files, with naming conventions for **XML Views**.
+Extensions `fxdp` and `dydp` are shortcuts for `Int.fixed()` and `Int.dynamic()`.
 
-|   Category  | XML Extension    | Compose Base Method | Scaling Philosophy                                                                  |
-| :---------: | :--------------- | :------------------ | :---------------------------------------------------------------------------------- |
-|  **Fixed**  | `@dimen/_16fxdp` | `Int.fixed(...)`    | **Logarithmic/Incremental Adjustment** with AR. Ideal for subtle component scaling. |
-| **Dynamic** | `@dimen/_16dydp` | `Int.dynamic(...)`  | **Percentage/Proportional Scaling**. Maintains proportion on extreme screens.       |
+|   Category  | Compose Base Method | Scaling Philosophy                                                                  |
+| :---------: | :------------------ | :---------------------------------------------------------------------------------- |
+|  **Fixed**  | `Int.fixed(...)`    | **Logarithmic/Incremental Adjustment** with AR. Ideal for subtle component scaling. |
+| **Dynamic** |`Int.dynamic(...)`  | **Percentage/Proportional Scaling**. Maintains proportion on extreme screens.       |
 
 ### Fixed Dimensions (FX)
 
