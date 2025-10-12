@@ -35,10 +35,20 @@ mavenPublishing {
             url.set("https://github.com/bodenberg/appdimens")
         }
     }
+    signAllPublications()
+    publishToMavenCentral()
 }
 
 publishing {
     repositories {
+        maven {
+            name = "SonaType"
+            url = uri("https://ossrh-staging-api.central.sonatype.com/service/local/")
+            credentials {
+                username = project.findProperty("mavenCentralUsername") as String?
+                password = project.findProperty("mavenCentralPassword") as String?
+            }
+        }
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/bodenberg/appdimens")

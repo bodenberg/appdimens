@@ -11,7 +11,7 @@ mavenPublishing {
     coordinates("io.github.bodenberg", "appdimens-ssps", "1.0.0")
 
     pom {
-        name.set("AppDimens SSPS")
+        name.set("AppDimens Dynamic")
         description.set("Dynamic cross-platform responsiveness library (ssp and sdp).")
         url.set("https://github.com/bodenberg/appdimens")
         inceptionYear.set("2025")
@@ -35,10 +35,20 @@ mavenPublishing {
             url.set("https://github.com/bodenberg/appdimens")
         }
     }
+    signAllPublications()
+    publishToMavenCentral()
 }
 
 publishing {
     repositories {
+        maven {
+            name = "SonaType"
+            url = uri("https://ossrh-staging-api.central.sonatype.com/service/local/")
+            credentials {
+                username = project.findProperty("mavenCentralUsername") as String?
+                password = project.findProperty("mavenCentralPassword") as String?
+            }
+        }
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/bodenberg/appdimens")
@@ -51,7 +61,7 @@ publishing {
 }
 
 android {
-    namespace = "com.appdimens.ssps"
+    namespace = "com.appdimens.dynamic"
     compileSdk = 36
 
     defaultConfig {
