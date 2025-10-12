@@ -39,7 +39,7 @@ dependencies {
 mavenCentral()
 ```
 
-<img src="IMAGES/sample.png" alt="sample.png em 200px de altura" height="150"/>
+<img src="IMAGES/image_sample.png" alt="sample.png em 200px de altura" height="150"/>
 
 ---
 
