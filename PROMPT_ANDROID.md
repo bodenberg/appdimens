@@ -10,18 +10,34 @@ Since this is a multi-module project, you will need to add the AppDimens modules
 
 ```kotlin
 dependencies {
-    // For the core dynamic module (recommended)
+    // Core (Dynamic + Fixed)
     implementation("com.github.bodenberg.appdimens:appdimens-dynamic:1.0.1")
 
-    // Optional: For traditional SDP/SSP scaling
+    // SDP & SSP scaling (optional)
     implementation("com.github.bodenberg.appdimens:appdimens-sdps:1.0.1")
     implementation("com.github.bodenberg.appdimens:appdimens-ssps:1.0.1")
 
-    // Optional: To include all functionalities
-   implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.1")
-
-   maven { url 'https://jitpack.io' } //or maven central
+    // All in one
+    implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.1")
 }
+
+maven { url 'https://jitpack.io' } //or maven central
+```
+
+```kotlin
+dependencies {
+    // Core (Dynamic + Fixed)
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.1")
+
+    // SDP & SSP scaling (optional)
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.1")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.1")
+
+    // All in one
+    implementation("io.github.bodenberg:appdimens-all:1.0.1")
+}
+
+mavenCentral()
 ```
 
 ## 2. Library Initialization
