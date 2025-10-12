@@ -10,17 +10,33 @@ It works with **Jetpack Compose**, **XML Views**, and **Data Binding**.
 ```kotlin
 dependencies {
     // Core (Dynamic + Fixed)
-    implementation("com.github.bodenberg.appdimens:appdimens-dynamic:1.0.0")
+    implementation("com.github.bodenberg.appdimens:appdimens-dynamic:1.0.1")
 
     // SDP & SSP scaling (optional)
-    implementation("com.github.bodenberg.appdimens:appdimens-sdps:1.0.0")
-    implementation("com.github.bodenberg.appdimens:appdimens-ssps:1.0.0")
+    implementation("com.github.bodenberg.appdimens:appdimens-sdps:1.0.1")
+    implementation("com.github.bodenberg.appdimens:appdimens-ssps:1.0.1")
 
     // All in one
-    implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.0")
+    implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.1")
 }
 
-maven { url 'https://jitpack.io' }
+maven { url 'https://jitpack.io' } //or maven central
+```
+
+```kotlin
+dependencies {
+    // Core (Dynamic + Fixed)
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.1")
+
+    // SDP & SSP scaling (optional)
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.1")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.1")
+
+    // All in one
+    implementation("io.github.bodenberg:appdimens-all:1.0.1")
+}
+
+mavenCentral()
 ```
 
 ---
@@ -179,7 +195,7 @@ val titleSize = 24.scaledSp()
 
 | Feature               | Compose |     XML Views    | Data Binding | Notes                                |
 | --------------------- | :-----: | :--------------: | :----------: | ------------------------------------ |
-| **Dynamic (FX/DY)**   |    ✅    |         ✅        |       ✅      | `.fxdp` / `.dydp` / AppDimens object |
+| **Dynamic (FX/DY)**   |    ✅    | ✅ (via resource) |       ✅      | `.fxdp` / `.dydp` / AppDimens object |
 | **SDP/SSP**           |    ✅    |         ✅        |       ❌      | Based on pre-generated `@dimen`      |
 | **Physical Units**    |    ✅    |         ✅        |       ✅      | Real unit conversions                |
 | **Conditional Rules** |    ✅    | ✅ (via resource) |       ✅      | Advanced responsive logic            |

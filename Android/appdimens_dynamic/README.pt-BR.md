@@ -205,14 +205,14 @@ fun WearableRadius() {
 
 As extensões `fxdp` e `dydp` são atalhos simplificados para iniciar os métodos `Int.fixed()` e `Int.dynamic()`, respectivamente, nos arquivos de dimensão, mas com uma convenção de nomenclatura específica para **XML Views**.
 
-| Categoria | Nome da Extensão (XML View) | Método Base (Compose) | Filosofia de Escalonamento |
-| :---: | :--- | :--- | :--- |
-| **Fixed** | `@dimen/_16fxdp` | `Int.fixed(...)` | **Ajuste Logarítmico/Incremental** com *Aspect Ratio*. Ideal para ajuste sutil de componentes. |
-| **Dynamic** | `@dimen/_16dydp` | `Int.dynamic(...)` | **Ajuste Percentual/Proporcional**. Ideal para manter proporção em telas extremas. |
+| Categoria | Método Base (Compose) | Filosofia de Escalonamento |
+| :---: | :--- | :--- |
+| **Fixed** | `Int.fixed(...)` | **Ajuste Logarítmico/Incremental** com *Aspect Ratio*. Ideal para ajuste sutil de componentes. |
+| **Dynamic** | `Int.dynamic(...)` | **Ajuste Percentual/Proporcional**. Ideal para manter proporção em telas extremas. |
 
 -----
 
-## 1\. 📏 Fixed Dimensions (FX): `@dimen/_<valor>fxdp`, `fxdp`, `fxsp`, `fxpx`
+## 1\. 📏 Fixed Dimensions (FX): `fxdp`, `fxsp`, `fxpx`
 
 O dimensionamento Fixed (`fx`) é o sistema principal do **AppDimens** para um ajuste de escala **responsivo, mas sutil**. Ele se baseia em fatores de ajuste pré-calculados que levam em consideração a diferença entre a dimensão da tela e uma largura de referência (geralmente $360\text{dp}$).
 
@@ -244,7 +244,7 @@ val textSize = 18.fxsp
 
 -----
 
-## 2\. 🚀 Dynamic Dimensions (DY): `@dimen/_<valor>dydp`, `dydp`, `dysp`, `dypx`
+## 2\. 🚀 Dynamic Dimensions (DY): `dydp`, `dysp`, `dypx`
 
 O dimensionamento Dynamic (`dy`) aplica um escalonamento **puramente proporcional** (ou percentual) baseado na dimensão da tela (Largura ou Altura).
 
