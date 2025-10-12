@@ -39,7 +39,7 @@ dependencies {
 mavenCentral()
 ```
 
-![Descrição da Imagem](IMAGES/image_sample.png)
+![Descrição da Imagem](IMAGES/image_sample.png) 
 
 ---
 
