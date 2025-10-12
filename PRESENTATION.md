@@ -6,18 +6,20 @@ It goes beyond the limitations of standard density-independent pixels (**Dp/Pt**
 
 ---
 
-```gradle
-implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.0")
+```kotlin
+dependencies {
+    // Core (Dynamic + Fixed)
+    implementation("com.github.bodenberg.appdimens:appdimens-dynamic:1.0.1")
 
-implementation("com.github.bodenberg.appdimens:appdimens-dynamic:1.0.0")
+    // SDP & SSP scaling (optional)
+    implementation("com.github.bodenberg.appdimens:appdimens-sdps:1.0.1")
+    implementation("com.github.bodenberg.appdimens:appdimens-ssps:1.0.1")
 
-implementation("com.github.bodenberg.appdimens:appdimens-sdps:1.0.0")
+    // All in one
+    implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.1")
+}
 
-implementation("com.github.bodenberg.appdimens:appdimens-ssps:1.0.0")
-
-implementation("com.github.bodenberg.appdimens:appdimens-library:1.0.0")
-
-maven { url 'https://jitpack.io' }
+maven { url 'https://jitpack.io' } //or maven central
 ```
 
 ### 🌐 Unified Principle and Cross-Platform Compatibility
