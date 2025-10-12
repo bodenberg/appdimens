@@ -9,18 +9,18 @@ Funciona com **Jetpack Compose**, **Views (XML)** e **Data Binding**.
 
 ```kotlin
 dependencies {
-    // Núcleo recomendado (Dynamic + Fixed)
-    implementation("com.github.bodenberg.appdimens:appdimens-dynamic:1.0.0")
+    // Core (Dynamic + Fixed)
+    implementation("com.github.bodenberg.appdimens:appdimens-dynamic:1.0.1")
 
-    // Escalonamento SDP e SSP (opcional)
-    implementation("com.github.bodenberg.appdimens:appdimens-sdps:1.0.0")
-    implementation("com.github.bodenberg.appdimens:appdimens-ssps:1.0.0")
+    // SDP & SSP scaling (optional)
+    implementation("com.github.bodenberg.appdimens:appdimens-sdps:1.0.1")
+    implementation("com.github.bodenberg.appdimens:appdimens-ssps:1.0.1")
 
-    // Tudo em um único pacote
-    implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.0")
+    // All in one
+    implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.1")
 }
 
-maven { url 'https://jitpack.io' }
+maven { url 'https://jitpack.io' } //or maven central
 ```
 
 ---
