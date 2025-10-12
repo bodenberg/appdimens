@@ -1,94 +1,45 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.gradle.api.publish.maven.MavenPublication
 
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.maven.publish)
-    alias(libs.plugins.signing)
+    alias(libs.plugins.vanniktech.maven.publish)
 }
 
-group = "io.github.bodenberg"
-version = "1.0.0"
+mavenPublishing {
+    coordinates("io.github.bodenberg", "appdimens-library", "1.0.0")
 
-publishing {
-    publications {
-        create<MavenPublication>("release") {
-            groupId = group.toString()
-            artifactId = "appdimens-library"
-            version = project.version.toString()
-
-            afterEvaluate {
-                from(components["release"])
+    pom {
+        name.set("AppDimens Library")
+        description.set("Dynamic cross-platform responsiveness library (ssp and sdp).")
+        url.set("https://github.com/bodenberg/appdimens")
+        inceptionYear.set("2025")
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
             }
-
-            pom {
-                name.set("AppDimens Library")
-                description.set("Dynamic cross-platform responsiveness library (ssp and sdp).")
-                url.set("https://github.com/bodenberg/appdimens")
-
-                licenses {
-                    license {
-                        name.set("The Apache License, Version 2.0")
-                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                        distribution.set("repo")
-                    }
-                }
-
-                developers {
-                    developer {
-                        id.set("bodenberg")
-                        name.set("Jean Bodenberg")
-                        email.set("jean.bodenberg@gmail.com")
-                    }
-                }
-
-                scm {
-                    connection.set("scm:git:github.com/bodenberg/appdimens.git")
-                    developerConnection.set("scm:git:ssh://github.com/bodenberg/appdimens.git")
-                    url.set("https://github.com/bodenberg/appdimens")
-                }
+        }
+        developers {
+            developer {
+                id.set("bodenberg")
+                name.set("Jean Bodenberg")
+                email.set("jean.bodenberg@gmail.com")
             }
+        }
+        scm {
+            connection.set("scm:git:github.com/bodenberg/appdimens.git")
+            developerConnection.set("scm:git:ssh://github.com/bodenberg/appdimens.git")
+            url.set("https://github.com/bodenberg/appdimens")
         }
     }
-
-    repositories {
-        maven {
-            name = "Sonatype"
-            url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-            credentials {
-                username = project.findProperty("maven.user") as String?
-                password = project.findProperty("maven.key") as String?
-            }
-        }
-
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/bodenberg/appdimens")
-            credentials {
-                username = project.findProperty("gpr.user") as String?
-                password = project.findProperty("gpr.key") as String?
-            }
-        }
-    }
-}
-
-signing {
-    useGpgCmd()
-    sign(publishing.publications["release"])
 }
 
 android {
     namespace = "com.appdimens.library"
     compileSdk = 36
-
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-            withJavadocJar()
-        }
-    }
 
     defaultConfig {
         minSdk = 23
