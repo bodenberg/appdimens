@@ -22,6 +22,22 @@ dependencies {
 maven { url 'https://jitpack.io' } //or maven central
 ```
 
+```kotlin
+dependencies {
+    // Core (Dynamic + Fixed)
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.1")
+
+    // SDP & SSP scaling (optional)
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.1")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.1")
+
+    // All in one
+    implementation("io.github.bodenberg:appdimens-all:1.0.1")
+}
+
+mavenCentral()
+```
+
 ### 🌐 Unified Principle and Cross-Platform Compatibility
 
 **AppDimens** is built on a platform-agnostic architecture. Its core scaling logic is identical across platforms, ensuring consistent dimension behavior wherever your code runs.
