@@ -35,8 +35,11 @@ mavenPublishing {
             url.set("https://github.com/bodenberg/appdimens")
         }
     }
-    signAllPublications()
-    publishToMavenCentral()
+    val isJitPack = System.getenv("JITPACK") != null || System.getenv("CI") == "true"
+    if (!isJitPack && (project.findProperty("signing.keyId") != null || project.findProperty("signing.secretKey") != null)) {
+        signAllPublications()
+        publishToMavenCentral()
+    }
 }
 
 publishing {
