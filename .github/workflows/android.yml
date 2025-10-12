@@ -1,0 +1,69 @@
+name: CI Android (AppDimens)
+
+on:
+  push:
+    # O workflow será executado em qualquer push para a branch 'main'
+    branches: [ main ]
+    # **OPCIONAL:** Execute apenas se houver mudanças no diretório 'Android/'
+    paths:
+      - 'Android/**'
+  pull_request:
+    # O workflow será executado em qualquer PR para a branch 'main'
+    branches: [ main ]
+    # **OPCIONAL:** Execute apenas se houver mudanças no diretório 'Android/'
+    paths:
+      - 'Android/**'
+  # Permite executar o workflow manualmente na aba "Actions"
+  workflow_dispatch:
+
+jobs:
+  build_and_test:
+    # Define o ambiente de execução (máquina virtual)
+    runs-on: ubuntu-latest
+    
+    # ------------------------------------------------------------------
+    # CHAVE PARA PROJETOS EM SUBDIRETÓRIOS: working-directory
+    # Define o diretório de trabalho padrão para TODOS os passos neste job.
+    # Isso evita que você tenha que especificar 'Android/' em cada comando.
+    # ------------------------------------------------------------------
+    defaults:
+      run:
+        working-directory: Android 
+
+    steps:
+    - name: Checkout do Código
+      # Pega o código do seu repositório
+      uses: actions/checkout@v4
+
+    - name: Configurar JDK 17
+      # O Android Studio e o Gradle moderno geralmente usam o Java 17
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+        cache: 'gradle' # Configura o cache do Gradle
+
+    - name: Dar Permissão de Execução ao Wrapper do Gradle
+      # Garante que o script gradlew possa ser executado
+      # Nota: Como 'working-directory: Android' está configurado,
+      # ele executa 'chmod' em 'Android/gradlew'.
+      run: chmod +x gradlew
+
+    - name: Build e Rodar Testes
+      # Executa as tarefas 'assembleDebug' (build) e 'test' (testes unitários)
+      # Nota: Não precisa usar './Android/gradlew', basta usar './gradlew'
+      # porque 'working-directory: Android' já posicionou o terminal.
+      run: ./gradlew assembleDebug test
+
+    # ------------------------------------------------------------------
+    # Passo Opcional: Publicar Artefatos (APK/AAR)
+    # ------------------------------------------------------------------
+    - name: Publicar AAR de Biblioteca (AppDimens)
+      # Este passo é útil se você quiser salvar o arquivo .aar gerado.
+      if: success() # Somente se o build for bem-sucedido
+      uses: actions/upload-artifact@v4
+      with:
+        name: appdimens-release-aar
+        # O caminho completo é relativo ao working-directory.
+        # Ajuste este caminho (app/build/...) conforme a estrutura real do seu projeto.
+        path: app/build/outputs/aar/app-release.aar
