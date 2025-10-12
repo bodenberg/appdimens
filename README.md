@@ -38,6 +38,9 @@ dependencies {
 
 mavenCentral()
 ```
+
+---
+
 <div align="center">
     <img src="IMAGES/image_sample_devices.png" alt="sample" height="250"/>
 </div>
