@@ -180,7 +180,7 @@ val titleSize = 24.scaledSp()
 
 | Recurso                 | Compose |    XML Views    | Data Binding | Notas                                |
 | ----------------------- | :-----: | :-------------: | :----------: | ------------------------------------ |
-| **Dynamic (FX/DY)**     |    ✅    |        ✅        |       ✅      | `.fxdp` / `.dydp` / AppDimens Object |
+| **Dynamic (FX/DY)**     |    ✅    | ✅ (via recurso) |       ✅      | `.fxdp` / `.dydp` / AppDimens Object |
 | **SDP/SSP**             |    ✅    |        ✅        |       ❌      | Baseado em `@dimen` (pré-gerado)     |
 | **Physical Units**      |    ✅    |        ✅        |       ✅      | Conversão real                       |
 | **Regras Condicionais** |    ✅    | ✅ (via recurso) |       ✅      | Avançado para responsividade         |
