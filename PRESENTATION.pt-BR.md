@@ -6,17 +6,21 @@ Ele transcende a limitação do dimensionamento padrão de pixels independentes 
 
 ---
 
-    implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.0")
-    
-    implementation("com.github.bodenberg.appdimens:appdimens-dynamic:1.0.0")
-    
-    implementation("com.github.bodenberg.appdimens:appdimens-sdps:1.0.0")
-    
-    implementation("com.github.bodenberg.appdimens:appdimens-ssps:1.0.0")
-    
-    implementation("com.github.bodenberg.appdimens:appdimens-library:1.0.0")
+```kotlin
+dependencies {
+    // Core (Dynamic + Fixed)
+    implementation("com.github.bodenberg.appdimens:appdimens-dynamic:1.0.1")
 
-maven { url 'https://jitpack.io' }
+    // SDP & SSP scaling (optional)
+    implementation("com.github.bodenberg.appdimens:appdimens-sdps:1.0.1")
+    implementation("com.github.bodenberg.appdimens:appdimens-ssps:1.0.1")
+
+    // All in one
+    implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.1")
+}
+
+maven { url 'https://jitpack.io' } //or maven central
+```
 
 
 
