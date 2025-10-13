@@ -69,8 +69,8 @@ mavenCentral()
 val fixedPadding = 16.fxdp               // subtle and refined
 val dynamicWidth = 100.dydp              // proportional to screen
 val dynamicText = 18.dysp                // proportional text
-val fixedEm = 1.2.fxem                   // 'em' scaling (fixed)
-val dynamicEm = 1.0.dyem                 // 'em' scaling (dynamic)
+val fixedEm = 10.fxem                   // 'em' scaling (fixed)
+val dynamicEm = 10.dyem                 // 'em' scaling (dynamic)
 ```
 
 📝 `.fxdp`, `.fxsp`, `.fxem` use logarithmic scaling
