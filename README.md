@@ -1,3 +1,9 @@
+<div align="center">
+    <img src="IMAGES/image_sample_devices.png" alt="sample" height="250"/>
+</div>
+
+---
+
 # 📐 AppDimens — Smart and Responsive Dimensioning for Android
 
 **AppDimens** is a library that provides **mathematically responsive scaling**, ensuring your UI design adapts perfectly to any screen size or aspect ratio — from **phones** to **TVs**, **cars**, and **wearables**.
@@ -38,12 +44,6 @@ dependencies {
 
 mavenCentral()
 ```
-
----
-
-<div align="center">
-    <img src="IMAGES/image_sample_devices.png" alt="sample" height="250"/>
-</div>
 
 ---
 

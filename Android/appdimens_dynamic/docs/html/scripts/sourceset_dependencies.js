@@ -1,0 +1,1 @@
+sourceset_dependencies='{":appdimens_dynamic:dokkaHtml/debug":[],":appdimens_dynamic:dokkaHtml/main":[],":appdimens_dynamic:dokkaHtml/release":[]}'

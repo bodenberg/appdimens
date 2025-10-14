@@ -1,0 +1,14 @@
+//[appdimens_dynamic](../../index.md)/[com.appdimens.dynamic.code](index.md)
+
+# Package-level declarations
+
+## Types
+
+| Name | Summary |
+|---|---|
+| [AppDimens](-app-dimens/index.md) | [androidJvm]<br>object [AppDimens](-app-dimens/index.md)<br>Objeto singleton que fornece funções para gerenciamento de dimensões responsivas em Views Android/Kotlin, agindo como um gateway para os construtores Fixed e Dynamic. |
+| [AppDimensAdjustmentFactors](-app-dimens-adjustment-factors/index.md) | [androidJvm]<br>object [AppDimensAdjustmentFactors](-app-dimens-adjustment-factors/index.md)<br>Objeto singleton que fornece funções para o cálculo e resolução de fatores de ajuste e qualificadores de tela. Compatível com o sistema tradicional de Views XML do Android. |
+| [AppDimensDynamic](-app-dimens-dynamic/index.md) | [androidJvm]<br>class [AppDimensDynamic](-app-dimens-dynamic/index.md)(initialBaseDp: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), ignoreMultiViewAdjustment: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html) = false)<br>Classe para construir dimensões dinâmicas que permitem customização do DP base via qualificadores de tela (`.screen()`). O valor final é escalado pela tela. Compatível com View System (XML layouts). |
+| [AppDimensFixed](-app-dimens-fixed/index.md) | [androidJvm]<br>class [AppDimensFixed](-app-dimens-fixed/index.md)(initialBaseDp: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), ignoreMultiViewAdjustment: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html) = false)<br>Classe para construir dimensões &quot;fixas&quot; que são ajustadas automaticamente com base no menor `smallestScreenWidthDp` do dispositivo e na proporção da tela. Compatível com View System (XML). |
+| [AppDimensPhysicalUnits](-app-dimens-physical-units/index.md) | [androidJvm]<br>object [AppDimensPhysicalUnits](-app-dimens-physical-units/index.md)<br>Objeto singleton que fornece funções para conversão de unidades físicas (MM, CM, Inch) e utilitários de medição. |
+| [ScreenAdjustmentFactors](-screen-adjustment-factors/index.md) | [androidJvm]<br>data class [ScreenAdjustmentFactors](-screen-adjustment-factors/index.md)(val withArFactorLowest: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), val withArFactorHighest: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), val withoutArFactor: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), val adjustmentFactorLowest: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), val adjustmentFactorHighest: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html))<br>Data class para armazenar os fatores de ajuste de tela. |

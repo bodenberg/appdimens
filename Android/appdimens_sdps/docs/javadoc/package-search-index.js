@@ -1,0 +1,1 @@
+var packageSearchIndex = [{"l":"com.appdimens.sdps","url":"com/appdimens/sdps/package-summary.html"}, {"l":"All packages","url":"index.html"}]

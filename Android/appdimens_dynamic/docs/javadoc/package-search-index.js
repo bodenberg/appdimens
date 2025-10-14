@@ -1,0 +1,1 @@
+var packageSearchIndex = [{"l":"com.appdimens.dynamic.code","url":"com/appdimens/dynamic/code/package-summary.html"}, {"l":"com.appdimens.dynamic.compose","url":"com/appdimens/dynamic/compose/package-summary.html"}, {"l":"All packages","url":"index.html"}]

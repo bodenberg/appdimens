@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>UiModeType</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    appdimens_library
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":appdimens_library:dokkaHtml/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":appdimens_library:dokkaHtml/release"
+                                       data-filter=":appdimens_library:dokkaHtml/release"/>
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    appdimens_library
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="appdimens_library::com.appdimens.library/UiModeType///PointingToDeclaration//1692566239">
+  <div class="breadcrumbs"><a href="../../../index.html">appdimens_library</a><span class="delimiter">/</span><a href="../index.html">com.appdimens.library</a><span class="delimiter">/</span><span class="current">UiModeType</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Ui</span><wbr></wbr><span>Mode</span><wbr></wbr><span><span>Type</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_library:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">enum </span><a href="index.html">UiModeType</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="index.html">UiModeType</a><span class="token operator">&gt; </span></div><p class="paragraph">Define os tipos de modo de interface do usuário (UI Mode Type) do Android para customização de dimensões, com base em <a href="https://developer.android.com/reference/kotlin/android/content/res/Configuration.html#uimode">Configuration.uiMode</a>.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="ENTRY">Entries</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="ENTRY">
+        <h2 class="">Entries</h2>
+        <div class="table"><a data-name="1340622092%2FClasslikes%2F1692566239" anchor-label="NORMAL" id="1340622092%2FClasslikes%2F1692566239" data-filterable-set=":appdimens_library:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":appdimens_library:dokkaHtml/release" data-filterable-set=":appdimens_library:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-n-o-r-m-a-l/index.html">NORMAL</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1340622092%2FClasslikes%2F1692566239"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_library:dokkaHtml/release"><div class="symbol monospace"><div class="block"><a href="-n-o-r-m-a-l/index.html">NORMAL</a></div></div><div class="brief "><p class="paragraph">Telefone/Tablet Padrão.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="763528823%2FClasslikes%2F1692566239" anchor-label="TELEVISION" id="763528823%2FClasslikes%2F1692566239" data-filterable-set=":appdimens_library:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":appdimens_library:dokkaHtml/release" data-filterable-set=":appdimens_library:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-t-e-l-e-v-i-s-i-o-n/index.html">TELEVISION</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="763528823%2FClasslikes%2F1692566239"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_library:dokkaHtml/release"><div class="symbol monospace"><div class="block"><a href="-t-e-l-e-v-i-s-i-o-n/index.html">TELEVISION</a></div></div><div class="brief "><p class="paragraph">Televisão.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1767342871%2FClasslikes%2F1692566239" anchor-label="CAR" id="1767342871%2FClasslikes%2F1692566239" data-filterable-set=":appdimens_library:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":appdimens_library:dokkaHtml/release" data-filterable-set=":appdimens_library:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-c-a-r/index.html">CAR</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1767342871%2FClasslikes%2F1692566239"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_library:dokkaHtml/release"><div class="symbol monospace"><div class="block"><a href="-c-a-r/index.html">CAR</a></div></div><div class="brief "><p class="paragraph">Carro.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="38741778%2FClasslikes%2F1692566239" anchor-label="WATCH" id="38741778%2FClasslikes%2F1692566239" data-filterable-set=":appdimens_library:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":appdimens_library:dokkaHtml/release" data-filterable-set=":appdimens_library:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-w-a-t-c-h/index.html">WATCH</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="38741778%2FClasslikes%2F1692566239"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_library:dokkaHtml/release"><div class="symbol monospace"><div class="block"><a href="-w-a-t-c-h/index.html">WATCH</a></div></div><div class="brief "><p class="paragraph">Relógio (Wear OS).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1646571390%2FClasslikes%2F1692566239" anchor-label="DESK" id="1646571390%2FClasslikes%2F1692566239" data-filterable-set=":appdimens_library:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":appdimens_library:dokkaHtml/release" data-filterable-set=":appdimens_library:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-d-e-s-k/index.html">DESK</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1646571390%2FClasslikes%2F1692566239"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_library:dokkaHtml/release"><div class="symbol monospace"><div class="block"><a href="-d-e-s-k/index.html">DESK</a></div></div><div class="brief "><p class="paragraph">Dispositivo de Mesa (Docked).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1274900464%2FClasslikes%2F1692566239" anchor-label="APPLIANCE" id="1274900464%2FClasslikes%2F1692566239" data-filterable-set=":appdimens_library:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":appdimens_library:dokkaHtml/release" data-filterable-set=":appdimens_library:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-a-p-p-l-i-a-n-c-e/index.html">APPLIANCE</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1274900464%2FClasslikes%2F1692566239"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_library:dokkaHtml/release"><div class="symbol monospace"><div class="block"><a href="-a-p-p-l-i-a-n-c-e/index.html">APPLIANCE</a></div></div><div class="brief "><p class="paragraph">Dispositivo de Projeção (e.g., Android Auto, Cast).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2027423108%2FClasslikes%2F1692566239" anchor-label="VR_HEADSET" id="2027423108%2FClasslikes%2F1692566239" data-filterable-set=":appdimens_library:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":appdimens_library:dokkaHtml/release" data-filterable-set=":appdimens_library:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-v-r_-h-e-a-d-s-e-t/index.html">VR_HEADSET</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2027423108%2FClasslikes%2F1692566239"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_library:dokkaHtml/release"><div class="symbol monospace"><div class="block"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://developer.android.com/reference/kotlin/androidx/annotation/RequiresApi.html"><span class="token annotation builtin">RequiresApi</span></a><span class="token punctuation">(</span><span>value<span class="token operator"> = </span><span class="breakable-word"><span class="token constant">26</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><a href="-v-r_-h-e-a-d-s-e-t/index.html">VR_HEADSET</a></div></div><div class="brief "><p class="paragraph">Dispositivo de Realidade Virtual (VR).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1808255059%2FClasslikes%2F1692566239" anchor-label="UNDEFINED" id="1808255059%2FClasslikes%2F1692566239" data-filterable-set=":appdimens_library:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="ENTRY" data-filterable-current=":appdimens_library:dokkaHtml/release" data-filterable-set=":appdimens_library:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-u-n-d-e-f-i-n-e-d/index.html">UNDEFINED</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1808255059%2FClasslikes%2F1692566239"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_library:dokkaHtml/release"><div class="symbol monospace"><div class="block"><a href="-u-n-d-e-f-i-n-e-d/index.html">UNDEFINED</a></div></div><div class="brief "><p class="paragraph">Qualquer modo de UI não especificado/outros.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="1421277142%2FClasslikes%2F1692566239" anchor-label="Companion" id="1421277142%2FClasslikes%2F1692566239" data-filterable-set=":appdimens_library:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":appdimens_library:dokkaHtml/release" data-filterable-set=":appdimens_library:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1421277142%2FClasslikes%2F1692566239"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_library:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1566665120%2FProperties%2F1692566239" anchor-label="configValue" id="1566665120%2FProperties%2F1692566239" data-filterable-set=":appdimens_library:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":appdimens_library:dokkaHtml/release" data-filterable-set=":appdimens_library:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="config-value.html"><span>config</span><wbr></wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1566665120%2FProperties%2F1692566239"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_library:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="config-value.html">configValue</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-461803393%2FProperties%2F1692566239" anchor-label="entries" id="-461803393%2FProperties%2F1692566239" data-filterable-set=":appdimens_library:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":appdimens_library:dokkaHtml/release" data-filterable-set=":appdimens_library:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="entries.html"><span><span>entries</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-461803393%2FProperties%2F1692566239"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_library:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="entries.html">entries</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.enums/-enum-entries/index.html">EnumEntries</a><span class="token operator">&lt;</span><a href="index.html">UiModeType</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a representation of an immutable list of all enum entries, in the order they're declared.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-372974862%2FProperties%2F1692566239" anchor-label="name" id="-372974862%2FProperties%2F1692566239" data-filterable-set=":appdimens_library:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":appdimens_library:dokkaHtml/release" data-filterable-set=":appdimens_library:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-unit-type/-p-x/index.html#-372974862%2FProperties%2F1692566239"><span><span>name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-372974862%2FProperties%2F1692566239"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_library:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-unit-type/-p-x/index.html#-372974862%2FProperties%2F1692566239">name</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-739389684%2FProperties%2F1692566239" anchor-label="ordinal" id="-739389684%2FProperties%2F1692566239" data-filterable-set=":appdimens_library:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":appdimens_library:dokkaHtml/release" data-filterable-set=":appdimens_library:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-unit-type/-p-x/index.html#-739389684%2FProperties%2F1692566239"><span><span>ordinal</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-739389684%2FProperties%2F1692566239"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_library:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-unit-type/-p-x/index.html#-739389684%2FProperties%2F1692566239">ordinal</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-80776323%2FFunctions%2F1692566239" anchor-label="valueOf" id="-80776323%2FFunctions%2F1692566239" data-filterable-set=":appdimens_library:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":appdimens_library:dokkaHtml/release" data-filterable-set=":appdimens_library:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="value-of.html"><span>value</span><wbr></wbr><span><span>Of</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-80776323%2FFunctions%2F1692566239"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_library:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="value-of.html"><span class="token function">valueOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">value<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">UiModeType</a></div><div class="brief "><p class="paragraph">Returns the enum constant of this type with the specified name. The string must match exactly an identifier used to declare an enum constant in this type. (Extraneous whitespace characters are not permitted.)</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="47738697%2FFunctions%2F1692566239" anchor-label="values" id="47738697%2FFunctions%2F1692566239" data-filterable-set=":appdimens_library:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":appdimens_library:dokkaHtml/release" data-filterable-set=":appdimens_library:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="values.html"><span><span>values</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="47738697%2FFunctions%2F1692566239"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_library:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="values.html"><span class="token function">values</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="index.html">UiModeType</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns an array containing the constants of this enum type, in the order they're declared.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
