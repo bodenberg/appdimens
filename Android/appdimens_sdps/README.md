@@ -1,7 +1,3 @@
-Here’s the English translation of your text:
-
----
-
 # 📐 AppDimens SDP: Dynamic Scaling with Conditional Logic
 
 The `AppDimens` library provides a robust system to ensure layout consistency across all screen sizes. The **AppDimens SDP** module manages the scaling of dimension units (**Dp**) in Compose, introducing a priority system for applying conditional rules.

@@ -4,6 +4,7 @@
 
 ---
 
+
 # 📐 AppDimens — Dimensionamento Inteligente e Responsivo para Android
 
 **AppDimens** é uma biblioteca que fornece **dimensionamento matematicamente responsivo**, garantindo que o design da sua UI se adapte perfeitamente a qualquer tamanho ou proporção de tela — de **celulares** a **TVs**, **carros** e **wearables**.
@@ -47,7 +48,10 @@ mavenCentral()
 
 ---
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0ed509487a713c1468a65e705fafd5cfc836ac3b
 ## 🧠 Modelos de Dimensionamento
 
 | Modelo             | Filosofia                  | Uso Ideal                                      | Suporte                        |
@@ -219,7 +223,5 @@ val titleSize = 24.scaledSp()
 * 🧭 [Conversão de Unidades Físicas](#)
 
 ---
-
-Deseja que eu gere esse conteúdo direto em um arquivo `README.md` formatado e pronto para colar no seu GitHub (com títulos, botões clicáveis e emojis já estilizados)? ✨📄
 
 

@@ -1,7 +1,3 @@
-Here’s the English translation of your text:
-
----
-
 # 📐 AppDimens SSP: Dynamic Text Scaling with Conditional Logic
 
 The `AppDimens` library provides a refined system to ensure consistent layouts across different screens, and the **AppDimens SSP** module extends this capability to text unit (**Sp**) scaling in Compose, adding conditional logic and support for screen qualifiers.
