@@ -1,5 +1,6 @@
 [versions]
 agp = "8.13.0"
+androidDocumentationPlugin = "2.0.0"
 vanniktech = "0.34.0"
 datastorePreferences = "1.1.7"
 kotlin = "2.2.20"
@@ -14,8 +15,10 @@ lifecycleViewmodelCompose = "2.9.4"
 appcompat = "1.7.1"
 material = "1.13.0"
 annotationJvm = "1.9.1"
+dokka = "2.0.0"
 
 [libraries]
+android-documentation-plugin = { module = "org.jetbrains.dokka:android-documentation-plugin", version.ref = "androidDocumentationPlugin" }
 androidx-compose-runtime = { module = "androidx.compose.runtime:runtime" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
@@ -46,5 +49,6 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 vanniktech-maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "vanniktech" }
+dokka-jetbrains = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 maven-publish = { id = "maven-publish" }
 signing = { id = "signing" }

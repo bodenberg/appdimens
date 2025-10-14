@@ -10,14 +10,14 @@ It works with **Jetpack Compose**, **XML Views**, and **Data Binding**.
 ```kotlin
 dependencies {
     // Core (Dynamic + Fixed)
-    implementation("com.github.bodenberg.appdimens:appdimens-dynamic:1.0.1")
+    implementation("com.github.bodenberg.appdimens:appdimens-dynamic:1.0.2")
 
     // SDP & SSP scaling (optional)
-    implementation("com.github.bodenberg.appdimens:appdimens-sdps:1.0.1")
-    implementation("com.github.bodenberg.appdimens:appdimens-ssps:1.0.1")
+    implementation("com.github.bodenberg.appdimens:appdimens-sdps:1.0.2")
+    implementation("com.github.bodenberg.appdimens:appdimens-ssps:1.0.2")
 
     // All in one
-    implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.1")
+    implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.2")
 }
 
 maven { url 'https://jitpack.io' } //or maven central
@@ -26,21 +26,25 @@ maven { url 'https://jitpack.io' } //or maven central
 ```kotlin
 dependencies {
     // Core (Dynamic + Fixed)
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.1")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.2")
 
     // SDP & SSP scaling (optional)
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.1")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.1")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.2")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.2")
 
     // All in one
-    implementation("io.github.bodenberg:appdimens-all:1.0.1")
+    implementation("io.github.bodenberg:appdimens-all:1.0.2")
 }
 
 mavenCentral()
 ```
+
+---
+
 <div align="center">
-    <img src="IMAGES/image_sample.png" alt="sample" height="250"/>
+    <img src="IMAGES/image_sample_devices.png" alt="sample" height="250"/>
 </div>
+
 ---
 
 ## 🧠 Core Dimension Models
@@ -213,4 +217,5 @@ val titleSize = 24.scaledSp()
 * 📏 [Physical Units Conversion](#)
 
 ---
+
 

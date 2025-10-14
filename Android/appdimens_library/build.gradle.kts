@@ -5,14 +5,17 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.vanniktech.maven.publish)
+    alias(libs.plugins.dokka.jetbrains)
 }
 
 mavenPublishing {
-    coordinates("io.github.bodenberg", "appdimens-library", "1.0.1")
+    coordinates("io.github.bodenberg", "appdimens-library", "1.0.2")
 
     pom {
-        name.set("AppDimens Dynamic")
-        description.set("Dynamic cross-platform responsiveness library (ssp and sdp).")
+        name.set("AppDimens: Cross-Platform UI Responsiveness (SDP/SSP, Dynamic/Fixed)")
+        description.set("The complete dynamic and responsive dimensioning library for Android (Jetpack Compose, XML Views, Kotlin, Java) and iOS (Swift, SwiftUI). It uses mathematical models (SDP, SSP, Dynamic, and Fixed) to ensure your UI adapts perfectly to any screen (phones, tablets, foldables, TVs, cars, and wearables), solving the problem of adaptive layout precisely and efficiently. " +
+                "(android, kotlin, java, jetpack-compose, xml, swift, swiftui, ios, dp, sp, sdp, ssp, dimensions, responsive, layout, design-system, adaptive, dynamic, fixed, view-system)")
+
         url.set("https://github.com/bodenberg/appdimens")
         inceptionYear.set("2025")
         licenses {
@@ -114,6 +117,7 @@ dependencies {
     implementation(libs.androidx.annotation.jvm)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.runtime)
+    dokkaPlugin(libs.android.documentation.plugin)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

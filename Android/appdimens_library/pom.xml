@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- This module was also published with a richer model, Gradle metadata,  -->
+  <!-- which should be used instead. Do not delete the following line which  -->
+  <!-- is to indicate to Gradle or any Gradle module metadata file consumer  -->
+  <!-- that they should prefer consuming it instead. -->
+  <!-- do_not_remove: published-with-gradle-metadata -->
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>io.github.bodenberg</groupId>
+  <artifactId>appdimens-library</artifactId>
+  <version>1.0.2</version>
+  <packaging>aar</packaging>
+  <name>AppDimens: Cross-Platform UI Responsiveness (SDP/SSP, Dynamic/Fixed)</name>
+  <description>The complete dynamic and responsive dimensioning library for Android (Jetpack Compose, XML Views, Kotlin, Java) and iOS (Swift, SwiftUI). It uses mathematical models (SDP, SSP, Dynamic, and Fixed) to ensure your UI adapts perfectly to any screen (phones, tablets, foldables, TVs, cars, and wearables), solving the problem of adaptive layout precisely and efficiently. (android, kotlin, java, jetpack-compose, xml, swift, swiftui, ios, dp, sp, sdp, ssp, dimensions, responsive, layout, design-system, adaptive, dynamic, fixed, view-system)</description>
+  <url>https://github.com/bodenberg/appdimens</url>
+  <inceptionYear>2025</inceptionYear>
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>http://www.apache.org/licenses/LICENSE-2.0.txt</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>bodenberg</id>
+      <name>Jean Bodenberg</name>
+      <email>jean.bodenberg@gmail.com</email>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:github.com/bodenberg/appdimens.git</connection>
+    <developerConnection>scm:git:ssh://github.com/bodenberg/appdimens.git</developerConnection>
+    <url>https://github.com/bodenberg/appdimens</url>
+  </scm>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>androidx.compose</groupId>
+        <artifactId>compose-bom</artifactId>
+        <version>2025.10.00</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib</artifactId>
+      <version>2.2.20</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>androidx.annotation</groupId>
+      <artifactId>annotation-jvm</artifactId>
+      <version>1.9.1</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>androidx.compose.runtime</groupId>
+      <artifactId>runtime</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
+</project>

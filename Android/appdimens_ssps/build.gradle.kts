@@ -1,3 +1,4 @@
+import com.vanniktech.maven.publish.KotlinJvm
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -5,14 +6,18 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.vanniktech.maven.publish)
+    alias(libs.plugins.dokka.jetbrains)
 }
 
 mavenPublishing {
-    coordinates("io.github.bodenberg", "appdimens-ssps", "1.0.1")
+    coordinates("io.github.bodenberg", "appdimens-ssps", "1.0.2")
 
     pom {
-        name.set("AppDimens Dynamic")
-        description.set("Dynamic cross-platform responsiveness library (ssp and sdp).")
+        name.set("AppDimens SSP, HSP, WSP, SEM, WEM, HEM: Scalable Text Sizes (Fonts)")
+        description.set(
+            "An extension of AppDimens that implements the SSP (Scaled Density Pixels) standard for text sizes (Sp). It provides pre-calculated @dimen resources, ensuring font size scales consistently across different densities and screen sizes. Essential for responsive and legible text in Compose and XML Views. " +
+                    "(android, kotlin, java, jetpack-compose, xml, swift, swiftui, ios, dp, sp, sdp, ssp, dimensions, responsive, layout, design-system, adaptive, dynamic, fixed, view-system)"
+        )
         url.set("https://github.com/bodenberg/appdimens")
         inceptionYear.set("2025")
         licenses {
@@ -35,6 +40,7 @@ mavenPublishing {
             url.set("https://github.com/bodenberg/appdimens")
         }
     }
+
     val isJitPack = System.getenv("JITPACK") != null || System.getenv("CI") == "true"
     if (!isJitPack && (project.findProperty("signing.keyId") != null || project.findProperty("signing.secretKey") != null)) {
         signAllPublications()
@@ -64,7 +70,7 @@ publishing {
 }
 
 android {
-    namespace = "com.appdimens.dynamic"
+    namespace = "com.appdimens.ssps"
     compileSdk = 36
 
     defaultConfig {
@@ -115,6 +121,7 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.runtime)
+    dokkaPlugin(libs.android.documentation.plugin)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
