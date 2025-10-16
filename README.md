@@ -210,7 +210,7 @@ val titleSize = 24.scaledSp()
 
 ## 📎 Useful Links
 
-* 📘 [Full Documentation](#)
+* 📘 [Full Documentation](https://appdimens-project.web.app/)
 * 🧮 [Compose Examples](#)
 * 🧰 [View System Examples](#)
 * 🧭 [Advanced SDP/SSP](#)
