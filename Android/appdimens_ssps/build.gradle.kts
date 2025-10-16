@@ -11,7 +11,15 @@ plugins {
 }
 
 tasks.dokkaHtml.configure {
-    outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/SSPS"))
+    outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/SSPS/HTML"))
+}
+
+tasks.dokkaGfm.configure {
+    outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/SSPS/MARKDOWN"))
+}
+
+tasks.dokkaJavadoc.configure {
+    outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/SSPS/JAVADOC"))
 }
 
 mavenPublishing {

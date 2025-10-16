@@ -1,0 +1,4 @@
+$dokka.format:javadoc-v1
+$dokka.linkExtension:html
+$dokka.location:com.appdimens.library/UiModeType.Companion///PointingToDeclaration/com/appdimens/library/UiModeType.Companion.html
+com.appdimens.library

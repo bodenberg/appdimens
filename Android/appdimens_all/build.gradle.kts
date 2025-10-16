@@ -10,7 +10,15 @@ plugins {
 }
 
 tasks.dokkaHtml.configure {
-    outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/ALL"))
+    outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/ALL/HTML"))
+}
+
+tasks.dokkaGfm.configure {
+    outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/ALL/MARKDOWN"))
+}
+
+tasks.dokkaJavadoc.configure {
+    outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/ALL/JAVADOC"))
 }
 
 mavenPublishing {

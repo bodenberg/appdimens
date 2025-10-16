@@ -10,7 +10,15 @@ plugins {
 }
 
 tasks.dokkaHtml.configure {
-    outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/DYNAMIC"))
+    outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/DYNAMIC/HTML"))
+}
+
+tasks.dokkaGfm.configure {
+    outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/DYNAMIC/MARKDOWN"))
+}
+
+tasks.dokkaJavadoc.configure {
+    outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/DYNAMIC/JAVADOC"))
 }
 
 mavenPublishing {

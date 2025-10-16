@@ -1,0 +1,1 @@
+var packageSearchIndex = [{"l":"com.appdimens.sdps.code","url":"com/appdimens/sdps/code/package-summary.html"}, {"l":"com.appdimens.sdps.compose","url":"com/appdimens/sdps/compose/package-summary.html"}, {"l":"All packages","url":"index.html"}]

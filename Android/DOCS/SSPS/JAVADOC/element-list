@@ -1,0 +1,5 @@
+$dokka.format:javadoc-v1
+$dokka.linkExtension:html
+
+com.appdimens.ssps.code
+com.appdimens.ssps.compose

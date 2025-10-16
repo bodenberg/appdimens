@@ -1,0 +1,33 @@
+$dokka.format:gfm-v1
+$dokka.linkExtension:md
+$dokka.location:com.appdimens.sdps.code////PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.code/index.md
+$dokka.location:com.appdimens.sdps.code/AppDimensSdp///PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.code/-app-dimens-sdp/index.md
+$dokka.location:com.appdimens.sdps.code/AppDimensSdp/getDimensionInPx/#android.content.Context#kotlin.Int/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.code/-app-dimens-sdp/get-dimension-in-px.md
+$dokka.location:com.appdimens.sdps.code/AppDimensSdp/getResourceId/#android.content.Context#kotlin.Int/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.code/-app-dimens-sdp/get-resource-id.md
+$dokka.location:com.appdimens.sdps.compose////PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/index.md
+$dokka.location:com.appdimens.sdps.compose//fromConfiguration/#kotlin.Int/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/from-configuration.md
+$dokka.location:com.appdimens.sdps.compose//hdp/kotlin.Int#/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/hdp.md
+$dokka.location:com.appdimens.sdps.compose//scaledDp/androidx.compose.ui.unit.Dp#/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/scaled-dp.md
+$dokka.location:com.appdimens.sdps.compose//scaledDp/kotlin.Int#/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/scaled-dp.md
+$dokka.location:com.appdimens.sdps.compose//sdp/kotlin.Int#/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/sdp.md
+$dokka.location:com.appdimens.sdps.compose//toDynamicScaledDp/kotlin.Int#com.appdimens.library.DpQualifier/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/to-dynamic-scaled-dp.md
+$dokka.location:com.appdimens.sdps.compose//wdp/kotlin.Int#/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/wdp.md
+$dokka.location:com.appdimens.sdps.compose/CustomDpEntry///PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/-custom-dp-entry/index.md
+$dokka.location:com.appdimens.sdps.compose/CustomDpEntry/CustomDpEntry/#com.appdimens.library.UiModeType?#com.appdimens.library.DpQualifierEntry?#androidx.compose.ui.unit.Dp#kotlin.Int/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/-custom-dp-entry/-custom-dp-entry.md
+$dokka.location:com.appdimens.sdps.compose/CustomDpEntry/customValue/#/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/-custom-dp-entry/custom-value.md
+$dokka.location:com.appdimens.sdps.compose/CustomDpEntry/dpQualifierEntry/#/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/-custom-dp-entry/dp-qualifier-entry.md
+$dokka.location:com.appdimens.sdps.compose/CustomDpEntry/priority/#/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/-custom-dp-entry/priority.md
+$dokka.location:com.appdimens.sdps.compose/CustomDpEntry/uiModeType/#/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/-custom-dp-entry/ui-mode-type.md
+$dokka.location:com.appdimens.sdps.compose/Scaled///PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/-scaled/index.md
+$dokka.location:com.appdimens.sdps.compose/Scaled/Scaled/#androidx.compose.ui.unit.Dp/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/-scaled/-scaled.md
+$dokka.location:com.appdimens.sdps.compose/Scaled/hdp/#/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/-scaled/hdp.md
+$dokka.location:com.appdimens.sdps.compose/Scaled/screen/#com.appdimens.library.DpQualifier#kotlin.Int#androidx.compose.ui.unit.Dp/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/-scaled/screen.md
+$dokka.location:com.appdimens.sdps.compose/Scaled/screen/#com.appdimens.library.DpQualifier#kotlin.Int#kotlin.Int/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/-scaled/screen.md
+$dokka.location:com.appdimens.sdps.compose/Scaled/screen/#com.appdimens.library.UiModeType#androidx.compose.ui.unit.Dp/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/-scaled/screen.md
+$dokka.location:com.appdimens.sdps.compose/Scaled/screen/#com.appdimens.library.UiModeType#com.appdimens.library.DpQualifier#kotlin.Int#androidx.compose.ui.unit.Dp/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/-scaled/screen.md
+$dokka.location:com.appdimens.sdps.compose/Scaled/screen/#com.appdimens.library.UiModeType#com.appdimens.library.DpQualifier#kotlin.Int#kotlin.Int/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/-scaled/screen.md
+$dokka.location:com.appdimens.sdps.compose/Scaled/screen/#com.appdimens.library.UiModeType#kotlin.Int/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/-scaled/screen.md
+$dokka.location:com.appdimens.sdps.compose/Scaled/sdp/#/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/-scaled/sdp.md
+$dokka.location:com.appdimens.sdps.compose/Scaled/wdp/#/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/-scaled/wdp.md
+com.appdimens.sdps.code
+com.appdimens.sdps.compose

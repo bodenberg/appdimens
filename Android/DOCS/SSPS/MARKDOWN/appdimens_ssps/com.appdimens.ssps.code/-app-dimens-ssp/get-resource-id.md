@@ -1,0 +1,23 @@
+//[appdimens_ssps](../../../index.md)/[com.appdimens.ssps.code](../index.md)/[AppDimensSsp](index.md)/[getResourceId](get-resource-id.md)
+
+# getResourceId
+
+[androidJvm]\
+fun [getResourceId](get-resource-id.md)(context: [Context](https://developer.android.com/reference/kotlin/android/content/Context.html), value: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)): [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)
+
+EN Returns the dimension resource ID.
+
+PT Retorna o ID do recurso de dimensão.
+
+#### Return
+
+The resource ID, or 0 if not found.
+
+#### Parameters
+
+androidJvm
+
+| | |
+|---|---|
+| context | The application context. |
+| value | The desired dimension value. |
