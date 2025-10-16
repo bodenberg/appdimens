@@ -3,11 +3,11 @@
 # getResourceId
 
 [androidJvm]\
-fun [getResourceId](get-resource-id.md)(context: [Context](https://developer.android.com/reference/kotlin/android/content/Context.html), value: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)): [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)
+fun [getResourceId](get-resource-id.md)(context: [Context](https://developer.android.com/reference/kotlin/android/content/Context.html), dpQualifier: DpQualifier, value: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)): [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)
 
-EN Returns the dimension resource ID.
+EN Gets the resource ID for an SSP value.
 
-PT Retorna o ID do recurso de dimensão.
+PT Obtém o ID do recurso para um valor SSP.
 
 #### Return
 
@@ -20,4 +20,5 @@ androidJvm
 | | |
 |---|---|
 | context | The application context. |
-| value | The desired dimension value. |
+| dpQualifier | DpQualifier. |
+| value | The SSP value (0 to 600). |

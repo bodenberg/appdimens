@@ -2,8 +2,8 @@ $dokka.format:gfm-v1
 $dokka.linkExtension:md
 $dokka.location:com.appdimens.sdps.code////PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.code/index.md
 $dokka.location:com.appdimens.sdps.code/AppDimensSdp///PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.code/-app-dimens-sdp/index.md
-$dokka.location:com.appdimens.sdps.code/AppDimensSdp/getDimensionInPx/#android.content.Context#kotlin.Int/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.code/-app-dimens-sdp/get-dimension-in-px.md
-$dokka.location:com.appdimens.sdps.code/AppDimensSdp/getResourceId/#android.content.Context#kotlin.Int/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.code/-app-dimens-sdp/get-resource-id.md
+$dokka.location:com.appdimens.sdps.code/AppDimensSdp/getDimensionInPx/#android.content.Context#com.appdimens.library.DpQualifier#kotlin.Int/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.code/-app-dimens-sdp/get-dimension-in-px.md
+$dokka.location:com.appdimens.sdps.code/AppDimensSdp/getResourceId/#android.content.Context#com.appdimens.library.DpQualifier#kotlin.Int/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.code/-app-dimens-sdp/get-resource-id.md
 $dokka.location:com.appdimens.sdps.compose////PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/index.md
 $dokka.location:com.appdimens.sdps.compose//fromConfiguration/#kotlin.Int/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/from-configuration.md
 $dokka.location:com.appdimens.sdps.compose//hdp/kotlin.Int#/PointingToDeclaration/appdimens_sdps/com.appdimens.sdps.compose/hdp.md

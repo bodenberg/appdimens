@@ -25,6 +25,7 @@
 package com.appdimens.sdps.code
 
 import android.content.Context
+import com.appdimens.library.DpQualifier
 
 /**
  * [EN]
@@ -34,10 +35,12 @@ import android.content.Context
  * Objeto utilitário para manipulação de dimensões SDP (Scalable Dp).
  */
 object AppDimensSdp {
-    private const val MIN_VALUE = -330 // [EN] Minimum allowed SDP value. / [PT] Valor mínimo permitido para SDP.
-    private const val MAX_VALUE = 600 // [EN] Maximum allowed SDP value. / [PT] Valor máximo permitido para SDP.
-    private const val DIMEN_TYPE = "dimen" // [EN] The resource type for dimensions. / [PT] O tipo de recurso para dimensões.
-    private const val SDP_SUFFIX = "sdp" // [EN] The suffix for SDP resource names. / [PT] O sufixo para nomes de recursos SDP.
+    private const val MIN_VALUE =
+        -330 // [EN] Minimum allowed SDP value. / [PT] Valor mínimo permitido para SDP.
+    private const val MAX_VALUE =
+        600 // [EN] Maximum allowed SDP value. / [PT] Valor máximo permitido para SDP.
+    private const val DIMEN_TYPE =
+        "dimen" // [EN] The resource type for dimensions. / [PT] O tipo de recurso para dimensões.
 
     /**
      * [EN]
@@ -47,12 +50,13 @@ object AppDimensSdp {
      * Obtém a dimensão em pixels a partir de um valor SDP.
      *
      * @param context The application context.
+     * @param dpQualifier DpQualifier.
      * @param value The SDP value (-330 to 600).
      * @return The dimension in pixels, or 0f if not found.
      */
-    fun getDimensionInPx(context: Context, value: Int): Float {
+    fun getDimensionInPx(context: Context, dpQualifier: DpQualifier, value: Int): Float {
         if (value == 0) return 0f
-        val resourceId = getResourceId(context, value)
+        val resourceId = getResourceId(context, dpQualifier, value)
         return if (resourceId != 0) {
             context.resources.getDimension(resourceId)
         } else 0f
@@ -67,13 +71,19 @@ object AppDimensSdp {
      *
      * @param context The application context.
      * @param value The SDP value (-330 to 600).
+     * @param dpQualifier DpQualifier.
      * @return The resource ID, or 0 if not found.
      */
-    fun getResourceId(context: Context, value: Int): Int {
+    fun getResourceId(context: Context, dpQualifier: DpQualifier, value: Int): Int {
         if (value == 0) return 0
 
         val safeValue = value.coerceIn(MIN_VALUE, MAX_VALUE)
-        val dimenName = buildResourceName(safeValue)
+        val sdpSuffix = when (dpQualifier) {
+            DpQualifier.SMALL_WIDTH -> "sdp"
+            DpQualifier.HEIGHT -> "hdp"
+            DpQualifier.WIDTH -> "wdp"
+        }
+        val dimenName = buildResourceName(safeValue, sdpSuffix)
 
         return context.resources.getIdentifier(dimenName, DIMEN_TYPE, context.packageName)
     }
@@ -92,8 +102,8 @@ object AppDimensSdp {
      * @param value The integer value.
      * @return The formatted resource name.
      */
-    private fun buildResourceName(value: Int): String = when {
-        value < 0 -> "_minus${kotlin.math.abs(value)}$SDP_SUFFIX"
-        else -> "_${value}$SDP_SUFFIX"
+    private fun buildResourceName(value: Int, sdpSuffix: String): String = when {
+        value < 0 -> "_minus${kotlin.math.abs(value)}$sdpSuffix"
+        else -> "_${value}$sdpSuffix"
     }
 }
