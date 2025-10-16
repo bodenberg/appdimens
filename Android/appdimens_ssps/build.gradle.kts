@@ -1,3 +1,4 @@
+import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
 import com.vanniktech.maven.publish.KotlinJvm
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -9,8 +10,19 @@ plugins {
     alias(libs.plugins.dokka.jetbrains)
 }
 
+tasks.dokkaHtml.configure {
+    outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/SSPS"))
+}
+
 mavenPublishing {
-    coordinates("io.github.bodenberg", "appdimens-ssps", "1.0.2")
+    coordinates("io.github.bodenberg", "appdimens-ssps", "1.0.3")
+
+    configure(
+        AndroidSingleVariantLibrary(
+            publishJavadocJar = true,
+            sourcesJar = true
+        )
+    )
 
     pom {
         name.set("AppDimens SSP, HSP, WSP, SEM, WEM, HEM: Scalable Text Sizes (Fonts)")

@@ -1,1 +1,0 @@
-var packageSearchIndex = [{"l":"com.appdimens.ssps","url":"com/appdimens/ssps/package-summary.html"}, {"l":"All packages","url":"index.html"}]

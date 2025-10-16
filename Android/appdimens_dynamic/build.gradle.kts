@@ -1,3 +1,4 @@
+import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -8,13 +9,26 @@ plugins {
     alias(libs.plugins.dokka.jetbrains)
 }
 
+tasks.dokkaHtml.configure {
+    outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/DYNAMIC"))
+}
+
 mavenPublishing {
-    coordinates("io.github.bodenberg", "appdimens-dynamic", "1.0.2")
+    coordinates("io.github.bodenberg", "appdimens-dynamic", "1.0.3")
+
+    configure(
+        AndroidSingleVariantLibrary(
+            publishJavadocJar = true,
+            sourcesJar = true
+        )
+    )
 
     pom {
         name.set("AppDimens Core: Dynamic (DY) and Fixed (FX) Dimensioning")
-        description.set("The essential AppDimens module for responsive scaling via code. It includes the Dynamic (DY) model for proportional dimensioning (ideal for containers and fluid layouts) and the refined Fixed (FX) model for logarithmic scaling (ideal for paddings, margins, and buttons). Supports Jetpack Compose, XML Views (via Data Binding), and direct calls in Kotlin/Java. " +
-                "(android, kotlin, java, jetpack-compose, xml, swift, swiftui, ios, dp, sp, sdp, ssp, dimensions, responsive, layout, design-system, adaptive, dynamic, fixed, view-system)")
+        description.set(
+            "The essential AppDimens module for responsive scaling via code. It includes the Dynamic (DY) model for proportional dimensioning (ideal for containers and fluid layouts) and the refined Fixed (FX) model for logarithmic scaling (ideal for paddings, margins, and buttons). Supports Jetpack Compose, XML Views (via Data Binding), and direct calls in Kotlin/Java. " +
+                    "(android, kotlin, java, jetpack-compose, xml, swift, swiftui, ios, dp, sp, sdp, ssp, dimensions, responsive, layout, design-system, adaptive, dynamic, fixed, view-system)"
+        )
         url.set("https://github.com/bodenberg/appdimens")
         inceptionYear.set("2025")
         licenses {

@@ -1,7 +1,6 @@
-package com.appdimens.library
-
 /**
  * Author & Developer: Jean Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
  * Date: 2025-10-04
  *
  * Library: AppDimens
@@ -23,9 +22,13 @@ package com.appdimens.library
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.appdimens.library
 
 /**
- * Define qual dimensão da tela (largura ou altura) deve ser usada
+ * [EN] Defines which screen dimension (width or height) should be used
+ * as the basis for dynamic and percentage-based sizing calculations.
+ * 
+ * [PT] Define qual dimensão da tela (largura ou altura) deve ser usada
  * como base para cálculos de dimensionamento dinâmico e percentual.
  */
 enum class ScreenType {

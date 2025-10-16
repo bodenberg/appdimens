@@ -1,14 +1,6 @@
-package com.appdimens.dynamic.code
-
-import android.annotation.SuppressLint
-import android.content.res.Configuration
-import com.appdimens.library.DpQualifier
-import com.appdimens.library.DpQualifierEntry
-import kotlin.math.PI
-import kotlin.math.ln
-
 /**
  * Author & Developer: Jean Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
  * Date: 2025-10-04
  *
  * Library: AppDimens
@@ -30,48 +22,81 @@ import kotlin.math.ln
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.appdimens.dynamic.code
+
+import android.annotation.SuppressLint
+import android.content.res.Configuration
+import com.appdimens.library.DpQualifier
+import com.appdimens.library.DpQualifierEntry
+import kotlin.math.PI
+import kotlin.math.ln
 
 /**
- * Objeto singleton que fornece funções para o cálculo e resolução
- * de fatores de ajuste e qualificadores de tela.
- * Compatível com o sistema tradicional de Views XML do Android.
+ * [EN] A singleton object that provides functions for calculating and resolving
+ * adjustment factors and screen qualifiers. Compatible with the traditional
+ * Android View System (XML).
+ *
+ * [PT] Objeto singleton que fornece funções para o cálculo e resolução
+ * de fatores de ajuste e qualificadores de tela. Compatível com o sistema
+ * tradicional de Views XML do Android.
  */
 object AppDimensAdjustmentFactors {
 
-    // --- Constantes para Cálculo de Ajuste de Dimensão ---
-    /** Fator base de escala Dp. O valor padrão é 1.0f (sem ajuste). */
+    /**
+     * [EN] Base Dp scaling factor. Default is 1.0f (no adjustment).
+     * [PT] Fator base de escala Dp. O valor padrão é 1.0f (sem ajuste).
+     */
     const val BASE_DP_FACTOR = 1.00f
 
-    /** Largura DP de referência base para o cálculo de ajuste (ex: 300dp). */
+    /**
+     * [EN] Base reference Dp width for adjustment calculation (e.g., 300dp).
+     * [PT] Largura DP de referência base para o cálculo de ajuste (ex: 300dp).
+     */
     const val BASE_WIDTH_DP = 300f
 
-    /** Tamanho do passo de incremento em Dp para calcular o ajuste (ex: a cada 30dp). */
+    /**
+     * [EN] Dp increment step size for calculating the adjustment (e.g., every 30dp).
+     * [PT] Tamanho do passo de incremento em Dp para calcular o ajuste (ex: a cada 30dp).
+     */
     const val INCREMENT_DP_STEP = 30f
 
-    /** Fator para cálculo de circunferência ($2\pi$). Usando kotlin.math.PI. */
+    /**
+     * [EN] Factor for circumference calculation ($2\pi$). Uses kotlin.math.PI.
+     * [PT] Fator para cálculo de circunferência ($2\pi$). Usando kotlin.math.PI.
+     */
     const val CIRCUMFERENCE_FACTOR = PI * 2.0
 
-    // --- Constantes para o CÁLCULO CONTÍNUO do Aspect Ratio ---
-    /** Proporção de tela de referência (Ex: 16:9), onde o ajuste é neutro. */
+    /**
+     * [EN] Reference aspect ratio (e.g., 16:9), where the adjustment is neutral.
+     * [PT] Proporção de tela de referência (Ex: 16:9), onde o ajuste é neutro.
+     */
     const val REFERENCE_AR = 1.78f
 
-    /** Coeficiente de sensibilidade PADRÃO: Ajusta o quão agressivo é o escalonamento em telas extremas. */
+    /**
+     * [EN] DEFAULT sensitivity coefficient: Adjusts how aggressive the scaling is on extreme screens.
+     * [PT] Coeficiente de sensibilidade PADRÃO: Ajusta o quão agressivo é o escalonamento em telas extremas.
+     */
     const val DEFAULT_SENSITIVITY_K = 0.08f
 
-    /** Fator de incremento padrão (usado no cálculo SEM Aspect Ratio). */
+    /**
+     * [EN] Default increment factor (used in calculations WITHOUT Aspect Ratio).
+     * [PT] Fator de incremento padrão (usado no cálculo SEM Aspect Ratio).
+     */
     const val BASE_INCREMENT = 0.10f
 
-
     /**
-     * Função auxiliar que isola a lógica de busca e seleção do valor Dp
+     * [EN] Helper function that isolates the logic for searching and selecting the custom Dp value
+     * through Qualifiers (SW, H, W).
+     *
+     * [PT] Função auxiliar que isola a lógica de busca e seleção do valor Dp
      * customizado através dos Qualificadores (SW, H, W).
      *
-     * @param customDpMap Mapa de qualificadores de Dp.
-     * @param smallestWidthDp smallestScreenWidthDp da configuração atual.
-     * @param currentScreenWidthDp Largura da tela em Dp.
-     * @param currentScreenHeightDp Altura da tela em Dp.
-     * @param initialBaseDp Valor Dp inicial (em Float).
-     * @return O valor Dp customizado ou o valor inicial (em Float).
+     * @param customDpMap Map of Dp qualifiers.
+     * @param smallestWidthDp smallestScreenWidthDp from the current configuration.
+     * @param currentScreenWidthDp Screen width in Dp.
+     * @param currentScreenHeightDp Screen height in Dp.
+     * @param initialBaseDp Initial Dp value (as Float).
+     * @return The custom Dp value or the initial value (as Float).
      */
     fun resolveQualifierDp(
         customDpMap: Map<DpQualifierEntry, Float>,
@@ -82,14 +107,13 @@ object AppDimensAdjustmentFactors {
     ): Float {
         var dpToAdjust = initialBaseDp
 
-        // 1. Lógica dos Qualificadores de Tela (SW, H, W) - Prioridade: SW > H > W
-        // Filtramos e ordenamos em ordem decrescente para garantir que o MAIOR qualificador
-        // que atende à condição seja aplicado (ex: 900dp deve ter prioridade sobre 600dp).
+        // Filter and sort qualifiers in descending order to ensure the LARGEST matching
+        // qualifier is applied (e.g., 900dp should have priority over 600dp).
         val sortedQualifiers = customDpMap.entries.toList().sortedByDescending { it.key.value }
 
         var foundCustomDp: Float? = null
 
-        // Prioridade 1: SMALL_WIDTH (smallestScreenWidthDp)
+        // Priority 1: SMALL_WIDTH (smallestScreenWidthDp)
         foundCustomDp = sortedQualifiers.firstOrNull { (key, _) ->
             key.type == DpQualifier.SMALL_WIDTH && smallestWidthDp >= key.value
         }?.value
@@ -97,7 +121,7 @@ object AppDimensAdjustmentFactors {
         if (foundCustomDp != null) {
             dpToAdjust = foundCustomDp
         } else {
-            // Prioridade 2: HEIGHT (screenHeightDp)
+            // Priority 2: HEIGHT (screenHeightDp)
             foundCustomDp = sortedQualifiers.firstOrNull { (key, _) ->
                 key.type == DpQualifier.HEIGHT && currentScreenHeightDp >= key.value
             }?.value
@@ -105,7 +129,7 @@ object AppDimensAdjustmentFactors {
             if (foundCustomDp != null) {
                 dpToAdjust = foundCustomDp
             } else {
-                // Prioridade 3: WIDTH (screenWidthDp)
+                // Priority 3: WIDTH (screenWidthDp)
                 foundCustomDp = sortedQualifiers.firstOrNull { (key, _) ->
                     key.type == DpQualifier.WIDTH && currentScreenWidthDp >= key.value
                 }?.value
@@ -119,7 +143,8 @@ object AppDimensAdjustmentFactors {
     }
 
     /**
-     * Função auxiliar que verifica se um [DpQualifierEntry] atende às dimensões atuais da tela.
+     * [EN] Helper function that checks if a [DpQualifierEntry] meets the current screen dimensions.
+     * [PT] Função auxiliar que verifica se um [DpQualifierEntry] atende às dimensões atuais da tela.
      */
     fun resolveIntersectionCondition(
         entry: DpQualifierEntry,
@@ -132,20 +157,27 @@ object AppDimensAdjustmentFactors {
         else -> smallestWidthDp >= entry.value
     }
 
-
     /**
-     * Função auxiliar para obter a proporção de tela a partir da configuração.
+     * [EN] Helper function to get the aspect ratio from the configuration.
+     * @return The screen aspect ratio (Largest dimension / Smallest dimension).
+     *
+     * [PT] Função auxiliar para obter a proporção de tela a partir da configuração.
      * @return A proporção da tela (Maior dimensão / Menor dimensão).
      */
     fun getReferenceAspectRatio(screenWidthDp: Float, screenHeightDp: Float): Float {
-        // Proporção: (Maior dimensão / Menor dimensão)
+        // Aspect Ratio: (Largest dimension / Smallest dimension)
         return if (screenWidthDp > screenHeightDp)
             screenWidthDp / screenHeightDp
         else screenHeightDp / screenWidthDp
     }
 
     /**
-     * Calcula os Fatores Básicos de Ajuste.
+     * [EN] Calculates the Basic Adjustment Factors.
+     *
+     * @param configuration The current screen configuration.
+     * @return A [ScreenAdjustmentFactors] object containing the adjustment factors.
+     *
+     * [PT] Calcula os Fatores Básicos de Ajuste.
      *
      * @param configuration A Configuration da tela atual.
      * @return Um objeto [ScreenAdjustmentFactors] contendo os fatores de ajuste.
@@ -157,32 +189,32 @@ object AppDimensAdjustmentFactors {
         val currentScreenHeightDp = configuration.screenHeightDp.toFloat()
         val highestDimensionDp = maxOf(currentScreenWidthDp, currentScreenHeightDp)
 
-        // 1A. Cálculo do Fator de Ajuste Base (LOWEST - smallestWidthDp)
+        // Base Adjustment Factor (LOWEST - smallestWidthDp)
         val differenceLowest = smallestWidthDp - BASE_WIDTH_DP
         val adjustmentFactorLowest = differenceLowest / INCREMENT_DP_STEP
 
-        // 1B. Cálculo do Fator de Ajuste Base (HIGHEST - Max(W,H))
+        // Base Adjustment Factor (HIGHEST - Max(W,H))
         val differenceHighest = highestDimensionDp - BASE_WIDTH_DP
         val adjustmentFactorHighest = differenceHighest / INCREMENT_DP_STEP
 
-        // --- FATOR SEM ASPECT RATIO (Usa o fator LOWEST por segurança) ---
+        // Factor WITHOUT Aspect Ratio (uses LOWEST factor for safety)
         val withoutArFactor = BASE_DP_FACTOR + adjustmentFactorLowest * BASE_INCREMENT
 
-        // Obtém a proporção atual da tela
+        // Get the current screen aspect ratio
         val currentAr = getReferenceAspectRatio(currentScreenWidthDp, currentScreenHeightDp)
 
-        // Cálculo contínuo (Função Logarítmica) para suavizar o ajuste de escala
+        // Continuous calculation (Logarithmic function) to smooth the scaling adjustment
         val continuousAdjustment =
             (DEFAULT_SENSITIVITY_K * ln(currentAr / REFERENCE_AR)).toFloat()
         val finalIncrementValueWithAr = BASE_INCREMENT + continuousAdjustment
 
-        // 2A. Cálculo do Fator COMPLETO (LOWEST + AR)
+        // COMPLETE Factor (LOWEST + AR)
         val withArFactorLowest = BASE_DP_FACTOR + adjustmentFactorLowest * finalIncrementValueWithAr
 
-        // 2B. Cálculo do Fator COMPLETO (HIGHEST + AR)
+        // COMPLETE Factor (HIGHEST + AR)
         val withArFactorHighest = BASE_DP_FACTOR + adjustmentFactorHighest * finalIncrementValueWithAr
 
-        // Retorna todos os fatores, memorizando os dois tipos de ajuste de base
+        // Return all factors, storing both base adjustment types
         return ScreenAdjustmentFactors(
             withArFactorLowest = withArFactorLowest,
             withArFactorHighest = withArFactorHighest,
@@ -194,7 +226,8 @@ object AppDimensAdjustmentFactors {
 }
 
 /**
- * Data class para armazenar os fatores de ajuste de tela.
+ * [EN] Data class to store screen adjustment factors.
+ * [PT] Data class para armazenar os fatores de ajuste de tela.
  */
 data class ScreenAdjustmentFactors(
     val withArFactorLowest: Float,

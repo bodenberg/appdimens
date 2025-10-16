@@ -1,1 +1,0 @@
-var moduleSearchIndex = [{"l":"appdimens_sdps","url":"index.html"}]

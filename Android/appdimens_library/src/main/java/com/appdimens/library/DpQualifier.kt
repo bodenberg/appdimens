@@ -1,7 +1,6 @@
-package com.appdimens.library
-
 /**
  * Author & Developer: Jean Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
  * Date: 2025-10-04
  *
  * Library: AppDimens
@@ -23,9 +22,13 @@ package com.appdimens.library
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.appdimens.library
 
 /**
- * Define os tipos de qualificador de tela baseados em largura mínima (smallestWidthDp),
+ * [EN] Defines the screen qualifier types based on the device's smallest width (smallestWidthDp),
+ * height (screenHeightDp), or width (screenWidthDp).
+ * 
+ * [PT] Define os tipos de qualificador de tela baseados em largura mínima (smallestWidthDp),
  * altura (screenHeightDp) ou largura (screenWidthDp) do dispositivo.
  */
 enum class DpQualifier {

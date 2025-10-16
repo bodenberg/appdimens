@@ -1,7 +1,6 @@
-package com.appdimens.library
-
 /**
  * Author & Developer: Jean Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
  * Date: 2025-10-04
  *
  * Library: AppDimens
@@ -23,24 +22,30 @@ package com.appdimens.library
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.appdimens.library
 
 /**
- * Armazena os fatores de ajuste calculados a partir das dimensões da tela.
+ * [EN] Stores the adjustment factors calculated from the screen dimensions.
+ * The Aspect Ratio (AR) calculation is performed only once per screen configuration.
+ *
+ * [PT] Armazena os fatores de ajuste calculados a partir das dimensões da tela.
  * O cálculo do Aspect Ratio (AR) é feito apenas uma vez por configuração de tela.
  *
- * @param withArFactor Fator de escala final, incluindo o ajuste fino do Aspect Ratio (usando a sensibilidade padrão).
- * @param withoutArFactor Fator de escala final, usando o incremento base de 0.10f (SEM AR).
- * @param adjustmentFactor Fator base de ajuste (calculado a partir da diferença da smallestWidthDp / INCREMENT_DP_STEP).
+ * @property withArFactorLowest [EN] The final and COMPLETE scaling factor, using the LOWEST base (smallest dimension) + AR.
+ *                              [PT] Fator de escala final e COMPLETO, usando a base LOWEST (menor dimensão) + AR.
+ * @property withArFactorHighest [EN] The final and COMPLETE scaling factor, using the HIGHEST base (largest dimension) + AR.
+ *                               [PT] Fator de escala final e COMPLETO, usando a base HIGHEST (maior dimensão) + AR.
+ * @property withoutArFactor [EN] The final scaling factor WITHOUT AR (uses the LOWEST base for safety).
+ *                           [PT] Fator de escala final SEM AR (Usa a base LOWEST por segurança).
+ * @property adjustmentFactorLowest [EN] The base adjustment factor (increment multiplier), LOWEST: smallestWidthDp.
+ *                                  [PT] Fator base de ajuste (multiplicador do incremento), LOWEST: smallestWidthDp.
+ * @property adjustmentFactorHighest [EN] The base adjustment factor (increment multiplier), HIGHEST: max(W, H).
+ *                                   [PT] Fator base de ajuste (multiplicador do incremento), HIGHEST: max(W, H).
  */
 data class ScreenAdjustmentFactors(
-    // Fator final COMPLETO, usando a base LOWEST (menor dimensão) + AR
     val withArFactorLowest: Float,
-// Fator final COMPLETO, usando a base HIGHEST (maior dimensão) + AR
     val withArFactorHighest: Float,
-// Fator final SEM AR (Usa a base LOWEST por segurança)
     val withoutArFactor: Float,
-// Fator base (multiplicador do incremento), LOWEST: smallestWidthDp
     val adjustmentFactorLowest: Float,
-// Fator base (multiplicador do incremento), HIGHEST: max(W, H)
     val adjustmentFactorHighest: Float
 )

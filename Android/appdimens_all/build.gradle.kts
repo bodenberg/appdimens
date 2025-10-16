@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
 
 plugins {
     alias(libs.plugins.android.library)
@@ -8,8 +9,18 @@ plugins {
     alias(libs.plugins.dokka.jetbrains)
 }
 
+tasks.dokkaHtml.configure {
+    outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/ALL"))
+}
+
 mavenPublishing {
-    coordinates("io.github.bodenberg", "appdimens-all", "1.0.2")
+    coordinates("io.github.bodenberg", "appdimens-all", "1.0.3")
+
+    configure(AndroidSingleVariantLibrary(
+            publishJavadocJar = true,
+            sourcesJar = true
+        )
+    )
 
     pom {
         name.set("AppDimens All-in-One: Complete Responsiveness Package")

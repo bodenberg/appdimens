@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>AppDimensAdjustmentFactors</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    appdimens_dynamic
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":appdimens_dynamic:dokkaHtml/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":appdimens_dynamic:dokkaHtml/release"
+                                       data-filter=":appdimens_dynamic:dokkaHtml/release"/>
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    appdimens_dynamic
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="appdimens_dynamic::com.appdimens.dynamic.code/AppDimensAdjustmentFactors///PointingToDeclaration//1045152867">
+  <div class="breadcrumbs"><a href="../../../index.html">appdimens_dynamic</a><span class="delimiter">/</span><a href="../index.html">com.appdimens.dynamic.code</a><span class="delimiter">/</span><span class="current">AppDimensAdjustmentFactors</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>App</span><wbr></wbr><span>Dimens</span><wbr></wbr><span>Adjustment</span><wbr></wbr><span><span>Factors</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_dynamic:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="index.html">AppDimensAdjustmentFactors</a></div><p class="paragraph">EN A singleton object that provides functions for calculating and resolving adjustment factors and screen qualifiers. Compatible with the traditional Android View System (XML).</p><p class="paragraph">PT Objeto singleton que fornece funções para o cálculo e resolução de fatores de ajuste e qualificadores de tela. Compatível com o sistema tradicional de Views XML do Android.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1899608681%2FProperties%2F1045152867" anchor-label="BASE_DP_FACTOR" id="1899608681%2FProperties%2F1045152867" data-filterable-set=":appdimens_dynamic:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":appdimens_dynamic:dokkaHtml/release" data-filterable-set=":appdimens_dynamic:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-b-a-s-e_-d-p_-f-a-c-t-o-r.html"><span>BASE_</span><wbr></wbr><span>DP_</span><wbr></wbr><span>FACTOR</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1899608681%2FProperties%2F1045152867"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_dynamic:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-b-a-s-e_-d-p_-f-a-c-t-o-r.html">BASE_DP_FACTOR</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.0f</span></div><div class="brief "><p class="paragraph">EN Base Dp scaling factor. Default is 1.0f (no adjustment). PT Fator base de escala Dp. O valor padrão é 1.0f (sem ajuste).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="180305948%2FProperties%2F1045152867" anchor-label="BASE_INCREMENT" id="180305948%2FProperties%2F1045152867" data-filterable-set=":appdimens_dynamic:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":appdimens_dynamic:dokkaHtml/release" data-filterable-set=":appdimens_dynamic:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-b-a-s-e_-i-n-c-r-e-m-e-n-t.html"><span>BASE_</span><wbr></wbr><span>INCREMENT</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="180305948%2FProperties%2F1045152867"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_dynamic:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-b-a-s-e_-i-n-c-r-e-m-e-n-t.html">BASE_INCREMENT</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.1f</span></div><div class="brief "><p class="paragraph">EN Default increment factor (used in calculations WITHOUT Aspect Ratio). PT Fator de incremento padrão (usado no cálculo SEM Aspect Ratio).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="263400202%2FProperties%2F1045152867" anchor-label="BASE_WIDTH_DP" id="263400202%2FProperties%2F1045152867" data-filterable-set=":appdimens_dynamic:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":appdimens_dynamic:dokkaHtml/release" data-filterable-set=":appdimens_dynamic:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-b-a-s-e_-w-i-d-t-h_-d-p.html"><span>BASE_</span><wbr></wbr><span>WIDTH_</span><wbr></wbr><span>DP</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="263400202%2FProperties%2F1045152867"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_dynamic:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-b-a-s-e_-w-i-d-t-h_-d-p.html">BASE_WIDTH_DP</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">300.0f</span></div><div class="brief "><p class="paragraph">EN Base reference Dp width for adjustment calculation (e.g., 300dp). PT Largura DP de referência base para o cálculo de ajuste (ex: 300dp).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-544556642%2FProperties%2F1045152867" anchor-label="CIRCUMFERENCE_FACTOR" id="-544556642%2FProperties%2F1045152867" data-filterable-set=":appdimens_dynamic:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":appdimens_dynamic:dokkaHtml/release" data-filterable-set=":appdimens_dynamic:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-c-i-r-c-u-m-f-e-r-e-n-c-e_-f-a-c-t-o-r.html"><span>CIRCUMFERENCE_</span><wbr></wbr><span>FACTOR</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-544556642%2FProperties%2F1045152867"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_dynamic:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-c-i-r-c-u-m-f-e-r-e-n-c-e_-f-a-c-t-o-r.html">CIRCUMFERENCE_FACTOR</a><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="brief "><p class="paragraph">EN Factor for circumference calculation (<p class="paragraph">$2\pi$</p>). Uses kotlin.math.PI. PT Fator para cálculo de circunferência (<p class="paragraph">$2\pi$</p>). Usando kotlin.math.PI.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="666985168%2FProperties%2F1045152867" anchor-label="DEFAULT_SENSITIVITY_K" id="666985168%2FProperties%2F1045152867" data-filterable-set=":appdimens_dynamic:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":appdimens_dynamic:dokkaHtml/release" data-filterable-set=":appdimens_dynamic:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-d-e-f-a-u-l-t_-s-e-n-s-i-t-i-v-i-t-y_-k.html"><span>DEFAULT_</span><wbr></wbr><span>SENSITIVITY_</span><wbr></wbr><span>K</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="666985168%2FProperties%2F1045152867"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_dynamic:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-d-e-f-a-u-l-t_-s-e-n-s-i-t-i-v-i-t-y_-k.html">DEFAULT_SENSITIVITY_K</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.08f</span></div><div class="brief "><p class="paragraph">EN DEFAULT sensitivity coefficient: Adjusts how aggressive the scaling is on extreme screens. PT Coeficiente de sensibilidade PADRÃO: Ajusta o quão agressivo é o escalonamento em telas extremas.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="721741902%2FProperties%2F1045152867" anchor-label="INCREMENT_DP_STEP" id="721741902%2FProperties%2F1045152867" data-filterable-set=":appdimens_dynamic:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":appdimens_dynamic:dokkaHtml/release" data-filterable-set=":appdimens_dynamic:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-i-n-c-r-e-m-e-n-t_-d-p_-s-t-e-p.html"><span>INCREMENT_</span><wbr></wbr><span>DP_</span><wbr></wbr><span>STEP</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="721741902%2FProperties%2F1045152867"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_dynamic:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-i-n-c-r-e-m-e-n-t_-d-p_-s-t-e-p.html">INCREMENT_DP_STEP</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">30.0f</span></div><div class="brief "><p class="paragraph">EN Dp increment step size for calculating the adjustment (e.g., every 30dp). PT Tamanho do passo de incremento em Dp para calcular o ajuste (ex: a cada 30dp).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="89774648%2FProperties%2F1045152867" anchor-label="REFERENCE_AR" id="89774648%2FProperties%2F1045152867" data-filterable-set=":appdimens_dynamic:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":appdimens_dynamic:dokkaHtml/release" data-filterable-set=":appdimens_dynamic:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-r-e-f-e-r-e-n-c-e_-a-r.html"><span>REFERENCE_</span><wbr></wbr><span>AR</span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="89774648%2FProperties%2F1045152867"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_dynamic:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-r-e-f-e-r-e-n-c-e_-a-r.html">REFERENCE_AR</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">1.78f</span></div><div class="brief "><p class="paragraph">EN Reference aspect ratio (e.g., 16:9), where the adjustment is neutral. PT Proporção de tela de referência (Ex: 16:9), onde o ajuste é neutro.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="654160002%2FFunctions%2F1045152867" anchor-label="calculateAdjustmentFactors" id="654160002%2FFunctions%2F1045152867" data-filterable-set=":appdimens_dynamic:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":appdimens_dynamic:dokkaHtml/release" data-filterable-set=":appdimens_dynamic:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="calculate-adjustment-factors.html"><span>calculate</span><wbr></wbr><span>Adjustment</span><wbr></wbr><span><span>Factors</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="654160002%2FFunctions%2F1045152867"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_dynamic:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="calculate-adjustment-factors.html"><span class="token function">calculateAdjustmentFactors</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">configuration<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/res/Configuration.html">Configuration</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-screen-adjustment-factors/index.html">ScreenAdjustmentFactors</a></div><div class="brief "><p class="paragraph">EN Calculates the Basic Adjustment Factors.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1128187488%2FFunctions%2F1045152867" anchor-label="getReferenceAspectRatio" id="1128187488%2FFunctions%2F1045152867" data-filterable-set=":appdimens_dynamic:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":appdimens_dynamic:dokkaHtml/release" data-filterable-set=":appdimens_dynamic:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-reference-aspect-ratio.html"><span>get</span><wbr></wbr><span>Reference</span><wbr></wbr><span>Aspect</span><wbr></wbr><span><span>Ratio</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1128187488%2FFunctions%2F1045152867"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_dynamic:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-reference-aspect-ratio.html"><span class="token function">getReferenceAspectRatio</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">screenWidthDp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">screenHeightDp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">EN Helper function to get the aspect ratio from the configuration.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1219509176%2FFunctions%2F1045152867" anchor-label="resolveIntersectionCondition" id="1219509176%2FFunctions%2F1045152867" data-filterable-set=":appdimens_dynamic:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":appdimens_dynamic:dokkaHtml/release" data-filterable-set=":appdimens_dynamic:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="resolve-intersection-condition.html"><span>resolve</span><wbr></wbr><span>Intersection</span><wbr></wbr><span><span>Condition</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1219509176%2FFunctions%2F1045152867"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_dynamic:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="resolve-intersection-condition.html"><span class="token function">resolveIntersectionCondition</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">entry<span class="token operator">: </span><span data-unresolved-link="com.appdimens.library/DpQualifierEntry///PointingToDeclaration/">DpQualifierEntry</span><span class="token punctuation">, </span></span><span class="parameter ">smallestWidthDp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">currentScreenWidthDp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">currentScreenHeightDp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">EN Helper function that checks if a <span data-unresolved-link="com.appdimens.library/DpQualifierEntry///PointingToDeclaration/">DpQualifierEntry</span> meets the current screen dimensions. PT Função auxiliar que verifica se um <span data-unresolved-link="com.appdimens.library/DpQualifierEntry///PointingToDeclaration/">DpQualifierEntry</span> atende às dimensões atuais da tela.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1588516343%2FFunctions%2F1045152867" anchor-label="resolveQualifierDp" id="-1588516343%2FFunctions%2F1045152867" data-filterable-set=":appdimens_dynamic:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":appdimens_dynamic:dokkaHtml/release" data-filterable-set=":appdimens_dynamic:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="resolve-qualifier-dp.html"><span>resolve</span><wbr></wbr><span>Qualifier</span><wbr></wbr><span><span>Dp</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1588516343%2FFunctions%2F1045152867"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":appdimens_dynamic:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><a href="resolve-qualifier-dp.html"><span class="token function">resolveQualifierDp</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">customDpMap<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><span data-unresolved-link="com.appdimens.library/DpQualifierEntry///PointingToDeclaration/">DpQualifierEntry</span><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">smallestWidthDp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">currentScreenWidthDp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">currentScreenHeightDp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter ">initialBaseDp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html">Float</a></div><div class="brief "><p class="paragraph">EN Helper function that isolates the logic for searching and selecting the custom Dp value through Qualifiers (SW, H, W).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

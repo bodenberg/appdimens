@@ -1,7 +1,6 @@
-package com.appdimens.library
-
 /**
  * Author & Developer: Jean Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
  * Date: 2025-10-04
  *
  * Library: AppDimens
@@ -23,10 +22,14 @@ package com.appdimens.library
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.appdimens.library
 
 /**
- * Define as unidades de medida física suportadas para conversão
- * em pixels lógicos (Dp) ou pixels de tela (Px).
+ * [EN] Defines the supported physical measurement units for conversion
+ * into density-independent pixels (Dp) or screen pixels (Px).
+ * 
+ * [PT] Define as unidades de medida física suportadas para conversão 
+ * em pixels independentes de densidade (Dp) ou pixels de tela (Px).
  */
 enum class UnitType {
     INCH, CM, MM, SP, DP, PX

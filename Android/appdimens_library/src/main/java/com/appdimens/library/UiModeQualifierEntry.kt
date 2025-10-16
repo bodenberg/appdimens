@@ -1,7 +1,6 @@
-package com.appdimens.library
-
 /**
  * Author & Developer: Jean Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
  * Date: 2025-10-04
  *
  * Library: AppDimens
@@ -23,13 +22,19 @@ package com.appdimens.library
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.appdimens.library
 
 /**
- * Representa uma entrada de qualificador que combina um tipo de UI Mode (dispositivo)
+ * [EN] Represents a qualifier entry that combines a UI Mode type (device)
+ * AND a screen qualifier (SW, H, W). This combination has the HIGHEST PRIORITY.
+ *
+ * [PT] Representa uma entrada de qualificador que combina um tipo de UI Mode (dispositivo)
  * E um qualificador de tela (SW, H, W). Esta combinação tem a PRIORIDADE MÁXIMA.
  *
- * @param uiModeType O tipo de UI Mode (CAR, TELEVISION, NORMAL, etc.).
- * @param dpQualifierEntry O qualificador de tela (DpQualifier, valor DP mínimo).
+ * @property uiModeType [EN] The UI Mode type (CAR, TELEVISION, NORMAL, etc.).
+ *                      [PT] O tipo de UI Mode (CAR, TELEVISION, NORMAL, etc.).
+ * @property dpQualifierEntry [EN] The screen qualifier (DpQualifier, minimum DP value).
+ *                          [PT] O qualificador de tela (DpQualifier, valor DP mínimo).
  */
 data class UiModeQualifierEntry(
     val uiModeType: UiModeType,

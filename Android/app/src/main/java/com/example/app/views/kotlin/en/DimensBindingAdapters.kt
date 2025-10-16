@@ -1,3 +1,7 @@
+/**
+ * @author Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
+ */
 package com.example.app.views.kotlin.en
 
 import android.view.View
@@ -6,22 +10,31 @@ import androidx.databinding.BindingAdapter
 import com.appdimens.dynamic.code.AppDimens
 
 /**
- * Custom Data Binding Adapters to apply dynamic dimensions from the AppDimens library.
+ * [EN] Custom Data Binding Adapters to apply dynamic dimensions from the AppDimens library.
+ *
+ * [PT] Adaptadores de Data Binding personalizados para aplicar dimensões dinâmicas da biblioteca AppDimens.
  */
 object DimensBindingAdapters {
 
-    // --- Adapters for Layout Dimensions (Dp -> Px) ---
+    // [EN] --- Adapters for Layout Dimensions (Dp -> Px) ---
+    // [PT] --- Adaptadores para Dimensões de Layout (Dp -> Px) ---
 
     /**
-     * Sets the width of a View, converting the Float Dp value (e.g., 48f) to PX
+     * [EN] Sets the width of a View, converting the Float Dp value (e.g., 48f) to PX
      * using the dynamic adjustment from AppDimensDynamic.
      * XML usage: app:dynamicWidthDp="@{48f}" or app:dynamicWidthDp="@{myFloatVariable}"
+     *
+     * [PT] Define a largura de uma View, convertendo o valor Float Dp (ex: 48f) para PX
+     * usando o ajuste dinâmico do AppDimensDynamic.
+     * Uso no XML: app:dynamicWidthDp="@{48f}" ou app:dynamicWidthDp="@{myFloatVariable}"
      */
     @JvmStatic
     @BindingAdapter("app:dynamicWidthDp")
     fun setDynamicWidth(view: View, dpValue: Float) {
-        // 1. Creates the adjustable Dp object (48.dp)
-        // 2. Calls toPx(resources) to get the dynamically adjusted value in Pixels
+        // [EN] 1. Creates the adjustable Dp object (48.dp)
+        //      2. Calls toPx(resources) to get the dynamically adjusted value in Pixels
+        // [PT] 1. Cria o objeto Dp ajustável (48.dp)
+        //      2. Chama toPx(resources) para obter o valor ajustado dinamicamente em Pixels
         val pxValue = AppDimens.dynamic(dpValue).toPx(view.resources)
 
         view.layoutParams.width = pxValue.toInt()
@@ -29,7 +42,9 @@ object DimensBindingAdapters {
     }
 
     /**
-     * Sets the height of a View, converting Float Dp to dynamic PX.
+     * [EN] Sets the height of a View, converting Float Dp to dynamic PX.
+     *
+     * [PT] Define a altura de uma View, convertendo Float Dp para PX dinâmico.
      */
     @JvmStatic
     @BindingAdapter("app:dynamicHeightDp")
@@ -40,20 +55,27 @@ object DimensBindingAdapters {
         view.requestLayout()
     }
 
-    // --- Adapter for Text Size (Dp -> Sp/Px) ---
+    // [EN] --- Adapter for Text Size (Dp -> Sp/Px) ---
+    // [PT] --- Adaptador para Tamanho de Texto (Dp -> Sp/Px) ---
 
     /**
-     * Sets the text size (TextView), converting Float Dp to dynamic SP/PX.
+     * [EN] Sets the text size (TextView), converting Float Dp to dynamic SP/PX.
      * AppDimensDynamic.toSp() ensures that the scaling adjustment is applied to the text.
      * XML usage: app:dynamicTextSizeDp="@{20f}"
+     *
+     * [PT] Define o tamanho do texto (TextView), convertendo Float Dp para SP/PX dinâmico.
+     * AppDimensDynamic.toSp() garante que o ajuste de escala seja aplicado ao texto.
+     * Uso no XML: app:dynamicTextSizeDp="@{20f}"
      */
     @JvmStatic
     @BindingAdapter("app:dynamicTextSizeDp")
     fun setDynamicTextSize(textView: TextView, dpValue: Float) {
-        // Converts Dynamic Dp to Scaleable Pixels (SP) in Pixels (Float)
+        // [EN] Converts Dynamic Dp to Scaleable Pixels (SP) in Pixels (Float)
+        // [PT] Converte Dp Dinâmico para Pixels Escaláveis (SP) em Pixels (Float)
         val spValueInPx = AppDimens.dynamic(dpValue).toSp(textView.resources)
 
-        // Sets the text size using TypedValue.COMPLEX_UNIT_PX (raw pixels)
+        // [EN] Sets the text size using TypedValue.COMPLEX_UNIT_PX (raw pixels)
+        // [PT] Define o tamanho do texto usando TypedValue.COMPLEX_UNIT_PX (pixels brutos)
         textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, spValueInPx)
     }
 }

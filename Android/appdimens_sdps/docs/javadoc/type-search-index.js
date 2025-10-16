@@ -1,1 +1,0 @@
-var typeSearchIndex = [{"p":"com.appdimens.sdps","l":"CustomDpEntry","url":"com/appdimens/sdps/CustomDpEntry.html"}, {"p":"com.appdimens.sdps","l":"Scaled","url":"com/appdimens/sdps/Scaled.html"}, {"p":"com.appdimens.sdps","l":"AppDimensSdpKt","url":"com/appdimens/sdps/AppDimensSdpKt.html"}, {"l":"All classes","url":"allclasses.html"}]

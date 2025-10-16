@@ -1,3 +1,4 @@
+import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -8,13 +9,26 @@ plugins {
     alias(libs.plugins.dokka.jetbrains)
 }
 
+tasks.dokkaHtml.configure {
+    outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/LIBRARY"))
+}
+
 mavenPublishing {
-    coordinates("io.github.bodenberg", "appdimens-library", "1.0.2")
+    coordinates("io.github.bodenberg", "appdimens-library", "1.0.3")
+
+    configure(
+        AndroidSingleVariantLibrary(
+            publishJavadocJar = true,
+            sourcesJar = true
+        )
+    )
 
     pom {
         name.set("AppDimens: Cross-Platform UI Responsiveness (SDP/SSP, Dynamic/Fixed)")
-        description.set("The complete dynamic and responsive dimensioning library for Android (Jetpack Compose, XML Views, Kotlin, Java) and iOS (Swift, SwiftUI). It uses mathematical models (SDP, SSP, Dynamic, and Fixed) to ensure your UI adapts perfectly to any screen (phones, tablets, foldables, TVs, cars, and wearables), solving the problem of adaptive layout precisely and efficiently. " +
-                "(android, kotlin, java, jetpack-compose, xml, swift, swiftui, ios, dp, sp, sdp, ssp, dimensions, responsive, layout, design-system, adaptive, dynamic, fixed, view-system)")
+        description.set(
+            "The complete dynamic and responsive dimensioning library for Android (Jetpack Compose, XML Views, Kotlin, Java) and iOS (Swift, SwiftUI). It uses mathematical models (SDP, SSP, Dynamic, and Fixed) to ensure your UI adapts perfectly to any screen (phones, tablets, foldables, TVs, cars, and wearables), solving the problem of adaptive layout precisely and efficiently. " +
+                    "(android, kotlin, java, jetpack-compose, xml, swift, swiftui, ios, dp, sp, sdp, ssp, dimensions, responsive, layout, design-system, adaptive, dynamic, fixed, view-system)"
+        )
 
         url.set("https://github.com/bodenberg/appdimens")
         inceptionYear.set("2025")

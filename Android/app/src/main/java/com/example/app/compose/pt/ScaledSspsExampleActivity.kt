@@ -1,27 +1,7 @@
 /**
- * Author & Developer: Jean Bodenberg
- * Date: 2025-10-04
- *
- * Library: AppDimens
- *
- * Description:
- * The AppDimens library is a dimension management system that automatically
- * adjusts Dp, Sp, and Px values in a responsive and mathematically refined way,
- * ensuring layout consistency across any screen size or ratio.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * @author Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
  */
-
 package com.example.app.compose.pt
 
 import android.os.Bundle
@@ -44,10 +24,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.appdimens.library.DpQualifier
 import com.appdimens.library.UiModeType
-import com.appdimens.ssps.*
+import com.appdimens.ssps.compose.hsp
+import com.appdimens.ssps.compose.scaledSp
+import com.appdimens.ssps.compose.ssp
+import com.appdimens.ssps.compose.wsp
 
 /**
- * Activity de exemplo visual e funcional para demonstrar
+ * [EN] Visual and functional example activity to demonstrate
+ * the full usage of the AppDimensSsp library.
+ *
+ * Shows direct and conditional usage examples of the functions:
+ * - .ssp, .hsp, .wsp
+ * - .scaledSp() with different rule combinations
+ * 
+ * [PT] Activity de exemplo visual e funcional para demonstrar
  * o uso completo da biblioteca AppDimensSsp.
  *
  * Mostra exemplos diretos e condicionais de uso das funções:
@@ -55,6 +45,11 @@ import com.appdimens.ssps.*
  * - .scaledSp() com diferentes combinações de regras
  */
 class ScaledSspsExampleActivity : ComponentActivity() {
+    /**
+     * [EN] Called when the activity is first created.
+     * 
+     * [PT] Chamado quando a atividade é criada pela primeira vez.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -67,6 +62,11 @@ class ScaledSspsExampleActivity : ComponentActivity() {
     }
 }
 
+/**
+ * [EN] A composable function that displays the AppDimens SSP example screen.
+ * 
+ * [PT] Uma função de composição que exibe a tela de exemplo do AppDimens SSP.
+ */
 @Composable
 fun AppDimensSspExampleScreen() {
     LazyColumn(
@@ -76,7 +76,8 @@ fun AppDimensSspExampleScreen() {
         verticalArrangement = Arrangement.spacedBy(18.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Cabeçalho principal da demonstração
+        // [EN] Main header of the demonstration
+        // [PT] Cabeçalho principal da demonstração
         item {
             Text(
                 text = "Demonstração - AppDimensSsp",
@@ -95,9 +96,12 @@ fun AppDimensSspExampleScreen() {
             )
         }
 
-        // ---------------------------------------------------------------
-        // SEÇÃO 1 — Escalonamento Direto (ssp, hsp, wsp)
-        // ---------------------------------------------------------------
+        // [EN] ---------------------------------------------------------------
+        // [PT] ---------------------------------------------------------------
+        // [EN] SECTION 1 — Direct Scaling (ssp, hsp, wsp)
+        // [PT] SEÇÃO 1 — Escalonamento Direto (ssp, hsp, wsp)
+        // [EN] ---------------------------------------------------------------
+        // [PT] ---------------------------------------------------------------
         item {
             DemoCard(
                 title = "Escalonamento Direto",
@@ -112,9 +116,12 @@ fun AppDimensSspExampleScreen() {
             }
         }
 
-        // ---------------------------------------------------------------
-        // SEÇÃO 2 — Escalonamento Condicional (Scaled)
-        // ---------------------------------------------------------------
+        // [EN] ---------------------------------------------------------------
+        // [PT] ---------------------------------------------------------------
+        // [EN] SECTION 2 — Conditional Scaling (Scaled)
+        // [PT] SEÇÃO 2 — Escalonamento Condicional (Escalado)
+        // [EN] ---------------------------------------------------------------
+        // [PT] ---------------------------------------------------------------
         item {
             val scaledExample = 10.scaledSp()
                 .screen(UiModeType.TELEVISION, DpQualifier.SMALL_WIDTH, 720, 24)
@@ -135,9 +142,12 @@ fun AppDimensSspExampleScreen() {
             }
         }
 
-        // ---------------------------------------------------------------
-        // SEÇÃO 3 — Comparativo Visual
-        // ---------------------------------------------------------------
+        // [EN] ---------------------------------------------------------------
+        // [PT] ---------------------------------------------------------------
+        // [EN] SECTION 3 — Visual Comparison
+        // [PT] SEÇÃO 3 — Comparativo Visual
+        // [EN] ---------------------------------------------------------------
+        // [PT] ---------------------------------------------------------------
         item {
             DemoCard(
                 title = "Comparação de Escalas",
@@ -174,7 +184,9 @@ fun AppDimensSspExampleScreen() {
 }
 
 /**
- * Card de demonstração com título, ícone, descrição e conteúdo.
+ * [EN] Demo card with title, icon, description, and content.
+ * 
+ * [PT] Card de demonstração com título, ícone, descrição e conteúdo.
  */
 @Composable
 fun DemoCard(
@@ -229,6 +241,11 @@ fun DemoCard(
     }
 }
 
+/**
+ * [EN] A preview for the AppDimens SSP example screen.
+ * 
+ * [PT] Uma pré-visualização para a tela de exemplo do AppDimens SSP.
+ */
 @Preview(showBackground = true)
 @Composable
 fun PreviewAppDimensSspExample() {

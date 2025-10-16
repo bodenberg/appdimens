@@ -1,3 +1,7 @@
+/**
+ * @author Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
+ */
 package com.example.app.views.java.en;
 
 import android.os.Bundle;
@@ -11,53 +15,78 @@ import com.appdimens.dynamic.code.AppDimensPhysicalUnits;
 import com.appdimens.library.ScreenType;
 import com.example.app.databinding.ActivityDynamicDataBindingBinding;
 
+/**
+ * [EN] Main activity demonstrating various features of the AppDimens library.
+ *
+ * [PT] Atividade principal que demonstra vários recursos da biblioteca AppDimens.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private ActivityDynamicDataBindingBinding binding;
 
+    /**
+     * [EN] Called when the activity is first created.
+     *
+     * [PT] Chamado quando a atividade é criada pela primeira vez.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // 1. Data Binding Configuration
+        // [EN] Data Binding Configuration
+        // [PT] Configuração do Data Binding
         binding = ActivityDynamicDataBindingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         // ====================================================================
-        // 1. DYNAMIC USAGE WITH DATA BINDING (Focusing on the value '48')
+        // [EN] 1. DYNAMIC USAGE WITH DATA BINDING (Focusing on the value '48')
+        // [PT] 1. USO DINÂMICO COM DATA BINDING (Focando no valor '48')
         // ====================================================================
         float dimenValue = 48f;
-        // Passes the value 48 to the 'dimenValue' variable in the XML, activating the Binding Adapter
+        
+        // [EN] Passes the value 48 to the 'dimenValue' variable in the XML, activating the Binding Adapter.
+        // [PT] Passa o valor 48 para a variável 'dimenValue' no XML, ativando o Binding Adapter.
         binding.setDimenValue(dimenValue);
 
         Log.d("AppDimensExample", "1. Dynamic (DB) - Initial value: " + dimenValue + "dp");
-        // The Binding Adapter (DimensBindingAdapters.java) will perform the dynamic conversion to PX
 
-        // Ensures that the Data Binding is executed immediately (optional)
+        // [EN] The Binding Adapter (DimensBindingAdapters.java) will perform the dynamic conversion to PX.
+        // [PT] O Binding Adapter (DimensBindingAdapters.java) realizará a conversão dinâmica para PX.
+
+        // [EN] Ensures that the Data Binding is executed immediately (optional).
+        // [PT] Garante que o Data Binding seja executado imediatamente (opcional).
         binding.executePendingBindings();
 
         // ====================================================================
-        // --- Direct Java Usage Examples (Non-Data Binding) ---
+        // [EN] --- Direct Java Usage Examples (Non-Data Binding) ---
+        // [PT] --- Exemplos de Uso Direto em Java (Sem Data Binding) ---
         // ====================================================================
 
-        // 2. Fixed (Non-Dynamic) Usage
+        // [EN] 2. Fixed (Non-Dynamic) Usage
+        // [PT] 2. Uso Fixo (Não Dinâmico)
         demonstrateFixedUsage(binding.fixedView);
 
-        // 3. Dynamic Percentage Usage
+        // [EN] 3. Dynamic Percentage Usage
+        // [PT] 3. Uso de Porcentagem Dinâmica
         demonstratePercentageUsage(binding.percentageView);
 
-        // 4. Physical Units Usage (MM)
+        // [EN] 4. Physical Units Usage (MM)
+        // [PT] 4. Uso de Unidades Físicas (MM)
         demonstratePhysicalUnitUsage(binding.physicalUnitView);
     }
 
     /**
-     * 2. Demonstrates the use of AppDimensFixed (Fixed DP) to maintain the dimension
+     * [EN] 2. Demonstrates the use of AppDimensFixed (Fixed DP) to maintain the dimension
      * WITHOUT the mathematical scale adjustment.
+     *
+     * [PT] 2. Demonstra o uso do AppDimensFixed (DP Fixo) para manter a dimensão
+     * SEM o ajuste de escala matemático.
      */
     private void demonstrateFixedUsage(View view) {
         float dpValue = 64f;
 
-        // Converts Fixed Dp (64.dp) to Pixel (PX)
+        // [EN] Converts Fixed Dp (64.dp) to Pixel (PX).
+        // [PT] Converte Dp Fixo (64.dp) para Pixel (PX).
         float fixedPx = new AppDimensFixed(dpValue, false).toPx(getResources());
 
         Log.d("AppDimensExample", "2. Fixed: " + dpValue + "dp -> " + fixedPx + "px");
@@ -69,13 +98,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 3. Demonstrates the use of dynamic percentage calculation (80% of the screen).
+     * [EN] 3. Demonstrates the use of dynamic percentage calculation (80% of the screen).
      * Note: The base dimension (LOWEST or HIGHEST) can be changed.
+     *
+     * [PT] 3. Demonstra o uso do cálculo de porcentagem dinâmica (80% da tela).
+     * Nota: A dimensão base (LOWEST ou HIGHEST) pode ser alterada.
      */
     private void demonstratePercentageUsage(View view) {
-        float percentage = 0.80f; // 80%
+        // [EN] 80%
+        // [PT] 80%
+        float percentage = 0.80f; 
 
-        // Calculates 80% of the LOWEST dimension (smaller screen dimension, W or H) in PX
+        // [EN] Calculates 80% of the LOWEST dimension (smaller screen dimension, W or H) in PX.
+        // [PT] Calcula 80% da menor dimensão (menor dimensão da tela, L ou A) em PX.
         float percentagePx = AppDimens.INSTANCE.dynamicPercentagePx(
                 percentage,
                 ScreenType.LOWEST,
@@ -85,29 +120,37 @@ public class MainActivity extends AppCompatActivity {
         Log.d("AppDimensExample", "3. Percentage: " + (percentage * 100) + "% of "
                 + ScreenType.LOWEST + " -> " + percentagePx + "px");
 
-        // Sets the View width to 80% of the screen in PX
+        // [EN] Sets the View width to 80% of the screen in PX.
+        // [PT] Define a largura da View como 80% da tela em PX.
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
         layoutParams.width = (int) percentagePx;
         view.setLayoutParams(layoutParams);
     }
 
     /**
-     * 4. Demonstrates the use of physical unit conversion (Millimeters).
+     * [EN] 4. Demonstrates the use of physical unit conversion (Millimeters).
+     *
+     * [PT] 4. Demonstra o uso da conversão de unidades físicas (Milímetros).
      */
     private void demonstratePhysicalUnitUsage(View view) {
-        float mmValue = 5.0f; // 5 millimeters
+        // [EN] 5 millimeters
+        // [PT] 5 milímetros
+        float mmValue = 5.0f; 
 
-        // Converts 5mm to Pixel (PX)
+        // [EN] Converts 5mm to Pixel (PX).
+        // [PT] Converte 5mm para Pixel (PX).
         float mmInPx = AppDimensPhysicalUnits.INSTANCE.toMm(mmValue, getResources());
 
         Log.d("AppDimensExample", "4. Physical: " + mmValue + "mm -> " + mmInPx + "px");
 
-        // Sets the View top margin using the MM to PX conversion
+        // [EN] Sets the View top margin using the MM to PX conversion.
+        // [PT] Define a margem superior da View usando a conversão de MM para PX.
         ViewGroup.MarginLayoutParams layoutParams =
                 (ViewGroup.MarginLayoutParams) view.getLayoutParams();
         layoutParams.topMargin = (int) mmInPx;
 
-        // Updates the TextView to show the conversion result
+        // [EN] Updates the TextView to show the conversion result.
+        // [PT] Atualiza o TextView para mostrar o resultado da conversão.
         binding.tvPhysicalUnit.setText(
                 "4. Physical Unit (MM) - 5mm margin (~" + (int) mmInPx + "px)"
         );

@@ -1,17 +1,6 @@
-package com.appdimens.dynamic.code
-
-import android.annotation.SuppressLint
-import android.content.res.Configuration
-import android.content.res.Resources
-import android.util.TypedValue
-import com.appdimens.library.DpQualifier
-import com.appdimens.library.DpQualifierEntry
-import com.appdimens.library.ScreenType
-import com.appdimens.library.UiModeQualifierEntry
-import com.appdimens.library.UiModeType
-
 /**
  * Author & Developer: Jean Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
  * Date: 2025-10-04
  *
  * Library: AppDimens
@@ -33,9 +22,24 @@ import com.appdimens.library.UiModeType
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.appdimens.dynamic.code
+
+import android.annotation.SuppressLint
+import android.content.res.Configuration
+import android.content.res.Resources
+import android.util.TypedValue
+import com.appdimens.library.DpQualifier
+import com.appdimens.library.DpQualifierEntry
+import com.appdimens.library.ScreenType
+import com.appdimens.library.UiModeQualifierEntry
+import com.appdimens.library.UiModeType
 
 /**
- * Classe para construir dimensões dinâmicas que permitem customização do DP base
+ * [EN] Class for building dynamic dimensions that allow base Dp customization
+ * via screen qualifiers (`.screen()`). The final value is scaled by the screen.
+ * Compatible with the View System (XML layouts).
+ *
+ * [PT] Classe para construir dimensões dinâmicas que permitem customização do DP base
  * via qualificadores de tela (`.screen()`). O valor final é escalado pela tela.
  * Compatível com View System (XML layouts).
  */
@@ -43,16 +47,41 @@ class AppDimensDynamic(
     private val initialBaseDp: Float,
     private var ignoreMultiViewAdjustment: Boolean = false
 ) {
-    // Mapa para armazenar valores Dp customizados (Prioridade 3)
+    /**
+     * [EN] Map to store custom Dp values (Priority 3).
+     * [PT] Mapa para armazenar valores Dp customizados (Prioridade 3).
+     */
     private var customDpMap: MutableMap<DpQualifierEntry, Float> = mutableMapOf()
-    // Mapa para valores Dp customizados por UiModeType (Prioridade 2)
+
+    /**
+     * [EN] Map for custom Dp values by UiModeType (Priority 2).
+     * [PT] Mapa para valores Dp customizados por UiModeType (Prioridade 2).
+     */
     private var customUiModeMap: MutableMap<UiModeType, Float> = mutableMapOf()
-    // Mapa para valores Dp customizados por INTERSEÇÃO (UiMode + DpQualifier) (Prioridade 1)
+
+    /**
+     * [EN] Map for custom Dp values by INTERSECTION (UiMode + DpQualifier) (Priority 1).
+     * [PT] Mapa para valores Dp customizados por INTERSEÇÃO (UiMode + DpQualifier) (Prioridade 1).
+     */
     private var customIntersectionMap: MutableMap<UiModeQualifierEntry, Float> = mutableMapOf()
+
+    /**
+     * [EN] Defines the screen dimension to be used as a base (HIGHEST or LOWEST).
+     * [PT] Define a dimensão da tela a ser usada como base (HIGHEST ou LOWEST).
+     */
     private var screenType: ScreenType = ScreenType.LOWEST
 
-    // Métodos para construir as customizações (Builders)
-
+    /**
+     * [EN] Sets a custom dimension value for a specific UI mode.
+     * @param type The UI mode (`UiModeType`).
+     * @param customValue The custom dimension value in Dp.
+     * @return The `AppDimensDynamic` instance for chaining.
+     *
+     * [PT] Define um valor de dimensão customizado para um modo de UI específico.
+     * @param type O modo de UI (`UiModeType`).
+     * @param customValue O valor de dimensão customizado em Dp.
+     * @return A instância `AppDimensDynamic` para encadeamento.
+     */
     fun screen(type: UiModeType, customValue: Float): AppDimensDynamic {
         customUiModeMap[type] = customValue
         return this
@@ -63,6 +92,21 @@ class AppDimensDynamic(
         return this
     }
 
+    /**
+     * [EN] Sets a custom dimension for the intersection of a UI mode and a screen qualifier.
+     * @param uiModeType The UI mode (`UiModeType`).
+     * @param qualifierType The qualifier type (`DpQualifier`).
+     * @param qualifierValue The qualifier value (e.g., 600 for sw600dp).
+     * @param customValue The custom dimension value in Dp.
+     * @return The `AppDimensDynamic` instance for chaining.
+     *
+     * [PT] Define uma dimensão customizada para a interseção de um modo de UI e um qualificador de tela.
+     * @param uiModeType O modo de UI (`UiModeType`).
+     * @param qualifierType O tipo de qualificador (`DpQualifier`).
+     * @param qualifierValue O valor do qualificador (ex: 600 para sw600dp).
+     * @param customValue O valor de dimensão customizado em Dp.
+     * @return A instância `AppDimensDynamic` para encadeamento.
+     */
     fun screen(
         uiModeType: UiModeType,
         qualifierType: DpQualifier,
@@ -91,6 +135,19 @@ class AppDimensDynamic(
         return this
     }
 
+    /**
+     * [EN] Sets a custom dimension value for a specific screen qualifier.
+     * @param type The qualifier type (`DpQualifier`).
+     * @param value The qualifier value (e.g., 600 for sw600dp).
+     * @param customValue The custom dimension value in Dp.
+     * @return The `AppDimensDynamic` instance for chaining.
+     *
+     * [PT] Define um valor de dimensão customizado para um qualificador de tela específico.
+     * @param type O tipo de qualificador (`DpQualifier`).
+     * @param value O valor do qualificador (ex: 600 para sw600dp).
+     * @param customValue O valor da dimensão customizada em Dp.
+     * @return A instância `AppDimensDynamic` para encadeamento.
+     */
     fun screen(type: DpQualifier, value: Int, customValue: Int): AppDimensDynamic {
         customDpMap[DpQualifierEntry(type, value)] = customValue.toFloat()
         return this
@@ -101,18 +158,42 @@ class AppDimensDynamic(
         return this
     }
 
+    /**
+     * [EN] Sets the screen dimension type (LOWEST or HIGHEST) to be used as the base for adjustments.
+     * @param type The screen dimension type.
+     * @return The `AppDimensDynamic` instance for chaining.
+     *
+     * [PT] Define o tipo de dimensão da tela (LOWEST ou HIGHEST) a ser usado como base para os ajustes.
+     * @param type O tipo de dimensão da tela.
+     * @return A instância `AppDimensDynamic` para encadeamento.
+     */
     fun type(type: ScreenType): AppDimensDynamic {
         screenType = type
         return this
     }
 
+    /**
+     * [EN] Ignores adjustments when the app is in multi-window mode.
+     * @param ignore If true, adjustments are ignored in multi-window mode.
+     * @return The `AppDimensDynamic` instance for chaining.
+     *
+     * [PT] Ignora os ajustes quando o aplicativo está em modo multi-janela.
+     * @param ignore Se verdadeiro, os ajustes são ignorados no modo multi-janela.
+     * @return A instância `AppDimensDynamic` para encadeamento.
+     */
     fun multiViewAdjustment(ignore: Boolean = true): AppDimensDynamic {
         ignoreMultiViewAdjustment = ignore
         return this
     }
 
     /**
-     * Resolve o valor Dp base a ser ajustado, aplicando a lógica de customização
+     * [EN] Resolves the base Dp value to be adjusted by applying the customization logic
+     * (Intersection > UiMode > DpQualifier).
+     *
+     * @param configuration The current screen configuration.
+     * @return The base Dp value (unadjusted for the screen) to be used in the calculation.
+     *
+     * [PT] Resolve o valor Dp base a ser ajustado, aplicando a lógica de customização
      * (Interseção > UiMode > DpQualifier).
      *
      * @param configuration A configuração da tela atual.
@@ -128,7 +209,7 @@ class AppDimensDynamic(
         var dpToAdjust = initialBaseDp
         var foundCustomDp: Float?
 
-        // --- PRIORIDADE 1: INTERSEÇÃO (UiMode + DpQualifier) ---
+        // Priority 1: Intersection (UiMode + DpQualifier)
         val sortedIntersectionQualifiers = customIntersectionMap.entries.toList()
             .sortedByDescending { it.key.dpQualifierEntry.value }
 
@@ -144,13 +225,13 @@ class AppDimensDynamic(
         if (foundCustomDp != null) {
             dpToAdjust = foundCustomDp
         } else {
-            // --- PRIORIDADE 2: UI MODE (Apenas UiModeType) ---
+            // Priority 2: UI Mode (UiModeType only)
             foundCustomDp = customUiModeMap[currentUiModeType]
 
             if (foundCustomDp != null) {
                 dpToAdjust = foundCustomDp
             } else {
-                // --- PRIORIDADE 3: DP QUALIFIER (Apenas SW, H, W) ---
+                // Priority 3: Dp Qualifier (SW, H, W only)
                 dpToAdjust = resolveQualifierDpFloat(
                     customDpMap = customDpMap,
                     smallestWidthDp = smallestWidthDp,
@@ -164,7 +245,8 @@ class AppDimensDynamic(
     }
 
     /**
-     * Versão auxiliar do resolveQualifierDp que trabalha com Float ao invés de Dp
+     * [EN] Auxiliary version of `resolveQualifierDp` that works with Float instead of Dp.
+     * [PT] Versão auxiliar do `resolveQualifierDp` que trabalha com Float ao invés de Dp.
      */
     private fun resolveQualifierDpFloat(
         customDpMap: Map<DpQualifierEntry, Float>,
@@ -189,7 +271,12 @@ class AppDimensDynamic(
     }
 
     /**
-     * Executa o cálculo final da dimensão dinâmica.
+     * [EN] Performs the final dynamic dimension calculation.
+     *
+     * @param configuration The current screen configuration.
+     * @return The dynamically adjusted Dp value as a **Float** (not converted to PX/SP).
+     *
+     * [PT] Executa o cálculo final da dimensão dinâmica.
      *
      * @param configuration A Configuration da tela atual.
      * @return O valor **Float** em Dp ajustado dinamicamente (não convertido para PX/SP).
@@ -211,14 +298,14 @@ class AppDimensDynamic(
         val shouldIgnoreAdjustment = ignoreMultiViewAdjustment && isMultiWindow
 
         if (shouldIgnoreAdjustment) {
-            // Retorna o Dp base sem escalonamento dinâmico
+            // Returns the base Dp without dynamic scaling
             return dpToAdjust
         }
 
-        // A porcentagem de escalonamento dinâmico é: (DP Base Ajustado / DP de Referência)
+        // The dynamic scaling percentage is: (Adjusted Base DP / Reference DP)
         val percentage = dpToAdjust / AppDimensAdjustmentFactors.BASE_WIDTH_DP
 
-        // Dimensão da tela a ser usada (LOWEST ou HIGHEST)
+        // Screen dimension to use (LOWEST or HIGHEST)
         val dimensionToUse = when (screenType) {
             ScreenType.HIGHEST -> maxOf(
                 configuration.screenWidthDp.toFloat(),
@@ -230,14 +317,17 @@ class AppDimensDynamic(
             )
         }
 
-        // O valor final é a porcentagem aplicada à dimensão da tela
+        // The final value is the percentage applied to the screen dimension
         return dimensionToUse * percentage
     }
 
-    // --- Métodos Finais para Uso em Views/XML ---
-
     /**
-     * Constrói o valor Dp ajustado dinamicamente e o converte para Pixels (Float).
+     * [EN] Builds the dynamically adjusted Dp value and converts it to Pixels (Float).
+     *
+     * @param resources The Context's Resources.
+     * @return The value in Pixels (PX) as a Float.
+     *
+     * [PT] Constrói o valor Dp ajustado dinamicamente e o converte para Pixels (Float).
      *
      * @param resources Os Resources do Context.
      * @return O valor em Pixels (PX) como Float.
@@ -250,7 +340,13 @@ class AppDimensDynamic(
     }
 
     /**
-     * Constrói o valor Dp ajustado dinamicamente e o converte para Pixels (Int).
+     * [EN] Builds the dynamically adjusted Dp value and converts it to Pixels (Int).
+     * Useful for setters that only accept Int.
+     *
+     * @param resources The Context's Resources.
+     * @return The value in Pixels (PX) as an Int.
+     *
+     * [PT] Constrói o valor Dp ajustado dinamicamente e o converte para Pixels (Int).
      * Útil para setters que aceitam apenas Int.
      *
      * @param resources Os Resources do Context.
@@ -261,7 +357,13 @@ class AppDimensDynamic(
     }
 
     /**
-     * Constrói o valor Dp ajustado dinamicamente e o converte para Scaleable Pixels (SP) em Pixels (Float),
+     * [EN] Builds the dynamically adjusted Dp value and converts it to Scalable Pixels (SP) in Pixels (Float),
+     * ignoring the system's font scale ('em' unit).
+     *
+     * @param resources The Context's Resources.
+     * @return The value in Pixels (PX) corresponding to 'em', as a Float.
+     *
+     * [PT] Constrói o valor Dp ajustado dinamicamente e o converte para Scaleable Pixels (SP) em Pixels (Float),
      * ignorando a escala de fonte do sistema (unidade 'em').
      *
      * @param resources Os Resources do Context.
@@ -277,7 +379,13 @@ class AppDimensDynamic(
     }
 
     /**
-     * Constrói o valor Dp ajustado dinamicamente e o converte para Scaleable Pixels (SP) em Pixels (Int),
+     * [EN] Builds the dynamically adjusted Dp value and converts it to Scalable Pixels (SP) in Pixels (Int),
+     * ignoring the system's font scale ('em' unit).
+     *
+     * @param resources The Context's Resources.
+     * @return The value in Pixels (PX) corresponding to 'em', as an Int.
+     *
+     * [PT] Constrói o valor Dp ajustado dinamicamente e o converte para Scaleable Pixels (SP) em Pixels (Int),
      * ignorando a escala de fonte do sistema (unidade 'em').
      *
      * @param resources Os Resources do Context.
@@ -288,7 +396,12 @@ class AppDimensDynamic(
     }
 
     /**
-     * Constrói o valor Dp ajustado dinamicamente e o converte para Scaleable Pixels (SP) em Pixels (Float).
+     * [EN] Builds the dynamically adjusted Dp value and converts it to Scalable Pixels (SP) in Pixels (Float).
+     *
+     * @param resources The Context's Resources.
+     * @return The value in Pixels (PX) corresponding to SP, as a Float.
+     *
+     * [PT] Constrói o valor Dp ajustado dinamicamente e o converte para Scaleable Pixels (SP) em Pixels (Float).
      *
      * @param resources Os Resources do Context.
      * @return O valor em Pixels (PX) correspondente ao SP, como Float.
@@ -301,7 +414,12 @@ class AppDimensDynamic(
     }
 
     /**
-     * Constrói o valor Dp ajustado dinamicamente e o converte para Scaleable Pixels (SP) em Pixels (Int).
+     * [EN] Builds the dynamically adjusted Dp value and converts it to Scalable Pixels (SP) in Pixels (Int).
+     *
+     * @param resources The Context's Resources.
+     * @return The value in Pixels (PX) corresponding to SP, as an Int.
+     *
+     * [PT] Constrói o valor Dp ajustado dinamicamente e o converte para Scaleable Pixels (SP) em Pixels (Int).
      *
      * @param resources Os Resources do Context.
      * @return O valor em Pixels (PX) correspondente ao SP, como Int.
@@ -311,7 +429,12 @@ class AppDimensDynamic(
     }
 
     /**
-     * Retorna o valor Dp ajustado dinamicamente (em Dp, não convertido para PX).
+     * [EN] Returns the dynamically adjusted Dp value (in Dp, not converted to PX).
+     *
+     * @param resources The Context's Resources.
+     * @return The value in Dp as a Float.
+     *
+     * [PT] Retorna o valor Dp ajustado dinamicamente (em Dp, não convertido para PX).
      *
      * @param resources Os Resources do Context.
      * @return O valor em Dp como Float.
@@ -321,7 +444,12 @@ class AppDimensDynamic(
     }
 
     /**
-     * Retorna o valor Dp ajustado dinamicamente (em Dp, não convertido para PX).
+     * [EN] Returns the dynamically adjusted Dp value (in Dp, not converted to PX) as an Int.
+     *
+     * @param resources The Context's Resources.
+     * @return The value in Dp as an Int.
+     *
+     * [PT] Retorna o valor Dp ajustado dinamicamente (em Dp, não convertido para PX) como Int.
      *
      * @param resources Os Resources do Context.
      * @return O valor em Dp como Int.

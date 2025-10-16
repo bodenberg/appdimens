@@ -1,3 +1,4 @@
+import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -8,13 +9,26 @@ plugins {
     alias(libs.plugins.dokka.jetbrains)
 }
 
+tasks.dokkaHtml.configure {
+    outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/SDPS"))
+}
+
 mavenPublishing {
-    coordinates("io.github.bodenberg", "appdimens-sdps", "1.0.2")
+    coordinates("io.github.bodenberg", "appdimens-sdps", "1.0.3")
+
+    configure(
+        AndroidSingleVariantLibrary(
+            publishJavadocJar = true,
+            sourcesJar = true
+        )
+    )
 
     pom {
         name.set("AppDimens SDP, HDP, WDP: Scalable Width and Height Dimensions")
-        description.set("An extension of AppDimens that implements the SDP (Scaled Density Pixels) standard for widths and heights. It automatically generates pre-calculated @dimen resources, ensuring that layout dimensions (Dp) scale consistently across different screen sizes. Perfect for direct use in traditional XML layouts and Composables. " +
-                "android, kotlin, java, jetpack-compose, xml, swift, swiftui, ios, dp, sp, sdp, ssp, dimensions, responsive, layout, design-system, adaptive, dynamic, fixed, view-system")
+        description.set(
+            "An extension of AppDimens that implements the SDP (Scaled Density Pixels) standard for widths and heights. It automatically generates pre-calculated @dimen resources, ensuring that layout dimensions (Dp) scale consistently across different screen sizes. Perfect for direct use in traditional XML layouts and Composables. " +
+                    "android, kotlin, java, jetpack-compose, xml, swift, swiftui, ios, dp, sp, sdp, ssp, dimensions, responsive, layout, design-system, adaptive, dynamic, fixed, view-system"
+        )
         url.set("https://github.com/bodenberg/appdimens")
         inceptionYear.set("2025")
         licenses {

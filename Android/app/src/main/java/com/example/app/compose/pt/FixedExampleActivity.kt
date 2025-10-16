@@ -1,16 +1,7 @@
 /**
- * AppDimens Compose Demo Activity
- * Author & Developer: Jean Bodenberg
- * Purpose: Demonstrate complete usage of the AppDimens classes (Fixed, Dynamic,
- * PhysicalUnits, AdjustmentFactors utilities and CalculateAvailableItemCount).
- *
- * Place this file under your app module (e.g. `com.appdimens.demo`).
- * Build & runtime requirements:
- * - Jetpack Compose setup (activity-compose)
- * - Material3 is used for visuals (you can adapt to Material if desired)
- * - Add your `app-dimens` module / library to project so imports resolve
+ * @author Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
  */
-
 package com.example.app.compose.pt
 
 import android.annotation.SuppressLint
@@ -58,10 +49,17 @@ import com.appdimens.library.UiModeType
 import java.util.Locale
 
 /**
- * Activity principal de demonstração.
+ * [EN] Main demonstration activity.
+ * 
+ * [PT] Activity principal de demonstração.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 class FixedExampleActivity : ComponentActivity() {
+    /**
+     * [EN] Called when the activity is first created.
+     * 
+     * [PT] Chamado quando a atividade é criada pela primeira vez.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -73,7 +71,9 @@ class FixedExampleActivity : ComponentActivity() {
 }
 
 /**
- * Tela principal que demonstra os recursos do AppDimens.
+ * [EN] Main screen that demonstrates the features of AppDimens.
+ * 
+ * [PT] Tela principal que demonstra os recursos do AppDimens.
  */
 @SuppressLint("LocalContextResourcesRead")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -83,7 +83,8 @@ fun AppDimensDemoScreen() {
     val density = LocalDensity.current
     val ctx = LocalContext.current
 
-    // Estado alternável usado na demo para mostrar como a mudança de ScreenType afeta os resultados
+    // [EN] Toggleable state used in the demo to show how changing ScreenType affects the results.
+    // [PT] Estado alternável usado na demo para mostrar como a mudança de ScreenType afeta os resultados.
     var currentScreenType by remember { mutableStateOf(ScreenType.LOWEST) }
 
     Scaffold(
@@ -95,7 +96,8 @@ fun AppDimensDemoScreen() {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(contentPadding)
-                // Usando a extensão fxdp (fixed dp) do AppDimens
+                // [EN] Using the fxdp (fixed dp) extension from AppDimens.
+                // [PT] Usando a extensão fxdp (fixed dp) do AppDimens.
                 .padding(12.fxdp),
             verticalArrangement = Arrangement.spacedBy(12.fxdp)
         ) {
@@ -119,7 +121,8 @@ fun AppDimensDemoScreen() {
                     Column(verticalArrangement = Arrangement.spacedBy(8.fxdp)) {
                         val baseDp = 16.dp
 
-                        // Usando os helpers de extensão do AppDimens dentro do escopo AppDimens
+                        // [EN] Using the AppDimens extension helpers within the AppDimens scope.
+                        // [PT] Usando os helpers de extensão do AppDimens dentro do escopo AppDimens.
                         val fixedDp = with(AppDimens) { baseDp.fixedDp(type = currentScreenType) }
                         val fixedSp = with(AppDimens) { baseDp.fixedSp(type = currentScreenType) }
                         val fixedPx = with(AppDimens) { baseDp.fixedPx(type = currentScreenType) }
@@ -129,7 +132,8 @@ fun AppDimensDemoScreen() {
                         val dynamicPx = with(AppDimens) { baseDp.dynamicPx(type = currentScreenType) }
 
                         Row(horizontalArrangement = Arrangement.spacedBy(8.fxdp)) {
-                            // Demonstração visual do tamanho fixo e dinâmico
+                            // [EN] Visual demonstration of fixed and dynamic size.
+                            // [PT] Demonstração visual do tamanho fixo e dinâmico.
                             DemoTile(size = fixedDp, label = "fixo dp = ${fixedDp.value.toInt()}dp")
                             DemoTile(size = dynamicDp, label = "dinâmico dp = ${dynamicDp.value.toInt()}dp")
                         }
@@ -139,7 +143,8 @@ fun AppDimensDemoScreen() {
 
                         Column (verticalArrangement = Arrangement.spacedBy(8.fxdp)) {
                             Button(onClick = {
-                                // Alterna entre LOWEST (menor tela) e HIGHEST (maior tela)
+                                // [EN] Toggles between LOWEST (smaller screen) and HIGHEST (larger screen).
+                                // [PT] Alterna entre LOWEST (menor tela) e HIGHEST (maior tela).
                                 currentScreenType = if (currentScreenType == ScreenType.LOWEST) ScreenType.HIGHEST else ScreenType.LOWEST
                             }) {
                                 Text("Alternar ScreenType (atual: $currentScreenType)")
@@ -154,10 +159,12 @@ fun AppDimensDemoScreen() {
                 UsageCard(title = "Propriedades de conveniência (fxdp / fxsp / dydp / dypx)") {
                     Column(verticalArrangement = Arrangement.spacedBy(8.fxdp)) {
                         val sampleDp = 24.dp
-                        // Extensões de conveniência:
+                        // [EN] Convenience extensions:
+                        // [PT] Extensões de conveniência:
                         val convFxDp = with(AppDimens) { sampleDp.fxdp }
                         val convFxSp = with(AppDimens) { 14.fxsp }
-                        // dynamicPerDp calcula uma porcentagem da dimensão da tela
+                        // [EN] dynamicPerDp calculates a percentage of the screen dimension.
+                        // [PT] dynamicPerDp calcula uma porcentagem da dimensão da tela.
                         val convDyDp = with(AppDimens) { 0.10f.dynamicPerDp() }
 
                         Text("base da amostra = ${sampleDp.value}dp")
@@ -165,7 +172,8 @@ fun AppDimensDemoScreen() {
                         Text("fxsp(14.dp) -> ${convFxSp.value}sp")
                         Text("0.10f.dynamicPercentageDp() -> ${convDyDp.value}dp (10% da tela)")
 
-                        // Demo: usar fxsp para tamanho da fonte
+                        // [EN] Demo: using fxsp for font size.
+                        // [PT] Demo: usar fxsp para tamanho da fonte.
                         Text(
                             "Este texto usa AppDimens.fxsp (14.dp.fxsp)",
                             fontSize = with(AppDimens) { 14.fxsp }
@@ -178,10 +186,12 @@ fun AppDimensDemoScreen() {
                 UsageCard(title = "Qualificadores personalizados (tela / modo UI / interseção)") {
                     Column(verticalArrangement = Arrangement.spacedBy(8.fxdp)) {
 
-                        // Exemplo: valor personalizado para qualificador de largura
+                        // [EN] Example: custom value for width qualifier.
+                        // [PT] Exemplo: valor personalizado para qualificador de largura.
                         val customWidthDp = with(AppDimens) {
                             16.dp.fixed()
-                                // Se a largura da tela for >= 360, usa 20dp como base
+                                // [EN] If screen width is >= 360, use 20dp as base.
+                                // [PT] Se a largura da tela for >= 360, usa 20dp como base.
                                 .screen(DpQualifier.WIDTH, 360, 20)
                                 .type(currentScreenType)
                                 .dp
@@ -189,22 +199,26 @@ fun AppDimensDemoScreen() {
 
                         Text("customWidthDp (LARGURA >= 360) -> ${customWidthDp.value}dp")
 
-                        // UiModeType descreve o modo do dispositivo/UI (carro, tv, relógio, eletrodoméstico, etc.)
-                        // O objetivo aqui é mostrar como obter os valores para criar um qualificador personalizado.
+                        // [EN] UiModeType describes the device/UI mode (car, tv, watch, appliance, etc.).
+                        // [PT] UiModeType descreve o modo do dispositivo/UI (carro, tv, relógio, eletrodoméstico, etc.).
+                        // [EN] The purpose here is to show how to get the values to create a custom qualifier.
+                        // [PT] O objetivo aqui é mostrar como obter os valores para criar um qualificador personalizado.
                         val uiModeValues = runCatching { UiModeType::class.java.enumConstants?.toList() ?: emptyList() }.getOrNull() ?: emptyList()
                         var selectedUiMode by remember { mutableStateOf(uiModeValues.firstOrNull()) }
 
                         Text("UiMode atual detectado: ${UiModeType.fromConfiguration(configuration.uiMode)}")
 
                         if (uiModeValues.isNotEmpty()) {
-                            // Lista de botões para selecionar um UiModeType
+                            // [EN] List of buttons to select a UiModeType.
+                            // [PT] Lista de botões para selecionar um UiModeType.
                             LazyRow(horizontalArrangement = Arrangement.spacedBy(6.fxdp)) {
                                 items(uiModeValues.size) { index ->
                                     val mode = uiModeValues[index]
                                     Button(
                                         onClick = { selectedUiMode = mode },
                                         modifier = Modifier.height(36.fxdp),
-                                        // Destaca o modo selecionado
+                                        // [EN] Highlights the selected mode.
+                                        // [PT] Destaca o modo selecionado.
                                         enabled = selectedUiMode != mode
                                     ) {
                                         Text(mode.name)
@@ -214,11 +228,13 @@ fun AppDimensDemoScreen() {
 
                             Spacer(Modifier.height(6.fxdp))
 
-                            // Exemplo de interseção personalizada usando o UiModeType selecionado.
+                            // [EN] Custom intersection example using the selected UiModeType.
+                            // [PT] Exemplo de interseção personalizada usando o UiModeType selecionado.
                             val customUiModeDp = selectedUiMode?.let { sel ->
                                 with(AppDimens) {
                                     18.fixed()
-                                        // Interseção: (modo do dispositivo selecionado) E (largura pequena >= 600) -> usa 22dp
+                                        // [EN] Intersection: (selected device mode) AND (small width >= 600) -> use 22dp.
+                                        // [PT] Interseção: (modo do dispositivo selecionado) E (largura pequena >= 600) -> usa 22dp.
                                         .screen(sel, DpQualifier.SMALL_WIDTH, 600, 22)
                                         .type(currentScreenType)
                                         .dp
@@ -240,7 +256,8 @@ fun AppDimensDemoScreen() {
             item {
                 UsageCard(title = "Unidades físicas (mm / cm / polegada) e raio") {
                     Column(verticalArrangement = Arrangement.spacedBy(8.fxdp)) {
-                        // Usando as propriedades composable fornecidas por AppDimensPhysicalUnits
+                        // [EN] Using the composable properties provided by AppDimensPhysicalUnits.
+                        // [PT] Usando as propriedades composable fornecidas por AppDimensPhysicalUnits.
                         val tenMmPx = with(AppDimensPhysicalUnits) { 10f.mm }
                         val twoInchPx = with(AppDimensPhysicalUnits) { 2f.inch }
                         val threeCmPx = with(AppDimensPhysicalUnits) { 3f.cm }
@@ -249,12 +266,15 @@ fun AppDimensDemoScreen() {
                         Text("2 in ≈ ${twoInchPx.toInt()} px")
                         Text("3 cm ≈ ${threeCmPx.toInt()} px")
 
-                        // Helper de raio (extensão composable) - se fornecido pela biblioteca
-                        // Calcula o raio em pixels a partir de um valor de diâmetro em uma unidade física
+                        // [EN] Radius helper (composable extension) - if provided by the library.
+                        // [PT] Helper de raio (extensão composable) - se fornecido pela biblioteca.
+                        // [EN] Calculates the radius in pixels from a diameter value in a physical unit.
+                        // [PT] Calcula o raio em pixels a partir de um valor de diâmetro em uma unidade física.
                         val radiusFromDiameterPx = with(AppDimensPhysicalUnits) { 30f.radius(UnitType.CM) }
                         Text("Diâmetro de 30 cm -> raio ≈ ${radiusFromDiameterPx.toInt()} px")
 
-                        // Tamanho em pixels para uma unidade física
+                        // [EN] Size in pixels for a physical unit.
+                        // [PT] Tamanho em pixels para uma unidade física.
                         val oneCmPx = AppDimensPhysicalUnits.unitSizePerPx(UnitType.CM, ctx.resources)
                         Text("1 cm neste dispositivo ≈ ${oneCmPx.toInt()} px")
                     }
@@ -268,24 +288,30 @@ fun AppDimensDemoScreen() {
 
                         Text("Contêiner (largura total) com tamanho de item fixo de 80dp")
 
-                        // O helper mede a área do Box fornecido e chama onResult
+                        // [EN] The helper measures the area of the provided Box and calls onResult.
+                        // [PT] O helper mede a área do Box fornecido e chama onResult.
                         with(AppDimens) {
                             CalculateAvailableItemCount(
-                                itemSize = 80.fxdp, // Tamanho de cada item
-                                itemPadding = 4.fxdp, // Espaçamento entre os itens
-                                direction = DpQualifier.WIDTH, // Largura (horizontal)
+                                itemSize = 80.fxdp, // [EN] Size of each item.
+                                                    // [PT] Tamanho de cada item.
+                                itemPadding = 4.fxdp, // [EN] Spacing between items.
+                                                      // [PT] Espaçamento entre os itens.
+                                direction = DpQualifier.WIDTH, // [EN] Width (horizontal).
+                                                             // [PT] Largura (horizontal).
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .height(120.fxdp)
                                     .border(1.fxdp, Color.Gray, RoundedCornerShape(6.fxdp)),
-                                onResult = { availableCount = it } // Recebe o número de itens que cabem
+                                onResult = { availableCount = it } // [EN] Receives the number of items that fit.
+                                                                   // [PT] Recebe o número de itens que cabem.
                             )
                         }
 
                         Text("availableCount = $availableCount")
 
                         if (availableCount > 0) {
-                            // Renderiza os itens que cabem
+                            // [EN] Renders the items that fit.
+                            // [PT] Renderiza os itens que cabem.
                             Row(horizontalArrangement = Arrangement.spacedBy(8.fxdp)) {
                                 repeat(availableCount.coerceAtMost(6)) { i ->
                                     DemoTile(size = 80.fxdp, label = "item ${i + 1}")
@@ -299,20 +325,24 @@ fun AppDimensDemoScreen() {
             item {
                 UsageCard(title = "Outros exemplos e utilities") {
                     Column(verticalArrangement = Arrangement.spacedBy(8.fxdp)) {
-                        // dynamicPercentage helper
+                        // [EN] dynamicPercentage helper.
+                        // [PT] Helper dynamicPercentage.
                         val tenPercentDp = with(AppDimens) { dynamicPercentageDp(0.10f, ScreenType.LOWEST) }
                         Text("10% da dimensão (mais baixa) da tela -> ${tenPercentDp.value.toInt()}dp")
 
                         val tenPercentDp2 = with(AppDimens) { dynamicPercentageDp(0.10f, ScreenType.HIGHEST) }
                         Text("10% da dimensão (mais alta) da tela -> ${tenPercentDp2.value.toInt()}dp")
 
-                        // Conversões e valores de px
+                        // [EN] Conversions and px values.
+                        // [PT] Conversões e valores de px.
                         val pxFromSp = with(AppDimens) { 18.fixedPx() }
                         Text("18sp fixedPx -> ${pxFromSp.toInt()} px")
 
-                        // Mostra como retornar float/px brutos quando necessário
+                        // [EN] Shows how to return raw float/px when needed.
+                        // [PT] Mostra como retornar float/px brutos quando necessário.
                         val diameterPx = with(AppDimensPhysicalUnits) { 5f.inch }
-                        // Calcula a circunferência com base no diâmetro em pixels
+                        // [EN] Calculates the circumference based on the diameter in pixels.
+                        // [PT] Calcula a circunferência com base no diâmetro em pixels.
                         val circumference = AppDimensPhysicalUnits.displayMeasureDiameter(diameterPx, true)
                         Text("5in -> diâmetro px = ${diameterPx.toInt()} px, circunferência px ≈ ${circumference.toInt()} px")
                     }
@@ -322,10 +352,18 @@ fun AppDimensDemoScreen() {
     }
 }
 
-// -----------------------------------------------------------------------------
-// -- Pequenos composables auxiliares usados acima --
-// -----------------------------------------------------------------------------
+// [EN] -----------------------------------------------------------------------------
+// [PT] -----------------------------------------------------------------------------
+// [EN] -- Small helper composables used above --
+// [PT] -- Pequenos composables auxiliares usados acima --
+// [EN] -----------------------------------------------------------------------------
+// [PT] -----------------------------------------------------------------------------
 
+/**
+ * [EN] A card for displaying general information.
+ * 
+ * [PT] Um card para exibir informações gerais.
+ */
 @Composable
 private fun InfoCard(title: String, subtitle: String, content: @Composable () -> Unit) {
     Card(
@@ -343,6 +381,11 @@ private fun InfoCard(title: String, subtitle: String, content: @Composable () ->
     }
 }
 
+/**
+ * [EN] A card for wrapping usage examples.
+ * 
+ * [PT] Um card para envolver exemplos de uso.
+ */
 @Composable
 private fun UsageCard(title: String, content: @Composable () -> Unit) {
     Card(
@@ -358,6 +401,11 @@ private fun UsageCard(title: String, content: @Composable () -> Unit) {
     }
 }
 
+/**
+ * [EN] A simple tile to visually represent a size.
+ * 
+ * [PT] Um tile simples para representar visualmente um tamanho.
+ */
 @Composable
 private fun DemoTile(size: Dp, label: String) {
     Box(
@@ -371,9 +419,17 @@ private fun DemoTile(size: Dp, label: String) {
     }
 }
 
-// -----------------------------------------------------------------------------
-// --- Preview para Visualização ---
-// -----------------------------------------------------------------------------
+// [EN] -----------------------------------------------------------------------------
+// [PT] -----------------------------------------------------------------------------
+// [EN] --- Preview for Visualization ---
+// [PT] --- Preview para Visualização ---
+// [EN] -----------------------------------------------------------------------------
+// [PT] -----------------------------------------------------------------------------
+/**
+ * [EN] A preview for the AppDimens demo screen.
+ * 
+ * [PT] Uma pré-visualização para a tela de demonstração do AppDimens.
+ */
 @Preview(
     showBackground = true,
     device = "id:pixel_5", showSystemUi = true,

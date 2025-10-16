@@ -1,17 +1,6 @@
-package com.appdimens.dynamic.compose
-
-import android.content.res.Resources
-import android.util.TypedValue
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.platform.LocalResources
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.appdimens.dynamic.compose.AppDimensAdjustmentFactors.CIRCUMFERENCE_FACTOR
-import com.appdimens.library.UnitType
-
 /**
  * Author & Developer: Jean Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
  * Date: 2025-10-04
  *
  * Library: AppDimens
@@ -33,87 +22,215 @@ import com.appdimens.library.UnitType
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.appdimens.dynamic.compose
+
+import android.content.res.Resources
+import android.util.TypedValue
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalResources
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.appdimens.dynamic.compose.AppDimensAdjustmentFactors.CIRCUMFERENCE_FACTOR
+import com.appdimens.library.UnitType
 
 /**
- * Objeto singleton que fornece funções para conversão de unidades físicas (MM, CM, Inch)
+ * [EN] Singleton object providing functions for physical unit conversion (MM, CM, Inch)
+ * and measurement utilities.
+ *
+ * [PT] Objeto singleton que fornece funções para conversão de unidades físicas (MM, CM, Inch)
  * e utilitários de medição.
  */
 object AppDimensPhysicalUnits {
 
-    // --- Constantes para Conversão de Unidades Físicas ---
+    /**
+     * [EN] Constants for Physical Unit Conversion.
+     *
+     * [PT] Constantes para Conversão de Unidades Físicas.
+     */
     private const val MM_TO_CM_FACTOR = 10.0f
     private const val MM_TO_INCH_FACTOR = 25.4f
 
-    // --- Milímetros (MM) ---
+    /**
+     * [EN] Millimeters (MM)
+     *
+     * [PT] Milímetros (MM)
+     */
 
-    /** Converte Milímetros (MM) para Pixels (PX). */
+    /**
+     * [EN] Converts Millimeters (MM) to Pixels (PX).
+     *
+     * [PT] Converte Milímetros (MM) para Pixels (PX).
+     */
     fun toMm(mm: Float, resources: Resources): Float =
         TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_MM, mm, resources.displayMetrics)
 
-    /** Converte Milímetros (MM) para Centímetros (CM). */
+    /**
+     * [EN] Converts Millimeters (MM) to Centimeters (CM).
+     *
+     * [PT] Converte Milímetros (MM) para Centímetros (CM).
+     */
     fun convertMmToCm(mm: Float): Float = mm / MM_TO_CM_FACTOR
 
-    /** Converte Milímetros (MM) para Polegadas (Inch). */
+    /**
+     * [EN] Converts Millimeters (MM) to Inches (Inch).
+     *
+     * [PT] Converte Milímetros (MM) para Polegadas (Inch).
+     */
     fun convertMmToInch(mm: Float): Float = mm / MM_TO_INCH_FACTOR
 
-    /** Extensão de Float para converter MM para CM. */
+    /**
+     * [EN] Float extension to convert MM to CM.
+     *
+     * [PT] Extensão de Float para converter MM para CM.
+     */
     fun Float.mmToCm(): Float = convertMmToCm(this)
-    /** Extensão de Int para converter MM para CM. */
+
+    /**
+     * [EN] Int extension to convert MM to CM.
+     *
+     * [PT] Extensão de Int para converter MM para CM.
+     */
     fun Int.mmToCm(): Float = convertMmToCm(this.toFloat())
 
-    /** Extensão de Float para converter MM para Inch. */
+    /**
+     * [EN] Float extension to convert MM to Inch.
+     *
+     * [PT] Extensão de Float para converter MM para Inch.
+     */
     fun Float.mmToInch(): Float = convertMmToInch(this)
-    /** Extensão de Int para converter MM para Inch. */
+
+    /**
+     * [EN] Int extension to convert MM to Inch.
+     *
+     * [PT] Extensão de Int para converter MM para Inch.
+     */
     fun Int.mmToInch(): Float = convertMmToInch(this.toFloat())
 
-    // --- Centímetros (CM) ---
+    /**
+     * [EN] Centimeters (CM)
+     *
+     * [PT] Centímetros (CM)
+     */
 
-    /** Converte Centímetros (CM) para Pixels (PX). */
+    /**
+     * [EN] Converts Centimeters (CM) to Pixels (PX).
+     *
+     * [PT] Converte Centímetros (CM) para Pixels (PX).
+     */
     fun toCm(cm: Float, resources: Resources): Float = TypedValue.applyDimension(
         TypedValue.COMPLEX_UNIT_MM, cm * MM_TO_CM_FACTOR, resources.displayMetrics
     )
 
-    /** Converte Centímetros (CM) para Milímetros (MM). */
+    /**
+     * [EN] Converts Centimeters (CM) to Millimeters (MM).
+     *
+     * [PT] Converte Centímetros (CM) para Milímetros (MM).
+     */
     fun convertCmToMm(cm: Float): Float = cm * MM_TO_CM_FACTOR
 
-    /** Converte Centímetros (CM) para Polegadas (Inch). */
+    /**
+     * [EN] Converts Centimeters (CM) to Inches (Inch).
+     *
+     * [PT] Converte Centímetros (CM) para Polegadas (Inch).
+     */
     fun convertCmToInch(cm: Float): Float = cm / (MM_TO_INCH_FACTOR / MM_TO_CM_FACTOR)
 
-    /** Extensão de Float para converter CM para MM. */
+    /**
+     * [EN] Float extension to convert CM to MM.
+     *
+     * [PT] Extensão de Float para converter CM para MM.
+     */
     fun Float.cmToMm(): Float = convertCmToMm(this)
-    /** Extensão de Int para converter CM para MM. */
+
+    /**
+     * [EN] Int extension to convert CM to MM.
+     *
+     * [PT] Extensão de Int para converter CM para MM.
+     */
     fun Int.cmToMm(): Float = convertCmToMm(this.toFloat())
 
-    /** Extensão de Float para converter CM para Inch. */
+    /**
+     * [EN] Float extension to convert CM to Inch.
+     *
+     * [PT] Extensão de Float para converter CM para Inch.
+     */
     fun Float.cmToInch(): Float = convertCmToInch(this)
-    /** Extensão de Int para converter CM para Inch. */
+
+    /**
+     * [EN] Int extension to convert CM to Inch.
+     *
+     * [PT] Extensão de Int para converter CM para Inch.
+     */
     fun Int.cmToInch(): Float = convertCmToInch(this.toFloat())
 
-    // --- Polegadas (INCH) ---
+    /**
+     * [EN] Inches (INCH)
+     *
+     * [PT] Polegadas (INCH)
+     */
 
-    /** Converte Polegadas (Inch) para Pixels (PX). */
+    /**
+     * [EN] Converts Inches (Inch) to Pixels (PX).
+     *
+     * [PT] Converte Polegadas (Inch) para Pixels (PX).
+     */
     fun toInch(inches: Float, resources: Resources): Float =
         TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_IN, inches, resources.displayMetrics)
 
-    /** Converte Polegadas (Inch) para Centímetros (CM). */
+    /**
+     * [EN] Converts Inches (Inch) to Centimeters (CM).
+     *
+     * [PT] Converte Polegadas (Inch) para Centímetros (CM).
+     */
     fun convertInchToCm(inch: Float): Float = inch * 2.54f
 
-    /** Converte Polegadas (Inch) para Milímetros (MM). */
+    /**
+     * [EN] Converts Inches (Inch) to Millimeters (MM).
+     *
+     * [PT] Converte Polegadas (Inch) para Milímetros (MM).
+     */
     fun convertInchToMm(inch: Float): Float = inch * MM_TO_INCH_FACTOR
 
-    /** Extensão de Float para converter Inch para CM. */
+    /**
+     * [EN] Float extension to convert Inch to CM.
+     *
+     * [PT] Extensão de Float para converter Inch para CM.
+     */
     fun Float.inchToCm(): Float = convertInchToCm(this)
-    /** Extensão de Int para converter Inch para CM. */
+
+    /**
+     * [EN] Int extension to convert Inch to CM.
+     *
+     * [PT] Extensão de Int para converter Inch para CM.
+     */
     fun Int.inchToCm(): Float = convertInchToCm(this.toFloat())
 
-    /** Extensão de Float para converter Inch para MM. */
+    /**
+     * [EN] Float extension to convert Inch to MM.
+     *
+     * [PT] Extensão de Float para converter Inch para MM.
+     */
     fun Float.inchToMm(): Float = convertInchToMm(this)
-    /** Extensão de Int para converter Inch para MM. */
+
+    /**
+     * [EN] Int extension to convert Inch to MM.
+     *
+     * [PT] Extensão de Int para converter Inch para MM.
+     */
     fun Int.inchToMm(): Float = convertInchToMm(this.toFloat())
 
-    // --- Extensões Composable para Unidades Físicas em PX ---
+    /**
+     * [EN] Composable Extensions for Physical Units in PX.
+     *
+     * [PT] Extensões Composable para Unidades Físicas em PX.
+     */
 
-    /** Extensão de Float para converter MM para PX. */
+    /**
+     * [EN] Float extension to convert MM to PX.
+     *
+     * [PT] Extensão de Float para converter MM para PX.
+     */
     @get:Composable
     val Float.mm: Float
         get() {
@@ -121,7 +238,11 @@ object AppDimensPhysicalUnits {
             return with(LocalDensity.current) { toMm(this@mm, resources) }
         }
 
-    /** Extensão de Int para converter MM para PX. */
+    /**
+     * [EN] Int extension to convert MM to PX.
+     *
+     * [PT] Extensão de Int para converter MM para PX.
+     */
     @get:Composable
     val Int.mm: Float
         get() {
@@ -129,7 +250,11 @@ object AppDimensPhysicalUnits {
             return with(LocalDensity.current) { toMm(this@mm.toFloat(), resources) }
         }
 
-    /** Extensão de Float para converter CM para PX. */
+    /**
+     * [EN] Float extension to convert CM to PX.
+     *
+     * [PT] Extensão de Float para converter CM para PX.
+     */
     @get:Composable
     val Float.cm: Float
         get() {
@@ -137,7 +262,11 @@ object AppDimensPhysicalUnits {
             return with(LocalDensity.current) { toCm(this@cm, resources) }
         }
 
-    /** Extensão de Int para converter CM para PX. */
+    /**
+     * [EN] Int extension to convert CM to PX.
+     *
+     * [PT] Extensão de Int para converter CM para PX.
+     */
     @get:Composable
     val Int.cm: Float
         get() {
@@ -145,7 +274,11 @@ object AppDimensPhysicalUnits {
             return with(LocalDensity.current) { toCm(this@cm.toFloat(), resources) }
         }
 
-    /** Extensão de Float para converter Inch para PX. */
+    /**
+     * [EN] Float extension to convert Inch to PX.
+     *
+     * [PT] Extensão de Float para converter Inch para PX.
+     */
     @get:Composable
     val Float.inch: Float
         get() {
@@ -153,7 +286,11 @@ object AppDimensPhysicalUnits {
             return with(LocalDensity.current) { toInch(this@inch, resources) }
         }
 
-    /** Extensão de Int para converter Inch para PX. */
+    /**
+     * [EN] Int extension to convert Inch to PX.
+     *
+     * [PT] Extensão de Int para converter Inch para PX.
+     */
     @get:Composable
     val Int.inch: Float
         get() {
@@ -161,9 +298,17 @@ object AppDimensPhysicalUnits {
             return with(LocalDensity.current) { toInch(this@inch.toFloat(), resources) }
         }
 
-    // --- Utilitários de Medição ---
+    /**
+     * [EN] Measurement Utilities.
+     *
+     * [PT] Utilitários de Medição.
+     */
 
-    /** Converte um valor de diâmetro (Diameter) em uma unidade física específica para Raio (Radius) em Pixels (PX). */
+    /**
+     * [EN] Converts a diameter value in a specific physical unit to Radius in Pixels (PX).
+     *
+     * [PT] Converte um valor de diâmetro em uma unidade física específica para Raio em Pixels (PX).
+     */
     fun radius(diameter: Float, type: UnitType, resources: Resources): Float = when (type) {
         UnitType.INCH -> toInch(diameter, resources)
         UnitType.CM -> toCm(diameter, resources)
@@ -173,34 +318,57 @@ object AppDimensPhysicalUnits {
         else -> diameter
     } / 2.0f
 
-    /** Extensão de Float para calcular o Raio em Pixels (PX). */
+    /**
+     * [EN] Float extension to calculate the Radius in Pixels (PX).
+     *
+     * [PT] Extensão de Float para calcular o Raio em Pixels (PX).
+     */
     @Composable
     fun Float.radius(type: UnitType): Float {
         val resources = LocalResources.current
         return with(LocalDensity.current) { radius(this@radius, type, resources) }
     }
 
-    /** Extensão de Int para calcular o Raio em Pixels (PX). */
+    /**
+     * [EN] Int extension to calculate the Radius in Pixels (PX).
+     *
+     * [PT] Extensão de Int para calcular o Raio em Pixels (PX).
+     */
     @Composable
     fun Int.radius(type: UnitType): Float {
         val resources = LocalResources.current
         return with(LocalDensity.current) { radius(this@radius.toFloat(), type, resources) }
     }
 
-    /** Ajusta um valor de diâmetro (Diameter) para Circunferência (Circumference) se solicitado. */
+    /**
+     * [EN] Adjusts a diameter value to Circumference if requested.
+     *
+     * [PT] Ajusta um valor de diâmetro para Circunferência se solicitado.
+     */
     fun displayMeasureDiameter(diameter: Float, isCircumference: Boolean): Float =
         if (isCircumference) (diameter * CIRCUMFERENCE_FACTOR).toFloat() else diameter
 
-    /** Extensão de Float para ajustar a medida para Diâmetro ou Circunferência. */
+    /**
+     * [EN] Float extension to adjust the measurement for Diameter or Circumference.
+     *
+     * [PT] Extensão de Float para ajustar a medida para Diâmetro ou Circunferência.
+     */
     fun Float.measureDiameter(isCircumference: Boolean): Float =
         displayMeasureDiameter(this, isCircumference)
 
-    /** Extensão de Int para ajustar a medida para Diâmetro ou Circunferência. */
+    /**
+     * [EN] Int extension to adjust the measurement for Diameter or Circumference.
+     *
+     * [PT] Extensão de Int para ajustar a medida para Diâmetro ou Circunferência.
+     */
     fun Int.measureDiameter(isCircumference: Boolean): Float =
         displayMeasureDiameter(this.toFloat(), isCircumference)
 
-
-    /** Calcula o tamanho de 1 unidade (1.0f) em Pixels (PX) para uma unidade física específica. */
+    /**
+     * [EN] Calculates the size of 1 unit (1.0f) in Pixels (PX) for a specific physical unit.
+     *
+     * [PT] Calcula o tamanho de 1 unidade (1.0f) em Pixels (PX) para uma unidade física específica.
+     */
     fun unitSizePerPx(type: UnitType, resources: Resources): Float =
         when (type) {
             UnitType.INCH -> toInch(1.0f, resources)

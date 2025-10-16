@@ -1,11 +1,6 @@
-package com.appdimens.dynamic.code
-
-import android.content.res.Resources
-import android.util.TypedValue
-import com.appdimens.library.UnitType
-
 /**
  * Author & Developer: Jean Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
  * Date: 2025-10-04
  *
  * Library: AppDimens
@@ -27,88 +22,181 @@ import com.appdimens.library.UnitType
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.appdimens.dynamic.code
+
+import android.content.res.Resources
+import android.util.TypedValue
+import com.appdimens.library.UnitType
 
 /**
- * Objeto singleton que fornece funções para conversão de unidades físicas (MM, CM, Inch)
+ * [EN] A singleton object that provides functions for physical unit conversions (MM, CM, Inch)
+ * and measurement utilities.
+ *
+ * [PT] Objeto singleton que fornece funções para conversão de unidades físicas (MM, CM, Inch)
  * e utilitários de medição.
  */
 object AppDimensPhysicalUnits {
 
-    // --- Constantes para Conversão de Unidades Físicas ---
+    /**
+     * [EN] Conversion factor from millimeters to centimeters.
+     * [PT] Fator de conversão de milímetros para centímetros.
+     */
     private const val MM_TO_CM_FACTOR = 10.0f
+
+    /**
+     * [EN] Conversion factor from millimeters to inches.
+     * [PT] Fator de conversão de milímetros para polegadas.
+     */
     private const val MM_TO_INCH_FACTOR = 25.4f
 
-    // --- Milímetros (MM) ---
 
-    /** Converte Milímetros (MM) para Pixels (PX). */
+    // --- Millimeters (MM) ---
+
+    /**
+     * [EN] Converts Millimeters (MM) to Pixels (PX).
+     * [PT] Converte Milímetros (MM) para Pixels (PX).
+     */
     fun toMm(mm: Float, resources: Resources): Float =
         TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_MM, mm, resources.displayMetrics)
 
-    /** Converte Milímetros (MM) para Centímetros (CM). */
+    /**
+     * [EN] Converts Millimeters (MM) to Centimeters (CM).
+     * [PT] Converte Milímetros (MM) para Centímetros (CM).
+     */
     fun convertMmToCm(mm: Float): Float = mm / MM_TO_CM_FACTOR
 
-    /** Converte Milímetros (MM) para Polegadas (Inch). */
+    /**
+     * [EN] Converts Millimeters (MM) to Inches.
+     * [PT] Converte Milímetros (MM) para Polegadas (Inch).
+     */
     fun convertMmToInch(mm: Float): Float = mm / MM_TO_INCH_FACTOR
 
-    /** Extensão de Float para converter MM para CM. */
+    /**
+     * [EN] Extension function for Float to convert MM to CM.
+     * [PT] Função de extensão para Float para converter MM para CM.
+     */
     fun Float.mmToCm(): Float = convertMmToCm(this)
-    /** Extensão de Int para converter MM para CM. */
+    /**
+     * [EN] Extension function for Int to convert MM to CM.
+     * [PT] Função de extensão para Int para converter MM para CM.
+     */
     fun Int.mmToCm(): Float = convertMmToCm(this.toFloat())
 
-    /** Extensão de Float para converter MM para Inch. */
+    /**
+     * [EN] Extension function for Float to convert MM to Inches.
+     * [PT] Função de extensão para Float para converter MM para Polegadas.
+     */
     fun Float.mmToInch(): Float = convertMmToInch(this)
-    /** Extensão de Int para converter MM para Inch. */
+
+    /**
+     * [EN] Extension function for Int to convert MM to Inches.
+     * [PT] Função de extensão para Int para converter MM para Polegadas.
+     */
     fun Int.mmToInch(): Float = convertMmToInch(this.toFloat())
 
-    // --- Centímetros (CM) ---
 
-    /** Converte Centímetros (CM) para Pixels (PX). */
+    // --- Centimeters (CM) ---
+
+    /**
+     * [EN] Converts Centimeters (CM) to Pixels (PX).
+     * [PT] Converte Centímetros (CM) para Pixels (PX).
+     */
     fun toCm(cm: Float, resources: Resources): Float = TypedValue.applyDimension(
         TypedValue.COMPLEX_UNIT_MM, cm * MM_TO_CM_FACTOR, resources.displayMetrics
     )
 
-    /** Converte Centímetros (CM) para Milímetros (MM). */
+    /**
+     * [EN] Converts Centimeters (CM) to Millimeters (MM).
+     * [PT] Converte Centímetros (CM) para Milímetros (MM).
+     */
     fun convertCmToMm(cm: Float): Float = cm * MM_TO_CM_FACTOR
 
-    /** Converte Centímetros (CM) para Polegadas (Inch). */
+    /**
+     * [EN] Converts Centimeters (CM) to Inches.
+     * [PT] Converte Centímetros (CM) para Polegadas (Inch).
+     */
     fun convertCmToInch(cm: Float): Float = cm / (MM_TO_INCH_FACTOR / MM_TO_CM_FACTOR)
 
-    /** Extensão de Float para converter CM para MM. */
+    /**
+     * [EN] Extension function for Float to convert CM to MM.
+     * [PT] Função de extensão para Float para converter CM para MM.
+     */
     fun Float.cmToMm(): Float = convertCmToMm(this)
-    /** Extensão de Int para converter CM para MM. */
+
+    /**
+     * [EN] Extension function for Int to convert CM to MM.
+     * [PT] Função de extensão para Int para converter CM para MM.
+     */
     fun Int.cmToMm(): Float = convertCmToMm(this.toFloat())
 
-    /** Extensão de Float para converter CM para Inch. */
+    /**
+     * [EN] Extension function for Float to convert CM to Inches.
+     * [PT] Função de extensão para Float para converter CM para Polegadas.
+     */
     fun Float.cmToInch(): Float = convertCmToInch(this)
-    /** Extensão de Int para converter CM para Inch. */
+
+    /**
+     * [EN] Extension function for Int to convert CM to Inches.
+     * [PT] Função de extensão para Int para converter CM para Polegadas.
+     */
     fun Int.cmToInch(): Float = convertCmToInch(this.toFloat())
 
-    // --- Polegadas (INCH) ---
 
-    /** Converte Polegadas (Inch) para Pixels (PX). */
+    // --- Inches (INCH) ---
+
+    /**
+     * [EN] Converts Inches to Pixels (PX).
+     * [PT] Converte Polegadas (Inch) para Pixels (PX).
+     */
     fun toInch(inches: Float, resources: Resources): Float =
         TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_IN, inches, resources.displayMetrics)
 
-    /** Converte Polegadas (Inch) para Centímetros (CM). */
+    /**
+     * [EN] Converts Inches to Centimeters (CM).
+     * [PT] Converte Polegadas (Inch) para Centímetros (CM).
+     */
     fun convertInchToCm(inch: Float): Float = inch * 2.54f
 
-    /** Converte Polegadas (Inch) para Milímetros (MM). */
+    /**
+     * [EN] Converts Inches to Millimeters (MM).
+     * [PT] Converte Polegadas (Inch) para Milímetros (MM).
+     */
     fun convertInchToMm(inch: Float): Float = inch * MM_TO_INCH_FACTOR
 
-    /** Extensão de Float para converter Inch para CM. */
+    /**
+     * [EN] Extension function for Float to convert Inches to CM.
+     * [PT] Função de extensão para Float para converter Polegadas para CM.
+     */
     fun Float.inchToCm(): Float = convertInchToCm(this)
-    /** Extensão de Int para converter Inch para CM. */
-    fun Int.inchToCm(): Float = convertInchToCm(this.toFloat())
-
-    /** Extensão de Float para converter Inch para MM. */
-    fun Float.inchToMm(): Float = convertInchToMm(this)
-    /** Extensão de Int para converter Inch para MM. */
-    fun Int.inchToMm(): Float = convertInchToMm(this.toFloat())
-
-    // --- Utilitários de Medição ---
 
     /**
-     * Converte um valor de diâmetro (Diameter) em uma unidade física específica para Raio (Radius) em Pixels (PX).
+     * [EN] Extension function for Int to convert Inches to CM.
+     * [PT] Função de extensão para Int para converter Polegadas para CM.
+     */
+    fun Int.inchToCm(): Float = convertInchToCm(this.toFloat())
+
+    /**
+     * [EN] Extension function for Float to convert Inches to MM.
+     * [PT] Função de extensão para Float para converter Polegadas para MM.
+     */
+    fun Float.inchToMm(): Float = convertInchToMm(this)
+
+    /**
+     * [EN] Extension function for Int to convert Inches to MM.
+     * [PT] Função de extensão para Int para converter Polegadas para MM.
+     */
+    fun Int.inchToMm(): Float = convertInchToMm(this.toFloat())
+
+
+    // --- Measurement Utilities ---
+
+    /**
+     * [EN] Converts a diameter value in a specific physical unit to a radius in Pixels (PX).
+     *
+     * Note: The use of sp/dp in this context should be replaced by TypedValue.applyDimension
+     * for the View System.
+     *
+     * [PT] Converte um valor de diâmetro (Diameter) em uma unidade física específica para Raio (Radius) em Pixels (PX).
      *
      * OBS: O uso de sp/dp neste contexto deve ser substituído por TypedValue.applyDimension
      * para View System.
@@ -126,7 +214,12 @@ object AppDimensPhysicalUnits {
     }
 
     /**
-     * Calcula o tamanho de 1 unidade (1.0f) em Pixels (PX) para uma unidade física específica.
+     * [EN] Calculates the size of 1 unit (1.0f) in Pixels (PX) for a specific physical unit.
+     *
+     * Note: The use of sp/dp in this context should be replaced by TypedValue.applyDimension
+     * for the View System.
+     *
+     * [PT] Calcula o tamanho de 1 unidade (1.0f) em Pixels (PX) para uma unidade física específica.
      *
      * OBS: O uso de sp/dp neste contexto deve ser substituído por TypedValue.applyDimension
      * para View System.
@@ -141,15 +234,24 @@ object AppDimensPhysicalUnits {
             else-> 1f
         }
 
-    /** Ajusta um valor de diâmetro (Diameter) para Circunferência (Circumference) se solicitado. */
+    /**
+     * [EN] Adjusts a diameter value to circumference if requested.
+     * [PT] Ajusta um valor de diâmetro (Diameter) para Circunferência (Circumference) se solicitado.
+     */
     fun displayMeasureDiameter(diameter: Float, isCircumference: Boolean): Float =
         if (isCircumference) (diameter * AppDimensAdjustmentFactors.CIRCUMFERENCE_FACTOR).toFloat() else diameter
 
-    /** Extensão de Float para ajustar a medida para Diâmetro ou Circunferência. */
+    /**
+     * [EN] Extension for Float to adjust the measurement to Diameter or Circumference.
+     * [PT] Extensão de Float para ajustar a medida para Diâmetro ou Circunferência.
+     */
     fun Float.measureDiameter(isCircumference: Boolean): Float =
         displayMeasureDiameter(this, isCircumference)
 
-    /** Extensão de Int para ajustar a medida para Diâmetro ou Circunferência. */
+    /**
+     * [EN] Extension for Int to adjust the measurement to Diameter or Circumference.
+     * [PT] Extensão de Int para ajustar a medida para Diâmetro ou Circunferência.
+     */
     fun Int.measureDiameter(isCircumference: Boolean): Float =
         displayMeasureDiameter(this.toFloat(), isCircumference)
 }

@@ -1,1 +1,0 @@
-var packageSearchIndex = [{"l":"com.appdimens.library","url":"com/appdimens/library/package-summary.html"}, {"l":"All packages","url":"index.html"}]

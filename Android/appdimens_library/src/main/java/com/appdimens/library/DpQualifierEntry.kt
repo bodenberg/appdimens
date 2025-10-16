@@ -1,7 +1,6 @@
-package com.appdimens.library
-
 /**
  * Author & Developer: Jean Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
  * Date: 2025-10-04
  *
  * Library: AppDimens
@@ -23,13 +22,19 @@ package com.appdimens.library
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.appdimens.library
 
 /**
- * Representa uma entrada de qualificador customizado, combinando o tipo e o valor mínimo de DP
+ * [EN] Represents a custom qualifier entry, combining the type and the minimum DP value
+ * for the custom adjustment to be applied.
+ *
+ * [PT] Representa uma entrada de qualificador customizado, combinando o tipo e o valor mínimo de DP
  * para que o ajuste customizado seja aplicado.
  *
- * @param type O tipo de dimensão (SMALL_WIDTH, HEIGHT, WIDTH).
- * @param value A dimensão mínima em DP para ativar este qualificador (ex: 600).
+ * @property type [EN] The dimension type (SMALL_WIDTH, HEIGHT, WIDTH).
+ *                  [PT] O tipo de dimensão (SMALL_WIDTH, HEIGHT, WIDTH).
+ * @property value [EN] The minimum dimension in DP to activate this qualifier (e.g., 600).
+ *                   [PT] A dimensão mínima em DP para ativar este qualificador (ex: 600).
  */
 data class DpQualifierEntry(
     val type: DpQualifier,

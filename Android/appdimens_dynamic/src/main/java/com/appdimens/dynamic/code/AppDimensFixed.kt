@@ -1,18 +1,6 @@
-package com.appdimens.dynamic.code
-
-import android.annotation.SuppressLint
-import android.content.res.Configuration
-import android.content.res.Resources
-import android.util.TypedValue
-import com.appdimens.library.DpQualifier
-import com.appdimens.library.DpQualifierEntry
-import com.appdimens.library.ScreenType
-import com.appdimens.library.UiModeQualifierEntry
-import com.appdimens.library.UiModeType
-import kotlin.math.ln
-
 /**
  * Author & Developer: Jean Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
  * Date: 2025-10-04
  *
  * Library: AppDimens
@@ -34,9 +22,25 @@ import kotlin.math.ln
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.appdimens.dynamic.code
+
+import android.annotation.SuppressLint
+import android.content.res.Configuration
+import android.content.res.Resources
+import android.util.TypedValue
+import com.appdimens.library.DpQualifier
+import com.appdimens.library.DpQualifierEntry
+import com.appdimens.library.ScreenType
+import com.appdimens.library.UiModeQualifierEntry
+import com.appdimens.library.UiModeType
+import kotlin.math.ln
 
 /**
- * Classe para construir dimensões "fixas" que são ajustadas automaticamente
+ * [EN] Class for building "fixed" dimensions that are automatically adjusted
+ * based on the device's smallestScreenWidthDp and screen aspect ratio.
+ * Compatible with the View System (XML).
+ *
+ * [PT] Classe para construir dimensões "fixas" que são ajustadas automaticamente
  * com base no menor `smallestScreenWidthDp` do dispositivo e na proporção da tela.
  * Compatível com View System (XML).
  */
@@ -44,26 +48,53 @@ class AppDimensFixed(
     private val initialBaseDp: Float,
     private var ignoreMultiViewAdjustment: Boolean = false
 ) {
-    // Mapa para armazenar valores Dp customizados (Prioridade 3)
+    /**
+     * [EN] Map to store custom Dp values based on `DpQualifier` (Priority 3).
+     * [PT] Mapa para armazenar valores Dp customizados com base no `DpQualifier` (Prioridade 3).
+     */
     private var customDpMap: MutableMap<DpQualifierEntry, Float> = mutableMapOf()
 
-    // Mapa para valores Dp customizados por UiModeType (Prioridade 2)
+    /**
+     * [EN] Map for custom Dp values based on `UiModeType` (Priority 2).
+     * [PT] Mapa para valores Dp customizados com base no `UiModeType` (Prioridade 2).
+     */
     private var customUiModeMap: MutableMap<UiModeType, Float> = mutableMapOf()
 
-    // Mapa para valores Dp customizados por INTERSEÇÃO (UiMode + DpQualifier) (Prioridade 1)
+    /**
+     * [EN] Map for custom Dp values based on the intersection of `UiModeType` and `DpQualifier` (Priority 1).
+     * [PT] Mapa para valores Dp customizados com base na interseção de `UiModeType` e `DpQualifier` (Prioridade 1).
+     */
     private var customIntersectionMap: MutableMap<UiModeQualifierEntry, Float> = mutableMapOf()
 
-    // Indica se o ajuste baseado na proporção (aspect ratio) deve ser aplicado.
+    /**
+     * [EN] Indicates whether the aspect ratio-based adjustment should be applied.
+     * [PT] Indica se o ajuste baseado na proporção (aspect ratio) deve ser aplicado.
+     */
     private var applyAspectRatioAdjustment: Boolean = true
 
-    // Sensibilidade customizada, usa o valor padrão se for nulo.
+    /**
+     * [EN] Custom sensitivity for the aspect ratio adjustment. Uses the default value if null.
+     * [PT] Sensibilidade customizada para o ajuste de proporção. Usa o valor padrão se for nulo.
+     */
     private var customSensitivityK: Float? = null
 
-    // Define a dimensão da tela a ser usada como base (HIGHEST ou LOWEST).
+    /**
+     * [EN] Defines the screen dimension to be used as a base (HIGHEST or LOWEST).
+     * [PT] Define a dimensão da tela a ser usada como base (HIGHEST ou LOWEST).
+     */
     private var screenType: ScreenType = ScreenType.LOWEST
 
-    // Métodos para construir as customizações (Builders)
-
+    /**
+     * [EN] Sets a custom dimension value for a specific UI mode.
+     * @param type The UI mode (`UiModeType`).
+     * @param customValue The custom dimension value in Dp.
+     * @return The `AppDimensFixed` instance for chaining.
+     *
+     * [PT] Define um valor de dimensão customizado para um modo de UI específico.
+     * @param type O modo de UI (`UiModeType`).
+     * @param customValue O valor de dimensão customizado em Dp.
+     * @return A instância `AppDimensFixed` para encadeamento.
+     */
     fun screen(type: UiModeType, customValue: Float): AppDimensFixed {
         customUiModeMap[type] = customValue
         return this
@@ -74,6 +105,21 @@ class AppDimensFixed(
         return this
     }
 
+    /**
+     * [EN] Sets a custom dimension for the intersection of a UI mode and a screen qualifier.
+     * @param uiModeType The UI mode (`UiModeType`).
+     * @param qualifierType The qualifier type (`DpQualifier`).
+     * @param qualifierValue The qualifier value (e.g., 600 for sw600dp).
+     * @param customValue The custom dimension value in Dp.
+     * @return The `AppDimensFixed` instance for chaining.
+     *
+     * [PT] Define uma dimensão customizada para a interseção de um modo de UI e um qualificador de tela.
+     * @param uiModeType O modo de UI (`UiModeType`).
+     * @param qualifierType O tipo de qualificador (`DpQualifier`).
+     * @param qualifierValue O valor do qualificador (ex: 600 para sw600dp).
+     * @param customValue O valor de dimensão customizado em Dp.
+     * @return A instância `AppDimensFixed` para encadeamento.
+     */
     fun screen(
         uiModeType: UiModeType, qualifierType: DpQualifier, qualifierValue: Int, customValue: Float
     ): AppDimensFixed {
@@ -99,6 +145,19 @@ class AppDimensFixed(
         return this
     }
 
+    /**
+     * [EN] Sets a custom dimension value for a specific screen qualifier.
+     * @param type The qualifier type (`DpQualifier`).
+     * @param value The qualifier value (e.g., 600 for sw600dp).
+     * @param customValue The custom dimension value in Dp.
+     * @return The `AppDimensFixed` instance for chaining.
+     *
+     * [PT] Define um valor de dimensão customizado para um qualificador de tela específico.
+     * @param type O tipo de qualificador (`DpQualifier`).
+     * @param value O valor do qualificador (ex: 600 para sw600dp).
+     * @param customValue O valor da dimensão customizada em Dp.
+     * @return A instância `AppDimensFixed` para encadeamento.
+     */
     fun screen(type: DpQualifier, value: Int, customValue: Float): AppDimensFixed {
         customDpMap[DpQualifierEntry(type, value)] = customValue
         return this
@@ -109,24 +168,59 @@ class AppDimensFixed(
         return this
     }
 
+    /**
+     * [EN] Enables or disables the aspect ratio adjustment.
+     * @param enable If true, enables the adjustment.
+     * @param sensitivityK Optional custom sensitivity for the adjustment.
+     * @return The `AppDimensFixed` instance for chaining.
+     *
+     * [PT] Ativa ou desativa o ajuste de proporção.
+     * @param enable Se verdadeiro, ativa o ajuste.
+     * @param sensitivityK Sensibilidade customizada opcional para o ajuste.
+     * @return A instância `AppDimensFixed` para encadeamento.
+     */
     fun aspectRatio(enable: Boolean = true, sensitivityK: Float? = null): AppDimensFixed {
         applyAspectRatioAdjustment = enable
         customSensitivityK = sensitivityK
         return this
     }
 
+    /**
+     * [EN] Sets the screen dimension type (LOWEST or HIGHEST) to be used as the base for adjustments.
+     * @param type The screen dimension type.
+     * @return The `AppDimensFixed` instance for chaining.
+     *
+     * [PT] Define o tipo de dimensão da tela (LOWEST ou HIGHEST) a ser usado como base para os ajustes.
+     * @param type O tipo de dimensão da tela.
+     * @return A instância `AppDimensFixed` para encadeamento.
+     */
     fun type(type: ScreenType): AppDimensFixed {
         screenType = type
         return this
     }
 
+    /**
+     * [EN] Ignores adjustments when the app is in multi-window mode.
+     * @param ignore If true, adjustments are ignored in multi-window mode.
+     * @return The `AppDimensFixed` instance for chaining.
+     *
+     * [PT] Ignora os ajustes quando o aplicativo está em modo multi-janela.
+     * @param ignore Se verdadeiro, os ajustes são ignorados no modo multi-janela.
+     * @return A instância `AppDimensFixed` para encadeamento.
+     */
     fun multiViewAdjustment(ignore: Boolean = true): AppDimensFixed {
         ignoreMultiViewAdjustment = ignore
         return this
     }
 
     /**
-     * Resolve o valor Dp base a ser ajustado, aplicando a lógica de customização
+     * [EN] Resolves the base Dp value to be adjusted by applying the customization logic
+     * (Intersection > UiMode > DpQualifier).
+     *
+     * @param configuration The current screen configuration.
+     * @return The base Dp value (unadjusted for the screen) to be used in the final calculation.
+     *
+     * [PT] Resolve o valor Dp base a ser ajustado, aplicando a lógica de customização
      * (Interseção > UiMode > DpQualifier).
      *
      * @param configuration A configuração da tela atual.
@@ -142,7 +236,7 @@ class AppDimensFixed(
         var dpToAdjust = initialBaseDp
         var foundCustomDp: Float?
 
-        // --- PRIORIDADE 1: INTERSEÇÃO (UiMode + DpQualifier) ---
+        // Priority 1: Intersection (UiMode + DpQualifier)
         val sortedIntersectionQualifiers = customIntersectionMap.entries.toList()
             .sortedByDescending { it.key.dpQualifierEntry.value }
 
@@ -158,13 +252,13 @@ class AppDimensFixed(
         if (foundCustomDp != null) {
             dpToAdjust = foundCustomDp
         } else {
-            // --- PRIORIDADE 2: UI MODE (Apenas UiModeType) ---
+            // Priority 2: UI Mode (UiModeType only)
             foundCustomDp = customUiModeMap[currentUiModeType]
 
             if (foundCustomDp != null) {
                 dpToAdjust = foundCustomDp
             } else {
-                // --- PRIORIDADE 3: DP QUALIFIER (Apenas SW, H, W) ---
+                // Priority 3: Dp Qualifier (SW, H, W only)
                 dpToAdjust = AppDimensAdjustmentFactors.resolveQualifierDp(
                     customDpMap = customDpMap,
                     smallestWidthDp = smallestWidthDp,
@@ -178,7 +272,12 @@ class AppDimensFixed(
     }
 
     /**
-     * Executa o cálculo final do ajuste da dimensão.
+     * [EN] Performs the final dimension adjustment calculation.
+     *
+     * @param configuration The current screen configuration.
+     * @return The adjusted Dp value as a **Float** (not converted to PX/SP).
+     *
+     * [PT] Executa o cálculo final do ajuste da dimensão.
      *
      * @param configuration A Configuration da tela atual.
      * @return O valor **Float** em Dp ajustado (não convertido para PX/SP).
@@ -233,10 +332,13 @@ class AppDimensFixed(
         return dpToAdjust * finalAdjustmentFactor
     }
 
-    // --- Métodos Finais para Uso em Views/XML ---
-
     /**
-     * Constrói o valor Dp ajustado e o converte para Pixels (Float).
+     * [EN] Builds the adjusted Dp value and converts it to Pixels (Float).
+     *
+     * @param resources The Context's Resources.
+     * @return The value in Pixels (PX) as a Float.
+     *
+     * [PT] Constrói o valor Dp ajustado e o converte para Pixels (Float).
      *
      * @param resources Os Resources do Context.
      * @return O valor em Pixels (PX) como Float.
@@ -249,7 +351,13 @@ class AppDimensFixed(
     }
 
     /**
-     * Constrói o valor Dp ajustado e o converte para Scaleable Pixels (SP) em Pixels (Float),
+     * [EN] Builds the adjusted Dp value and converts it to Scalable Pixels (SP) in Pixels (Float),
+     * ignoring the system's font scale ('em' unit).
+     *
+     * @param resources The Context's Resources.
+     * @return The value in Pixels (PX) corresponding to 'em', as a Float.
+     *
+     * [PT] Constrói o valor Dp ajustado e o converte para Scaleable Pixels (SP) em Pixels (Float),
      * ignorando a escala de fonte do sistema (unidade 'em').
      *
      * @param resources Os Resources do Context.
@@ -265,7 +373,13 @@ class AppDimensFixed(
     }
 
     /**
-     * Constrói o valor Dp ajustado e o converte para Scaleable Pixels (SP) em Pixels (Int),
+     * [EN] Builds the adjusted Dp value and converts it to Scalable Pixels (SP) in Pixels (Int),
+     * ignoring the system's font scale ('em' unit).
+     *
+     * @param resources The Context's Resources.
+     * @return The value in Pixels (PX) corresponding to 'em', as an Int.
+     *
+     * [PT] Constrói o valor Dp ajustado e o converte para Scaleable Pixels (SP) em Pixels (Int),
      * ignorando a escala de fonte do sistema (unidade 'em').
      *
      * @param resources Os Resources do Context.
@@ -276,7 +390,12 @@ class AppDimensFixed(
     }
 
     /**
-     * Constrói o valor Dp ajustado e o converte para Scaleable Pixels (SP) em Pixels (Float).
+     * [EN] Builds the adjusted Dp value and converts it to Scalable Pixels (SP) in Pixels (Float).
+     *
+     * @param resources The Context's Resources.
+     * @return The value in Pixels (PX) corresponding to SP, as a Float.
+     *
+     * [PT] Constrói o valor Dp ajustado e o converte para Scaleable Pixels (SP) em Pixels (Float).
      *
      * @param resources Os Resources do Context.
      * @return O valor em Pixels (PX) correspondente ao SP, como Float.
@@ -289,7 +408,12 @@ class AppDimensFixed(
     }
 
     /**
-     * Retorna o valor Dp ajustado (em Dp, não convertido para PX).
+     * [EN] Returns the adjusted Dp value (in Dp, not converted to PX).
+     *
+     * @param resources The Context's Resources.
+     * @return The value in Dp as a Float.
+     *
+     * [PT] Retorna o valor Dp ajustado (em Dp, não convertido para PX).
      *
      * @param resources Os Resources do Context.
      * @return O valor em Dp como Float.
