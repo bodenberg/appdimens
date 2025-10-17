@@ -11,14 +11,14 @@ Since this is a multi-module project, you will need to add the AppDimens modules
 ```kotlin
 dependencies {
     // Core (Dynamic + Fixed)
-    implementation("com.github.bodenberg.appdimens:appdimens-dynamic:1.0.2")
+    implementation("com.github.bodenberg.appdimens:appdimens-dynamic:1.0.4")
 
     // SDP & SSP scaling (optional)
-    implementation("com.github.bodenberg.appdimens:appdimens-sdps:1.0.2")
-    implementation("com.github.bodenberg.appdimens:appdimens-ssps:1.0.2")
+    implementation("com.github.bodenberg.appdimens:appdimens-sdps:1.0.4")
+    implementation("com.github.bodenberg.appdimens:appdimens-ssps:1.0.4")
 
     // All in one
-    implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.2")
+    implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.4")
 }
 
 maven { url 'https://jitpack.io' } //or maven central
@@ -27,14 +27,14 @@ maven { url 'https://jitpack.io' } //or maven central
 ```kotlin
 dependencies {
     // Core (Dynamic + Fixed)
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.2")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.4")
 
     // SDP & SSP scaling (optional)
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.2")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.2")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.4")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.4")
 
     // All in one
-    implementation("io.github.bodenberg:appdimens-all:1.0.2")
+    implementation("io.github.bodenberg:appdimens-all:1.0.4")
 }
 
 mavenCentral()
