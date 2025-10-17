@@ -661,4 +661,4 @@ Esta combinação oferece **máxima flexibilidade, performance e compatibilidade
 - [ConstraintLayout](https://developer.android.com/reference/androidx/constraintlayout/widget/ConstraintLayout)
 - [Android Screen Compatibility](https://developer.android.com/guide/practices/screens_support)
 
-### Comparação gerada por IA Manus 1.5
+### Gerado por IA Manus 1.5
