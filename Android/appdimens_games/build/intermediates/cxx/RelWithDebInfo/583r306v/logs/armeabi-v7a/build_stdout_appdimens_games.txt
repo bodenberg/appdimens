@@ -1,0 +1,56 @@
+ninja: Entering directory `/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/.cxx/RelWithDebInfo/583r306v/armeabi-v7a'
+[1/7] Building CXX object CMakeFiles/appdimens_games.dir/src/GameScaling.cpp.o
+In file included from <built-in>:467:
+<command line>:2:9: warning: '__ANDROID_API__' macro redefined [-Wmacro-redefined]
+    2 | #define __ANDROID_API__ 23
+      |         ^
+<built-in>:458:9: note: previous definition is here
+  458 | #define __ANDROID_API__ __ANDROID_MIN_SDK_VERSION__
+      |         ^
+1 warning generated.
+[2/7] Building CXX object CMakeFiles/appdimens_games.dir/src/GameDimensions.cpp.o
+In file included from <built-in>:467:
+<command line>:2:9: warning: '__ANDROID_API__' macro redefined [-Wmacro-redefined]
+    2 | #define __ANDROID_API__ 23
+      |         ^
+<built-in>:458:9: note: previous definition is here
+  458 | #define __ANDROID_API__ __ANDROID_MIN_SDK_VERSION__
+      |         ^
+1 warning generated.
+[3/7] Building CXX object CMakeFiles/appdimens_games.dir/src/GameMath.cpp.o
+In file included from <built-in>:467:
+<command line>:2:9: warning: '__ANDROID_API__' macro redefined [-Wmacro-redefined]
+    2 | #define __ANDROID_API__ 23
+      |         ^
+<built-in>:458:9: note: previous definition is here
+  458 | #define __ANDROID_API__ __ANDROID_MIN_SDK_VERSION__
+      |         ^
+1 warning generated.
+[4/7] Building CXX object CMakeFiles/appdimens_games.dir/src/ViewportManager.cpp.o
+In file included from <built-in>:467:
+<command line>:2:9: warning: '__ANDROID_API__' macro redefined [-Wmacro-redefined]
+    2 | #define __ANDROID_API__ 23
+      |         ^
+<built-in>:458:9: note: previous definition is here
+  458 | #define __ANDROID_API__ __ANDROID_MIN_SDK_VERSION__
+      |         ^
+1 warning generated.
+[5/7] Building CXX object CMakeFiles/appdimens_games.dir/src/OpenGLUtils.cpp.o
+In file included from <built-in>:467:
+<command line>:2:9: warning: '__ANDROID_API__' macro redefined [-Wmacro-redefined]
+    2 | #define __ANDROID_API__ 23
+      |         ^
+<built-in>:458:9: note: previous definition is here
+  458 | #define __ANDROID_API__ __ANDROID_MIN_SDK_VERSION__
+      |         ^
+1 warning generated.
+[6/7] Building CXX object CMakeFiles/appdimens_games.dir/src/PerformanceMonitor.cpp.o
+In file included from <built-in>:467:
+<command line>:2:9: warning: '__ANDROID_API__' macro redefined [-Wmacro-redefined]
+    2 | #define __ANDROID_API__ 23
+      |         ^
+<built-in>:458:9: note: previous definition is here
+  458 | #define __ANDROID_API__ __ANDROID_MIN_SDK_VERSION__
+      |         ^
+1 warning generated.
+[7/7] Linking CXX shared library /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/cxx/RelWithDebInfo/583r306v/obj/armeabi-v7a/libappdimens_games.so

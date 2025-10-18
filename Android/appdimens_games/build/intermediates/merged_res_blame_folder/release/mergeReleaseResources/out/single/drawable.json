@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "com.appdimens.games.appdimens_games-release-32:/drawable/ic_call_answer.xml",
+        "source": "com.appdimens.games.appdimens_games-core-1.17.0-2:/drawable/ic_call_answer.xml"
+    },
+    {
+        "merged": "com.appdimens.games.appdimens_games-release-32:/drawable/ic_call_answer_video_low.xml",
+        "source": "com.appdimens.games.appdimens_games-core-1.17.0-2:/drawable/ic_call_answer_video_low.xml"
+    },
+    {
+        "merged": "com.appdimens.games.appdimens_games-release-32:/drawable/notification_bg.xml",
+        "source": "com.appdimens.games.appdimens_games-core-1.17.0-2:/drawable/notification_bg.xml"
+    },
+    {
+        "merged": "com.appdimens.games.appdimens_games-release-32:/drawable/notification_icon_background.xml",
+        "source": "com.appdimens.games.appdimens_games-core-1.17.0-2:/drawable/notification_icon_background.xml"
+    },
+    {
+        "merged": "com.appdimens.games.appdimens_games-release-32:/drawable/notification_bg_low.xml",
+        "source": "com.appdimens.games.appdimens_games-core-1.17.0-2:/drawable/notification_bg_low.xml"
+    },
+    {
+        "merged": "com.appdimens.games.appdimens_games-release-32:/drawable/ic_call_decline_low.xml",
+        "source": "com.appdimens.games.appdimens_games-core-1.17.0-2:/drawable/ic_call_decline_low.xml"
+    },
+    {
+        "merged": "com.appdimens.games.appdimens_games-release-32:/drawable/notification_tile_bg.xml",
+        "source": "com.appdimens.games.appdimens_games-core-1.17.0-2:/drawable/notification_tile_bg.xml"
+    },
+    {
+        "merged": "com.appdimens.games.appdimens_games-release-32:/drawable/ic_call_answer_low.xml",
+        "source": "com.appdimens.games.appdimens_games-core-1.17.0-2:/drawable/ic_call_answer_low.xml"
+    },
+    {
+        "merged": "com.appdimens.games.appdimens_games-release-32:/drawable/ic_call_answer_video.xml",
+        "source": "com.appdimens.games.appdimens_games-core-1.17.0-2:/drawable/ic_call_answer_video.xml"
+    },
+    {
+        "merged": "com.appdimens.games.appdimens_games-release-32:/drawable/ic_call_decline.xml",
+        "source": "com.appdimens.games.appdimens_games-core-1.17.0-2:/drawable/ic_call_decline.xml"
+    }
+]
