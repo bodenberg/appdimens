@@ -109,7 +109,6 @@ android {
             cmake {
                 cppFlags += listOf("-std=c++17", "-frtti", "-fexceptions")
                 arguments += listOf("-DANDROID_STL=c++_shared")
-                version = "4.1.1"
             }
         }
     }
@@ -147,8 +146,8 @@ android {
     externalNativeBuild {
         cmake {
             path = file("src/main/cpp/CMakeLists.txt")
-            // Use CMake 4.1.1 from Android SDK
-            version = "4.1.1"
+            // Use CMake 3.22.1 which is available on JitPack
+            version = "3.22.1"
         }
     }
     

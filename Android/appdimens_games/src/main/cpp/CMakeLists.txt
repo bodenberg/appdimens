@@ -1,5 +1,5 @@
 # CMakeLists.txt for AppDimens Games C++ Native Library
-cmake_minimum_required(VERSION 3.18.1)
+cmake_minimum_required(VERSION 3.22.1)
 
 project("appdimens_games")
 
@@ -59,7 +59,6 @@ target_link_libraries(
 # Compiler flags
 target_compile_definitions(appdimens_games PRIVATE
     ANDROID_NDK
-    __ANDROID_API__=23
 )
 
 # Optimization flags for release

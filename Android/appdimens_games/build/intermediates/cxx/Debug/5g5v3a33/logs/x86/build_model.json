@@ -8,9 +8,9 @@
     "triple": "i686-linux-android",
     "llvmTriple": "i686-none-linux-android"
   },
-  "cxxBuildFolder": "/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86",
-  "soFolder": "/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/build/intermediates/cxx/Debug/5g5v3a33/obj/x86",
-  "soRepublishFolder": "/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/build/intermediates/cmake/debug/obj/x86",
+  "cxxBuildFolder": "/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86",
+  "soFolder": "/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/cxx/Debug/5g5v3a33/obj/x86",
+  "soRepublishFolder": "/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/cmake/debug/obj/x86",
   "abiPlatformVersion": 23,
   "cmake": {
     "effectiveConfiguration": {
@@ -40,13 +40,13 @@
     "implicitBuildTargetSet": [],
     "cmakeSettingsConfiguration": "android-gradle-plugin-predetermined-name",
     "module": {
-      "cxxFolder": "/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx",
-      "intermediatesBaseFolder": "/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/build/intermediates",
-      "intermediatesFolder": "/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/build/intermediates/cxx",
+      "cxxFolder": "/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/.cxx",
+      "intermediatesBaseFolder": "/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates",
+      "intermediatesFolder": "/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/cxx",
       "gradleModulePathName": ":appdimens_games",
-      "moduleRootFolder": "/home/bodenberg/Downloads/AppDimens/Android/appdimens_games",
-      "moduleBuildFile": "/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/build.gradle.kts",
-      "makeFile": "/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/cpp/CMakeLists.txt",
+      "moduleRootFolder": "/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games",
+      "moduleBuildFile": "/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build.gradle.kts",
+      "makeFile": "/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/cpp/CMakeLists.txt",
       "buildSystem": "CMAKE",
       "ndkFolder": "/home/bodenberg/Android/Sdk/ndk/27.0.12077973",
       "ndkFolderBeforeSymLinking": "/home/bodenberg/Android/Sdk/ndk/27.0.12077973",
@@ -157,7 +157,7 @@
         "SYSTEM": {}
       },
       "project": {
-        "rootBuildGradleFolder": "/home/bodenberg/Downloads/AppDimens/Android",
+        "rootBuildGradleFolder": "/home/bodenberg/Documentos/GitHub/AppDimens/Android",
         "sdkFolder": "/home/bodenberg/Android/Sdk",
         "isBuildOnlyTargetAbiEnabled": true,
         "isCmakeBuildCohabitationEnabled": false,
@@ -176,12 +176,12 @@
   "buildSettings": {
     "environmentVariables": []
   },
-  "prefabFolder": "/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/prefab/x86",
+  "prefabFolder": "/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/prefab/x86",
   "isActiveAbi": true,
   "fullConfigurationHash": "5g5v3a33w672e3i6973s2a3o2h2f4t47s6a3z5gm3w2o6e5u4s3t96y4r20",
   "fullConfigurationHashKey": "# Values used to calculate the hash in this folder name.\n# Should not depend on the absolute path of the project itself.\n#   - AGP: 8.13.0.\n#   - $NDK is the path to NDK 27.0.12077973.\n#   - $PROJECT is the path to the parent folder of the root Gradle build file.\n#   - $ABI is the ABI to be built with. The specific value doesn\u0027t contribute to the value of the hash.\n#   - $HASH is the hash value computed from this text.\n#   - $CMAKE is the path to CMake 3.22.1.\n#   - $NINJA is the path to Ninja.\n-H$PROJECT/appdimens_games/src/main/cpp\n-DCMAKE_SYSTEM_NAME\u003dAndroid\n-DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON\n-DCMAKE_SYSTEM_VERSION\u003d23\n-DANDROID_PLATFORM\u003dandroid-23\n-DANDROID_ABI\u003d$ABI\n-DCMAKE_ANDROID_ARCH_ABI\u003d$ABI\n-DANDROID_NDK\u003d$NDK\n-DCMAKE_ANDROID_NDK\u003d$NDK\n-DCMAKE_TOOLCHAIN_FILE\u003d$NDK/build/cmake/android.toolchain.cmake\n-DCMAKE_MAKE_PROGRAM\u003d$NINJA\n-DCMAKE_CXX_FLAGS\u003d-std\u003dc++17 -frtti -fexceptions\n-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d$PROJECT/appdimens_games/build/intermediates/cxx/Debug/$HASH/obj/$ABI\n-DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003d$PROJECT/appdimens_games/build/intermediates/cxx/Debug/$HASH/obj/$ABI\n-DCMAKE_BUILD_TYPE\u003dDebug\n-B$PROJECT/appdimens_games/.cxx/Debug/$HASH/$ABI\n-GNinja\n-DANDROID_STL\u003dc++_shared",
   "configurationArguments": [
-    "-H/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/cpp",
+    "-H/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/cpp",
     "-DCMAKE_SYSTEM_NAME\u003dAndroid",
     "-DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON",
     "-DCMAKE_SYSTEM_VERSION\u003d23",
@@ -193,13 +193,13 @@
     "-DCMAKE_TOOLCHAIN_FILE\u003d/home/bodenberg/Android/Sdk/ndk/27.0.12077973/build/cmake/android.toolchain.cmake",
     "-DCMAKE_MAKE_PROGRAM\u003d/home/bodenberg/Android/Sdk/cmake/3.22.1/bin/ninja",
     "-DCMAKE_CXX_FLAGS\u003d-std\u003dc++17 -frtti -fexceptions",
-    "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/build/intermediates/cxx/Debug/5g5v3a33/obj/x86",
-    "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003d/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/build/intermediates/cxx/Debug/5g5v3a33/obj/x86",
+    "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003d/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/cxx/Debug/5g5v3a33/obj/x86",
+    "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003d/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/cxx/Debug/5g5v3a33/obj/x86",
     "-DCMAKE_BUILD_TYPE\u003dDebug",
-    "-B/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86",
+    "-B/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86",
     "-GNinja",
     "-DANDROID_STL\u003dc++_shared"
   ],
   "stlLibraryFile": "/home/bodenberg/Android/Sdk/ndk/27.0.12077973/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/i686-linux-android/libc++_shared.so",
-  "intermediatesParentFolder": "/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/build/intermediates/cxx/Debug/5g5v3a33"
+  "intermediatesParentFolder": "/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/cxx/Debug/5g5v3a33"
 }

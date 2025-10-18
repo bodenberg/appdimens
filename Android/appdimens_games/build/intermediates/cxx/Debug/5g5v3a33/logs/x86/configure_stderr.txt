@@ -31,7 +31,7 @@ CMake Deprecation Warning at /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build
   to tell CMake that the project requires at least <min> but has been updated
   to work with policies introduced by <max> or earlier.
 Call Stack (most recent call first):
-  /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86/CMakeFiles/4.1.1/CMakeSystem.cmake:6 (include)
+  /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86/CMakeFiles/4.1.1/CMakeSystem.cmake:6 (include)
   CMakeLists.txt:4 (project)
 
 
@@ -43,8 +43,8 @@ CMake Deprecation Warning at /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build
   to tell CMake that the project requires at least <min> but has been updated
   to work with policies introduced by <max> or earlier.
 Call Stack (most recent call first):
-  /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86/CMakeFiles/4.1.1/CMakeSystem.cmake:6 (include)
-  /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86/CMakeFiles/CMakeScratch/TryCompile-OYTxeQ/CMakeLists.txt:4 (project)
+  /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86/CMakeFiles/4.1.1/CMakeSystem.cmake:6 (include)
+  /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86/CMakeFiles/CMakeScratch/TryCompile-odRCwg/CMakeLists.txt:2 (project)
 
 
 CMake Deprecation Warning at /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build/cmake/android-legacy.toolchain.cmake:35 (cmake_minimum_required):
@@ -56,8 +56,8 @@ CMake Deprecation Warning at /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build
   to work with policies introduced by <max> or earlier.
 Call Stack (most recent call first):
   /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build/cmake/android.toolchain.cmake:55 (include)
-  /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86/CMakeFiles/4.1.1/CMakeSystem.cmake:6 (include)
-  /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86/CMakeFiles/CMakeScratch/TryCompile-OYTxeQ/CMakeLists.txt:4 (project)
+  /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86/CMakeFiles/4.1.1/CMakeSystem.cmake:6 (include)
+  /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86/CMakeFiles/CMakeScratch/TryCompile-odRCwg/CMakeLists.txt:2 (project)
 
 
 CMake Deprecation Warning at /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build/cmake/android.toolchain.cmake:35 (cmake_minimum_required):
@@ -68,8 +68,8 @@ CMake Deprecation Warning at /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build
   to tell CMake that the project requires at least <min> but has been updated
   to work with policies introduced by <max> or earlier.
 Call Stack (most recent call first):
-  /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86/CMakeFiles/4.1.1/CMakeSystem.cmake:6 (include)
-  /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86/CMakeFiles/CMakeScratch/TryCompile-DkrvGU/CMakeLists.txt:4 (project)
+  /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86/CMakeFiles/4.1.1/CMakeSystem.cmake:6 (include)
+  /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86/CMakeFiles/CMakeScratch/TryCompile-IMKMyf/CMakeLists.txt:2 (project)
 
 
 CMake Deprecation Warning at /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build/cmake/android-legacy.toolchain.cmake:35 (cmake_minimum_required):
@@ -81,7 +81,7 @@ CMake Deprecation Warning at /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build
   to work with policies introduced by <max> or earlier.
 Call Stack (most recent call first):
   /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build/cmake/android.toolchain.cmake:55 (include)
-  /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86/CMakeFiles/4.1.1/CMakeSystem.cmake:6 (include)
-  /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86/CMakeFiles/CMakeScratch/TryCompile-DkrvGU/CMakeLists.txt:4 (project)
+  /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86/CMakeFiles/4.1.1/CMakeSystem.cmake:6 (include)
+  /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86/CMakeFiles/CMakeScratch/TryCompile-IMKMyf/CMakeLists.txt:2 (project)
 
 
