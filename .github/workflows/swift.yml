@@ -28,12 +28,12 @@ jobs:
 
     # 2. Build e Testes
     - name: Build and Test Swift Package
-      # ATENÇÃO: Se o seu Package.swift estiver em outro lugar (ex: iOS/AppDimens),
-      # ajuste o caminho 'iOS' abaixo.
-      working-directory: iOS
+      # Ajuste: Removendo 'working-directory' e usando '--package-path iOS' para
+      # resolver o conflito de caminho ('iOS/Tests') com o Package.swift.
+      # O Swift Package Manager (SPM) agora será executado a partir da raiz do repositório.
       run: |
-        # O comando de build
-        swift build
+        # O comando de build, especificando onde está o Package.swift
+        swift build --package-path iOS
 
-        # O comando de testes
-        swift test
+        # O comando de testes, especificando onde está o Package.swift
+        swift test --package-path iOS
