@@ -3,9 +3,9 @@
     <p><strong>Dynamic Scaling with Conditional Logic for Android</strong></p>
     <p>Advanced SDP (Scaled Density-independent Pixels) system with conditional rules and priority-based scaling for responsive layouts.</p>
     
-    [![Version](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/bodenberg/appdimens/releases)
-    [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../LICENSE)
-    [![Platform](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
+[![Version](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
 
 ---
@@ -441,8 +441,6 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](../../
 
 **Jean Bodenberg**
 - 🌐 [GitHub](https://github.com/bodenberg)
-- 📧 [Email](mailto:jean.bodenberg@gmail.com)
-- 💼 [LinkedIn](https://linkedin.com/in/jean-bodenberg)
 
 ---
 
