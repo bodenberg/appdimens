@@ -1,4 +1,5 @@
 # 📚 AppDimens: Responsive Sizing for SwiftUI
+(UNDER CONSTRUCTION)
 
 **AppDimens** is an intelligent sizing system for SwiftUI, inspired by Jetpack Compose. It allows you to build **layouts that dynamically adapt** to any screen size, aspect ratio, and device/screen qualifier.
 
