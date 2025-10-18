@@ -236,7 +236,6 @@ Este projeto está licenciado sob a Licença Apache 2.0 - veja o arquivo [LICENS
 
 **Jean Bodenberg**
 - GitHub: [@bodenberg](https://github.com/bodenberg)
-- Email: jean.bodenberg@gmail.com
 
 ## 🤝 Contribuição
 
@@ -247,7 +246,6 @@ Contribuições são bem-vindas! Por favor, sinta-se à vontade para enviar um P
 Para dúvidas, problemas ou contribuições:
 
 - **GitHub Issues**: [Criar issue](https://github.com/bodenberg/appdimens/issues)
-- **Email**: jean.bodenberg@gmail.com
 - **Documentação**: [GitHub Wiki](https://github.com/bodenberg/appdimens/wiki)
 
 ---
