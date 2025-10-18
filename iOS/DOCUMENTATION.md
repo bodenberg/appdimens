@@ -439,5 +439,4 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 For questions, issues, or contributions:
 
 - GitHub Issues: [Create an issue](https://github.com/bodenberg/appdimens/issues)
-- Email: jean.bodenberg@gmail.com
 - Documentation: [GitHub Wiki](https://github.com/bodenberg/appdimens/wiki)
