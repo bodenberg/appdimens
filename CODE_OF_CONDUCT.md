@@ -85,7 +85,6 @@ For answers to common questions about this code of conduct, see the FAQ at https
 ## Contact Information
 
 - **Project Maintainer**: Jean Bodenberg
-- **Email**: jean.bodenberg@gmail.com
 - **GitHub**: [@bodenberg](https://github.com/bodenberg)
 
 ## Acknowledgment
