@@ -249,4 +249,3 @@ Este projeto está licenciado sob a Licença Apache 2.0 - veja o arquivo [LICENS
 
 **Jean Bodenberg**
 - GitHub: [@bodenberg](https://github.com/bodenberg)
-- Email: jean.bodenberg@gmail.com
