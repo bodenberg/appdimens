@@ -327,7 +327,6 @@ If you encounter issues not covered here:
 1. **Check the documentation**: [README.md](README.md)
 2. **Review examples**: [Examples/](Examples/)
 3. **Create an issue**: [GitHub Issues](https://github.com/bodenberg/appdimens/issues)
-4. **Contact support**: jean.bodenberg@gmail.com
 
 ## 📄 License
 
