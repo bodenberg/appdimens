@@ -19,7 +19,6 @@ We take security vulnerabilities seriously. If you discover a security vulnerabi
 
 Instead, please report them via email to:
 
-- **Email**: jean.bodenberg@gmail.com
 - **Subject**: [SECURITY] AppDimens Vulnerability Report
 
 ### What to Include
