@@ -3,10 +3,10 @@
     <p><strong>Responsive Game Development for Android with C++/NDK Support</strong></p>
     <p>Specialized AppDimens module designed for Android game development with native performance, OpenGL ES integration, and advanced viewport management.</p>
     
-    [![Version](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/bodenberg/appdimens/releases)
-    [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../LICENSE)
-    [![Platform](https://img.shields.io/badge/platform-Android%2023+-orange.svg)](https://developer.android.com/)
-    [![NDK](https://img.shields.io/badge/NDK-r21+-green.svg)](https://developer.android.com/ndk)
+[![Version](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Android%2023+-orange.svg)](https://developer.android.com/)
+[![NDK](https://img.shields.io/badge/NDK-r21+-green.svg)](https://developer.android.com/ndk)
 </div>
 
 ---
@@ -720,8 +720,6 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](../../
 
 **Jean Bodenberg**
 - 🌐 [GitHub](https://github.com/bodenberg)
-- 📧 [Email](mailto:jean.bodenberg@gmail.com)
-- 💼 [LinkedIn](https://linkedin.com/in/jean-bodenberg)
 
 ---
 
