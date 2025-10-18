@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "com.appdimens.games.appdimens_games-release-32:/layout/custom_dialog.xml",
+        "source": "com.appdimens.games.appdimens_games-core-1.17.0-2:/layout/custom_dialog.xml"
+    },
+    {
+        "merged": "com.appdimens.games.appdimens_games-release-32:/layout/notification_template_part_time.xml",
+        "source": "com.appdimens.games.appdimens_games-core-1.17.0-2:/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "com.appdimens.games.appdimens_games-release-32:/layout/notification_template_part_chronometer.xml",
+        "source": "com.appdimens.games.appdimens_games-core-1.17.0-2:/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "com.appdimens.games.appdimens_games-release-32:/layout/ime_base_split_test_activity.xml",
+        "source": "com.appdimens.games.appdimens_games-core-1.17.0-2:/layout/ime_base_split_test_activity.xml"
+    },
+    {
+        "merged": "com.appdimens.games.appdimens_games-release-32:/layout/ime_secondary_split_test_activity.xml",
+        "source": "com.appdimens.games.appdimens_games-core-1.17.0-2:/layout/ime_secondary_split_test_activity.xml"
+    }
+]

@@ -480,7 +480,7 @@ Existem várias soluções no mercado para lidar com o problema de dimensionamen
 
 ```gradle
 dependencies {
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.4")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.5")
     implementation("androidx.compose.material3:material3-adaptive:1.0.0")
 }
 ```
@@ -497,8 +497,8 @@ dependencies {
 
 ```gradle
 dependencies {
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.4")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.4")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.5")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.5")
 }
 ```
 
@@ -547,7 +547,7 @@ res/layout-w720dp/layout.xml
 
 ```gradle
 dependencies {
-    implementation("io.github.bodenberg:appdimens-all:1.0.4")
+    implementation("io.github.bodenberg:appdimens-all:1.0.5")
 }
 ```
 

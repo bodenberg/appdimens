@@ -22,7 +22,7 @@ tasks.dokkaJavadoc.configure {
 }
 
 mavenPublishing {
-    coordinates("io.github.bodenberg", "appdimens-dynamic", "1.0.4")
+    coordinates("io.github.bodenberg", "appdimens-dynamic", "1.0.5")
 
     configure(
         AndroidSingleVariantLibrary(

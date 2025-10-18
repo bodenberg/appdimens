@@ -49,6 +49,7 @@ android {
 
 dependencies {
     api(project(":appdimens_all"))
+    api(project(":appdimens_games"))
     //implementation("com.appdimens:appdimens-all:1.0.0")
     //implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.0")
     //implementation(libs.appdimens.all)

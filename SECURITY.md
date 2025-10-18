@@ -1,45 +1,130 @@
-# Security Policy
+# 🔒 Security Policy
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+We release patches for security vulnerabilities in the following versions:
 
-| Version | Supported | Notes |
-| :--- | :---: | :--- |
-| **1.0.4** | ✅ | Recommended. Receives security fixes and new features. |
-| **1.0.3** | ✅ | Only receives critical security fixes. |
-| **1.0.0** | ❌ | End-of-Life. Users must upgrade. |
+| Version | Supported          |
+| ------- | ------------------ |
+| 1.0.x   | :white_check_mark: |
+| < 1.0   | :x:                |
 
 ## Reporting a Vulnerability
 
-We highly appreciate the efforts of users and security researchers who work to alert us to vulnerabilities. We prioritize the safety of our users and a prompt resolution of any issues.
+We take security vulnerabilities seriously. If you discover a security vulnerability in AppDimens, please report it to us as described below.
 
 ### How to Report
 
-We ask that all security vulnerabilities be reported privately and responsibly.
+**Please do not report security vulnerabilities through public GitHub issues.**
 
-**Please DO NOT open a public GitHub Issue.**
+Instead, please report them via email to:
 
-* **Preferred Path:** Use GitHub's [Private Security Advisories](https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-receiving-alerts-for-vulnerabilities/privately-reporting-a-security-vulnerability) feature (if enabled).
-* **Email Alternative:** Send an email to **[YOUR SECURITY EMAIL ADDRESS HERE]**.
+- **Email**: jean.bodenberg@gmail.com
+- **Subject**: [SECURITY] AppDimens Vulnerability Report
 
-### Information Needed in the Report
+### What to Include
 
-To help us resolve the issue quickly, please include the following details:
+Please include the following information in your report:
 
-1.  **Vulnerability Description:** What is the issue?
-2.  **Steps to Reproduce:** A clear and concise description of the steps to replicate the flaw.
-3.  **Affected Version:** Which version of the project were you using?
-4.  **Impact:** What is the potential risk to users or data.
+1. **Description**: A clear description of the vulnerability
+2. **Steps to Reproduce**: Detailed steps to reproduce the issue
+3. **Impact**: Potential impact of the vulnerability
+4. **Affected Versions**: Which versions are affected
+5. **Suggested Fix**: If you have suggestions for fixing the issue
+6. **Contact Information**: Your contact information for follow-up
 
-### Our Process
+### What to Expect
 
-Upon receiving your report:
+- **Acknowledgment**: We will acknowledge receipt of your report within 48 hours
+- **Initial Assessment**: We will provide an initial assessment within 72 hours
+- **Regular Updates**: We will provide regular updates on our progress
+- **Resolution**: We will work to resolve the issue as quickly as possible
 
-1.  You will receive an acknowledgment of receipt within **[X] business days**.
-2.  The team will analyze and validate the vulnerability.
-3.  We will maintain private communication while we work on a fix.
-4.  Once the fix is released in a new version, we will publish a **Security Advisory** to credit you and inform the community.
+### Disclosure Timeline
 
-Thank you for helping to keep this project secure.
+- **Immediate**: Acknowledge receipt of the report
+- **72 hours**: Initial assessment and response
+- **7 days**: Detailed analysis and impact assessment
+- **30 days**: Fix development and testing
+- **45 days**: Public disclosure (if applicable)
+
+## Security Best Practices
+
+### For Developers
+
+When using AppDimens in your applications:
+
+1. **Keep Updated**: Always use the latest version of AppDimens
+2. **Review Dependencies**: Regularly review and update dependencies
+3. **Secure Storage**: Don't store sensitive data in dimension calculations
+4. **Input Validation**: Validate all inputs to dimension functions
+5. **Error Handling**: Implement proper error handling for dimension calculations
+
+### For Contributors
+
+When contributing to AppDimens:
+
+1. **Security Review**: All code changes undergo security review
+2. **Dependency Management**: Keep dependencies up to date
+3. **Input Validation**: Validate all inputs and handle edge cases
+4. **Error Handling**: Implement proper error handling
+5. **Testing**: Include security-focused tests
+
+## Security Considerations
+
+### Android
+
+- **Permissions**: AppDimens doesn't require any special permissions
+- **Data Storage**: No sensitive data is stored by the library
+- **Network Access**: No network access is required
+- **File System**: No file system access is required
+
+### iOS
+
+- **Permissions**: AppDimens doesn't require any special permissions
+- **Data Storage**: No sensitive data is stored by the library
+- **Network Access**: No network access is required
+- **File System**: No file system access is required
+
+## Known Security Issues
+
+### None Currently Known
+
+There are currently no known security vulnerabilities in AppDimens. If you discover one, please report it using the process described above.
+
+## Security Updates
+
+Security updates will be released as soon as possible after a vulnerability is discovered and fixed. Updates will be:
+
+- **Patch Releases**: For critical security fixes
+- **Minor Releases**: For important security improvements
+- **Major Releases**: For significant security changes
+
+## Security Contact
+
+For security-related questions or concerns:
+
+- **Email**: jean.bodenberg@gmail.com
+- **Response Time**: Within 48 hours
+- **Confidentiality**: All security reports are treated confidentially
+
+## Acknowledgments
+
+We appreciate the security researchers and community members who help keep AppDimens secure by responsibly reporting vulnerabilities.
+
+## Legal
+
+By reporting a security vulnerability, you agree to:
+
+1. **Responsible Disclosure**: Not disclose the vulnerability publicly until we have had a chance to fix it
+2. **Good Faith**: Report the vulnerability in good faith
+3. **No Malicious Use**: Not use the vulnerability for malicious purposes
+4. **Cooperation**: Cooperate with us in resolving the issue
+
+## Disclaimer
+
+This security policy is provided for informational purposes only. While we strive to keep AppDimens secure, we cannot guarantee that it is free from vulnerabilities. Users should implement appropriate security measures in their applications.
+
+---
+
+**Thank you for helping keep AppDimens secure!** 🛡️
