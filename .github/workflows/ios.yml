@@ -1,0 +1,39 @@
+name: Swift AppDimens
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build_and_test:
+
+    # O macos-latest é essencial para compilação Swift/iOS
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # 1. Caching: Acelera execuções subsequentes.
+    # Ele armazena o diretório de build do Swift Package Manager (~/.build).
+    - name: Cache Swift Build
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.build
+        key: ${{ runner.os }}-swift-${{ hashFiles('**/Package.swift') }}
+        restore-keys: |
+          ${{ runner.os }}-swift-
+
+    # 2. Build e Testes
+    - name: Build and Test Swift Package
+      # ATENÇÃO: Se o seu Package.swift estiver em outro lugar (ex: iOS/AppDimens),
+      # ajuste o caminho 'iOS' abaixo.
+      working-directory: iOS
+      run: |
+        # O comando de build
+        swift build
+
+        # O comando de testes
+        swift test
