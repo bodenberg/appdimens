@@ -287,5 +287,4 @@ Após a instalação, consulte:
 Para dúvidas ou problemas:
 
 - [GitHub Issues](https://github.com/bodenberg/appdimens/issues)
-- Email: jean.bodenberg@gmail.com
 - [Documentação](https://github.com/bodenberg/appdimens/wiki)
