@@ -1,11 +1,11 @@
 version: 2
 updates:
   - package-ecosystem: "gradle"
-    directory: "/android"    # ajuste conforme a localização do build.gradle / configurações Android
+    directory: "/Android"    # ajuste conforme a localização do build.gradle / configurações Android
     schedule:
       interval: "weekly"
 
   - package-ecosystem: "swift"   # se for SPM
-    directory: "/ios"       # ou onde estiver o `Package.swift`
+    directory: "/iOS"       # ou onde estiver o `Package.swift`
     schedule:
       interval: "weekly"
