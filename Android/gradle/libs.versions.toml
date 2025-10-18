@@ -15,7 +15,7 @@ lifecycleViewmodelCompose = "2.9.4"
 appcompat = "1.7.1"
 material = "1.13.0"
 annotationJvm = "1.9.1"
-dokka = "2.0.0"
+dokka = "2.1.0"
 
 [libraries]
 android-documentation-plugin = { module = "org.jetbrains.dokka:android-documentation-plugin", version.ref = "androidDocumentationPlugin" }
