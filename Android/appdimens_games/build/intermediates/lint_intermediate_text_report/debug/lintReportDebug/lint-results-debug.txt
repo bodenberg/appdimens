@@ -1,5 +1,5 @@
-/home/bodenberg/.gradle/caches/8.13/transforms/484858976ade18f8201cb94f32698cd3/transformed/out/jni/arm64-v8a/libappdimens_games.so: Warning: The native library arm64-v8a/libappdimens_games.so (from AppDimens:appdimens_games:unspecified) is not 16 KB aligned [Aligned16KB]
-/home/bodenberg/.gradle/caches/8.13/transforms/484858976ade18f8201cb94f32698cd3/transformed/out/jni/arm64-v8a/libappdimens_games.so: Warning: The native library arm64-v8a/libappdimens_games.so (from AppDimens:appdimens_games:unspecified) is not 16 KB aligned [Aligned16KB]
+/home/bodenberg/.gradle/caches/8.13/transforms/0d3889586d91f1b4cb1b8ecbb23adcd2/transformed/out/jni/arm64-v8a/libappdimens_games.so: Warning: The native library arm64-v8a/libappdimens_games.so (from AppDimens:appdimens_games:unspecified) is not 16 KB aligned [Aligned16KB]
+/home/bodenberg/.gradle/caches/8.13/transforms/0d3889586d91f1b4cb1b8ecbb23adcd2/transformed/out/jni/arm64-v8a/libappdimens_games.so: Warning: The native library arm64-v8a/libappdimens_games.so (from AppDimens:appdimens_games:unspecified) is not 16 KB aligned [Aligned16KB]
 /home/bodenberg/.gradle/caches/8.13/transforms/c3921425663daf6c60f490d1880bb633/transformed/graphics-core-1.0.0-alpha02/jni/arm64-v8a/libgraphics-core.so: Warning: The native library arm64-v8a/libgraphics-core.so (from androidx.graphics:graphics-core:1.0.0-alpha02) is not 16 KB aligned [Aligned16KB]
 /home/bodenberg/.gradle/caches/8.13/transforms/c3921425663daf6c60f490d1880bb633/transformed/graphics-core-1.0.0-alpha02/jni/arm64-v8a/libgraphics-core.so: Warning: The native library arm64-v8a/libgraphics-core.so (from androidx.graphics:graphics-core:1.0.0-alpha02) is not 16 KB aligned [Aligned16KB]
 /home/bodenberg/.gradle/caches/8.13/transforms/c3921425663daf6c60f490d1880bb633/transformed/graphics-core-1.0.0-alpha02/jni/arm64-v8a/libgraphics-core.so: Warning: The native library arm64-v8a/libgraphics-core.so (from androidx.graphics:graphics-core:1.0.0-alpha02) is not 16 KB aligned [Aligned16KB]
@@ -31,7 +31,7 @@
 
    https://developer.android.com/guide/practices/page-sizes
 
-/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/java/com/appdimens/games/AppDimensGames.kt:162: Warning: Do not place Android context classes in static fields (static reference to AppDimensGames which has field context pointing to Context); this is a memory leak [StaticFieldLeak]
+/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/java/com/appdimens/games/AppDimensGames.kt:162: Warning: Do not place Android context classes in static fields (static reference to AppDimensGames which has field context pointing to Context); this is a memory leak [StaticFieldLeak]
         @Volatile
         ^
 

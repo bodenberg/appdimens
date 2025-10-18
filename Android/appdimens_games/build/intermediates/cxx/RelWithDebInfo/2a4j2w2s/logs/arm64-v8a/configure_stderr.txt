@@ -1,0 +1,87 @@
+CMake Deprecation Warning at /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build/cmake/android.toolchain.cmake:35 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/bodenberg/Android/Sdk/cmake/4.1.1/share/cmake-4.1/Modules/CMakeDetermineSystem.cmake:146 (include)
+  CMakeLists.txt:4 (project)
+
+
+CMake Deprecation Warning at /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build/cmake/android-legacy.toolchain.cmake:35 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build/cmake/android.toolchain.cmake:55 (include)
+  /home/bodenberg/Android/Sdk/cmake/4.1.1/share/cmake-4.1/Modules/CMakeDetermineSystem.cmake:146 (include)
+  CMakeLists.txt:4 (project)
+
+
+CMake Deprecation Warning at /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build/cmake/android.toolchain.cmake:35 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/RelWithDebInfo/2a4j2w2s/arm64-v8a/CMakeFiles/4.1.1/CMakeSystem.cmake:6 (include)
+  CMakeLists.txt:4 (project)
+
+
+CMake Deprecation Warning at /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build/cmake/android.toolchain.cmake:35 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/RelWithDebInfo/2a4j2w2s/arm64-v8a/CMakeFiles/4.1.1/CMakeSystem.cmake:6 (include)
+  /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/RelWithDebInfo/2a4j2w2s/arm64-v8a/CMakeFiles/CMakeScratch/TryCompile-9kdwpX/CMakeLists.txt:4 (project)
+
+
+CMake Deprecation Warning at /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build/cmake/android-legacy.toolchain.cmake:35 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build/cmake/android.toolchain.cmake:55 (include)
+  /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/RelWithDebInfo/2a4j2w2s/arm64-v8a/CMakeFiles/4.1.1/CMakeSystem.cmake:6 (include)
+  /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/RelWithDebInfo/2a4j2w2s/arm64-v8a/CMakeFiles/CMakeScratch/TryCompile-9kdwpX/CMakeLists.txt:4 (project)
+
+
+CMake Deprecation Warning at /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build/cmake/android.toolchain.cmake:35 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/RelWithDebInfo/2a4j2w2s/arm64-v8a/CMakeFiles/4.1.1/CMakeSystem.cmake:6 (include)
+  /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/RelWithDebInfo/2a4j2w2s/arm64-v8a/CMakeFiles/CMakeScratch/TryCompile-evxMgV/CMakeLists.txt:4 (project)
+
+
+CMake Deprecation Warning at /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build/cmake/android-legacy.toolchain.cmake:35 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/bodenberg/Android/Sdk/ndk/27.0.12077973/build/cmake/android.toolchain.cmake:55 (include)
+  /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/RelWithDebInfo/2a4j2w2s/arm64-v8a/CMakeFiles/4.1.1/CMakeSystem.cmake:6 (include)
+  /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/RelWithDebInfo/2a4j2w2s/arm64-v8a/CMakeFiles/CMakeScratch/TryCompile-evxMgV/CMakeLists.txt:4 (project)
+
+

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/bodenberg/.gradle/daemon/8.13/com.appdimens.games.appdimens_games-release-32:/mipmap-mdpi-v4/ic_launcher_round.xml",
+        "source": "/home/bodenberg/.gradle/daemon/8.13/com.appdimens.games.appdimens_games-main-33:/mipmap-mdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/home/bodenberg/.gradle/daemon/8.13/com.appdimens.games.appdimens_games-release-32:/mipmap-mdpi-v4/ic_launcher.xml",
+        "source": "/home/bodenberg/.gradle/daemon/8.13/com.appdimens.games.appdimens_games-main-33:/mipmap-mdpi/ic_launcher.xml"
+    }
+]

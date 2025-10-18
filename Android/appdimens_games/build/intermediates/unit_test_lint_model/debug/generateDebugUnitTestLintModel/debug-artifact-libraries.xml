@@ -1,9 +1,9 @@
 <libraries>
   <library
       name=":@@:appdimens_games::debug"
-      jars="/home/bodenberg/.gradle/caches/8.13/transforms/484858976ade18f8201cb94f32698cd3/transformed/out/jars/classes.jar:/home/bodenberg/.gradle/caches/8.13/transforms/484858976ade18f8201cb94f32698cd3/transformed/out/jars/libs/R.jar"
+      jars="/home/bodenberg/.gradle/caches/8.13/transforms/0d3889586d91f1b4cb1b8ecbb23adcd2/transformed/out/jars/classes.jar:/home/bodenberg/.gradle/caches/8.13/transforms/0d3889586d91f1b4cb1b8ecbb23adcd2/transformed/out/jars/libs/R.jar"
       resolved="AppDimens:appdimens_games:unspecified"
-      folder="/home/bodenberg/.gradle/caches/8.13/transforms/484858976ade18f8201cb94f32698cd3/transformed/out"
+      folder="/home/bodenberg/.gradle/caches/8.13/transforms/0d3889586d91f1b4cb1b8ecbb23adcd2/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

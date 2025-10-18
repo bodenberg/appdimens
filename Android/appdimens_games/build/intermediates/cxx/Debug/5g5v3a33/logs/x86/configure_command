@@ -1,0 +1,19 @@
+/home/bodenberg/Android/Sdk/cmake/3.22.1/bin/cmake \
+  -H/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/cpp \
+  -DCMAKE_SYSTEM_NAME=Android \
+  -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+  -DCMAKE_SYSTEM_VERSION=23 \
+  -DANDROID_PLATFORM=android-23 \
+  -DANDROID_ABI=x86 \
+  -DCMAKE_ANDROID_ARCH_ABI=x86 \
+  -DANDROID_NDK=/home/bodenberg/Android/Sdk/ndk/27.0.12077973 \
+  -DCMAKE_ANDROID_NDK=/home/bodenberg/Android/Sdk/ndk/27.0.12077973 \
+  -DCMAKE_TOOLCHAIN_FILE=/home/bodenberg/Android/Sdk/ndk/27.0.12077973/build/cmake/android.toolchain.cmake \
+  -DCMAKE_MAKE_PROGRAM=/home/bodenberg/Android/Sdk/cmake/3.22.1/bin/ninja \
+  "-DCMAKE_CXX_FLAGS=-std=c++17 -frtti -fexceptions" \
+  -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/build/intermediates/cxx/Debug/5g5v3a33/obj/x86 \
+  -DCMAKE_RUNTIME_OUTPUT_DIRECTORY=/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/build/intermediates/cxx/Debug/5g5v3a33/obj/x86 \
+  -DCMAKE_BUILD_TYPE=Debug \
+  -B/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86 \
+  -GNinja \
+  -DANDROID_STL=c++_shared
