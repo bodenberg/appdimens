@@ -271,7 +271,6 @@ A biblioteca agora oferece uma solução completa para dimensionamento responsiv
 
 **Jean Bodenberg**
 - GitHub: [@bodenberg](https://github.com/bodenberg)
-- Email: jean.bodenberg@gmail.com
 
 ## 📄 Licença
 
