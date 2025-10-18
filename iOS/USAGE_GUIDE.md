@@ -604,5 +604,4 @@ print("Factors: \(factors)")
 ## 🤝 Support
 
 - **GitHub Issues**: [Create issue](https://github.com/bodenberg/appdimens/issues)
-- **Email**: jean.bodenberg@gmail.com
 - **Documentation**: [GitHub Wiki](https://github.com/bodenberg/appdimens/wiki)
