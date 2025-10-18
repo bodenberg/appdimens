@@ -48,10 +48,6 @@ mavenCentral()
 
 ---
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 0ed509487a713c1468a65e705fafd5cfc836ac3b
 ## 🧠 Modelos de Dimensionamento
 
 | Modelo             | Filosofia                  | Uso Ideal                                      | Suporte                        |
