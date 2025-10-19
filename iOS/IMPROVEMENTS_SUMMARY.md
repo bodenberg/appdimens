@@ -1,55 +1,55 @@
-# 🚀 AppDimens iOS - Resumo das Melhorias Implementadas
+ # 🚀 AppDimens iOS - Resumo das Melhorias Implementadas
+ 
+ > Languages: [Português (BR)](../LANG/pt-BR/iOS/IMPROVEMENTS_SUMMARY.md) | [Español](../LANG/es/iOS/IMPROVEMENTS_SUMMARY.md) | [हिन्दी](../LANG/hi/iOS/IMPROVEMENTS_SUMMARY.md) | [Русский](../LANG/ru/iOS/IMPROVEMENTS_SUMMARY.md) | [中文](../LANG/zh/iOS/IMPROVEMENTS_SUMMARY.md) | [日本語](../LANG/ja/iOS/IMPROVEMENTS_SUMMARY.md)
+ 
+## 📊 Analysis of the Existing iOS Implementation
 
-> Languages: [Português (BR)](../LANG/pt-BR/iOS/IMPROVEMENTS_SUMMARY.md) | [Español](../LANG/es/iOS/IMPROVEMENTS_SUMMARY.md) | [हिन्दी](../LANG/hi/iOS/IMPROVEMENTS_SUMMARY.md) | [Русский](../LANG/ru/iOS/IMPROVEMENTS_SUMMARY.md) | [中文](../LANG/zh/iOS/IMPROVEMENTS_SUMMARY.md) | [日本語](../LANG/ja/iOS/IMPROVEMENTS_SUMMARY.md)
+After reviewing the existing iOS implementation under the `/iOS` folder, several significant improvements have been implemented in the PROJETO_IOS library:
 
-## 📊 Análise da Implementação iOS Existente
+## ✅ Improvements Implemented
 
-Após analisar a implementação iOS existente na pasta `/iOS`, identifiquei várias melhorias significativas que foram implementadas na biblioteca PROJETO_IOS:
-
-## ✅ Melhorias Implementadas
-
-### 1. **Sistema de Environment do SwiftUI**
-- **Arquivo**: `AppDimensEnvironment.swift`
-- **Funcionalidade**: Sistema robusto de Environment para injeção de dimensões e fatores de ajuste
-- **Benefício**: Cálculos automáticos baseados nas dimensões reais da tela
+### 1. **SwiftUI Environment System**
+- **File**: `AppDimensEnvironment.swift`
+- **Feature**: Robust Environment system for injecting dimensions and adjustment factors
+- **Benefit**: Automatic calculations based on the device’s real screen dimensions
 
 ```swift
 DimensProvider {
-    // Suas views aqui
-    // Dimensões calculadas automaticamente
+    // Your views here
+    // Dimensions automatically calculated
 }
 ```
 
-### 2. **Design com Protocolos**
-- **Arquivo**: `AppDimensProtocols.swift`
-- **Funcionalidade**: API baseada em protocolos mais elegante e flexível
-- **Benefício**: Sintaxe mais limpa e extensível
+### 2. **Protocol-driven Design**
+- **File**: `AppDimensProtocols.swift`
+- **Feature**: Cleaner, more flexible protocol-based API
+- **Benefit**: Extensible and elegant syntax
 
 ```swift
-100.fixed().dimension                    // API com protocolos
-100.dynamic().screen(.highest).dimension // Configuração avançada
+100.fixed().dimension                    // Protocol-based API
+100.dynamic().screen(.highest).dimension // Advanced configuration
 ```
 
-### 3. **Calculadoras Especializadas**
-- **Arquivos**: `AppDimensFixedCalculator.swift`, `AppDimensDynamicCalculator.swift`
-- **Funcionalidade**: Implementação separada e otimizada para cada tipo de cálculo
-- **Benefício**: Melhor performance e manutenibilidade
+### 3. **Specialized Calculators**
+- **Files**: `AppDimensFixedCalculator.swift`, `AppDimensDynamicCalculator.swift`
+- **Feature**: Separate, optimized implementations for each calculation type
+- **Benefit**: Better performance and maintainability
 
-### 4. **Unidades Físicas**
-- **Arquivo**: `AppDimensPhysicalUnits.swift`
-- **Funcionalidade**: Conversão completa de unidades físicas (mm, cm, inches)
-- **Benefício**: Suporte a medições reais
+### 4. **Physical Units**
+- **File**: `AppDimensPhysicalUnits.swift`
+- **Feature**: Complete conversion for physical units (mm, cm, inches)
+- **Benefit**: Real measurement support
 
 ```swift
-2.cm       // 2 centímetros
-5.mm       // 5 milímetros
-1.inch     // 1 polegada
+2.cm       // 2 centimeters
+5.mm       // 5 millimeters
+1.inch     // 1 inch
 ```
 
-### 5. **Calculadora de Contagem de Itens**
-- **Arquivo**: `AppDimensItemCalculator.swift`
-- **Funcionalidade**: Sistema para calcular quantos itens cabem em um container
-- **Benefício**: Layouts de grid responsivos automáticos
+### 5. **Item Count Calculator**
+- **File**: `AppDimensItemCalculator.swift`
+- **Feature**: System to compute how many items fit in a container
+- **Benefit**: Automatic responsive grid layouts
 
 ```swift
 Rectangle()
@@ -60,9 +60,9 @@ Rectangle()
     )
 ```
 
-### 6. **Sintaxe Direta Melhorada**
-- **Funcionalidade**: Extensões para CGFloat e Int com sintaxe mais intuitiva
-- **Benefício**: Uso mais simples e direto
+### 6. **Improved Direct Syntax**
+- **Feature**: Extensions for CGFloat and Int with more intuitive syntax
+- **Benefit**: Simpler, more direct usage
 
 ```swift
 16.fxpt    // Fixed points
@@ -70,9 +70,9 @@ Rectangle()
 100.dypt   // Dynamic points
 ```
 
-### 7. **Funções Wrapper**
-- **Funcionalidade**: Funções wrapper para compatibilidade com Kotlin/Compose
-- **Benefício**: Migração mais fácil do Android
+### 7. **Wrapper Functions**
+- **Feature**: Wrapper functions for Kotlin/Compose compatibility
+- **Benefit**: Easier Android migration
 
 ```swift
 fixedDp(100) { dimension in
@@ -84,90 +84,90 @@ dynamicDp(200) { dimension in
 }
 ```
 
-## 📈 Comparação: Antes vs Depois
+## 📈 Comparison: Before vs After
 
-### Antes (Implementação Original)
+### Before (Original Implementation)
 ```swift
-// API mais verbosa
+// More verbose API
 let buttonHeight = AppDimens.fixed(48).toPoints()
 let padding = 16.fxpt
 
-// Sem suporte a Environment
-// Sem unidades físicas
-// Sem calculadora de itens
+// No Environment support
+// No physical units
+// No item calculator
 ```
 
-### Depois (Implementação Melhorada)
+### After (Improved Implementation)
 ```swift
-// API mais limpa
+// Cleaner API
 let buttonHeight = 48.fxpt
 let padding = 16.fxpt
 
-// Com Environment system
+// With Environment system
 DimensProvider {
     ContentView()
 }
 
-// Com unidades físicas
+// With physical units
 Rectangle().frame(width: 2.cm, height: 1.cm)
 
-// Com calculadora de itens
+// With item calculator
 Rectangle().calculateAvailableItemCount(
     itemSize: 50.fxpt,
     itemPadding: 8.fxpt,
     count: $itemCount
 )
 
-// Com API baseada em protocolos
+// With protocol-based API
 Rectangle().frame(width: 100.fixed().dimension)
 ```
 
-## 🎯 Benefícios das Melhorias
+## 🎯 Benefits of the Improvements
 
 ### 1. **Performance**
-- Cálculos em cache através do Environment
-- Implementação otimizada com protocolos
-- Redução de overhead de cálculos repetitivos
+- Cached calculations through the Environment
+- Optimized implementation with protocols
+- Reduced overhead from repetitive calculations
 
-### 2. **Usabilidade**
-- Sintaxe mais intuitiva e limpa
-- Menos código boilerplate
-- Melhor integração com SwiftUI
+### 2. **Usability**
+- Cleaner, more intuitive syntax
+- Less boilerplate code
+- Better SwiftUI integration
 
-### 3. **Funcionalidade**
-- Suporte a unidades físicas
-- Calculadora de contagem de itens
-- Sistema de Environment robusto
+### 3. **Functionality**
+- Physical units support
+- Item count calculator
+- Robust Environment system
 
-### 4. **Compatibilidade**
-- Funções wrapper para Kotlin/Compose
-- API legacy mantida para compatibilidade
-- Migração facilitada do Android
+### 4. **Compatibility**
+- Wrapper functions for Kotlin/Compose
+- Legacy API preserved for compatibility
+- Easier Android migration
 
-### 5. **Manutenibilidade**
-- Código mais modular e organizado
-- Separação clara de responsabilidades
-- Melhor testabilidade
+### 5. **Maintainability**
+- More modular, organized code
+- Clear separation of responsibilities
+- Improved testability
 
-## 📁 Estrutura de Arquivos Atualizada
+## 📁 Updated File Structure
 
 ```
 Sources/AppDimens/
-├── AppDimens.swift                    # Classe principal (atualizada)
-├── AppDimensTypes.swift               # Tipos e enums
-├── AppDimensAdjustmentFactors.swift   # Cálculos de fatores
-├── AppDimensFixed.swift               # API legacy (mantida)
-├── AppDimensDynamic.swift             # API legacy (mantida)
-├── AppDimensExtensions.swift          # Extensões (atualizada)
-├── AppDimensEnvironment.swift         # ✨ NOVO: Sistema Environment
-├── AppDimensProtocols.swift           # ✨ NOVO: Design com protocolos
-├── AppDimensFixedCalculator.swift     # ✨ NOVO: Calculadora fixa
-├── AppDimensDynamicCalculator.swift   # ✨ NOVO: Calculadora dinâmica
-├── AppDimensPhysicalUnits.swift       # ✨ NOVO: Unidades físicas
-└── AppDimensItemCalculator.swift      # ✨ NOVO: Calculadora de itens
+├── AppDimens.swift                    # Main class (updated)
+├── AppDimensTypes.swift               # Types and enums
+├── AppDimensAdjustmentFactors.swift   # Adjustment factor calculations
+├── AppDimensFixed.swift               # Legacy API (kept)
+├── AppDimensDynamic.swift             # Legacy API (kept)
+├── AppDimensExtensions.swift          # Extensions (updated)
+├── AppDimensEnvironment.swift         # ✨ NEW: Environment system
+├── AppDimensProtocols.swift           # ✨ NEW: Protocol-based design
+├── AppDimensFixedCalculator.swift     # ✨ NEW: Fixed calculator
+├── AppDimensDynamicCalculator.swift   # ✨ NEW: Dynamic calculator
+├── AppDimensPhysicalUnits.swift       # ✨ NEW: Physical units
+└── AppDimensItemCalculator.swift      # ✨ NEW: Item calculator
 ```
 
-## 🚀 Exemplo Completo das Melhorias
+## 🚀 Full Example of Improvements
 
 ```swift
 import SwiftUI
@@ -188,21 +188,21 @@ struct ContentView: View {
     @State private var itemCount: Int = 0
     
     var body: some View {
-        VStack(spacing: 20.fxpt) {  // ✨ Sintaxe direta
+        VStack(spacing: 20.fxpt) {  // ✨ Direct syntax
             Text("Enhanced AppDimens")
                 .font(.fxSystem(size: 24, weight: .bold))
             
-            // ✨ Unidades físicas
+            // ✨ Physical units
             Rectangle()
                 .frame(width: 2.cm, height: 1.cm)
                 .fxCornerRadius(8)
             
-            // ✨ API baseada em protocolos
+            // ✨ Protocol-based API
             Rectangle()
                 .frame(width: 100.fixed().dimension)
                 .frame(height: 50.fxpt)
             
-            // ✨ Calculadora de itens
+            // ✨ Item calculator
             Rectangle()
                 .calculateAvailableItemCount(
                     itemSize: 50.fxpt,
@@ -210,7 +210,7 @@ struct ContentView: View {
                     count: $itemCount
                 )
             
-            // ✨ Funções wrapper
+            // ✨ Wrapper functions
             fixedDp(100) { dimension in
                 Rectangle().frame(width: dimension)
             }
@@ -219,21 +219,21 @@ struct ContentView: View {
 }
 ```
 
-## 📚 Documentação Atualizada
+## 📚 Updated Documentation
 
-- **README.md** - Atualizado com novas funcionalidades
-- **Examples/ImprovedSwiftUIExample.swift** - Exemplo completo das melhorias
-- **DOCUMENTATION.md** - Documentação técnica atualizada
-- **USAGE_GUIDE.md** - Guia de uso com novas funcionalidades
+- **README.md** - Updated with new features
+- **Examples/ImprovedSwiftUIExample.swift** - Full example of improvements
+- **DOCUMENTATION.md** - Updated technical documentation
+- **USAGE_GUIDE.md** - Usage guide with new features
 
-## 🎉 Conclusão
+## 🎉 Conclusion
 
-As melhorias implementadas transformaram a biblioteca AppDimens iOS de uma implementação básica para uma solução robusta e moderna que:
+The improvements have transformed the AppDimens iOS library from a basic implementation into a robust, modern solution that:
 
-1. **Mantém compatibilidade** com a API original
-2. **Adiciona funcionalidades avançadas** como Environment system e unidades físicas
-3. **Melhora a performance** com cálculos otimizados
-4. **Facilita a migração** do Android com funções wrapper
-5. **Oferece sintaxe mais limpa** e intuitiva
+1. **Maintains compatibility** with the original API
+2. **Adds advanced features** like the Environment system and physical units
+3. **Improves performance** with optimized calculations
+4. **Eases migration** from Android via wrapper functions
+5. **Offers a cleaner, more intuitive syntax**
 
-A biblioteca agora está alinhada com as melhores práticas do SwiftUI e oferece uma experiência de desenvolvimento superior, mantendo toda a funcionalidade original do projeto Android.
+The library is now aligned with SwiftUI best practices and provides a superior development experience, while preserving the complete functionality of the original Android project.
