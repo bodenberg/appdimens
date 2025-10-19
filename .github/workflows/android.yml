@@ -2,7 +2,7 @@ name: CI Android (AppDimens)
 
 on:
   push:
-    # O workflow será executado em qualquer push para a branch 'main'
+    # O workflow será executado em qualquer push para a branch 'main' 
     branches: [ main ]
     # **OPCIONAL:** Execute apenas se houver mudanças no diretório 'Android/'
     paths:
