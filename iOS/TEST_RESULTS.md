@@ -1,69 +1,69 @@
-# Resultados dos Testes da Biblioteca AppDimens iOS
+# AppDimens iOS Library Test Results
 
 > Languages: [Português (BR)](../LANG/pt-BR/iOS/TEST_RESULTS.md) | [Español](../LANG/es/iOS/TEST_RESULTS.md) | [हिन्दी](../LANG/hi/iOS/TEST_RESULTS.md) | [Русский](../LANG/ru/iOS/TEST_RESULTS.md) | [中文](../LANG/zh/iOS/TEST_RESULTS.md) | [日本語](../LANG/ja/iOS/TEST_RESULTS.md)
 
-## Resumo dos Testes Realizados
+## Summary of Tests Performed
 
-### ✅ Testes de Estrutura
-- **Arquivos de código**: Todos os arquivos Swift estão presentes e bem estruturados
-- **Módulos**: 4 módulos principais identificados:
-  - `AppDimens` (módulo principal)
-  - `AppDimensCore` (funcionalidades básicas)
-  - `AppDimensUI` (integração com SwiftUI)
-  - `AppDimensGames` (funcionalidades para jogos)
+### ✅ Structure Tests
+- **Code files**: All Swift files are present and well-structured
+- **Modules**: 4 main modules identified:
+  - `AppDimens` (main module)
+  - `AppDimensCore` (core functionality)
+  - `AppDimensUI` (SwiftUI integration)
+  - `AppDimensGames` (game functionality)
 
-### ✅ Testes de Sintaxe
-- **Imports**: Verificados e corrigidos problemas de importação circular
-- **Referências**: Corrigidas referências incorretas entre módulos
-- **Dependências**: Todas as dependências estão corretamente definidas
+### ✅ Syntax Tests
+- **Imports**: Checked and fixed circular import issues
+- **References**: Fixed incorrect references between modules
+- **Dependencies**: All dependencies are correctly defined
 
-### ✅ Testes de Funcionalidade
-- **Classes principais**: `AppDimensFixed`, `AppDimensDynamic`, `AppDimensAdjustmentFactors`
-- **Funções estáticas**: `AppDimens.fixed()`, `AppDimens.dynamic()` funcionando
-- **Extensões**: Extensões para `CGFloat` e `Int` implementadas
-- **Tipos de dados**: `DeviceType`, `ScreenType`, `UnitType` definidos
+### ✅ Functionality Tests
+- **Main classes**: `AppDimensFixed`, `AppDimensDynamic`, `AppDimensAdjustmentFactors`
+- **Static functions**: `AppDimens.fixed()`, `AppDimens.dynamic()` working
+- **Extensions**: Extensions for `CGFloat` and `Int` implemented
+- **Data types**: `DeviceType`, `ScreenType`, `UnitType` defined
 
-### ✅ Testes de Compatibilidade
-- **iOS 13.0+**: Suporte confirmado
-- **SwiftUI**: Integração implementada
-- **UIKit**: Compatibilidade mantida
-- **Metal**: Suporte para jogos implementado
+### ✅ Compatibility Tests
+- **iOS 13.0+**: Support confirmed
+- **SwiftUI**: Integration implemented
+- **UIKit**: Compatibility maintained
+- **Metal**: Game support implemented
 
-## Correções Realizadas
+## Fixes Made
 
-### 1. Problemas de Importação Circular
-**Problema**: Módulos tentando importar uns dos outros circularmente
-**Solução**: Removidas importações desnecessárias entre módulos do mesmo projeto
+### 1. Circular Import Issues
+**Problem**: Modules attempting to import each other circularly
+**Solution**: Removed unnecessary imports between modules in the same project
 
-### 2. Referências Incorretas
-**Problema**: Arquivos tentando usar `AppDimens.fixed()` sem importação adequada
-**Solução**: Adicionadas importações `import AppDimensCore` onde necessário
+### 2. Incorrect References
+**Problem**: Files trying to use `AppDimens.fixed()` without proper import
+**Solution**: Added `import AppDimensCore` where necessary
 
-### 3. Estrutura de Módulos
-**Problema**: Confusão na organização dos módulos
-**Solução**: Clarificada a estrutura:
-- `AppDimens`: Módulo principal com exportações
-- `AppDimensCore`: Funcionalidades básicas
-- `AppDimensUI`: Extensões para SwiftUI
-- `AppDimensGames`: Funcionalidades para jogos
+### 3. Module Structure
+**Problem**: Confusion in module organization
+**Solution**: Clarified the structure:
+- `AppDimens`: Main module with exports
+- `AppDimensCore`: Core functionality
+- `AppDimensUI`: SwiftUI extensions
+- `AppDimensGames`: Game functionality
 
-## Funcionalidades Testadas
+## Features Tested
 
-### ✅ Dimensões Fixas (Fixed Dimensions)
+### ✅ Fixed Dimensions
 ```swift
 let fixedDimension = AppDimens.fixed(100)
 let points = fixedDimension.toPoints()
 let pixels = fixedDimension.toPixels()
 ```
 
-### ✅ Dimensões Dinâmicas (Dynamic Dimensions)
+### ✅ Dynamic Dimensions
 ```swift
 let dynamicDimension = AppDimens.dynamic(100)
 let points = dynamicDimension.toPoints()
 let pixels = dynamicDimension.toPixels()
 ```
 
-### ✅ Extensões de Conveniência
+### ✅ Convenience Extensions
 ```swift
 let value: CGFloat = 50
 let fixedPoints = value.fxpt  // Fixed points
@@ -72,7 +72,7 @@ let fixedPixels = value.fxpx  // Fixed pixels
 let dynamicPixels = value.dypx  // Dynamic pixels
 ```
 
-### ✅ Configurações Avançadas
+### ✅ Advanced Settings
 ```swift
 let customDimension = AppDimens.fixed(100)
     .screen(.phone, 120)  // Custom value for phones
@@ -81,7 +81,7 @@ let customDimension = AppDimens.fixed(100)
     .type(.highest)
 ```
 
-## Exemplos de Uso Testados
+## Tested Usage Examples
 
 ### SwiftUI
 ```swift
@@ -99,33 +99,33 @@ label.font = .fxSystem(size: 16)
 label.frame = CGRect(x: 0, y: 0, width: 200.fxpt, height: 50.fxpt)
 ```
 
-## Conclusão
+## Conclusion
 
-### ✅ Status: FUNCIONANDO CORRETAMENTE
+### ✅ Status: WORKING CORRECTLY
 
-A biblioteca AppDimens iOS está funcionando corretamente após as correções realizadas. Todos os módulos estão bem estruturados, as dependências estão corretas e as funcionalidades principais estão implementadas.
+The AppDimens iOS library is working correctly after the fixes. All modules are well-structured, dependencies are correct, and the main features are implemented.
 
-### Funcionalidades Confirmadas:
-- ✅ Cálculos de dimensão responsiva
-- ✅ Suporte a diferentes tipos de dispositivo
-- ✅ Integração com SwiftUI e UIKit
-- ✅ Configurações customizáveis
-- ✅ Extensões de conveniência
-- ✅ Suporte a jogos com Metal
+### Confirmed Features:
+- ✅ Responsive dimension calculations
+- ✅ Support for different device types
+- ✅ Integration with SwiftUI and UIKit
+- ✅ Customizable settings
+- ✅ Convenience extensions
+- ✅ Metal game support
 
-### Recomendações:
-1. **Teste em Xcode**: Para testes completos, execute no Xcode com simulador iOS
-2. **Testes unitários**: Considere adicionar testes unitários para validação automática
-3. **Documentação**: A documentação está bem estruturada e completa
-4. **Exemplos**: Os exemplos fornecidos demonstram o uso correto da biblioteca
+### Recommendations:
+1. **Test in Xcode**: For complete tests, run in Xcode with iOS Simulator
+2. **Unit tests**: Consider adding unit tests for automated validation
+3. **Documentation**: Documentation is well-structured and complete
+4. **Examples**: Provided examples demonstrate correct library usage
 
-### Próximos Passos:
-1. Compilar no Xcode para verificar se não há erros de compilação
-2. Executar testes no simulador iOS
-3. Testar em dispositivos físicos se possível
-4. Validar performance com diferentes tamanhos de tela
+### Next Steps:
+1. Build in Xcode to verify there are no compilation errors
+2. Run tests on iOS Simulator
+3. Test on physical devices if possible
+4. Validate performance on different screen sizes
 
 ---
-*Teste realizado em: $(date)*
-*Versão da biblioteca: 1.0.5*
-*Status: ✅ APROVADO*
+*Test performed on: $(date)*
+*Library version: 1.0.5*
+*Status: ✅ APPROVED*

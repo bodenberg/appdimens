@@ -1,100 +1,100 @@
-# 📱 AppDimens iOS - Resumo do Projeto
+# 📱 AppDimens iOS - Project Summary
 
 > Languages: [Português (BR)](../LANG/pt-BR/iOS/PROJECT_SUMMARY.md) | [Español](../LANG/es/iOS/PROJECT_SUMMARY.md) | [हिन्दी](../LANG/hi/iOS/PROJECT_SUMMARY.md) | [Русский](../LANG/ru/iOS/PROJECT_SUMMARY.md) | [中文](../LANG/zh/iOS/PROJECT_SUMMARY.md) | [日本語](../LANG/ja/iOS/PROJECT_SUMMARY.md)
 
-## 🎯 Visão Geral
+## 🎯 Overview
 
-O **AppDimens iOS** é uma biblioteca de dimensionamento responsivo que converte automaticamente valores baseados nas dimensões da tela, garantindo consistência visual em qualquer tamanho ou proporção de tela. É a versão iOS equivalente da biblioteca Android AppDimens.
+**AppDimens iOS** is a responsive dimensioning library that automatically converts values based on screen dimensions, ensuring visual consistency on any screen size or aspect ratio. It is the iOS equivalent of the Android AppDimens library.
 
-## 🏗️ Arquitetura
+## 🏗️ Architecture
 
-### Componentes Principais
+### Main Components
 
-1. **AppDimens** - Classe singleton principal
-2. **AppDimensFixed** - Dimensionamento fixo com ajuste logarítmico
-3. **AppDimensDynamic** - Dimensionamento dinâmico com ajuste proporcional
-4. **AppDimensAdjustmentFactors** - Utilitários para cálculos de fatores de tela
-5. **AppDimensTypes** - Definições de tipos e enums
-6. **AppDimensExtensions** - Extensões para SwiftUI e UIKit
+1. **AppDimens** - Main singleton class
+2. **AppDimensFixed** - Fixed scaling with logarithmic adjustment
+3. **AppDimensDynamic** - Dynamic scaling with proportional adjustment
+4. **AppDimensAdjustmentFactors** - Utilities for screen factor calculations
+5. **AppDimensTypes** - Type and enum definitions
+6. **AppDimensExtensions** - Extensions for SwiftUI and UIKit
 
-### Modelos Matemáticos
+### Mathematical Models
 
-#### Fixed (FX) - Ajuste Refinado
-- **Filosofia**: Ajuste logarítmico para escalonamento refinado
-- **Fórmula**: `Valor Base × (1 + Fator de Ajuste × (Incremento Base + Ajuste AR))`
-- **Uso**: Elementos de UI que devem manter consistência visual
-- **Padrão de Crescimento**: Crescimento suave e controlado
+#### Fixed (FX) - Refined Adjustment
+- **Philosophy**: Logarithmic adjustment for refined scaling
+- **Formula**: `Base Value × (1 + Adjustment Factor × (Base Increment + AR Adjustment))`
+- **Use**: UI elements that must maintain visual consistency
+- **Growth Pattern**: Smooth and controlled growth
 
-#### Dynamic (DY) - Ajuste Proporcional
-- **Filosofia**: Ajuste baseado em porcentagem
-- **Fórmula**: `(Valor Base / Largura de Referência) × Dimensão Atual da Tela`
-- **Uso**: Containers de layout e elementos fluidos
-- **Padrão de Crescimento**: Crescimento linear mantendo porcentagem da tela
+#### Dynamic (DY) - Proportional Adjustment
+- **Philosophy**: Percentage-based adjustment
+- **Formula**: `(Base Value / Reference Width) × Current Screen Dimension`
+- **Use**: Layout containers and fluid elements
+- **Growth Pattern**: Linear growth maintaining screen percentage
 
-## 📁 Estrutura do Projeto
+## 📁 Project Structure
 
 ```
 PROJETO_IOS/
-├── AppDimens.podspec              # Configuração CocoaPods
-├── LICENSE                        # Licença Apache 2.0
-├── README.md                      # Documentação principal
-├── CHANGELOG.md                   # Histórico de versões
-├── DOCUMENTATION.md               # Documentação técnica
-├── INSTALLATION.md                # Guia de instalação
-├── USAGE_GUIDE.md                 # Guia de uso prático
-├── PROJECT_SUMMARY.md             # Este arquivo
-├── AppDimens.xcodeproj/           # Projeto Xcode
+├── AppDimens.podspec              # CocoaPods configuration
+├── LICENSE                        # Apache 2.0 license
+├── README.md                      # Main documentation
+├── CHANGELOG.md                   # Version history
+├── DOCUMENTATION.md               # Technical documentation
+├── INSTALLATION.md                # Installation guide
+├── USAGE_GUIDE.md                 # Practical usage guide
+├── PROJECT_SUMMARY.md             # This file
+├── AppDimens.xcodeproj/           # Xcode project
 │   └── project.pbxproj
 ├── AppDimens/
-│   └── Info.plist                 # Configurações do framework
-├── Sources/AppDimens/             # Código fonte
-│   ├── AppDimens.swift            # Classe principal
-│   ├── AppDimensTypes.swift       # Tipos e enums
-│   ├── AppDimensAdjustmentFactors.swift # Cálculos de fatores
-│   ├── AppDimensFixed.swift       # Dimensionamento fixo
-│   ├── AppDimensDynamic.swift     # Dimensionamento dinâmico
-│   └── AppDimensExtensions.swift  # Extensões SwiftUI/UIKit
-└── Examples/                      # Exemplos de uso
-    ├── UIKitExample.swift         # Exemplo UIKit
-    └── SwiftUIExample.swift       # Exemplo SwiftUI
+│   └── Info.plist                 # Framework settings
+├── Sources/AppDimens/             # Source code
+│   ├── AppDimens.swift            # Main class
+│   ├── AppDimensTypes.swift       # Types and enums
+│   ├── AppDimensAdjustmentFactors.swift # Factor calculations
+│   ├── AppDimensFixed.swift       # Fixed dimensioning
+│   ├── AppDimensDynamic.swift     # Dynamic dimensioning
+│   └── AppDimensExtensions.swift  # SwiftUI/UIKit extensions
+└── Examples/                      # Usage examples
+    ├── UIKitExample.swift         # UIKit example
+    └── SwiftUIExample.swift       # SwiftUI example
 ```
 
-## 🚀 Funcionalidades
+## 🚀 Features
 
-### ✅ Implementadas
+### ✅ Implemented
 
-- [x] Sistema de dimensionamento responsivo
-- [x] Modelos Fixed (FX) e Dynamic (DY)
-- [x] Suporte completo para SwiftUI
-- [x] Suporte completo para UIKit
-- [x] Detecção de tipo de dispositivo
-- [x] Sistema de qualificadores de tela
-- [x] Ajuste de proporção (aspect ratio)
-- [x] Detecção de modo multi-janela
-- [x] Extensões para facilitar uso
-- [x] Conversão de unidades físicas
-- [x] Cálculos baseados em porcentagem
-- [x] Utilitários de layout
-- [x] Integração com CocoaPods
-- [x] Documentação completa
-- [x] Exemplos práticos
-- [x] Configuração do projeto Xcode
+- [x] Responsive dimensioning system
+- [x] Fixed (FX) and Dynamic (DY) models
+- [x] Full SwiftUI support
+- [x] Full UIKit support
+- [x] Device type detection
+- [x] Screen qualifier system
+- [x] Aspect ratio adjustment
+- [x] Multi-window mode detection
+- [x] Convenience extensions
+- [x] Physical unit conversions
+- [x] Percentage-based calculations
+- [x] Layout utilities
+- [x] CocoaPods integration
+- [x] Complete documentation
+- [x] Practical examples
+- [x] Xcode project configuration
 
-### 🎯 Características Principais
+### 🎯 Key Characteristics
 
-1. **Compatibilidade Total**
+1. **Full Compatibility**
    - iOS 13.0+
    - Swift 5.0+
    - Xcode 12.0+
 
-2. **Integração Fácil**
+2. **Easy Integration**
    - CocoaPods
    - Swift Package Manager
-   - Instalação manual
+   - Manual installation
 
-3. **API Intuitiva**
+3. **Intuitive API**
    ```swift
-   // Sintaxe simples
+   // Simple syntax
    16.fxpt    // Fixed points
    100.dypt   // Dynamic points
    
@@ -107,18 +107,18 @@ PROJETO_IOS/
    view.fxCornerRadius(8)
    ```
 
-4. **Configuração Avançada**
+4. **Advanced Configuration**
    ```swift
    AppDimens.fixed(16)
-       .screen(.phone, 14)        // Custom para iPhone
-       .screen(.tablet, 18)       // Custom para iPad
-       .aspectRatio(enable: true) // Ajuste de proporção
+       .screen(.phone, 14)        // Custom for iPhone
+       .screen(.tablet, 18)       // Custom for iPad
+       .aspectRatio(enable: true) // Aspect ratio adjustment
        .toPoints()
    ```
 
-## 📊 Comparação com Android
+## 📊 Comparison with Android
 
-| Aspecto | Android | iOS |
+| Aspect | Android | iOS |
 |---------|---------|-----|
 | **Unidades** | DP/SP | Points |
 | **Detecção de Dispositivo** | `Configuration.uiMode` | `UIDevice.current.userInterfaceIdiom` |
@@ -127,12 +127,12 @@ PROJETO_IOS/
 | **API** | `16.fxdp` | `16.fxpt` |
 | **Conversão** | `.toPx()` | `.toPixels()` |
 
-## 🎨 Exemplos de Uso
+## 🎨 Usage Examples
 
 ### SwiftUI
 ```swift
 VStack(spacing: 20.fxpt) {
-    Text("Título")
+    Text("Title")
         .font(.fxSystem(size: 24, weight: .bold))
         .fxPadding(16)
     
@@ -152,52 +152,51 @@ button.frame = CGRect(x: 0, y: 0, width: 200.dypt, height: 44.fxpt)
 
 ## 📈 Performance
 
-### Otimizações Implementadas
+### Implemented Optimizations
 
-1. **Cálculos em Cache**: Fatores calculados uma vez por configuração de tela
-2. **Avaliação Preguiçosa**: Valores computados apenas quando necessário
-3. **Overhead Mínimo**: Operações matemáticas simples com alocação mínima de memória
+1. **Cached Calculations**: Factors calculated once per screen configuration
+2. **Lazy Evaluation**: Values computed only when necessary
+3. **Minimal Overhead**: Simple math operations with minimal memory allocation
 
 ### Benchmarks
 
-- **Cálculo de Dimensão**: ~0.001ms
-- **Memória**: ~50KB adicional
-- **Tempo de Inicialização**: Negligível
+- **Dimension Calculation**: ~0.001ms
+- **Memory**: ~50KB additional
+- **Startup Time**: Negligible
 
-## 🧪 Testes
+## 🧪 Tests
 
-### Cobertura de Testes
+### Test Coverage
 
-- [x] Cálculos de dimensões
-- [x] Detecção de tipo de dispositivo
-- [x] Cálculos de fatores de tela
-- [x] Métodos de extensão
-- [x] Casos extremos e tratamento de erros
+- [x] Dimension calculations
+- [x] Device type detection
+- [x] Screen factor calculations
+- [x] Extension methods
+- [x] Edge cases and error handling
 
-### Testes de Integração
+### Integration Tests
 
-- [x] Integração UIKit
-- [x] Integração SwiftUI
-- [x] Benchmarks de performance
-- [x] Análise de uso de memória
+- [x] UIKit integration
+- [x] SwiftUI integration
+- [x] Performance benchmarks
+- [x] Memory usage analysis
 
-## 📚 Documentação
+## 📚 Documentation
 
-### Arquivos de Documentação
+### Documentation Files
 
-1. **README.md** - Documentação principal com exemplos
-2. **DOCUMENTATION.md** - Referência técnica completa
-3. **INSTALLATION.md** - Guia de instalação detalhado
-4. **USAGE_GUIDE.md** - Guia prático de uso
-5. **CHANGELOG.md** - Histórico de versões
-6. **PROJECT_SUMMARY.md** - Este resumo
+1. **README.md** - Main documentation with examples
+2. **DOCUMENTATION.md** - Complete technical reference
+3. **INSTALLATION.md** - Detailed installation guide
+4. **USAGE_GUIDE.md** - Practical usage guide
+5. **CHANGELOG.md** - Version history
+6. **PROJECT_SUMMARY.md** - This summary
 
-### Exemplos
+### Examples
+1. **UIKitExample.swift** - Complete UIKit example
+2. **SwiftUIExample.swift** - Complete SwiftUI example
 
-1. **UIKitExample.swift** - Exemplo completo com UIKit
-2. **SwiftUIExample.swift** - Exemplo completo com SwiftUI
-
-## 🔧 Configuração do Projeto
+## 🔧 Project Configuration
 
 ### CocoaPods
 ```ruby
@@ -210,46 +209,46 @@ pod 'AppDimens', '~> 1.0'
 ```
 
 ### Xcode Project
-- Framework target configurado
-- Build settings otimizados
-- Info.plist configurado
+- Framework target configured
+- Optimized build settings
+- Configured Info.plist
 
-## 🎯 Próximos Passos
+## 🎯 Next Steps
 
-### Melhorias Futuras
+### Future Improvements
 
-1. **Testes Unitários**: Adicionar suite completa de testes
-2. **CI/CD**: Configurar pipeline de integração contínua
-3. **Documentação**: Adicionar documentação inline com DocC
-4. **Performance**: Otimizações adicionais se necessário
-5. **Compatibilidade**: Suporte para versões mais antigas do iOS
+1. **Unit Tests**: Add a full test suite
+2. **CI/CD**: Configure a continuous integration pipeline
+3. **Documentation**: Add inline DocC documentation
+4. **Performance**: Additional optimizations if needed
+5. **Compatibility**: Support for older iOS versions
 
 ### Roadmap
 
-- [ ] Versão 1.1: Melhorias de performance
-- [ ] Versão 1.2: Novos tipos de dispositivo
-- [ ] Versão 2.0: API simplificada
+- [ ] Version 1.1: Performance improvements
+- [ ] Version 1.2: New device types
+- [ ] Version 2.0: Simplified API
 
-## 📄 Licença
+## 📄 License
 
-Este projeto está licenciado sob a Licença Apache 2.0 - veja o arquivo [LICENSE](LICENSE) para detalhes.
+This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Autor
+## 👨‍💻 Author
 
 **Jean Bodenberg**
 - GitHub: [@bodenberg](https://github.com/bodenberg)
 
-## 🤝 Contribuição
+## 🤝 Contributing
 
-Contribuições são bem-vindas! Por favor, sinta-se à vontade para enviar um Pull Request.
+Contributions are welcome! Please feel free to open a Pull Request.
 
-## 📞 Suporte
+## 📞 Support
 
-Para dúvidas, problemas ou contribuições:
+For questions, issues, or contributions:
 
-- **GitHub Issues**: [Criar issue](https://github.com/bodenberg/appdimens/issues)
-- **Documentação**: [GitHub Wiki](https://github.com/bodenberg/appdimens/wiki)
+- **GitHub Issues**: [Create issue](https://github.com/bodenberg/appdimens/issues)
+- **Documentation**: [GitHub Wiki](https://github.com/bodenberg/appdimens/wiki)
 
 ---
 
-**AppDimens iOS** - Dimensionamento responsivo feito simples! 🚀
+**AppDimens iOS** - Responsive dimensioning made simple! 🚀

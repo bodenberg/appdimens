@@ -1,27 +1,27 @@
-# 📱 AppDimens iOS - Resumo da Implementação Modular
+# 📱 AppDimens iOS - Modular Implementation Summary
 
-## 🎯 Objetivo Alcançado
+## 🎯 Goal Achieved
 
-Foi criada com sucesso uma estrutura modular para a biblioteca AppDimens iOS, permitindo escolha flexível entre diferentes módulos no CocoaPods e facilitando o desenvolvimento de jogos com Metal.
+A modular structure for the AppDimens iOS library has been successfully created, allowing flexible selection between different modules in CocoaPods and facilitating game development with Metal.
 
-## 🏗️ Estrutura Implementada
+## 🏗️ Implemented Structure
 
-### 📦 Módulos Criados
+### 📦 Created Modules
 
-| Módulo | Localização | Funcionalidade |
-|--------|-------------|----------------|
-| **Core** | `Sources/AppDimensCore/` | Funcionalidade básica de gerenciamento de dimensões |
-| **UI** | `Sources/AppDimensUI/` | Extensões para UIKit e SwiftUI |
-| **Games** | `Sources/AppDimensGames/` | Funcionalidade específica para Metal/games |
+| Module | Location | Functionality |
+|--------|----------|---------------|
+| **Core** | `Sources/AppDimensCore/` | Basic dimension management functionality |
+| **UI** | `Sources/AppDimensUI/` | Extensions for UIKit and SwiftUI |
+| **Games** | `Sources/AppDimensGames/` | Metal/game-specific functionality |
 
-### 📁 Organização de Arquivos
+### 📁 File Organization
 
 ```
 PROJETO_IOS/
 ├── Sources/
-│   ├── AppDimens/                    # Arquivo principal de exportação
+│   ├── AppDimens/                    # Main export file
 │   │   └── AppDimens.swift
-│   ├── AppDimensCore/                # Módulo Core
+│   ├── AppDimensCore/                # Core module
 │   │   ├── AppDimens.swift
 │   │   ├── AppDimensTypes.swift
 │   │   ├── AppDimensFixed.swift
@@ -32,11 +32,11 @@ PROJETO_IOS/
 │   │   ├── AppDimensProtocols.swift
 │   │   ├── AppDimensConvenience.swift
 │   │   └── AppDimensCore.swift
-│   ├── AppDimensUI/                  # Módulo UI
+│   ├── AppDimensUI/                  # UI module
 │   │   ├── AppDimensExtensions.swift
 │   │   ├── AppDimensEnvironment.swift
 │   │   └── AppDimensUI.swift
-│   └── AppDimensGames/               # Módulo Games
+│   └── AppDimensGames/               # Games module
 │       ├── AppDimensMetal.swift
 │       ├── AppDimensGameTypes.swift
 │       ├── AppDimensGameExtensions.swift
@@ -44,49 +44,49 @@ PROJETO_IOS/
 │       └── AppDimensGamesMain.swift
 ├── Examples/
 │   └── MetalGameExample.swift
-├── AppDimens.podspec                 # Configuração modular do CocoaPods
-├── README_MODULAR.md                 # Documentação modular
-├── INSTALLATION_GUIDE.md             # Guia de instalação
-└── MODULAR_IMPLEMENTATION_SUMMARY.md # Este arquivo
+├── AppDimens.podspec                 # Modular CocoaPods configuration
+├── README_MODULAR.md                 # Modular documentation
+├── INSTALLATION_GUIDE.md             # Installation guide
+└── MODULAR_IMPLEMENTATION_SUMMARY.md # This file
 ```
 
-## 🚀 Funcionalidades Implementadas
+## 🚀 Implemented Features
 
-### 🔧 Módulo Core
+### 🔧 Core Module
 
-- ✅ Sistema de dimensionamento responsivo (Fixed/Dynamic)
-- ✅ Cálculos de fatores de ajuste
-- ✅ Suporte a unidades físicas (mm, cm, inch)
-- ✅ Sistema de qualificadores de tela
-- ✅ API baseada em protocolos
-- ✅ Extensões de conveniência
+- ✅ Responsive dimensioning system (Fixed/Dynamic)
+- ✅ Adjustment factor calculations
+- ✅ Physical units support (mm, cm, inch)
+- ✅ Screen qualifiers system
+- ✅ Protocol-based API
+- ✅ Convenience extensions
 
-### 🎨 Módulo UI
+### 🎨 UI Module
 
-- ✅ Extensões para UIKit
-- ✅ Extensões para SwiftUI
-- ✅ Sistema de ambiente SwiftUI
-- ✅ Integração com DimensProvider
-- ✅ Extensões de fontes e espaçamento
+- ✅ Extensions for UIKit
+- ✅ Extensions for SwiftUI
+- ✅ SwiftUI Environment system
+- ✅ Integration with DimensProvider
+- ✅ Font and spacing extensions
 
-### 🎮 Módulo Games
+### 🎮 Games Module
 
-- ✅ Integração com Metal e MetalKit
-- ✅ Gerenciamento de viewport
-- ✅ Múltiplos modos de escalonamento:
-  - Uniform (escalonamento uniforme)
-  - Horizontal (escalonamento horizontal)
-  - Vertical (escalonamento vertical)
-  - AspectRatio (escalonamento com proporção)
-  - Viewport (escalonamento por viewport)
-- ✅ Conversão de coordenadas (Screen ↔ NDC)
-- ✅ Extensões para simd (float2, float3, float4)
-- ✅ Tipos específicos para jogos
-- ✅ Configurações de performance
+- ✅ Integration with Metal and MetalKit
+- ✅ Viewport management
+- ✅ Multiple scaling modes:
+  - Uniform (uniform scaling)
+  - Horizontal (horizontal scaling)
+  - Vertical (vertical scaling)
+  - AspectRatio (aspect-ratio-aware scaling)
+  - Viewport (viewport-based scaling)
+- ✅ Coordinate conversion (Screen ↔ NDC)
+- ✅ Extensions for simd (float2, float3, float4)
+- ✅ Game-specific types
+- ✅ Performance settings
 
-## 📦 Configuração do CocoaPods
+## 📦 CocoaPods Configuration
 
-### Podspec Atualizado
+### Updated Podspec
 
 ```ruby
 Pod::Spec.new do |spec|
@@ -118,27 +118,27 @@ Pod::Spec.new do |spec|
 end
 ```
 
-## 🎯 Opções de Instalação
+## 🎯 Installation Options
 
-### Para Apps iOS Padrão
+### For Standard iOS Apps
 ```ruby
-pod 'AppDimens'  # Inclui Core + UI automaticamente
+pod 'AppDimens'  # Includes Core + UI automatically
 ```
 
-### Para Desenvolvimento de Jogos
+### For Game Development
 ```ruby
 pod 'AppDimens/Core'
 pod 'AppDimens/Games'
 ```
 
-### Para Bibliotecas que Precisam Apenas de Cálculos
+### For Libraries That Only Need Calculations
 ```ruby
 pod 'AppDimens/Core'
 ```
 
-## 💻 Exemplos de Uso
+## 💻 Usage Examples
 
-### App iOS Padrão
+### Standard iOS App
 ```swift
 import AppDimens
 
@@ -157,121 +157,121 @@ struct ContentView: View {
 }
 ```
 
-### Jogo com Metal
+### Game with Metal
 ```swift
 import AppDimensGames
 import Metal
 
-// Inicialização
+// Initialization
 let device = MTLCreateSystemDefaultDevice()!
 let viewport = MTLViewport(originX: 0, originY: 0, width: 1920, height: 1080, znear: 0, zfar: 1)
 AppDimensGames.shared.initialize(device: device, viewport: viewport)
 
-// Uso
+// Usage
 let buttonSize = AppDimensGames.uniform(64.0)
 let fontSize = AppDimensGames.aspectRatio(24.0)
 let spacing = AppDimensGames.viewport(16.0)
 
-// Extensões para simd
+// Extensions for simd
 let position = simd_float2(100, 200)
 let scaledPosition = position.gameUniform(AppDimensGames.shared.getMetalManager()!)
 ```
 
-## 🔧 Funcionalidades Específicas para Games
+## 🔧 Game-Specific Features
 
-### Modos de Escalonamento
+### Scaling Modes
 
-1. **Uniform**: Escalonamento uniforme baseado na menor dimensão do viewport
-2. **Horizontal**: Escalonamento baseado na largura do viewport
-3. **Vertical**: Escalonamento baseado na altura do viewport
-4. **AspectRatio**: Escalonamento consciente da proporção com ajuste logarítmico
-5. **Viewport**: Escalonamento baseado na diagonal do viewport
+1. **Uniform**: Uniform scaling based on the smallest viewport dimension
+2. **Horizontal**: Scaling based on viewport width
+3. **Vertical**: Scaling based on viewport height
+4. **AspectRatio**: Aspect-ratio-aware scaling with logarithmic adjustment
+5. **Viewport**: Scaling based on the viewport diagonal
 
-### Conversão de Coordenadas
+### Coordinate Conversion
 
-- `screenToNDC()`: Converte coordenadas de tela para NDC
-- `ndcToScreen()`: Converte coordenadas NDC para tela
-- Extensões para `simd_float2`, `simd_float3`, `simd_float4`
+- `screenToNDC()`: Converts screen coordinates to NDC
+- `ndcToScreen()`: Converts NDC coordinates to screen
+- Extensions for `simd_float2`, `simd_float3`, `simd_float4`
 
-### Tipos Específicos para Games
+### Game-Specific Types
 
-- `GameDeviceType`: Tipos de dispositivos para jogos
-- `GameResolutionType`: Tipos de resolução comuns
-- `GameUIElementType`: Tipos de elementos de UI
-- `GameViewportConfig`: Configuração de viewport
-- `GamePerformanceSettings`: Configurações de performance
+- `GameDeviceType`: Device types for games
+- `GameResolutionType`: Common resolution types
+- `GameUIElementType`: UI element types
+- `GameViewportConfig`: Viewport configuration
+- `GamePerformanceSettings`: Performance settings
 
-## 📊 Benefícios da Estrutura Modular
+## 📊 Benefits of the Modular Structure
 
-### ✅ Vantagens
+### ✅ Advantages
 
-1. **Flexibilidade**: Escolha apenas os módulos necessários
-2. **Tamanho Otimizado**: Apps menores com menos dependências
-3. **Manutenibilidade**: Código organizado em módulos específicos
-4. **Escalabilidade**: Fácil adição de novos módulos
-5. **Compatibilidade**: Suporte a diferentes versões do iOS
-6. **Performance**: Otimizações específicas para cada uso
+1. **Flexibility**: Choose only the modules you need
+2. **Optimized Size**: Smaller apps with fewer dependencies
+3. **Maintainability**: Code organized into specific modules
+4. **Scalability**: Easy to add new modules
+5. **Compatibility**: Support for different iOS versions
+6. **Performance**: Module-specific optimizations
 
-### 📈 Estatísticas
+### 📈 Statistics
 
-| Módulo | Tamanho Aproximado | Dependências |
-|--------|-------------------|--------------|
+| Module | Approx Size | Dependencies |
+|--------|-------------|--------------|
 | Core | ~50KB | Foundation, UIKit |
 | UI | ~30KB | Core + SwiftUI |
 | Games | ~70KB | Core + Metal + MetalKit |
 
-## 🎯 Casos de Uso
+## 🎯 Use Cases
 
-### Apps iOS Padrão
-- **Módulos**: Core + UI
-- **Uso**: Apps que usam UIKit e/ou SwiftUI
-- **Benefício**: Dimensionamento responsivo completo
+### Standard iOS Apps
+- **Modules**: Core + UI
+- **Use**: Apps using UIKit and/or SwiftUI
+- **Benefit**: Full responsive dimensioning
 
-### Desenvolvimento de Jogos
-- **Módulos**: Core + Games
-- **Uso**: Jogos que usam Metal para renderização
-- **Benefício**: Escalonamento otimizado para viewport
+### Game Development
+- **Modules**: Core + Games
+- **Use**: Games using Metal for rendering
+- **Benefit**: Viewport-optimized scaling
 
-### Bibliotecas
-- **Módulos**: Core
-- **Uso**: Bibliotecas que precisam apenas de cálculos
-- **Benefício**: Dependências mínimas
+### Libraries
+- **Modules**: Core
+- **Use**: Libraries that only need calculations
+- **Benefit**: Minimal dependencies
 
-## 🚀 Próximos Passos
+## 🚀 Next Steps
 
-### Melhorias Futuras
+### Future Improvements
 
-1. **Testes Unitários**: Adicionar testes para todos os módulos
-2. **Documentação**: Expandir documentação com exemplos
-3. **Performance**: Otimizações adicionais
-4. **Novos Módulos**: Considerar módulos para outras plataformas
+1. **Unit Tests**: Add tests for all modules
+2. **Documentation**: Expand docs with examples
+3. **Performance**: Additional optimizations
+4. **New Modules**: Consider modules for other platforms
 
 ### Roadmap
 
-- [ ] Versão 1.1: Melhorias de performance
-- [ ] Versão 1.2: Novos tipos de dispositivo
-- [ ] Versão 2.0: API simplificada
-- [ ] Versão 2.1: Suporte para macOS
-- [ ] Versão 2.2: Suporte para tvOS
+- [ ] Version 1.1: Performance improvements
+- [ ] Version 1.2: New device types
+- [ ] Version 2.0: Simplified API
+- [ ] Version 2.1: macOS support
+- [ ] Version 2.2: tvOS support
 
-## 📄 Conclusão
+## 📄 Conclusion
 
-A implementação modular da biblioteca AppDimens iOS foi concluída com sucesso, fornecendo:
+The modular implementation of the AppDimens iOS library has been successfully completed, providing:
 
-- ✅ Estrutura modular flexível
-- ✅ Suporte completo para Metal/games
-- ✅ Integração com CocoaPods
-- ✅ Documentação abrangente
-- ✅ Exemplos práticos
-- ✅ Compatibilidade com iOS 13.0+
+- ✅ Flexible modular structure
+- ✅ Full support for Metal/games
+- ✅ CocoaPods integration
+- ✅ Comprehensive documentation
+- ✅ Practical examples
+- ✅ Compatibility with iOS 13.0+
 
-A biblioteca agora oferece uma solução completa para dimensionamento responsivo em iOS, com suporte específico para desenvolvimento de jogos usando Metal, mantendo a flexibilidade de escolha dos módulos necessários para cada projeto.
+The library now offers a complete solution for responsive dimensioning on iOS, with game-specific support using Metal, while keeping the flexibility to choose the modules required by each project.
 
-## 👨‍💻 Autor
+## 👨‍💻 Author
 
 **Jean Bodenberg**
 - GitHub: [@bodenberg](https://github.com/bodenberg)
 
-## 📄 Licença
+## 📄 License
 
-Este projeto está licenciado sob a Licença Apache 2.0 - veja o arquivo [LICENSE](LICENSE) para detalhes.
+This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details.

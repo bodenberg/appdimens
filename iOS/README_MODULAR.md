@@ -1,47 +1,47 @@
-# 📱 AppDimens iOS - Estrutura Modular
+# 📱 AppDimens iOS - Modular Structure
 
-[Idiomas: [Português (BR)](../LANG/pt-BR/iOS/README_MODULAR.md) | [Español](../LANG/es/iOS/README_MODULAR.md) | [हिन्दी](../LANG/hi/iOS/README_MODULAR.md) | [Русский](../LANG/ru/iOS/README_MODULAR.md) | [中文](../LANG/zh/iOS/README_MODULAR.md) | [日本語](../LANG/ja/iOS/README_MODULAR.md)]
+> Languages: [Português (BR)](../LANG/pt-BR/iOS/README_MODULAR.md) | [Español](../LANG/es/iOS/README_MODULAR.md) | [हिन्दी](../LANG/hi/iOS/README_MODULAR.md) | [Русский](../LANG/ru/iOS/README_MODULAR.md) | [中文](../LANG/zh/iOS/README_MODULAR.md) | [日本語](../LANG/ja/iOS/README_MODULAR.md)
 
 [![Version](https://img.shields.io/cocoapods/v/AppDimens.svg?style=flat)](https://cocoapods.org/pods/AppDimens)
 [![License](https://img.shields.io/cocoapods/l/AppDimens.svg?style=flat)](https://cocoapods.org/pods/AppDimens)
 [![Platform](https://img.shields.io/cocoapods/p/AppDimens.svg?style=flat)](https://cocoapods.org/pods/AppDimens)
 
-**AppDimens** é um sistema de gerenciamento de dimensões responsivas para iOS que ajusta automaticamente valores baseados nas dimensões da tela, garantindo consistência de layout em qualquer tamanho ou proporção de tela.
+**AppDimens** is a responsive dimension management system for iOS that automatically adjusts values based on screen dimensions, ensuring layout consistency on any screen size or aspect ratio.
 
-## 🏗️ Arquitetura Modular
+## 🏗️ Modular Architecture
 
-A biblioteca AppDimens foi reorganizada em uma estrutura modular para permitir escolha flexível dos componentes necessários:
+The AppDimens library has been reorganized into a modular structure to allow flexible selection of required components:
 
-### 📦 Módulos Disponíveis
+### 📦 Available Modules
 
-| Módulo | Descrição | Dependências |
-|--------|-----------|--------------|
-| **Core** | Funcionalidade básica de gerenciamento de dimensões | Foundation, UIKit |
-| **UI** | Extensões para UIKit e SwiftUI | Core + SwiftUI |
-| **Games** | Funcionalidade específica para Metal/games | Core + Metal + MetalKit |
+| Module | Description | Dependencies |
+|--------|-------------|--------------|
+| **Core** | Basic dimension management functionality | Foundation, UIKit |
+| **UI** | Extensions for UIKit and SwiftUI | Core + SwiftUI |
+| **Games** | Game-specific functionality for Metal | Core + Metal + MetalKit |
 
-## 🚀 Instalação
+## 🚀 Installation
 
 ### CocoaPods
 
-#### Instalação Completa (Recomendado)
+#### Full Installation (Recommended)
 ```ruby
 pod 'AppDimens'
 ```
-Isso inclui automaticamente os módulos Core e UI.
+This automatically includes the Core and UI modules.
 
-#### Instalação Modular
+#### Modular Installation
 ```ruby
-# Apenas o módulo Core
+# Core only
 pod 'AppDimens/Core'
 
-# Core + UI (padrão)
+# Core + UI (default)
 pod 'AppDimens/UI'
 
-# Core + Games (para desenvolvimento de jogos)
+# Core + Games (for game development)
 pod 'AppDimens/Games'
 
-# Todos os módulos
+# All modules
 pod 'AppDimens/Core'
 pod 'AppDimens/UI'
 pod 'AppDimens/Games'
@@ -53,31 +53,31 @@ pod 'AppDimens/Games'
 .package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.5")
 ```
 
-## 📖 Uso por Módulo
+## 📖 Usage by Module
 
-### 🔧 Módulo Core
+### 🔧 Core Module
 
-O módulo Core fornece a funcionalidade básica de gerenciamento de dimensões:
+The Core module provides the basic dimension management functionality:
 
 ```swift
 import AppDimensCore
 
-// Uso básico
+// Basic usage
 let buttonHeight = AppDimens.fixed(48).toPoints()
 let cardWidth = AppDimens.dynamic(100).toPoints()
 
-// Sintaxe simplificada
+// Simplified syntax
 let padding = 16.fxpt
 let margin = 100.dypt
 
-// Unidades físicas
+// Physical units
 let width = 2.cm
 let height = 1.inch
 ```
 
-### 🎨 Módulo UI
+### 🎨 UI Module
 
-O módulo UI adiciona integração com UIKit e SwiftUI:
+The UI module adds integration with UIKit and SwiftUI:
 
 ```swift
 import AppDimensUI
@@ -86,7 +86,7 @@ import AppDimensUI
 struct ContentView: View {
     var body: some View {
         VStack(spacing: 20.fxpt) {
-            Text("Título")
+            Text("Title")
                 .font(.fxSystem(size: 24, weight: .bold))
                 .fxPadding(16)
             
@@ -103,94 +103,94 @@ button.fxTitleFontSize(16)
 button.fxCornerRadius(8)
 ```
 
-### 🎮 Módulo Games
+### 🎮 Games Module
 
-O módulo Games fornece funcionalidade específica para desenvolvimento de jogos com Metal:
+The Games module provides functionality specific to game development with Metal:
 
 ```swift
 import AppDimensGames
 import Metal
 
-// Inicialização
+// Initialization
 let device = MTLCreateSystemDefaultDevice()!
 let viewport = MTLViewport(originX: 0, originY: 0, width: 1920, height: 1080, znear: 0, zfar: 1)
 AppDimensGames.shared.initialize(device: device, viewport: viewport)
 
-// Uso em jogos
+// Game usage
 let buttonSize = AppDimensGames.uniform(64.0)
 let fontSize = AppDimensGames.aspectRatio(24.0)
 let spacing = AppDimensGames.viewport(16.0)
 
-// Extensões para simd
+// Extensions for simd
 let position = simd_float2(100, 200)
 let scaledPosition = position.gameUniform(AppDimensGames.shared.getMetalManager()!)
 
-// Conversão de coordenadas
+// Coordinate conversion
 let ndcPoint = AppDimensGames.shared.screenToNDC(simd_float2(960, 540))
 ```
 
-## 🎯 Escolha do Módulo
+## 🎯 Module Selection
 
-### Para Apps iOS Padrão
+### For Standard iOS Apps
 ```ruby
 pod 'AppDimens'  # Inclui Core + UI automaticamente
 ```
 
-### Para Desenvolvimento de Jogos
+### For Game Development
 ```ruby
 pod 'AppDimens/Core'
 pod 'AppDimens/Games'
 ```
 
-### Para Bibliotecas que Precisam Apenas de Cálculos
+### For Libraries That Only Need Calculations
 ```ruby
 pod 'AppDimens/Core'
 ```
 
-### Para Apps que Usam Apenas UIKit (sem SwiftUI)
+### For Apps That Use Only UIKit (no SwiftUI)
 ```ruby
 pod 'AppDimens/Core'
-# Use apenas as extensões UIKit do módulo Core
+# Use only the UIKit extensions from the Core module
 ```
 
-## 🔧 Configuração Avançada
+## 🔧 Advanced Configuration
 
-### Módulo Core
+### Core Module
 ```swift
-// Configuração customizada
+// Custom configuration
 let customDimension = AppDimens.fixed(16)
-    .screen(.phone, 14)           // 14pt para iPhones
-    .screen(.tablet, 18)          // 18pt para iPads
-    .aspectRatio(enable: true)    // Ativar ajuste de proporção
+    .screen(.phone, 14)           // 14pt for iPhones
+    .screen(.tablet, 18)          // 18pt for iPads
+    .aspectRatio(enable: true)    // Enable aspect ratio adjustment
     .toPoints()
 ```
 
-### Módulo Games
+### Games Module
 ```swift
-// Configuração de performance
+// Performance configuration
 let performanceSettings = GamePerformanceSettings.highPerformance
 
-// Diferentes modos de escalonamento
-let uniformSize = AppDimensGames.uniform(100.0)      // Escalonamento uniforme
-let horizontalSize = AppDimensGames.horizontal(100.0) // Escalonamento horizontal
-let viewportSize = AppDimensGames.viewport(100.0)     // Escalonamento por viewport
+// Different scaling modes
+let uniformSize = AppDimensGames.uniform(100.0)      // Uniform scaling
+let horizontalSize = AppDimensGames.horizontal(100.0) // Horizontal scaling
+let viewportSize = AppDimensGames.viewport(100.0)     // Viewport scaling
 ```
 
-## 📊 Comparação de Módulos
+## 📊 Module Comparison
 
-| Funcionalidade | Core | UI | Games |
-|----------------|------|----|----|
-| Cálculos básicos | ✅ | ✅ | ✅ |
-| Extensões UIKit | ✅ | ✅ | ✅ |
-| Extensões SwiftUI | ❌ | ✅ | ❌ |
-| Integração Metal | ❌ | ❌ | ✅ |
-| Coordenadas NDC | ❌ | ❌ | ✅ |
-| Escalonamento de jogos | ❌ | ❌ | ✅ |
-| Tamanho da biblioteca | ~50KB | ~80KB | ~120KB |
+| Functionality | Core | UI | Games |
+|---------------|------|----|-------|
+| Basic calculations | ✅ | ✅ | ✅ |
+| UIKit extensions | ✅ | ✅ | ✅ |
+| SwiftUI extensions | ❌ | ✅ | ❌ |
+| Metal integration | ❌ | ❌ | ✅ |
+| NDC coordinates | ❌ | ❌ | ✅ |
+| Game scaling | ❌ | ❌ | ✅ |
+| Library size | ~50KB | ~80KB | ~120KB |
 
-## 🎨 Exemplos de Uso
+## 🎨 Usage Examples
 
-### App iOS Padrão
+### Standard iOS App
 ```swift
 import AppDimens
 
@@ -209,7 +209,7 @@ struct ContentView: View {
 }
 ```
 
-### Jogo com Metal
+### Game with Metal
 ```swift
 import AppDimensGames
 import Metal
@@ -227,27 +227,27 @@ class GameRenderer {
         let fontSize = 24.0.gameFontSize(metalManager)
         let spacing = 16.0.gameSpacing(metalManager)
         
-        // Renderizar elementos de UI com dimensões escalonadas
+        // Render UI elements with scaled dimensions
     }
 }
 ```
 
-## 📚 Documentação Adicional
+## 📚 Additional Documentation
 
-- [Documentação Core](Sources/AppDimensCore/README.md)
-- [Documentação UI](Sources/AppDimensUI/README.md)
-- [Documentação Games](Sources/AppDimensGames/README.md)
-- [Guia de Migração](MIGRATION_GUIDE.md)
+- [Core Documentation](Sources/AppDimensCore/README.md)
+- [UI Documentation](Sources/AppDimensUI/README.md)
+- [Games Documentation](Sources/AppDimensGames/README.md)
+- [Migration Guide](MIGRATION_GUIDE.md)
 
-## 🤝 Contribuição
+## 🤝 Contributing
 
-Contribuições são bem-vindas! Por favor, sinta-se à vontade para enviar um Pull Request.
+Contributions are welcome! Please feel free to open a Pull Request.
 
-## 📄 Licença
+## 📄 License
 
-Este projeto está licenciado sob a Licença Apache 2.0 - veja o arquivo [LICENSE](LICENSE) para detalhes.
+This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Autor
+## 👨‍💻 Author
 
 **Jean Bodenberg**
 - GitHub: [@bodenberg](https://github.com/bodenberg)

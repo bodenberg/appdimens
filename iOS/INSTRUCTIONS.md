@@ -1,50 +1,50 @@
-# 📋 Instruções de Uso do Projeto AppDimens iOS
+# 📋 AppDimens iOS Project Usage Instructions
 
 > Languages: [Português (BR)](../LANG/pt-BR/iOS/INSTRUCTIONS.md) | [Español](../LANG/es/iOS/INSTRUCTIONS.md) | [हिन्दी](../LANG/hi/iOS/INSTRUCTIONS.md) | [Русский](../LANG/ru/iOS/INSTRUCTIONS.md) | [中文](../LANG/zh/iOS/INSTRUCTIONS.md) | [日本語](../LANG/ja/iOS/INSTRUCTIONS.md)
 
-## 🎯 Objetivo
+## 🎯 Goal
 
-Este projeto converte a biblioteca Android AppDimens para iOS, criando uma biblioteca Swift/SwiftUI que pode ser usada com CocoaPods.
+This project converts the Android AppDimens library to iOS, creating a Swift/SwiftUI library that can be used with CocoaPods.
 
-## 📁 Estrutura Criada
+## 📁 Created Structure
 
 ```
 PROJETO_IOS/
-├── AppDimens.podspec              # Configuração para CocoaPods
-├── LICENSE                        # Licença Apache 2.0
-├── README.md                      # Documentação principal
-├── CHANGELOG.md                   # Histórico de versões
-├── DOCUMENTATION.md               # Documentação técnica detalhada
-├── INSTALLATION.md                # Guia de instalação
-├── USAGE_GUIDE.md                 # Guia prático de uso
-├── PROJECT_SUMMARY.md             # Resumo completo do projeto
-├── INSTRUCTIONS.md                # Este arquivo
-├── AppDimens.xcodeproj/           # Projeto Xcode configurado
+├── AppDimens.podspec              # CocoaPods configuration
+├── LICENSE                        # Apache 2.0 license
+├── README.md                      # Main documentation
+├── CHANGELOG.md                   # Version history
+├── DOCUMENTATION.md               # Detailed technical documentation
+├── INSTALLATION.md                # Installation guide
+├── USAGE_GUIDE.md                 # Practical usage guide
+├── PROJECT_SUMMARY.md             # Full project summary
+├── INSTRUCTIONS.md                # This file
+├── AppDimens.xcodeproj/           # Configured Xcode project
 │   └── project.pbxproj
 ├── AppDimens/
-│   └── Info.plist                 # Configurações do framework
-├── Sources/AppDimens/             # Código fonte Swift
-│   ├── AppDimens.swift            # Classe principal singleton
-│   ├── AppDimensTypes.swift       # Tipos, enums e estruturas
-│   ├── AppDimensAdjustmentFactors.swift # Cálculos de fatores de tela
-│   ├── AppDimensFixed.swift       # Dimensionamento fixo (FX)
-│   ├── AppDimensDynamic.swift     # Dimensionamento dinâmico (DY)
-│   └── AppDimensExtensions.swift  # Extensões para SwiftUI e UIKit
-└── Examples/                      # Exemplos práticos
-    ├── UIKitExample.swift         # Exemplo completo com UIKit
-    └── SwiftUIExample.swift       # Exemplo completo com SwiftUI
+│   └── Info.plist                 # Framework settings
+├── Sources/AppDimens/             # Swift source code
+│   ├── AppDimens.swift            # Main singleton class
+│   ├── AppDimensTypes.swift       # Types, enums, and structs
+│   ├── AppDimensAdjustmentFactors.swift # Screen factor calculations
+│   ├── AppDimensFixed.swift       # Fixed scaling (FX)
+│   ├── AppDimensDynamic.swift     # Dynamic scaling (DY)
+│   └── AppDimensExtensions.swift  # Extensions for SwiftUI and UIKit
+└── Examples/                      # Practical examples
+    ├── UIKitExample.swift         # Full UIKit example
+    └── SwiftUIExample.swift       # Full SwiftUI example
 ```
 
-## 🚀 Como Usar
+## 🚀 How to Use
 
-### 1. Instalação via CocoaPods
+### 1. Installation via CocoaPods
 
 ```ruby
-# No seu Podfile
+# In your Podfile
 platform :ios, '13.0'
 use_frameworks!
 
-target 'SeuApp' do
+target 'YourApp' do
   pod 'AppDimens'
 end
 ```
@@ -53,16 +53,16 @@ end
 pod install
 ```
 
-### 2. Uso Básico
+### 2. Basic Usage
 
 ```swift
 import AppDimens
 
-// Fixed scaling - para elementos de UI
+// Fixed scaling - for UI elements
 let buttonHeight = AppDimens.fixed(48).toPoints()
 let padding = 16.fxpt
 
-// Dynamic scaling - para layouts
+// Dynamic scaling - for layouts
 let cardWidth = AppDimens.dynamic(200).toPoints()
 let containerWidth = 300.dypt
 ```
@@ -76,7 +76,7 @@ import AppDimens
 struct ContentView: View {
     var body: some View {
         VStack(spacing: 20.fxpt) {
-            Text("Título")
+            Text("Title")
                 .font(.fxSystem(size: 24, weight: .bold))
                 .fxPadding(16)
             
@@ -107,31 +107,31 @@ class ViewController: UIViewController {
 }
 ```
 
-## 🔧 Funcionalidades Implementadas
+## 🔧 Implemented Features
 
 ### ✅ Core Features
 
-- **AppDimens**: Classe singleton principal
-- **AppDimensFixed**: Dimensionamento fixo com ajuste logarítmico
-- **AppDimensDynamic**: Dimensionamento dinâmico com ajuste proporcional
-- **AppDimensAdjustmentFactors**: Cálculos de fatores de tela
-- **AppDimensTypes**: Tipos e enums (DeviceType, ScreenType, etc.)
+- **AppDimens**: Main singleton class
+- **AppDimensFixed**: Fixed scaling with logarithmic adjustment
+- **AppDimensDynamic**: Dynamic scaling with proportional adjustment
+- **AppDimensAdjustmentFactors**: Screen factor calculations
+- **AppDimensTypes**: Types and enums (DeviceType, ScreenType, etc.)
 
-### ✅ Extensões
+### ✅ Extensions
 
 - **CGFloat/Int Extensions**: `16.fxpt`, `100.dypt`, etc.
 - **SwiftUI Extensions**: `.fxPadding()`, `.fxFrame()`, `.fxCornerRadius()`
 - **UIKit Extensions**: `.fxFontSize()`, `.fxCornerRadius()`, etc.
 
-### ✅ Configurações Avançadas
+### ✅ Advanced Settings
 
-- **Device-Specific Values**: Valores customizados por tipo de dispositivo
-- **Screen Qualifiers**: Qualificadores de tela para controle fino
-- **Aspect Ratio Adjustment**: Ajuste de proporção para telas extremas
-- **Multi-Window Support**: Suporte para modo multi-janela
-- **Physical Units**: Conversão de unidades físicas (mm, cm, inches)
+- **Device-Specific Values**: Custom values per device type
+- **Screen Qualifiers**: Screen qualifiers for fine control
+- **Aspect Ratio Adjustment**: Aspect ratio adjustment for extreme screens
+- **Multi-Window Support**: Multi-window mode support
+- **Physical Units**: Conversion of physical units (mm, cm, inches)
 
-## 📊 Comparação com Android
+## 📊 Comparison with Android
 
 | Android | iOS |
 |---------|-----|
@@ -142,19 +142,19 @@ class ViewController: UIViewController {
 | `ScreenType.LOWEST` | `ScreenType.lowest` |
 | `UiModeType.PHONE` | `DeviceType.phone` |
 
-## 🎯 Modelos Matemáticos
+## 🎯 Mathematical Models
 
-### Fixed (FX) - Ajuste Refinado
-- **Filosofia**: Ajuste logarítmico para escalonamento refinado
-- **Uso**: Botões, paddings, fontes, ícones
-- **Crescimento**: Suave e controlado
+### Fixed (FX) - Refined Adjustment
+- **Philosophy**: Logarithmic adjustment for refined scaling
+- **Use**: Buttons, paddings, fonts, icons
+- **Growth**: Smooth and controlled
 
-### Dynamic (DY) - Ajuste Proporcional
-- **Filosofia**: Ajuste baseado em porcentagem
-- **Uso**: Containers, espaçadores, grids
-- **Crescimento**: Linear mantendo porcentagem da tela
+### Dynamic (DY) - Proportional Adjustment
+- **Philosophy**: Percentage-based adjustment
+- **Use**: Containers, spacers, grids
+- **Growth**: Linear while keeping screen percentage
 
-## 📱 Suporte a Dispositivos
+## 📱 Device Support
 
 - **Phone**: iPhones
 - **Tablet**: iPads
@@ -162,114 +162,114 @@ class ViewController: UIViewController {
 - **TV**: Apple TV
 - **CarPlay**: CarPlay
 
-## 🔍 Exemplos Práticos
+## 🔍 Practical Examples
 
-### Card Responsivo
+### Responsive Card
 ```swift
 struct ResponsiveCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12.fxpt) {
-            Text("Título")
+            Text("Title")
                 .font(.fxSystem(size: 18, weight: .semibold))
             
-            Text("Descrição que se adapta ao tamanho da tela.")
+            Text("Description that adapts to the screen size.")
                 .font(.fxSystem(size: 14))
                 .foregroundColor(.secondary)
         }
         .fxPadding(16)
-        .dyFrame(width: 300)  // Largura dinâmica
+        .dyFrame(width: 300)  // Dynamic width
         .background(Color(.systemGray6))
         .fxCornerRadius(12)
     }
 }
 ```
 
-### Layout Percentual
+### Percentage Layout
 ```swift
 struct PercentageLayout: View {
     var body: some View {
         Rectangle()
             .fill(Color.blue.opacity(0.3))
-            .dyFrame(width: AppDimens.percentage(0.8))  // 80% da tela
+            .dyFrame(width: AppDimens.percentage(0.8))  // 80% of the screen
             .fxFrame(height: 100)
             .fxCornerRadius(8)
     }
 }
 ```
 
-## 🛠️ Configuração do Projeto
+## 🛠️ Project Configuration
 
 ### Build Settings
 - **iOS Deployment Target**: 13.0+
 - **Swift Language Version**: Swift 5
 - **Enable Bitcode**: No
 
-### Dependências
-- **UIKit**: Para extensões UIKit
-- **SwiftUI**: Para extensões SwiftUI (iOS 13.0+)
+### Dependencies
+- **UIKit**: For UIKit extensions
+- **SwiftUI**: For SwiftUI extensions (iOS 13.0+)
 
-## 📚 Documentação
+## 📚 Documentation
 
-### Arquivos de Documentação
-1. **README.md** - Documentação principal
-2. **DOCUMENTATION.md** - Referência técnica
-3. **INSTALLATION.md** - Guia de instalação
-4. **USAGE_GUIDE.md** - Guia prático
-5. **CHANGELOG.md** - Histórico de versões
-6. **PROJECT_SUMMARY.md** - Resumo completo
+### Documentation Files
+1. **README.md** - Main documentation
+2. **DOCUMENTATION.md** - Technical reference
+3. **INSTALLATION.md** - Installation guide
+4. **USAGE_GUIDE.md** - Practical guide
+5. **CHANGELOG.md** - Version history
+6. **PROJECT_SUMMARY.md** - Complete summary
 
-### Exemplos
-1. **UIKitExample.swift** - Exemplo UIKit completo
-2. **SwiftUIExample.swift** - Exemplo SwiftUI completo
+### Examples
+1. **UIKitExample.swift** - Complete UIKit example
+2. **SwiftUIExample.swift** - Complete SwiftUI example
 
-## 🚀 Próximos Passos
+## 🚀 Next Steps
 
-### Para Desenvolvedores
-1. **Teste a biblioteca** nos seus projetos
-2. **Reporte bugs** via GitHub Issues
-3. **Sugira melhorias** via GitHub Discussions
-4. **Contribua** com Pull Requests
+### For Developers
+1. **Test the library** in your projects
+2. **Report bugs** via GitHub Issues
+3. **Suggest improvements** via GitHub Discussions
+4. **Contribute** with Pull Requests
 
-### Para Distribuição
-1. **Teste em diferentes dispositivos**
-2. **Valide performance**
-3. **Atualize documentação**
-4. **Publique no CocoaPods**
+### For Distribution
+1. **Test on different devices**
+2. **Validate performance**
+3. **Update documentation**
+4. **Publish on CocoaPods**
 
 ## 🔧 Troubleshooting
 
-### Problemas Comuns
+### Common Issues
 
-1. **Import não funciona**
+1. **Import does not work**
    ```bash
    pod install
-   # Limpe e reconstrua o projeto
+   # Clean and rebuild the project
    ```
 
-2. **Dimensões não aplicam**
+2. **Dimensions not applying**
    ```swift
-   import AppDimens  // Verifique se importou
-   16.fxpt          // Confirme a sintaxe
+   import AppDimens  // Check you imported
+   16.fxpt          // Confirm the syntax
    ```
 
-3. **Performance lenta**
+3. **Slow performance**
    ```swift
-   // Cache dimensões frequentemente usadas
+   // Cache frequently used dimensions
    private let buttonHeight = AppDimens.fixed(44).toPoints()
    ```
 
-## 📞 Suporte
+## 📞 Support
 
-- **GitHub Issues**: [Criar issue](https://github.com/bodenberg/appdimens/issues)
- - **Email**: canal privado
-- **Documentação**: [GitHub Wiki](https://github.com/bodenberg/appdimens/wiki)
+- **GitHub Issues**: [Create issue](https://github.com/bodenberg/appdimens/issues)
+- **Email**: private channel
+- **Documentation**: [GitHub Wiki](https://github.com/bodenberg/appdimens/wiki)
 
-## 📄 Licença
+## 📄 License
 
-Este projeto está licenciado sob a Licença Apache 2.0 - veja o arquivo [LICENSE](LICENSE) para detalhes.
+This project is licensed under the Apache 2.0 License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-**AppDimens iOS** - Dimensionamento responsivo feito simples! 🚀
+**AppDimens iOS** - Responsive dimensioning made simple! 🚀
 
-*Convertido com sucesso do projeto Android para iOS, mantendo toda a funcionalidade e adicionando suporte nativo para SwiftUI e UIKit.*
+*Successfully converted from the Android project to iOS, keeping all functionality and adding native support for SwiftUI and UIKit.*
