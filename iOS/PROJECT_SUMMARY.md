@@ -1,5 +1,7 @@
 # 📱 AppDimens iOS - Resumo do Projeto
 
+> Languages: [Português (BR)](../LANG/pt-BR/iOS/PROJECT_SUMMARY.md) | [Español](../LANG/es/iOS/PROJECT_SUMMARY.md) | [हिन्दी](../LANG/hi/iOS/PROJECT_SUMMARY.md) | [Русский](../LANG/ru/iOS/PROJECT_SUMMARY.md) | [中文](../LANG/zh/iOS/PROJECT_SUMMARY.md) | [日本語](../LANG/ja/iOS/PROJECT_SUMMARY.md)
+
 ## 🎯 Visão Geral
 
 O **AppDimens iOS** é uma biblioteca de dimensionamento responsivo que converte automaticamente valores baseados nas dimensões da tela, garantindo consistência visual em qualquer tamanho ou proporção de tela. É a versão iOS equivalente da biblioteca Android AppDimens.

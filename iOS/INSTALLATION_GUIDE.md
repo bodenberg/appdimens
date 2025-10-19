@@ -1,5 +1,7 @@
 # 📱 AppDimens iOS - Guia de Instalação
 
+> Languages: [Português (BR)](../LANG/pt-BR/iOS/INSTALLATION_GUIDE.md) | [Español](../LANG/es/iOS/INSTALLATION_GUIDE.md) | [हिन्दी](../LANG/hi/iOS/INSTALLATION_GUIDE.md) | [Русский](../LANG/ru/iOS/INSTALLATION_GUIDE.md) | [中文](../LANG/zh/iOS/INSTALLATION_GUIDE.md) | [日本語](../LANG/ja/iOS/INSTALLATION_GUIDE.md)
+
 Este guia detalha como instalar e configurar a biblioteca AppDimens iOS em diferentes cenários.
 
 ## 🎯 Escolha da Instalação

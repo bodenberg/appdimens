@@ -2,6 +2,8 @@
 
 This document provides comprehensive, real-world examples of how to use AppDimens across different platforms and scenarios.
 
+> Languages: [Português (BR)](LANG/pt-BR/EXAMPLES.md) | [Español](LANG/es/EXAMPLES.md) | [हिन्दी](LANG/hi/EXAMPLES.md) | [Русский](LANG/ru/EXAMPLES.md) | [中文](LANG/zh/EXAMPLES.md) | [日本語](LANG/ja/EXAMPLES.md)
+
 ## 📋 Table of Contents
 
 1. [Android Examples](#android-examples)

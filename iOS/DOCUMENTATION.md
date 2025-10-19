@@ -1,5 +1,7 @@
 # 📚 AppDimens iOS - Technical Documentation
 
+> Languages: [Português (BR)](../LANG/pt-BR/iOS/DOCUMENTATION.md) | [Español](../LANG/es/iOS/DOCUMENTATION.md) | [हिन्दी](../LANG/hi/iOS/DOCUMENTATION.md) | [Русский](../LANG/ru/iOS/DOCUMENTATION.md) | [中文](../LANG/zh/iOS/DOCUMENTATION.md) | [日本語](../LANG/ja/iOS/DOCUMENTATION.md)
+
 ## 🎯 Overview
 
 AppDimens iOS is a responsive dimension management system that automatically adjusts values based on screen dimensions, ensuring layout consistency across any screen size or ratio. It's the iOS equivalent of the Android AppDimens library, built specifically for iOS with Swift and native APIs.

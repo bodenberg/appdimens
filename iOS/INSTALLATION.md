@@ -1,5 +1,7 @@
 # 📦 AppDimens iOS - Installation Guide
 
+> Languages: [Português (BR)](../LANG/pt-BR/iOS/INSTALLATION.md) | [Español](../LANG/es/iOS/INSTALLATION.md) | [हिन्दी](../LANG/hi/iOS/INSTALLATION.md) | [Русский](../LANG/ru/iOS/INSTALLATION.md) | [中文](../LANG/zh/iOS/INSTALLATION.md) | [日本語](../LANG/ja/iOS/INSTALLATION.md)
+
 This comprehensive guide will help you install and integrate AppDimens iOS into your project with step-by-step instructions.
 
 ## 📋 Requirements

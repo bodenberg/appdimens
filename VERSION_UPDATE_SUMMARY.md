@@ -1,5 +1,7 @@
 # Resumo da Atualização para Versão 1.0.5
 
+> Languages: [Português (BR)](LANG/pt-BR/VERSION_UPDATE_SUMMARY.md) | [Español](LANG/es/VERSION_UPDATE_SUMMARY.md) | [हिन्दी](LANG/hi/VERSION_UPDATE_SUMMARY.md) | [Русский](LANG/ru/VERSION_UPDATE_SUMMARY.md) | [中文](LANG/zh/VERSION_UPDATE_SUMMARY.md) | [日本語](LANG/ja/VERSION_UPDATE_SUMMARY.md)
+
 ## 📋 Alterações Realizadas
 
 ### 🔄 Atualização de Versões

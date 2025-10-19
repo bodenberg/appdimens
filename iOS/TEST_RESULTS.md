@@ -1,5 +1,7 @@
 # Resultados dos Testes da Biblioteca AppDimens iOS
 
+> Languages: [Português (BR)](../LANG/pt-BR/iOS/TEST_RESULTS.md) | [Español](../LANG/es/iOS/TEST_RESULTS.md) | [हिन्दी](../LANG/hi/iOS/TEST_RESULTS.md) | [Русский](../LANG/ru/iOS/TEST_RESULTS.md) | [中文](../LANG/zh/iOS/TEST_RESULTS.md) | [日本語](../LANG/ja/iOS/TEST_RESULTS.md)
+
 ## Resumo dos Testes Realizados
 
 ### ✅ Testes de Estrutura

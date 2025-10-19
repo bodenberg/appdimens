@@ -1,5 +1,7 @@
 # 🔒 Security Policy
 
+> Languages: [Português (BR)](LANG/pt-BR/SECURITY.md) | [Español](LANG/es/SECURITY.md) | [हिन्दी](LANG/hi/SECURITY.md) | [Русский](LANG/ru/SECURITY.md) | [中文](LANG/zh/SECURITY.md) | [日本語](LANG/ja/SECURITY.md)
+
 ## Supported Versions
 
 We release patches for security vulnerabilities in the following versions:
@@ -17,7 +19,7 @@ We take security vulnerabilities seriously. If you discover a security vulnerabi
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
-Instead, please report them via email to:
+Instead, please report them via our private contact channel.
 
 - **Subject**: [SECURITY] AppDimens Vulnerability Report
 
@@ -103,7 +105,7 @@ Security updates will be released as soon as possible after a vulnerability is d
 
 For security-related questions or concerns:
 
-- **Email**: jean.bodenberg@gmail.com
+- **Contact**: private channel for security reports
 - **Response Time**: Within 48 hours
 - **Confidentiality**: All security reports are treated confidentially
 

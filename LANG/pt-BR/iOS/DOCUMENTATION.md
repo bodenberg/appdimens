@@ -1,0 +1,21 @@
+# 📚 AppDimens iOS - Documentação Técnica (Resumo)
+
+> Idiomas: [English](../../../iOS/DOCUMENTATION.md) | [Español](../../es/iOS/DOCUMENTATION.md) | [हिन्दी](../../hi/iOS/DOCUMENTATION.md) | [Русский](../../ru/iOS/DOCUMENTATION.md) | [中文](../../zh/iOS/DOCUMENTATION.md) | [日本語](../../ja/iOS/DOCUMENTATION.md)
+
+Este resumo cobre os principais componentes, modelos matemáticos (Fixed/Dynamic), extensões SwiftUI/UIKit e utilitários. Para a versão completa, consulte o original em inglês.
+
+## Componentes
+- AppDimens, AppDimensFixed, AppDimensDynamic, AdjustmentFactors, Types, Extensions
+
+## Modelos
+- Fixed: ajuste logarítmico
+- Dynamic: proporcional
+
+## Extensões SwiftUI
+- `.fxPadding`, `.fxFrame`, `.dyFrame`, `.fxCornerRadius`, `.font(.fxSystem())`
+
+## Extensões UIKit
+- `.fxFontSize`, `.fxCornerRadius`, `.fxBorderWidth`, `.fxTitleFontSize`
+
+## Performance e Testes
+- Cálculos em cache; testes de unidade e integração cobrindo cálculos, detecção de dispositivo e performance.

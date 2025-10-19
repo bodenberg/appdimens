@@ -8,6 +8,8 @@
 [![Platform](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
 
+> Languages: [Português (BR)](../../LANG/pt-BR/Android/appdimens_dynamic/README.md) | [Español](../../LANG/es/Android/appdimens_dynamic/README.md) | [हिन्दी](../../LANG/hi/Android/appdimens_dynamic/README.md) | [Русский](../../LANG/ru/Android/appdimens_dynamic/README.md) | [中文](../../LANG/zh/Android/appdimens_dynamic/README.md) | [日本語](../../LANG/ja/Android/appdimens_dynamic/README.md)
+
 ---
 
 ## 🎯 Overview

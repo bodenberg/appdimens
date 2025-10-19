@@ -1,5 +1,7 @@
 # 🚀 AppDimens iOS - Resumo das Melhorias Implementadas
 
+> Languages: [Português (BR)](../LANG/pt-BR/iOS/IMPROVEMENTS_SUMMARY.md) | [Español](../LANG/es/iOS/IMPROVEMENTS_SUMMARY.md) | [हिन्दी](../LANG/hi/iOS/IMPROVEMENTS_SUMMARY.md) | [Русский](../LANG/ru/iOS/IMPROVEMENTS_SUMMARY.md) | [中文](../LANG/zh/iOS/IMPROVEMENTS_SUMMARY.md) | [日本語](../LANG/ja/iOS/IMPROVEMENTS_SUMMARY.md)
+
 ## 📊 Análise da Implementação iOS Existente
 
 Após analisar a implementação iOS existente na pasta `/iOS`, identifiquei várias melhorias significativas que foram implementadas na biblioteca PROJETO_IOS:

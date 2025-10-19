@@ -1,5 +1,7 @@
 # 📋 Instruções de Uso do Projeto AppDimens iOS
 
+> Languages: [Português (BR)](../LANG/pt-BR/iOS/INSTRUCTIONS.md) | [Español](../LANG/es/iOS/INSTRUCTIONS.md) | [हिन्दी](../LANG/hi/iOS/INSTRUCTIONS.md) | [Русский](../LANG/ru/iOS/INSTRUCTIONS.md) | [中文](../LANG/zh/iOS/INSTRUCTIONS.md) | [日本語](../LANG/ja/iOS/INSTRUCTIONS.md)
+
 ## 🎯 Objetivo
 
 Este projeto converte a biblioteca Android AppDimens para iOS, criando uma biblioteca Swift/SwiftUI que pode ser usada com CocoaPods.
@@ -259,7 +261,7 @@ struct PercentageLayout: View {
 ## 📞 Suporte
 
 - **GitHub Issues**: [Criar issue](https://github.com/bodenberg/appdimens/issues)
-- **Email**: jean.bodenberg@gmail.com
+ - **Email**: canal privado
 - **Documentação**: [GitHub Wiki](https://github.com/bodenberg/appdimens/wiki)
 
 ## 📄 Licença

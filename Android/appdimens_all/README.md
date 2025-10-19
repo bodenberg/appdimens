@@ -1,5 +1,7 @@
 # 🚀 AppDimens: Quick Guide & Library Overview
 
+> Languages: [Português (BR)](../../LANG/pt-BR/Android/appdimens_all/README.md) | [Español](../../LANG/es/Android/appdimens_all/README.md) | [हिन्दी](../../LANG/hi/Android/appdimens_all/README.md) | [Русский](../../LANG/ru/Android/appdimens_all/README.md) | [中文](../../LANG/zh/Android/appdimens_all/README.md) | [日本語](../../LANG/ja/Android/appdimens_all/README.md)
+
 **AppDimens** is a **dimension management system** for Android (Views and Compose) focused on **mathematical responsiveness**.
 It provides refined scaling to ensure that UI elements maintain the correct **proportions** and **visual comfort** on any screen size or **aspect ratio**, from phones to TVs.
 

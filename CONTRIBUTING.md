@@ -2,6 +2,8 @@
 
 Thank you for your interest in contributing to AppDimens! This document provides guidelines and information for contributors.
 
+> Languages: [Português (BR)](LANG/pt-BR/CONTRIBUTING.md) | [Español](LANG/es/CONTRIBUTING.md) | [हिन्दी](LANG/hi/CONTRIBUTING.md) | [Русский](LANG/ru/CONTRIBUTING.md) | [中文](LANG/zh/CONTRIBUTING.md) | [日本語](LANG/ja/CONTRIBUTING.md)
+
 ## 📋 Table of Contents
 
 1. [Code of Conduct](#code-of-conduct)
@@ -16,7 +18,7 @@ Thank you for your interest in contributing to AppDimens! This document provides
 
 ## 📜 Code of Conduct
 
-This project adheres to a code of conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to jean.bodenberg@gmail.com.
+This project adheres to a code of conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior through our private contact channel.
 
 ## 🚀 Getting Started
 
@@ -399,7 +401,7 @@ We follow [Semantic Versioning](https://semver.org/):
 
 - **GitHub Issues**: For bug reports and feature requests
 - **GitHub Discussions**: For questions and general discussion
-- **Email**: jean.bodenberg@gmail.com for private matters
+- **Email**: for private matters
 
 ### Response Times
 

@@ -1,5 +1,7 @@
 # 📝 Changelog
 
+> Languages: [Português (BR)](LANG/pt-BR/CHANGELOG.md) | [Español](LANG/es/CHANGELOG.md) | [हिन्दी](LANG/hi/CHANGELOG.md) | [Русский](LANG/ru/CHANGELOG.md) | [中文](LANG/zh/CHANGELOG.md) | [日本語](LANG/ja/CHANGELOG.md)
+
 All notable changes to AppDimens will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),

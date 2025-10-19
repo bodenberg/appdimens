@@ -10,6 +10,8 @@
 [![Documentation](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)
 </div>
 
+> Languages: [Português (BR)](LANG/pt-BR/README.md) | [Español](LANG/es/README.md) | [हिन्दी](LANG/hi/README.md) | [Русский](LANG/ru/README.md) | [中文](LANG/zh/README.md) | [日本語](LANG/ja/README.md)
+
 ---
 
 ## 🎯 What is AppDimens?

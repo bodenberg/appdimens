@@ -1,5 +1,7 @@
 # 📜 Code of Conduct
 
+> Languages: [Português (BR)](LANG/pt-BR/CODE_OF_CONDUCT.md) | [Español](LANG/es/CODE_OF_CONDUCT.md) | [हिन्दी](LANG/hi/CODE_OF_CONDUCT.md) | [Русский](LANG/ru/CODE_OF_CONDUCT.md) | [中文](LANG/zh/CODE_OF_CONDUCT.md) | [日本語](LANG/ja/CODE_OF_CONDUCT.md)
+
 ## Our Pledge
 
 We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
@@ -44,7 +46,7 @@ This Code of Conduct applies within all community spaces, and also applies when 
 
 ### Reporting Violations
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at jean.bodenberg@gmail.com. All complaints will be reviewed and investigated promptly and fairly.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement through our private contact channel. All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the reporter of any incident.
 
