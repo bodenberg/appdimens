@@ -1,0 +1,204 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.appdimens.games.test" >
+4
+5    <uses-sdk
+5-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3640543169772742037.xml:5:5-74
+6        android:minSdkVersion="23"
+6-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3640543169772742037.xml:5:15-41
+7        android:targetSdkVersion="23" />
+7-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3640543169772742037.xml:5:42-71
+8
+9    <instrumentation
+9-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3640543169772742037.xml:11:5-15:74
+10        android:name="androidx.test.runner.AndroidJUnitRunner"
+10-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3640543169772742037.xml:11:22-76
+11        android:functionalTest="false"
+11-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3640543169772742037.xml:14:22-52
+12        android:handleProfiling="false"
+12-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3640543169772742037.xml:13:22-53
+13        android:label="Tests for com.appdimens.games.test"
+13-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3640543169772742037.xml:15:22-72
+14        android:targetPackage="com.appdimens.games.test" />
+14-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3640543169772742037.xml:12:22-70
+15    <!-- Hardware features for games (optional) -->
+16    <uses-feature
+16-->[:appdimens_games] /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:9:5-11:36
+17        android:name="android.hardware.touchscreen"
+17-->[:appdimens_games] /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:10:9-52
+18        android:required="false" />
+18-->[:appdimens_games] /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:11:9-33
+19    <uses-feature
+19-->[:appdimens_games] /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:12:5-14:36
+20        android:name="android.hardware.gamepad"
+20-->[:appdimens_games] /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:13:9-48
+21        android:required="false" />
+21-->[:appdimens_games] /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:14:9-33
+22    <uses-feature
+22-->[:appdimens_games] /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:15:5-17:35
+23        android:glEsVersion="0x00020000"
+23-->[:appdimens_games] /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:16:9-41
+24        android:required="true" /> <!-- OpenGL ES 3.0 support for advanced games (optional) -->
+24-->[:appdimens_games] /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:17:9-32
+25    <uses-feature
+25-->[:appdimens_games] /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:20:5-22:36
+26        android:glEsVersion="0x00030000"
+26-->[:appdimens_games] /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:21:9-41
+27        android:required="false" />
+27-->[:appdimens_games] /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:22:9-33
+28
+29    <queries>
+29-->[androidx.test:runner:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/af24f35e9e5b43a7d7aa2ba1a1a63089/transformed/runner-1.7.0/AndroidManifest.xml:24:5-28:15
+30        <package android:name="androidx.test.orchestrator" />
+30-->[androidx.test:runner:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/af24f35e9e5b43a7d7aa2ba1a1a63089/transformed/runner-1.7.0/AndroidManifest.xml:25:9-62
+30-->[androidx.test:runner:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/af24f35e9e5b43a7d7aa2ba1a1a63089/transformed/runner-1.7.0/AndroidManifest.xml:25:18-59
+31        <package android:name="androidx.test.services" />
+31-->[androidx.test:runner:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/af24f35e9e5b43a7d7aa2ba1a1a63089/transformed/runner-1.7.0/AndroidManifest.xml:26:9-58
+31-->[androidx.test:runner:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/af24f35e9e5b43a7d7aa2ba1a1a63089/transformed/runner-1.7.0/AndroidManifest.xml:26:18-55
+32        <package android:name="com.google.android.apps.common.testing.services" />
+32-->[androidx.test:runner:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/af24f35e9e5b43a7d7aa2ba1a1a63089/transformed/runner-1.7.0/AndroidManifest.xml:27:9-83
+32-->[androidx.test:runner:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/af24f35e9e5b43a7d7aa2ba1a1a63089/transformed/runner-1.7.0/AndroidManifest.xml:27:18-80
+33    </queries>
+34
+35    <uses-permission android:name="android.permission.REORDER_TASKS" />
+35-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:24:5-72
+35-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:24:22-69
+36
+37    <permission
+37-->[androidx.core:core:1.17.0] /home/bodenberg/.gradle/caches/8.13/transforms/14cb23e8eb9011e0cbacc272098f83d5/transformed/core-1.17.0/AndroidManifest.xml:22:5-24:47
+38        android:name="com.appdimens.games.test.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+38-->[androidx.core:core:1.17.0] /home/bodenberg/.gradle/caches/8.13/transforms/14cb23e8eb9011e0cbacc272098f83d5/transformed/core-1.17.0/AndroidManifest.xml:23:9-81
+39        android:protectionLevel="signature" />
+39-->[androidx.core:core:1.17.0] /home/bodenberg/.gradle/caches/8.13/transforms/14cb23e8eb9011e0cbacc272098f83d5/transformed/core-1.17.0/AndroidManifest.xml:24:9-44
+40
+41    <uses-permission android:name="com.appdimens.games.test.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+41-->[androidx.core:core:1.17.0] /home/bodenberg/.gradle/caches/8.13/transforms/14cb23e8eb9011e0cbacc272098f83d5/transformed/core-1.17.0/AndroidManifest.xml:26:5-97
+41-->[androidx.core:core:1.17.0] /home/bodenberg/.gradle/caches/8.13/transforms/14cb23e8eb9011e0cbacc272098f83d5/transformed/core-1.17.0/AndroidManifest.xml:26:22-94
+42
+43    <application
+43-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3640543169772742037.xml:7:5-9:19
+44        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+44-->[androidx.core:core:1.17.0] /home/bodenberg/.gradle/caches/8.13/transforms/14cb23e8eb9011e0cbacc272098f83d5/transformed/core-1.17.0/AndroidManifest.xml:28:18-86
+45        android:debuggable="true"
+46        android:extractNativeLibs="false" >
+47        <uses-library android:name="android.test.runner" />
+47-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3640543169772742037.xml:8:9-60
+47-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/tmp/manifest/androidTest/debug/tempFile1ProcessTestManifest3640543169772742037.xml:8:23-57
+48
+49        <activity
+49-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:27:9-34:20
+50            android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
+50-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:28:13-99
+51            android:exported="true"
+51-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:29:13-36
+52            android:theme="@style/WhiteBackgroundTheme" >
+52-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:30:13-56
+53            <intent-filter android:priority="-100" >
+53-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:31:13-33:29
+53-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:31:28-51
+54                <category android:name="android.intent.category.LAUNCHER" />
+54-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:32:17-77
+54-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:32:27-74
+55            </intent-filter>
+56        </activity>
+57        <activity
+57-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:35:9-42:20
+58            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity"
+58-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:36:13-95
+59            android:exported="true"
+59-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:37:13-36
+60            android:theme="@style/WhiteBackgroundTheme" >
+60-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:38:13-56
+61            <intent-filter android:priority="-100" >
+61-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:31:13-33:29
+61-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:31:28-51
+62                <category android:name="android.intent.category.LAUNCHER" />
+62-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:32:17-77
+62-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:32:27-74
+63            </intent-filter>
+64        </activity>
+65        <activity
+65-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:43:9-50:20
+66            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity"
+66-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:44:13-103
+67            android:exported="true"
+67-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:45:13-36
+68            android:theme="@style/WhiteBackgroundDialogTheme" >
+68-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:46:13-62
+69            <intent-filter android:priority="-100" >
+69-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:31:13-33:29
+69-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:31:28-51
+70                <category android:name="android.intent.category.LAUNCHER" />
+70-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:32:17-77
+70-->[androidx.test:core:1.7.0] /home/bodenberg/.gradle/caches/8.13/transforms/30593b9a9d0dd9d44ff556028e258e67/transformed/core-1.7.0/AndroidManifest.xml:32:27-74
+71            </intent-filter>
+72        </activity>
+73
+74        <provider
+74-->[androidx.emoji2:emoji2:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/177ee1b3f3e492528d06b47c6320d3bb/transformed/emoji2-1.4.0/AndroidManifest.xml:24:9-32:20
+75            android:name="androidx.startup.InitializationProvider"
+75-->[androidx.emoji2:emoji2:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/177ee1b3f3e492528d06b47c6320d3bb/transformed/emoji2-1.4.0/AndroidManifest.xml:25:13-67
+76            android:authorities="com.appdimens.games.test.androidx-startup"
+76-->[androidx.emoji2:emoji2:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/177ee1b3f3e492528d06b47c6320d3bb/transformed/emoji2-1.4.0/AndroidManifest.xml:26:13-68
+77            android:exported="false" >
+77-->[androidx.emoji2:emoji2:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/177ee1b3f3e492528d06b47c6320d3bb/transformed/emoji2-1.4.0/AndroidManifest.xml:27:13-37
+78            <meta-data
+78-->[androidx.emoji2:emoji2:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/177ee1b3f3e492528d06b47c6320d3bb/transformed/emoji2-1.4.0/AndroidManifest.xml:29:13-31:52
+79                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+79-->[androidx.emoji2:emoji2:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/177ee1b3f3e492528d06b47c6320d3bb/transformed/emoji2-1.4.0/AndroidManifest.xml:30:17-75
+80                android:value="androidx.startup" />
+80-->[androidx.emoji2:emoji2:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/177ee1b3f3e492528d06b47c6320d3bb/transformed/emoji2-1.4.0/AndroidManifest.xml:31:17-49
+81            <meta-data
+81-->[androidx.lifecycle:lifecycle-process:2.9.4] /home/bodenberg/.gradle/caches/8.13/transforms/ae73ceff3852f38b91e812727681ec8b/transformed/lifecycle-process-2.9.4/AndroidManifest.xml:29:13-31:52
+82                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+82-->[androidx.lifecycle:lifecycle-process:2.9.4] /home/bodenberg/.gradle/caches/8.13/transforms/ae73ceff3852f38b91e812727681ec8b/transformed/lifecycle-process-2.9.4/AndroidManifest.xml:30:17-78
+83                android:value="androidx.startup" />
+83-->[androidx.lifecycle:lifecycle-process:2.9.4] /home/bodenberg/.gradle/caches/8.13/transforms/ae73ceff3852f38b91e812727681ec8b/transformed/lifecycle-process-2.9.4/AndroidManifest.xml:31:17-49
+84            <meta-data
+84-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:29:13-31:52
+85                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+85-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:30:17-85
+86                android:value="androidx.startup" />
+86-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:31:17-49
+87        </provider>
+88
+89        <receiver
+89-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:34:9-52:20
+90            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+90-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:35:13-76
+91            android:directBootAware="false"
+91-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:36:13-44
+92            android:enabled="true"
+92-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:37:13-35
+93            android:exported="true"
+93-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:38:13-36
+94            android:permission="android.permission.DUMP" >
+94-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:39:13-57
+95            <intent-filter>
+95-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:40:13-42:29
+96                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+96-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:17-91
+96-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:25-88
+97            </intent-filter>
+98            <intent-filter>
+98-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:43:13-45:29
+99                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+99-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:17-85
+99-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:25-82
+100            </intent-filter>
+101            <intent-filter>
+101-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:46:13-48:29
+102                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+102-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:17-88
+102-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:25-85
+103            </intent-filter>
+104            <intent-filter>
+104-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:49:13-51:29
+105                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+105-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:17-95
+105-->[androidx.profileinstaller:profileinstaller:1.4.0] /home/bodenberg/.gradle/caches/8.13/transforms/0331d4c7618d1bffd9e96c6dc89b32e3/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:25-92
+106            </intent-filter>
+107        </receiver>
+108    </application>
+109
+110</manifest>
