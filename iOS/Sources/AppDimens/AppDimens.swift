@@ -92,7 +92,9 @@ public class AppDimens {
      */
     public func dynamic(_ initialValue: CGFloat, ignoreMultiWindowAdjustment: Bool? = nil) -> AppDimensDynamic {
         let ignore = ignoreMultiWindowAdjustment ?? false
-        return AppDimensDynamic(initialValue, ignoreMultiWindowAdjustment: ignore)
+        let instance = AppDimensDynamic(initialValue, ignoreMultiWindowAdjustment: ignore)
+        AppDimensGlobal.registerDynamicInstance(instance)
+        return instance
     }
     
     /**
@@ -131,13 +133,40 @@ public class AppDimensGlobal {
         }
     }
     
+    /// [EN] Registry of all AppDimensDynamic instances for global cache management.
+    /// [PT] Registro de todas as instâncias AppDimensDynamic para gerenciamento global de cache.
+    private static var dynamicInstances = NSHashTable<AppDimensDynamic>.weakObjects()
+    private static let registryQueue = DispatchQueue(label: "com.appdimens.registry", attributes: .concurrent)
+    
+    /// [EN] Registers an AppDimensDynamic instance for global cache management.
+    /// [PT] Registra uma instância AppDimensDynamic para gerenciamento global de cache.
+    public static func registerDynamicInstance(_ instance: AppDimensDynamic) {
+        registryQueue.async(flags: .barrier) {
+            dynamicInstances.add(instance)
+        }
+    }
+    
+    /// [EN] Unregisters an AppDimensDynamic instance from global cache management.
+    /// [PT] Remove o registro de uma instância AppDimensDynamic do gerenciamento global de cache.
+    public static func unregisterDynamicInstance(_ instance: AppDimensDynamic) {
+        registryQueue.async(flags: .barrier) {
+            dynamicInstances.remove(instance)
+        }
+    }
+    
     /**
      * [EN] Clears all caches from all instances.
      * [PT] Limpa todos os caches de todas as instâncias.
      */
     public static func clearAllCaches() {
-        // This would need to be implemented with a registry of instances
-        // For now, individual instances will clear their own caches
+        // Clear the global auto cache
+        AppDimensAutoCache.shared.clearAll()
+        // Clear individual instance caches
+        registryQueue.sync {
+            dynamicInstances.allObjects.forEach { instance in
+                instance.clearInstanceCache()
+            }
+        }
     }
 }
 

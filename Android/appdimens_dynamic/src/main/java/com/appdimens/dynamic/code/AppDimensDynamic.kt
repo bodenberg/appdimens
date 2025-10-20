@@ -243,7 +243,7 @@ class AppDimensDynamic(
     fun cache(enable: Boolean = true): AppDimensDynamic {
         enableCache = enable
         if (!enable) {
-            autoCache.clearAll()
+            clearInstanceCache()
         }
         return this
     }
@@ -377,6 +377,19 @@ class AppDimensDynamic(
         cachedSortedIntersectionQualifiers = null
         cachedScreenDimensions = null
         lastConfigurationHash = 0
+    }
+    
+    /**
+     * [EN] Clears the cache for this specific instance.
+     * Called by the global cache management system.
+     * [PT] Limpa o cache para esta instância específica.
+     * Chamado pelo sistema de gerenciamento global de cache.
+     */
+    internal fun clearInstanceCache() {
+        invalidateCachedData()
+        // Clear any instance-specific cache entries from the global auto cache
+        val instanceHash = this.hashCode().toString()
+        autoCache.clearByPattern(instanceHash)
     }
 
     /**

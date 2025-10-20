@@ -188,6 +188,20 @@ object AppDimensAutoCache {
     }
     
     /**
+     * [EN] Clears cache entries that match a specific pattern.
+     * Useful for clearing instance-specific cache entries.
+     * [PT] Limpa entradas do cache que correspondem a um padrão específico.
+     * Útil para limpar entradas de cache específicas da instância.
+     */
+    fun clearByPattern(pattern: String) {
+        val keysToRemove = cache.keys.filter { it.contains(pattern) }
+        keysToRemove.forEach { key ->
+            cache.remove(key)
+            dependencyTracker.remove(key)
+        }
+    }
+    
+    /**
      * [EN] Gets cache statistics for debugging.
      * [PT] Obtém estatísticas do cache para debug.
      */

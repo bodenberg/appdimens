@@ -218,6 +218,23 @@ public class AppDimensAutoCache {
     }
     
     /**
+     * [EN] Clears cache entries that match a specific pattern.
+     * Useful for clearing instance-specific cache entries.
+     * [PT] Limpa entradas do cache que correspondem a um padrão específico.
+     * Útil para limpar entradas de cache específicas da instância.
+     */
+    public func clearByPattern(_ pattern: String) {
+        cacheQueue.async(flags: .barrier) {
+            let keys = self.cache.allKeys.compactMap { $0 as? String }
+            let keysToRemove = keys.filter { $0.contains(pattern) }
+            keysToRemove.forEach { key in
+                self.cache.removeObject(forKey: key as NSString)
+                self.dependencyTracker.removeObject(forKey: key as NSString)
+            }
+        }
+    }
+    
+    /**
      * [EN] Gets cache statistics for debugging.
      * [PT] Obtém estatísticas do cache para debug.
      */

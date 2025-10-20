@@ -62,13 +62,42 @@ object AppDimens {
         }
     
     /**
+     * [EN] Registry of all AppDimensDynamic instances for global cache management.
+     * [PT] Registro de todas as instâncias AppDimensDynamic para gerenciamento global de cache.
+     */
+    private val dynamicInstances = mutableSetOf<AppDimensDynamic>()
+    
+    /**
+     * [EN] Registers an AppDimensDynamic instance for global cache management.
+     * [PT] Registra uma instância AppDimensDynamic para gerenciamento global de cache.
+     */
+    @JvmStatic
+    internal fun registerDynamicInstance(instance: AppDimensDynamic) {
+        dynamicInstances.add(instance)
+    }
+    
+    /**
+     * [EN] Unregisters an AppDimensDynamic instance from global cache management.
+     * [PT] Remove o registro de uma instância AppDimensDynamic do gerenciamento global de cache.
+     */
+    @JvmStatic
+    internal fun unregisterDynamicInstance(instance: AppDimensDynamic) {
+        dynamicInstances.remove(instance)
+    }
+    
+    /**
      * [EN] Clears all caches from all instances.
      * [PT] Limpa todos os caches de todas as instâncias.
      */
     @JvmStatic
     fun clearAllCaches() {
-        // This would need to be implemented with a registry of instances
-        // For now, individual instances will clear their own caches
+        // Clear the global auto cache
+        AppDimensAutoCache.clearAll()
+        
+        // Clear individual instance caches
+        dynamicInstances.forEach { instance ->
+            instance.clearInstanceCache()
+        }
     }
     
     /**
@@ -120,6 +149,29 @@ object AppDimens {
      * @return True se os ajustes multi-view são ignorados globalmente.
      */
     fun isGlobalIgnoreMultiViewAdjustment(): Boolean = globalIgnoreMultiViewAdjustment
+    
+    /**
+     * [EN] Sets the global cache control setting.
+     * @param enabled If true, enables global cache; if false, disables and clears all caches.
+     * @return The AppDimens instance for chaining.
+     * [PT] Define a configuração global de controle de cache.
+     * @param enabled Se verdadeiro, ativa o cache global; se falso, desativa e limpa todos os caches.
+     * @return A instância AppDimens para encadeamento.
+     */
+    @JvmStatic
+    fun setGlobalCache(enabled: Boolean): AppDimens {
+        globalCacheEnabled = enabled
+        return this
+    }
+    
+    /**
+     * [EN] Gets the current global cache setting.
+     * @return True if global cache is enabled.
+     * [PT] Obtém a configuração global atual de cache.
+     * @return True se o cache global está ativado.
+     */
+    @JvmStatic
+    fun isGlobalCacheEnabled(): Boolean = globalCacheEnabled
 
     /**
      * [EN] Gateway for `AppDimensFixed`.
@@ -186,7 +238,9 @@ object AppDimens {
     @JvmStatic
     fun dynamic(initialValueDp: Float, ignoreMultiViewAdjustment: Boolean? = null): AppDimensDynamic {
         val finalIgnoreMultiView = ignoreMultiViewAdjustment ?: globalIgnoreMultiViewAdjustment
-        return AppDimensDynamic(initialValueDp, finalIgnoreMultiView)
+        val instance = AppDimensDynamic(initialValueDp, finalIgnoreMultiView)
+        registerDynamicInstance(instance)
+        return instance
     }
 
     /**
@@ -201,7 +255,9 @@ object AppDimens {
     @JvmStatic
     fun dynamic(initialValueInt: Int, ignoreMultiViewAdjustment: Boolean? = null): AppDimensDynamic {
         val finalIgnoreMultiView = ignoreMultiViewAdjustment ?: globalIgnoreMultiViewAdjustment
-        return AppDimensDynamic(initialValueInt.toFloat(), finalIgnoreMultiView)
+        val instance = AppDimensDynamic(initialValueInt.toFloat(), finalIgnoreMultiView)
+        registerDynamicInstance(instance)
+        return instance
     }
 
     /**

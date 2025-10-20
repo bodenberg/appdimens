@@ -236,7 +236,7 @@ public class AppDimensDynamic {
     public func cache(enable: Bool = true) -> AppDimensDynamic {
         enableCache = enable
         if !enable {
-            autoCache.clearAll()
+            clearInstanceCache()
         }
         return self
     }
@@ -379,6 +379,16 @@ public class AppDimensDynamic {
         cachedSortedIntersectionQualifiers = nil
         cachedScreenDimensions = nil
         lastConfigurationHash = 0
+    }
+    
+    /// [EN] Clears the cache for this specific instance.
+    /// Called by the global cache management system.
+    /// [PT] Limpa o cache para esta instância específica.
+    /// Chamado pelo sistema de gerenciamento global de cache.
+    internal func clearInstanceCache() {
+        invalidateCachedData()
+        // Clear any instance-specific cache entries from the global auto cache
+        AppDimensAutoCache.shared.clearByPattern("_\(self.hashValue)")
     }
     
     /**
