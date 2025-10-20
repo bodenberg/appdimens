@@ -1,8 +1,0 @@
-ninja: Entering directory `/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/.cxx/RelWithDebInfo/2a4j2w2s/armeabi-v7a'
-[1/7] Building CXX object CMakeFiles/appdimens_games.dir/src/GameScaling.cpp.o
-[2/7] Building CXX object CMakeFiles/appdimens_games.dir/src/ViewportManager.cpp.o
-[3/7] Building CXX object CMakeFiles/appdimens_games.dir/src/GameDimensions.cpp.o
-[4/7] Building CXX object CMakeFiles/appdimens_games.dir/src/GameMath.cpp.o
-[5/7] Building CXX object CMakeFiles/appdimens_games.dir/src/OpenGLUtils.cpp.o
-[6/7] Building CXX object CMakeFiles/appdimens_games.dir/src/PerformanceMonitor.cpp.o
-[7/7] Linking CXX shared library /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/cxx/RelWithDebInfo/2a4j2w2s/obj/armeabi-v7a/libappdimens_games.so

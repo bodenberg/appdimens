@@ -1,8 +1,8 @@
 ninja: Entering directory `/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/x86_64'
-[1/7] Building CXX object CMakeFiles/appdimens_games.dir/src/GameDimensions.cpp.o
-[2/7] Building CXX object CMakeFiles/appdimens_games.dir/src/GameScaling.cpp.o
+[1/7] Building CXX object CMakeFiles/appdimens_games.dir/src/GameScaling.cpp.o
+[2/7] Building CXX object CMakeFiles/appdimens_games.dir/src/GameDimensions.cpp.o
 [3/7] Building CXX object CMakeFiles/appdimens_games.dir/src/ViewportManager.cpp.o
 [4/7] Building CXX object CMakeFiles/appdimens_games.dir/src/GameMath.cpp.o
-[5/7] Building CXX object CMakeFiles/appdimens_games.dir/src/OpenGLUtils.cpp.o
-[6/7] Building CXX object CMakeFiles/appdimens_games.dir/src/PerformanceMonitor.cpp.o
+[5/7] Building CXX object CMakeFiles/appdimens_games.dir/src/PerformanceMonitor.cpp.o
+[6/7] Building CXX object CMakeFiles/appdimens_games.dir/src/OpenGLUtils.cpp.o
 [7/7] Linking CXX shared library /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/build/intermediates/cxx/Debug/5g5v3a33/obj/x86_64/libappdimens_games.so
