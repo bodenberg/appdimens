@@ -167,7 +167,7 @@ fun ComprehensiveDemoScreen() {
                             modifier = Modifier.fillMaxWidth(),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            InfoChip("Version", "1.0.6")
+                            InfoChip("Version", "1.0.7")
                             InfoChip("Modules", "7")
                             InfoChip("Features", "20+")
                         }

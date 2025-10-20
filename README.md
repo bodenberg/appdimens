@@ -4,7 +4,7 @@
     <p><strong>Smart and Responsive Dimensioning for Android & iOS</strong></p>
     <p>Mathematically responsive scaling that ensures your UI design adapts perfectly to any screen size or aspect ratio — from phones to TVs, cars, and wearables.</p>
 
-[![Version](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Version](https://img.shields.io/badge/version-1.0.7-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Android%20%7C%20iOS-orange.svg)](https://github.com/bodenberg/appdimens)
 [![Documentation](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)
@@ -35,17 +35,17 @@
 ```kotlin
 dependencies {
     // Core library (Dynamic + Fixed scaling)
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.6")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.7")
     
     // Optional: SDP & SSP scaling
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.6")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.6")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.7")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.7")
     
     // All-in-one package (does not include games module)
-    implementation("io.github.bodenberg:appdimens-all:1.0.6")
+    implementation("io.github.bodenberg:appdimens-all:1.0.7")
     
     // Game development with C++/NDK support (separate dependency)
-    implementation("io.github.bodenberg:appdimens-games:1.0.6")
+    implementation("io.github.bodenberg:appdimens-games:1.0.7")
 }
 ```
 
@@ -67,7 +67,7 @@ pod 'AppDimens'
 
 ```swift
 // Swift Package Manager
-.package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.6")
+.package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.7")
 ```
 
 ---

@@ -22,7 +22,7 @@ tasks.dokkaJavadoc.configure {
 }
 
 mavenPublishing {
-    coordinates("io.github.bodenberg", "appdimens-games", "1.0.6")
+    coordinates("io.github.bodenberg", "appdimens-games", "1.0.7")
 
     configure(
         AndroidSingleVariantLibrary(
