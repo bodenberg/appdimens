@@ -248,7 +248,7 @@ fun LayoutUtilitiesExample() {
 ```kotlin
 @Composable
 fun ConditionalScalingExample() {
-    val buttonSize = 80.scaledDp()
+    val buttonSize = 80.dynamicDp() //or fixedDP
         // Priority 1: Watch with specific width
         .screen(UiModeType.WATCH, DpQualifier.SMALL_WIDTH, 200, 40.dp)
         // Priority 2: Car mode
