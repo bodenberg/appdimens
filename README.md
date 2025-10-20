@@ -265,7 +265,7 @@ val spanCount = AppDimens.calculateAvailableItemCount(
 
 ```kotlin
 // Android - Advanced screen qualifiers
-val buttonSize = 80.scaledDp()
+val buttonSize = 80.dynamicDp() // or fixedDp
     .screen(UiModeType.WATCH, DpQualifier.SMALL_WIDTH, 200, 40.dp)  // Priority 1: Intersection
     .screen(UiModeType.CAR, 120.dp)                                // Priority 2: UI Mode
     .screen(DpQualifier.SMALL_WIDTH, 720, 150)                     // Priority 3: Dp Qualifier
@@ -280,7 +280,7 @@ val buttonSize = 80.scaledDp()
 // Android - Performance settings
 AppDimens.globalCacheEnabled = true  // Global cache control
 
-val dimension = 100.scaledDp()
+val dimension = 100.dynamicDp()
     .cache(true)                     // Instance-level cache
     .toPx(resources)                 // Cached calculation
 ```
