@@ -1,2 +1,0 @@
-com.appdimens.games
-string app_name

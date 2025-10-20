@@ -1,4 +1,0 @@
-/home/bodenberg/Android/Sdk/cmake/3.22.1/bin/ninja \
-  -C \
-  /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/.cxx/Debug/5g5v3a33/arm64-v8a \
-  appdimens_games
