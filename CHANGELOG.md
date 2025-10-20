@@ -10,20 +10,66 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Enhanced documentation with comprehensive examples
-- Improved installation guides for both Android and iOS
-- Advanced conditional scaling examples
-- Performance optimization guidelines
+- **Comprehensive Documentation Update**: Complete analysis and documentation of all Android and iOS libraries
+- **Architecture Overview**: Detailed documentation of module structure and dependencies
+- **Performance Analysis**: Detailed performance characteristics and optimization guidelines
+- **Advanced Configuration Examples**: Screen qualifiers, caching, and performance settings
+- **Game Development Integration**: Complete C++/NDK and Metal integration examples
+- **Platform Support Matrix**: Detailed compatibility information for all supported platforms
+- **Multilingual Documentation**: Enhanced Portuguese, Spanish, Hindi, Russian, Chinese, and Japanese documentation
 
 ### Changed
-- Updated all documentation to professional standards
-- Standardized formatting across all documentation files
-- Improved code examples and usage patterns
+- **Documentation Standards**: Updated all documentation to professional standards with comprehensive examples
+- **API Documentation**: Enhanced API reference with detailed examples and use cases
+- **Installation Guides**: Improved installation instructions for all modules and platforms
+- **Code Examples**: Updated and expanded code examples with real-world scenarios
 
 ### Fixed
-- Documentation inconsistencies
-- Missing examples in some modules
-- Formatting issues in README files
+- **Documentation Consistency**: Resolved inconsistencies across all documentation files
+- **Missing Information**: Added missing examples and explanations in all modules
+- **Formatting Issues**: Standardized formatting across all README and documentation files
+- **Version Information**: Updated version information across all modules to 1.0.6
+
+## [1.0.6] - 2025-01-16
+
+### Added
+- **Game Development Support**: New AppDimens Games module for Android with C++/NDK support
+- **iOS Metal Integration**: Game-specific functionality with Metal and MetalKit support
+- **Game Dimension Types**: DYNAMIC, FIXED, GAME_WORLD, UI_OVERLAY for specialized game scaling
+- **Vector Operations**: GameVector2D and GameRectangle classes for game mathematics
+- **Viewport Management**: Multiple scaling modes for different game scenarios
+- **SwiftUI Game Extensions**: Game-specific SwiftUI extensions and environment integration
+- **Performance Monitoring**: Native performance monitoring for game development
+- **OpenGL Utilities**: OpenGL ES utilities for Android game rendering
+
+### Changed
+- Updated version to 1.0.6 across all Android and iOS modules
+- Enhanced documentation with game development examples
+- Improved API consistency across platforms
+- Updated installation instructions for game modules
+
+### Technical Improvements
+- **Android**: Native C++ implementation for high-performance game calculations
+- **iOS**: SIMD extensions for optimized vector operations
+- **Cross-Platform**: Consistent API design between Android and iOS game modules
+- Updated dependency examples in all documentation files
+- Updated version badges in all README files
+
+### Android
+- Updated all build.gradle.kts files with new version coordinates
+- Updated Maven publication coordinates for all modules
+- Updated README files with new dependency versions
+
+### iOS
+- Updated AppDimens.podspec version to 1.0.6
+- Updated Package.swift dependency references
+- Updated README files with new version references
+
+### Documentation
+- Updated main README.md with version 1.0.6
+- Updated Android/README.md with new dependency versions
+- Updated iOS/README.md with new version references
+- Updated all language-specific README files
 
 ## [1.0.5] - 2025-01-15
 

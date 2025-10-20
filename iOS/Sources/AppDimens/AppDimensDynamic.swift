@@ -36,19 +36,53 @@ import UIKit
  */
 public class AppDimensDynamic {
     
+    
     // MARK: - Properties
     
     private let initialBaseValue: CGFloat
     private var ignoreMultiWindowAdjustment: Bool = false
     private var screenType: ScreenType = .lowest
     
-    /// [EN] Map to store custom values based on device type (Priority 2).
-    /// [PT] Mapa para armazenar valores customizados com base no tipo de dispositivo (Prioridade 2).
+    /// [EN] Map to store custom values based on device type (Priority 3).
+    /// [PT] Mapa para armazenar valores customizados com base no tipo de dispositivo (Prioridade 3).
     private var customDeviceTypeMap: [DeviceType: CGFloat] = [:]
     
-    /// [EN] Map to store custom values based on screen qualifier (Priority 3).
-    /// [PT] Mapa para armazenar valores customizados com base no qualificador de tela (Prioridade 3).
-    private var customScreenQualifierMap: [ScreenQualifierEntry: CGFloat] = [:]
+    /// [EN] Map to store custom values based on screen qualifier (Priority 4).
+    /// Lazy initialization for better performance.
+    /// [PT] Mapa para armazenar valores customizados com base no qualificador de tela (Prioridade 4).
+    /// Inicialização lazy para melhor performance.
+    private lazy var customScreenQualifierMap: [ScreenQualifierEntry: CGFloat] = [:]
+    
+    /// [EN] Map for custom values by UiModeType (Priority 2).
+    /// Lazy initialization for better performance.
+    /// [PT] Mapa para valores customizados por UiModeType (Prioridade 2).
+    /// Inicialização lazy para melhor performance.
+    private lazy var customUiModeMap: [UiModeType: CGFloat] = [:]
+    
+    /// [EN] Map for custom values by INTERSECTION (UiMode + DpQualifier) (Priority 1).
+    /// Lazy initialization for better performance.
+    /// [PT] Mapa para valores customizados por INTERSEÇÃO (UiMode + DpQualifier) (Prioridade 1).
+    /// Inicialização lazy para melhor performance.
+    private lazy var customIntersectionMap: [UiModeQualifierEntry: CGFloat] = [:]
+    
+    // MARK: - Cache System
+    
+    /// [EN] Automatic cache system based on Compose's remember mechanism.
+    /// [PT] Sistema de cache automático baseado no mecanismo remember do Compose.
+    private let autoCache = AppDimensAutoCache()
+    
+    /// [EN] Cached sorted intersection qualifiers for performance.
+    /// [PT] Qualificadores de interseção ordenados em cache para performance.
+    private var cachedSortedIntersectionQualifiers: [(UiModeQualifierEntry, CGFloat)]? = nil
+    
+    /// [EN] Cached screen dimensions for performance.
+    /// [PT] Dimensões da tela em cache para performance.
+    private var cachedScreenDimensions: (width: CGFloat, height: CGFloat)? = nil
+    private var lastConfigurationHash: Int = 0
+    
+    /// [EN] Individual cache control for this instance.
+    /// [PT] Controle individual de cache para esta instância.
+    private var enableCache: Bool = true
     
     // MARK: - Initialization
     
@@ -64,6 +98,68 @@ public class AppDimensDynamic {
     // MARK: - Configuration Methods
     
     /**
+     * [EN] Sets a custom dimension value for a specific UI mode.
+     * @param type The UI mode type.
+     * @param customValue The custom dimension value in points.
+     * @return The AppDimensDynamic instance for chaining.
+     * [PT] Define um valor de dimensão customizado para um modo de UI específico.
+     * @param type O tipo de modo de UI.
+     * @param customValue O valor de dimensão customizado em pontos.
+     * @return A instância AppDimensDynamic para encadeamento.
+     */
+    @discardableResult
+    public func screen(_ type: UiModeType, _ customValue: CGFloat) -> AppDimensDynamic {
+        customUiModeMap[type] = customValue
+        invalidateCachedData()
+        return self
+    }
+    
+    /**
+     * [EN] Sets a custom dimension for the intersection of a UI mode and a screen qualifier.
+     * @param uiModeType The UI mode type.
+     * @param qualifierType The qualifier type.
+     * @param qualifierValue The qualifier value (e.g., 600 for sw600dp).
+     * @param customValue The custom dimension value in points.
+     * @return The AppDimensDynamic instance for chaining.
+     * [PT] Define uma dimensão customizada para a interseção de um modo de UI e um qualificador de tela.
+     * @param uiModeType O tipo de modo de UI.
+     * @param qualifierType O tipo de qualificador.
+     * @param qualifierValue O valor do qualificador (ex: 600 para sw600dp).
+     * @param customValue O valor de dimensão customizado em pontos.
+     * @return A instância AppDimensDynamic para encadeamento.
+     */
+    @discardableResult
+    public func screen(_ uiModeType: UiModeType, _ qualifierType: DpQualifier, _ qualifierValue: Int, _ customValue: CGFloat) -> AppDimensDynamic {
+        let key = UiModeQualifierEntry(
+            uiModeType: uiModeType,
+            dpQualifierEntry: DpQualifierEntry(type: qualifierType, value: qualifierValue)
+        )
+        customIntersectionMap[key] = customValue
+        invalidateCachedData()
+        return self
+    }
+    
+    /**
+     * [EN] Sets a custom dimension value for a specific screen qualifier.
+     * @param type The qualifier type.
+     * @param value The qualifier value (e.g., 600 for sw600dp).
+     * @param customValue The custom dimension value in points.
+     * @return The AppDimensDynamic instance for chaining.
+     * [PT] Define um valor de dimensão customizado para um qualificador de tela específico.
+     * @param type O tipo de qualificador.
+     * @param value O valor do qualificador (ex: 600 para sw600dp).
+     * @param customValue O valor da dimensão customizada em pontos.
+     * @return A instância AppDimensDynamic para encadeamento.
+     */
+    @discardableResult
+    public func screen(_ type: DpQualifier, _ value: Int, _ customValue: CGFloat) -> AppDimensDynamic {
+        let entry = DpQualifierEntry(type: type, value: value)
+        customScreenQualifierMap[entry] = customValue
+        invalidateCachedData()
+        return self
+    }
+    
+    /**
      * [EN] Sets a custom dimension value for a specific device type.
      * @param type The device type.
      * @param customValue The custom dimension value in points.
@@ -76,6 +172,7 @@ public class AppDimensDynamic {
     @discardableResult
     public func screen(_ type: DeviceType, _ customValue: CGFloat) -> AppDimensDynamic {
         customDeviceTypeMap[type] = customValue
+        invalidateCachedData()
         return self
     }
     
@@ -95,6 +192,7 @@ public class AppDimensDynamic {
     public func screen(_ deviceType: DeviceType, _ screenSize: CGFloat, _ customValue: CGFloat) -> AppDimensDynamic {
         let entry = ScreenQualifierEntry(deviceType: deviceType, screenSize: screenSize)
         customScreenQualifierMap[entry] = customValue
+        invalidateCachedData()
         return self
     }
     
@@ -126,33 +224,161 @@ public class AppDimensDynamic {
         return self
     }
     
+    /**
+     * [EN] Enables or disables cache for this instance.
+     * @param enable If true, enables cache; if false, disables cache.
+     * @return The AppDimensDynamic instance for chaining.
+     * [PT] Ativa ou desativa o cache para esta instância.
+     * @param enable Se verdadeiro, ativa o cache; se falso, desativa o cache.
+     * @return A instância AppDimensDynamic para encadeamento.
+     */
+    @discardableResult
+    public func cache(enable: Bool = true) -> AppDimensDynamic {
+        enableCache = enable
+        if !enable {
+            autoCache.clearAll()
+        }
+        return self
+    }
+    
     // MARK: - Value Resolution
     
     /**
      * [EN] Resolves the base value to be adjusted by applying the customization logic
-     * (Device Type > Screen Qualifier > Initial Value).
+     * (Intersection > UiMode > Device Type > Screen Qualifier > Initial Value).
      * [PT] Resolve o valor base a ser ajustado, aplicando a lógica de customização
-     * (Tipo de Dispositivo > Qualificador de Tela > Valor Inicial).
+     * (Interseção > UiMode > Tipo de Dispositivo > Qualificador de Tela > Valor Inicial).
      */
     private func resolveFinalBaseValue() -> CGFloat {
-        let currentDeviceType = DeviceType.current()
-        let (screenWidth, screenHeight) = AppDimensAdjustmentFactors.getCurrentScreenDimensions()
+        // Get cached screen dimensions for performance
+        let (screenWidth, screenHeight) = getCachedScreenDimensions()
         let currentScreenSize = min(screenWidth, screenHeight)
+        let currentUiModeType = UiModeType.current()
+        let currentDeviceType = DeviceType.current()
+
+        // Use automatic cache system with dependency tracking
+        let dependencies: Set<AnyHashable> = [
+            screenWidth, screenHeight, currentUiModeType, currentDeviceType,
+            customIntersectionMap.hashValue, customUiModeMap.hashValue, 
+            customDeviceTypeMap.hashValue, customScreenQualifierMap.hashValue,
+            initialBaseValue, screenType, ignoreMultiWindowAdjustment
+        ]
         
-        // Priority 1: Device Type
-        if let deviceTypeValue = customDeviceTypeMap[currentDeviceType] {
-            return deviceTypeValue
+        return if AppDimensGlobal.globalCacheEnabled && enableCache {
+            autoCache.remember(
+                key: "resolveFinalBaseValue_\(self.hashValue)",
+                dependencies: dependencies
+            ) {
+                performBaseValueCalculation(
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight,
+                    currentScreenSize: currentScreenSize,
+                    currentUiModeType: currentUiModeType,
+                    currentDeviceType: currentDeviceType
+                )
+            }
+        } else {
+            performBaseValueCalculation(
+                screenWidth: screenWidth,
+                screenHeight: screenHeight,
+                currentScreenSize: currentScreenSize,
+                currentUiModeType: currentUiModeType,
+                currentDeviceType: currentDeviceType
+            )
+        }
+    }
+    
+    /**
+     * [EN] Gets cached screen dimensions for performance optimization.
+     * [PT] Obtém dimensões da tela em cache para otimização de performance.
+     */
+    private func getCachedScreenDimensions() -> (width: CGFloat, height: CGFloat) {
+        let configHash = UIScreen.main.bounds.hashValue
+        if cachedScreenDimensions == nil || lastConfigurationHash != configHash {
+            cachedScreenDimensions = AppDimensAdjustmentFactors.getCurrentScreenDimensions()
+            lastConfigurationHash = configHash
+        }
+        return cachedScreenDimensions!
+    }
+    
+    /**
+     * [EN] Performs the actual base value calculation with cached sorting.
+     * [PT] Executa o cálculo real do valor base com ordenação em cache.
+     */
+    private func performBaseValueCalculation(
+        screenWidth: CGFloat,
+        screenHeight: CGFloat,
+        currentScreenSize: CGFloat,
+        currentUiModeType: UiModeType,
+        currentDeviceType: DeviceType
+    ) -> CGFloat {
+        
+        var valueToAdjust = initialBaseValue
+        
+        // Priority 1: Intersection (UiMode + DpQualifier) - Use cached sorting
+        let sortedIntersectionQualifiers = getCachedSortedIntersectionQualifiers()
+        
+        for (key, value) in sortedIntersectionQualifiers {
+            if key.uiModeType == currentUiModeType && 
+               AppDimensAdjustmentFactors.resolveIntersectionCondition(
+                   entry: key.dpQualifierEntry,
+                   smallestWidth: currentScreenSize,
+                   currentScreenWidth: screenWidth,
+                   currentScreenHeight: screenHeight
+               ) {
+                valueToAdjust = value
+                break
+            }
         }
         
-        // Priority 2: Screen Qualifier
-        let qualifierValue = AppDimensAdjustmentFactors.resolveQualifierValue(
-            customMap: customScreenQualifierMap,
-            currentDeviceType: currentDeviceType,
-            currentScreenSize: currentScreenSize,
-            initialValue: initialBaseValue
-        )
+        if valueToAdjust == initialBaseValue {
+            // Priority 2: UI Mode (UiModeType only)
+            if let uiModeValue = customUiModeMap[currentUiModeType] {
+                valueToAdjust = uiModeValue
+            } else {
+                // Priority 3: Device Type
+                if let deviceTypeValue = customDeviceTypeMap[currentDeviceType] {
+                    valueToAdjust = deviceTypeValue
+                } else {
+                    // Priority 4: Screen Qualifier
+                    valueToAdjust = AppDimensAdjustmentFactors.resolveQualifierValue(
+                        customMap: customScreenQualifierMap,
+                        currentDeviceType: currentDeviceType,
+                        currentScreenSize: currentScreenSize,
+                        initialValue: initialBaseValue
+                    )
+                }
+            }
+        }
         
-        return qualifierValue
+        return valueToAdjust
+    }
+    
+    /**
+     * [EN] Gets cached sorted intersection qualifiers for performance.
+     * [PT] Obtém qualificadores de interseção ordenados em cache para performance.
+     */
+    private func getCachedSortedIntersectionQualifiers() -> [(UiModeQualifierEntry, CGFloat)] {
+        if cachedSortedIntersectionQualifiers == nil {
+            cachedSortedIntersectionQualifiers = customIntersectionMap.sorted { 
+                $0.key.dpQualifierEntry.value > $1.key.dpQualifierEntry.value 
+            }
+        }
+        return cachedSortedIntersectionQualifiers!
+    }
+    
+    // MARK: - Cache Management
+    
+    /**
+     * [EN] Invalidates cached data when maps change.
+     * Called automatically when dependencies change.
+     * [PT] Invalida dados em cache quando os maps mudam.
+     * Chamado automaticamente quando dependências mudam.
+     */
+    private func invalidateCachedData() {
+        cachedSortedIntersectionQualifiers = nil
+        cachedScreenDimensions = nil
+        lastConfigurationHash = 0
     }
     
     /**
@@ -162,26 +388,66 @@ public class AppDimensDynamic {
      * @return O valor ajustado dinamicamente como CGFloat (não convertido para pixels).
      */
     public func calculateAdjustedValue() -> CGFloat {
+        let (screenWidth, screenHeight) = getCachedScreenDimensions()
+        let currentUiModeType = UiModeType.current()
+        let currentDeviceType = DeviceType.current()
+        
+        // Use automatic cache system with dependency tracking
+        let dependencies: Set<AnyHashable> = [
+            screenWidth, screenHeight, currentUiModeType, currentDeviceType,
+            customIntersectionMap.hashValue, customUiModeMap.hashValue, 
+            customDeviceTypeMap.hashValue, customScreenQualifierMap.hashValue,
+            initialBaseValue, screenType, ignoreMultiWindowAdjustment
+        ]
+        
+        return if AppDimensGlobal.globalCacheEnabled && enableCache {
+            autoCache.remember(
+                key: "calculateAdjustedValue_\(self.hashValue)",
+                dependencies: dependencies
+            ) {
+                performFinalCalculation(
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight
+                )
+            }
+        } else {
+            performFinalCalculation(
+                screenWidth: screenWidth,
+                screenHeight: screenHeight
+            )
+        }
+    }
+    
+    /**
+     * [EN] Performs the final calculation with all optimizations.
+     * [PT] Executa o cálculo final com todas as otimizações.
+     */
+    private func performFinalCalculation(
+        screenWidth: CGFloat,
+        screenHeight: CGFloat
+    ) -> CGFloat {
         let valueToAdjust = resolveFinalBaseValue()
         
         let shouldIgnoreAdjustment = ignoreMultiWindowAdjustment && AppDimensAdjustmentFactors.isMultiWindowMode()
         
+        let finalValue: CGFloat
         if shouldIgnoreAdjustment {
             // Returns the base value without dynamic scaling
-            return valueToAdjust
+            finalValue = valueToAdjust
+        } else {
+            // The dynamic scaling percentage is: (Adjusted Base Value / Reference Value)
+            let percentage = valueToAdjust / AppDimensAdjustmentFactors.BASE_WIDTH_PT
+            
+            // Screen dimension to use (LOWEST or HIGHEST)
+            let dimensionToUse = screenType == .highest ? 
+                max(screenWidth, screenHeight) : 
+                min(screenWidth, screenHeight)
+            
+            // The final value is the percentage applied to the screen dimension
+            finalValue = dimensionToUse * percentage
         }
         
-        // The dynamic scaling percentage is: (Adjusted Base Value / Reference Value)
-        let percentage = valueToAdjust / AppDimensAdjustmentFactors.BASE_WIDTH_PT
-        
-        // Screen dimension to use (LOWEST or HIGHEST)
-        let (screenWidth, screenHeight) = AppDimensAdjustmentFactors.getCurrentScreenDimensions()
-        let dimensionToUse = screenType == .highest ? 
-            max(screenWidth, screenHeight) : 
-            min(screenWidth, screenHeight)
-        
-        // The final value is the percentage applied to the screen dimension
-        return dimensionToUse * percentage
+        return finalValue
     }
     
     // MARK: - Conversion Methods

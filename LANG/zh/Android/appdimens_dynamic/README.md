@@ -3,7 +3,7 @@
     <p><strong>Android 核心响应式尺寸系统</strong></p>
     <p>为 Jetpack Compose、Views/XML 与 Data Binding 提供 Fixed 与 Dynamic 两种缩放模型。</p>
 
-[![版本](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![版本](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![许可证](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![平台](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
@@ -18,7 +18,7 @@
 
 ## 🚀 安装
 ```kotlin
-dependencies { implementation("io.github.bodenberg:appdimens-dynamic:1.0.5") }
+dependencies { implementation("io.github.bodenberg:appdimens-dynamic:1.0.6") }
 ```
 
 ## 🎨 示例（Compose）

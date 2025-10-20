@@ -53,18 +53,110 @@ import kotlin.math.floor
 @Stable
 object AppDimens {
 
+    // MARK: - Global Configuration Properties
+    
+    /**
+     * [EN] Global remember control for all AppDimensDynamic and AppDimensFixed instances.
+     * [PT] Controle global de remember para todas as instâncias AppDimensDynamic e AppDimensFixed.
+     */
+    @JvmStatic
+    var globalRememberEnabled: Boolean = true
+        set(value) {
+            field = value
+            if (!value) {
+                // Clear all remembers when globally disabled
+                clearAllRemembers()
+            }
+        }
+    
+    /**
+     * [EN] Clears all remembers from all instances.
+     * [PT] Limpa todos os remembers de todas as instâncias.
+     */
+    @JvmStatic
+    fun clearAllRemembers() {
+        // This would need to be implemented with a registry of instances
+        // For now, individual instances will clear their own remembers
+    }
+    
+    /**
+     * [EN] Global aspect ratio adjustment setting.
+     * [PT] Configuração global de ajuste de proporção.
+     */
+    private var globalAspectRatioEnabled: Boolean = true
+    
+    /**
+     * [EN] Global multi-view adjustment setting.
+     * [PT] Configuração global de ajuste multi-view.
+     */
+    private var globalIgnoreMultiViewAdjustment: Boolean = false
+
+    // MARK: - Global Configuration Methods
+    
+    /**
+     * [EN] Sets the global aspect ratio adjustment setting.
+     * @param enabled If true, enables aspect ratio adjustment globally.
+     * @return The AppDimens instance for chaining.
+     * [PT] Define a configuração global de ajuste de proporção.
+     * @param enabled Se verdadeiro, ativa o ajuste de proporção globalmente.
+     * @return A instância AppDimens para encadeamento.
+     */
+    fun setGlobalAspectRatio(enabled: Boolean): AppDimens {
+        globalAspectRatioEnabled = enabled
+        return this
+    }
+    
+    /**
+     * [EN] Sets the global multi-view adjustment setting.
+     * @param ignore If true, ignores multi-view adjustments globally.
+     * @return The AppDimens instance for chaining.
+     * [PT] Define a configuração global de ajuste multi-view.
+     * @param ignore Se verdadeiro, ignora os ajustes multi-view globalmente.
+     * @return A instância AppDimens para encadeamento.
+     */
+    fun setGlobalIgnoreMultiViewAdjustment(ignore: Boolean): AppDimens {
+        globalIgnoreMultiViewAdjustment = ignore
+        return this
+    }
+    
+    /**
+     * [EN] Gets the current global aspect ratio setting.
+     * @return True if aspect ratio adjustment is enabled globally.
+     * [PT] Obtém a configuração global atual de proporção.
+     * @return True se o ajuste de proporção está ativado globalmente.
+     */
+    fun isGlobalAspectRatioEnabled(): Boolean = globalAspectRatioEnabled
+    
+    /**
+     * [EN] Gets the current global multi-view adjustment setting.
+     * @return True if multi-view adjustments are ignored globally.
+     * [PT] Obtém a configuração global atual de ajuste multi-view.
+     * @return True se os ajustes multi-view são ignorados globalmente.
+     */
+    fun isGlobalIgnoreMultiViewAdjustment(): Boolean = globalIgnoreMultiViewAdjustment
+
     // [EN] Helper Functions for Adjustable "Fixed" Dimensions (Gateway)
     // [PT] Funções Auxiliares para Dimensões "Fixas" Ajustáveis (Gateway)
 
     /**
      * [EN] Initializes the `AppDimensFixed` builder from a Dp, allowing for customizations.
+     * @param ignoreMultiViewAdjustment If true, ignores multi-view adjustments (overrides global setting).
      *
      * [PT] Inicia o construtor `AppDimensFixed` a partir de um Dp, permitindo customizações.
+     * @param ignoreMultiViewAdjustment Se verdadeiro, ignora os ajustes de multi-view (sobrescreve configuração global).
      */
     @Composable
     fun Dp.fixed(
-        ignoreMultiViewAdjustment: Boolean = false
-    ): AppDimensFixed = AppDimensFixed(this@fixed, ignoreMultiViewAdjustment)
+        ignoreMultiViewAdjustment: Boolean? = null
+    ): AppDimensFixed {
+        val finalIgnoreMultiView = ignoreMultiViewAdjustment ?: globalIgnoreMultiViewAdjustment
+        return AppDimensFixed(this@fixed, finalIgnoreMultiView)
+            .apply { 
+                if (!globalAspectRatioEnabled) {
+                    aspectRatio(false)
+                }
+            }
+    }
 
     /**
      * [EN] Initializes the `AppDimensFixed` builder from a TextUnit (Sp), converting it to Dp first.
@@ -73,8 +165,18 @@ object AppDimens {
      */
     @Composable
     fun TextUnit.fixed(
-        ignoreMultiViewAdjustment: Boolean = false
-    ): AppDimensFixed = with(LocalDensity.current) { AppDimensFixed(this@fixed.value.dp, ignoreMultiViewAdjustment) }
+        ignoreMultiViewAdjustment: Boolean? = null
+    ): AppDimensFixed {
+        val finalIgnoreMultiView = ignoreMultiViewAdjustment ?: globalIgnoreMultiViewAdjustment
+        return with(LocalDensity.current) { 
+            AppDimensFixed(this@fixed.value.dp, finalIgnoreMultiView)
+                .apply { 
+                    if (!globalAspectRatioEnabled) {
+                        aspectRatio(false)
+                    }
+                }
+        }
+    }
 
     /**
      * [EN] Initializes the `AppDimensFixed` builder from a Float, converting it to Dp first.
@@ -83,8 +185,16 @@ object AppDimens {
      */
     @Composable
     fun Float.fixed(
-        ignoreMultiViewAdjustment: Boolean = false
-    ): AppDimensFixed = AppDimensFixed(this@fixed.dp, ignoreMultiViewAdjustment)
+        ignoreMultiViewAdjustment: Boolean? = null
+    ): AppDimensFixed {
+        val finalIgnoreMultiView = ignoreMultiViewAdjustment ?: globalIgnoreMultiViewAdjustment
+        return AppDimensFixed(this@fixed.dp, finalIgnoreMultiView)
+            .apply { 
+                if (!globalAspectRatioEnabled) {
+                    aspectRatio(false)
+                }
+            }
+    }
 
     /**
      * [EN] Initializes the `AppDimensFixed` builder from an Int, converting it to Dp first.
@@ -93,8 +203,16 @@ object AppDimens {
      */
     @Composable
     fun Int.fixed(
-        ignoreMultiViewAdjustment: Boolean = false
-    ): AppDimensFixed = AppDimensFixed(this@fixed.dp, ignoreMultiViewAdjustment)
+        ignoreMultiViewAdjustment: Boolean? = null
+    ): AppDimensFixed {
+        val finalIgnoreMultiView = ignoreMultiViewAdjustment ?: globalIgnoreMultiViewAdjustment
+        return AppDimensFixed(this@fixed.dp, finalIgnoreMultiView)
+            .apply { 
+                if (!globalAspectRatioEnabled) {
+                    aspectRatio(false)
+                }
+            }
+    }
 
     /**
      * [EN] Builds the adjusted Dp.
@@ -598,8 +716,11 @@ object AppDimens {
      */
     @Composable
     fun Dp.dynamic(
-        ignoreMultiViewAdjustment: Boolean = false
-    ): AppDimensDynamic = AppDimensDynamic(this@dynamic, ignoreMultiViewAdjustment)
+        ignoreMultiViewAdjustment: Boolean? = null
+    ): AppDimensDynamic {
+        val finalIgnoreMultiView = ignoreMultiViewAdjustment ?: globalIgnoreMultiViewAdjustment
+        return AppDimensDynamic(this@dynamic, finalIgnoreMultiView)
+    }
 
     /**
      * [EN] Initializes the `AppDimensDynamic` builder from a TextUnit (Sp), converting it to Dp first.
@@ -608,8 +729,11 @@ object AppDimens {
      */
     @Composable
     fun TextUnit.dynamic(
-        ignoreMultiViewAdjustment: Boolean = false
-    ): AppDimensDynamic = with(LocalDensity.current) { AppDimensDynamic(this@dynamic.value.dp, ignoreMultiViewAdjustment) }
+        ignoreMultiViewAdjustment: Boolean? = null
+    ): AppDimensDynamic {
+        val finalIgnoreMultiView = ignoreMultiViewAdjustment ?: globalIgnoreMultiViewAdjustment
+        return with(LocalDensity.current) { AppDimensDynamic(this@dynamic.value.dp, finalIgnoreMultiView) }
+    }
 
     /**
      * [EN] Initializes the `AppDimensDynamic` builder from a Float, converting it to Dp first.
@@ -618,8 +742,11 @@ object AppDimens {
      */
     @Composable
     fun Float.dynamic(
-        ignoreMultiViewAdjustment: Boolean = false
-    ): AppDimensDynamic = AppDimensDynamic(this@dynamic.dp, ignoreMultiViewAdjustment)
+        ignoreMultiViewAdjustment: Boolean? = null
+    ): AppDimensDynamic {
+        val finalIgnoreMultiView = ignoreMultiViewAdjustment ?: globalIgnoreMultiViewAdjustment
+        return AppDimensDynamic(this@dynamic.dp, finalIgnoreMultiView)
+    }
 
     /**
      * [EN] Initializes the `AppDimensDynamic` builder from an Int, converting it to Dp first.
@@ -628,8 +755,11 @@ object AppDimens {
      */
     @Composable
     fun Int.dynamic(
-        ignoreMultiViewAdjustment: Boolean = false
-    ): AppDimensDynamic = AppDimensDynamic(this@dynamic.dp, ignoreMultiViewAdjustment)
+        ignoreMultiViewAdjustment: Boolean? = null
+    ): AppDimensDynamic {
+        val finalIgnoreMultiView = ignoreMultiViewAdjustment ?: globalIgnoreMultiViewAdjustment
+        return AppDimensDynamic(this@dynamic.dp, finalIgnoreMultiView)
+    }
 
     /**
      * [EN] Calculates a dynamic Dp value based on a percentage of the screen dimension.

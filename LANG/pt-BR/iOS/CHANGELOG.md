@@ -4,8 +4,8 @@
 
 Todas as alterações relevantes da biblioteca AppDimens iOS serão documentadas aqui.
 
-## [1.0.5] - 2025-01-15
-- Atualização de versão para 1.0.5 nos módulos
+## [1.0.6] - 2025-01-16
+- Atualização de versão para 1.0.6 nos módulos
 - Documentação atualizada
 
 ## [1.0.0] - 2025-01-15

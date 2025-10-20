@@ -11,33 +11,18 @@ It goes beyond the limitations of standard density-independent pixels (**Dp/Pt**
 ```kotlin
 dependencies {
     // Core (Dynamic + Fixed)
-    implementation("com.github.bodenberg.appdimens:appdimens-dynamic:1.0.5")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.6")
 
     // SDP & SSP scaling (optional)
-    implementation("com.github.bodenberg.appdimens:appdimens-sdps:1.0.5")
-    implementation("com.github.bodenberg.appdimens:appdimens-ssps:1.0.5")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.6")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.6")
 
     // All in one
-    implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.5")
+    implementation("io.github.bodenberg:appdimens-all:1.0.6")
+    
+    // Game development (separate dependency)
+    implementation("io.github.bodenberg:appdimens-games:1.0.6")
 }
-
-maven { url 'https://jitpack.io' } //or maven central
-```
-
-```kotlin
-dependencies {
-    // Core (Dynamic + Fixed)
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.5")
-
-    // SDP & SSP scaling (optional)
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.5")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.5")
-
-    // All in one
-    implementation("io.github.bodenberg:appdimens-all:1.0.5")
-}
-
-mavenCentral()
 ```
 
 ### 🌐 Unified Principle and Cross-Platform Compatibility

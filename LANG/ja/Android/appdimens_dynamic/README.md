@@ -3,7 +3,7 @@
     <p><strong>Android 向けコアのレスポンシブ寸法システム</strong></p>
     <p>Jetpack Compose・Views/XML・Data Binding に対応した Fixed/Dynamic モデル。</p>
 
-[![バージョン](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![バージョン](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![ライセンス](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![プラットフォーム](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
@@ -18,7 +18,7 @@
 
 ## 🚀 インストール
 ```kotlin
-dependencies { implementation("io.github.bodenberg:appdimens-dynamic:1.0.5") }
+dependencies { implementation("io.github.bodenberg:appdimens-dynamic:1.0.6") }
 ```
 
 ## 🎨 例（Compose）

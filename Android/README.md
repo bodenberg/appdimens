@@ -4,7 +4,7 @@
     <p><strong>Smart and Responsive Dimensioning for Android</strong></p>
     <p>Mathematically responsive scaling that ensures your UI design adapts perfectly to any screen size or aspect ratio — from phones to TVs, cars, and wearables.</p>
 
-[![Version](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Version](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 [![Documentation](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)
@@ -25,6 +25,42 @@
 - **⚡ Performance Optimized**: Minimal runtime overhead with cached calculations
 - **🔧 Easy Integration**: Simple API that works with Jetpack Compose, XML Views, and Data Binding
 - **📐 Mathematical Precision**: Two scaling models (Fixed & Dynamic) for different design needs
+- **🎮 Game Development**: Specialized C++/NDK module for high-performance game development
+- **🚀 Native Performance**: C++ implementation for game-specific calculations and OpenGL integration
+
+---
+
+## 🎮 Game Development Features
+
+### AppDimens Games Module
+The **AppDimens Games** module provides specialized functionality for Android game development with native C++/NDK support:
+
+#### Key Features:
+- **Native Performance**: C++ implementation for high-performance calculations
+- **Game Dimension Types**: 
+  - `DYNAMIC`: Proportional scaling for containers
+  - `FIXED`: Logarithmic scaling for UI elements
+  - `GAME_WORLD`: Consistent game world coordinates
+  - `UI_OVERLAY`: UI overlay coordinates
+- **Vector Operations**: `GameVector2D` with mathematical operations (addition, subtraction, multiplication, normalization)
+- **Rectangle Utilities**: `GameRectangle` for bounds and viewport management
+- **OpenGL Integration**: Utilities for OpenGL ES rendering
+- **Performance Monitoring**: Real-time performance metrics and optimization
+
+#### Usage Example:
+```kotlin
+val appDimensGames = AppDimensGames.getInstance()
+appDimensGames.initialize(context)
+
+// Game-specific dimensions
+val buttonSize = appDimensGames.calculateButtonSize(48f)
+val playerSize = appDimensGames.calculatePlayerSize(64f)
+val uiOverlaySize = appDimensGames.calculateUISize(24f)
+
+// Vector operations
+val position = GameVector2D(100f, 200f)
+val scaledPosition = appDimensGames.calculateVector2D(position, GameDimensionType.GAME_WORLD)
+```
 
 ---
 
@@ -35,17 +71,17 @@
 ```kotlin
 dependencies {
     // Core library (Dynamic + Fixed scaling)
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.5")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.6")
     
     // Optional: SDP & SSP scaling
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.5")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.5")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.6")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.6")
     
     // All-in-one package (does not include games module)
-    implementation("io.github.bodenberg:appdimens-all:1.0.5")
+    implementation("io.github.bodenberg:appdimens-all:1.0.6")
     
     // Game development with C++/NDK support (separate dependency)
-    implementation("io.github.bodenberg:appdimens-games:1.0.5")
+    implementation("io.github.bodenberg:appdimens-games:1.0.6")
 }
 ```
 
@@ -53,11 +89,11 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'io.github.bodenberg:appdimens-dynamic:1.0.5'
-    implementation 'io.github.bodenberg:appdimens-sdps:1.0.5'
-    implementation 'io.github.bodenberg:appdimens-ssps:1.0.5'
-    implementation 'io.github.bodenberg:appdimens-all:1.0.5'
-    implementation 'io.github.bodenberg:appdimens-games:1.0.5'
+    implementation 'io.github.bodenberg:appdimens-dynamic:1.0.6'
+    implementation 'io.github.bodenberg:appdimens-sdps:1.0.6'
+    implementation 'io.github.bodenberg:appdimens-ssps:1.0.6'
+    implementation 'io.github.bodenberg:appdimens-all:1.0.6'
+    implementation 'io.github.bodenberg:appdimens-games:1.0.6'
 }
 ```
 
@@ -431,6 +467,30 @@ println("Factors: ${factors}")
 - **[📱 Examples](#usage-examples)** - Real-world usage examples
 - **[🔧 API Reference](DOCS/)** - Complete API documentation
 - **[❓ FAQ](https://appdimens-project.web.app/faq)** - Common questions and answers
+
+---
+
+## 🏗️ Architecture Overview
+
+### Android Library Structure
+
+| Module | Purpose | Dependencies | Key Features |
+|--------|---------|-------------|--------------|
+| **appdimens_library** | Core types and interfaces | None | Base enums, qualifiers, adjustment factors |
+| **appdimens_dynamic** | Dynamic/Fixed scaling | appdimens_library | DY/FX models, Compose extensions, caching |
+| **appdimens_sdps** | SDP scaling | appdimens_library | 426+ pre-calculated @dimen resources |
+| **appdimens_ssps** | SSP scaling | appdimens_library | 216+ pre-calculated @dimen resources |
+| **appdimens_games** | Game development | appdimens_library, appdimens_dynamic | C++/NDK, OpenGL utilities, performance monitoring |
+| **appdimens_all** | All-in-one package | All modules | Complete functionality in single dependency |
+
+### Performance Characteristics
+
+| Feature | Runtime Overhead | Memory Usage | Calculation Time | Cache Strategy |
+|---------|------------------|--------------|------------------|----------------|
+| **Dynamic/Fixed** | ~0.001ms | ~50KB | Cached per configuration | Automatic dependency tracking |
+| **SDP/SSP** | Zero | ~2MB (resources) | Pre-calculated | Resource-based |
+| **Physical Units** | ~0.002ms | ~10KB | On-demand | Lazy initialization |
+| **Games (Native)** | ~0.0005ms | ~100KB | Cached with LRU | Native C++ implementation |
 
 ---
 

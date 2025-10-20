@@ -3,7 +3,7 @@
     <p><strong>Базовая система адаптивных размеров для Android</strong></p>
     <p>Модуль с моделями Fixed и Dynamic для Jetpack Compose, Views/XML и Data Binding.</p>
 
-[![Версия](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Версия](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![Лицензия](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![Платформа](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
@@ -18,7 +18,7 @@
 
 ## 🚀 Установка
 ```kotlin
-dependencies { implementation("io.github.bodenberg:appdimens-dynamic:1.0.5") }
+dependencies { implementation("io.github.bodenberg:appdimens-dynamic:1.0.6") }
 ```
 
 ## 🎨 Примеры (Compose)

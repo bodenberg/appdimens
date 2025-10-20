@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.build/master.swiftdeps"
+  },
+  "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.derived/runner.swift": {
+    "dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.build/runner.d",
+    "object": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.build/runner.swift.o",
+    "swiftmodule": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.build/runner~partial.swiftmodule",
+    "swift-dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.build/runner.swiftdeps",
+    "diagnostics": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.build/runner.dia"
+  }
+}

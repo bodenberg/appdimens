@@ -4,6 +4,7 @@
  */
 package com.example.app.views.kotlin.en
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -14,6 +15,7 @@ import com.appdimens.dynamic.code.AppDimensFixed
 import com.appdimens.dynamic.code.AppDimensPhysicalUnits
 import com.appdimens.library.ScreenType
 import com.example.app.databinding.ActivityDynamicDataBindingBinding
+import com.example.app.compose.en.*
 
 /**
  * [EN] Main activity demonstrating various features of the AppDimens library.
@@ -73,6 +75,29 @@ class MainActivity : AppCompatActivity() {
         // [EN] 4. Physical Unit (MM) Usage
         // [PT] 4. Uso de Unidade Física (MM)
         demonstratePhysicalUnitUsage(binding.physicalUnitView)
+        
+        // [EN] 5. Setup navigation buttons to new Compose examples
+        // [PT] 5. Configurar botões de navegação para novos exemplos Compose
+        setupNavigationButtons()
+    }
+    
+    /**
+     * [EN] Sets up navigation buttons to access the new comprehensive examples.
+     * 
+     * [PT] Configura botões de navegação para acessar os novos exemplos abrangentes.
+     */
+    private fun setupNavigationButtons() {
+        // Add click listeners to navigate to different example activities
+        binding.root.setOnClickListener { view ->
+            when (view.id) {
+                // Add specific view IDs here if you want individual buttons
+                // For now, we'll add a general click handler
+                else -> {
+                    // Navigate to comprehensive example
+                    startActivity(Intent(this, ComprehensiveExampleActivity::class.java))
+                }
+            }
+        }
     }
 
     /**
@@ -138,7 +163,7 @@ class MainActivity : AppCompatActivity() {
 
         // [EN] Converts 5mm to Pixel (PX).
         // [PT] Converte 5mm para Pixel (PX).
-        val mmInPx = AppDimensPhysicalUnits.toMm(mmValue, resources)
+        val mmInPx = AppDimensPhysicalUnits.toPxFromMm(mmValue, resources)
 
         Log.d("AppDimensExample", "4. Physical: ${mmValue}mm -> ${mmInPx}px")
 

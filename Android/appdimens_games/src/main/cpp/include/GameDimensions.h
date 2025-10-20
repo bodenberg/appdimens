@@ -26,6 +26,7 @@
 #define GAME_DIMENSIONS_H
 
 #include "AppDimensGames.h"
+#include "LRUCache.h"
 #include <unordered_map>
 #include <string>
 
@@ -111,8 +112,8 @@ private:
     float gameWorldScaleFactor;
     float uiOverlayScaleFactor;
     
-    // Cached calculations
-    mutable std::unordered_map<std::string, float> dimensionCache;
+    // Cached calculations with LRU eviction
+    mutable AppDimensGamesCache::LRUCache<size_t, float> dimensionCache;
     
     // Internal calculation methods
     float calculateDynamicScaleFactor() const;
@@ -121,10 +122,13 @@ private:
     float calculateUIOverlayScaleFactor() const;
     
     // Cache management
-    std::string getCacheKey(const std::string& prefix, float value) const;
-    float getCachedDimension(const std::string& key) const;
-    void setCachedDimension(const std::string& key, float value) const;
+    size_t getCacheKey(const std::string& prefix, float value) const;
+    float getCachedDimension(size_t key) const;
+    void setCachedDimension(size_t key, float value) const;
     void clearCache();
+    void setCacheMaxSize(size_t maxSize);
+    size_t getCacheSize() const;
+    size_t getCacheMaxSize() const;
     
     // Mathematical utilities
     float logScale(float value, float base = 2.0f) const;

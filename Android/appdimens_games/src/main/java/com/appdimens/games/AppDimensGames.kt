@@ -30,11 +30,6 @@ import android.content.res.Resources
 import android.util.DisplayMetrics
 import android.util.Log
 import androidx.annotation.Keep
-import com.appdimens.library.ScreenType
-import com.appdimens.library.UiModeType
-import com.appdimens.dynamic.code.AppDimensDynamic
-import com.appdimens.dynamic.code.AppDimensFixed
-import com.appdimens.dynamic.code.AppDimensPhysicalUnits
 
 /**
  * [EN] Game dimension types for different scaling strategies.
@@ -82,6 +77,47 @@ data class GameScreenConfig(
     val isTablet: Boolean,
     val isLandscape: Boolean
 )
+
+/**
+ * [EN] Performance settings for game dimension calculations.
+ * [PT] Configurações de performance para cálculos de dimensão de jogo.
+ */
+data class GamePerformanceSettings(
+    val enableCaching: Boolean = true,
+    val cacheSize: Int = 1000,
+    val enableAsyncCalculation: Boolean = false,
+    val maxCalculationTime: Long = 16 // 60 FPS in milliseconds
+) {
+    companion object {
+        /**
+         * [EN] Default performance settings optimized for games.
+         * [PT] Configurações de performance padrão otimizadas para jogos.
+         */
+        val DEFAULT = GamePerformanceSettings()
+        
+        /**
+         * [EN] High performance settings for demanding games.
+         * [PT] Configurações de alta performance para jogos exigentes.
+         */
+        val HIGH_PERFORMANCE = GamePerformanceSettings(
+            enableCaching = true,
+            cacheSize = 2000,
+            enableAsyncCalculation = true,
+            maxCalculationTime = 8 // 120 FPS
+        )
+        
+        /**
+         * [EN] Low performance settings for simple games.
+         * [PT] Configurações de baixa performance para jogos simples.
+         */
+        val LOW_PERFORMANCE = GamePerformanceSettings(
+            enableCaching = false,
+            cacheSize = 100,
+            enableAsyncCalculation = false,
+            maxCalculationTime = 33 // 30 FPS
+        )
+    }
+}
 
 /**
  * [EN] 2D Vector for game coordinates.
@@ -186,6 +222,9 @@ class AppDimensGames private constructor() {
     private var context: Context? = null
     private var screenConfig: GameScreenConfig? = null
     
+    // Performance settings
+    private var performanceSettings = GamePerformanceSettings()
+    
     // Native method declarations
     @Keep
     private external fun nativeInitialize(context: Context): Boolean
@@ -209,6 +248,15 @@ class AppDimensGames private constructor() {
     private external fun nativeCalculateRectangle(
         x: Float, y: Float, width: Float, height: Float, type: Int
     ): FloatArray
+    
+    @Keep
+    private external fun nativeSetCacheMaxSize(maxSize: Int)
+    
+    @Keep
+    private external fun nativeSetCachingEnabled(enabled: Boolean)
+    
+    @Keep
+    private external fun nativeClearCache()
     
     /**
      * [EN] Initializes the AppDimens Games library.
@@ -388,6 +436,48 @@ class AppDimensGames private constructor() {
      */
     fun isInitialized(): Boolean {
         return isInitialized
+    }
+    
+    /**
+     * [EN] Configures performance settings for the games library.
+     * @param settings The performance settings to apply.
+     * 
+     * [PT] Configura as configurações de performance para a biblioteca de jogos.
+     * @param settings As configurações de performance a serem aplicadas.
+     */
+    fun configurePerformance(settings: GamePerformanceSettings) {
+        performanceSettings = settings
+        
+        if (isInitialized) {
+            // Apply settings to native library
+            nativeSetCacheMaxSize(settings.cacheSize)
+            nativeSetCachingEnabled(settings.enableCaching)
+        }
+        
+        Log.i(TAG, "Performance settings updated: cache=${settings.enableCaching}, size=${settings.cacheSize}")
+    }
+    
+    /**
+     * [EN] Gets the current performance settings.
+     * @return The current performance settings.
+     * 
+     * [PT] Obtém as configurações de performance atuais.
+     * @return As configurações de performance atuais.
+     */
+    fun getPerformanceSettings(): GamePerformanceSettings {
+        return performanceSettings
+    }
+    
+    /**
+     * [EN] Clears all cached calculations.
+     * 
+     * [PT] Limpa todos os cálculos em cache.
+     */
+    fun clearCache() {
+        if (isInitialized) {
+            nativeClearCache()
+            Log.i(TAG, "Cache cleared")
+        }
     }
     
     // Game-specific utility functions

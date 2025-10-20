@@ -1,0 +1,10 @@
+$dokka.format:javadoc-v1
+$dokka.linkExtension:html
+$dokka.location:com.appdimens.games/AppDimensGames.Companion///PointingToDeclaration/com/appdimens/games/AppDimensGames.Companion.html
+$dokka.location:com.appdimens.games/AppDimensGames3D.Companion///PointingToDeclaration/com/appdimens/games/AppDimensGames3D.Companion.html
+$dokka.location:com.appdimens.games/Game3DPerformanceSettings.Companion///PointingToDeclaration/com/appdimens/games/Game3DPerformanceSettings.Companion.html
+$dokka.location:com.appdimens.games/GameActivity.Companion///PointingToDeclaration/com/appdimens/games/GameActivity.Companion.html
+$dokka.location:com.appdimens.games/GamePerformanceSettings.Companion///PointingToDeclaration/com/appdimens/games/GamePerformanceSettings.Companion.html
+$dokka.location:com.appdimens.games/GameRenderer.Companion///PointingToDeclaration/com/appdimens/games/GameRenderer.Companion.html
+com.appdimens.games
+

@@ -26,20 +26,17 @@ package com.example.app.games
 
 import android.app.Activity
 import android.content.res.Configuration
-import android.opengl.GLES20
 import android.opengl.GLSurfaceView
 import android.os.Bundle
-import com.appdimens.games.AppDimensGames
-import com.appdimens.games.GameDimensionType
-import com.appdimens.games.GameVector2D
-import com.appdimens.games.GameRectangle
 import android.util.Log
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.Keep
-import javax.microedition.khronos.egl.EGLConfig
-import javax.microedition.khronos.opengles.GL10
+import com.appdimens.games.AppDimensGames
+import com.appdimens.games.GameDimensionType
+import com.appdimens.games.GameVector2D
+import com.appdimens.games.GameRectangle
 
 /**
  * [EN] Example game activity demonstrating AppDimens Games usage.
@@ -240,26 +237,26 @@ class GameRenderer(private val appDimensGames: AppDimensGames) : GLSurfaceView.R
         private const val TAG = "GameRenderer"
     }
     
-    override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
+    override fun onSurfaceCreated(gl: javax.microedition.khronos.opengles.GL10?, config: javax.microedition.khronos.egl.EGLConfig?) {
         Log.i(TAG, "OpenGL surface created")
         
         // Set clear color to dark blue
-        GLES20.glClearColor(0.0f, 0.0f, 0.2f, 1.0f)
+        android.opengl.GLES20.glClearColor(0.0f, 0.0f, 0.2f, 1.0f)
     }
     
-    override fun onSurfaceChanged(gl: GL10?, width: Int, height: Int) {
+    override fun onSurfaceChanged(gl: javax.microedition.khronos.opengles.GL10?, width: Int, height: Int) {
         Log.i(TAG, "OpenGL surface changed: ${width}x${height}")
         
         // Set viewport
-        GLES20.glViewport(0, 0, width, height)
+        android.opengl.GLES20.glViewport(0, 0, width, height)
         
         // Update screen configuration in AppDimens Games
         appDimensGames.updateScreenConfiguration()
     }
     
-    override fun onDrawFrame(gl: GL10?) {
+    override fun onDrawFrame(gl: javax.microedition.khronos.opengles.GL10?) {
         // Clear the screen
-        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT)
+        android.opengl.GLES20.glClear(android.opengl.GLES20.GL_COLOR_BUFFER_BIT)
         
         // Here you would implement your game rendering logic
         // using the AppDimens Games library for responsive dimensions

@@ -3,12 +3,12 @@
  * GIT: https://github.com/bodenberg/appdimens.git
  * Date: 2025-01-15
  *
- * Library: AppDimens iOS
+ * Library: AppDimens iOS - Unified Extensions
  *
  * Description:
- * The AppDimens library is a dimension management system that automatically
- * adjusts Dp, Sp, and Px values in a responsive and mathematically refined way,
- * ensuring layout consistency across any screen size or ratio.
+ * Unified extensions and convenience methods for AppDimens iOS library,
+ * providing a fluent API similar to Android Compose implementation.
+ * Combines functionality from both AppDimens and AppDimensCore modules.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@
 import Foundation
 import UIKit
 import SwiftUI
-import AppDimensCore
 
 // MARK: - CGFloat Extensions
 
@@ -36,16 +35,32 @@ public extension CGFloat {
      * [EN] Creates a fixed dimension from a CGFloat value.
      * [PT] Cria uma dimensão fixa a partir de um valor CGFloat.
      */
-    var fxpt: CGFloat {
+    var fxdp: CGFloat {
         return AppDimens.fixed(self).toPoints()
+    }
+    
+    /**
+     * [EN] Creates a fixed dimension with highest screen type from a CGFloat value.
+     * [PT] Cria uma dimensão fixa com tipo de tela mais alto a partir de um valor CGFloat.
+     */
+    var fxhdp: CGFloat {
+        return AppDimens.fixed(self).type(.highest).toPoints()
     }
     
     /**
      * [EN] Creates a dynamic dimension from a CGFloat value.
      * [PT] Cria uma dimensão dinâmica a partir de um valor CGFloat.
      */
-    var dypt: CGFloat {
+    var dydp: CGFloat {
         return AppDimens.dynamic(self).toPoints()
+    }
+    
+    /**
+     * [EN] Creates a dynamic dimension with highest screen type from a CGFloat value.
+     * [PT] Cria uma dimensão dinâmica com tipo de tela mais alto a partir de um valor CGFloat.
+     */
+    var dyhdp: CGFloat {
+        return AppDimens.dynamic(self).type(.highest).toPoints()
     }
     
     /**
@@ -57,11 +72,27 @@ public extension CGFloat {
     }
     
     /**
+     * [EN] Creates a fixed dimension with highest screen type in pixels from a CGFloat value.
+     * [PT] Cria uma dimensão fixa com tipo de tela mais alto em pixels a partir de um valor CGFloat.
+     */
+    var fxhpx: CGFloat {
+        return AppDimens.fixed(self).type(.highest).toPixels()
+    }
+    
+    /**
      * [EN] Creates a dynamic dimension in pixels from a CGFloat value.
      * [PT] Cria uma dimensão dinâmica em pixels a partir de um valor CGFloat.
      */
     var dypx: CGFloat {
         return AppDimens.dynamic(self).toPixels()
+    }
+    
+    /**
+     * [EN] Creates a dynamic dimension with highest screen type in pixels from a CGFloat value.
+     * [PT] Cria uma dimensão dinâmica com tipo de tela mais alto em pixels a partir de um valor CGFloat.
+     */
+    var dyhpx: CGFloat {
+        return AppDimens.dynamic(self).type(.highest).toPixels()
     }
 }
 
@@ -73,16 +104,32 @@ public extension Int {
      * [EN] Creates a fixed dimension from an Int value.
      * [PT] Cria uma dimensão fixa a partir de um valor Int.
      */
-    var fxpt: CGFloat {
+    var fxdp: CGFloat {
         return AppDimens.fixed(self).toPoints()
+    }
+    
+    /**
+     * [EN] Creates a fixed dimension with highest screen type from an Int value.
+     * [PT] Cria uma dimensão fixa com tipo de tela mais alto a partir de um valor Int.
+     */
+    var fxhdp: CGFloat {
+        return AppDimens.fixed(self).type(.highest).toPoints()
     }
     
     /**
      * [EN] Creates a dynamic dimension from an Int value.
      * [PT] Cria uma dimensão dinâmica a partir de um valor Int.
      */
-    var dypt: CGFloat {
+    var dydp: CGFloat {
         return AppDimens.dynamic(self).toPoints()
+    }
+    
+    /**
+     * [EN] Creates a dynamic dimension with highest screen type from an Int value.
+     * [PT] Cria uma dimensão dinâmica com tipo de tela mais alto a partir de um valor Int.
+     */
+    var dyhdp: CGFloat {
+        return AppDimens.dynamic(self).type(.highest).toPoints()
     }
     
     /**
@@ -94,20 +141,33 @@ public extension Int {
     }
     
     /**
+     * [EN] Creates a fixed dimension with highest screen type in pixels from an Int value.
+     * [PT] Cria uma dimensão fixa com tipo de tela mais alto em pixels a partir de um valor Int.
+     */
+    var fxhpx: CGFloat {
+        return AppDimens.fixed(self).type(.highest).toPixels()
+    }
+    
+    /**
      * [EN] Creates a dynamic dimension in pixels from an Int value.
      * [PT] Cria uma dimensão dinâmica em pixels a partir de um valor Int.
      */
     var dypx: CGFloat {
         return AppDimens.dynamic(self).toPixels()
     }
+    
+    /**
+     * [EN] Creates a dynamic dimension with highest screen type in pixels from an Int value.
+     * [PT] Cria uma dimensão dinâmica com tipo de tela mais alto em pixels a partir de um valor Int.
+     */
+    var dyhpx: CGFloat {
+        return AppDimens.dynamic(self).type(.highest).toPixels()
+    }
 }
 
 // MARK: - SwiftUI Extensions
 
 #if canImport(SwiftUI)
-import SwiftUI
-
-@available(iOS 13.0, *)
 public extension View {
     
     /**
@@ -115,7 +175,7 @@ public extension View {
      * [PT] Aplica padding fixo à view.
      */
     func fxPadding(_ value: CGFloat) -> some View {
-        self.padding(value.fxpt)
+        self.padding(value.fxdp)
     }
     
     /**
@@ -123,136 +183,131 @@ public extension View {
      * [PT] Aplica padding dinâmico à view.
      */
     func dyPadding(_ value: CGFloat) -> some View {
-        self.padding(value.dypt)
+        self.padding(value.dydp)
     }
     
     /**
-     * [EN] Applies fixed padding with specific edges to the view.
-     * [PT] Aplica padding fixo com bordas específicas à view.
-     */
-    func fxPadding(_ edges: Edge.Set = .all, _ value: CGFloat) -> some View {
-        self.padding(edges, value.fxpt)
-    }
-    
-    /**
-     * [EN] Applies dynamic padding with specific edges to the view.
-     * [PT] Aplica padding dinâmico com bordas específicas à view.
-     */
-    func dyPadding(_ edges: Edge.Set = .all, _ value: CGFloat) -> some View {
-        self.padding(edges, value.dypt)
-    }
-    
-    /**
-     * [EN] Applies fixed frame size to the view.
-     * [PT] Aplica tamanho de frame fixo à view.
+     * [EN] Applies fixed frame to the view.
+     * [PT] Aplica frame fixo à view.
      */
     func fxFrame(width: CGFloat? = nil, height: CGFloat? = nil) -> some View {
-        self.frame(
-            width: width?.fxpt,
-            height: height?.fxpt
-        )
+        self.frame(width: width?.fxdp, height: height?.fxdp)
     }
     
     /**
-     * [EN] Applies dynamic frame size to the view.
-     * [PT] Aplica tamanho de frame dinâmico à view.
+     * [EN] Applies dynamic frame to the view.
+     * [PT] Aplica frame dinâmico à view.
      */
     func dyFrame(width: CGFloat? = nil, height: CGFloat? = nil) -> some View {
-        self.frame(
-            width: width?.dypt,
-            height: height?.dypt
-        )
+        self.frame(width: width?.dydp, height: height?.dydp)
     }
     
     /**
      * [EN] Applies fixed corner radius to the view.
      * [PT] Aplica raio de canto fixo à view.
      */
-    func fxCornerRadius(_ radius: CGFloat) -> some View {
-        self.cornerRadius(radius.fxpt)
+    func fxCornerRadius(_ value: CGFloat) -> some View {
+        self.cornerRadius(value.fxdp)
     }
     
     /**
      * [EN] Applies dynamic corner radius to the view.
      * [PT] Aplica raio de canto dinâmico à view.
      */
-    func dyCornerRadius(_ radius: CGFloat) -> some View {
-        self.cornerRadius(radius.dypt)
+    func dyCornerRadius(_ value: CGFloat) -> some View {
+        self.cornerRadius(value.dydp)
     }
     
     /**
-     * [EN] Wrapper function for dynamic dimensions (similar to Kotlin/Compose).
-     * [PT] Função wrapper para dimensões dinâmicas (similar ao Kotlin/Compose).
+     * [EN] Applies fixed system font size to the view.
+     * [PT] Aplica tamanho de fonte do sistema fixo à view.
      */
-    func dynamicDp(_ base: CGFloat, @ViewBuilder content: @escaping (CGFloat) -> some View) -> some View {
-        return base.dynamic().dimension(content: content)
+    func fxSystem(size: CGFloat, weight: Font.Weight = .regular, design: Font.Design = .default) -> some View {
+        self.font(.system(size: size.fxdp, weight: weight, design: design))
     }
-
+    
     /**
-     * [EN] Wrapper function for fixed dimensions (similar to Kotlin/Compose).
-     * [PT] Função wrapper para dimensões fixas (similar ao Kotlin/Compose).
+     * [EN] Applies dynamic system font size to the view.
+     * [PT] Aplica tamanho de fonte do sistema dinâmico à view.
      */
-    func fixedDp(_ base: CGFloat, @ViewBuilder content: @escaping (CGFloat) -> some View) -> some View {
-        return base.fixed().dimension(content: content)
+    func dySystem(size: CGFloat, weight: Font.Weight = .regular, design: Font.Design = .default) -> some View {
+        self.font(.system(size: size.dydp, weight: weight, design: design))
+    }
+    
+    /**
+     * [EN] Applies fixed custom font to the view.
+     * [PT] Aplica fonte customizada fixa à view.
+     */
+    func fxCustom(font: Font) -> some View {
+        self.font(font)
+    }
+    
+    /**
+     * [EN] Applies dynamic custom font to the view.
+     * [PT] Aplica fonte customizada dinâmica à view.
+     */
+    func dyCustom(font: Font) -> some View {
+        self.font(font)
+    }
+    
+    /**
+     * [EN] Applies fixed minimum length constraint to the view.
+     * [PT] Aplica restrição de comprimento mínimo fixo à view.
+     */
+    func fxMinLength(_ value: CGFloat) -> some View {
+        self.frame(minWidth: value.fxdp, minHeight: value.fxdp)
+    }
+    
+    /**
+     * [EN] Applies dynamic minimum length constraint to the view.
+     * [PT] Aplica restrição de comprimento mínimo dinâmico à view.
+     */
+    func dyMinLength(_ value: CGFloat) -> some View {
+        self.frame(minWidth: value.dydp, minHeight: value.dydp)
     }
 }
 
-@available(iOS 13.0, *)
+// MARK: - Font Extensions
+
 public extension Font {
     
     /**
-     * [EN] Creates a system font with fixed size.
-     * [PT] Cria uma fonte do sistema com tamanho fixo.
+     * [EN] Creates a fixed system font with the specified size.
+     * [PT] Cria uma fonte do sistema fixa com o tamanho especificado.
      */
     static func fxSystem(size: CGFloat, weight: Font.Weight = .regular, design: Font.Design = .default) -> Font {
-        return .system(size: size.fxpt, weight: weight, design: design)
+        return .system(size: size.fxdp, weight: weight, design: design)
     }
     
     /**
-     * [EN] Creates a system font with dynamic size.
-     * [PT] Cria uma fonte do sistema com tamanho dinâmico.
+     * [EN] Creates a dynamic system font with the specified size.
+     * [PT] Cria uma fonte do sistema dinâmica com o tamanho especificado.
      */
     static func dySystem(size: CGFloat, weight: Font.Weight = .regular, design: Font.Design = .default) -> Font {
-        return .system(size: size.dypt, weight: weight, design: design)
-    }
-    
-    /**
-     * [EN] Creates a custom font with fixed size.
-     * [PT] Cria uma fonte customizada com tamanho fixo.
-     */
-    static func fxCustom(_ name: String, size: CGFloat) -> Font {
-        return .custom(name, size: size.fxpt)
-    }
-    
-    /**
-     * [EN] Creates a custom font with dynamic size.
-     * [PT] Cria uma fonte customizada com tamanho dinâmico.
-     */
-    static func dyCustom(_ name: String, size: CGFloat) -> Font {
-        return .custom(name, size: size.dypt)
+        return .system(size: size.dydp, weight: weight, design: design)
     }
 }
 
-@available(iOS 13.0, *)
+// MARK: - Spacer Extensions
+
 public extension Spacer {
     
     /**
-     * [EN] Creates a spacer with fixed minimum length.
-     * [PT] Cria um espaçador com comprimento mínimo fixo.
+     * [EN] Creates a fixed spacer with the specified minimum length.
+     * [PT] Cria um espaçador fixo com o comprimento mínimo especificado.
      */
-    static func fxMinLength(_ length: CGFloat) -> Spacer {
-        return Spacer(minLength: length.fxpt)
+    static func fxMinLength(_ value: CGFloat) -> some View {
+        Spacer().frame(minWidth: value.fxdp, minHeight: value.fxdp)
     }
     
     /**
-     * [EN] Creates a spacer with dynamic minimum length.
-     * [PT] Cria um espaçador com comprimento mínimo dinâmico.
+     * [EN] Creates a dynamic spacer with the specified minimum length.
+     * [PT] Cria um espaçador dinâmico com o comprimento mínimo especificado.
      */
-    static func dyMinLength(_ length: CGFloat) -> Spacer {
-        return Spacer(minLength: length.dypt)
+    static func dyMinLength(_ value: CGFloat) -> some View {
+        Spacer().frame(minWidth: value.dydp, minHeight: value.dydp)
     }
 }
-
 #endif
 
 // MARK: - UIKit Extensions
@@ -263,107 +318,107 @@ public extension UIView {
      * [EN] Applies fixed corner radius to the view.
      * [PT] Aplica raio de canto fixo à view.
      */
-    func fxCornerRadius(_ radius: CGFloat) {
-        self.layer.cornerRadius = radius.fxpt
+    func fxCornerRadius(_ value: CGFloat) {
+        self.layer.cornerRadius = value.fxdp
     }
     
     /**
      * [EN] Applies dynamic corner radius to the view.
      * [PT] Aplica raio de canto dinâmico à view.
      */
-    func dyCornerRadius(_ radius: CGFloat) {
-        self.layer.cornerRadius = radius.dypt
+    func dyCornerRadius(_ value: CGFloat) {
+        self.layer.cornerRadius = value.dydp
     }
     
     /**
      * [EN] Applies fixed border width to the view.
      * [PT] Aplica largura de borda fixa à view.
      */
-    func fxBorderWidth(_ width: CGFloat) {
-        self.layer.borderWidth = width.fxpt
+    func fxBorderWidth(_ value: CGFloat) {
+        self.layer.borderWidth = value.fxdp
     }
     
     /**
      * [EN] Applies dynamic border width to the view.
      * [PT] Aplica largura de borda dinâmica à view.
      */
-    func dyBorderWidth(_ width: CGFloat) {
-        self.layer.borderWidth = width.dypt
+    func dyBorderWidth(_ value: CGFloat) {
+        self.layer.borderWidth = value.dydp
     }
 }
 
 public extension UILabel {
     
     /**
-     * [EN] Sets the font size with fixed scaling.
-     * [PT] Define o tamanho da fonte com escala fixa.
+     * [EN] Applies fixed font size to the label.
+     * [PT] Aplica tamanho de fonte fixo ao label.
      */
-    func fxFontSize(_ size: CGFloat) {
-        self.font = self.font.withSize(size.fxpt)
+    func fxFontSize(_ value: CGFloat) {
+        self.font = self.font?.withSize(value.fxdp)
     }
     
     /**
-     * [EN] Sets the font size with dynamic scaling.
-     * [PT] Define o tamanho da fonte com escala dinâmica.
+     * [EN] Applies dynamic font size to the label.
+     * [PT] Aplica tamanho de fonte dinâmico ao label.
      */
-    func dyFontSize(_ size: CGFloat) {
-        self.font = self.font.withSize(size.dypt)
+    func dyFontSize(_ value: CGFloat) {
+        self.font = self.font?.withSize(value.dydp)
     }
 }
 
 public extension UIButton {
     
     /**
-     * [EN] Sets the title label font size with fixed scaling.
-     * [PT] Define o tamanho da fonte do título com escala fixa.
+     * [EN] Applies fixed title font size to the button.
+     * [PT] Aplica tamanho de fonte do título fixo ao botão.
      */
-    func fxTitleFontSize(_ size: CGFloat) {
-        self.titleLabel?.font = self.titleLabel?.font.withSize(size.fxpt)
+    func fxTitleFontSize(_ value: CGFloat) {
+        self.titleLabel?.font = self.titleLabel?.font?.withSize(value.fxdp)
     }
     
     /**
-     * [EN] Sets the title label font size with dynamic scaling.
-     * [PT] Define o tamanho da fonte do título com escala dinâmica.
+     * [EN] Applies dynamic title font size to the button.
+     * [PT] Aplica tamanho de fonte do título dinâmico ao botão.
      */
-    func dyTitleFontSize(_ size: CGFloat) {
-        self.titleLabel?.font = self.titleLabel?.font.withSize(size.dypt)
+    func dyTitleFontSize(_ value: CGFloat) {
+        self.titleLabel?.font = self.titleLabel?.font?.withSize(value.dydp)
     }
 }
 
 public extension UITextField {
     
     /**
-     * [EN] Sets the font size with fixed scaling.
-     * [PT] Define o tamanho da fonte com escala fixa.
+     * [EN] Applies fixed font size to the text field.
+     * [PT] Aplica tamanho de fonte fixo ao campo de texto.
      */
-    func fxFontSize(_ size: CGFloat) {
-        self.font = self.font?.withSize(size.fxpt)
+    func fxFontSize(_ value: CGFloat) {
+        self.font = self.font?.withSize(value.fxdp)
     }
     
     /**
-     * [EN] Sets the font size with dynamic scaling.
-     * [PT] Define o tamanho da fonte com escala dinâmica.
+     * [EN] Applies dynamic font size to the text field.
+     * [PT] Aplica tamanho de fonte dinâmico ao campo de texto.
      */
-    func dyFontSize(_ size: CGFloat) {
-        self.font = self.font?.withSize(size.dypt)
+    func dyFontSize(_ value: CGFloat) {
+        self.font = self.font?.withSize(value.dydp)
     }
 }
 
 public extension UITextView {
     
     /**
-     * [EN] Sets the font size with fixed scaling.
-     * [PT] Define o tamanho da fonte com escala fixa.
+     * [EN] Applies fixed font size to the text view.
+     * [PT] Aplica tamanho de fonte fixo à text view.
      */
-    func fxFontSize(_ size: CGFloat) {
-        self.font = self.font?.withSize(size.fxpt)
+    func fxFontSize(_ value: CGFloat) {
+        self.font = self.font?.withSize(value.fxdp)
     }
     
     /**
-     * [EN] Sets the font size with dynamic scaling.
-     * [PT] Define o tamanho da fonte com escala dinâmica.
+     * [EN] Applies dynamic font size to the text view.
+     * [PT] Aplica tamanho de fonte dinâmico à text view.
      */
-    func dyFontSize(_ size: CGFloat) {
-        self.font = self.font?.withSize(size.dypt)
+    func dyFontSize(_ value: CGFloat) {
+        self.font = self.font?.withSize(value.dydp)
     }
 }

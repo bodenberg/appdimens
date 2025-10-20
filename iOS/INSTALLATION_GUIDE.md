@@ -71,9 +71,8 @@ No Xcode:
 
 ```swift
 import AppDimens        // Para instalação completa
-import AppDimensCore    // Para apenas o módulo Core
-import AppDimensUI      // Para módulo UI
-import AppDimensGames   // Para módulo Games
+import AppDimensUI      // Para módulo UI (opcional)
+import AppDimensGames   // Para módulo Games (opcional)
 ```
 
 ## 🔧 Configuração Inicial
@@ -87,9 +86,7 @@ import AppDimens
 struct MyApp: App {
     var body: some Scene {
         WindowGroup {
-            DimensProvider {
-                ContentView()
-            }
+            ContentView()
         }
     }
 }
@@ -121,7 +118,6 @@ class GameViewController: UIViewController {
         
         // Inicializar AppDimens Games
         AppDimensGames.shared.initialize(device: metalDevice, viewport: viewport)
-        metalManager = AppDimensGames.shared.getMetalManager()
     }
 }
 ```

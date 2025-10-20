@@ -1,2 +1,0 @@
-ninja: Entering directory `/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/Debug/h6d4j6l1/x86'
-ninja: no work to do.

@@ -1,0 +1,202 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "io.github.bodenberg",
+    "module": "appdimens-games",
+    "version": "1.0.6",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.13"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "io.github.bodenberg",
+          "module": "appdimens-library",
+          "version": {
+            "requires": "1.0.6"
+          }
+        },
+        {
+          "group": "io.github.bodenberg",
+          "module": "appdimens-dynamic",
+          "version": {
+            "requires": "1.0.6"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.2.20"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "appdimens-games-1.0.6.aar",
+          "url": "appdimens-games-1.0.6.aar",
+          "size": 1960140,
+          "sha512": "c54c381227609e3b6dffa37872cf09bda3e0c2a356700e14473fdba0c65370d5457b839bf61fdfb59184a2c125f0ba992c2d63340f5fbc1b090f67496288a3c3",
+          "sha256": "1923241159a89e37b05ad3e3f36ab6e7309f3d6a25bbb9bf38dbe22fdd4b9278",
+          "sha1": "01bbd3334bb27ed10965462bf43da70916bad9ca",
+          "md5": "d47998560a4a941ad084ac15959fd2c6"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "androidx.core",
+          "module": "core-ktx",
+          "version": {
+            "requires": "1.17.0"
+          }
+        },
+        {
+          "group": "androidx.activity",
+          "module": "activity-compose",
+          "version": {
+            "requires": "1.11.0"
+          }
+        },
+        {
+          "group": "androidx.compose",
+          "module": "compose-bom",
+          "version": {
+            "requires": "2025.10.00"
+          },
+          "attributes": {
+            "org.gradle.category": "platform"
+          }
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui"
+        },
+        {
+          "group": "androidx.compose.runtime",
+          "module": "runtime"
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui-graphics"
+        },
+        {
+          "group": "androidx.compose.ui",
+          "module": "ui-tooling-preview"
+        },
+        {
+          "group": "androidx.compose.material3",
+          "module": "material3"
+        },
+        {
+          "group": "androidx.graphics",
+          "module": "graphics-core",
+          "version": {
+            "requires": "1.0.0-alpha02"
+          }
+        },
+        {
+          "group": "androidx.annotation",
+          "module": "annotation",
+          "version": {
+            "requires": "1.7.1"
+          }
+        },
+        {
+          "group": "io.github.bodenberg",
+          "module": "appdimens-library",
+          "version": {
+            "requires": "1.0.6"
+          }
+        },
+        {
+          "group": "io.github.bodenberg",
+          "module": "appdimens-dynamic",
+          "version": {
+            "requires": "1.0.6"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.2.20"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "appdimens-games-1.0.6.aar",
+          "url": "appdimens-games-1.0.6.aar",
+          "size": 1960140,
+          "sha512": "c54c381227609e3b6dffa37872cf09bda3e0c2a356700e14473fdba0c65370d5457b839bf61fdfb59184a2c125f0ba992c2d63340f5fbc1b090f67496288a3c3",
+          "sha256": "1923241159a89e37b05ad3e3f36ab6e7309f3d6a25bbb9bf38dbe22fdd4b9278",
+          "sha1": "01bbd3334bb27ed10965462bf43da70916bad9ca",
+          "md5": "d47998560a4a941ad084ac15959fd2c6"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseSourcePublication",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "appdimens-games-1.0.6-sources.jar",
+          "url": "appdimens-games-1.0.6-sources.jar",
+          "size": 14727,
+          "sha512": "f43648460a143aa299d4bb7deed857b866209f20034ecbf2ab386c8fcf6bb235e21f289dbc1911cae148b22e4fcf97c2db8eb9ada0f6d2914524b22088af9631",
+          "sha256": "d9769ebfb081a5e2bcf691add8fc9402a197c58a95ab14e8362a768236965bec",
+          "sha1": "3705efb6ddf6fcbf6adc0606e4fce84a3e0e46dd",
+          "md5": "3ab6d6c7fda30adebcf24f4d83146431"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseJavaDocPublication",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "javadoc",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "appdimens-games-1.0.6-javadoc.jar",
+          "url": "appdimens-games-1.0.6-javadoc.jar",
+          "size": 389723,
+          "sha512": "3086b119254131bd1e759793813270ee4eeb7abd89c15c977dc4ba1bc6c5d7322de960f882c50e400271c8949932f9a357ffe0d63cd3b525b7792050ed894cc4",
+          "sha256": "d05e16fe5b9f8bb1faba5591c951e2658e7a0fd005dc06795acb461578564155",
+          "sha1": "855e6de268da03ec3150217922ea0f2ef0a603d5",
+          "md5": "a2c1030dddc19f073a44b5cb5c92c72a"
+        }
+      ]
+    }
+  ]
+}

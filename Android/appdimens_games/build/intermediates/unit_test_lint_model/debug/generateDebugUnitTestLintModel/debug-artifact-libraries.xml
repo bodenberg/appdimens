@@ -1,9 +1,9 @@
 <libraries>
   <library
       name=":@@:appdimens_games::debug"
-      jars="/home/bodenberg/.gradle/caches/8.13/transforms/0d3889586d91f1b4cb1b8ecbb23adcd2/transformed/out/jars/classes.jar:/home/bodenberg/.gradle/caches/8.13/transforms/0d3889586d91f1b4cb1b8ecbb23adcd2/transformed/out/jars/libs/R.jar"
+      jars="/home/bodenberg/.gradle/caches/8.13/transforms/75c00b2958fac769061fb5cc7f021698/transformed/out/jars/classes.jar:/home/bodenberg/.gradle/caches/8.13/transforms/75c00b2958fac769061fb5cc7f021698/transformed/out/jars/libs/R.jar"
       resolved="AppDimens:appdimens_games:unspecified"
-      folder="/home/bodenberg/.gradle/caches/8.13/transforms/0d3889586d91f1b4cb1b8ecbb23adcd2/transformed/out"
+      folder="/home/bodenberg/.gradle/caches/8.13/transforms/75c00b2958fac769061fb5cc7f021698/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -14,9 +14,9 @@
       proguardRules="proguard.txt"/>
   <library
       name=":@@:appdimens_dynamic::debug"
-      jars="/home/bodenberg/.gradle/caches/8.13/transforms/df5a7efab911b13a467dbe81fdacc04f/transformed/out/jars/classes.jar:/home/bodenberg/.gradle/caches/8.13/transforms/df5a7efab911b13a467dbe81fdacc04f/transformed/out/jars/libs/R.jar"
+      jars="/home/bodenberg/.gradle/caches/8.13/transforms/ad1d93bc69c56d379ad8a778940775d8/transformed/out/jars/classes.jar:/home/bodenberg/.gradle/caches/8.13/transforms/ad1d93bc69c56d379ad8a778940775d8/transformed/out/jars/libs/R.jar"
       resolved="AppDimens:appdimens_dynamic:unspecified"
-      folder="/home/bodenberg/.gradle/caches/8.13/transforms/df5a7efab911b13a467dbe81fdacc04f/transformed/out"
+      folder="/home/bodenberg/.gradle/caches/8.13/transforms/ad1d93bc69c56d379ad8a778940775d8/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -355,6 +355,14 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
+      name="org.robolectric:robolectric:4.11.1@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.robolectric/robolectric/4.11.1/75f0822d7e1f0a6dfa7b3e0b960a0a585c4fb185/robolectric-4.11.1.jar"
+      resolved="org.robolectric:robolectric:4.11.1"/>
+  <library
+      name="org.robolectric:shadows-framework:4.11.1@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.robolectric/shadows-framework/4.11.1/e8ff683a932c20bb7b1d81a7b65c912734caee4/shadows-framework-4.11.1.jar"
+      resolved="org.robolectric:shadows-framework:4.11.1"/>
+  <library
       name="androidx.versionedparcelable:versionedparcelable:1.1.1@aar"
       jars="/home/bodenberg/.gradle/caches/8.13/transforms/c1d5e0480b2d958e3781a07dac2dd6a9/transformed/versionedparcelable-1.1.1/jars/classes.jar"
       resolved="androidx.versionedparcelable:versionedparcelable:1.1.1"
@@ -491,17 +499,154 @@
       jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/junit/junit/4.13.2/8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12/junit-4.13.2.jar"
       resolved="junit:junit:4.13.2"/>
   <library
+      name="org.mockito:mockito-core:5.8.0@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.mockito/mockito-core/5.8.0/df310627f77f859114ad31e1376fff0dce263cca/mockito-core-5.8.0.jar"
+      resolved="org.mockito:mockito-core:5.8.0"/>
+  <library
       name="org.hamcrest:hamcrest-core:1.3@jar"
       jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar"
       resolved="org.hamcrest:hamcrest-core:1.3"/>
+  <library
+      name="net.bytebuddy:byte-buddy:1.14.10@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy/1.14.10/8117daf4a612122eb4f517f66adff778cb8b4737/byte-buddy-1.14.10.jar"
+      resolved="net.bytebuddy:byte-buddy:1.14.10"/>
+  <library
+      name="net.bytebuddy:byte-buddy-agent:1.14.10@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.10/90ed94ac044ea8953b224304c762316e91fd6b31/byte-buddy-agent-1.14.10.jar"
+      resolved="net.bytebuddy:byte-buddy-agent:1.14.10"/>
+  <library
+      name="org.robolectric:junit:4.11.1@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.robolectric/junit/4.11.1/6ab22fcf261fb1b51e5d502647ca28cb979b436b/junit-4.11.1.jar"
+      resolved="org.robolectric:junit:4.11.1"/>
+  <library
+      name="org.robolectric:resources:4.11.1@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.robolectric/resources/4.11.1/21e05203a923c9cfee41583dbe33bef361a8a210/resources-4.11.1.jar"
+      resolved="org.robolectric:resources:4.11.1"/>
+  <library
+      name="org.robolectric:sandbox:4.11.1@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.robolectric/sandbox/4.11.1/7ab122c1a35c540a261786d1cb1013150759d4/sandbox-4.11.1.jar"
+      resolved="org.robolectric:sandbox:4.11.1"/>
+  <library
+      name="org.robolectric:nativeruntime:4.11.1@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.robolectric/nativeruntime/4.11.1/93561a7cd718d1f9721c14f6b97d6743b2f4cb17/nativeruntime-4.11.1.jar"
+      resolved="org.robolectric:nativeruntime:4.11.1"/>
+  <library
+      name="org.robolectric:utils-reflector:4.11.1@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.robolectric/utils-reflector/4.11.1/c7f7265928caac6c5112df615647c37fcfdcaa4f/utils-reflector-4.11.1.jar"
+      resolved="org.robolectric:utils-reflector:4.11.1"/>
+  <library
+      name="org.robolectric:plugins-maven-dependency-resolver:4.11.1@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.robolectric/plugins-maven-dependency-resolver/4.11.1/9388078e3124abc1d20cc158739785f3d82645ef/plugins-maven-dependency-resolver-4.11.1.jar"
+      resolved="org.robolectric:plugins-maven-dependency-resolver:4.11.1"/>
+  <library
+      name="org.robolectric:shadows-versioning:4.11.1@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.robolectric/shadows-versioning/4.11.1/21533a913d3e6c5f2733d9927ff2f21e0418825e/shadows-versioning-4.11.1.jar"
+      resolved="org.robolectric:shadows-versioning:4.11.1"/>
+  <library
+      name="org.robolectric:shadowapi:4.11.1@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.robolectric/shadowapi/4.11.1/3f4439f7954863828ff8615b38bdafacafb1d12d/shadowapi-4.11.1.jar"
+      resolved="org.robolectric:shadowapi:4.11.1"/>
+  <library
+      name="org.robolectric:utils:4.11.1@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.robolectric/utils/4.11.1/12828864aac49e8ebcf2de03d3d33919ca8a1b01/utils-4.11.1.jar"
+      resolved="org.robolectric:utils:4.11.1"/>
+  <library
+      name="org.robolectric:pluginapi:4.11.1@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.robolectric/pluginapi/4.11.1/ca139a5a00fe48b5422a8de4954086f12567a432/pluginapi-4.11.1.jar"
+      resolved="org.robolectric:pluginapi:4.11.1"/>
+  <library
+      name="org.robolectric:annotations:4.11.1@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.robolectric/annotations/4.11.1/3032e9d3aa00d10a79347543d0b3d37ea05a523b/annotations-4.11.1.jar"
+      resolved="org.robolectric:annotations:4.11.1"/>
+  <library
+      name="com.google.guava:guava:31.1-jre@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/31.1-jre/60458f877d055d0c9114d9e1a2efb737b4bc282c/guava-31.1-jre.jar"
+      resolved="com.google.guava:guava:31.1-jre"/>
+  <library
+      name="com.google.guava:failureaccess:1.0.1@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/com.google.guava/failureaccess/1.0.1/1dcf1de382a0bf95a3d8b0849546c88bac1292c9/failureaccess-1.0.1.jar"
+      resolved="com.google.guava:failureaccess:1.0.1"/>
+  <library
+      name="com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/com.google.guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/b421526c5f297295adef1c886e5246c39d4ac629/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar"
+      resolved="com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava"/>
+  <library
+      name="com.google.code.findbugs:jsr305:3.0.2@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.2/25ea2e8b0c338a877313bd4672d3fe056ea78f0d/jsr305-3.0.2.jar"
+      resolved="com.google.code.findbugs:jsr305:3.0.2"/>
+  <library
+      name="org.checkerframework:checker-qual:3.12.0@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-qual/3.12.0/d5692f0526415fcc6de94bb5bfbd3afd9dd3b3e5/checker-qual-3.12.0.jar"
+      resolved="org.checkerframework:checker-qual:3.12.0"/>
+  <library
+      name="com.google.errorprone:error_prone_annotations:2.11.0@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.11.0/c5a0ace696d3f8b1c1d8cc036d8c03cc0cbe6b69/error_prone_annotations-2.11.0.jar"
+      resolved="com.google.errorprone:error_prone_annotations:2.11.0"/>
+  <library
+      name="com.google.j2objc:j2objc-annotations:1.3@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.3/ba035118bc8bac37d7eff77700720999acd9986d/j2objc-annotations-1.3.jar"
+      resolved="com.google.j2objc:j2objc-annotations:1.3"/>
+  <library
+      name="javax.inject:javax.inject:1@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+      resolved="javax.inject:javax.inject:1"/>
+  <library
+      name="javax.annotation:javax.annotation-api:1.3.2@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.3.2/934c04d3cfef185a8008e7bf34331b79730a9d43/javax.annotation-api-1.3.2.jar"
+      resolved="javax.annotation:javax.annotation-api:1.3.2"/>
+  <library
+      name="org.ow2.asm:asm-commons:9.6@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-commons/9.6/f1a9e5508eff490744144565c47326c8648be309/asm-commons-9.6.jar"
+      resolved="org.ow2.asm:asm-commons:9.6"/>
+  <library
+      name="org.ow2.asm:asm-util:9.6@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-util/9.6/f77caf84eb93786a749b2baa40865b9613e3eaee/asm-util-9.6.jar"
+      resolved="org.ow2.asm:asm-util:9.6"/>
+  <library
+      name="org.ow2.asm:asm-analysis:9.6@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-analysis/9.6/9ce6c7b174bd997fc2552dff47964546bd7a5ec3/asm-analysis-9.6.jar"
+      resolved="org.ow2.asm:asm-analysis:9.6"/>
+  <library
+      name="org.ow2.asm:asm-tree:9.6@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-tree/9.6/c0cdda9d211e965d2a4448aa3fd86110f2f8c2de/asm-tree-9.6.jar"
+      resolved="org.ow2.asm:asm-tree:9.6"/>
+  <library
+      name="org.ow2.asm:asm:9.6@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/9.6/aa205cf0a06dbd8e04ece91c0b37c3f5d567546a/asm-9.6.jar"
+      resolved="org.ow2.asm:asm:9.6"/>
+  <library
+      name="com.google.auto.value:auto-value-annotations:1.10.4@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/com.google.auto.value/auto-value-annotations/1.10.4/9679de8286eb0a151db6538ba297a8951c4a1224/auto-value-annotations-1.10.4.jar"
+      resolved="com.google.auto.value:auto-value-annotations:1.10.4"/>
+  <library
+      name="androidx.test:monitor:1.6.1@aar"
+      jars="/home/bodenberg/.gradle/caches/8.13/transforms/bc0e1b3fe07678b40db865a31268bbae/transformed/monitor-1.6.1/jars/classes.jar"
+      resolved="androidx.test:monitor:1.6.1"
+      folder="/home/bodenberg/.gradle/caches/8.13/transforms/bc0e1b3fe07678b40db865a31268bbae/transformed/monitor-1.6.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.almworks.sqlite4java:sqlite4java:1.0.392@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/com.almworks.sqlite4java/sqlite4java/1.0.392/d6234e08ff4e1607ff5321da2579571f05ff778d/sqlite4java-1.0.392.jar"
+      resolved="com.almworks.sqlite4java:sqlite4java:1.0.392"/>
+  <library
+      name="com.ibm.icu:icu4j:73.2@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/com.ibm.icu/icu4j/73.2/61ad4ef7f9131fcf6d25c34b817f90d6da06c9e9/icu4j-73.2.jar"
+      resolved="com.ibm.icu:icu4j:73.2"/>
   <library
       name="org.jetbrains:annotations:23.0.0@jar"
       jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/23.0.0/8cc20c07506ec18e0834947b84a864bfc094484e/annotations-23.0.0.jar"
       resolved="org.jetbrains:annotations:23.0.0"/>
   <library
-      name="com.google.guava:listenablefuture:1.0@jar"
-      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/com.google.guava/listenablefuture/1.0/c949a840a6acbc5268d088e47b04177bf90b3cad/listenablefuture-1.0.jar"
-      resolved="com.google.guava:listenablefuture:1.0"/>
+      name="org.bouncycastle:bcprov-jdk18on:1.76@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.bouncycastle/bcprov-jdk18on/1.76/3a785d0b41806865ad7e311162bfa3fa60b3965b/bcprov-jdk18on-1.76.jar"
+      resolved="org.bouncycastle:bcprov-jdk18on:1.76"/>
   <library
       name="org.jspecify:jspecify:1.0.0@jar"
       jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.jspecify/jspecify/1.0.0/7425a601c1c7ec76645a78d22b8c6a627edee507/jspecify-1.0.0.jar"
@@ -687,4 +832,33 @@
       symbolFile="R.txt"
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
+  <library
+      name="org.objenesis:objenesis:3.3@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.objenesis/objenesis/3.3/1049c09f1de4331e8193e579448d0916d75b7631/objenesis-3.3.jar"
+      resolved="org.objenesis:objenesis:3.3"/>
+  <library
+      name="org.conscrypt:conscrypt-openjdk-uber:2.5.2@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.conscrypt/conscrypt-openjdk-uber/2.5.2/d858f142ea189c62771c505a6548d8606ac098fe/conscrypt-openjdk-uber-2.5.2.jar"
+      resolved="org.conscrypt:conscrypt-openjdk-uber:2.5.2"/>
+  <library
+      name="androidx.test.espresso:espresso-idling-resource:3.5.1@aar"
+      jars="/home/bodenberg/.gradle/caches/8.13/transforms/0164a1eaa2b0a35f555cec6d9cdff90e/transformed/espresso-idling-resource-3.5.1/jars/classes.jar"
+      resolved="androidx.test.espresso:espresso-idling-resource:3.5.1"
+      folder="/home/bodenberg/.gradle/caches/8.13/transforms/0164a1eaa2b0a35f555cec6d9cdff90e/transformed/espresso-idling-resource-3.5.1"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="com.google.errorprone:error_prone_annotation:2.19.1@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotation/2.19.1/17821e9d8b169d7ebf12e6885599c4e6fb33a316/error_prone_annotation-2.19.1.jar"
+      resolved="com.google.errorprone:error_prone_annotation:2.19.1"/>
+  <library
+      name="org.robolectric:nativeruntime-dist-compat:1.0.2@jar"
+      jars="/home/bodenberg/.gradle/caches/modules-2/files-2.1/org.robolectric/nativeruntime-dist-compat/1.0.2/ae882755c9236301221e18c6d493981257289307/nativeruntime-dist-compat-1.0.2.jar"
+      resolved="org.robolectric:nativeruntime-dist-compat:1.0.2"/>
 </libraries>

@@ -26,7 +26,7 @@
 import Foundation
 import UIKit
 import SwiftUI
-import AppDimensCore
+import AppDimens
 
 // MARK: - CGFloat Extensions
 

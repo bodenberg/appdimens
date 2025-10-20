@@ -1,2 +1,0 @@
-ninja: Entering directory `/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/.cxx/RelWithDebInfo/583r306v/armeabi-v7a'
-ninja: no work to do.

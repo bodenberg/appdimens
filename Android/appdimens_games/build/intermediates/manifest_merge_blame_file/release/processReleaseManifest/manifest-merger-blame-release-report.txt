@@ -7,30 +7,30 @@
 7
 8    <!-- Hardware features for games (optional) -->
 9    <uses-feature
-9-->/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:6:5-8:36
+9-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:6:5-8:36
 10        android:name="android.hardware.touchscreen"
-10-->/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:7:9-52
+10-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:7:9-52
 11        android:required="false" />
-11-->/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:8:9-33
+11-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:8:9-33
 12    <uses-feature
-12-->/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:9:5-11:36
+12-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:9:5-11:36
 13        android:name="android.hardware.gamepad"
-13-->/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:10:9-48
+13-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:10:9-48
 14        android:required="false" />
-14-->/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:11:9-33
+14-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:11:9-33
 15    <uses-feature
-15-->/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:12:5-14:35
+15-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:12:5-14:35
 16        android:glEsVersion="0x00020000"
-16-->/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:13:9-41
+16-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:13:9-41
 17        android:required="true" />
-17-->/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:14:9-32
+17-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:14:9-32
 18
 19    <!-- OpenGL ES 3.0 support for advanced games (optional) -->
 20    <uses-feature
-20-->/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:17:5-19:36
+20-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:17:5-19:36
 21        android:glEsVersion="0x00030000"
-21-->/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:18:9-41
+21-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:18:9-41
 22        android:required="false" />
-22-->/home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:19:9-33
+22-->/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:19:9-33
 23
 24</manifest>

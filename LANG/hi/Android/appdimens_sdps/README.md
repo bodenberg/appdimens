@@ -3,7 +3,7 @@
     <p><strong>शर्त-आधारित नियमों के साथ डायनामिक स्केलिंग</strong></p>
     <p>SDP (Scaled DP) जो प्राथमिकता-आधारित नियमों के साथ Compose और XML लेआउट के लिए रिस्पॉन्सिव स्केलिंग देता है।</p>
 
-[![संस्करण](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![संस्करण](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![लाइसेंस](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![प्लेटफ़ॉर्म](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
@@ -19,7 +19,7 @@
 
 ## 🚀 इंस्टॉलेशन
 ```kotlin
-dependencies { implementation("io.github.bodenberg:appdimens-sdps:1.0.5") }
+dependencies { implementation("io.github.bodenberg:appdimens-sdps:1.0.6") }
 ```
 
 ## 🎨 उदाहरण (Compose)

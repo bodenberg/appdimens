@@ -1,10 +1,10 @@
 <libraries>
   <library
       name=":@@:appdimens_dynamic::debug"
-      jars="/home/bodenberg/.gradle/caches/8.13/transforms/df5a7efab911b13a467dbe81fdacc04f/transformed/out/jars/classes.jar:/home/bodenberg/.gradle/caches/8.13/transforms/df5a7efab911b13a467dbe81fdacc04f/transformed/out/jars/libs/R.jar"
+      jars="/home/bodenberg/.gradle/caches/8.13/transforms/ad1d93bc69c56d379ad8a778940775d8/transformed/out/jars/classes.jar:/home/bodenberg/.gradle/caches/8.13/transforms/ad1d93bc69c56d379ad8a778940775d8/transformed/out/jars/libs/R.jar"
       resolved="AppDimens:appdimens_dynamic:unspecified"
-      partialResultsDir="/home/bodenberg/Downloads/AppDimens/Android/appdimens_dynamic/build/intermediates/lint_partial_results/debug/lintAnalyzeDebug/out"
-      folder="/home/bodenberg/.gradle/caches/8.13/transforms/df5a7efab911b13a467dbe81fdacc04f/transformed/out"
+      partialResultsDir="/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_dynamic/build/intermediates/lint_partial_results/debug/lintAnalyzeDebug/out"
+      folder="/home/bodenberg/.gradle/caches/8.13/transforms/ad1d93bc69c56d379ad8a778940775d8/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -17,7 +17,7 @@
       name=":@@:appdimens_library::debug"
       jars="/home/bodenberg/.gradle/caches/8.13/transforms/7b988fc6b398560f0441773c4b0308b8/transformed/out/jars/classes.jar:/home/bodenberg/.gradle/caches/8.13/transforms/7b988fc6b398560f0441773c4b0308b8/transformed/out/jars/libs/R.jar"
       resolved="AppDimens:appdimens_library:unspecified"
-      partialResultsDir="/home/bodenberg/Downloads/AppDimens/Android/appdimens_library/build/intermediates/lint_partial_results/debug/lintAnalyzeDebug/out"
+      partialResultsDir="/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_library/build/intermediates/lint_partial_results/debug/lintAnalyzeDebug/out"
       folder="/home/bodenberg/.gradle/caches/8.13/transforms/7b988fc6b398560f0441773c4b0308b8/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"

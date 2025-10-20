@@ -4,7 +4,7 @@
     <p><strong>AndroidとiOSのためのスマートでレスポンシブな寸法システム</strong></p>
     <p>数学的に正確なレスポンシブスケーリングにより、UIデザインがあらゆる画面サイズやアスペクト比に完璧に適応します — スマートフォンからテレビ、車、ウェアラブルまで。</p>
 
-[![バージョン](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![バージョン](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![ライセンス](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![プラットフォーム](https://img.shields.io/badge/platform-Android%20%7C%20iOS-orange.svg)](https://github.com/bodenberg/appdimens)
 [![ドキュメント](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)
@@ -35,17 +35,17 @@
 ```kotlin
 dependencies {
     // コアライブラリ（Dynamic + Fixed scaling）
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.5")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.6")
     
     // オプション：SDPとSSP scaling
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.5")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.5")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.6")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.6")
     
     // オールインワンパッケージ（ゲームモジュールは含まれません）
-    implementation("io.github.bodenberg:appdimens-all:1.0.5")
+    implementation("io.github.bodenberg:appdimens-all:1.0.6")
     
     // C++/NDKサポート付きゲーム開発（別の依存関係）
-    implementation("io.github.bodenberg:appdimens-games:1.0.5")
+    implementation("io.github.bodenberg:appdimens-games:1.0.6")
 }
 ```
 
@@ -58,19 +58,20 @@ pod 'AppDimens'
 
 ```swift
 // Swift Package Manager
-.package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.5")
+.package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.6")
 ```
 
 ---
 
 ## 🧠 コア寸法モデル
 
-| モデル | 哲学 | 理想的なユースケース | サポートされているプラットフォーム |
-|-------|------------|----------------|-------------------|
-| **Fixed (FX)** | 対数スケーリング（洗練された） | ボタン、パディング、マージン、アイコン | Android + iOS |
-| **Dynamic (DY)** | 比例スケーリング（積極的） | コンテナ、グリッド、流動的なフォント | Android + iOS |
-| **SDP / SSP** | 事前計算されたリソース | XMLでの`@dimen`の直接使用 | Android |
-| **物理単位** | mm/cm/inch → Dp/Sp/Px/Points | ウェアラブル、印刷、精密レイアウト | Android + iOS |
+| モデル | 哲学 | 理想的なユースケース | サポートされているプラットフォーム | 実装 |
+|-------|------------|----------------|-------------------|----------------|
+| **Fixed (FX)** | 対数スケーリング（洗練された） | ボタン、パディング、マージン、アイコン | Android + iOS | 数学的比例調整 |
+| **Dynamic (DY)** | 比例スケーリング（積極的） | コンテナ、グリッド、流動的なフォント | Android + iOS | 画面ベースの比例スケーリング |
+| **SDP / SSP** | 事前計算されたリソース | XMLでの`@dimen`の直接使用 | Android | 426+個の事前生成された次元ファイル |
+| **物理単位** | mm/cm/inch → Dp/Sp/Px/Points | ウェアラブル、印刷、精密レイアウト | Android + iOS | 実世界の測定値の変換 |
+| **ゲーム次元** | ゲーム専用スケーリング | ゲームUI、ビューポート、Metal/OpenGL | Android + iOS | ネイティブC++/NDK + Metal実装 |
 
 ---
 

@@ -3,7 +3,7 @@
     <p><strong>Динамическое масштабирование текста с условными правилами</strong></p>
     <p>SSP (Scaled SP) с приоритетными правилами для адаптивной типографики в Compose и XML.</p>
 
-[![Версия](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Версия](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![Лицензия](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![Платформа](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
@@ -18,7 +18,7 @@
 
 ## 🚀 Установка
 ```kotlin
-dependencies { implementation("io.github.bodenberg:appdimens-ssps:1.0.5") }
+dependencies { implementation("io.github.bodenberg:appdimens-ssps:1.0.6") }
 ```
 
 ## 🎨 Примеры (Compose)

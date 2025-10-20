@@ -3,7 +3,7 @@
     <p><strong>条件付きルールによるダイナミックなテキストスケーリング</strong></p>
     <p>SSP（Scaled SP）。優先度ベースの条件ルールで、Compose と XML のレスポンシブなタイポグラフィを実現。</p>
 
-[![バージョン](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![バージョン](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![ライセンス](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![プラットフォーム](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
@@ -18,7 +18,7 @@
 
 ## 🚀 インストール
 ```kotlin
-dependencies { implementation("io.github.bodenberg:appdimens-ssps:1.0.5") }
+dependencies { implementation("io.github.bodenberg:appdimens-ssps:1.0.6") }
 ```
 
 ## 🎨 例（Compose）

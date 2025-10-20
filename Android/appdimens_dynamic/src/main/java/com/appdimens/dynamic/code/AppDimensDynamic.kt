@@ -47,29 +47,63 @@ class AppDimensDynamic(
     private val initialBaseDp: Float,
     private var ignoreMultiViewAdjustment: Boolean = false
 ) {
+    
     /**
      * [EN] Map to store custom Dp values (Priority 3).
+     * Lazy initialization for better performance.
      * [PT] Mapa para armazenar valores Dp customizados (Prioridade 3).
+     * Inicialização lazy para melhor performance.
      */
-    private var customDpMap: MutableMap<DpQualifierEntry, Float> = mutableMapOf()
+    private val customDpMap: MutableMap<DpQualifierEntry, Float> by lazy { mutableMapOf() }
 
     /**
      * [EN] Map for custom Dp values by UiModeType (Priority 2).
+     * Lazy initialization for better performance.
      * [PT] Mapa para valores Dp customizados por UiModeType (Prioridade 2).
+     * Inicialização lazy para melhor performance.
      */
-    private var customUiModeMap: MutableMap<UiModeType, Float> = mutableMapOf()
+    private val customUiModeMap: MutableMap<UiModeType, Float> by lazy { mutableMapOf() }
 
     /**
      * [EN] Map for custom Dp values by INTERSECTION (UiMode + DpQualifier) (Priority 1).
+     * Lazy initialization for better performance.
      * [PT] Mapa para valores Dp customizados por INTERSEÇÃO (UiMode + DpQualifier) (Prioridade 1).
+     * Inicialização lazy para melhor performance.
      */
-    private var customIntersectionMap: MutableMap<UiModeQualifierEntry, Float> = mutableMapOf()
+    private val customIntersectionMap: MutableMap<UiModeQualifierEntry, Float> by lazy { mutableMapOf() }
 
     /**
      * [EN] Defines the screen dimension to be used as a base (HIGHEST or LOWEST).
      * [PT] Define a dimensão da tela a ser usada como base (HIGHEST ou LOWEST).
      */
     private var screenType: ScreenType = ScreenType.LOWEST
+    
+    // MARK: - Cache System
+    
+    /**
+     * [EN] Automatic cache system based on Compose's remember mechanism.
+     * [PT] Sistema de cache automático baseado no mecanismo remember do Compose.
+     */
+    private val autoCache = AppDimensAutoCache
+    
+    /**
+     * [EN] Cached sorted intersection qualifiers for performance.
+     * [PT] Qualificadores de interseção ordenados em cache para performance.
+     */
+    private var cachedSortedIntersectionQualifiers: List<Map.Entry<UiModeQualifierEntry, Float>>? = null
+    
+    /**
+     * [EN] Cached screen dimensions for performance.
+     * [PT] Dimensões da tela em cache para performance.
+     */
+    private var cachedScreenDimensions: Triple<Float, Float, Float>? = null
+    private var lastConfigurationHash: Int = 0
+    
+    /**
+     * [EN] Individual cache control for this instance.
+     * [PT] Controle individual de cache para esta instância.
+     */
+    private var enableCache: Boolean = true
 
     /**
      * [EN] Sets a custom dimension value for a specific UI mode.
@@ -84,11 +118,15 @@ class AppDimensDynamic(
      */
     fun screen(type: UiModeType, customValue: Float): AppDimensDynamic {
         customUiModeMap[type] = customValue
+        // Invalidate cached data when maps change
+        invalidateCachedData()
         return this
     }
 
     fun screen(type: UiModeType, customValue: Int): AppDimensDynamic {
         customUiModeMap[type] = customValue.toFloat()
+        // Invalidate cached data when maps change
+        invalidateCachedData()
         return this
     }
 
@@ -118,6 +156,8 @@ class AppDimensDynamic(
             dpQualifierEntry = DpQualifierEntry(qualifierType, qualifierValue)
         )
         customIntersectionMap[key] = customValue
+        // Invalidate cached data when maps change
+        invalidateCachedData()
         return this
     }
 
@@ -132,6 +172,8 @@ class AppDimensDynamic(
             dpQualifierEntry = DpQualifierEntry(qualifierType, qualifierValue)
         )
         customIntersectionMap[key] = customValue.toFloat()
+        // Invalidate cached data when maps change
+        invalidateCachedData()
         return this
     }
 
@@ -150,11 +192,15 @@ class AppDimensDynamic(
      */
     fun screen(type: DpQualifier, value: Int, customValue: Int): AppDimensDynamic {
         customDpMap[DpQualifierEntry(type, value)] = customValue.toFloat()
+        // Invalidate cached data when maps change
+        invalidateCachedData()
         return this
     }
 
     fun screen(type: DpQualifier, value: Int, customValue: Float): AppDimensDynamic {
         customDpMap[DpQualifierEntry(type, value)] = customValue
+        // Invalidate cached data when maps change
+        invalidateCachedData()
         return this
     }
 
@@ -185,6 +231,22 @@ class AppDimensDynamic(
         ignoreMultiViewAdjustment = ignore
         return this
     }
+    
+    /**
+     * [EN] Enables or disables cache for this instance.
+     * @param enable If true, enables cache; if false, disables cache.
+     * @return The AppDimensDynamic instance for chaining.
+     * [PT] Ativa ou desativa o cache para esta instância.
+     * @param enable Se verdadeiro, ativa o cache; se falso, desativa o cache.
+     * @return A instância AppDimensDynamic para encadeamento.
+     */
+    fun cache(enable: Boolean = true): AppDimensDynamic {
+        enableCache = enable
+        if (!enable) {
+            autoCache.clearAll()
+        }
+        return this
+    }
 
     /**
      * [EN] Resolves the base Dp value to be adjusted by applying the customization logic
@@ -201,17 +263,63 @@ class AppDimensDynamic(
      */
     @SuppressLint("ConfigurationScreenWidthHeight")
     private fun resolveFinalBaseDp(configuration: Configuration): Float {
-        val smallestWidthDp = configuration.smallestScreenWidthDp.toFloat()
-        val currentScreenWidthDp = configuration.screenWidthDp.toFloat()
-        val currentScreenHeightDp = configuration.screenHeightDp.toFloat()
+        // Get cached screen dimensions for performance
+        val (smallestWidthDp, currentScreenWidthDp, currentScreenHeightDp) = getCachedScreenDimensions(configuration)
         val currentUiModeType = UiModeType.fromConfiguration(configuration.uiMode)
+
+        // Use automatic cache system with dependency tracking
+        val dependencies = setOf(
+            configuration,
+            customIntersectionMap,
+            customUiModeMap,
+            customDpMap,
+            initialBaseDp,
+            screenType,
+            ignoreMultiViewAdjustment
+        )
+        
+        return if (AppDimens.globalCacheEnabled && enableCache) {
+            autoCache.remember("resolveFinalBaseDp_${this.hashCode()}", dependencies) {
+                performBaseDpCalculation(smallestWidthDp, currentScreenWidthDp, currentScreenHeightDp, currentUiModeType)
+            }
+        } else {
+            performBaseDpCalculation(smallestWidthDp, currentScreenWidthDp, currentScreenHeightDp, currentUiModeType)
+        }
+    }
+    
+    /**
+     * [EN] Gets cached screen dimensions for performance optimization.
+     * [PT] Obtém dimensões da tela em cache para otimização de performance.
+     */
+    private fun getCachedScreenDimensions(configuration: Configuration): Triple<Float, Float, Float> {
+        val configHash = configuration.hashCode()
+        if (cachedScreenDimensions == null || lastConfigurationHash != configHash) {
+            cachedScreenDimensions = Triple(
+                configuration.smallestScreenWidthDp.toFloat(),
+                configuration.screenWidthDp.toFloat(),
+                configuration.screenHeightDp.toFloat()
+            )
+            lastConfigurationHash = configHash
+        }
+        return cachedScreenDimensions!!
+    }
+    
+    /**
+     * [EN] Performs the actual base Dp calculation with cached sorting.
+     * [PT] Executa o cálculo real do Dp base com ordenação em cache.
+     */
+    private fun performBaseDpCalculation(
+        smallestWidthDp: Float,
+        currentScreenWidthDp: Float,
+        currentScreenHeightDp: Float,
+        currentUiModeType: UiModeType
+    ): Float {
 
         var dpToAdjust = initialBaseDp
         var foundCustomDp: Float?
 
-        // Priority 1: Intersection (UiMode + DpQualifier)
-        val sortedIntersectionQualifiers = customIntersectionMap.entries.toList()
-            .sortedByDescending { it.key.dpQualifierEntry.value }
+        // Priority 1: Intersection (UiMode + DpQualifier) - Use cached sorting
+        val sortedIntersectionQualifiers = getCachedSortedIntersectionQualifiers()
 
         foundCustomDp = sortedIntersectionQualifiers.firstOrNull { (key, _) ->
             key.uiModeType == currentUiModeType && AppDimensAdjustmentFactors.resolveIntersectionCondition(
@@ -241,7 +349,34 @@ class AppDimensDynamic(
                 )
             }
         }
+        
         return dpToAdjust
+    }
+    
+    /**
+     * [EN] Gets cached sorted intersection qualifiers for performance.
+     * [PT] Obtém qualificadores de interseção ordenados em cache para performance.
+     */
+    private fun getCachedSortedIntersectionQualifiers(): List<Map.Entry<UiModeQualifierEntry, Float>> {
+        if (cachedSortedIntersectionQualifiers == null) {
+            cachedSortedIntersectionQualifiers = customIntersectionMap.entries.toList()
+                .sortedByDescending { it.key.dpQualifierEntry.value }
+        }
+        return cachedSortedIntersectionQualifiers!!
+    }
+    
+    // MARK: - Cache Management
+    
+    /**
+     * [EN] Invalidates cached data when maps change.
+     * Called automatically when dependencies change.
+     * [PT] Invalida dados em cache quando os maps mudam.
+     * Chamado automaticamente quando dependências mudam.
+     */
+    private fun invalidateCachedData() {
+        cachedSortedIntersectionQualifiers = null
+        cachedScreenDimensions = null
+        lastConfigurationHash = 0
     }
 
     /**
@@ -283,6 +418,31 @@ class AppDimensDynamic(
      */
     @SuppressLint("ConfigurationScreenWidthHeight")
     fun calculateAdjustedValue(configuration: Configuration): Float {
+        // Use automatic cache system with dependency tracking
+        val dependencies = setOf(
+            configuration,
+            customIntersectionMap,
+            customUiModeMap,
+            customDpMap,
+            initialBaseDp,
+            screenType,
+            ignoreMultiViewAdjustment
+        )
+        
+        return if (AppDimens.globalCacheEnabled && enableCache) {
+            autoCache.remember("calculateAdjustedValue_${this.hashCode()}", dependencies) {
+                performFinalCalculation(configuration)
+            }
+        } else {
+            performFinalCalculation(configuration)
+        }
+    }
+    
+    /**
+     * [EN] Performs the final calculation with all optimizations.
+     * [PT] Executa o cálculo final com todas as otimizações.
+     */
+    private fun performFinalCalculation(configuration: Configuration): Float {
         val dpToAdjust = resolveFinalBaseDp(configuration)
 
         var isMultiWindow = false
@@ -297,28 +457,30 @@ class AppDimensDynamic(
 
         val shouldIgnoreAdjustment = ignoreMultiViewAdjustment && isMultiWindow
 
-        if (shouldIgnoreAdjustment) {
+        val finalValue = if (shouldIgnoreAdjustment) {
             // Returns the base Dp without dynamic scaling
-            return dpToAdjust
+            dpToAdjust
+        } else {
+            // The dynamic scaling percentage is: (Adjusted Base DP / Reference DP)
+            val percentage = dpToAdjust / AppDimensAdjustmentFactors.BASE_WIDTH_DP
+
+            // Screen dimension to use (LOWEST or HIGHEST)
+            val dimensionToUse = when (screenType) {
+                ScreenType.HIGHEST -> maxOf(
+                    configuration.screenWidthDp.toFloat(),
+                    configuration.screenHeightDp.toFloat()
+                )
+                ScreenType.LOWEST -> minOf(
+                    configuration.screenWidthDp.toFloat(),
+                    configuration.screenHeightDp.toFloat()
+                )
+            }
+
+            // The final value is the percentage applied to the screen dimension
+            dimensionToUse * percentage
         }
-
-        // The dynamic scaling percentage is: (Adjusted Base DP / Reference DP)
-        val percentage = dpToAdjust / AppDimensAdjustmentFactors.BASE_WIDTH_DP
-
-        // Screen dimension to use (LOWEST or HIGHEST)
-        val dimensionToUse = when (screenType) {
-            ScreenType.HIGHEST -> maxOf(
-                configuration.screenWidthDp.toFloat(),
-                configuration.screenHeightDp.toFloat()
-            )
-            ScreenType.LOWEST -> minOf(
-                configuration.screenWidthDp.toFloat(),
-                configuration.screenHeightDp.toFloat()
-            )
-        }
-
-        // The final value is the percentage applied to the screen dimension
-        return dimensionToUse * percentage
+        
+        return finalValue
     }
 
     /**

@@ -110,11 +110,11 @@ struct SwiftUIExampleView: View {
                         
                         Rectangle()
                             .fill(Color.blue.opacity(0.3))
-                            .dyFrame(width: AppDimens.percentage(0.8)) // 80% of screen width
+                            .dyFrame(width: 300) // Dynamic width
                             .fxFrame(height: 100) // Fixed height
                             .fxCornerRadius(8) // Fixed corner radius
                         
-                        Text("This rectangle uses 80% of the screen width")
+                        Text("This rectangle uses dynamic width scaling")
                             .font(.fxSystem(size: 14)) // Fixed font size
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)

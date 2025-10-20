@@ -1,9 +1,9 @@
 <libraries>
   <library
       name=":@@:appdimens_dynamic::release"
-      jars="/home/bodenberg/.gradle/caches/8.13/transforms/27cf5471f6ddcc602951de00106cef61/transformed/out/jars/classes.jar:/home/bodenberg/.gradle/caches/8.13/transforms/27cf5471f6ddcc602951de00106cef61/transformed/out/jars/libs/R.jar"
+      jars="/home/bodenberg/.gradle/caches/8.13/transforms/496ea6887ccd6c151d17bec25585481c/transformed/out/jars/classes.jar:/home/bodenberg/.gradle/caches/8.13/transforms/496ea6887ccd6c151d17bec25585481c/transformed/out/jars/libs/R.jar"
       resolved="AppDimens:appdimens_dynamic:unspecified"
-      folder="/home/bodenberg/.gradle/caches/8.13/transforms/27cf5471f6ddcc602951de00106cef61/transformed/out"
+      folder="/home/bodenberg/.gradle/caches/8.13/transforms/496ea6887ccd6c151d17bec25585481c/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

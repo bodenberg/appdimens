@@ -1,0 +1,1363 @@
+{
+  "builtTestProducts" : [
+    {
+      "binaryPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.xctest",
+      "packagePath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS",
+      "productName" : "AppDimensPackageTests"
+    }
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+    "AppDimensPackageDiscoveredTests"
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.AppDimens-x86_64-unknown-linux-gnu-debug.module" : {
+      "executable" : "/usr/lib/swift/bin/swiftc",
+      "fileList" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/sources",
+      "importPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimens.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensAdjustmentFactors.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensConvenience.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensDynamic.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensDynamicCalculator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensEnvironment.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensExtensions.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensFixed.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensFixedCalculator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensItemCalculator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensPhysicalUnits.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensProtocols.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensTypes.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/swift-version-5BD8B568FD16BF8B.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "AppDimens",
+      "moduleOutputPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimens.swiftmodule",
+      "objects" : [
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimens.swift.o",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensAdjustmentFactors.swift.o",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensConvenience.swift.o",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensDynamic.swift.o",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensDynamicCalculator.swift.o",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensEnvironment.swift.o",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensExtensions.swift.o",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensFixed.swift.o",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensFixedCalculator.swift.o",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensItemCalculator.swift.o",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensPhysicalUnits.swift.o",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensProtocols.swift.o",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensTypes.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "x86_64-unknown-linux-gnu",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j6",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/include/AppDimens-Swift.h",
+        "-swift-version",
+        "5",
+        "-g",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "ios",
+        "-Xcc",
+        "-fno-omit-frame-pointer"
+      ],
+      "outputFileMapPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimens.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensAdjustmentFactors.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensConvenience.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensDynamic.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensDynamicCalculator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensEnvironment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensExtensions.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensFixed.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensFixedCalculator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensItemCalculator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensPhysicalUnits.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensProtocols.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensTypes.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimens.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimens.swift",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensAdjustmentFactors.swift",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensConvenience.swift",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensDynamic.swift",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensDynamicCalculator.swift",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensEnvironment.swift",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensExtensions.swift",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensFixed.swift",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensFixedCalculator.swift",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensItemCalculator.swift",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensPhysicalUnits.swift",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensProtocols.swift",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensTypes.swift"
+      ],
+      "tempsPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.AppDimensGames-x86_64-unknown-linux-gnu-debug.module" : {
+      "executable" : "/usr/lib/swift/bin/swiftc",
+      "fileList" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/sources",
+      "importPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGameExtensions.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGameTypes.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGames.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGamesMain.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensMetal.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/swift-version-5BD8B568FD16BF8B.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimens.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "AppDimensGames",
+      "moduleOutputPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimensGames.swiftmodule",
+      "objects" : [
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGameExtensions.swift.o",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGameTypes.swift.o",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGames.swift.o",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGamesMain.swift.o",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensMetal.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "x86_64-unknown-linux-gnu",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j6",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/include/AppDimensGames-Swift.h",
+        "-swift-version",
+        "5",
+        "-g",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "ios",
+        "-Xcc",
+        "-fno-omit-frame-pointer"
+      ],
+      "outputFileMapPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGameExtensions.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGameTypes.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGames.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGamesMain.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensMetal.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimensGames.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGameExtensions.swift",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGameTypes.swift",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGames.swift",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGamesMain.swift",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensMetal.swift"
+      ],
+      "tempsPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.AppDimensPackageDiscoveredTests-x86_64-unknown-linux-gnu-debug.module" : {
+      "executable" : "/usr/lib/swift/bin/swiftc",
+      "fileList" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.build/sources",
+      "importPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.derived/AppDimensTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.derived/all-discovered-tests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/swift-version-5BD8B568FD16BF8B.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimensTests.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "AppDimensPackageDiscoveredTests",
+      "moduleOutputPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimensPackageDiscoveredTests.swiftmodule",
+      "objects" : [
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.build/AppDimensTests.swift.o",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.build/all-discovered-tests.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "x86_64-unknown-linux-gnu",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j6",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.build/include/AppDimensPackageDiscoveredTests-Swift.h",
+        "-g",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "ios",
+        "-Xcc",
+        "-fno-omit-frame-pointer"
+      ],
+      "outputFileMapPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.build/AppDimensTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.build/all-discovered-tests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimensPackageDiscoveredTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.derived/AppDimensTests.swift",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.derived/all-discovered-tests.swift"
+      ],
+      "tempsPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.AppDimensPackageTests-x86_64-unknown-linux-gnu-debug.module" : {
+      "executable" : "/usr/lib/swift/bin/swiftc",
+      "fileList" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.build/sources",
+      "importPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.derived/runner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/swift-version-5BD8B568FD16BF8B.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimensTests.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimensPackageDiscoveredTests.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "AppDimensPackageTests",
+      "moduleOutputPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimensPackageTests.swiftmodule",
+      "objects" : [
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.build/runner.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "x86_64-unknown-linux-gnu",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j6",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.build/include/AppDimensPackageTests-Swift.h",
+        "-g",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "ios",
+        "-Xcc",
+        "-fno-omit-frame-pointer"
+      ],
+      "outputFileMapPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.build/runner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimensPackageTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.derived/runner.swift"
+      ],
+      "tempsPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.AppDimensTests-x86_64-unknown-linux-gnu-debug.module" : {
+      "executable" : "/usr/lib/swift/bin/swiftc",
+      "fileList" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensTests.build/sources",
+      "importPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Tests/AppDimensTests/AppDimensTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/swift-version-5BD8B568FD16BF8B.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimens.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimensUI.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimensGames.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "AppDimensTests",
+      "moduleOutputPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimensTests.swiftmodule",
+      "objects" : [
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensTests.build/AppDimensTests.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "x86_64-unknown-linux-gnu",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j6",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-swift-version",
+        "5",
+        "-g",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "ios",
+        "-Xcc",
+        "-fno-omit-frame-pointer"
+      ],
+      "outputFileMapPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensTests.build/AppDimensTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimensTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Tests/AppDimensTests/AppDimensTests.swift"
+      ],
+      "tempsPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensTests.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.AppDimensUI-x86_64-unknown-linux-gnu-debug.module" : {
+      "executable" : "/usr/lib/swift/bin/swiftc",
+      "fileList" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/sources",
+      "importPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensUI/AppDimensEnvironment.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensUI/AppDimensExtensions.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensUI/AppDimensUI.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/swift-version-5BD8B568FD16BF8B.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimens.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "AppDimensUI",
+      "moduleOutputPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimensUI.swiftmodule",
+      "objects" : [
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensEnvironment.swift.o",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensExtensions.swift.o",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensUI.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "x86_64-unknown-linux-gnu",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j6",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/include/AppDimensUI-Swift.h",
+        "-swift-version",
+        "5",
+        "-g",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "ios",
+        "-Xcc",
+        "-fno-omit-frame-pointer"
+      ],
+      "outputFileMapPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensEnvironment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensExtensions.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensUI.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimensUI.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensUI/AppDimensEnvironment.swift",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensUI/AppDimensExtensions.swift",
+        "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensUI/AppDimensUI.swift"
+      ],
+      "tempsPath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "AppDimens" : [
+      "/usr/lib/swift/bin/swiftc",
+      "-module-name",
+      "AppDimens",
+      "-package-name",
+      "ios",
+      "-c",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimens.swift",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensAdjustmentFactors.swift",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensConvenience.swift",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensDynamic.swift",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensDynamicCalculator.swift",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensEnvironment.swift",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensExtensions.swift",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensFixed.swift",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensFixedCalculator.swift",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensItemCalculator.swift",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensPhysicalUnits.swift",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensProtocols.swift",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensTypes.swift",
+      "-I",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "-target",
+      "x86_64-unknown-linux-gnu",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j6",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/include/AppDimens-Swift.h",
+      "-swift-version",
+      "5",
+      "-g",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "ios",
+      "-Xcc",
+      "-fno-omit-frame-pointer",
+      "-driver-use-frontend-path",
+      "/usr/lib/swift/bin/swiftc"
+    ],
+    "AppDimensGames" : [
+      "/usr/lib/swift/bin/swiftc",
+      "-module-name",
+      "AppDimensGames",
+      "-package-name",
+      "ios",
+      "-c",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGameExtensions.swift",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGameTypes.swift",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGames.swift",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGamesMain.swift",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensMetal.swift",
+      "-I",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "-target",
+      "x86_64-unknown-linux-gnu",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j6",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/include/AppDimensGames-Swift.h",
+      "-swift-version",
+      "5",
+      "-g",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "ios",
+      "-Xcc",
+      "-fno-omit-frame-pointer",
+      "-driver-use-frontend-path",
+      "/usr/lib/swift/bin/swiftc"
+    ],
+    "AppDimensPackageDiscoveredTests" : [
+      "/usr/lib/swift/bin/swiftc",
+      "-module-name",
+      "AppDimensPackageDiscoveredTests",
+      "-package-name",
+      "ios",
+      "-c",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.derived/AppDimensTests.swift",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.derived/all-discovered-tests.swift",
+      "-I",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "-target",
+      "x86_64-unknown-linux-gnu",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j6",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.build/include/AppDimensPackageDiscoveredTests-Swift.h",
+      "-g",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "ios",
+      "-Xcc",
+      "-fno-omit-frame-pointer",
+      "-driver-use-frontend-path",
+      "/usr/lib/swift/bin/swiftc"
+    ],
+    "AppDimensPackageTests" : [
+      "/usr/lib/swift/bin/swiftc",
+      "-module-name",
+      "AppDimensPackageTests",
+      "-package-name",
+      "ios",
+      "-c",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.derived/runner.swift",
+      "-I",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "-target",
+      "x86_64-unknown-linux-gnu",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j6",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.build/include/AppDimensPackageTests-Swift.h",
+      "-g",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "ios",
+      "-Xcc",
+      "-fno-omit-frame-pointer",
+      "-driver-use-frontend-path",
+      "/usr/lib/swift/bin/swiftc"
+    ],
+    "AppDimensTests" : [
+      "/usr/lib/swift/bin/swiftc",
+      "-module-name",
+      "AppDimensTests",
+      "-package-name",
+      "ios",
+      "-c",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Tests/AppDimensTests/AppDimensTests.swift",
+      "-I",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "-target",
+      "x86_64-unknown-linux-gnu",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j6",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-swift-version",
+      "5",
+      "-g",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "ios",
+      "-Xcc",
+      "-fno-omit-frame-pointer",
+      "-driver-use-frontend-path",
+      "/usr/lib/swift/bin/swiftc"
+    ],
+    "AppDimensUI" : [
+      "/usr/lib/swift/bin/swiftc",
+      "-module-name",
+      "AppDimensUI",
+      "-package-name",
+      "ios",
+      "-c",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensUI/AppDimensEnvironment.swift",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensUI/AppDimensExtensions.swift",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensUI/AppDimensUI.swift",
+      "-I",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules",
+      "-target",
+      "x86_64-unknown-linux-gnu",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j6",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/include/AppDimensUI-Swift.h",
+      "-swift-version",
+      "5",
+      "-g",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "ios",
+      "-Xcc",
+      "-fno-omit-frame-pointer",
+      "-driver-use-frontend-path",
+      "/usr/lib/swift/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "AppDimens" : [
+
+    ],
+    "AppDimensGames" : [
+      "AppDimens"
+    ],
+    "AppDimensPackageDiscoveredTests" : [
+      "AppDimensTests",
+      "AppDimensGames",
+      "AppDimensUI",
+      "AppDimens"
+    ],
+    "AppDimensPackageTests" : [
+      "AppDimensPackageDiscoveredTests",
+      "AppDimensTests",
+      "AppDimensGames",
+      "AppDimensUI",
+      "AppDimens"
+    ],
+    "AppDimensTests" : [
+      "AppDimensGames",
+      "AppDimensUI",
+      "AppDimens"
+    ],
+    "AppDimensUI" : [
+      "AppDimens"
+    ]
+  },
+  "testDiscoveryCommands" : {
+    "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.derived/all-discovered-tests.swift" : {
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensTests.build/AppDimensTests.swift.o"
+        }
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.derived/AppDimensTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.derived/all-discovered-tests.swift"
+        }
+      ]
+    }
+  },
+  "testEntryPointCommands" : {
+    "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.derived/runner.swift" : {
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/Modules/AppDimensPackageDiscoveredTests.swiftmodule"
+        }
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.derived/runner.swift"
+        }
+      ]
+    }
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimens.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensAdjustmentFactors.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensConvenience.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensDynamic.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensDynamicCalculator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensEnvironment.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensExtensions.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensFixed.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensFixedCalculator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensItemCalculator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensPhysicalUnits.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensProtocols.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimens/AppDimensTypes.swift"
+        }
+      ],
+      "outputFilePath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/sources"
+    },
+    "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGameExtensions.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGameTypes.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGames.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGamesMain.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensMetal.swift"
+        }
+      ],
+      "outputFilePath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/sources"
+    },
+    "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.derived/AppDimensTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.derived/all-discovered-tests.swift"
+        }
+      ],
+      "outputFilePath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.build/sources"
+    },
+    "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.derived/runner.swift"
+        }
+      ],
+      "outputFilePath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.build/sources"
+    },
+    "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimens.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimens.swiftmodule.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensAdjustmentFactors.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensConvenience.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensDynamic.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensDynamicCalculator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensEnvironment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensExtensions.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensFixed.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensFixedCalculator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensItemCalculator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensPhysicalUnits.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensProtocols.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimens.build/AppDimensTypes.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGameExtensions.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGameTypes.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGames.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGames.swiftmodule.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGamesMain.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensMetal.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.build/AppDimensPackageDiscoveredTests.swiftmodule.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.build/AppDimensTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageDiscoveredTests.build/all-discovered-tests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.build/AppDimensPackageTests.swiftmodule.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.build/runner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensTests.build/AppDimensTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensTests.build/AppDimensTests.swiftmodule.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensEnvironment.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensExtensions.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensUI.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensUI.swiftmodule.o"
+        }
+      ],
+      "outputFilePath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensPackageTests.product/Objects.LinkFileList"
+    },
+    "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Tests/AppDimensTests/AppDimensTests.swift"
+        }
+      ],
+      "outputFilePath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensTests.build/sources"
+    },
+    "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensUI/AppDimensEnvironment.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensUI/AppDimensExtensions.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensUI/AppDimensUI.swift"
+        }
+      ],
+      "outputFilePath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/sources"
+    },
+    "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/swift-version-5BD8B568FD16BF8B.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/usr/lib/swift/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/swift-version-5BD8B568FD16BF8B.txt"
+    }
+  }
+}

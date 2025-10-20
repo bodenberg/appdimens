@@ -71,7 +71,7 @@ end
 1. Xcode में:
    - File → Add Package Dependencies
    - URL: `https://github.com/bodenberg/appdimens.git`
-   - Version: `1.0.5` या अधिक
+   - Version: `1.0.6` या अधिक
    - अपने टार्गेट में जोड़ें
 
 2. Swift फाइलों में इम्पोर्ट करें:
@@ -83,7 +83,7 @@ import AppDimens
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.5")
+    .package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.6")
 ]
 ```
 

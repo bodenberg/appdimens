@@ -177,17 +177,20 @@ document.getElementById(id).style.display = 'none';
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title">Lint Report: 6 warnings</span>
+      <span class="mdl-layout-title">Lint Report: 13 warnings</span>
       <div class="mdl-layout-spacer"></div>
-      <nav class="mdl-navigation mdl-layout--large-screen-only">Check performed at Sat Oct 18 16:00:25 BRT 2025 by AGP (8.13.0)</nav>
+      <nav class="mdl-navigation mdl-layout--large-screen-only">Check performed at Sun Oct 19 22:23:27 BRT 2025 by AGP (8.13.0)</nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">Issue Types</span>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link" href="#overview"><i class="material-icons">dashboard</i>Overview</a>
+      <a class="mdl-navigation__link" href="#GradleDependency"><i class="material-icons warning-icon">warning</i>Obsolete Gradle Dependency (1)</a>
+      <a class="mdl-navigation__link" href="#NewerVersionAvailable"><i class="material-icons warning-icon">warning</i>Newer Library Versions Available (2)</a>
       <a class="mdl-navigation__link" href="#Aligned16KB"><i class="material-icons warning-icon">warning</i>Native library dependency not 16 KB aligned (5)</a>
-      <a class="mdl-navigation__link" href="#StaticFieldLeak"><i class="material-icons warning-icon">warning</i>Static Field Leaks (1)</a>
+      <a class="mdl-navigation__link" href="#StaticFieldLeak"><i class="material-icons warning-icon">warning</i>Static Field Leaks (2)</a>
+      <a class="mdl-navigation__link" href="#UseTomlInstead"><i class="material-icons warning-icon">warning</i>Use TOML Version Catalog Instead (3)</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
@@ -203,13 +206,24 @@ document.getElementById(id).style.display = 'none';
 <tr><td class="countColumn"></td><td class="categoryColumn"><a href="#Correctness">Correctness</a>
 </td></tr>
 <tr>
+<td class="countColumn">1</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
+<a href="#GradleDependency">GradleDependency</a>: Obsolete Gradle Dependency</td></tr>
+<tr>
+<td class="countColumn">2</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
+<a href="#NewerVersionAvailable">NewerVersionAvailable</a>: Newer Library Versions Available</td></tr>
+<tr>
 <td class="countColumn">5</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
 <a href="#Aligned16KB">Aligned16KB</a>: Native library dependency not 16 KB aligned</td></tr>
 <tr><td class="countColumn"></td><td class="categoryColumn"><a href="#Performance">Performance</a>
 </td></tr>
 <tr>
-<td class="countColumn">1</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
+<td class="countColumn">2</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
 <a href="#StaticFieldLeak">StaticFieldLeak</a>: Static Field Leaks</td></tr>
+<tr><td class="countColumn"></td><td class="categoryColumn"><a href="#Productivity">Productivity</a>
+</td></tr>
+<tr>
+<td class="countColumn">3</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
+<a href="#UseTomlInstead">UseTomlInstead</a>: Use TOML Version Catalog Instead</td></tr>
 <tr><td></td><td class="categoryColumn"><a href="#ExtraIssues">Included Additional Checks (57)</a>
 </td></tr>
 <tr><td></td><td class="categoryColumn"><a href="#MissingIssues">Disabled Checks (43)</a>
@@ -222,7 +236,109 @@ Dismiss</button>            </div>
             </div>
           </section>
 <a name="Correctness"></a>
-<a name="Aligned16KB"></a>
+<a name="GradleDependency"></a>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="GradleDependencyCard" style="display: block;">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Obsolete Gradle Dependency</h2>
+  </div>
+              <div class="mdl-card__supporting-text">
+<div class="issue">
+<div class="warningslist">
+<span class="location"><a href="../../build.gradle.kts">../../build.gradle.kts</a>:185</span>: <span class="message">A newer version of androidx.annotation:annotation than 1.7.1 is available: 1.9.1</span><br /><pre class="errorlines">
+<span class="lineno"> 182 </span>    implementation(libs.androidx.graphics.core)
+<span class="lineno"> 183 </span>    
+<span class="lineno"> 184 </span>    // Keep annotations for ProGuard
+<span class="caretline"><span class="lineno"> 185 </span>    implementation(<span class="warning">"androidx.annotation:annotation:1.7.1"</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 186 </span>    
+<span class="lineno"> 187 </span>    dokkaPlugin(libs.android.documentation.plugin)
+<span class="lineno"> 188 </span>    testImplementation(libs.junit)
+</pre>
+
+</div>
+<div class="metadata"><div class="explanation" id="explanationGradleDependency" style="display: none;">
+This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find.<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+To suppress this error, use the issue id "GradleDependency" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+<br/></div>
+</div>
+</div>
+<div class="chips">
+<span class="mdl-chip">
+    <span class="mdl-chip__text">GradleDependency</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Correctness</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Warning</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Priority 4/10</span>
+</span>
+</div>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationGradleDependencyLink" onclick="reveal('explanationGradleDependency');">
+Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="GradleDependencyCardLink" onclick="hideid('GradleDependencyCard');">
+Dismiss</button>            </div>
+            </div>
+          </section><a name="NewerVersionAvailable"></a>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="NewerVersionAvailableCard" style="display: block;">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Newer Library Versions Available</h2>
+  </div>
+              <div class="mdl-card__supporting-text">
+<div class="issue">
+<div class="warningslist">
+<span class="location"><a href="../../build.gradle.kts">../../build.gradle.kts</a>:189</span>: <span class="message">A newer version of org.mockito:mockito-core than 5.8.0 is available: 5.20.0</span><br /><pre class="errorlines">
+<span class="lineno"> 186 </span>    
+<span class="lineno"> 187 </span>    dokkaPlugin(libs.android.documentation.plugin)
+<span class="lineno"> 188 </span>    testImplementation(libs.junit)
+<span class="caretline"><span class="lineno"> 189 </span>    testImplementation(<span class="warning">"org.mockito:mockito-core:5.8.0"</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 190 </span>    testImplementation("org.robolectric:robolectric:4.11.1")
+<span class="lineno"> 191 </span>    androidTestImplementation(libs.androidx.junit)
+<span class="lineno"> 192 </span>    androidTestImplementation(libs.androidx.espresso.core)
+</pre>
+
+<span class="location"><a href="../../build.gradle.kts">../../build.gradle.kts</a>:190</span>: <span class="message">A newer version of org.robolectric:robolectric than 4.11.1 is available: 4.16</span><br /><pre class="errorlines">
+<span class="lineno"> 187 </span>    dokkaPlugin(libs.android.documentation.plugin)
+<span class="lineno"> 188 </span>    testImplementation(libs.junit)
+<span class="lineno"> 189 </span>    testImplementation("org.mockito:mockito-core:5.8.0")
+<span class="caretline"><span class="lineno"> 190 </span>    testImplementation(<span class="warning">"org.robolectric:robolectric:4.11.1"</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 191 </span>    androidTestImplementation(libs.androidx.junit)
+<span class="lineno"> 192 </span>    androidTestImplementation(libs.androidx.espresso.core)
+<span class="lineno"> 193 </span>}
+</pre>
+
+</div>
+<div class="metadata"><div class="explanation" id="explanationNewerVersionAvailable" style="display: none;">
+This detector checks with a central repository to see if there are newer versions available for the dependencies used by this project. This is similar to the <code>GradleDependency</code> check, which checks for newer versions available in the Android SDK tools and libraries, but this works with any MavenCentral dependency, and connects to the library every time, which makes it more flexible but also <b>much</b> slower.<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+To suppress this error, use the issue id "NewerVersionAvailable" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+<br/></div>
+</div>
+</div>
+<div class="chips">
+<span class="mdl-chip">
+    <span class="mdl-chip__text">NewerVersionAvailable</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Correctness</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Warning</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Priority 4/10</span>
+</span>
+</div>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationNewerVersionAvailableLink" onclick="reveal('explanationNewerVersionAvailable');">
+Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="NewerVersionAvailableCardLink" onclick="hideid('NewerVersionAvailableCard');">
+Dismiss</button>            </div>
+            </div>
+          </section><a name="Aligned16KB"></a>
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="Aligned16KBCard" style="display: block;">
             <div class="mdl-card mdl-cell mdl-cell--12-col">
   <div class="mdl-card__title">
@@ -231,11 +347,11 @@ Dismiss</button>            </div>
               <div class="mdl-card__supporting-text">
 <div class="issue">
 <div class="warningslist">
-<span class="location"><a href="../../../../../../.gradle/caches/8.13/transforms/0d3889586d91f1b4cb1b8ecbb23adcd2/transformed/out/jni/arm64-v8a/libappdimens_games.so">../../../../../../.gradle/caches/8.13/transforms/0d3889586d91f1b4cb1b8ecbb23adcd2/transformed/out/jni/arm64-v8a/libappdimens_games.so</a></span>: <span class="message">The native library <code>arm64-v8a/libappdimens_games.so</code> (from <code>AppDimens:appdimens_games:unspecified</code>) is not 16 KB aligned</span><br />
-<span class="location"><a href="../../../../../../.gradle/caches/8.13/transforms/0d3889586d91f1b4cb1b8ecbb23adcd2/transformed/out/jni/arm64-v8a/libappdimens_games.so">../../../../../../.gradle/caches/8.13/transforms/0d3889586d91f1b4cb1b8ecbb23adcd2/transformed/out/jni/arm64-v8a/libappdimens_games.so</a></span>: <span class="message">The native library <code>arm64-v8a/libappdimens_games.so</code> (from <code>AppDimens:appdimens_games:unspecified</code>) is not 16 KB aligned</span><br />
-<span class="location"><a href="../../../../../../.gradle/caches/8.13/transforms/c3921425663daf6c60f490d1880bb633/transformed/graphics-core-1.0.0-alpha02/jni/arm64-v8a/libgraphics-core.so">../../../../../../.gradle/caches/8.13/transforms/c3921425663daf6c60f490d1880bb633/transformed/graphics-core-1.0.0-alpha02/jni/arm64-v8a/libgraphics-core.so</a></span>: <span class="message">The native library <code>arm64-v8a/libgraphics-core.so</code> (from <code>androidx.graphics:graphics-core:1.0.0-alpha02</code>) is not 16 KB aligned</span><br />
-<span class="location"><a href="../../../../../../.gradle/caches/8.13/transforms/c3921425663daf6c60f490d1880bb633/transformed/graphics-core-1.0.0-alpha02/jni/arm64-v8a/libgraphics-core.so">../../../../../../.gradle/caches/8.13/transforms/c3921425663daf6c60f490d1880bb633/transformed/graphics-core-1.0.0-alpha02/jni/arm64-v8a/libgraphics-core.so</a></span>: <span class="message">The native library <code>arm64-v8a/libgraphics-core.so</code> (from <code>androidx.graphics:graphics-core:1.0.0-alpha02</code>) is not 16 KB aligned</span><br />
-<span class="location"><a href="../../../../../../.gradle/caches/8.13/transforms/c3921425663daf6c60f490d1880bb633/transformed/graphics-core-1.0.0-alpha02/jni/arm64-v8a/libgraphics-core.so">../../../../../../.gradle/caches/8.13/transforms/c3921425663daf6c60f490d1880bb633/transformed/graphics-core-1.0.0-alpha02/jni/arm64-v8a/libgraphics-core.so</a></span>: <span class="message">The native library <code>arm64-v8a/libgraphics-core.so</code> (from <code>androidx.graphics:graphics-core:1.0.0-alpha02</code>) is not 16 KB aligned</span><br />
+<span class="location"><a href="../../../../../../../.gradle/caches/8.13/transforms/75c00b2958fac769061fb5cc7f021698/transformed/out/jni/arm64-v8a/libappdimens_games.so">../../../../../../../.gradle/caches/8.13/transforms/75c00b2958fac769061fb5cc7f021698/transformed/out/jni/arm64-v8a/libappdimens_games.so</a></span>: <span class="message">The native library <code>arm64-v8a/libappdimens_games.so</code> (from <code>AppDimens:appdimens_games:unspecified</code>) is not 16 KB aligned</span><br />
+<span class="location"><a href="../../../../../../../.gradle/caches/8.13/transforms/75c00b2958fac769061fb5cc7f021698/transformed/out/jni/arm64-v8a/libappdimens_games.so">../../../../../../../.gradle/caches/8.13/transforms/75c00b2958fac769061fb5cc7f021698/transformed/out/jni/arm64-v8a/libappdimens_games.so</a></span>: <span class="message">The native library <code>arm64-v8a/libappdimens_games.so</code> (from <code>AppDimens:appdimens_games:unspecified</code>) is not 16 KB aligned</span><br />
+<span class="location"><a href="../../../../../../../.gradle/caches/8.13/transforms/c3921425663daf6c60f490d1880bb633/transformed/graphics-core-1.0.0-alpha02/jni/arm64-v8a/libgraphics-core.so">../../../../../../../.gradle/caches/8.13/transforms/c3921425663daf6c60f490d1880bb633/transformed/graphics-core-1.0.0-alpha02/jni/arm64-v8a/libgraphics-core.so</a></span>: <span class="message">The native library <code>arm64-v8a/libgraphics-core.so</code> (from <code>androidx.graphics:graphics-core:1.0.0-alpha02</code>) is not 16 KB aligned</span><br />
+<span class="location"><a href="../../../../../../../.gradle/caches/8.13/transforms/c3921425663daf6c60f490d1880bb633/transformed/graphics-core-1.0.0-alpha02/jni/arm64-v8a/libgraphics-core.so">../../../../../../../.gradle/caches/8.13/transforms/c3921425663daf6c60f490d1880bb633/transformed/graphics-core-1.0.0-alpha02/jni/arm64-v8a/libgraphics-core.so</a></span>: <span class="message">The native library <code>arm64-v8a/libgraphics-core.so</code> (from <code>androidx.graphics:graphics-core:1.0.0-alpha02</code>) is not 16 KB aligned</span><br />
+<span class="location"><a href="../../../../../../../.gradle/caches/8.13/transforms/c3921425663daf6c60f490d1880bb633/transformed/graphics-core-1.0.0-alpha02/jni/arm64-v8a/libgraphics-core.so">../../../../../../../.gradle/caches/8.13/transforms/c3921425663daf6c60f490d1880bb633/transformed/graphics-core-1.0.0-alpha02/jni/arm64-v8a/libgraphics-core.so</a></span>: <span class="message">The native library <code>arm64-v8a/libgraphics-core.so</code> (from <code>androidx.graphics:graphics-core:1.0.0-alpha02</code>) is not 16 KB aligned</span><br />
 </div>
 <div class="metadata"><div class="explanation" id="explanationAligned16KB" style="display: none;">
 Android has traditionally used 4 KB memory page sizes. However, to support future devices that only work with 16 KB aligned libraries apps containing native libraries need to be built with 16 KB alignment.<br/>
@@ -282,14 +398,24 @@ Dismiss</button>            </div>
               <div class="mdl-card__supporting-text">
 <div class="issue">
 <div class="warningslist">
-<span class="location"><a href="../../src/main/java/com/appdimens/games/AppDimensGames.kt">../../src/main/java/com/appdimens/games/AppDimensGames.kt</a>:162</span>: <span class="message">Do not place Android context classes in static fields (static reference to <code>AppDimensGames</code> which has field <code>context</code> pointing to <code>Context</code>); this is a memory leak</span><br /><pre class="errorlines">
-<span class="lineno"> 159 </span>    companion <span class="keyword">object</span> {
-<span class="lineno"> 160 </span>        private const <span class="keyword">val</span> TAG = <span class="string">"AppDimensGames"</span>
-<span class="lineno"> 161 </span>        
-<span class="caretline"><span class="lineno"> 162 </span>        <span class="warning"><span class="annotation">@Volatile</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 163 </span>        private <span class="keyword">var</span> INSTANCE: AppDimensGames? = <span class="keyword">null</span>
-<span class="lineno"> 164 </span>        
-<span class="lineno"> 165 </span>        <span class="javadoc">/**
+<span class="location"><a href="../../src/main/java/com/appdimens/games/AppDimensGames.kt">../../src/main/java/com/appdimens/games/AppDimensGames.kt</a>:198</span>: <span class="message">Do not place Android context classes in static fields (static reference to <code>AppDimensGames</code> which has field <code>context</code> pointing to <code>Context</code>); this is a memory leak</span><br /><pre class="errorlines">
+<span class="lineno"> 195 </span>    companion <span class="keyword">object</span> {
+<span class="lineno"> 196 </span>        private const <span class="keyword">val</span> TAG = <span class="string">"AppDimensGames"</span>
+<span class="lineno"> 197 </span>        
+<span class="caretline"><span class="lineno"> 198 </span>        <span class="warning"><span class="annotation">@Volatile</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 199 </span>        private <span class="keyword">var</span> INSTANCE: AppDimensGames? = <span class="keyword">null</span>
+<span class="lineno"> 200 </span>        
+<span class="lineno"> 201 </span>        <span class="javadoc">/**
+</span></pre>
+
+<span class="location"><a href="../../src/main/java/com/appdimens/games/AppDimensGames3D.kt">../../src/main/java/com/appdimens/games/AppDimensGames3D.kt</a>:206</span>: <span class="message">Do not place Android context classes in static fields (static reference to <code>AppDimensGames3D</code> which has field <code>context</code> pointing to <code>Context</code>); this is a memory leak</span><br /><pre class="errorlines">
+<span class="lineno"> 203 </span>    companion <span class="keyword">object</span> {
+<span class="lineno"> 204 </span>        private const <span class="keyword">val</span> TAG = <span class="string">"AppDimensGames3D"</span>
+<span class="lineno"> 205 </span>        
+<span class="caretline"><span class="lineno"> 206 </span>        <span class="warning"><span class="annotation">@Volatile</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 207 </span>        private <span class="keyword">var</span> INSTANCE: AppDimensGames3D? = <span class="keyword">null</span>
+<span class="lineno"> 208 </span>        
+<span class="lineno"> 209 </span>        <span class="javadoc">/**
 </span></pre>
 
 </div>
@@ -322,6 +448,73 @@ ViewModel classes should never point to Views or non-application Contexts.<br/>T
               <div class="mdl-card__actions mdl-card--border">
 <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationStaticFieldLeakLink" onclick="reveal('explanationStaticFieldLeak');">
 Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="StaticFieldLeakCardLink" onclick="hideid('StaticFieldLeakCard');">
+Dismiss</button>            </div>
+            </div>
+          </section>
+<a name="Productivity"></a>
+<a name="UseTomlInstead"></a>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="UseTomlInsteadCard" style="display: block;">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Use TOML Version Catalog Instead</h2>
+  </div>
+              <div class="mdl-card__supporting-text">
+<div class="issue">
+<div class="warningslist">
+<span class="location"><a href="../../build.gradle.kts">../../build.gradle.kts</a>:185</span>: <span class="message">Use version catalog instead</span><br /><pre class="errorlines">
+<span class="lineno"> 182 </span>    implementation(libs.androidx.graphics.core)
+<span class="lineno"> 183 </span>    
+<span class="lineno"> 184 </span>    // Keep annotations for ProGuard
+<span class="caretline"><span class="lineno"> 185 </span>    implementation(<span class="warning">"androidx.annotation:annotation:1.7.1"</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 186 </span>    
+<span class="lineno"> 187 </span>    dokkaPlugin(libs.android.documentation.plugin)
+<span class="lineno"> 188 </span>    testImplementation(libs.junit)
+</pre>
+
+<span class="location"><a href="../../build.gradle.kts">../../build.gradle.kts</a>:189</span>: <span class="message">Use version catalog instead</span><br /><pre class="errorlines">
+<span class="lineno"> 186 </span>    
+<span class="lineno"> 187 </span>    dokkaPlugin(libs.android.documentation.plugin)
+<span class="lineno"> 188 </span>    testImplementation(libs.junit)
+<span class="caretline"><span class="lineno"> 189 </span>    testImplementation(<span class="warning">"org.mockito:mockito-core:5.8.0"</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 190 </span>    testImplementation("org.robolectric:robolectric:4.11.1")
+<span class="lineno"> 191 </span>    androidTestImplementation(libs.androidx.junit)
+<span class="lineno"> 192 </span>    androidTestImplementation(libs.androidx.espresso.core)
+</pre>
+
+<span class="location"><a href="../../build.gradle.kts">../../build.gradle.kts</a>:190</span>: <span class="message">Use version catalog instead</span><br /><pre class="errorlines">
+<span class="lineno"> 187 </span>    dokkaPlugin(libs.android.documentation.plugin)
+<span class="lineno"> 188 </span>    testImplementation(libs.junit)
+<span class="lineno"> 189 </span>    testImplementation("org.mockito:mockito-core:5.8.0")
+<span class="caretline"><span class="lineno"> 190 </span>    testImplementation(<span class="warning">"org.robolectric:robolectric:4.11.1"</span>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 191 </span>    androidTestImplementation(libs.androidx.junit)
+<span class="lineno"> 192 </span>    androidTestImplementation(libs.androidx.espresso.core)
+<span class="lineno"> 193 </span>}
+</pre>
+
+</div>
+<div class="metadata"><div class="explanation" id="explanationUseTomlInstead" style="display: none;">
+If your project is using a <code>libs.versions.toml</code> file, you should place all Gradle dependencies in the TOML file. This lint check looks for version declarations outside of the TOML file and suggests moving them (and in the IDE, provides a quickfix to performing the operation automatically).<br/>To suppress this error, use the issue id "UseTomlInstead" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+<br/></div>
+</div>
+</div>
+<div class="chips">
+<span class="mdl-chip">
+    <span class="mdl-chip__text">UseTomlInstead</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Productivity</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Warning</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Priority 4/10</span>
+</span>
+</div>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationUseTomlInsteadLink" onclick="reveal('explanationUseTomlInstead');">
+Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="UseTomlInsteadCardLink" onclick="hideid('UseTomlInsteadCard');">
 Dismiss</button>            </div>
             </div>
           </section>

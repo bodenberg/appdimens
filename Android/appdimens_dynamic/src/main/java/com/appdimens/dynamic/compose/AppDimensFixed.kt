@@ -59,6 +59,7 @@ class AppDimensFixed(
     private val initialBaseDp: Dp,
     private var ignoreMultiViewAdjustment: Boolean = false
 ) {
+    
     /**
      * [EN] Map to store custom Dp values (Priority 3).
      *
@@ -100,6 +101,12 @@ class AppDimensFixed(
      * [PT] Define a dimensão da tela a ser usada como base (HIGHEST ou LOWEST).
      */
     private var screenType: ScreenType = ScreenType.LOWEST
+    
+    /**
+     * [EN] Individual remember control for this instance.
+     * [PT] Controle individual de remember para esta instância.
+     */
+    private var enableRemember: Boolean = true
 
     /**
      * [EN] Sets a custom dimension for a specific UI mode.
@@ -284,6 +291,19 @@ class AppDimensFixed(
         ignoreMultiViewAdjustment = ignore
         return this
     }
+    
+    /**
+     * [EN] Enables or disables remember for this instance.
+     * @param enable If true, enables remember; if false, disables remember.
+     * @return The AppDimensFixed instance for chaining.
+     * [PT] Ativa ou desativa o remember para esta instância.
+     * @param enable Se verdadeiro, ativa o remember; se falso, desativa o remember.
+     * @return A instância AppDimensFixed para encadeamento.
+     */
+    fun remember(enable: Boolean = true): AppDimensFixed {
+        enableRemember = enable
+        return this
+    }
 
     @SuppressLint("ConfigurationScreenWidthHeight")
     @Composable
@@ -296,11 +316,32 @@ class AppDimensFixed(
 
         val currentUiModeType = UiModeType.fromConfiguration(configuration.uiMode)
 
-        return remember(
-            smallestWidthDp, currentScreenWidthDp, currentScreenHeightDp,
-            customDpMap.hashCode(), customUiModeMap.hashCode(), customIntersectionMap.hashCode(),
-            currentUiModeType
-        ) {
+        return if (AppDimens.globalRememberEnabled && enableRemember) {
+            remember(
+                smallestWidthDp, currentScreenWidthDp, currentScreenHeightDp,
+                customDpMap.hashCode(), customUiModeMap.hashCode(), customIntersectionMap.hashCode(),
+                currentUiModeType
+            ) {
+                calculateBaseDp(
+                    smallestWidthDp, currentScreenWidthDp, currentScreenHeightDp,
+                    currentUiModeType
+                )
+            }
+        } else {
+            calculateBaseDp(
+                smallestWidthDp, currentScreenWidthDp, currentScreenHeightDp,
+                currentUiModeType
+            )
+        }
+    }
+    
+    @SuppressLint("ConfigurationScreenWidthHeight")
+    private fun calculateBaseDp(
+        smallestWidthDp: Float,
+        currentScreenWidthDp: Float,
+        currentScreenHeightDp: Float,
+        currentUiModeType: UiModeType
+    ): Dp {
             var dpToAdjust = initialBaseDp
             var foundCustomDp: Dp?
 
@@ -348,8 +389,7 @@ class AppDimensFixed(
                     )
                 }
             }
-            dpToAdjust
-        }
+            return dpToAdjust
     }
 
     @SuppressLint("ConfigurationScreenWidthHeight")

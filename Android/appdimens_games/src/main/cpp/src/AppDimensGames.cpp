@@ -290,4 +290,40 @@ Java_com_appdimens_games_AppDimensGames_nativeCalculateRectangle(JNIEnv *env, jo
     return array;
 }
 
+JNIEXPORT void JNICALL
+Java_com_appdimens_games_AppDimensGames_nativeSetCacheMaxSize(JNIEnv *env, jobject thiz, jint maxSize) {
+    LOGI("JNI: nativeSetCacheMaxSize called - maxSize: %d", maxSize);
+    
+    AppDimensGames& instance = AppDimensGames::getInstance();
+    GameDimensions* dimensions = instance.getGameDimensions();
+    if (dimensions) {
+        dimensions->setCacheMaxSize(static_cast<size_t>(maxSize));
+    }
+}
+
+JNIEXPORT void JNICALL
+Java_com_appdimens_games_AppDimensGames_nativeSetCachingEnabled(JNIEnv *env, jobject thiz, jboolean enabled) {
+    LOGI("JNI: nativeSetCachingEnabled called - enabled: %s", enabled ? "true" : "false");
+    
+    AppDimensGames& instance = AppDimensGames::getInstance();
+    GameDimensions* dimensions = instance.getGameDimensions();
+    if (dimensions) {
+        if (!enabled) {
+            dimensions->clearCache();
+        }
+        // Note: We could add a caching enabled flag to GameDimensions if needed
+    }
+}
+
+JNIEXPORT void JNICALL
+Java_com_appdimens_games_AppDimensGames_nativeClearCache(JNIEnv *env, jobject thiz) {
+    LOGI("JNI: nativeClearCache called");
+    
+    AppDimensGames& instance = AppDimensGames::getInstance();
+    GameDimensions* dimensions = instance.getGameDimensions();
+    if (dimensions) {
+        dimensions->clearCache();
+    }
+}
+
 } // extern "C"

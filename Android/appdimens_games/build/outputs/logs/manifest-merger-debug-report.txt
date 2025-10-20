@@ -1,42 +1,42 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:2:1-21:12
-INJECTED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:2:1-21:12
+ADDED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:2:1-21:12
 	package
-		INJECTED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml
+		INJECTED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml
 	xmlns:tools
-		ADDED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:3:5-51
+		ADDED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:3:5-51
 	xmlns:android
-		ADDED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:2:11-69
+		ADDED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:2:11-69
 uses-feature#android.hardware.touchscreen
-ADDED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:6:5-8:36
+ADDED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:6:5-8:36
 	android:required
-		ADDED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:8:9-33
+		ADDED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:8:9-33
 	android:name
-		ADDED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:7:9-52
+		ADDED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:7:9-52
 uses-feature#android.hardware.gamepad
-ADDED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:9:5-11:36
+ADDED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:9:5-11:36
 	android:required
-		ADDED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:11:9-33
+		ADDED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:11:9-33
 	android:name
-		ADDED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:10:9-48
+		ADDED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:10:9-48
 uses-feature#0x00020000
-ADDED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:12:5-14:35
+ADDED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:12:5-14:35
 	android:glEsVersion
-		ADDED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:13:9-41
+		ADDED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:13:9-41
 	android:required
-		ADDED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:14:9-32
+		ADDED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:14:9-32
 uses-feature#0x00030000
-ADDED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:17:5-19:36
+ADDED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:17:5-19:36
 	android:glEsVersion
-		ADDED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:18:9-41
+		ADDED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:18:9-41
 	android:required
-		ADDED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:19:9-33
+		ADDED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml:19:9-33
 uses-sdk
-INJECTED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml
-INJECTED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml
+INJECTED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml
+INJECTED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml
+		INJECTED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /home/bodenberg/Downloads/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml
+		INJECTED from /home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games/src/main/AndroidManifest.xml

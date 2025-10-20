@@ -1,9 +1,9 @@
 <libraries>
   <library
       name=":@@:appdimens_games::debug"
-      jars="/home/bodenberg/.gradle/caches/8.13/transforms/0d3889586d91f1b4cb1b8ecbb23adcd2/transformed/out/jars/classes.jar:/home/bodenberg/.gradle/caches/8.13/transforms/0d3889586d91f1b4cb1b8ecbb23adcd2/transformed/out/jars/libs/R.jar"
+      jars="/home/bodenberg/.gradle/caches/8.13/transforms/75c00b2958fac769061fb5cc7f021698/transformed/out/jars/classes.jar:/home/bodenberg/.gradle/caches/8.13/transforms/75c00b2958fac769061fb5cc7f021698/transformed/out/jars/libs/R.jar"
       resolved="AppDimens:appdimens_games:unspecified"
-      folder="/home/bodenberg/.gradle/caches/8.13/transforms/0d3889586d91f1b4cb1b8ecbb23adcd2/transformed/out"
+      folder="/home/bodenberg/.gradle/caches/8.13/transforms/75c00b2958fac769061fb5cc7f021698/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -40,9 +40,9 @@
       proguardRules="proguard.txt"/>
   <library
       name=":@@:appdimens_dynamic::debug"
-      jars="/home/bodenberg/.gradle/caches/8.13/transforms/df5a7efab911b13a467dbe81fdacc04f/transformed/out/jars/classes.jar:/home/bodenberg/.gradle/caches/8.13/transforms/df5a7efab911b13a467dbe81fdacc04f/transformed/out/jars/libs/R.jar"
+      jars="/home/bodenberg/.gradle/caches/8.13/transforms/ad1d93bc69c56d379ad8a778940775d8/transformed/out/jars/classes.jar:/home/bodenberg/.gradle/caches/8.13/transforms/ad1d93bc69c56d379ad8a778940775d8/transformed/out/jars/libs/R.jar"
       resolved="AppDimens:appdimens_dynamic:unspecified"
-      folder="/home/bodenberg/.gradle/caches/8.13/transforms/df5a7efab911b13a467dbe81fdacc04f/transformed/out"
+      folder="/home/bodenberg/.gradle/caches/8.13/transforms/ad1d93bc69c56d379ad8a778940775d8/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

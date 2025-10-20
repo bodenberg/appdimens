@@ -4,7 +4,7 @@
     <p><strong>Dimensionamiento Inteligente y Responsivo para Android & iOS</strong></p>
     <p>Escalado responsivo matemáticamente preciso que garantiza que su diseño de UI se adapte perfectamente a cualquier tamaño de pantalla o relación de aspecto — desde teléfonos hasta TVs, autos y wearables.</p>
 
-[![Versión](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Versión](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![Licencia](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![Plataforma](https://img.shields.io/badge/platform-Android%20%7C%20iOS-orange.svg)](https://github.com/bodenberg/appdimens)
 [![Documentación](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)
@@ -25,6 +25,26 @@
 - **⚡ Optimizado para Rendimiento**: Sobrecarga mínima en tiempo de ejecución con cálculos en caché
 - **🔧 Integración Fácil**: API simple que funciona con Jetpack Compose, XML Views, SwiftUI y UIKit
 - **📐 Precisión Matemática**: Dos modelos de escala (Fixed & Dynamic) para diferentes necesidades de diseño
+- **🎮 Desarrollo de Juegos**: Módulo especializado C++/NDK para desarrollo de juegos de alto rendimiento
+- **🚀 Rendimiento Nativo**: Implementación C++ para cálculos específicos de juegos e integración OpenGL
+
+---
+
+## 🎮 Funcionalidades de Desarrollo de Juegos
+
+### Android Games (C++/NDK)
+- **Rendimiento Nativo**: Implementación C++ para cálculos de alto rendimiento
+- **Tipos de Dimensión de Juego**: DYNAMIC, FIXED, GAME_WORLD, UI_OVERLAY
+- **Operaciones Vectoriales**: GameVector2D con operaciones matemáticas
+- **Gestión de Viewport**: Múltiples modos de escala para diferentes escenarios de juego
+- **Integración OpenGL**: Utilidades para renderizado OpenGL ES
+
+### iOS Games (Metal)
+- **Integración Metal**: Soporte nativo Metal y MetalKit
+- **Escala de Viewport**: Modos uniform, horizontal, vertical, aspect-ratio, viewport
+- **Conversión de Coordenadas**: Transformaciones Screen ↔ NDC
+- **Optimizado para Rendimiento**: Extensiones SIMD para operaciones vectoriales
+- **Integración SwiftUI**: Extensiones SwiftUI específicas para juegos
 
 ---
 
@@ -35,17 +55,17 @@
 ```kotlin
 dependencies {
     // Biblioteca principal (Dynamic + Fixed scaling)
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.5")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.6")
     
     // Opcional: SDP & SSP scaling
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.5")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.5")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.6")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.6")
     
     // Paquete completo (no incluye módulo de juegos)
-    implementation("io.github.bodenberg:appdimens-all:1.0.5")
+    implementation("io.github.bodenberg:appdimens-all:1.0.6")
     
     // Desarrollo de juegos con soporte C++/NDK (dependencia separada)
-    implementation("io.github.bodenberg:appdimens-games:1.0.5")
+    implementation("io.github.bodenberg:appdimens-games:1.0.6")
 }
 ```
 
@@ -58,19 +78,20 @@ pod 'AppDimens'
 
 ```swift
 // Swift Package Manager
-.package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.5")
+.package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.6")
 ```
 
 ---
 
 ## 🧠 Modelos de Dimensión Principales
 
-| Modelo | Filosofía | Caso de Uso Ideal | Plataformas Soportadas |
-|-------|------------|----------------|-------------------|
-| **Fixed (FX)** | Escala logarítmica (refinada) | Botones, paddings, márgenes, íconos | Android + iOS |
-| **Dynamic (DY)** | Escala proporcional (agresiva) | Contenedores, grids, fuentes fluidas | Android + iOS |
-| **SDP / SSP** | Recursos pre-calculados | Uso directo de `@dimen` en XML | Android |
-| **Unidades Físicas** | mm/cm/inch → Dp/Sp/Px/Points | Wearables, impresión, layouts de precisión | Android + iOS |
+| Modelo | Filosofía | Caso de Uso Ideal | Plataformas Soportadas | Implementación |
+|-------|------------|----------------|-------------------|----------------|
+| **Fixed (FX)** | Escala logarítmica (refinada) | Botones, paddings, márgenes, íconos | Android + iOS | Ajuste matemático de proporción |
+| **Dynamic (DY)** | Escala proporcional (agresiva) | Contenedores, grids, fuentes fluidas | Android + iOS | Escalado proporcional basado en pantalla |
+| **SDP / SSP** | Recursos pre-calculados | Uso directo de `@dimen` en XML | Android | 426+ archivos de dimensión pre-generados |
+| **Unidades Físicas** | mm/cm/inch → Dp/Sp/Px/Points | Wearables, impresión, layouts de precisión | Android + iOS | Conversión de medidas del mundo real |
+| **Dimensiones de Juego** | Escalado especializado para juegos | UI de juego, viewports, Metal/OpenGL | Android + iOS | Implementación nativa C++/NDK + Metal |
 
 ---
 

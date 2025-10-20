@@ -38,7 +38,28 @@ public class AppDimensGames {
     
     public static let shared = AppDimensGames()
     
-    private var metalManager: AppDimensMetal?
+    // MARK: - Lazy Properties for Performance
+    
+    private lazy var metalManager: AppDimensMetal? = {
+        // Only initialize when actually needed
+        guard let device = self.currentDevice, let viewport = self.currentViewport else {
+            return nil
+        }
+        return AppDimensMetal(device: device, viewport: viewport)
+    }()
+    
+    private lazy var autoCache: AppDimensAutoCache = {
+        return AppDimensAutoCache()
+    }()
+    
+    private lazy var performanceSettings: GamePerformanceSettings = {
+        return GamePerformanceSettings.default
+    }()
+    
+    // MARK: - Private Properties
+    
+    private var currentDevice: MTLDevice?
+    private var currentViewport: MTLViewport?
     
     private init() {}
     
@@ -53,7 +74,9 @@ public class AppDimensGames {
      * @param viewport A configuração inicial do viewport.
      */
     public func initialize(device: MTLDevice, viewport: MTLViewport) {
-        self.metalManager = AppDimensMetal(device: device, viewport: viewport)
+        self.currentDevice = device
+        self.currentViewport = viewport
+        // metalManager will be lazily initialized when first accessed
     }
     
     /**
@@ -95,6 +118,9 @@ public class AppDimensGames {
      * @param viewport A nova configuração do viewport.
      */
     public func updateViewport(_ viewport: MTLViewport) {
+        self.currentViewport = viewport
+        // Clear cache when viewport changes
+        autoCache.clearAll()
         metalManager?.updateViewport(viewport)
     }
     
@@ -127,7 +153,18 @@ public class AppDimensGames {
      * @return A dimensão escalonada, ou o valor base se não inicializado.
      */
     public func uniform(_ baseValue: Float) -> Float {
-        return metalManager?.gameDimension(baseValue, scalingMode: .uniform) ?? baseValue
+        guard let viewport = currentViewport else { return baseValue }
+        
+        let dependencies: Set<AnyHashable> = [
+            baseValue, viewport.width, viewport.height, "uniform"
+        ]
+        
+        return autoCache.remember(
+            key: "uniform_\(baseValue)_\(viewport.width)_\(viewport.height)",
+            dependencies: dependencies
+        ) {
+            metalManager?.gameDimension(baseValue, scalingMode: .uniform) ?? baseValue
+        }
     }
     
     /**
@@ -139,7 +176,18 @@ public class AppDimensGames {
      * @return A dimensão escalonada, ou o valor base se não inicializado.
      */
     public func horizontal(_ baseValue: Float) -> Float {
-        return metalManager?.gameDimension(baseValue, scalingMode: .horizontal) ?? baseValue
+        guard let viewport = currentViewport else { return baseValue }
+        
+        let dependencies: Set<AnyHashable> = [
+            baseValue, viewport.width, viewport.height, "horizontal"
+        ]
+        
+        return autoCache.remember(
+            key: "horizontal_\(baseValue)_\(viewport.width)_\(viewport.height)",
+            dependencies: dependencies
+        ) {
+            metalManager?.gameDimension(baseValue, scalingMode: .horizontal) ?? baseValue
+        }
     }
     
     /**
@@ -151,7 +199,18 @@ public class AppDimensGames {
      * @return A dimensão escalonada, ou o valor base se não inicializado.
      */
     public func vertical(_ baseValue: Float) -> Float {
-        return metalManager?.gameDimension(baseValue, scalingMode: .vertical) ?? baseValue
+        guard let viewport = currentViewport else { return baseValue }
+        
+        let dependencies: Set<AnyHashable> = [
+            baseValue, viewport.width, viewport.height, "vertical"
+        ]
+        
+        return autoCache.remember(
+            key: "vertical_\(baseValue)_\(viewport.width)_\(viewport.height)",
+            dependencies: dependencies
+        ) {
+            metalManager?.gameDimension(baseValue, scalingMode: .vertical) ?? baseValue
+        }
     }
     
     /**
@@ -163,7 +222,18 @@ public class AppDimensGames {
      * @return A dimensão escalonada, ou o valor base se não inicializado.
      */
     public func aspectRatio(_ baseValue: Float) -> Float {
-        return metalManager?.gameDimension(baseValue, scalingMode: .aspectRatio) ?? baseValue
+        guard let viewport = currentViewport else { return baseValue }
+        
+        let dependencies: Set<AnyHashable> = [
+            baseValue, viewport.width, viewport.height, "aspectRatio"
+        ]
+        
+        return autoCache.remember(
+            key: "aspectRatio_\(baseValue)_\(viewport.width)_\(viewport.height)",
+            dependencies: dependencies
+        ) {
+            metalManager?.gameDimension(baseValue, scalingMode: .aspectRatio) ?? baseValue
+        }
     }
     
     /**
@@ -175,7 +245,51 @@ public class AppDimensGames {
      * @return A dimensão escalonada, ou o valor base se não inicializado.
      */
     public func viewport(_ baseValue: Float) -> Float {
-        return metalManager?.gameDimension(baseValue, scalingMode: .viewport) ?? baseValue
+        guard let viewport = currentViewport else { return baseValue }
+        
+        let dependencies: Set<AnyHashable> = [
+            baseValue, viewport.width, viewport.height, "viewport"
+        ]
+        
+        return autoCache.remember(
+            key: "viewport_\(baseValue)_\(viewport.width)_\(viewport.height)",
+            dependencies: dependencies
+        ) {
+            metalManager?.gameDimension(baseValue, scalingMode: .viewport) ?? baseValue
+        }
+    }
+    
+    // MARK: - Performance Configuration
+    
+    /**
+     * [EN] Configures performance settings for the games module.
+     * @param settings The performance settings to apply.
+     * [PT] Configura as configurações de performance para o módulo de jogos.
+     * @param settings As configurações de performance a serem aplicadas.
+     */
+    public func configurePerformance(_ settings: GamePerformanceSettings) {
+        performanceSettings = settings
+        if !settings.enableCaching {
+            autoCache.clearAll()
+        }
+    }
+    
+    /**
+     * [EN] Gets the current performance settings.
+     * @return The current performance settings.
+     * [PT] Obtém as configurações de performance atuais.
+     * @return As configurações de performance atuais.
+     */
+    public func getPerformanceSettings() -> GamePerformanceSettings {
+        return performanceSettings
+    }
+    
+    /**
+     * [EN] Clears all cached calculations.
+     * [PT] Limpa todos os cálculos em cache.
+     */
+    public func clearCache() {
+        autoCache.clearAll()
     }
     
     // MARK: - Game-Specific Utilities

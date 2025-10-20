@@ -7,6 +7,7 @@ It provides refined scaling to ensure that UI elements maintain the correct **pr
 
 ---
 
+
 ## 1. Core Scaling: Fixed (FX) vs. Dynamic (DY)
 
 The library offers two scaling models that can be used via **Compose Extensions** (`.fxdp`, `.dydp`) or through the **Gateway Object** (`AppDimens.fixedPx`, `AppDimens.dynamicPx`) in Views/XML.

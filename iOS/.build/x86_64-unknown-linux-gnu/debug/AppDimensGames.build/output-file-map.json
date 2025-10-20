@@ -1,0 +1,40 @@
+{
+  "": {
+    "swift-dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/master.swiftdeps"
+  },
+  "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGameExtensions.swift": {
+    "dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGameExtensions.d",
+    "object": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGameExtensions.swift.o",
+    "swiftmodule": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGameExtensions~partial.swiftmodule",
+    "swift-dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGameExtensions.swiftdeps",
+    "diagnostics": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGameExtensions.dia"
+  },
+  "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGameTypes.swift": {
+    "dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGameTypes.d",
+    "object": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGameTypes.swift.o",
+    "swiftmodule": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGameTypes~partial.swiftmodule",
+    "swift-dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGameTypes.swiftdeps",
+    "diagnostics": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGameTypes.dia"
+  },
+  "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGames.swift": {
+    "dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGames.d",
+    "object": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGames.swift.o",
+    "swiftmodule": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGames~partial.swiftmodule",
+    "swift-dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGames.swiftdeps",
+    "diagnostics": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGames.dia"
+  },
+  "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensGamesMain.swift": {
+    "dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGamesMain.d",
+    "object": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGamesMain.swift.o",
+    "swiftmodule": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGamesMain~partial.swiftmodule",
+    "swift-dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGamesMain.swiftdeps",
+    "diagnostics": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensGamesMain.dia"
+  },
+  "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensGames/AppDimensMetal.swift": {
+    "dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensMetal.d",
+    "object": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensMetal.swift.o",
+    "swiftmodule": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensMetal~partial.swiftmodule",
+    "swift-dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensMetal.swiftdeps",
+    "diagnostics": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensGames.build/AppDimensMetal.dia"
+  }
+}

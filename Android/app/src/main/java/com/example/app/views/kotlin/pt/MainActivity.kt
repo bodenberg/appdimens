@@ -138,7 +138,7 @@ class MainActivity : AppCompatActivity() {
 
         // [EN] Converts 5mm to Pixel (PX).
         // [PT] Converte 5mm para Pixel (PX).
-        val mmInPx = AppDimensPhysicalUnits.toMm(mmValue, resources)
+        val mmInPx = AppDimensPhysicalUnits.toPxFromMm(mmValue, resources)
 
         Log.d("AppDimensExample", "4. Física: ${mmValue}mm -> ${mmInPx}px")
 

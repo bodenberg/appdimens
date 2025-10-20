@@ -3,7 +3,7 @@
     <p><strong>Escalonamento Dinâmico de Texto com Regras Condicionais</strong></p>
     <p>SSP (Scaled SP) com regras por prioridade para tipografia responsiva em Compose e XML.</p>
 
-[![Versão](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Versão](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![Licença](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![Plataforma](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
@@ -18,7 +18,7 @@
 
 ## 🚀 Instalação
 ```kotlin
-dependencies { implementation("io.github.bodenberg:appdimens-ssps:1.0.5") }
+dependencies { implementation("io.github.bodenberg:appdimens-ssps:1.0.6") }
 ```
 
 ## 🎨 Exemplos (Compose)

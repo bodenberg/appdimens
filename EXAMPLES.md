@@ -8,9 +8,11 @@ This document provides comprehensive, real-world examples of how to use AppDimen
 
 1. [Android Examples](#android-examples)
 2. [iOS Examples](#ios-examples)
-3. [Cross-Platform Patterns](#cross-platform-patterns)
-4. [Advanced Use Cases](#advanced-use-cases)
-5. [Performance Examples](#performance-examples)
+3. [Game Development Examples](#game-development-examples)
+4. [Cross-Platform Patterns](#cross-platform-patterns)
+5. [Advanced Use Cases](#advanced-use-cases)
+6. [Performance Examples](#performance-examples)
+7. [Architecture Examples](#architecture-examples)
 
 ---
 
@@ -311,6 +313,135 @@ class GameRenderer : GLSurfaceView.Renderer {
         
         // Render game elements with calculated dimensions
         renderGameElements(buttonSize, textSize, playerSize, enemySize)
+    }
+}
+```
+
+---
+
+## 🎮 Game Development Examples
+
+### 🤖 Android Game Development
+
+#### Basic Game Setup
+
+```kotlin
+class GameActivity : AppCompatActivity() {
+    private lateinit var gamesManager: AppDimensGames
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        
+        // Initialize games manager
+        gamesManager = AppDimensGames.getInstance()
+        gamesManager.initialize(this)
+        
+        // Configure performance settings
+        gamesManager.configurePerformance(
+            GamePerformanceSettings.HIGH_PERFORMANCE
+        )
+    }
+    
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        gamesManager.updateScreenConfiguration()
+    }
+}
+```
+
+#### Game UI Elements
+
+```kotlin
+class GameUI {
+    private val gamesManager = AppDimensGames.getInstance()
+    
+    fun createGameButton(context: Context): Button {
+        val buttonSize = gamesManager.calculateButtonSize(48f)
+        val button = Button(context)
+        button.layoutParams = ViewGroup.LayoutParams(
+            buttonSize.toInt(), 
+            buttonSize.toInt()
+        )
+        return button
+    }
+    
+    fun createGameText(context: Context): TextView {
+        val textSize = gamesManager.calculateTextSize(16f)
+        val textView = TextView(context)
+        textView.textSize = textSize
+        return textView
+    }
+}
+```
+
+#### Vector Operations
+
+```kotlin
+class GamePhysics {
+    private val gamesManager = AppDimensGames.getInstance()
+    
+    fun calculateMovement(
+        position: GameVector2D, 
+        velocity: GameVector2D
+    ): GameVector2D {
+        val scaledPosition = gamesManager.calculateVector2D(
+            position, 
+            GameDimensionType.GAME_WORLD
+        )
+        val scaledVelocity = gamesManager.calculateVector2D(
+            velocity, 
+            GameDimensionType.GAME_WORLD
+        )
+        
+        return scaledPosition + scaledVelocity
+    }
+}
+```
+
+### 🍎 iOS Game Development
+
+#### Metal Integration
+
+```swift
+import Metal
+import AppDimensGames
+
+class GameRenderer {
+    private let gamesManager = AppDimensGames.shared
+    
+    func setupMetal(device: MTLDevice, viewport: MTLViewport) {
+        gamesManager.initialize(device: device, viewport: viewport)
+        gamesManager.configurePerformance(.highPerformance)
+    }
+    
+    func calculateGameDimensions() {
+        let buttonSize = gamesManager.uniform(48)      // Uniform scaling
+        let playerSize = gamesManager.aspectRatio(64)  // Aspect ratio scaling
+        let uiSize = gamesManager.viewport(24)         // Viewport scaling
+    }
+}
+```
+
+#### SwiftUI Game UI
+
+```swift
+struct GameView: View {
+    @State private var gamesManager = AppDimensGames.shared
+    
+    var body: some View {
+        VStack {
+            // Game-specific dimensions
+            Text("Score: 1000")
+                .font(.system(size: gameUniform(24)))  // Uniform scaling
+            
+            // Metal viewport dimensions
+            MetalGameView()
+                .frame(
+                    width: gameAspectRatio(320),
+                    height: gameAspectRatio(240)
+                )
+        }
+        .withAppDimens()  // Enable AppDimens environment
     }
 }
 ```

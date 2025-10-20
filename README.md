@@ -4,7 +4,7 @@
     <p><strong>Smart and Responsive Dimensioning for Android & iOS</strong></p>
     <p>Mathematically responsive scaling that ensures your UI design adapts perfectly to any screen size or aspect ratio — from phones to TVs, cars, and wearables.</p>
 
-[![Version](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Version](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Android%20%7C%20iOS-orange.svg)](https://github.com/bodenberg/appdimens)
 [![Documentation](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)
@@ -35,19 +35,28 @@
 ```kotlin
 dependencies {
     // Core library (Dynamic + Fixed scaling)
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.5")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.6")
     
     // Optional: SDP & SSP scaling
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.5")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.5")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.6")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.6")
     
     // All-in-one package (does not include games module)
-    implementation("io.github.bodenberg:appdimens-all:1.0.5")
+    implementation("io.github.bodenberg:appdimens-all:1.0.6")
     
     // Game development with C++/NDK support (separate dependency)
-    implementation("io.github.bodenberg:appdimens-games:1.0.5")
+    implementation("io.github.bodenberg:appdimens-games:1.0.6")
 }
 ```
+
+### New Features in v1.0.6
+
+- **🎮 Games Module**: Complete C++/NDK support for game development with Metal (iOS) and OpenGL ES (Android)
+- **📏 Physical Units**: Convert real-world measurements (mm, cm, inches) to screen pixels
+- **🌐 Environment System**: Advanced environment-based responsive design with protocol-based APIs
+- **📊 Item Count Calculator**: Calculate optimal grid layouts and item counts
+- **⚡ Performance Settings**: Configurable caching and performance optimization
+- **🔧 Advanced Protocols**: Protocol-based API design for better extensibility
 
 ### iOS
 
@@ -58,19 +67,38 @@ pod 'AppDimens'
 
 ```swift
 // Swift Package Manager
-.package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.5")
+.package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.6")
 ```
 
 ---
 
 ## 🧠 Core Dimension Models
 
-| Model | Philosophy | Ideal Use Case | Supported Platforms |
-|-------|------------|----------------|-------------------|
-| **Fixed (FX)** | Logarithmic scaling (refined) | Buttons, paddings, margins, icons | Android + iOS |
-| **Dynamic (DY)** | Proportional scaling (aggressive) | Containers, grids, fluid fonts | Android + iOS |
-| **SDP / SSP** | Pre-calculated resources | Direct `@dimen` usage in XML | Android |
-| **Physical Units** | mm/cm/inch → Dp/Sp/Px/Points | Wearables, printing, precision layouts | Android + iOS |
+| Model | Philosophy | Ideal Use Case | Supported Platforms | Implementation |
+|-------|------------|----------------|-------------------|----------------|
+| **Fixed (FX)** | Logarithmic scaling (refined) | Buttons, paddings, margins, icons | Android + iOS | Mathematical aspect ratio adjustment |
+| **Dynamic (DY)** | Proportional scaling (aggressive) | Containers, grids, fluid fonts | Android + iOS | Screen-based proportional scaling |
+| **SDP / SSP** | Pre-calculated resources | Direct `@dimen` usage in XML | Android | 426+ pre-generated dimension files |
+| **Physical Units** | mm/cm/inch → Dp/Sp/Px/Points | Wearables, printing, precision layouts | Android + iOS | Real-world measurement conversion |
+| **Game Dimensions** | Specialized scaling for games | Game UI, viewports, Metal/OpenGL | Android + iOS | C++/NDK + Metal native implementation |
+
+---
+
+## 🎮 Game Development Features
+
+### Android Games (C++/NDK)
+- **Native Performance**: C++ implementation for high-performance calculations
+- **Game Dimension Types**: DYNAMIC, FIXED, GAME_WORLD, UI_OVERLAY
+- **Vector Operations**: GameVector2D with mathematical operations
+- **Viewport Management**: Multiple scaling modes for different game scenarios
+- **OpenGL Integration**: Utilities for OpenGL ES rendering
+
+### iOS Games (Metal)
+- **Metal Integration**: Native Metal and MetalKit support
+- **Viewport Scaling**: Uniform, horizontal, vertical, aspect-ratio, viewport modes
+- **Coordinate Conversion**: Screen ↔ NDC coordinate transformations
+- **Performance Optimized**: SIMD extensions for vector operations
+- **SwiftUI Integration**: Game-specific SwiftUI extensions
 
 ---
 
@@ -101,6 +129,22 @@ fun ResponsiveCard() {
         }
     }
 }
+
+// Game Development Example
+@Composable
+fun GameUI() {
+    val appDimensGames = AppDimensGames.getInstance()
+    
+    // Initialize for game development
+    LaunchedEffect(Unit) {
+        appDimensGames.initialize(context)
+    }
+    
+    // Game-specific dimensions
+    val buttonSize = appDimensGames.calculateButtonSize(48f)
+    val playerSize = appDimensGames.calculatePlayerSize(64f)
+    val uiOverlaySize = appDimensGames.calculateUISize(24f)
+}
 ```
 
 ### 🍎 iOS - SwiftUI
@@ -121,6 +165,25 @@ struct ResponsiveCard: View {
         .fxFrame(height: 200)          // Fixed height
         .background(Color(.systemGray6))
         .fxCornerRadius(12)
+    }
+}
+
+// Game Development Example
+struct GameView: View {
+    var body: some View {
+        VStack {
+            // Game-specific dimensions
+            Text("Score: 1000")
+                .font(.system(size: gameUniform(24)))  // Uniform scaling
+            
+            // Metal viewport dimensions
+            MetalGameView()
+                .frame(
+                    width: gameAspectRatio(320),
+                    height: gameAspectRatio(240)
+                )
+        }
+        .withAppDimens()  // Enable AppDimens environment
     }
 }
 ```
@@ -196,6 +259,50 @@ val spanCount = AppDimens.calculateAvailableItemCount(
 )
 ```
 
+### 🔧 Advanced Configuration
+
+#### Screen Qualifiers & Customization
+
+```kotlin
+// Android - Advanced screen qualifiers
+val buttonSize = 80.scaledDp()
+    .screen(UiModeType.WATCH, DpQualifier.SMALL_WIDTH, 200, 40.dp)  // Priority 1: Intersection
+    .screen(UiModeType.CAR, 120.dp)                                // Priority 2: UI Mode
+    .screen(DpQualifier.SMALL_WIDTH, 720, 150)                     // Priority 3: Dp Qualifier
+    .type(ScreenType.HIGHEST)                                       // Use largest dimension
+    .multiViewAdjustment(true)                                      // Ignore multi-window
+    .cache(true)                                                    // Enable caching
+```
+
+#### Performance Optimization
+
+```kotlin
+// Android - Performance settings
+AppDimens.globalCacheEnabled = true  // Global cache control
+
+val dimension = 100.scaledDp()
+    .cache(true)                     // Instance-level cache
+    .toPx(resources)                 // Cached calculation
+```
+
+#### Game Development Integration
+
+```kotlin
+// Android - Game development setup
+val gamesManager = AppDimensGames.getInstance()
+gamesManager.initialize(context)
+
+// Configure performance settings
+gamesManager.configurePerformance(
+    GamePerformanceSettings.HIGH_PERFORMANCE
+)
+
+// Calculate game-specific dimensions
+val buttonSize = gamesManager.calculateButtonSize(48f)
+val playerSize = gamesManager.calculatePlayerSize(64f)
+val uiSize = gamesManager.calculateUISize(24f)
+```
+
 ---
 
 ## 📊 Performance & Compatibility
@@ -210,10 +317,13 @@ val spanCount = AppDimens.calculateAvailableItemCount(
 
 ### 📱 Platform Support
 
-| Platform | Min Version | UI Frameworks | Special Features |
-|----------|-------------|---------------|------------------|
-| **Android** | API 21+ | Compose, Views, Data Binding | SDP/SSP, Physical Units |
-| **iOS** | 13.0+ | SwiftUI, UIKit | Native extensions |
+| Platform | Min Version | UI Frameworks | Special Features | Native Support |
+|----------|-------------|---------------|------------------|----------------|
+| **Android** | API 23+ | Compose, Views, Data Binding | SDP/SSP, Physical Units, C++/NDK | OpenGL ES, CMake |
+| **iOS** | 13.0+ | SwiftUI, UIKit | Metal Integration, SIMD | Metal, MetalKit |
+| **macOS** | 10.15+ | SwiftUI, AppKit | Cross-platform consistency | Native extensions |
+| **tvOS** | 13.0+ | SwiftUI, UIKit | TV-optimized scaling | Remote control UI |
+| **watchOS** | 6.0+ | SwiftUI | Watch-specific dimensions | HealthKit integration |
 
 ---
 
@@ -251,6 +361,38 @@ Specialized module for game development with C++/NDK support and OpenGL integrat
 
 ### 🏢 Enterprise Apps
 Great for business applications that need to work on tablets, phones, and desktop.
+
+---
+
+## 🏗️ Architecture Overview
+
+### Android Library Structure
+
+| Module | Purpose | Dependencies | Key Features |
+|--------|---------|-------------|--------------|
+| **appdimens_library** | Core types and interfaces | None | Base enums, qualifiers, adjustment factors |
+| **appdimens_dynamic** | Dynamic/Fixed scaling | appdimens_library | DY/FX models, Compose extensions, caching |
+| **appdimens_sdps** | SDP scaling | appdimens_library | 426+ pre-calculated @dimen resources |
+| **appdimens_ssps** | SSP scaling | appdimens_library | 216+ pre-calculated @dimen resources |
+| **appdimens_games** | Game development | appdimens_library, appdimens_dynamic | C++/NDK, OpenGL utilities, performance monitoring |
+| **appdimens_all** | All-in-one package | All modules | Complete functionality in single dependency |
+
+### iOS Library Structure
+
+| Module | Purpose | Dependencies | Key Features |
+|--------|---------|-------------|--------------|
+| **AppDimens** | Core functionality | Foundation, UIKit | DY/FX models, caching, qualifiers |
+| **AppDimensUI** | UI extensions | AppDimens | SwiftUI extensions, UIKit integration |
+| **AppDimensGames** | Game development | AppDimens, Metal | Metal integration, viewport management, SIMD |
+
+### Performance Characteristics
+
+| Feature | Runtime Overhead | Memory Usage | Calculation Time | Cache Strategy |
+|---------|------------------|--------------|------------------|----------------|
+| **Fixed/Dynamic** | ~0.001ms | ~50KB | Cached per configuration | Automatic dependency tracking |
+| **SDP/SSP** | Zero | ~2MB (resources) | Pre-calculated | Resource-based |
+| **Physical Units** | ~0.002ms | ~10KB | On-demand | Lazy initialization |
+| **Games (Native)** | ~0.0005ms | ~100KB | Cached with LRU | Native C++ implementation |
 
 ---
 

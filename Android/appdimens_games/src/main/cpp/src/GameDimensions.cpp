@@ -26,7 +26,7 @@
 #include <cmath>
 #include <sstream>
 
-GameDimensions::GameDimensions() {
+GameDimensions::GameDimensions() : dimensionCache(1000) {
     LOGI("GameDimensions constructor called");
     
     // Initialize with default values
@@ -65,7 +65,7 @@ float GameDimensions::calculateDynamicDimension(float baseValue) {
     if (baseValue <= 0.0f) return 0.0f;
     
     // Use cached value if available
-    std::string cacheKey = getCacheKey("dynamic", baseValue);
+    size_t cacheKey = getCacheKey("dynamic", baseValue);
     float cachedValue = getCachedDimension(cacheKey);
     if (cachedValue > 0.0f) {
         return cachedValue;
@@ -100,7 +100,7 @@ float GameDimensions::calculateFixedDimension(float baseValue) {
     if (baseValue <= 0.0f) return 0.0f;
     
     // Use cached value if available
-    std::string cacheKey = getCacheKey("fixed", baseValue);
+    size_t cacheKey = getCacheKey("fixed", baseValue);
     float cachedValue = getCachedDimension(cacheKey);
     if (cachedValue > 0.0f) {
         return cachedValue;
@@ -135,7 +135,7 @@ float GameDimensions::calculateGameWorldDimension(float baseValue) {
     if (baseValue <= 0.0f) return 0.0f;
     
     // Use cached value if available
-    std::string cacheKey = getCacheKey("gameworld", baseValue);
+    size_t cacheKey = getCacheKey("gameworld", baseValue);
     float cachedValue = getCachedDimension(cacheKey);
     if (cachedValue > 0.0f) {
         return cachedValue;
@@ -170,7 +170,7 @@ float GameDimensions::calculateUIOverlayDimension(float baseValue) {
     if (baseValue <= 0.0f) return 0.0f;
     
     // Use cached value if available
-    std::string cacheKey = getCacheKey("uioverlay", baseValue);
+    size_t cacheKey = getCacheKey("uioverlay", baseValue);
     float cachedValue = getCachedDimension(cacheKey);
     if (cachedValue > 0.0f) {
         return cachedValue;
@@ -392,23 +392,38 @@ float GameDimensions::calculateUIOverlayScaleFactor() const {
     return calculateFixedScaleFactor();
 }
 
-std::string GameDimensions::getCacheKey(const std::string& prefix, float value) const {
-    std::ostringstream oss;
-    oss << prefix << "_" << value << "_" << screenConfig.width << "x" << screenConfig.height;
-    return oss.str();
+size_t GameDimensions::getCacheKey(const std::string& prefix, float value) const {
+    // Optimized hash-based cache key generation
+    size_t hash = std::hash<std::string>{}(prefix);
+    hash ^= std::hash<float>{}(value) + 0x9e3779b9 + (hash << 6) + (hash >> 2);
+    hash ^= std::hash<int>{}(screenConfig.width) + 0x9e3779b9 + (hash << 6) + (hash >> 2);
+    hash ^= std::hash<int>{}(screenConfig.height) + 0x9e3779b9 + (hash << 6) + (hash >> 2);
+    return hash;
 }
 
-float GameDimensions::getCachedDimension(const std::string& key) const {
-    auto it = dimensionCache.find(key);
-    return (it != dimensionCache.end()) ? it->second : 0.0f;
+float GameDimensions::getCachedDimension(size_t key) const {
+    float* cached = dimensionCache.get(key);
+    return cached ? *cached : 0.0f;
 }
 
-void GameDimensions::setCachedDimension(const std::string& key, float value) const {
-    dimensionCache[key] = value;
+void GameDimensions::setCachedDimension(size_t key, float value) const {
+    dimensionCache.put(key, value);
 }
 
 void GameDimensions::clearCache() {
     dimensionCache.clear();
+}
+
+void GameDimensions::setCacheMaxSize(size_t maxSize) {
+    dimensionCache.setMaxSize(maxSize);
+}
+
+size_t GameDimensions::getCacheSize() const {
+    return dimensionCache.size();
+}
+
+size_t GameDimensions::getCacheMaxSize() const {
+    return dimensionCache.maxSize();
 }
 
 float GameDimensions::logScale(float value, float base) const {

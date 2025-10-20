@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
         // [EN] Converts 5mm to Pixel (PX).
         // [PT] Converte 5mm para Pixel (PX).
-        float mmInPx = AppDimensPhysicalUnits.INSTANCE.toMm(mmValue, getResources());
+        float mmInPx = AppDimensPhysicalUnits.INSTANCE.toPxFromMm(mmValue, getResources());
 
         Log.d("AppDimensExample", "4. Physical: " + mmValue + "mm -> " + mmInPx + "px");
 

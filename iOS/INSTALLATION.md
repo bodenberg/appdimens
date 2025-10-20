@@ -283,7 +283,7 @@ If you're still having issues, try these debug steps:
 1. **Check Installation:**
    ```swift
    import AppDimens
-   print("AppDimens version: \(AppDimens.version)")
+   print("AppDimens version: \(AppDimensInfo.version)")
    ```
 
 2. **Verify Framework:**

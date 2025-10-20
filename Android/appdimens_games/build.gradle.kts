@@ -22,7 +22,7 @@ tasks.dokkaJavadoc.configure {
 }
 
 mavenPublishing {
-    coordinates("io.github.bodenberg", "appdimens-games", "1.0.5")
+    coordinates("io.github.bodenberg", "appdimens-games", "1.0.6")
 
     configure(
         AndroidSingleVariantLibrary(
@@ -181,8 +181,13 @@ dependencies {
     // OpenGL ES support for games
     implementation(libs.androidx.graphics.core)
     
+    // Keep annotations for ProGuard
+    implementation("androidx.annotation:annotation:1.7.1")
+    
     dokkaPlugin(libs.android.documentation.plugin)
     testImplementation(libs.junit)
+    testImplementation("org.mockito:mockito-core:5.8.0")
+    testImplementation("org.robolectric:robolectric:4.11.1")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

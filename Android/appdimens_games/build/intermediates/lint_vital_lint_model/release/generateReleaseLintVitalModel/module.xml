@@ -1,6 +1,6 @@
 <lint-module
     format="1"
-    dir="/home/bodenberg/Downloads/AppDimens/Android/appdimens_games"
+    dir="/home/bodenberg/Documentos/GitHub/AppDimens/Android/appdimens_games"
     name=":appdimens_games"
     type="LIBRARY"
     maven="AppDimens:appdimens_games:unspecified"

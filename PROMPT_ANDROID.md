@@ -13,30 +13,36 @@ Since this is a multi-module project, you will need to add the AppDimens modules
 ```kotlin
 dependencies {
     // Core (Dynamic + Fixed)
-    implementation("com.github.bodenberg.appdimens:appdimens-dynamic:1.0.5")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.6")
 
     // SDP & SSP scaling (optional)
-    implementation("com.github.bodenberg.appdimens:appdimens-sdps:1.0.5")
-    implementation("com.github.bodenberg.appdimens:appdimens-ssps:1.0.5")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.6")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.6")
 
     // All in one
-    implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.5")
+    implementation("io.github.bodenberg:appdimens-all:1.0.6")
+    
+    // Game development (separate dependency)
+    implementation("io.github.bodenberg:appdimens-games:1.0.6")
 }
 
-maven { url 'https://jitpack.io' } //or maven central
+mavenCentral() // or maven { url 'https://jitpack.io' }
 ```
 
 ```kotlin
 dependencies {
     // Core (Dynamic + Fixed)
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.5")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.6")
 
     // SDP & SSP scaling (optional)
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.5")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.5")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.6")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.6")
 
     // All in one
-    implementation("io.github.bodenberg:appdimens-all:1.0.5")
+    implementation("io.github.bodenberg:appdimens-all:1.0.6")
+    
+    // Game development (separate dependency)
+    implementation("io.github.bodenberg:appdimens-games:1.0.6")
 }
 
 mavenCentral()
@@ -60,7 +66,8 @@ The AppDimens library is structured into the following key modules:
 - **`appdimens_dynamic`**: The core module that implements the two main scaling models: **Fixed (FX)** and **Dynamic (DY)**. It provides separate implementations for both Android Views (`/code`) and Jetpack Compose (`/compose`).
 - **`appdimens_sdps`**: A module that offers a traditional SDP (Scalable DP) approach, allowing you to define dimensions that scale based on screen width, height, or smallest width. It also supports custom dimension values for different UI modes (e.g., TV, Watch).
 - **`appdimens_ssps`**: Similar to `appdimens_sdps`, but for SSP (Scalable SP), focusing on text size scaling.
-- **`appdimens_all`**: A module that likely combines all the `appdimens` functionalities into a single dependency.
+- **`appdimens_games`**: A specialized module for Android game development with C++/NDK support, providing native performance, OpenGL ES utilities, and game-specific dimension calculations.
+- **`appdimens_all`**: A module that combines all the `appdimens` functionalities into a single dependency (excluding the games module).
 - **`app`**: A sample application module that demonstrates how to use the AppDimens library in a real-world scenario.
 
 ### 3.3. Scaling Models: Fixed (FX) vs. Dynamic (DY)
@@ -163,17 +170,49 @@ The `appdimens_dynamic` module includes a utility, `AppDimensPhysicalUnits`, for
 
 AppDimens provides a `calculateAvailableItemCount` function to dynamically determine the number of items that can fit within a container. This is extremely useful for calculating the `spanCount` in a `GridLayoutManager` or `LazyVerticalGrid`.
 
-## 7. When to Use Each Module
+## 7. Game Development with AppDimens Games
+
+The `appdimens_games` module provides specialized functionality for Android game development:
+
+### 7.1. Key Features
+- **Native C++/NDK Performance**: High-performance dimension calculations for game engines
+- **Game-Specific Methods**: Pre-configured calculations for buttons, players, enemies, and UI elements
+- **OpenGL ES Integration**: Utilities for OpenGL ES rendering and viewport management
+- **Vector and Rectangle Operations**: Mathematical operations for game objects
+
+### 7.2. Usage Example
+```kotlin
+class GameActivity : Activity() {
+    private lateinit var appDimensGames: AppDimensGames
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        
+        // Initialize games manager
+        appDimensGames = AppDimensGames.getInstance()
+        appDimensGames.initialize(this)
+        
+        // Calculate game-specific dimensions
+        val buttonSize = appDimensGames.calculateButtonSize(48f)
+        val playerSize = appDimensGames.calculatePlayerSize(64f)
+        val enemySize = appDimensGames.calculateEnemySize(32f)
+        val uiSize = appDimensGames.calculateUISize(24f)
+    }
+}
+```
+
+## 8. When to Use Each Module
 
 - **`appdimens_dynamic`**: The recommended default for most use cases. It offers a powerful and flexible way to manage dimensions with its **Fixed** and **Dynamic** scaling models.
 - **`appdimens_sdps` / `appdimens_ssps`**: Use these when you prefer a more traditional, resource-based scaling approach, or when you need to define specific dimension values for different device types (e.g., a larger font on TVs).
-- **`appdimens_all`**: Use this if you want to include all the functionalities of the AppDimens library with a single dependency.
+- **`appdimens_games`**: Use this for Android game development when you need native performance and game-specific utilities.
+- **`appdimens_all`**: Use this if you want to include all the functionalities of the AppDimens library with a single dependency (excluding games module).
 
-## 8. Performance Considerations
+## 9. Performance Considerations
 
 AppDimens is optimized for high performance. Dimension values are calculated once and cached to prevent recalculation overhead during screen redraws (recompositions or layout passes). The impact on app startup time is minimal.
 
-## 9. Guide to Testability
+## 10. Guide to Testability
 
 For UI (instrumentation) tests, AppDimens will function normally, adapting to the screen dimensions of the test device or emulator. For unit tests, where a real `Context` is unavailable, you can mock the `AppDimens` class or its extension functions to return deterministic values, ensuring your tests are predictable.
 

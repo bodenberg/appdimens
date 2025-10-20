@@ -6,9 +6,8 @@
  * Library: AppDimens
  *
  * Description:
- * The AppDimens library is a dimension management system that automatically
- * adjusts Dp, Sp, and Px values in a responsive and mathematically refined way,
- * ensuring layout consistency across any screen size or ratio.
+ * Physical units conversion utilities for AppDimens Android Code library,
+ * providing conversion between physical measurements and Dp/Px.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,229 +28,271 @@ import android.util.TypedValue
 import com.appdimens.library.UnitType
 
 /**
- * [EN] A singleton object that provides functions for physical unit conversions (MM, CM, Inch)
- * and measurement utilities.
- *
- * [PT] Objeto singleton que fornece funções para conversão de unidades físicas (MM, CM, Inch)
- * e utilitários de medição.
+ * [EN] Utility class for physical unit conversions.
+ * [PT] Classe utilitária para conversões de unidades físicas.
  */
 object AppDimensPhysicalUnits {
 
-    /**
-     * [EN] Conversion factor from millimeters to centimeters.
-     * [PT] Fator de conversão de milímetros para centímetros.
-     */
-    private const val MM_TO_CM_FACTOR = 10.0f
+    // MARK: - Constants
 
     /**
-     * [EN] Conversion factor from millimeters to inches.
-     * [PT] Fator de conversão de milímetros para polegadas.
+     * [EN] Points per inch (standard resolution).
+     * [PT] Pontos por polegada (resolução padrão).
      */
-    private const val MM_TO_INCH_FACTOR = 25.4f
-
-
-    // --- Millimeters (MM) ---
+    const val POINTS_PER_INCH = 72.0f
 
     /**
-     * [EN] Converts Millimeters (MM) to Pixels (PX).
-     * [PT] Converte Milímetros (MM) para Pixels (PX).
+     * [EN] Points per centimeter.
+     * [PT] Pontos por centímetro.
      */
-    fun toMm(mm: Float, resources: Resources): Float =
-        TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_MM, mm, resources.displayMetrics)
+    const val POINTS_PER_CM = POINTS_PER_INCH / 2.54f
 
     /**
-     * [EN] Converts Millimeters (MM) to Centimeters (CM).
-     * [PT] Converte Milímetros (MM) para Centímetros (CM).
+     * [EN] Points per millimeter.
+     * [PT] Pontos por milímetro.
      */
-    fun convertMmToCm(mm: Float): Float = mm / MM_TO_CM_FACTOR
+    const val POINTS_PER_MM = POINTS_PER_CM / 10.0f
+
+    // MARK: - Conversion Methods
 
     /**
-     * [EN] Converts Millimeters (MM) to Inches.
-     * [PT] Converte Milímetros (MM) para Polegadas (Inch).
+     * [EN] Converts millimeters to Dp.
+     * @param mm The value in millimeters.
+     * @param resources The Context's Resources.
+     * @return The value in Dp.
+     * [PT] Converte milímetros para Dp.
+     * @param mm O valor em milímetros.
+     * @param resources Os Resources do Context.
+     * @return O valor em Dp.
      */
-    fun convertMmToInch(mm: Float): Float = mm / MM_TO_INCH_FACTOR
-
-    /**
-     * [EN] Extension function for Float to convert MM to CM.
-     * [PT] Função de extensão para Float para converter MM para CM.
-     */
-    fun Float.mmToCm(): Float = convertMmToCm(this)
-    /**
-     * [EN] Extension function for Int to convert MM to CM.
-     * [PT] Função de extensão para Int para converter MM para CM.
-     */
-    fun Int.mmToCm(): Float = convertMmToCm(this.toFloat())
-
-    /**
-     * [EN] Extension function for Float to convert MM to Inches.
-     * [PT] Função de extensão para Float para converter MM para Polegadas.
-     */
-    fun Float.mmToInch(): Float = convertMmToInch(this)
-
-    /**
-     * [EN] Extension function for Int to convert MM to Inches.
-     * [PT] Função de extensão para Int para converter MM para Polegadas.
-     */
-    fun Int.mmToInch(): Float = convertMmToInch(this.toFloat())
-
-
-    // --- Centimeters (CM) ---
-
-    /**
-     * [EN] Converts Centimeters (CM) to Pixels (PX).
-     * [PT] Converte Centímetros (CM) para Pixels (PX).
-     */
-    fun toCm(cm: Float, resources: Resources): Float = TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_MM, cm * MM_TO_CM_FACTOR, resources.displayMetrics
-    )
-
-    /**
-     * [EN] Converts Centimeters (CM) to Millimeters (MM).
-     * [PT] Converte Centímetros (CM) para Milímetros (MM).
-     */
-    fun convertCmToMm(cm: Float): Float = cm * MM_TO_CM_FACTOR
-
-    /**
-     * [EN] Converts Centimeters (CM) to Inches.
-     * [PT] Converte Centímetros (CM) para Polegadas (Inch).
-     */
-    fun convertCmToInch(cm: Float): Float = cm / (MM_TO_INCH_FACTOR / MM_TO_CM_FACTOR)
-
-    /**
-     * [EN] Extension function for Float to convert CM to MM.
-     * [PT] Função de extensão para Float para converter CM para MM.
-     */
-    fun Float.cmToMm(): Float = convertCmToMm(this)
-
-    /**
-     * [EN] Extension function for Int to convert CM to MM.
-     * [PT] Função de extensão para Int para converter CM para MM.
-     */
-    fun Int.cmToMm(): Float = convertCmToMm(this.toFloat())
-
-    /**
-     * [EN] Extension function for Float to convert CM to Inches.
-     * [PT] Função de extensão para Float para converter CM para Polegadas.
-     */
-    fun Float.cmToInch(): Float = convertCmToInch(this)
-
-    /**
-     * [EN] Extension function for Int to convert CM to Inches.
-     * [PT] Função de extensão para Int para converter CM para Polegadas.
-     */
-    fun Int.cmToInch(): Float = convertCmToInch(this.toFloat())
-
-
-    // --- Inches (INCH) ---
-
-    /**
-     * [EN] Converts Inches to Pixels (PX).
-     * [PT] Converte Polegadas (Inch) para Pixels (PX).
-     */
-    fun toInch(inches: Float, resources: Resources): Float =
-        TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_IN, inches, resources.displayMetrics)
-
-    /**
-     * [EN] Converts Inches to Centimeters (CM).
-     * [PT] Converte Polegadas (Inch) para Centímetros (CM).
-     */
-    fun convertInchToCm(inch: Float): Float = inch * 2.54f
-
-    /**
-     * [EN] Converts Inches to Millimeters (MM).
-     * [PT] Converte Polegadas (Inch) para Milímetros (MM).
-     */
-    fun convertInchToMm(inch: Float): Float = inch * MM_TO_INCH_FACTOR
-
-    /**
-     * [EN] Extension function for Float to convert Inches to CM.
-     * [PT] Função de extensão para Float para converter Polegadas para CM.
-     */
-    fun Float.inchToCm(): Float = convertInchToCm(this)
-
-    /**
-     * [EN] Extension function for Int to convert Inches to CM.
-     * [PT] Função de extensão para Int para converter Polegadas para CM.
-     */
-    fun Int.inchToCm(): Float = convertInchToCm(this.toFloat())
-
-    /**
-     * [EN] Extension function for Float to convert Inches to MM.
-     * [PT] Função de extensão para Float para converter Polegadas para MM.
-     */
-    fun Float.inchToMm(): Float = convertInchToMm(this)
-
-    /**
-     * [EN] Extension function for Int to convert Inches to MM.
-     * [PT] Função de extensão para Int para converter Polegadas para MM.
-     */
-    fun Int.inchToMm(): Float = convertInchToMm(this.toFloat())
-
-
-    // --- Measurement Utilities ---
-
-    /**
-     * [EN] Converts a diameter value in a specific physical unit to a radius in Pixels (PX).
-     *
-     * Note: The use of sp/dp in this context should be replaced by TypedValue.applyDimension
-     * for the View System.
-     *
-     * [PT] Converte um valor de diâmetro (Diameter) em uma unidade física específica para Raio (Radius) em Pixels (PX).
-     *
-     * OBS: O uso de sp/dp neste contexto deve ser substituído por TypedValue.applyDimension
-     * para View System.
-     */
-    fun radius(diameter: Float, type: UnitType, resources: Resources): Float {
-        val valueInPx = when (type) {
-            UnitType.INCH -> toInch(diameter, resources)
-            UnitType.CM -> toCm(diameter, resources)
-            UnitType.MM -> toMm(diameter, resources)
-            UnitType.SP -> TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, diameter, resources.displayMetrics)
-            UnitType.DP -> TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, diameter, resources.displayMetrics)
-            else -> diameter
-        }
-        return valueInPx / 2.0f
+    fun toDpFromMm(mm: Float, resources: Resources): Float {
+        val points = mm * POINTS_PER_MM
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_PT, points, resources.displayMetrics
+        )
     }
 
     /**
-     * [EN] Calculates the size of 1 unit (1.0f) in Pixels (PX) for a specific physical unit.
-     *
-     * Note: The use of sp/dp in this context should be replaced by TypedValue.applyDimension
-     * for the View System.
-     *
-     * [PT] Calcula o tamanho de 1 unidade (1.0f) em Pixels (PX) para uma unidade física específica.
-     *
-     * OBS: O uso de sp/dp neste contexto deve ser substituído por TypedValue.applyDimension
-     * para View System.
+     * [EN] Converts centimeters to Dp.
+     * @param cm The value in centimeters.
+     * @param resources The Context's Resources.
+     * @return The value in Dp.
+     * [PT] Converte centímetros para Dp.
+     * @param cm O valor em centímetros.
+     * @param resources Os Resources do Context.
+     * @return O valor em Dp.
      */
-    fun unitSizePerPx(type: UnitType, resources: Resources): Float =
-        when (type) {
-            UnitType.INCH -> toInch(1.0f, resources)
-            UnitType.CM -> toCm(1.0f, resources)
-            UnitType.MM  -> toMm(1.0f, resources)
-            UnitType.SP -> TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 1.0f, resources.displayMetrics)
-            UnitType.DP -> TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1.0f, resources.displayMetrics)
-            else-> 1f
+    fun toDpFromCm(cm: Float, resources: Resources): Float {
+        val points = cm * POINTS_PER_CM
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_PT, points, resources.displayMetrics
+        )
+    }
+
+    /**
+     * [EN] Converts inches to Dp.
+     * @param inch The value in inches.
+     * @param resources The Context's Resources.
+     * @return The value in Dp.
+     * [PT] Converte polegadas para Dp.
+     * @param inch O valor em polegadas.
+     * @param resources Os Resources do Context.
+     * @return O valor em Dp.
+     */
+    fun toDpFromInch(inch: Float, resources: Resources): Float {
+        val points = inch * POINTS_PER_INCH
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_PT, points, resources.displayMetrics
+        )
+    }
+
+    /**
+     * [EN] Converts millimeters to Pixels.
+     * @param mm The value in millimeters.
+     * @param resources The Context's Resources.
+     * @return The value in Pixels.
+     * [PT] Converte milímetros para Pixels.
+     * @param mm O valor em milímetros.
+     * @param resources Os Resources do Context.
+     * @return O valor em Pixels.
+     */
+    fun toPxFromMm(mm: Float, resources: Resources): Float {
+        val dp = toDpFromMm(mm, resources)
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP, dp, resources.displayMetrics
+        )
+    }
+
+    /**
+     * [EN] Converts centimeters to Pixels.
+     * @param cm The value in centimeters.
+     * @param resources The Context's Resources.
+     * @return The value in Pixels.
+     * [PT] Converte centímetros para Pixels.
+     * @param cm O valor em centímetros.
+     * @param resources Os Resources do Context.
+     * @return O valor em Pixels.
+     */
+    fun toPxFromCm(cm: Float, resources: Resources): Float {
+        val dp = toDpFromCm(cm, resources)
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP, dp, resources.displayMetrics
+        )
+    }
+
+    /**
+     * [EN] Converts inches to Pixels.
+     * @param inch The value in inches.
+     * @param resources The Context's Resources.
+     * @return The value in Pixels.
+     * [PT] Converte polegadas para Pixels.
+     * @param inch O valor em polegadas.
+     * @param resources Os Resources do Context.
+     * @return O valor em Pixels.
+     */
+    fun toPxFromInch(inch: Float, resources: Resources): Float {
+        val dp = toDpFromInch(inch, resources)
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP, dp, resources.displayMetrics
+        )
+    }
+
+    /**
+     * [EN] Converts millimeters to SP.
+     * @param mm The value in millimeters.
+     * @param resources The Context's Resources.
+     * @return The value in SP.
+     * [PT] Converte milímetros para SP.
+     * @param mm O valor em milímetros.
+     * @param resources Os Resources do Context.
+     * @return O valor em SP.
+     */
+    fun toSpFromMm(mm: Float, resources: Resources): Float {
+        val dp = toDpFromMm(mm, resources)
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_SP, dp, resources.displayMetrics
+        )
+    }
+
+    /**
+     * [EN] Converts centimeters to SP.
+     * @param cm The value in centimeters.
+     * @param resources The Context's Resources.
+     * @return The value in SP.
+     * [PT] Converte centímetros para SP.
+     * @param cm O valor em centímetros.
+     * @param resources Os Resources do Context.
+     * @return O valor em SP.
+     */
+    fun toSpFromCm(cm: Float, resources: Resources): Float {
+        val dp = toDpFromCm(cm, resources)
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_SP, dp, resources.displayMetrics
+        )
+    }
+
+    /**
+     * [EN] Converts inches to SP.
+     * @param inch The value in inches.
+     * @param resources The Context's Resources.
+     * @return The value in SP.
+     * [PT] Converte polegadas para SP.
+     * @param inch O valor em polegadas.
+     * @param resources Os Resources do Context.
+     * @return O valor em SP.
+     */
+    fun toSpFromInch(inch: Float, resources: Resources): Float {
+        val dp = toDpFromInch(inch, resources)
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_SP, dp, resources.displayMetrics
+        )
+    }
+
+    // MARK: - Utility Methods
+
+    /**
+     * [EN] Converts a diameter value in a specific physical unit to radius in Dp.
+     * @param diameter The diameter value.
+     * @param unitType The unit type (mm, cm, inch).
+     * @param resources The Context's Resources.
+     * @return The radius in Dp.
+     * [PT] Converte um valor de diâmetro em uma unidade física específica para raio em Dp.
+     * @param diameter O valor do diâmetro.
+     * @param unitType O tipo de unidade (mm, cm, inch).
+     * @param resources Os Resources do Context.
+     * @return O raio em Dp.
+     */
+    fun radiusFromDiameter(diameter: Float, unitType: UnitType, resources: Resources): Float {
+        val diameterInDp = when (unitType) {
+            UnitType.MM -> toDpFromMm(diameter, resources)
+            UnitType.CM -> toDpFromCm(diameter, resources)
+            UnitType.INCH -> toDpFromInch(diameter, resources)
+            UnitType.DP -> diameter
+            else -> diameter
         }
+        
+        return diameterInDp / 2.0f
+    }
 
     /**
-     * [EN] Adjusts a diameter value to circumference if requested.
-     * [PT] Ajusta um valor de diâmetro (Diameter) para Circunferência (Circumference) se solicitado.
+     * [EN] Converts a circumference value in a specific physical unit to radius in Dp.
+     * @param circumference The circumference value.
+     * @param unitType The unit type (mm, cm, inch).
+     * @param resources The Context's Resources.
+     * @return The radius in Dp.
+     * [PT] Converte um valor de circunferência em uma unidade física específica para raio em Dp.
+     * @param circumference O valor da circunferência.
+     * @param unitType O tipo de unidade (mm, cm, inch).
+     * @param resources Os Resources do Context.
+     * @return O raio em Dp.
      */
-    fun displayMeasureDiameter(diameter: Float, isCircumference: Boolean): Float =
-        if (isCircumference) (diameter * AppDimensAdjustmentFactors.CIRCUMFERENCE_FACTOR).toFloat() else diameter
+    fun radiusFromCircumference(circumference: Float, unitType: UnitType, resources: Resources): Float {
+        val circumferenceInDp = when (unitType) {
+            UnitType.MM -> toDpFromMm(circumference, resources)
+            UnitType.CM -> toDpFromCm(circumference, resources)
+            UnitType.INCH -> toDpFromInch(circumference, resources)
+            UnitType.DP -> circumference
+            else -> circumference
+        }
+        
+        return circumferenceInDp / (2.0f * kotlin.math.PI.toFloat())
+    }
+
+    // MARK: - Conversion Extensions
 
     /**
-     * [EN] Extension for Float to adjust the measurement to Diameter or Circumference.
-     * [PT] Extensão de Float para ajustar a medida para Diâmetro ou Circunferência.
+     * [EN] Float extension to convert MM to CM.
+     * [PT] Extensão de Float para converter MM para CM.
      */
-    fun Float.measureDiameter(isCircumference: Boolean): Float =
-        displayMeasureDiameter(this, isCircumference)
+    fun Float.mmToCm(): Float = this / 10.0f
 
     /**
-     * [EN] Extension for Int to adjust the measurement to Diameter or Circumference.
-     * [PT] Extensão de Int para ajustar a medida para Diâmetro ou Circunferência.
+     * [EN] Float extension to convert MM to Inch.
+     * [PT] Extensão de Float para converter MM para Inch.
      */
-    fun Int.measureDiameter(isCircumference: Boolean): Float =
-        displayMeasureDiameter(this.toFloat(), isCircumference)
+    fun Float.mmToInch(): Float = this / 25.4f
+
+    /**
+     * [EN] Float extension to convert CM to MM.
+     * [PT] Extensão de Float para converter CM para MM.
+     */
+    fun Float.cmToMm(): Float = this * 10.0f
+
+    /**
+     * [EN] Float extension to convert CM to Inch.
+     * [PT] Extensão de Float para converter CM para Inch.
+     */
+    fun Float.cmToInch(): Float = this / 2.54f
+
+    /**
+     * [EN] Float extension to convert Inch to MM.
+     * [PT] Extensão de Float para converter Inch para MM.
+     */
+    fun Float.inchToMm(): Float = this * 25.4f
+
+    /**
+     * [EN] Float extension to convert Inch to CM.
+     * [PT] Extensão de Float para converter Inch para CM.
+     */
+    fun Float.inchToCm(): Float = this * 2.54f
 }

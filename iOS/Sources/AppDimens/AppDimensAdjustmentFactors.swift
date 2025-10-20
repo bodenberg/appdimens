@@ -167,6 +167,26 @@ public class AppDimensAdjustmentFactors {
         return customMap[currentDeviceType] ?? initialValue
     }
     
+    /**
+     * [EN] Helper function that checks if a DpQualifierEntry meets the current screen dimensions.
+     * [PT] Função auxiliar que verifica se um DpQualifierEntry atende às dimensões atuais da tela.
+     */
+    public static func resolveIntersectionCondition(
+        entry: DpQualifierEntry,
+        smallestWidth: CGFloat,
+        currentScreenWidth: CGFloat,
+        currentScreenHeight: CGFloat
+    ) -> Bool {
+        switch entry.type {
+        case .smallWidth:
+            return smallestWidth >= CGFloat(entry.value)
+        case .height:
+            return currentScreenHeight >= CGFloat(entry.value)
+        case .width:
+            return currentScreenWidth >= CGFloat(entry.value)
+        }
+    }
+    
     // MARK: - Multi-Window Detection
     
     /**

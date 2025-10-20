@@ -13,14 +13,14 @@ Github: [AppDimens Repository](https://github.com/Bodenberg/AppDimens)
 ```kotlin
 dependencies {
     // Core (Dynamic + Fixed)
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.5")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.6")
 
     // SDP & SSP scaling (optional)
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.5")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.5")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.6")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.6")
 
     // All in one
-    implementation("io.github.bodenberg:appdimens-all:1.0.5")
+    implementation("io.github.bodenberg:appdimens-all:1.0.6")
 }
 
 mavenCentral()
@@ -30,10 +30,10 @@ mavenCentral()
 
 ```kotlin
 dependencies {
-    implementation("com.github.bodenberg.appdimens:appdimens-dynamic:1.0.5")
-    implementation("com.github.bodenberg.appdimens:appdimens-sdps:1.0.5")
-    implementation("com.github.bodenberg.appdimens:appdimens-ssps:1.0.5")
-    implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.5")
+    implementation("com.github.bodenberg.appdimens:appdimens-dynamic:1.0.6")
+    implementation("com.github.bodenberg.appdimens:appdimens-sdps:1.0.6")
+    implementation("com.github.bodenberg.appdimens:appdimens-ssps:1.0.6")
+    implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.6")
 }
 
 maven { url 'https://jitpack.io' }

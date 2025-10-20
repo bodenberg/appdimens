@@ -4,7 +4,7 @@
     <p><strong>Android 和 iOS 的智能响应式尺寸系统</strong></p>
     <p>数学精确的响应式缩放，确保您的 UI 设计完美适配任何屏幕尺寸或宽高比 — 从手机到电视、汽车和可穿戴设备。</p>
 
-[![版本](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![版本](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![许可证](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![平台](https://img.shields.io/badge/platform-Android%20%7C%20iOS-orange.svg)](https://github.com/bodenberg/appdimens)
 [![文档](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)
@@ -35,17 +35,17 @@
 ```kotlin
 dependencies {
     // 核心库（Dynamic + Fixed scaling）
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.5")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.6")
     
     // 可选：SDP 和 SSP scaling
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.5")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.5")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.6")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.6")
     
     // 一体化包（不包括游戏模块）
-    implementation("io.github.bodenberg:appdimens-all:1.0.5")
+    implementation("io.github.bodenberg:appdimens-all:1.0.6")
     
     // 支持 C++/NDK 的游戏开发（单独依赖）
-    implementation("io.github.bodenberg:appdimens-games:1.0.5")
+    implementation("io.github.bodenberg:appdimens-games:1.0.6")
 }
 ```
 
@@ -58,19 +58,20 @@ pod 'AppDimens'
 
 ```swift
 // Swift Package Manager
-.package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.5")
+.package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.6")
 ```
 
 ---
 
 ## 🧠 核心尺寸模型
 
-| 模型 | 理念 | 理想用例 | 支持的平台 |
-|-------|------------|----------------|-------------------|
-| **Fixed (FX)** | 对数缩放（精细） | 按钮、内边距、外边距、图标 | Android + iOS |
-| **Dynamic (DY)** | 比例缩放（激进） | 容器、网格、流动字体 | Android + iOS |
-| **SDP / SSP** | 预计算资源 | XML 中直接使用 `@dimen` | Android |
-| **物理单位** | mm/cm/inch → Dp/Sp/Px/Points | 可穿戴设备、打印、精确布局 | Android + iOS |
+| 模型 | 理念 | 理想用例 | 支持的平台 | 实现 |
+|-------|------------|----------------|-------------------|----------------|
+| **Fixed (FX)** | 对数缩放（精细） | 按钮、内边距、外边距、图标 | Android + iOS | 数学比例调整 |
+| **Dynamic (DY)** | 比例缩放（激进） | 容器、网格、流动字体 | Android + iOS | 基于屏幕的比例缩放 |
+| **SDP / SSP** | 预计算资源 | XML 中直接使用 `@dimen` | Android | 426+ 预生成的尺寸文件 |
+| **物理单位** | mm/cm/inch → Dp/Sp/Px/Points | 可穿戴设备、打印、精确布局 | Android + iOS | 真实世界测量的转换 |
+| **游戏尺寸** | 游戏专用缩放 | 游戏UI、视口、Metal/OpenGL | Android + iOS | 原生C++/NDK + Metal实现 |
 
 ---
 

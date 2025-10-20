@@ -3,7 +3,7 @@
     <p><strong>带条件规则的动态缩放</strong></p>
     <p>SDP（Scaled DP），通过优先级条件规则为 Compose 与 XML 提供响应式缩放。</p>
 
-[![版本](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![版本](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![许可证](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![平台](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
@@ -19,7 +19,7 @@
 
 ## 🚀 安装
 ```kotlin
-dependencies { implementation("io.github.bodenberg:appdimens-sdps:1.0.5") }
+dependencies { implementation("io.github.bodenberg:appdimens-sdps:1.0.6") }
 ```
 
 ## 🎨 示例（Compose）

@@ -4,7 +4,7 @@
     <p><strong>Android 的智能响应式尺寸系统</strong></p>
     <p>数学精确的响应式缩放，确保您的 UI 设计完美适配任何屏幕尺寸或宽高比 — 从手机到电视、汽车和可穿戴设备。</p>
 
-[![版本](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![版本](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![许可证](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../LICENSE)
 [![平台](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 [![文档](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)

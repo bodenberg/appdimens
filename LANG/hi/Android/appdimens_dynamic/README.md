@@ -3,7 +3,7 @@
     <p><strong>Android के लिए कोर रिस्पॉन्सिव डाइमेंशनिंग</strong></p>
     <p>Jetpack Compose, Views/XML और Data Binding के लिए Fixed और Dynamic मॉडल।</p>
 
-[![संस्करण](https://img.shields.io/badge/version-1.0.5-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![संस्करण](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![लाइसेंस](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![प्लेटफ़ॉर्म](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
@@ -18,7 +18,7 @@
 
 ## 🚀 इंस्टॉलेशन
 ```kotlin
-dependencies { implementation("io.github.bodenberg:appdimens-dynamic:1.0.5") }
+dependencies { implementation("io.github.bodenberg:appdimens-dynamic:1.0.6") }
 ```
 
 ## 🎨 उदाहरण (Compose)

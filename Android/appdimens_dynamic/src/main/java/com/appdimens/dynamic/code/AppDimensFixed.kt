@@ -48,23 +48,30 @@ class AppDimensFixed(
     private val initialBaseDp: Float,
     private var ignoreMultiViewAdjustment: Boolean = false
 ) {
+    
     /**
      * [EN] Map to store custom Dp values based on `DpQualifier` (Priority 3).
+     * Lazy initialization for better performance.
      * [PT] Mapa para armazenar valores Dp customizados com base no `DpQualifier` (Prioridade 3).
+     * Inicialização lazy para melhor performance.
      */
-    private var customDpMap: MutableMap<DpQualifierEntry, Float> = mutableMapOf()
+    private val customDpMap: MutableMap<DpQualifierEntry, Float> by lazy { mutableMapOf() }
 
     /**
      * [EN] Map for custom Dp values based on `UiModeType` (Priority 2).
+     * Lazy initialization for better performance.
      * [PT] Mapa para valores Dp customizados com base no `UiModeType` (Prioridade 2).
+     * Inicialização lazy para melhor performance.
      */
-    private var customUiModeMap: MutableMap<UiModeType, Float> = mutableMapOf()
+    private val customUiModeMap: MutableMap<UiModeType, Float> by lazy { mutableMapOf() }
 
     /**
      * [EN] Map for custom Dp values based on the intersection of `UiModeType` and `DpQualifier` (Priority 1).
+     * Lazy initialization for better performance.
      * [PT] Mapa para valores Dp customizados com base na interseção de `UiModeType` e `DpQualifier` (Prioridade 1).
+     * Inicialização lazy para melhor performance.
      */
-    private var customIntersectionMap: MutableMap<UiModeQualifierEntry, Float> = mutableMapOf()
+    private val customIntersectionMap: MutableMap<UiModeQualifierEntry, Float> by lazy { mutableMapOf() }
 
     /**
      * [EN] Indicates whether the aspect ratio-based adjustment should be applied.
@@ -84,6 +91,32 @@ class AppDimensFixed(
      */
     private var screenType: ScreenType = ScreenType.LOWEST
 
+    // MARK: - Cache Properties
+
+    /**
+     * [EN] Cache for resolved base values to improve performance.
+     * [PT] Cache para valores base resolvidos para melhorar a performance.
+     */
+    private var baseValueCache: MutableMap<String, Float> = mutableMapOf()
+
+    /**
+     * [EN] Cache for final calculated values to improve performance.
+     * [PT] Cache para valores finais calculados para melhorar a performance.
+     */
+    private var calculatedValueCache: MutableMap<String, Float> = mutableMapOf()
+
+    /**
+     * [EN] Last screen configuration to detect changes and invalidate cache.
+     * [PT] Última configuração de tela para detectar mudanças e invalidar cache.
+     */
+    private var lastScreenConfig: Triple<Float, Float, Int>? = null
+    
+    /**
+     * [EN] Individual cache control for this instance.
+     * [PT] Controle individual de cache para esta instância.
+     */
+    private var enableCache: Boolean = true
+
     /**
      * [EN] Sets a custom dimension value for a specific UI mode.
      * @param type The UI mode (`UiModeType`).
@@ -97,11 +130,13 @@ class AppDimensFixed(
      */
     fun screen(type: UiModeType, customValue: Float): AppDimensFixed {
         customUiModeMap[type] = customValue
+        invalidateCache()
         return this
     }
 
     fun screen(type: UiModeType, customValue: Int): AppDimensFixed {
         customUiModeMap[type] = customValue.toFloat()
+        invalidateCache()
         return this
     }
 
@@ -128,6 +163,7 @@ class AppDimensFixed(
             dpQualifierEntry = DpQualifierEntry(qualifierType, qualifierValue)
         )
         customIntersectionMap[key] = customValue
+        invalidateCache()
         return this
     }
 
@@ -142,6 +178,7 @@ class AppDimensFixed(
             dpQualifierEntry = DpQualifierEntry(qualifierType, qualifierValue)
         )
         customIntersectionMap[key] = customValue.toFloat()
+        invalidateCache()
         return this
     }
 
@@ -160,11 +197,13 @@ class AppDimensFixed(
      */
     fun screen(type: DpQualifier, value: Int, customValue: Float): AppDimensFixed {
         customDpMap[DpQualifierEntry(type, value)] = customValue
+        invalidateCache()
         return this
     }
 
     fun screen(type: DpQualifier, value: Int, customValue: Int): AppDimensFixed {
         customDpMap[DpQualifierEntry(type, value)] = customValue.toFloat()
+        invalidateCache()
         return this
     }
 
@@ -212,6 +251,54 @@ class AppDimensFixed(
         ignoreMultiViewAdjustment = ignore
         return this
     }
+    
+    /**
+     * [EN] Enables or disables cache for this instance.
+     * @param enable If true, enables cache; if false, disables cache.
+     * @return The AppDimensFixed instance for chaining.
+     * [PT] Ativa ou desativa o cache para esta instância.
+     * @param enable Se verdadeiro, ativa o cache; se falso, desativa o cache.
+     * @return A instância AppDimensFixed para encadeamento.
+     */
+    fun cache(enable: Boolean = true): AppDimensFixed {
+        enableCache = enable
+        if (!enable) {
+            invalidateCache()
+        }
+        return this
+    }
+
+    // MARK: - Cache Management
+
+    /**
+     * [EN] Invalidates all caches when configuration changes.
+     * [PT] Invalida todos os caches quando a configuração muda.
+     */
+    private fun invalidateCache() {
+        baseValueCache.clear()
+        calculatedValueCache.clear()
+    }
+
+    /**
+     * [EN] Checks if screen configuration has changed and invalidates cache if needed.
+     * [PT] Verifica se a configuração da tela mudou e invalida o cache se necessário.
+     */
+    private fun checkAndInvalidateCacheIfNeeded(configuration: Configuration) {
+        val smallestWidthDp = configuration.smallestScreenWidthDp.toFloat()
+        val currentScreenWidthDp = configuration.screenWidthDp.toFloat()
+        val currentUiMode = configuration.uiMode
+
+        if (lastScreenConfig != null) {
+            val (lastWidth, lastHeight, lastUiMode) = lastScreenConfig!!
+            if (lastWidth != currentScreenWidthDp || 
+                lastHeight != smallestWidthDp || 
+                lastUiMode != currentUiMode) {
+                invalidateCache()
+            }
+        }
+
+        lastScreenConfig = Triple(currentScreenWidthDp, smallestWidthDp, currentUiMode)
+    }
 
     /**
      * [EN] Resolves the base Dp value to be adjusted by applying the customization logic
@@ -232,6 +319,14 @@ class AppDimensFixed(
         val currentScreenWidthDp = configuration.screenWidthDp.toFloat()
         val currentScreenHeightDp = configuration.screenHeightDp.toFloat()
         val currentUiModeType = UiModeType.fromConfiguration(configuration.uiMode)
+
+        // Generate cache key including ALL options that can influence the result
+        val cacheKey = "${currentUiModeType}_${smallestWidthDp}_${currentScreenWidthDp}_${currentScreenHeightDp}_${customIntersectionMap.size}_${customUiModeMap.size}_${customDpMap.size}_${initialBaseDp}_${screenType.name}_${ignoreMultiViewAdjustment}_${applyAspectRatioAdjustment}_${customSensitivityK}"
+
+        // Check cache first (if enabled globally and individually)
+        if (AppDimens.globalCacheEnabled && enableCache) {
+            baseValueCache[cacheKey]?.let { return it }
+        }
 
         var dpToAdjust = initialBaseDp
         var foundCustomDp: Float?
@@ -268,6 +363,13 @@ class AppDimensFixed(
                 )
             }
         }
+
+        // Cache the result
+        // Store in cache (if enabled globally and individually)
+        if (AppDimens.globalCacheEnabled && enableCache) {
+            baseValueCache[cacheKey] = dpToAdjust
+        }
+
         return dpToAdjust
     }
 
@@ -284,13 +386,25 @@ class AppDimensFixed(
      */
     @SuppressLint("ConfigurationScreenWidthHeight")
     fun calculateAdjustedValue(configuration: Configuration): Float {
+        // Check and invalidate cache if screen configuration changed
+        checkAndInvalidateCacheIfNeeded(configuration)
+
+        // Generate cache key for final calculated value
+        val smallestWidthDp = configuration.smallestScreenWidthDp.toFloat()
+        val currentScreenWidthDp = configuration.screenWidthDp.toFloat()
+        val currentScreenHeightDp = configuration.screenHeightDp.toFloat()
+        val cacheKey = "${screenType.name}_${ignoreMultiViewAdjustment}_${applyAspectRatioAdjustment}_${customSensitivityK}_${smallestWidthDp}_${currentScreenWidthDp}_${currentScreenHeightDp}_${initialBaseDp}_${customIntersectionMap.size}_${customUiModeMap.size}_${customDpMap.size}"
+
+        // Check cache first (if enabled globally and individually)
+        if (AppDimens.globalCacheEnabled && enableCache) {
+            calculatedValueCache[cacheKey]?.let { return it }
+        }
+
         val dpToAdjust = resolveFinalBaseDp(configuration)
         val adjustmentFactors = AppDimensAdjustmentFactors.calculateAdjustmentFactors(configuration)
         var isMultiWindow = false
 
         if (ignoreMultiViewAdjustment) {
-            val smallestWidthDp = configuration.smallestScreenWidthDp.toFloat()
-            val currentScreenWidthDp = configuration.screenWidthDp.toFloat()
             val isLayoutSplit = configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK != Configuration.SCREENLAYOUT_SIZE_MASK
             val isSmallDifference = (smallestWidthDp - currentScreenWidthDp) < (smallestWidthDp * 0.1)
             isMultiWindow = isLayoutSplit && !isSmallDifference
@@ -298,8 +412,8 @@ class AppDimensFixed(
 
         val shouldIgnoreAdjustment = ignoreMultiViewAdjustment && isMultiWindow
 
-        val finalAdjustmentFactor = if (shouldIgnoreAdjustment) {
-            AppDimensAdjustmentFactors.BASE_DP_FACTOR
+        val finalValue = if (shouldIgnoreAdjustment) {
+            dpToAdjust * AppDimensAdjustmentFactors.BASE_DP_FACTOR
         } else if (applyAspectRatioAdjustment) {
 
             val selectedFactor = when (screenType) {
@@ -313,23 +427,28 @@ class AppDimensFixed(
                     ScreenType.LOWEST -> adjustmentFactors.adjustmentFactorLowest
                 }
 
-                val currentScreenWidthDp = configuration.screenWidthDp.toFloat()
-                val currentScreenHeightDp = configuration.screenHeightDp.toFloat()
                 val ar = AppDimensAdjustmentFactors.getReferenceAspectRatio(currentScreenWidthDp, currentScreenHeightDp)
                 val continuousAdjustment = (customSensitivityK!! * ln(ar / AppDimensAdjustmentFactors.REFERENCE_AR)).toFloat()
                 val finalIncrementValue = AppDimensAdjustmentFactors.BASE_INCREMENT + continuousAdjustment
 
-                AppDimensAdjustmentFactors.BASE_DP_FACTOR + adjustmentFactorBase * finalIncrementValue
+                val finalAdjustmentFactor = AppDimensAdjustmentFactors.BASE_DP_FACTOR + adjustmentFactorBase * finalIncrementValue
+                dpToAdjust * finalAdjustmentFactor
 
             } else {
-                selectedFactor
+                dpToAdjust * selectedFactor
             }
 
         } else {
-            adjustmentFactors.withoutArFactor
+            dpToAdjust * adjustmentFactors.withoutArFactor
         }
 
-        return dpToAdjust * finalAdjustmentFactor
+        // Cache the result
+        // Store in cache (if enabled globally and individually)
+        if (AppDimens.globalCacheEnabled && enableCache) {
+            calculatedValueCache[cacheKey] = finalValue
+        }
+
+        return finalValue
     }
 
     /**

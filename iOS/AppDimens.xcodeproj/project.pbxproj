@@ -13,6 +13,13 @@
 		A1234567890ABCDEF1234567890ABCDEF123456D /* AppDimensFixed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890ABCDEF1234567890ABCDEF123456C /* AppDimensFixed.swift */; };
 		A1234567890ABCDEF1234567890ABCDEF123456F /* AppDimensDynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890ABCDEF1234567890ABCDEF123456E /* AppDimensDynamic.swift */; };
 		A1234567890ABCDEF1234567890ABCDEF1234571 /* AppDimensExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890ABCDEF1234567890ABCDEF1234570 /* AppDimensExtensions.swift */; };
+		A1234567890ABCDEF1234567890ABCDEF123457A /* AppDimensConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890ABCDEF1234567890ABCDEF1234573 /* AppDimensConvenience.swift */; };
+		A1234567890ABCDEF1234567890ABCDEF123457B /* AppDimensDynamicCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890ABCDEF1234567890ABCDEF1234574 /* AppDimensDynamicCalculator.swift */; };
+		A1234567890ABCDEF1234567890ABCDEF123457C /* AppDimensEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890ABCDEF1234567890ABCDEF1234575 /* AppDimensEnvironment.swift */; };
+		A1234567890ABCDEF1234567890ABCDEF123457D /* AppDimensFixedCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890ABCDEF1234567890ABCDEF1234576 /* AppDimensFixedCalculator.swift */; };
+		A1234567890ABCDEF1234567890ABCDEF123457E /* AppDimensItemCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890ABCDEF1234567890ABCDEF1234577 /* AppDimensItemCalculator.swift */; };
+		A1234567890ABCDEF1234567890ABCDEF123457F /* AppDimensPhysicalUnits.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890ABCDEF1234567890ABCDEF1234578 /* AppDimensPhysicalUnits.swift */; };
+		A1234567890ABCDEF1234567890ABCDEF1234580 /* AppDimensProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890ABCDEF1234567890ABCDEF1234579 /* AppDimensProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +30,13 @@
 		A1234567890ABCDEF1234567890ABCDEF123456C /* AppDimensFixed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDimensFixed.swift; sourceTree = "<group>"; };
 		A1234567890ABCDEF1234567890ABCDEF123456E /* AppDimensDynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDimensDynamic.swift; sourceTree = "<group>"; };
 		A1234567890ABCDEF1234567890ABCDEF1234570 /* AppDimensExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDimensExtensions.swift; sourceTree = "<group>"; };
+		A1234567890ABCDEF1234567890ABCDEF1234573 /* AppDimensConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDimensConvenience.swift; sourceTree = "<group>"; };
+		A1234567890ABCDEF1234567890ABCDEF1234574 /* AppDimensDynamicCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDimensDynamicCalculator.swift; sourceTree = "<group>"; };
+		A1234567890ABCDEF1234567890ABCDEF1234575 /* AppDimensEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDimensEnvironment.swift; sourceTree = "<group>"; };
+		A1234567890ABCDEF1234567890ABCDEF1234576 /* AppDimensFixedCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDimensFixedCalculator.swift; sourceTree = "<group>"; };
+		A1234567890ABCDEF1234567890ABCDEF1234577 /* AppDimensItemCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDimensItemCalculator.swift; sourceTree = "<group>"; };
+		A1234567890ABCDEF1234567890ABCDEF1234578 /* AppDimensPhysicalUnits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDimensPhysicalUnits.swift; sourceTree = "<group>"; };
+		A1234567890ABCDEF1234567890ABCDEF1234579 /* AppDimensProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDimensProtocols.swift; sourceTree = "<group>"; };
 		A1234567890ABCDEF1234567890ABCDEF1234572 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 

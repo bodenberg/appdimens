@@ -26,6 +26,42 @@ import Foundation
 import UIKit
 import SwiftUI
 
+// MARK: - UI Module Cache System
+
+/**
+ * [EN] Cache system for AppDimensUI extensions to improve performance.
+ * [PT] Sistema de cache para extensions AppDimensUI para melhorar a performance.
+ */
+private class AppDimensUICache {
+    static let shared = AppDimensUICache()
+    
+    private let cache = NSMutableDictionary()
+    private let cacheQueue = DispatchQueue(label: "com.appdimens.ui.cache", attributes: .concurrent)
+    
+    private init() {}
+    
+    func remember<T: Any>(key: String, dependencies: Set<AnyHashable>, compute: () -> T) -> T {
+        return cacheQueue.sync(flags: .barrier) {
+            let dependencyKey = dependencies.hashValue
+            let cacheKey = "\(key)_\(dependencyKey)"
+            
+            if let cached = cache[cacheKey] as? T {
+                return cached
+            }
+            
+            let result = compute()
+            cache[cacheKey] = result
+            return result
+        }
+    }
+    
+    func clearAll() {
+        cacheQueue.async(flags: .barrier) {
+            self.cache.removeAllObjects()
+        }
+    }
+}
+
 // MARK: - UI Module Exports
 
 // Re-export all UI functionality
@@ -58,7 +94,13 @@ public extension View {
      * @return A view com padding fixo.
      */
     func fxPadding(_ value: CGFloat) -> some View {
-        self.padding(value.fxpt)
+        let cachedValue = AppDimensUICache.shared.remember(
+            key: "fxPadding_\(value)",
+            dependencies: [value, UIScreen.main.bounds.width, UIScreen.main.bounds.height]
+        ) {
+            value.fxpt
+        }
+        return self.padding(cachedValue)
     }
     
     /**
@@ -70,7 +112,13 @@ public extension View {
      * @return A view com padding dinâmico.
      */
     func dyPadding(_ value: CGFloat) -> some View {
-        self.padding(value.dypt)
+        let cachedValue = AppDimensUICache.shared.remember(
+            key: "dyPadding_\(value)",
+            dependencies: [value, UIScreen.main.bounds.width, UIScreen.main.bounds.height]
+        ) {
+            value.dypt
+        }
+        return self.padding(cachedValue)
     }
     
     /**
@@ -84,10 +132,25 @@ public extension View {
      * @return A view com frame fixo.
      */
     func fxFrame(width: CGFloat? = nil, height: CGFloat? = nil) -> some View {
-        self.frame(
-            width: width?.fxpt,
-            height: height?.fxpt
-        )
+        let cachedWidth = width.map { w in
+            AppDimensUICache.shared.remember(
+                key: "fxFrame_width_\(w)",
+                dependencies: [w, UIScreen.main.bounds.width, UIScreen.main.bounds.height]
+            ) {
+                w.fxpt
+            }
+        }
+        
+        let cachedHeight = height.map { h in
+            AppDimensUICache.shared.remember(
+                key: "fxFrame_height_\(h)",
+                dependencies: [h, UIScreen.main.bounds.width, UIScreen.main.bounds.height]
+            ) {
+                h.fxpt
+            }
+        }
+        
+        return self.frame(width: cachedWidth, height: cachedHeight)
     }
     
     /**
@@ -101,10 +164,25 @@ public extension View {
      * @return A view com frame dinâmico.
      */
     func dyFrame(width: CGFloat? = nil, height: CGFloat? = nil) -> some View {
-        self.frame(
-            width: width?.dypt,
-            height: height?.dypt
-        )
+        let cachedWidth = width.map { w in
+            AppDimensUICache.shared.remember(
+                key: "dyFrame_width_\(w)",
+                dependencies: [w, UIScreen.main.bounds.width, UIScreen.main.bounds.height]
+            ) {
+                w.dypt
+            }
+        }
+        
+        let cachedHeight = height.map { h in
+            AppDimensUICache.shared.remember(
+                key: "dyFrame_height_\(h)",
+                dependencies: [h, UIScreen.main.bounds.width, UIScreen.main.bounds.height]
+            ) {
+                h.dypt
+            }
+        }
+        
+        return self.frame(width: cachedWidth, height: cachedHeight)
     }
     
     /**
@@ -116,7 +194,13 @@ public extension View {
      * @return A view com raio de canto fixo.
      */
     func fxCornerRadius(_ radius: CGFloat) -> some View {
-        self.cornerRadius(radius.fxpt)
+        let cachedValue = AppDimensUICache.shared.remember(
+            key: "fxCornerRadius_\(radius)",
+            dependencies: [radius, UIScreen.main.bounds.width, UIScreen.main.bounds.height]
+        ) {
+            radius.fxpt
+        }
+        return self.cornerRadius(cachedValue)
     }
     
     /**
@@ -128,7 +212,13 @@ public extension View {
      * @return A view com raio de canto dinâmico.
      */
     func dyCornerRadius(_ radius: CGFloat) -> some View {
-        self.cornerRadius(radius.dypt)
+        let cachedValue = AppDimensUICache.shared.remember(
+            key: "dyCornerRadius_\(radius)",
+            dependencies: [radius, UIScreen.main.bounds.width, UIScreen.main.bounds.height]
+        ) {
+            radius.dypt
+        }
+        return self.cornerRadius(cachedValue)
     }
 }
 
@@ -148,7 +238,13 @@ public extension Font {
      * @return Uma fonte do sistema com tamanho fixo.
      */
     static func fxSystem(size: CGFloat, weight: Font.Weight = .regular, design: Font.Design = .default) -> Font {
-        return .system(size: size.fxpt, weight: weight, design: design)
+        let cachedSize = AppDimensUICache.shared.remember(
+            key: "fxSystemFont_\(size)_\(weight.hashValue)_\(design.hashValue)",
+            dependencies: [size, weight.hashValue, design.hashValue, UIScreen.main.bounds.width, UIScreen.main.bounds.height]
+        ) {
+            size.fxpt
+        }
+        return .system(size: cachedSize, weight: weight, design: design)
     }
     
     /**
@@ -164,7 +260,13 @@ public extension Font {
      * @return Uma fonte do sistema com tamanho dinâmico.
      */
     static func dySystem(size: CGFloat, weight: Font.Weight = .regular, design: Font.Design = .default) -> Font {
-        return .system(size: size.dypt, weight: weight, design: design)
+        let cachedSize = AppDimensUICache.shared.remember(
+            key: "dySystemFont_\(size)_\(weight.hashValue)_\(design.hashValue)",
+            dependencies: [size, weight.hashValue, design.hashValue, UIScreen.main.bounds.width, UIScreen.main.bounds.height]
+        ) {
+            size.dypt
+        }
+        return .system(size: cachedSize, weight: weight, design: design)
     }
 }
 #endif
@@ -283,5 +385,13 @@ public struct AppDimensUIInfo {
             "moduleName": moduleName,
             "description": description
         ]
+    }
+    
+    /**
+     * [EN] Clears all cached UI calculations.
+     * [PT] Limpa todos os cálculos de UI em cache.
+     */
+    public static func clearCache() {
+        AppDimensUICache.shared.clearAll()
     }
 }

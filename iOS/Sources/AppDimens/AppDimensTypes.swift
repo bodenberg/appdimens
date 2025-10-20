@@ -55,9 +55,86 @@ public enum DeviceType: String, CaseIterable {
             return .carPlay
         case .watch:
             return .watch
-        default:
+default:
             return .phone
         }
+    }
+}
+
+// MARK: - UI Mode Types
+
+/**
+ * [EN] Defines UI mode types for custom dimension values (similar to Android UiModeType).
+ * [PT] Define tipos de modo de UI para valores de dimensão customizados (similar ao Android UiModeType).
+ */
+public enum UiModeType: String, CaseIterable {
+    case normal = "normal"
+    case carPlay = "carPlay"
+    case tv = "tv"
+    case watch = "watch"
+    case mac = "mac"
+    
+    /**
+     * [EN] Determines the UI mode type based on the current device and context.
+     * [PT] Determina o tipo de modo de UI baseado no dispositivo atual e contexto.
+     */
+    public static func current() -> UiModeType {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone, .pad:
+            return .normal
+        case .tv:
+            return .tv
+        case .carPlay:
+            return .carPlay
+        case .watch:
+            return .watch
+        case .mac:
+            return .mac
+        @unknown default:
+            return .normal
+        }
+    }
+}
+
+// MARK: - DP Qualifier Types
+
+/**
+ * [EN] Defines the screen qualifier types based on device dimensions (similar to Android DpQualifier).
+ * [PT] Define os tipos de qualificador de tela baseados nas dimensões do dispositivo (similar ao Android DpQualifier).
+ */
+public enum DpQualifier {
+    case smallWidth, height, width
+}
+
+/**
+ * [EN] Represents a custom qualifier entry, combining the type and the minimum value
+ * for the custom adjustment to be applied (similar to Android DpQualifierEntry).
+ * [PT] Representa uma entrada de qualificador customizado, combinando o tipo e o valor mínimo
+ * para que o ajuste customizado seja aplicado (similar ao Android DpQualifierEntry).
+ */
+public struct DpQualifierEntry: Hashable {
+    public let type: DpQualifier
+    public let value: Int
+    
+    public init(type: DpQualifier, value: Int) {
+        self.type = type
+        self.value = value
+    }
+}
+
+/**
+ * [EN] Represents a qualifier entry that combines a UI Mode type AND a screen qualifier.
+ * This combination has the HIGHEST PRIORITY (similar to Android UiModeQualifierEntry).
+ * [PT] Representa uma entrada de qualificador que combina um tipo de UI Mode E um qualificador de tela.
+ * Esta combinação tem a PRIORIDADE MÁXIMA (similar ao Android UiModeQualifierEntry).
+ */
+public struct UiModeQualifierEntry: Hashable {
+    public let uiModeType: UiModeType
+    public let dpQualifierEntry: DpQualifierEntry
+    
+    public init(uiModeType: UiModeType, dpQualifierEntry: DpQualifierEntry) {
+        self.uiModeType = uiModeType
+        self.dpQualifierEntry = dpQualifierEntry
     }
 }
 

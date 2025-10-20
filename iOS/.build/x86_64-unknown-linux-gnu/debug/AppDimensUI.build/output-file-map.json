@@ -1,0 +1,26 @@
+{
+  "": {
+    "swift-dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/master.swiftdeps"
+  },
+  "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensUI/AppDimensEnvironment.swift": {
+    "dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensEnvironment.d",
+    "object": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensEnvironment.swift.o",
+    "swiftmodule": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensEnvironment~partial.swiftmodule",
+    "swift-dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensEnvironment.swiftdeps",
+    "diagnostics": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensEnvironment.dia"
+  },
+  "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensUI/AppDimensExtensions.swift": {
+    "dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensExtensions.d",
+    "object": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensExtensions.swift.o",
+    "swiftmodule": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensExtensions~partial.swiftmodule",
+    "swift-dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensExtensions.swiftdeps",
+    "diagnostics": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensExtensions.dia"
+  },
+  "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/Sources/AppDimensUI/AppDimensUI.swift": {
+    "dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensUI.d",
+    "object": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensUI.swift.o",
+    "swiftmodule": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensUI~partial.swiftmodule",
+    "swift-dependencies": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensUI.swiftdeps",
+    "diagnostics": "/home/bodenberg/Documentos/GitHub/AppDimens/iOS/.build/x86_64-unknown-linux-gnu/debug/AppDimensUI.build/AppDimensUI.dia"
+  }
+}
