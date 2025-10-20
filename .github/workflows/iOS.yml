@@ -5,8 +5,29 @@ jobs:
     runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
+      - name: List Available Xcode Versions
+        run: |
+          echo "Verificando versões do Xcode disponíveis:"
+          find /Applications/ -name "Xcode*.app" -type d
+          echo "Versão atual do Xcode:"
+          xcode-select -p
+      
       - name: Select Xcode
-        run: sudo xcode-select -switch /Applications/Xcode_16.app/Contents/Developer
+        run: |
+          # Verifica se Xcode_16.app existe, caso contrário usa Xcode.app
+          if [ -d "/Applications/Xcode_16.app/Contents/Developer" ]; then
+            echo "Selecionando Xcode 16..."
+            sudo xcode-select -switch /Applications/Xcode_16.app/Contents/Developer
+          elif [ -d "/Applications/Xcode.app/Contents/Developer" ]; then
+            echo "Selecionando Xcode padrão..."
+            sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
+          else
+            echo "Erro: Nenhuma versão do Xcode encontrada!"
+            find /Applications/ -name "Xcode*.app" -type d
+            exit 1
+          fi
+          echo "Xcode selecionado:"
+          xcode-select -p
       - name: Build & Test (Xcodeproj)
         run: |
           cd iOS
