@@ -2,7 +2,7 @@
 
 ## Introduction
 
-There are several solutions available in the market to address the problem of responsive dimensioning in Android. This document presents a detailed comparative analysis of performance, functionality, and usability between AppDimens and its main competitors.
+There are several solutions available in the market to address the problem of responsive dimensioning in Android. This document presents a detailed comparative analysis of performance, functionality, and usability between AppDimens and its main competitors. 
 
 ## 1. Identified Competing Solutions
 

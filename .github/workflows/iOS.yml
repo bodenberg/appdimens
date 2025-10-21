@@ -1,5 +1,19 @@
 name: iOS CI
-on: [push, pull_request]
+on:
+  push:
+    # O workflow será executado em qualquer push para a branch 'main' 
+    branches: [ main ]
+    # **OPCIONAL:** Execute apenas se houver mudanças no diretório 'iOS/'
+    paths:
+      - 'iOS/**'
+  pull_request:
+    # O workflow será executado em qualquer PR para a branch 'main'
+    branches: [ main ]
+    # **OPCIONAL:** Execute apenas se houver mudanças no diretório 'iOS/'
+    paths:
+      - 'iOS/**'
+  # Permite executar o workflow manualmente na aba "Actions"
+  workflow_dispatch:
 jobs:
   build-test:
     runs-on: macos-14
