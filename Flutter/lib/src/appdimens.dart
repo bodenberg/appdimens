@@ -1,0 +1,233 @@
+/**
+ * Author & Developer: Jean Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
+ * Date: 2025-01-15
+ *
+ * Library: AppDimens Flutter - Main Class
+ *
+ * Description:
+ * Main AppDimens class that provides access to fixed and dynamic dimension builders.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import 'package:flutter/material.dart';
+import 'appdimens_types.dart';
+import 'appdimens_fixed.dart';
+import 'appdimens_dynamic.dart';
+import 'appdimens_utils.dart';
+
+/// [EN] Main AppDimens class that provides access to fixed and dynamic dimension builders.
+/// [PT] Classe principal AppDimens que fornece acesso aos construtores de dimensões fixas e dinâmicas.
+class AppDimens {
+  AppDimens._();
+
+  // MARK: - Global Configuration Properties
+
+  /// [EN] Global aspect ratio adjustment setting.
+  /// [PT] Configuração global de ajuste de proporção.
+  static bool _globalAspectRatioEnabled = true;
+
+  /// [EN] Global cache control for all AppDimens instances.
+  /// [PT] Controle global de cache para todas as instâncias AppDimens.
+  static bool _globalCacheEnabled = true;
+
+  /// [EN] Global multi-window adjustment setting.
+  /// [PT] Configuração global de ajuste multi-window.
+  static bool _globalIgnoreMultiWindowAdjustment = false;
+
+  // MARK: - Global Configuration Methods
+
+  /// [EN] Sets the global aspect ratio adjustment setting.
+  /// @param enabled If true, enables aspect ratio adjustment globally.
+  /// @return The AppDimens instance for chaining.
+  /// [PT] Define a configuração global de ajuste de proporção.
+  /// @param enabled Se verdadeiro, ativa o ajuste de proporção globalmente.
+  /// @return A instância AppDimens para encadeamento.
+  static AppDimens setGlobalAspectRatio(bool enabled) {
+    _globalAspectRatioEnabled = enabled;
+    return AppDimens._();
+  }
+
+  /// [EN] Sets the global cache control setting.
+  /// @param enabled If true, enables global cache; if false, disables and clears all caches.
+  /// @return The AppDimens instance for chaining.
+  /// [PT] Define a configuração global de controle de cache.
+  /// @param enabled Se verdadeiro, ativa o cache global; se falso, desativa e limpa todos os caches.
+  /// @return A instância AppDimens para encadeamento.
+  static AppDimens setGlobalCache(bool enabled) {
+    _globalCacheEnabled = enabled;
+    return AppDimens._();
+  }
+
+  /// [EN] Sets the global multi-view adjustment setting.
+  /// @param ignore If true, ignores multi-view adjustments globally.
+  /// @return The AppDimens instance for chaining.
+  /// [PT] Define a configuração global de ajuste multi-view.
+  /// @param ignore Se verdadeiro, ignora os ajustes multi-view globalmente.
+  /// @return A instância AppDimens para encadeamento.
+  static AppDimens setGlobalIgnoreMultiWindowAdjustment(bool ignore) {
+    _globalIgnoreMultiWindowAdjustment = ignore;
+    return AppDimens._();
+  }
+
+  /// [EN] Gets the current global aspect ratio setting.
+  /// @return True if aspect ratio adjustment is enabled globally.
+  /// [PT] Obtém a configuração global atual de proporção.
+  /// @return True se o ajuste de proporção está ativado globalmente.
+  static bool get isGlobalAspectRatioEnabled => _globalAspectRatioEnabled;
+
+  /// [EN] Gets the current global cache setting.
+  /// @return True if global cache is enabled.
+  /// [PT] Obtém a configuração global atual de cache.
+  /// @return True se o cache global está ativado.
+  static bool get isGlobalCacheEnabled => _globalCacheEnabled;
+
+  /// [EN] Gets the current global multi-view adjustment setting.
+  /// @return True if multi-view adjustments are ignored globally.
+  /// [PT] Obtém a configuração global atual de ajuste multi-view.
+  /// @return True se os ajustes multi-view são ignorados globalmente.
+  static bool get isGlobalIgnoreMultiWindowAdjustment => _globalIgnoreMultiWindowAdjustment;
+
+  // MARK: - Builder Methods
+
+  /// [EN] Creates a fixed dimension builder from a double value.
+  /// @param initialValue The initial base value.
+  /// @param ignoreMultiWindowAdjustment Whether to ignore multi-window adjustments.
+  /// @return An AppDimensFixed instance for chaining.
+  /// [PT] Cria um construtor de dimensão fixa a partir de um valor double.
+  /// @param initialValue O valor base inicial.
+  /// @param ignoreMultiWindowAdjustment Se deve ignorar ajustes multi-window.
+  /// @return Uma instância AppDimensFixed para encadeamento.
+  static AppDimensFixed fixed(
+    double initialValue, {
+    bool? ignoreMultiWindowAdjustment,
+  }) {
+    final ignore = ignoreMultiWindowAdjustment ?? _globalIgnoreMultiWindowAdjustment;
+    return AppDimensFixed(
+      initialValue,
+      ignoreMultiWindowAdjustment: ignore,
+    );
+  }
+
+  /// [EN] Creates a dynamic dimension builder from a double value.
+  /// @param initialValue The initial base value.
+  /// @param ignoreMultiWindowAdjustment Whether to ignore multi-window adjustments.
+  /// @return An AppDimensDynamic instance for chaining.
+  /// [PT] Cria um construtor de dimensão dinâmica a partir de um valor double.
+  /// @param initialValue O valor base inicial.
+  /// @param ignoreMultiWindowAdjustment Se deve ignorar ajustes multi-window.
+  /// @return Uma instância AppDimensDynamic para encadeamento.
+  static AppDimensDynamic dynamic(
+    double initialValue, {
+    bool? ignoreMultiWindowAdjustment,
+  }) {
+    final ignore = ignoreMultiWindowAdjustment ?? _globalIgnoreMultiWindowAdjustment;
+    return AppDimensDynamic(
+      initialValue,
+      ignoreMultiWindowAdjustment: ignore,
+    );
+  }
+
+  // MARK: - Utility Methods
+
+  /// [EN] Calculates a dynamic dimension value based on a percentage (0.0 to 1.0) of the screen dimension.
+  /// @param percentage The percentage (0.0 to 1.0).
+  /// @param type The screen dimension to use (LOWEST/HIGHEST).
+  /// @param context The BuildContext.
+  /// @return The adjusted value in logical pixels.
+  /// [PT] Calcula um valor de dimensão dinâmico com base em uma porcentagem (0.0 a 1.0) da dimensão da tela.
+  /// @param percentage A porcentagem (0.0 a 1.0).
+  /// @param type A dimensão da tela a ser usada (LOWEST/HIGHEST).
+  /// @param context O BuildContext.
+  /// @return O valor ajustado em pixels lógicos.
+  static double dynamicPercentage(
+    double percentage,
+    BuildContext context, {
+    ScreenType type = ScreenType.lowest,
+  }) {
+    assert(percentage >= 0.0 && percentage <= 1.0, 'Percentage must be between 0.0 and 1.0');
+    
+    final mediaQuery = MediaQuery.of(context);
+    final screenWidth = mediaQuery.size.width;
+    final screenHeight = mediaQuery.size.height;
+
+    final dimensionToUse = type == ScreenType.highest
+        ? (screenWidth > screenHeight ? screenWidth : screenHeight)
+        : (screenWidth < screenHeight ? screenWidth : screenHeight);
+
+    return dimensionToUse * percentage;
+  }
+
+  /// [EN] Gets the current screen information.
+  /// @param context The BuildContext.
+  /// @return ScreenInfo containing screen dimensions and properties.
+  /// [PT] Obtém as informações atuais da tela.
+  /// @param context O BuildContext.
+  /// @return ScreenInfo contendo dimensões e propriedades da tela.
+  static ScreenInfo getCurrentScreenInfo(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final size = mediaQuery.size;
+    final devicePixelRatio = mediaQuery.devicePixelRatio;
+    final orientation = mediaQuery.orientation;
+    
+    final deviceType = DeviceType.current(context);
+    final uiModeType = UiModeType.current(context);
+
+    return ScreenInfo(
+      width: size.width,
+      height: size.height,
+      devicePixelRatio: devicePixelRatio,
+      deviceType: deviceType,
+      uiModeType: uiModeType,
+      orientation: orientation,
+    );
+  }
+
+  /// [EN] Calculates adjustment factors for the current screen configuration.
+  /// @param context The BuildContext.
+  /// @return ScreenAdjustmentFactors containing calculated factors.
+  /// [PT] Calcula os fatores de ajuste para a configuração atual da tela.
+  /// @param context O BuildContext.
+  /// @return ScreenAdjustmentFactors contendo os fatores calculados.
+  static ScreenAdjustmentFactors calculateAdjustmentFactors(BuildContext context) {
+    return AppDimensUtils.calculateAdjustmentFactors(context);
+  }
+
+  /// [EN] Clears all caches from all instances.
+  /// [PT] Limpa todos os caches de todas as instâncias.
+  static void clearAllCaches() {
+    // This would be implemented with a registry of instances
+    // For now, individual instances will clear their own caches
+  }
+
+  // MARK: - Legacy Methods for Compatibility
+
+  /// [EN] Legacy method for creating fixed dimensions.
+  /// @deprecated Use AppDimens.fixed() instead.
+  /// [PT] Método legado para criar dimensões fixas.
+  /// @deprecated Use AppDimens.fixed() em vez disso.
+  @Deprecated('Use AppDimens.fixed() instead')
+  static AppDimensFixed fixedDp(double value) {
+    return fixed(value);
+  }
+
+  /// [EN] Legacy method for creating dynamic dimensions.
+  /// @deprecated Use AppDimens.dynamic() instead.
+  /// [PT] Método legado para criar dimensões dinâmicas.
+  /// @deprecated Use AppDimens.dynamic() em vez disso.
+  @Deprecated('Use AppDimens.dynamic() instead')
+  static AppDimensDynamic dynamicDp(double value) {
+    return dynamic(value);
+  }
+}

@@ -1,0 +1,46 @@
+name: appdimens
+description: Smart and Responsive Dimensioning for Flutter - Mathematically responsive scaling that ensures your UI design adapts perfectly to any screen size or aspect ratio.
+version: 1.0.7
+homepage: https://github.com/bodenberg/appdimens
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  meta: ^1.8.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+topics:
+  - responsive
+  - ui
+  - dimensions
+  - scaling
+  - flutter
+  - cross-platform
+  - mobile
+  - tablet
+  - tv
+  - games
+
+platforms:
+  android:
+  ios:
+  web:
+  windows:
+  macos:
+  linux:
+
+funding:
+  - https://github.com/sponsors/bodenberg
+
+repository: https://github.com/bodenberg/appdimens
+issue_tracker: https://github.com/bodenberg/appdimens/issues
+
+documentation: https://appdimens-project.web.app/
