@@ -60,39 +60,91 @@ export class AppDimensFixed implements AppDimensBuilder {
   }
 
   /**
-   * Set custom value for screen qualifiers
+   * [EN] Set custom value for UI mode.
+   * Compatible with Android/iOS API.
+   * [PT] Define valor customizado para modo UI.
+   * Compatível com API Android/iOS.
    */
-  screen(...args: any[]): this {
-    if (args.length === 2) {
-      const [type, customValue] = args;
-      if (
-        type === 'normal' ||
-        type === 'car' ||
-        type === 'tv' ||
-        type === 'watch' ||
-        type === 'desktop'
-      ) {
-        // UI Mode
-        this.config.customUiModeMap.set(type, customValue);
-      } else {
-        // Device Type
+  screen(uiModeType: UiModeType, customValue: number): this;
+  
+  /**
+   * [EN] Set custom value for device type and screen size.
+   * Compatible with Android/iOS API.
+   * [PT] Define valor customizado para tipo de dispositivo e tamanho de tela.
+   * Compatível com API Android/iOS.
+   */
+  screen(deviceType: DeviceType, screenSize: number, customValue: number): this;
+  
+  /**
+   * [EN] Set custom value for screen qualifier with specific value.
+   * Compatible with Android/iOS API.
+   * [PT] Define valor customizado para qualificador de tela com valor específico.
+   * Compatível com API Android/iOS.
+   */
+  screen(
+    qualifierType: ScreenQualifier,
+    qualifierValue: number,
+    customValue: number
+  ): this;
+  
+  /**
+   * [EN] Set custom value for intersection of UI mode and screen qualifier.
+   * Compatible with Android/iOS API.
+   * [PT] Define valor customizado para interseção de modo UI e qualificador de tela.
+   * Compatível com API Android/iOS.
+   */
+  screen(
+    uiModeType: UiModeType,
+    qualifierType: ScreenQualifier,
+    qualifierValue: number,
+    customValue: number
+  ): this;
+
+  // Implementation
+  screen(
+    arg1: UiModeType | DeviceType | ScreenQualifier,
+    arg2: number | ScreenQualifier,
+    arg3?: number,
+    arg4?: number
+  ): this {
+    if (arg3 === undefined && arg4 === undefined) {
+      // screen(uiModeType, customValue)
+      const uiModeType = arg1 as UiModeType;
+      const customValue = arg2 as number;
+      this.config.customUiModeMap.set(uiModeType, customValue);
+    } else if (arg4 === undefined && arg3 !== undefined) {
+      // Could be: screen(deviceType, screenSize, customValue) or
+      //           screen(qualifierType, qualifierValue, customValue)
+      const isDeviceType = ['phone', 'tablet', 'desktop', 'watch', 'tv', 'car'].includes(arg1);
+      
+      if (isDeviceType) {
+        // screen(deviceType, screenSize, customValue)
+        const deviceType = arg1 as DeviceType;
+        const screenSize = arg2 as number;
+        const customValue = arg3;
         const screenQualifier: ScreenQualifierEntry = {
           type: 'smallWidth',
-          value: 0,
-          deviceType: type,
+          value: screenSize,
+          deviceType,
+        };
+        this.config.customScreenQualifierMap.set(screenQualifier, customValue);
+      } else {
+        // screen(qualifierType, qualifierValue, customValue)
+        const qualifierType = arg1 as ScreenQualifier;
+        const qualifierValue = arg2 as number;
+        const customValue = arg3;
+        const screenQualifier: ScreenQualifierEntry = {
+          type: qualifierType,
+          value: qualifierValue,
         };
         this.config.customScreenQualifierMap.set(screenQualifier, customValue);
       }
-    } else if (args.length === 3) {
-      const [deviceType, screenSize, customValue] = args;
-      const screenQualifier: ScreenQualifierEntry = {
-        type: 'smallWidth',
-        value: screenSize,
-        deviceType,
-      };
-      this.config.customScreenQualifierMap.set(screenQualifier, customValue);
-    } else if (args.length === 4) {
-      const [uiModeType, qualifierType, qualifierValue, customValue] = args;
+    } else if (arg4 !== undefined && arg3 !== undefined) {
+      // screen(uiModeType, qualifierType, qualifierValue, customValue)
+      const uiModeType = arg1 as UiModeType;
+      const qualifierType = arg2 as ScreenQualifier;
+      const qualifierValue = arg3;
+      const customValue = arg4;
       const screenQualifier: ScreenQualifierEntry = {
         type: qualifierType,
         value: qualifierValue,
@@ -173,6 +225,52 @@ export class AppDimensFixed implements AppDimensBuilder {
    */
   toPointsInt(): number {
     return Math.round(this.calculateAdjustedValue());
+  }
+
+  /**
+   * [EN] Calculate adjusted value in scalable pixels (sp) for text.
+   * This respects the system font scale setting.
+   * Compatible with Android/iOS API.
+   * [PT] Calcula o valor ajustado em pixels escaláveis (sp) para texto.
+   * Isso respeita a configuração de escala de fonte do sistema.
+   * Compatível com API Android/iOS.
+   */
+  toSp(): number {
+    const adjustedValue = this.calculateAdjustedValue();
+    const fontScale = AppDimensAdjustmentFactors.getFontScale();
+    return adjustedValue * fontScale;
+  }
+
+  /**
+   * [EN] Calculate adjusted value in scalable pixels (sp) as integer.
+   * Compatible with Android/iOS API.
+   * [PT] Calcula o valor ajustado em pixels escaláveis (sp) como inteiro.
+   * Compatível com API Android/iOS.
+   */
+  toSpInt(): number {
+    return Math.round(this.toSp());
+  }
+
+  /**
+   * [EN] Calculate adjusted value in em units (ignoring font scale).
+   * This is similar to sp but without the font scale factor applied.
+   * Compatible with Android/iOS API.
+   * [PT] Calcula o valor ajustado em unidades em (ignorando escala de fonte).
+   * Isso é similar ao sp mas sem o fator de escala de fonte aplicado.
+   * Compatível com API Android/iOS.
+   */
+  toEm(): number {
+    return this.calculateAdjustedValue();
+  }
+
+  /**
+   * [EN] Calculate adjusted value in em units as integer.
+   * Compatible with Android/iOS API.
+   * [PT] Calcula o valor ajustado em unidades em como inteiro.
+   * Compatível com API Android/iOS.
+   */
+  toEmInt(): number {
+    return Math.round(this.toEm());
   }
 
   /**

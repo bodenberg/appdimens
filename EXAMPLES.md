@@ -8,11 +8,14 @@ This document provides comprehensive, real-world examples of how to use AppDimen
 
 1. [Android Examples](#android-examples)
 2. [iOS Examples](#ios-examples)
-3. [Game Development Examples](#game-development-examples)
-4. [Cross-Platform Patterns](#cross-platform-patterns)
-5. [Advanced Use Cases](#advanced-use-cases)
-6. [Performance Examples](#performance-examples)
-7. [Architecture Examples](#architecture-examples)
+3. [Flutter Examples](#flutter-examples)
+4. [React Native Examples](#react-native-examples)
+5. [Web Examples](#web-examples)
+6. [Game Development Examples](#game-development-examples)
+7. [Cross-Platform Patterns](#cross-platform-patterns)
+8. [Advanced Use Cases](#advanced-use-cases)
+9. [Performance Examples](#performance-examples)
+10. [Architecture Examples](#architecture-examples)
 
 ---
 
@@ -671,6 +674,738 @@ class AdvancedViewController: UIViewController {
         label.center = view.center
     }
 }
+```
+
+---
+
+## 🎯 Flutter Examples
+
+### 📱 Basic Responsive Widget
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:appdimens/appdimens.dart';
+
+class ResponsiveCard extends StatelessWidget {
+  final String title;
+  final String content;
+  final VoidCallback onAction;
+
+  const ResponsiveCard({
+    required this.title,
+    required this.content,
+    required this.onAction,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 300.dydp(),          // Dynamic width
+      height: 200.fxdp(),         // Fixed height
+      padding: EdgeInsets.all(16.fxdp()),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12.fxdp()),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 8.fxdp(),
+            offset: Offset(0, 2.fxdp()),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 18.fxsp(),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 8.fxdp()),
+          Expanded(
+            child: Text(
+              content,
+              style: TextStyle(
+                fontSize: 14.dysp(),
+                color: Colors.grey[600],
+              ),
+            ),
+          ),
+          SizedBox(height: 12.fxdp()),
+          Align(
+            alignment: Alignment.centerRight,
+            child: ElevatedButton(
+              onPressed: onAction,
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(100.dydp(), 36.fxdp()),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 20.fxdp(),
+                  vertical: 8.fxdp(),
+                ),
+              ),
+              child: Text(
+                'Action',
+                style: TextStyle(fontSize: 14.fxsp()),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+```
+
+### 🌐 Responsive Grid Layout
+
+```dart
+class ResponsiveGrid extends StatelessWidget {
+  final List<GridItem> items;
+  final Function(GridItem) onItemTap;
+
+  const ResponsiveGrid({
+    required this.items,
+    required this.onItemTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    // Calculate columns based on screen size
+    final screenWidth = MediaQuery.of(context).size.width;
+    final itemWidth = 120.dydp();
+    final columns = (screenWidth / itemWidth).floor().clamp(2, 6);
+
+    return GridView.builder(
+      padding: EdgeInsets.all(16.fxdp()),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: columns,
+        crossAxisSpacing: 12.fxdp(),
+        mainAxisSpacing: 12.fxdp(),
+        childAspectRatio: 1.0,
+      ),
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        return GridItemCard(
+          item: items[index],
+          onTap: () => onItemTap(items[index]),
+        );
+      },
+    );
+  }
+}
+
+class GridItemCard extends StatelessWidget {
+  final GridItem item;
+  final VoidCallback onTap;
+
+  const GridItemCard({required this.item, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(12.fxdp()),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8.fxdp()),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 4.fxdp(),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              item.icon,
+              size: 32.fxdp(),
+              color: item.color,
+            ),
+            SizedBox(height: 8.fxdp()),
+            Text(
+              item.title,
+              style: TextStyle(fontSize: 12.fxsp()),
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+### 📱 Platform-Adaptive Layout
+
+```dart
+class PlatformAdaptiveLayout extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final screenType = AppDimens.getScreenType(context);
+    
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Adaptive Layout',
+          style: TextStyle(fontSize: 20.fxsp()),
+        ),
+        toolbarHeight: 56.fxdp(),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.fxdp()),
+        child: screenType == ScreenType.phone
+            ? _buildPhoneLayout()
+            : screenType == ScreenType.tablet
+                ? _buildTabletLayout()
+                : _buildDesktopLayout(),
+      ),
+    );
+  }
+
+  Widget _buildPhoneLayout() {
+    return ListView(
+      children: [
+        _buildCard('Card 1'),
+        SizedBox(height: 12.fxdp()),
+        _buildCard('Card 2'),
+        SizedBox(height: 12.fxdp()),
+        _buildCard('Card 3'),
+      ],
+    );
+  }
+
+  Widget _buildTabletLayout() {
+    return GridView.count(
+      crossAxisCount: 2,
+      crossAxisSpacing: 16.fxdp(),
+      mainAxisSpacing: 16.fxdp(),
+      children: [
+        _buildCard('Card 1'),
+        _buildCard('Card 2'),
+        _buildCard('Card 3'),
+        _buildCard('Card 4'),
+      ],
+    );
+  }
+
+  Widget _buildDesktopLayout() {
+    return Row(
+      children: [
+        Expanded(child: _buildCard('Card 1')),
+        SizedBox(width: 16.fxdp()),
+        Expanded(child: _buildCard('Card 2')),
+        SizedBox(width: 16.fxdp()),
+        Expanded(child: _buildCard('Card 3')),
+      ],
+    );
+  }
+
+  Widget _buildCard(String title) {
+    return Container(
+      padding: EdgeInsets.all(16.fxdp()),
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.circular(12.fxdp()),
+      ),
+      child: Center(
+        child: Text(
+          title,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 18.fxsp(),
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+
+---
+
+## ⚛️ React Native Examples
+
+### 📱 Basic Responsive Component
+
+```typescript
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useAppDimens } from 'react-native-appdimens';
+
+interface ResponsiveCardProps {
+  title: string;
+  content: string;
+  onAction: () => void;
+}
+
+function ResponsiveCard({ title, content, onAction }: ResponsiveCardProps) {
+  const { fixed, dynamic, fluid } = useAppDimens();
+  
+  const styles = StyleSheet.create({
+    card: {
+      width: dynamic(300),
+      height: fixed(200),
+      padding: fixed(16),
+      backgroundColor: '#fff',
+      borderRadius: fixed(12),
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: fixed(8),
+      elevation: 3,
+    },
+    title: {
+      fontSize: fixed(18),
+      fontWeight: 'bold',
+      marginBottom: fixed(8),
+    },
+    content: {
+      fontSize: dynamic(14),
+      color: '#666',
+      flex: 1,
+    },
+    buttonContainer: {
+      alignItems: 'flex-end',
+      marginTop: fixed(12),
+    },
+    button: {
+      backgroundColor: '#007AFF',
+      paddingHorizontal: fixed(20),
+      paddingVertical: fixed(10),
+      borderRadius: fixed(6),
+      minWidth: dynamic(100),
+      minHeight: fixed(36),
+    },
+    buttonText: {
+      color: '#fff',
+      fontSize: fixed(14),
+      fontWeight: '600',
+    },
+  });
+  
+  return (
+    <View style={styles.card}>
+      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.content}>{content}</Text>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.button} onPress={onAction}>
+          <Text style={styles.buttonText}>Action</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+}
+
+export default ResponsiveCard;
+```
+
+### 🌐 Responsive Grid with Hooks
+
+```typescript
+import React from 'react';
+import { View, FlatList, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useAppDimens, useBreakpoint, useOrientation } from 'react-native-appdimens';
+
+interface GridItem {
+  id: string;
+  title: string;
+  color: string;
+}
+
+interface ResponsiveGridProps {
+  items: GridItem[];
+  onItemPress: (item: GridItem) => void;
+}
+
+function ResponsiveGrid({ items, onItemPress }: ResponsiveGridProps) {
+  const { fixed, dynamic } = useAppDimens();
+  const breakpoint = useBreakpoint();
+  const orientation = useOrientation();
+  
+  // Determine number of columns based on breakpoint
+  const numColumns = breakpoint === 'sm' ? 2 : breakpoint === 'md' ? 3 : 4;
+  
+  const styles = StyleSheet.create({
+    container: {
+      padding: fixed(16),
+    },
+    item: {
+      flex: 1,
+      margin: fixed(8),
+      height: dynamic(120),
+      borderRadius: fixed(12),
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: fixed(16),
+    },
+    title: {
+      fontSize: fixed(14),
+      fontWeight: '600',
+      textAlign: 'center',
+      color: '#fff',
+    },
+  });
+  
+  const renderItem = ({ item }: { item: GridItem }) => (
+    <TouchableOpacity
+      style={[styles.item, { backgroundColor: item.color }]}
+      onPress={() => onItemPress(item)}
+    >
+      <Text style={styles.title}>{item.title}</Text>
+    </TouchableOpacity>
+  );
+  
+  return (
+    <FlatList
+      data={items}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id}
+      numColumns={numColumns}
+      contentContainerStyle={styles.container}
+      key={`${numColumns}-${orientation}`}
+    />
+  );
+}
+
+export default ResponsiveGrid;
+```
+
+### 🎨 Fluid Typography Example
+
+```typescript
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { useAppDimens } from 'react-native-appdimens';
+
+function FluidTypography() {
+  const { fluid, fixed } = useAppDimens();
+  
+  const styles = StyleSheet.create({
+    container: {
+      padding: fixed(24),
+      backgroundColor: '#f5f5f5',
+    },
+    hero: {
+      fontSize: fluid(32, 64),  // Scales smoothly from 32 to 64
+      fontWeight: 'bold',
+      marginBottom: fixed(16),
+    },
+    subtitle: {
+      fontSize: fluid(18, 24),  // Scales smoothly from 18 to 24
+      color: '#666',
+      marginBottom: fixed(24),
+    },
+    body: {
+      fontSize: fluid(14, 18),  // Scales smoothly from 14 to 18
+      lineHeight: fluid(20, 28),
+      color: '#333',
+    },
+  });
+  
+  return (
+    <View style={styles.container}>
+      <Text style={styles.hero}>Fluid Typography</Text>
+      <Text style={styles.subtitle}>
+        Responsive text that scales smoothly
+      </Text>
+      <Text style={styles.body}>
+        This text uses fluid scaling to adapt seamlessly across different screen
+        sizes, providing optimal readability on all devices from small phones to
+        large tablets.
+      </Text>
+    </View>
+  );
+}
+
+export default FluidTypography;
+```
+
+---
+
+## 🌐 Web Examples
+
+### ⚛️ React with Hooks
+
+```tsx
+import React from 'react';
+import { useWebDimens, useBreakpoint, useViewport } from 'webdimens/react';
+
+function ResponsiveCard() {
+  const { fx, dy, fl } = useWebDimens();
+  const breakpoint = useBreakpoint();
+  const viewport = useViewport();
+  
+  return (
+    <div style={{
+      width: dy(300),
+      height: fx(200),
+      padding: fx(16),
+      borderRadius: fx(12),
+      backgroundColor: '#fff',
+      boxShadow: `0 ${fx(2)} ${fx(8)} rgba(0,0,0,0.1)`,
+    }}>
+      <h2 style={{ fontSize: fx(18), marginBottom: fx(8) }}>
+        Responsive Card
+      </h2>
+      <p style={{ fontSize: fl(14, 18), color: '#666' }}>
+        Current breakpoint: {breakpoint.current}
+      </p>
+      <p style={{ fontSize: fl(12, 16) }}>
+        Viewport: {viewport.width}x{viewport.height}
+      </p>
+      <button style={{
+        marginTop: fx(12),
+        padding: `${fx(10)} ${fx(20)}`,
+        borderRadius: fx(6),
+        border: 'none',
+        backgroundColor: '#007AFF',
+        color: '#fff',
+        fontSize: fx(14),
+        cursor: 'pointer',
+      }}>
+        Action
+      </button>
+    </div>
+  );
+}
+
+export default ResponsiveCard;
+```
+
+### 🟢 Vue Composition API
+
+```vue
+<template>
+  <div class="responsive-card" :style="cardStyles">
+    <h2 :style="titleStyles">{{ title }}</h2>
+    <p :style="contentStyles">{{ content }}</p>
+    <p :style="infoStyles">
+      Current breakpoint: {{ breakpoint.current }}
+    </p>
+    <button :style="buttonStyles" @click="handleAction">
+      Action
+    </button>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useWebDimens, useBreakpoint, useViewport } from 'webdimens/vue';
+
+interface Props {
+  title: string;
+  content: string;
+}
+
+const props = defineProps<Props>();
+const emit = defineEmits<{
+  (e: 'action'): void;
+}>();
+
+const { fx, dy, fl } = useWebDimens();
+const breakpoint = useBreakpoint();
+const viewport = useViewport();
+
+const cardStyles = computed(() => ({
+  width: dy(300),
+  height: fx(200),
+  padding: fx(16),
+  borderRadius: fx(12),
+  backgroundColor: '#fff',
+  boxShadow: `0 ${fx(2)} ${fx(8)} rgba(0,0,0,0.1)`,
+}));
+
+const titleStyles = computed(() => ({
+  fontSize: fx(18),
+  marginBottom: fx(8),
+  fontWeight: 'bold',
+}));
+
+const contentStyles = computed(() => ({
+  fontSize: fl(14, 18),
+  color: '#666',
+  marginBottom: fx(12),
+}));
+
+const infoStyles = computed(() => ({
+  fontSize: fl(12, 16),
+  color: '#999',
+}));
+
+const buttonStyles = computed(() => ({
+  marginTop: fx(12),
+  padding: `${fx(10)} ${fx(20)}`,
+  borderRadius: fx(6),
+  border: 'none',
+  backgroundColor: '#007AFF',
+  color: '#fff',
+  fontSize: fx(14),
+  cursor: 'pointer',
+}));
+
+const handleAction = () => {
+  emit('action');
+};
+</script>
+```
+
+### 🔶 Angular Component
+
+```typescript
+import { Component } from '@angular/core';
+import { WebDimensService } from 'webdimens/angular';
+
+@Component({
+  selector: 'app-responsive-card',
+  template: `
+    <div class="card" [ngStyle]="cardStyles">
+      <h2 [ngStyle]="titleStyles">{{ title }}</h2>
+      <p [ngStyle]="contentStyles">{{ content }}</p>
+      <p [ngStyle]="infoStyles">
+        Current breakpoint: {{ breakpoint }}
+      </p>
+      <button [ngStyle]="buttonStyles" (click)="onAction()">
+        Action
+      </button>
+    </div>
+  `,
+})
+export class ResponsiveCardComponent {
+  title = 'Responsive Card';
+  content = 'This card adapts to all screen sizes';
+  breakpoint = '';
+  
+  cardStyles = {};
+  titleStyles = {};
+  contentStyles = {};
+  infoStyles = {};
+  buttonStyles = {};
+  
+  constructor(private webDimens: WebDimensService) {
+    this.webDimens.breakpoint$.subscribe(bp => {
+      this.breakpoint = bp.current;
+      this.updateStyles();
+    });
+  }
+  
+  private updateStyles() {
+    const wd = this.webDimens.instance;
+    
+    this.cardStyles = {
+      width: wd.dy(300),
+      height: wd.fx(200),
+      padding: wd.fx(16),
+      borderRadius: wd.fx(12),
+      backgroundColor: '#fff',
+      boxShadow: `0 ${wd.fx(2)} ${wd.fx(8)} rgba(0,0,0,0.1)`,
+    };
+    
+    this.titleStyles = {
+      fontSize: wd.fx(18),
+      marginBottom: wd.fx(8),
+      fontWeight: 'bold',
+    };
+    
+    this.contentStyles = {
+      fontSize: wd.fl(14, 18),
+      color: '#666',
+    };
+    
+    this.infoStyles = {
+      fontSize: wd.fl(12, 16),
+      color: '#999',
+    };
+    
+    this.buttonStyles = {
+      marginTop: wd.fx(12),
+      padding: `${wd.fx(10)} ${wd.fx(20)}`,
+      borderRadius: wd.fx(6),
+      border: 'none',
+      backgroundColor: '#007AFF',
+      color: '#fff',
+      fontSize: wd.fx(14),
+      cursor: 'pointer',
+    };
+  }
+  
+  onAction() {
+    console.log('Action clicked!');
+  }
+}
+```
+
+### 🎨 Svelte with Stores
+
+```svelte
+<script lang="ts">
+  import { webDimensStore, breakpointStore, viewportStore } from 'webdimens/svelte';
+  
+  export let title: string;
+  export let content: string;
+  
+  $: wd = $webDimensStore;
+  $: breakpoint = $breakpointStore;
+  $: viewport = $viewportStore;
+  
+  function handleAction() {
+    console.log('Action clicked!');
+  }
+</script>
+
+<div class="card" style="
+  width: {wd.dy(300)};
+  height: {wd.fx(200)};
+  padding: {wd.fx(16)};
+  border-radius: {wd.fx(12)};
+">
+  <h2 style="font-size: {wd.fx(18)}; margin-bottom: {wd.fx(8)};">
+    {title}
+  </h2>
+  <p style="font-size: {wd.fl(14, 18)}; color: #666;">
+    {content}
+  </p>
+  <p style="font-size: {wd.fl(12, 16)}; color: #999;">
+    Current breakpoint: {breakpoint.current}
+  </p>
+  <button 
+    style="
+      margin-top: {wd.fx(12)};
+      padding: {wd.fx(10)} {wd.fx(20)};
+      border-radius: {wd.fx(6)};
+      font-size: {wd.fx(14)};
+    "
+    on:click={handleAction}
+  >
+    Action
+  </button>
+</div>
+
+<style>
+  .card {
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  button {
+    border: none;
+    background-color: #007AFF;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+</style>
 ```
 
 ---

@@ -4,7 +4,7 @@
     <p><strong>Умное и адаптивное масштабирование для Android и iOS</strong></p>
     <p>Математически точное адаптивное масштабирование, которое гарантирует идеальную адаптацию вашего UI-дизайна к любому размеру экрана или соотношению сторон — от телефонов до телевизоров, автомобилей и носимых устройств.</p>
 
-[![Версия](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Версия](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![Лицензия](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![Платформа](https://img.shields.io/badge/platform-Android%20%7C%20iOS-orange.svg)](https://github.com/bodenberg/appdimens)
 [![Документация](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)
@@ -35,17 +35,17 @@
 ```kotlin
 dependencies {
     // Основная библиотека (Dynamic + Fixed scaling)
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.6")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.8")
     
     // Опционально: SDP и SSP scaling
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.6")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.6")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.8")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.8")
     
     // Полный пакет (не включает модуль игр)
-    implementation("io.github.bodenberg:appdimens-all:1.0.6")
+    implementation("io.github.bodenberg:appdimens-all:1.0.8")
     
     // Разработка игр с поддержкой C++/NDK (отдельная зависимость)
-    implementation("io.github.bodenberg:appdimens-games:1.0.6")
+    implementation("io.github.bodenberg:appdimens-games:1.0.8")
 }
 ```
 
@@ -58,7 +58,7 @@ pod 'AppDimens'
 
 ```swift
 // Swift Package Manager
-.package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.6")
+.package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.8")
 ```
 
 ---

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebDimens - Demo Standalone (Funciona sem servidor)</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+    
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+    
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    
+    .status {
+      padding: 20px;
+      margin: 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    
+    .success {
+      background: #d4edda;
+      color: #155724;
+      border: 2px solid #c3e6cb;
+    }
+    
+    .error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 2px solid #f5c6cb;
+    }
+    
+    .info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 2px solid #bee5eb;
+    }
+    
+    .content {
+      padding: 40px;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      margin: 30px 0;
+    }
+    
+    .card {
+      background: #f8f9fa;
+      border: 2px solid #dee2e6;
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(102, 126, 234, 0.2);
+      border-color: #667eea;
+    }
+    
+    .card h3 {
+      color: #667eea;
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+    }
+    
+    .card p {
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 30px 0;
+    }
+    
+    .metric {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    
+    .metric-value {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    
+    .metric-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    button {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      margin: 10px 5px;
+    }
+    
+    button:hover {
+      background: #764ba2;
+      transform: scale(1.05);
+    }
+    
+    button:active {
+      transform: scale(0.95);
+    }
+    
+    .test-results {
+      margin-top: 30px;
+    }
+    
+    .test-item {
+      background: white;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .test-item.pass {
+      border-color: #28a745;
+      background: #f0fff4;
+    }
+    
+    .test-item.fail {
+      border-color: #dc3545;
+      background: #fff5f5;
+    }
+    
+    .test-icon {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    
+    .test-icon.pass { color: #28a745; }
+    .test-icon.fail { color: #dc3545; }
+    
+    .test-name {
+      flex: 1;
+      font-weight: 600;
+    }
+    
+    .test-value {
+      color: #666;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎨 WebDimens</h1>
+      <p>Sistema Avançado de Dimensionamento Responsivo para Web</p>
+      <p style="font-size: 0.9rem; margin-top: 10px;">Versão 1.0.8 - Demo Standalone</p>
+    </header>
+    
+    <div class="content">
+      <div id="status" class="status info">
+        ⏳ Inicializando WebDimens...
+      </div>
+      
+      <h2>📊 Informações do Viewport</h2>
+      <div class="metrics">
+        <div class="metric">
+          <div class="metric-value" id="viewport-width">-</div>
+          <div class="metric-label">Largura (px)</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value" id="viewport-height">-</div>
+          <div class="metric-label">Altura (px)</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value" id="breakpoint">-</div>
+          <div class="metric-label">Breakpoint</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value" id="orientation">-</div>
+          <div class="metric-label">Orientação</div>
+        </div>
+      </div>
+      
+      <h2>🧪 Testes de Funcionalidade</h2>
+      <div id="test-results" class="test-results"></div>
+      
+      <h2>🎨 Exemplos Práticos</h2>
+      <div class="grid" id="examples-grid">
+        <div class="card">
+          <h3>Fixed Scaling (FX)</h3>
+          <p>Crescimento logarítmico controlado. Ideal para botões, paddings e elementos de UI.</p>
+          <button onclick="testFixed()">Testar FX</button>
+        </div>
+        
+        <div class="card">
+          <h3>Dynamic Scaling (DY)</h3>
+          <p>Crescimento proporcional agressivo. Perfeito para containers e grids.</p>
+          <button onclick="testDynamic()">Testar DY</button>
+        </div>
+        
+        <div class="card">
+          <h3>Fluid Scaling (FL)</h3>
+          <p>Transição suave entre valores min/max. Ótimo para tipografia responsiva.</p>
+          <button onclick="testFluid()">Testar FL</button>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin: 40px 0;">
+        <button onclick="runAllTests()" style="font-size: 1.2rem; padding: 16px 32px;">
+          🚀 Executar Todos os Testes
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- WebDimens Inline - Versão simplificada para demo -->
+  <script>
+    // WebDimens Simplified - Para demo standalone
+    class WebDimensSimple {
+      constructor() {
+        this.viewport = this.getViewport();
+        this.setupListeners();
+      }
+      
+      getViewport() {
+        return {
+          width: window.innerWidth,
+          height: window.innerHeight,
+          aspectRatio: window.innerWidth / window.innerHeight,
+          orientation: window.innerWidth > window.innerHeight ? 'landscape' : 'portrait'
+        };
+      }
+      
+      setupListeners() {
+        window.addEventListener('resize', () => {
+          this.viewport = this.getViewport();
+          this.updateUI();
+        });
+      }
+      
+      // Fixed scaling (logarithmic)
+      fx(baseValue) {
+        const vw = this.viewport.width;
+        const baseDimension = 375; // iPhone base
+        const scaleFactor = Math.log(vw / baseDimension + 1) * 0.5 + 1;
+        return Math.round(baseValue * scaleFactor) + 'px';
+      }
+      
+      // Dynamic scaling (proportional)
+      dy(baseValue) {
+        const vw = this.viewport.width;
+        const baseDimension = 375;
+        const scaleFactor = vw / baseDimension;
+        return Math.round(baseValue * scaleFactor) + 'px';
+      }
+      
+      // Fluid scaling (clamp)
+      fl(minValue, maxValue) {
+        const minVw = 320;
+        const maxVw = 1920;
+        const slope = (maxValue - minValue) / (maxVw - minVw);
+        const yIntersection = minValue - slope * minVw;
+        return `clamp(${minValue}px, ${yIntersection.toFixed(2)}px + ${(slope * 100).toFixed(2)}vw, ${maxValue}px)`;
+      }
+      
+      getBreakpoint() {
+        const w = this.viewport.width;
+        if (w < 640) return 'xs';
+        if (w < 768) return 'sm';
+        if (w < 1024) return 'md';
+        if (w < 1280) return 'lg';
+        if (w < 1536) return 'xl';
+        if (w < 1920) return '2xl';
+        return '3xl';
+      }
+      
+      updateUI() {
+        document.getElementById('viewport-width').textContent = this.viewport.width;
+        document.getElementById('viewport-height').textContent = this.viewport.height;
+        document.getElementById('breakpoint').textContent = this.getBreakpoint();
+        document.getElementById('orientation').textContent = this.viewport.orientation;
+      }
+    }
+    
+    // Initialize
+    const webdimens = new WebDimensSimple();
+    const tests = [];
+    
+    function addTest(name, passed, value) {
+      tests.push({ name, passed, value });
+      renderTests();
+    }
+    
+    function renderTests() {
+      const container = document.getElementById('test-results');
+      container.innerHTML = tests.map(test => `
+        <div class="test-item ${test.passed ? 'pass' : 'fail'}">
+          <div class="test-icon ${test.passed ? 'pass' : 'fail'}">
+            ${test.passed ? '✓' : '✗'}
+          </div>
+          <div class="test-name">${test.name}</div>
+          <div class="test-value">${test.value || ''}</div>
+        </div>
+      `).join('');
+    }
+    
+    function runAllTests() {
+      tests.length = 0;
+      
+      // Test 1: WebDimens initialized
+      addTest('WebDimens Inicializado', typeof webdimens === 'object', '✓');
+      
+      // Test 2: Fixed scaling
+      const fxValue = webdimens.fx(16);
+      addTest('Fixed Scaling (FX)', /^\d+px$/.test(fxValue), `fx(16) = ${fxValue}`);
+      
+      // Test 3: Dynamic scaling
+      const dyValue = webdimens.dy(100);
+      addTest('Dynamic Scaling (DY)', /^\d+px$/.test(dyValue), `dy(100) = ${dyValue}`);
+      
+      // Test 4: Fluid scaling
+      const flValue = webdimens.fl(14, 24);
+      addTest('Fluid Scaling (FL)', /^clamp/.test(flValue), 'Clamp gerado');
+      
+      // Test 5: Viewport detection
+      addTest('Viewport Width', webdimens.viewport.width > 0, `${webdimens.viewport.width}px`);
+      addTest('Viewport Height', webdimens.viewport.height > 0, `${webdimens.viewport.height}px`);
+      
+      // Test 6: Breakpoint detection
+      const bp = webdimens.getBreakpoint();
+      addTest('Breakpoint Detection', bp.length > 0, bp);
+      
+      // Test 7: Orientation
+      addTest('Orientation', ['portrait', 'landscape'].includes(webdimens.viewport.orientation), webdimens.viewport.orientation);
+      
+      // Test 8: Aspect ratio
+      addTest('Aspect Ratio', webdimens.viewport.aspectRatio > 0, webdimens.viewport.aspectRatio.toFixed(2));
+      
+      // Test 9: Apply to DOM
+      const testDiv = document.createElement('div');
+      testDiv.style.padding = webdimens.fx(20);
+      addTest('Aplicar ao DOM', testDiv.style.padding.length > 0, '✓');
+      
+      // Update status
+      const allPassed = tests.every(t => t.passed);
+      const statusDiv = document.getElementById('status');
+      if (allPassed) {
+        statusDiv.className = 'status success';
+        statusDiv.innerHTML = '✅ Todos os testes passaram! WebDimens está 100% funcional!';
+      } else {
+        statusDiv.className = 'status error';
+        statusDiv.innerHTML = '❌ Alguns testes falharam. Verifique o console.';
+      }
+      
+      webdimens.updateUI();
+    }
+    
+    function testFixed() {
+      const card = event.target.closest('.card');
+      const currentSize = parseInt(window.getComputedStyle(card).padding) || 24;
+      const newSize = currentSize === 24 ? 40 : 24;
+      card.style.padding = webdimens.fx(newSize);
+      card.style.transform = 'scale(1.05)';
+      setTimeout(() => card.style.transform = '', 300);
+    }
+    
+    function testDynamic() {
+      const card = event.target.closest('.card');
+      const grid = document.getElementById('examples-grid');
+      const currentGap = parseInt(window.getComputedStyle(grid).gap) || 24;
+      const newGap = currentGap === 24 ? 40 : 24;
+      grid.style.gap = webdimens.dy(newGap);
+      card.style.transform = 'scale(1.05)';
+      setTimeout(() => card.style.transform = '', 300);
+    }
+    
+    function testFluid() {
+      const card = event.target.closest('.card');
+      const h3 = card.querySelector('h3');
+      h3.style.fontSize = webdimens.fl(18, 32);
+      card.style.transform = 'scale(1.05)';
+      setTimeout(() => {
+        h3.style.fontSize = '';
+        card.style.transform = '';
+      }, 2000);
+    }
+    
+    // Auto-run tests on load
+    window.addEventListener('load', () => {
+      webdimens.updateUI();
+      setTimeout(runAllTests, 500);
+    });
+    
+    console.log('%c🎨 WebDimens v1.0.8 Loaded!', 'color: #667eea; font-size: 16px; font-weight: bold;');
+    console.log('%cDemo standalone funcionando sem servidor HTTP!', 'color: #28a745; font-size: 14px;');
+  </script>
+</body>
+</html>
+

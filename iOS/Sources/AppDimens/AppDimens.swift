@@ -110,6 +110,96 @@ public class AppDimens {
     public func dynamic(_ initialValue: Int, ignoreMultiWindowAdjustment: Bool? = nil) -> AppDimensDynamic {
         return dynamic(CGFloat(initialValue), ignoreMultiWindowAdjustment: ignoreMultiWindowAdjustment)
     }
+    
+    // MARK: - Percentage-Based Dimensions
+    
+    /**
+     * [EN] Calculates a dynamic dimension value based on a percentage in points.
+     * Compatible with Android API.
+     * @param percentage The percentage (0.0 to 1.0).
+     * @param type The screen dimension to use (lowest/highest).
+     * @return The adjusted value in points.
+     * [PT] Calcula um valor de dimensão dinâmico com base em uma porcentagem em pontos.
+     * Compatível com API Android.
+     * @param percentage A porcentagem (0.0 a 1.0).
+     * @param type A dimensão da tela a ser usada (lowest/highest).
+     * @return O valor ajustado em pontos.
+     */
+    public func dynamicPercentageDp(_ percentage: CGFloat, type: ScreenType = .lowest) -> CGFloat {
+        assert(percentage >= 0.0 && percentage <= 1.0, "Percentage must be between 0.0 and 1.0")
+        
+        let (screenWidth, screenHeight) = AppDimensAdjustmentFactors.getCurrentScreenDimensions()
+        
+        let dimensionToUse = type == .highest
+            ? max(screenWidth, screenHeight)
+            : min(screenWidth, screenHeight)
+        
+        return dimensionToUse * percentage
+    }
+    
+    /**
+     * [EN] Calculates a dynamic dimension value based on a percentage in physical pixels.
+     * Compatible with Android API.
+     * @param percentage The percentage (0.0 to 1.0).
+     * @param type The screen dimension to use (lowest/highest).
+     * @return The adjusted value in physical pixels.
+     * [PT] Calcula um valor de dimensão dinâmico com base em uma porcentagem em pixels físicos.
+     * Compatível com API Android.
+     * @param percentage A porcentagem (0.0 a 1.0).
+     * @param type A dimensão da tela a ser usada (lowest/highest).
+     * @return O valor ajustado em pixels físicos.
+     */
+    public func dynamicPercentagePx(_ percentage: CGFloat, type: ScreenType = .lowest) -> CGFloat {
+        let dpValue = dynamicPercentageDp(percentage, type: type)
+        return AppDimensAdjustmentFactors.pointsToPixels(dpValue)
+    }
+    
+    /**
+     * [EN] Calculates a dynamic dimension value based on a percentage in scalable pixels.
+     * Compatible with Android API.
+     * @param percentage The percentage (0.0 to 1.0).
+     * @param type The screen dimension to use (lowest/highest).
+     * @return The adjusted value in scalable pixels.
+     * [PT] Calcula um valor de dimensão dinâmico com base em uma porcentagem em pixels escaláveis.
+     * Compatível com API Android.
+     * @param percentage A porcentagem (0.0 a 1.0).
+     * @param type A dimensão da tela a ser usada (lowest/highest).
+     * @return O valor ajustado em pixels escaláveis.
+     */
+    public func dynamicPercentageSp(_ percentage: CGFloat, type: ScreenType = .lowest) -> CGFloat {
+        let dpValue = dynamicPercentageDp(percentage, type: type)
+        let fontScale = AppDimensAdjustmentFactors.getFontScale()
+        return dpValue * fontScale
+    }
+    
+    // MARK: - Layout Utilities
+    
+    /**
+     * [EN] Calculates the maximum number of items that can fit in a container.
+     * Compatible with Android API.
+     * @param containerSizePx The size (width or height) of the container in pixels.
+     * @param itemSizeDp The size of each item in points.
+     * @param itemMarginDp The margin of each item in points.
+     * @return The number of items that can fit.
+     * [PT] Calcula o número máximo de itens que cabem em um container.
+     * Compatível com API Android.
+     * @param containerSizePx O tamanho (largura ou altura) do container em pixels.
+     * @param itemSizeDp O tamanho de cada item em pontos.
+     * @param itemMarginDp A margem de cada item em pontos.
+     * @return O número de itens que cabem.
+     */
+    public func calculateAvailableItemCount(
+        containerSizePx: CGFloat,
+        itemSizeDp: CGFloat,
+        itemMarginDp: CGFloat
+    ) -> Int {
+        let itemSizePx = AppDimensAdjustmentFactors.pointsToPixels(itemSizeDp)
+        let itemMarginPx = AppDimensAdjustmentFactors.pointsToPixels(itemMarginDp)
+        
+        let totalItemSizePx = itemSizePx + (itemMarginPx * 2)
+        
+        return totalItemSizePx > 0 ? Int(floor(containerSizePx / totalItemSizePx)) : 0
+    }
 }
 
 // MARK: - Global Cache Control

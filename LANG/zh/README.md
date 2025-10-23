@@ -4,7 +4,7 @@
     <p><strong>Android 和 iOS 的智能响应式尺寸系统</strong></p>
     <p>数学精确的响应式缩放，确保您的 UI 设计完美适配任何屏幕尺寸或宽高比 — 从手机到电视、汽车和可穿戴设备。</p>
 
-[![版本](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![版本](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![许可证](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![平台](https://img.shields.io/badge/platform-Android%20%7C%20iOS-orange.svg)](https://github.com/bodenberg/appdimens)
 [![文档](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)
@@ -35,17 +35,17 @@
 ```kotlin
 dependencies {
     // 核心库（Dynamic + Fixed scaling）
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.6")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.8")
     
     // 可选：SDP 和 SSP scaling
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.6")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.6")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.8")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.8")
     
     // 一体化包（不包括游戏模块）
-    implementation("io.github.bodenberg:appdimens-all:1.0.6")
+    implementation("io.github.bodenberg:appdimens-all:1.0.8")
     
     // 支持 C++/NDK 的游戏开发（单独依赖）
-    implementation("io.github.bodenberg:appdimens-games:1.0.6")
+    implementation("io.github.bodenberg:appdimens-games:1.0.8")
 }
 ```
 
@@ -58,7 +58,7 @@ pod 'AppDimens'
 
 ```swift
 // Swift Package Manager
-.package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.6")
+.package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.8")
 ```
 
 ---

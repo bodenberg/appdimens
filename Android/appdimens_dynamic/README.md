@@ -3,7 +3,7 @@
     <p><strong>Core Responsive Dimensioning for Android</strong></p>
     <p>The essential AppDimens module providing Fixed and Dynamic scaling models for Jetpack Compose, XML Views, and Data Binding.</p>
     
-[![Version](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Version](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
@@ -25,11 +25,55 @@
 
 ---
 
+## 📋 Requisitos Mínimos
+
+| Requisito | Versão Mínima | Recomendado |
+|-----------|---------------|-------------|
+| **Kotlin** | 2.0.0 | 2.2.20 |
+| **Android Gradle Plugin** | 8.0.0 | 8.13.0 |
+| **compileSdk** | 34 | 36 |
+| **minSdk** | 21 | 23 |
+| **targetSdk** | 34 | 36 |
+| **Jetpack Compose BOM** | 2024.01.00 | 2025.10.00 |
+| **Page Size** | Compatível com 16KB | ✅ |
+
+### Configuração do Projeto
+
+```kotlin
+// build.gradle.kts (Project)
+plugins {
+    id("com.android.application") version "8.13.0" apply false
+    id("org.jetbrains.kotlin.android") version "2.2.20" apply false
+}
+
+// build.gradle.kts (Module)
+android {
+    namespace = "com.example.app"
+    compileSdk = 36
+    
+    defaultConfig {
+        minSdk = 23
+        targetSdk = 36
+    }
+    
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+}
+```
+
+---
+
 ## 🚀 Installation
 
 ```kotlin
 dependencies {
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.6")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.8")
 }
 ```
 

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebDimens - Vanilla JS Example</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: #f5f5f5;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      min-height: 100vh;
+    }
+    
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 3px solid #764ba2;
+    }
+    
+    h1 {
+      font-weight: 700;
+    }
+    
+    main {
+      padding: var(--main-padding);
+    }
+    
+    .info {
+      background: #f9f9f9;
+      border-radius: var(--info-border-radius);
+      padding: var(--info-padding);
+      margin-bottom: var(--info-margin);
+      border-left: 4px solid #667eea;
+    }
+    
+    .info p {
+      margin: 8px 0;
+      font-size: var(--info-font-size);
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--grid-gap);
+    }
+    
+    .card {
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-radius: var(--card-border-radius);
+      padding: var(--card-padding);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card h3 {
+      color: #667eea;
+      margin-bottom: 12px;
+      font-size: var(--card-title-size);
+    }
+    
+    .card p {
+      color: #666;
+      line-height: 1.6;
+      font-size: var(--card-text-size);
+    }
+    
+    button {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: var(--button-padding);
+      border-radius: var(--button-border-radius);
+      cursor: pointer;
+      font-size: var(--button-font-size);
+      font-weight: 600;
+      transition: background 0.2s;
+      margin-top: 16px;
+    }
+    
+    button:hover {
+      background: #764ba2;
+    }
+    
+    button:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="container">
+    <header id="header">
+      <h1 id="title">WebDimens - Vanilla JS</h1>
+    </header>
+    
+    <main>
+      <div class="info">
+        <p><strong>Breakpoint:</strong> <span id="breakpoint">-</span></p>
+        <p><strong>Viewport:</strong> <span id="viewport">-</span></p>
+        <p><strong>Orientation:</strong> <span id="orientation">-</span></p>
+        <p><strong>Is Mobile:</strong> <span id="isMobile">-</span></p>
+      </div>
+      
+      <div class="grid" id="grid">
+        <div class="card">
+          <h3>Fixed Scaling (FX)</h3>
+          <p>Dimensões que crescem de forma logarítmica. Ideal para elementos de UI como botões, paddings e bordas.</p>
+          <button>Botão de Exemplo</button>
+        </div>
+        
+        <div class="card">
+          <h3>Dynamic Scaling (DY)</h3>
+          <p>Dimensões que crescem proporcionalmente. Perfeito para containers, grids e elementos que precisam de escala linear.</p>
+          <button>Clique Aqui</button>
+        </div>
+        
+        <div class="card">
+          <h3>Fluid Scaling (FL)</h3>
+          <p>Dimensões que crescem suavemente entre valores mín/máx. Ótimo para tipografia e elementos que precisam de transições suaves.</p>
+          <button>Saiba Mais</button>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <!-- Include WebDimens -->
+  <script src="../dist/index.js"></script>
+  <script type="module">
+    // Initialize WebDimens
+    import { webdimens, globalViewportObserver, breakpointManager } from '../dist/index.mjs';
+    
+    // Get elements
+    const header = document.getElementById('header');
+    const title = document.getElementById('title');
+    const container = document.getElementById('container');
+    const grid = document.getElementById('grid');
+    
+    const breakpointEl = document.getElementById('breakpoint');
+    const viewportEl = document.getElementById('viewport');
+    const orientationEl = document.getElementById('orientation');
+    const isMobileEl = document.getElementById('isMobile');
+    
+    // Function to update dimensions
+    function updateDimensions() {
+      // Header
+      header.style.height = webdimens.fx(64);
+      
+      // Title
+      title.style.fontSize = webdimens.fl(24, 48);
+      
+      // Container
+      container.style.padding = webdimens.dy(24);
+      
+      // CSS Variables
+      document.documentElement.style.setProperty('--main-padding', webdimens.dy(32));
+      document.documentElement.style.setProperty('--info-border-radius', webdimens.fx(8));
+      document.documentElement.style.setProperty('--info-padding', webdimens.fx(20));
+      document.documentElement.style.setProperty('--info-margin', webdimens.dy(24));
+      document.documentElement.style.setProperty('--info-font-size', webdimens.fl(14, 16));
+      
+      document.documentElement.style.setProperty('--grid-gap', webdimens.dy(24));
+      document.documentElement.style.setProperty('--card-border-radius', webdimens.fx(12));
+      document.documentElement.style.setProperty('--card-padding', webdimens.fx(24));
+      document.documentElement.style.setProperty('--card-title-size', webdimens.fl(18, 24));
+      document.documentElement.style.setProperty('--card-text-size', webdimens.fl(14, 16));
+      
+      document.documentElement.style.setProperty('--button-padding', `${webdimens.fx(12)} ${webdimens.fx(24)}`);
+      document.documentElement.style.setProperty('--button-border-radius', webdimens.fx(6));
+      document.documentElement.style.setProperty('--button-font-size', webdimens.fl(14, 16));
+    }
+    
+    // Function to update info
+    function updateInfo() {
+      const viewport = globalViewportObserver.getDimensions();
+      const breakpoint = breakpointManager.getCurrentBreakpoint();
+      
+      breakpointEl.textContent = breakpoint;
+      viewportEl.textContent = `${viewport.width}x${viewport.height}`;
+      orientationEl.textContent = viewport.orientation;
+      isMobileEl.textContent = breakpoint === 'mobile' ? 'Sim' : 'Não';
+    }
+    
+    // Listen to viewport changes
+    globalViewportObserver.observe((dimensions) => {
+      updateDimensions();
+      updateInfo();
+    });
+    
+    // Initial update
+    updateDimensions();
+    updateInfo();
+    
+    console.log('WebDimens initialized!');
+    console.log('Current breakpoint:', breakpointManager.getCurrentBreakpoint());
+    console.log('Viewport:', globalViewportObserver.getDimensions());
+  </script>
+</body>
+</html>
+

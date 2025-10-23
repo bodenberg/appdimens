@@ -3,7 +3,7 @@
     <p><strong>面向 Android 的响应式游戏开发（支持 C++/NDK）</strong></p>
     <p>专用模块，包含 OpenGL ES 工具、视口管理与游戏维度计算。</p>
 
-[![版本](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![版本](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![许可证](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![平台](https://img.shields.io/badge/platform-Android%2023+-orange.svg)](https://developer.android.com/)
 [![NDK](https://img.shields.io/badge/NDK-r21+-green.svg)](https://developer.android.com/ndk)
@@ -20,7 +20,7 @@
 
 ## 🚀 安装
 ```kotlin
-dependencies { implementation("io.github.bodenberg:appdimens-games:1.0.6") }
+dependencies { implementation("io.github.bodenberg:appdimens-games:1.0.8") }
 ```
 
 ## 🎨 用法（Kotlin）

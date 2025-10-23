@@ -64,7 +64,7 @@ open MyApp.xcworkspace
 No Xcode:
 1. File → Add Package Dependencies
 2. URL: `https://github.com/bodenberg/appdimens.git`
-3. Version: `1.0.7` ou superior
+3. Version: `1.0.8` ou superior
 4. Adicionar ao target
 
 ### 2. Importar nos Arquivos

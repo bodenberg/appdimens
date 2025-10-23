@@ -106,6 +106,48 @@ export class AppDimens {
   }
 
   /**
+   * [EN] Calculate percentage-based dimension in Dp.
+   * Compatible with Android API.
+   * [PT] Calcula dimensão baseada em porcentagem em Dp.
+   * Compatível com API Android.
+   */
+  public dynamicPercentageDp(
+    percentage: number,
+    type: 'lowest' | 'highest' = 'lowest',
+  ): number {
+    return this.percentage(percentage, type);
+  }
+
+  /**
+   * [EN] Calculate percentage-based dimension in physical pixels.
+   * Compatible with Android API.
+   * [PT] Calcula dimensão baseada em porcentagem em pixels físicos.
+   * Compatível com API Android.
+   */
+  public dynamicPercentagePx(
+    percentage: number,
+    type: 'lowest' | 'highest' = 'lowest',
+  ): number {
+    const dpValue = this.dynamicPercentageDp(percentage, type);
+    return AppDimensAdjustmentFactors.pointsToPixels(dpValue);
+  }
+
+  /**
+   * [EN] Calculate percentage-based dimension in scalable pixels (Sp).
+   * Compatible with Android API.
+   * [PT] Calcula dimensão baseada em porcentagem em pixels escaláveis (Sp).
+   * Compatível com API Android.
+   */
+  public dynamicPercentageSp(
+    percentage: number,
+    type: 'lowest' | 'highest' = 'lowest',
+  ): number {
+    const dpValue = this.dynamicPercentageDp(percentage, type);
+    const fontScale = AppDimensAdjustmentFactors.getFontScale();
+    return dpValue * fontScale;
+  }
+
+  /**
    * Calculate available item count in a container
    */
   public calculateAvailableItemCount(

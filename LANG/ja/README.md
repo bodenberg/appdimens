@@ -4,7 +4,7 @@
     <p><strong>AndroidとiOSのためのスマートでレスポンシブな寸法システム</strong></p>
     <p>数学的に正確なレスポンシブスケーリングにより、UIデザインがあらゆる画面サイズやアスペクト比に完璧に適応します — スマートフォンからテレビ、車、ウェアラブルまで。</p>
 
-[![バージョン](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![バージョン](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![ライセンス](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![プラットフォーム](https://img.shields.io/badge/platform-Android%20%7C%20iOS-orange.svg)](https://github.com/bodenberg/appdimens)
 [![ドキュメント](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)
@@ -35,17 +35,17 @@
 ```kotlin
 dependencies {
     // コアライブラリ（Dynamic + Fixed scaling）
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.6")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.8")
     
     // オプション：SDPとSSP scaling
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.6")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.6")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.8")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.8")
     
     // オールインワンパッケージ（ゲームモジュールは含まれません）
-    implementation("io.github.bodenberg:appdimens-all:1.0.6")
+    implementation("io.github.bodenberg:appdimens-all:1.0.8")
     
     // C++/NDKサポート付きゲーム開発（別の依存関係）
-    implementation("io.github.bodenberg:appdimens-games:1.0.6")
+    implementation("io.github.bodenberg:appdimens-games:1.0.8")
 }
 ```
 
@@ -58,7 +58,7 @@ pod 'AppDimens'
 
 ```swift
 // Swift Package Manager
-.package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.6")
+.package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.8")
 ```
 
 ---

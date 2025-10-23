@@ -3,7 +3,7 @@
     <p><strong>Адаптивная разработка игр для Android с поддержкой C++/NDK</strong></p>
     <p>Специализированный модуль с OpenGL ES, управлением вьюпортом и игровыми расчетами размеров.</p>
 
-[![Версия](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Версия](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![Лицензия](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![Платформа](https://img.shields.io/badge/platform-Android%2023+-orange.svg)](https://developer.android.com/)
 [![NDK](https://img.shields.io/badge/NDK-r21+-green.svg)](https://developer.android.com/ndk)
@@ -20,7 +20,7 @@
 
 ## 🚀 Установка
 ```kotlin
-dependencies { implementation("io.github.bodenberg:appdimens-games:1.0.6") }
+dependencies { implementation("io.github.bodenberg:appdimens-games:1.0.8") }
 ```
 
 ## 🎨 Использование (Kotlin)

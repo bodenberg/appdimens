@@ -24,7 +24,6 @@
 import 'package:flutter/material.dart';
 import 'appdimens_fixed.dart';
 import 'appdimens_dynamic.dart';
-import 'appdimens_types.dart';
 
 // MARK: - Double Extensions
 
@@ -229,51 +228,30 @@ extension AppDimensContainerExtension on Container {
   /// @param width O valor da largura.
   /// @param context O BuildContext.
   /// @return Um novo Container com a largura calculada.
-  Container fxWidth(double width, BuildContext context) {
-    return copyWith(
-      width: AppDimensFixed(width).calculate(context),
-    );
+  // NOTE: Container extensions commented out because Container doesn't expose
+  // its properties for copying. Use SizedBox or BoxConstraints extensions instead.
+  
+  /* Container fxWidth(double width, BuildContext context) {
+    // Container doesn't have a copyWith method and doesn't expose its properties
+    // Use: SizedBox(width: width.fxdp(context), child: this)
+    throw UnimplementedError('Use SizedBox with fxdp extension instead');
   }
 
-  /// [EN] Applies dynamic width to this container.
-  /// @param width The width value.
-  /// @param context The BuildContext.
-  /// @return A new Container with the calculated width.
-  /// [PT] Aplica largura dinâmica a este container.
-  /// @param width O valor da largura.
-  /// @param context O BuildContext.
-  /// @return Um novo Container com a largura calculada.
   Container dyWidth(double width, BuildContext context) {
-    return copyWith(
-      width: AppDimensDynamic(width).calculate(context),
-    );
+    // Container doesn't have a copyWith method and doesn't expose its properties
+    // Use: SizedBox(width: width.dydp(context), child: this)
+    throw UnimplementedError('Use SizedBox with dydp extension instead');
   }
 
-  /// [EN] Applies fixed height to this container.
-  /// @param height The height value.
-  /// @param context The BuildContext.
-  /// @return A new Container with the calculated height.
-  /// [PT] Aplica altura fixa a este container.
-  /// @param height O valor da altura.
-  /// @param context O BuildContext.
-  /// @return Um novo Container com a altura calculada.
   Container fxHeight(double height, BuildContext context) {
-    return copyWith(
-      height: AppDimensFixed(height).calculate(context),
-    );
+    // Container doesn't have a copyWith method and doesn't expose its properties
+    // Use: SizedBox(height: height.fxdp(context), child: this)
+    throw UnimplementedError('Use SizedBox with fxdp extension instead');
   }
 
-  /// [EN] Applies dynamic height to this container.
-  /// @param height The height value.
-  /// @param context The BuildContext.
-  /// @return A new Container with the calculated height.
-  /// [PT] Aplica altura dinâmica a este container.
-  /// @param height O valor da altura.
-  /// @param context O BuildContext.
-  /// @return Um novo Container com a altura calculada.
   Container dyHeight(double height, BuildContext context) {
-    return copyWith(
-      height: AppDimensDynamic(height).calculate(context),
-    );
-  }
+    // Container doesn't have a copyWith method and doesn't expose its properties
+    // Use: SizedBox(height: height.dydp(context), child: this)
+    throw UnimplementedError('Use SizedBox with dydp extension instead');
+  } */
 }

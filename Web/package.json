@@ -1,0 +1,105 @@
+{
+  "name": "webdimens",
+  "version": "1.0.8",
+  "description": "Sistema avançado de dimensionamento responsivo para web, baseado nos conceitos do AppDimens Android",
+  "author": "Jean Bodenberg",
+  "license": "Apache-2.0",
+  "keywords": [
+    "responsive",
+    "dimensions",
+    "layout",
+    "css",
+    "viewport",
+    "breakpoints",
+    "container-queries",
+    "design-system"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./react": {
+      "types": "./dist/integrations/react.d.ts",
+      "import": "./dist/integrations/react.mjs",
+      "require": "./dist/integrations/react.js"
+    },
+    "./vue": {
+      "types": "./dist/integrations/vue.d.ts",
+      "import": "./dist/integrations/vue.mjs",
+      "require": "./dist/integrations/vue.js"
+    },
+    "./svelte": {
+      "types": "./dist/integrations/svelte.d.ts",
+      "import": "./dist/integrations/svelte.mjs",
+      "require": "./dist/integrations/svelte.js"
+    },
+    "./angular": {
+      "types": "./dist/integrations/angular.d.ts",
+      "import": "./dist/integrations/angular.mjs",
+      "require": "./dist/integrations/angular.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.0.4"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "vue": ">=3.0.0",
+    "svelte": ">=3.0.0",
+    "@angular/core": ">=12.0.0",
+    "rxjs": ">=6.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "vue": {
+      "optional": true
+    },
+    "svelte": {
+      "optional": true
+    },
+    "@angular/core": {
+      "optional": true
+    },
+    "rxjs": {
+      "optional": true
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bodenberg/appdimens.git",
+    "directory": "Web"
+  },
+  "bugs": {
+    "url": "https://github.com/bodenberg/appdimens/issues"
+  },
+  "homepage": "https://github.com/bodenberg/appdimens#readme"
+}
+

@@ -11,17 +11,17 @@ It goes beyond the limitations of standard density-independent pixels (**Dp/Pt**
 ```kotlin
 dependencies {
     // Core (Dynamic + Fixed)
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.6")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.8")
 
     // SDP & SSP scaling (optional)
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.6")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.6")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.8")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.8")
 
     // All in one
-    implementation("io.github.bodenberg:appdimens-all:1.0.6")
+    implementation("io.github.bodenberg:appdimens-all:1.0.8")
     
     // Game development (separate dependency)
-    implementation("io.github.bodenberg:appdimens-games:1.0.6")
+    implementation("io.github.bodenberg:appdimens-games:1.0.8")
 }
 ```
 
@@ -29,28 +29,47 @@ dependencies {
 
 **AppDimens** is built on a platform-agnostic architecture. Its core scaling logic is identical across platforms, ensuring consistent dimension behavior wherever your code runs.
 
-| Platform              | Integration                                                                                | Supported Paradigms                                 |
-| :-------------------- | :----------------------------------------------------------------------------------------- | :-------------------------------------------------- |
-| **Android**           | Native. Extension libraries for **Jetpack Compose** and **View System (XML/Kotlin/Java)**. | Uses dynamically adjusted `Dp`, `Sp`, and `Px`.     |
-| **iOS/Multiplatform** | Core logic can be used with **Swift/SwiftUI** or **Kotlin Multiplatform (KMP)**.           | Uses dynamically scaled `CGFloat` for `Pt` or `Px`. |
+| Platform | Integration | Supported Paradigms |
+|:---------|:-----------|:-------------------|
+| **Android** | Native. Extension libraries for **Jetpack Compose**, **XML Views**, **Data Binding**, and **Games (C++/NDK)**. | Uses dynamically adjusted `Dp`, `Sp`, and `Px`. Pre-generated SDP/SSP resources. |
+| **iOS** | Native **Swift** with **SwiftUI**, **UIKit**, and **Metal** for games. CocoaPods and Swift Package Manager support. | Uses dynamically scaled `CGFloat` for `Pt` or `Px`. Game-specific viewport scaling. |
+| **Flutter** | **Dart** package with extension methods for `double`. Platform-adaptive widgets for all Flutter targets. | Works on Android, iOS, Web, Windows, macOS, Linux with `fxdp()`, `dydp()`, `fxsp()`, `dysp()`. |
+| **React Native** | **TypeScript/JavaScript** with React hooks. Zero native dependencies, pure JS implementation. | Platform-agnostic Fixed, Dynamic, and Fluid scaling for Android and iOS. |
+| **Web** | **Framework-agnostic** core with integrations for **React**, **Vue**, **Svelte**, **Angular**, and **Vanilla JS**. | CSS-compatible output (`px`, `rem`, `clamp()`). Media query and breakpoint support. |
 
 ---
 
-### 🧠 The Core of the Library: Two Scaling Models
+### 🧠 The Core of the Library: Three Main Scaling Models
 
-The power of AppDimens lies in its two mathematical scaling models. Developers can choose the best fit for each component, achieving responsiveness that goes far beyond simple “screen size” rules.
+The power of AppDimens lies in its multiple mathematical scaling models. Developers can choose the best fit for each component, achieving responsiveness that goes far beyond simple "screen size" rules.
 
 #### 1. Fixed (FX): Subtle and Logarithmic Scaling
 
-* **Philosophy:** **Smooth** and **controlled** growth. The adjustment is based on the screen’s **Smallest Width DP** and modulated by a **logarithmic function** that factors in the **Aspect Ratio**.
+* **Philosophy:** **Smooth** and **controlled** growth. The adjustment is based on the screen's **Smallest Width DP** and modulated by a **logarithmic function** that factors in the **Aspect Ratio**.
 * **Highlight:** Prevents excessive growth of paddings and margins on wide tablets or 4K monitors. Ideal for preserving information density.
-* **Best Use:** Paddings, margins, touch target heights (buttons, text fields), small icons.
+* **Best Use:** Paddings, margins, touch target heights (buttons, text fields), small icons, consistent typography.
+* **Platforms:** Android, iOS, Flutter, React Native, Web
 
 #### 2. Dynamic (DY): Proportional and Aggressive Scaling
 
-* **Philosophy:** **Aggressive**, **proportional** growth. The adjusted value maintains the **same percentage of the reference screen**. If an element takes up 25% of a phone screen’s width, it will also take up 25% on a tablet.
+* **Philosophy:** **Aggressive**, **proportional** growth. The adjusted value maintains the **same percentage of the reference screen**. If an element takes up 25% of a phone screen's width, it will also take up 25% on a tablet.
 * **Highlight:** Includes logic to mitigate issues in **Multi-Window (Split Screen)** mode, disabling aggressive scaling when the UI is squeezed, avoiding layout breakage.
-* **Best Use:** Container widths, large elements (e.g., hero images), or when text size should scale with viewport size.
+* **Best Use:** Container widths, large elements (e.g., hero images), grids, when text size should scale with viewport size.
+* **Platforms:** Android, iOS, Flutter, React Native, Web
+
+#### 3. Fluid (FL): Clamp-Based Smooth Transitions
+
+* **Philosophy:** **Smooth interpolation** between minimum and maximum values. Uses CSS `clamp()` on Web and min-max calculations on other platforms.
+* **Highlight:** Perfect for responsive typography and elements that need smooth, viewport-based transitions without breakpoints.
+* **Best Use:** Typography scaling, hero text, adaptive layouts that transition smoothly across all screen sizes.
+* **Platforms:** Web (primary), React Native
+
+#### 4. SDP/SSP: Pre-Calculated Resource Scaling (Android)
+
+* **Philosophy:** Pre-generated dimension resources for direct use in XML layouts and Data Binding.
+* **Highlight:** 426+ dimension files covering all common screen configurations. Includes code package for programmatic access.
+* **Best Use:** XML-based Android apps, legacy projects, when compile-time resource generation is preferred.
+* **Platforms:** Android only
 
 ---
 

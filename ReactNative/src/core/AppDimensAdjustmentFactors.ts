@@ -249,6 +249,16 @@ export class AppDimensAdjustmentFactors {
   }
 
   /**
+   * [EN] Get the system font scale factor.
+   * Compatible with Android/iOS API.
+   * [PT] Obtém o fator de escala de fonte do sistema.
+   * Compatível com API Android/iOS.
+   */
+  public static getFontScale(): number {
+    return PixelRatio.getFontScale();
+  }
+
+  /**
    * Convert pixels to points
    */
   public static pixelsToPoints(pixels: number): number {

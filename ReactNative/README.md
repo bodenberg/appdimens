@@ -4,7 +4,7 @@
 
 Mathematically responsive scaling that ensures your UI design adapts perfectly to any screen size or aspect ratio — from phones to tablets, TVs, and wearables.
 
-[![Version](https://img.shields.io/badge/version-1.0.7-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Version](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-React%20Native-orange.svg)](https://reactnative.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-4.8+-blue.svg)](https://www.typescriptlang.org/)
@@ -24,6 +24,25 @@ Mathematically responsive scaling that ensures your UI design adapts perfectly t
 - **📐 Mathematical Precision**: Two scaling models (Fixed & Dynamic) for different design needs
 - **🎮 Game Development**: Specialized scaling for game UI elements
 - **🚀 TypeScript**: Full TypeScript support with comprehensive type definitions
+
+---
+
+## 📋 Requisitos Mínimos
+
+| Requisito | Versão Mínima | Recomendado |
+|-----------|---------------|-------------|
+| **React Native** | 0.68.0 | 0.73.0+ |
+| **React** | 16.8.0 | 18.2.0+ |
+| **TypeScript** | 4.8.0+ | 5.3.0+ |
+| **Node.js** | 16.0.0 | 20.0.0+ |
+
+### Plataformas Suportadas
+
+| Plataforma | Min Version | Special Features | Native Support |
+|------------|-------------|------------------|----------------|
+| **iOS** | 11.0+ | Metal integration | Native modules |
+| **Android** | API 21+ | OpenGL ES support | Native modules |
+| **Web** | Navegadores modernos | CSS integration | DOM APIs |
 
 ---
 

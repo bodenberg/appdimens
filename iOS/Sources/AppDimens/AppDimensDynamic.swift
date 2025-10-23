@@ -502,4 +502,58 @@ public class AppDimensDynamic {
     public func toPixelsInt() -> Int {
         return Int(toPixels())
     }
+    
+    /**
+     * [EN] Returns the dynamically adjusted value in scalable pixels (sp) for text.
+     * This respects the system font scale setting.
+     * Compatible with Android API.
+     * @return The value in sp as a CGFloat.
+     * [PT] Retorna o valor ajustado dinamicamente em pixels escaláveis (sp) para texto.
+     * Isso respeita a configuração de escala de fonte do sistema.
+     * Compatível com API Android.
+     * @return O valor em sp como CGFloat.
+     */
+    public func toSp() -> CGFloat {
+        let adjustedValue = calculateAdjustedValue()
+        let fontScale = AppDimensAdjustmentFactors.getFontScale()
+        return adjustedValue * fontScale
+    }
+    
+    /**
+     * [EN] Returns the dynamically adjusted value as an integer in scalable pixels (sp).
+     * Compatible with Android API.
+     * @return The value in sp as an Int.
+     * [PT] Retorna o valor ajustado dinamicamente como inteiro em pixels escaláveis (sp).
+     * Compatível com API Android.
+     * @return O valor em sp como Int.
+     */
+    public func toSpInt() -> Int {
+        return Int(toSp())
+    }
+    
+    /**
+     * [EN] Returns the dynamically adjusted value in em units (ignoring font scale).
+     * This is similar to sp but without the font scale factor applied.
+     * Compatible with Android API.
+     * @return The value in em as a CGFloat.
+     * [PT] Retorna o valor ajustado dinamicamente em unidades em (ignorando escala de fonte).
+     * Isso é similar ao sp mas sem o fator de escala de fonte aplicado.
+     * Compatível com API Android.
+     * @return O valor em em como CGFloat.
+     */
+    public func toEm() -> CGFloat {
+        return calculateAdjustedValue()
+    }
+    
+    /**
+     * [EN] Returns the dynamically adjusted value as an integer in em units.
+     * Compatible with Android API.
+     * @return The value in em as an Int.
+     * [PT] Retorna o valor ajustado dinamicamente como inteiro em unidades em.
+     * Compatível com API Android.
+     * @return O valor em em como Int.
+     */
+    public func toEmInt() -> Int {
+        return Int(toEm())
+    }
 }

@@ -3,7 +3,7 @@
     <p><strong>Android 向け C++/NDK 対応のレスポンシブなゲーム開発</strong></p>
     <p>OpenGL ES ユーティリティ、ビューポート管理、ゲーム用寸法計算を備えた専用モジュール。</p>
 
-[![バージョン](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![バージョン](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![ライセンス](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![プラットフォーム](https://img.shields.io/badge/platform-Android%2023+-orange.svg)](https://developer.android.com/)
 [![NDK](https://img.shields.io/badge/NDK-r21+-green.svg)](https://developer.android.com/ndk)
@@ -20,7 +20,7 @@
 
 ## 🚀 インストール
 ```kotlin
-dependencies { implementation("io.github.bodenberg:appdimens-games:1.0.6") }
+dependencies { implementation("io.github.bodenberg:appdimens-games:1.0.8") }
 ```
 
 ## 🎨 使い方（Kotlin）

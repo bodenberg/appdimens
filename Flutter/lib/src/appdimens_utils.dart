@@ -21,8 +21,10 @@
  * limitations under the License.
  */
 
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'appdimens_types.dart';
+import 'appdimens_physical_units.dart';
 
 /// [EN] Utility class for AppDimens calculations and operations.
 /// [PT] Classe utilitária para cálculos e operações do AppDimens.
@@ -38,148 +40,45 @@ class AppDimensUtils {
   static ScreenAdjustmentFactors calculateAdjustmentFactors(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final size = mediaQuery.size;
-    final devicePixelRatio = mediaQuery.devicePixelRatio;
     
     final screenWidth = size.width;
     final screenHeight = size.height;
-    final screenDiagonal = _calculateScreenDiagonal(screenWidth, screenHeight);
     
     final deviceType = DeviceType.current(context);
-    final uiModeType = UiModeType.current(context);
     
-    // Calculate base dimension (smallest dimension for scaling)
-    final baseDimension = screenWidth < screenHeight ? screenWidth : screenHeight;
+    // Base dimensions
+    const double baseWidthDp = 360.0; // Reference base width
+    final baseDimensionLowest = screenWidth < screenHeight ? screenWidth : screenHeight;
+    final baseDimensionHighest = screenWidth > screenHeight ? screenWidth : screenHeight;
     
     // Calculate aspect ratio factor
     final aspectRatio = screenWidth / screenHeight;
     final aspectRatioFactor = _calculateAspectRatioFactor(aspectRatio, deviceType);
     
-    // Calculate density factor
-    final densityFactor = _calculateDensityFactor(devicePixelRatio, deviceType);
+    // Calculate base adjustment factors
+    final adjustmentFactorLowest = baseDimensionLowest / baseWidthDp;
+    final adjustmentFactorHighest = baseDimensionHighest / baseWidthDp;
     
-    // Calculate device type factor
-    final deviceTypeFactor = _calculateDeviceTypeFactor(deviceType, uiModeType);
+    // Calculate complete factors with AR
+    final withArFactorLowest = adjustmentFactorLowest * aspectRatioFactor;
+    final withArFactorHighest = adjustmentFactorHighest * aspectRatioFactor;
+    
+    // Factor without AR (uses lowest for safety)
+    final withoutArFactor = adjustmentFactorLowest;
     
     return ScreenAdjustmentFactors(
-      screenWidth: screenWidth,
-      screenHeight: screenHeight,
-      screenDiagonal: screenDiagonal,
-      devicePixelRatio: devicePixelRatio,
-      baseDimension: baseDimension,
-      aspectRatio: aspectRatio,
-      aspectRatioFactor: aspectRatioFactor,
-      densityFactor: densityFactor,
-      deviceTypeFactor: deviceTypeFactor,
-      deviceType: deviceType,
-      uiModeType: uiModeType,
+      withArFactorLowest: withArFactorLowest,
+      withArFactorHighest: withArFactorHighest,
+      withoutArFactor: withoutArFactor,
+      adjustmentFactorLowest: adjustmentFactorLowest,
+      adjustmentFactorHighest: adjustmentFactorHighest,
     );
   }
 
-  /// [EN] Calculates the screen diagonal in logical pixels.
-  /// @param width Screen width in logical pixels.
-  /// @param height Screen height in logical pixels.
-  /// @return The diagonal length in logical pixels.
-  /// [PT] Calcula a diagonal da tela em pixels lógicos.
-  /// @param width Largura da tela em pixels lógicos.
-  /// @param height Altura da tela em pixels lógicos.
-  /// @return O comprimento da diagonal em pixels lógicos.
-  static double _calculateScreenDiagonal(double width, double height) {
-    return (width * width + height * height).sqrt();
-  }
-
-  /// [EN] Calculates the aspect ratio adjustment factor.
-  /// @param aspectRatio The current aspect ratio.
-  /// @param deviceType The current device type.
-  /// @return The aspect ratio factor.
-  /// [PT] Calcula o fator de ajuste de proporção.
-  /// @param aspectRatio A proporção atual.
-  /// @param deviceType O tipo de dispositivo atual.
-  /// @return O fator de proporção.
-  static double _calculateAspectRatioFactor(double aspectRatio, DeviceType deviceType) {
-    // Standard aspect ratios for different device types
-    final standardRatios = {
-      DeviceType.phone: 16.0 / 9.0, // Standard phone ratio
-      DeviceType.tablet: 4.0 / 3.0, // Standard tablet ratio
-      DeviceType.watch: 1.0, // Square watch
-      DeviceType.tv: 16.0 / 9.0, // Standard TV ratio
-      DeviceType.carPlay: 16.0 / 9.0, // Car display ratio
-      DeviceType.desktop: 16.0 / 9.0, // Desktop ratio
-      DeviceType.foldable: 16.0 / 10.0, // Foldable ratio
-      DeviceType.unknown: 16.0 / 9.0, // Default ratio
-    };
-    
-    final standardRatio = standardRatios[deviceType] ?? 16.0 / 9.0;
-    final ratioDifference = (aspectRatio - standardRatio).abs() / standardRatio;
-    
-    // Return a factor that adjusts based on how far the current ratio is from standard
-    // Closer to standard ratio = factor closer to 1.0
-    return 1.0 - (ratioDifference * 0.1); // Max 10% adjustment
-  }
-
-  /// [EN] Calculates the density adjustment factor.
-  /// @param devicePixelRatio The device pixel ratio.
-  /// @param deviceType The current device type.
-  /// @return The density factor.
-  /// [PT] Calcula o fator de ajuste de densidade.
-  /// @param devicePixelRatio A proporção de pixels do dispositivo.
-  /// @param deviceType O tipo de dispositivo atual.
-  /// @return O fator de densidade.
-  static double _calculateDensityFactor(double devicePixelRatio, DeviceType deviceType) {
-    // Standard densities for different device types
-    final standardDensities = {
-      DeviceType.phone: 2.0, // Standard phone density
-      DeviceType.tablet: 2.0, // Standard tablet density
-      DeviceType.watch: 2.0, // Standard watch density
-      DeviceType.tv: 1.0, // TV density (usually lower)
-      DeviceType.carPlay: 2.0, // Car display density
-      DeviceType.desktop: 1.0, // Desktop density (usually lower)
-      DeviceType.foldable: 2.5, // Foldable density (usually higher)
-      DeviceType.unknown: 2.0, // Default density
-    };
-    
-    final standardDensity = standardDensities[deviceType] ?? 2.0;
-    final densityDifference = (devicePixelRatio - standardDensity).abs() / standardDensity;
-    
-    // Return a factor that adjusts based on density difference
-    return 1.0 - (densityDifference * 0.05); // Max 5% adjustment
-  }
-
-  /// [EN] Calculates the device type adjustment factor.
-  /// @param deviceType The current device type.
-  /// @param uiModeType The current UI mode type.
-  /// @return The device type factor.
-  /// [PT] Calcula o fator de ajuste do tipo de dispositivo.
-  /// @param deviceType O tipo de dispositivo atual.
-  /// @param uiModeType O tipo de modo de UI atual.
-  /// @return O fator do tipo de dispositivo.
-  static double _calculateDeviceTypeFactor(DeviceType deviceType, UiModeType uiModeType) {
-    // Base factors for different device types
-    final baseFactors = {
-      DeviceType.phone: 1.0,
-      DeviceType.tablet: 1.2, // Tablets get slightly larger scaling
-      DeviceType.watch: 0.8, // Watches get smaller scaling
-      DeviceType.tv: 1.5, // TVs get larger scaling
-      DeviceType.carPlay: 1.3, // Car displays get larger scaling
-      DeviceType.desktop: 1.1, // Desktop gets slightly larger scaling
-      DeviceType.foldable: 1.1, // Foldables get slightly larger scaling
-      DeviceType.unknown: 1.0, // Default factor
-    };
-    
-    // UI mode adjustments
-    final uiModeFactors = {
-      UiModeType.normal: 1.0,
-      UiModeType.carPlay: 1.2, // Car mode gets larger scaling
-      UiModeType.tv: 1.3, // TV mode gets larger scaling
-      UiModeType.watch: 0.9, // Watch mode gets smaller scaling
-      UiModeType.mac: 1.1, // Mac mode gets slightly larger scaling
-      UiModeType.unknown: 1.0, // Default factor
-    };
-    
-    final baseFactor = baseFactors[deviceType] ?? 1.0;
-    final uiModeFactor = uiModeFactors[uiModeType] ?? 1.0;
-    
-    return baseFactor * uiModeFactor;
-  }
+  // NOTE: Helper methods for advanced calculations (_calculateScreenDiagonal,
+  // _calculateAspectRatioFactor, _calculateDensityFactor, _calculateDeviceTypeFactor)
+  // were removed as they were not being used. They can be restored from git history
+  // if needed in future versions.
 
   /// [EN] Determines if the current context is in multi-window mode.
   /// @param context The BuildContext.
@@ -291,6 +190,8 @@ class AppDimensUtils {
     switch (unit) {
       case UnitType.px:
         return value / devicePixelRatio;
+      case UnitType.dp:
+        return value; // dp is already in logical pixels
       case UnitType.pt:
         return value;
       case UnitType.sp:
@@ -325,6 +226,8 @@ class AppDimensUtils {
     switch (unit) {
       case UnitType.px:
         return value * devicePixelRatio;
+      case UnitType.dp:
+        return value; // dp is already in logical pixels
       case UnitType.pt:
         return value;
       case UnitType.sp:

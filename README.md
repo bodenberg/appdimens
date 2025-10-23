@@ -1,12 +1,12 @@
 <div align="center">
     <img src="IMAGES/image_sample_devices.png" alt="AppDimens - Responsive Design Across All Devices" height="300"/>
     <h1>📐 AppDimens</h1>
-    <p><strong>Smart and Responsive Dimensioning for Android & iOS</strong></p>
-    <p>Mathematically responsive scaling that ensures your UI design adapts perfectly to any screen size or aspect ratio — from phones to TVs, cars, and wearables.</p>
+    <p><strong>Universal Smart and Responsive Dimensioning System</strong></p>
+    <p>Mathematically responsive scaling that ensures your UI design adapts perfectly to any screen size or aspect ratio — from phones to TVs, cars, wearables, and web browsers.</p>
 
-[![Version](https://img.shields.io/badge/version-1.0.7-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Version](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
-[![Platform](https://img.shields.io/badge/platform-Android%20%7C%20iOS-orange.svg)](https://github.com/bodenberg/appdimens)
+[![Platform](https://img.shields.io/badge/platform-Android%20%7C%20iOS%20%7C%20Flutter%20%7C%20React%20Native%20%7C%20Web-orange.svg)](https://github.com/bodenberg/appdimens)
 [![Documentation](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)
 </div>
 
@@ -16,15 +16,17 @@
 
 ## 🎯 What is AppDimens?
 
-**AppDimens** is a comprehensive dimensioning system that replaces fixed pixel values with intelligently scaled dimensions based on actual screen characteristics. While traditional DP/Points are constant, AppDimens treats them as base values that scale predictably across different screen sizes, densities, and aspect ratios.
+**AppDimens** is a universal, cross-platform dimensioning system that replaces fixed pixel values with intelligently scaled dimensions based on actual screen characteristics. While traditional DP/Points/Pixels are constant, AppDimens treats them as base values that scale predictably across different screen sizes, densities, aspect ratios, and platforms.
 
 ### 🎨 Key Benefits
 
-- **🎯 Visual Consistency**: Maintain perfect proportions across all device types
-- **📱 Universal Compatibility**: Works seamlessly on phones, tablets, TVs, cars, and wearables
-- **⚡ Performance Optimized**: Minimal runtime overhead with cached calculations
-- **🔧 Easy Integration**: Simple API that works with Jetpack Compose, XML Views, SwiftUI, and UIKit
-- **📐 Mathematical Precision**: Two scaling models (Fixed & Dynamic) for different design needs
+- **🎯 Visual Consistency**: Maintain perfect proportions across all device types and platforms
+- **📱 Universal Compatibility**: Works seamlessly on Android, iOS, Flutter, React Native, and Web
+- **🌐 Cross-Platform**: Consistent API and scaling behavior across all supported frameworks
+- **⚡ Performance Optimized**: Minimal runtime overhead with intelligent caching
+- **🔧 Easy Integration**: Simple API for Jetpack Compose, SwiftUI, Flutter Widgets, React hooks, and more
+- **📐 Mathematical Precision**: Multiple scaling models (Fixed, Dynamic, Fluid) for different design needs
+- **🎮 Game Support**: Specialized modules for game development with Metal and OpenGL integration
 
 ---
 
@@ -35,39 +37,71 @@
 ```kotlin
 dependencies {
     // Core library (Dynamic + Fixed scaling)
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.7")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.8")
     
     // Optional: SDP & SSP scaling
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.7")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.7")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.8")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.8")
     
     // All-in-one package (does not include games module)
-    implementation("io.github.bodenberg:appdimens-all:1.0.7")
+    implementation("io.github.bodenberg:appdimens-all:1.0.8")
     
     // Game development with C++/NDK support (separate dependency)
-    implementation("io.github.bodenberg:appdimens-games:1.0.7")
+    implementation("io.github.bodenberg:appdimens-games:1.0.8")
 }
 ```
-
-### New Features in v1.0.6
-
-- **🎮 Games Module**: Complete C++/NDK support for game development with Metal (iOS) and OpenGL ES (Android)
-- **📏 Physical Units**: Convert real-world measurements (mm, cm, inches) to screen pixels
-- **🌐 Environment System**: Advanced environment-based responsive design with protocol-based APIs
-- **📊 Item Count Calculator**: Calculate optimal grid layouts and item counts
-- **⚡ Performance Settings**: Configurable caching and performance optimization
-- **🔧 Advanced Protocols**: Protocol-based API design for better extensibility
 
 ### iOS
 
 ```ruby
 # Podfile
-pod 'AppDimens'
+pod 'AppDimens', '~> 1.0.8'
 ```
 
 ```swift
 // Swift Package Manager
-.package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.7")
+.package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.8")
+```
+
+### Flutter
+
+```yaml
+# pubspec.yaml
+dependencies:
+  appdimens: ^1.0.8
+```
+
+### React Native
+
+```bash
+npm install react-native-appdimens@1.0.8
+# or
+yarn add react-native-appdimens@1.0.8
+```
+
+### Web
+
+```bash
+npm install webdimens@1.0.8
+# or
+yarn add webdimens@1.0.8
+```
+
+```typescript
+// React
+import { useWebDimens } from 'webdimens/react';
+
+// Vue
+import { useWebDimens } from 'webdimens/vue';
+
+// Svelte
+import { webDimensStore } from 'webdimens/svelte';
+
+// Angular
+import { WebDimensService } from 'webdimens/angular';
+
+// Vanilla JS
+import { webdimens } from 'webdimens';
 ```
 
 ---
@@ -76,11 +110,12 @@ pod 'AppDimens'
 
 | Model | Philosophy | Ideal Use Case | Supported Platforms | Implementation |
 |-------|------------|----------------|-------------------|----------------|
-| **Fixed (FX)** | Logarithmic scaling (refined) | Buttons, paddings, margins, icons | Android + iOS | Mathematical aspect ratio adjustment |
-| **Dynamic (DY)** | Proportional scaling (aggressive) | Containers, grids, fluid fonts | Android + iOS | Screen-based proportional scaling |
+| **Fixed (FX)** | Logarithmic scaling (refined) | Buttons, paddings, margins, icons, fonts | Android, iOS, Flutter, React Native, Web | Mathematical aspect ratio adjustment |
+| **Dynamic (DY)** | Proportional scaling (aggressive) | Containers, grids, large elements | Android, iOS, Flutter, React Native, Web | Screen-based proportional scaling |
+| **Fluid (FL)** | Clamp-based smooth transitions | Typography, adaptive layouts | Web, React Native | CSS clamp() / min-max interpolation |
 | **SDP / SSP** | Pre-calculated resources | Direct `@dimen` usage in XML | Android | 426+ pre-generated dimension files |
-| **Physical Units** | mm/cm/inch → Dp/Sp/Px/Points | Wearables, printing, precision layouts | Android + iOS | Real-world measurement conversion |
-| **Game Dimensions** | Specialized scaling for games | Game UI, viewports, Metal/OpenGL | Android + iOS | C++/NDK + Metal native implementation |
+| **Physical Units** | mm/cm/inch → Dp/Sp/Px/Points | Wearables, printing, precision layouts | Android, iOS, Web | Real-world measurement conversion |
+| **Game Dimensions** | Specialized scaling for games | Game UI, viewports, Metal/OpenGL | Android, iOS | C++/NDK + Metal native implementation |
 
 ---
 
@@ -208,6 +243,111 @@ struct GameView: View {
         android:layout_height="@dimen/_48sdp"
         android:text="Action" />
 </LinearLayout>
+```
+
+### 🎯 Flutter
+
+```dart
+import 'package:appdimens/appdimens.dart';
+
+class ResponsiveCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 300.dydp(),          // Dynamic width
+      height: 200.fxdp(),         // Fixed height
+      padding: EdgeInsets.all(16.fxdp()),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12.fxdp()),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Title',
+            style: TextStyle(
+              fontSize: 18.fxsp(),   // Fixed text size
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 8.fxdp()),
+          Text(
+            'Content',
+            style: TextStyle(fontSize: 14.dysp()),  // Dynamic text size
+          ),
+        ],
+      ),
+    );
+  }
+}
+```
+
+### ⚛️ React Native
+
+```typescript
+import { useAppDimens } from 'react-native-appdimens';
+
+function ResponsiveCard() {
+  const { fixed, dynamic } = useAppDimens();
+  
+  return (
+    <View style={{
+      width: dynamic(300),
+      height: fixed(200),
+      padding: fixed(16),
+      borderRadius: fixed(12),
+      backgroundColor: '#fff',
+    }}>
+      <Text style={{ 
+        fontSize: fixed(18),
+        fontWeight: 'bold' 
+      }}>
+        Title
+      </Text>
+      <Text style={{ fontSize: dynamic(14) }}>
+        Content
+      </Text>
+    </View>
+  );
+}
+```
+
+### 🌐 Web - React
+
+```tsx
+import { useWebDimens } from 'webdimens/react';
+
+function ResponsiveCard() {
+  const { fx, dy, fl } = useWebDimens();
+  
+  return (
+    <div style={{
+      width: dy(300),
+      height: fx(200),
+      padding: fx(16),
+      borderRadius: fx(12),
+      fontSize: fl(14, 18),  // Fluid typography
+      backgroundColor: '#fff',
+    }}>
+      <h2 style={{ fontSize: fx(18) }}>Title</h2>
+      <p>Content with fluid scaling</p>
+    </div>
+  );
+}
+```
+
+### 🌐 Web - Vanilla JS
+
+```javascript
+import { webdimens } from 'webdimens';
+
+const card = document.createElement('div');
+card.style.width = webdimens.dy(300);
+card.style.height = webdimens.fx(200);
+card.style.padding = webdimens.fx(16);
+card.style.borderRadius = webdimens.fx(12);
+card.style.fontSize = webdimens.fl(14, 18);
 ```
 
 ---

@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "AppDimens"
-  spec.version      = "1.0.7"
+  spec.version      = "1.0.8"
   spec.summary      = "A responsive dimension management system for iOS that automatically adjusts values based on screen dimensions"
   spec.description  = <<-DESC
                       AppDimens is a dimension management system that automatically adjusts Dp, Sp, and Px values in a responsive and mathematically refined way, ensuring layout consistency across any screen size or ratio. It provides two main scaling models: Fixed (FX) for subtle logarithmic adjustment and Dynamic (DY) for proportional adjustment.

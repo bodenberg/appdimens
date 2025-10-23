@@ -3,7 +3,7 @@
     <p><strong>条件付きルールによるダイナミックなスケーリング</strong></p>
     <p>優先度ベースの条件ルールで、Compose と XML レイアウトのレスポンシブなスケーリングを実現する SDP（Scaled DP）。</p>
 
-[![バージョン](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![バージョン](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![ライセンス](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![プラットフォーム](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
@@ -19,7 +19,7 @@
 
 ## 🚀 インストール
 ```kotlin
-dependencies { implementation("io.github.bodenberg:appdimens-sdps:1.0.6") }
+dependencies { implementation("io.github.bodenberg:appdimens-sdps:1.0.8") }
 ```
 
 ## 🎨 例（Compose）

@@ -1,12 +1,14 @@
 /**
  * Author & Developer: Jean Bodenberg
  * GIT: https://github.com/bodenberg/appdimens.git
- * Date: 2025-01-15
+ * Date: 2025-01-23
  *
  * Library: AppDimens Flutter - Physical Units
  *
  * Description:
- * Physical units conversion and management for real-world measurements.
+ * Physical units conversion utilities for AppDimens Flutter library,
+ * providing conversion between physical measurements (mm, cm, inch) and dp/px.
+ * Compatible with Android/iOS API.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,16 +23,41 @@
  * limitations under the License.
  */
 
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'appdimens_types.dart';
-import 'appdimens_utils.dart';
 
-/// [EN] Physical units manager for converting real-world measurements to screen pixels.
-/// [PT] Gerenciador de unidades físicas para converter medidas do mundo real para pixels da tela.
+/// [EN] Defines the supported physical measurement units for conversion
+/// into logical pixels.
+/// [PT] Define as unidades de medida física suportadas para conversão
+/// em pixels lógicos.
+enum UnitType {
+  mm,
+  cm,
+  inch,
+  dp,
+  sp,
+  pt,
+  px,
+}
+
+/// [EN] Utility class for physical unit conversions.
+/// Compatible with Android/iOS API.
+/// [PT] Classe utilitária para conversões de unidades físicas.
+/// Compatível com API Android/iOS.
 class AppDimensPhysicalUnits {
-  AppDimensPhysicalUnits._();
+  // MARK: - Constants
 
-  // MARK: - Conversion Constants
+  /// [EN] Points per inch (standard resolution).
+  /// [PT] Pontos por polegada (resolução padrão).
+  static const double pointsPerInch = 72.0;
+
+  /// [EN] Points per centimeter.
+  /// [PT] Pontos por centímetro.
+  static const double pointsPerCm = pointsPerInch / 2.54;
+
+  /// [EN] Points per millimeter.
+  /// [PT] Pontos por milímetro.
+  static const double pointsPerMm = pointsPerCm / 10.0;
 
   /// [EN] Millimeters per inch.
   /// [PT] Milímetros por polegada.
@@ -40,233 +67,345 @@ class AppDimensPhysicalUnits {
   /// [PT] Centímetros por polegada.
   static const double cmPerInch = 2.54;
 
-  /// [EN] Points per inch (standard for print).
-  /// [PT] Pontos por polegada (padrão para impressão).
-  static const double pointsPerInch = 72.0;
+  // MARK: - Conversion Methods (MM)
 
-  /// [EN] Pixels per inch (standard for screens).
-  /// [PT] Pixels por polegada (padrão para telas).
-  static const double pixelsPerInch = 96.0;
-
-  // MARK: - Conversion Methods
-
-  /// [EN] Converts millimeters to logical pixels.
+  /// [EN] Converts millimeters to density-independent pixels (dp).
   /// @param mm The value in millimeters.
   /// @param context The BuildContext.
-  /// @return The value in logical pixels.
-  /// [PT] Converte milímetros para pixels lógicos.
+  /// @return The value in dp.
+  /// [PT] Converte milímetros para pixels independentes de densidade (dp).
   /// @param mm O valor em milímetros.
   /// @param context O BuildContext.
-  /// @return O valor em pixels lógicos.
-  static double mmToPixels(double mm, BuildContext context) {
-    return AppDimensUtils.convertUnit(mm, UnitType.mm, UnitType.pt, context);
+  /// @return O valor em dp.
+  static double toDpFromMm(double mm, BuildContext context) {
+    final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
+    final ppi = devicePixelRatio * 160.0; // Android default PPI
+    return (mm / mmPerInch) * ppi / devicePixelRatio;
   }
 
-  /// [EN] Converts centimeters to logical pixels.
+  /// [EN] Converts millimeters to physical pixels (px).
+  /// @param mm The value in millimeters.
+  /// @param context The BuildContext.
+  /// @return The value in pixels.
+  /// [PT] Converte milímetros para pixels físicos (px).
+  /// @param mm O valor em milímetros.
+  /// @param context O BuildContext.
+  /// @return O valor em pixels.
+  static double toPxFromMm(double mm, BuildContext context) {
+    final dpValue = toDpFromMm(mm, context);
+    final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
+    return dpValue * devicePixelRatio;
+  }
+
+  /// [EN] Converts millimeters to scalable pixels (sp).
+  /// @param mm The value in millimeters.
+  /// @param context The BuildContext.
+  /// @return The value in sp.
+  /// [PT] Converte milímetros para pixels escaláveis (sp).
+  /// @param mm O valor em milímetros.
+  /// @param context O BuildContext.
+  /// @return O valor em sp.
+  static double toSpFromMm(double mm, BuildContext context) {
+    final dpValue = toDpFromMm(mm, context);
+    final textScaleFactor = MediaQuery.of(context).textScaleFactor;
+    return dpValue * textScaleFactor;
+  }
+
+  // MARK: - Conversion Methods (CM)
+
+  /// [EN] Converts centimeters to density-independent pixels (dp).
   /// @param cm The value in centimeters.
   /// @param context The BuildContext.
-  /// @return The value in logical pixels.
-  /// [PT] Converte centímetros para pixels lógicos.
+  /// @return The value in dp.
+  /// [PT] Converte centímetros para pixels independentes de densidade (dp).
   /// @param cm O valor em centímetros.
   /// @param context O BuildContext.
-  /// @return O valor em pixels lógicos.
-  static double cmToPixels(double cm, BuildContext context) {
-    return AppDimensUtils.convertUnit(cm, UnitType.cm, UnitType.pt, context);
+  /// @return O valor em dp.
+  static double toDpFromCm(double cm, BuildContext context) {
+    return toDpFromMm(cm * 10.0, context);
   }
 
-  /// [EN] Converts inches to logical pixels.
-  /// @param inches The value in inches.
+  /// [EN] Converts centimeters to physical pixels (px).
+  /// @param cm The value in centimeters.
   /// @param context The BuildContext.
-  /// @return The value in logical pixels.
-  /// [PT] Converte polegadas para pixels lógicos.
-  /// @param inches O valor em polegadas.
+  /// @return The value in pixels.
+  /// [PT] Converte centímetros para pixels físicos (px).
+  /// @param cm O valor em centímetros.
   /// @param context O BuildContext.
-  /// @return O valor em pixels lógicos.
-  static double inchesToPixels(double inches, BuildContext context) {
-    return AppDimensUtils.convertUnit(inches, UnitType.inch, UnitType.pt, context);
+  /// @return O valor em pixels.
+  static double toPxFromCm(double cm, BuildContext context) {
+    return toPxFromMm(cm * 10.0, context);
   }
 
-  /// [EN] Converts logical pixels to millimeters.
-  /// @param pixels The value in logical pixels.
+  /// [EN] Converts centimeters to scalable pixels (sp).
+  /// @param cm The value in centimeters.
   /// @param context The BuildContext.
-  /// @return The value in millimeters.
-  /// [PT] Converte pixels lógicos para milímetros.
-  /// @param pixels O valor em pixels lógicos.
+  /// @return The value in sp.
+  /// [PT] Converte centímetros para pixels escaláveis (sp).
+  /// @param cm O valor em centímetros.
   /// @param context O BuildContext.
-  /// @return O valor em milímetros.
-  static double pixelsToMm(double pixels, BuildContext context) {
-    return AppDimensUtils.convertUnit(pixels, UnitType.pt, UnitType.mm, context);
+  /// @return O valor em sp.
+  static double toSpFromCm(double cm, BuildContext context) {
+    return toSpFromMm(cm * 10.0, context);
   }
 
-  /// [EN] Converts logical pixels to centimeters.
-  /// @param pixels The value in logical pixels.
+  // MARK: - Conversion Methods (INCH)
+
+  /// [EN] Converts inches to density-independent pixels (dp).
+  /// @param inch The value in inches.
   /// @param context The BuildContext.
-  /// @return The value in centimeters.
-  /// [PT] Converte pixels lógicos para centímetros.
-  /// @param pixels O valor em pixels lógicos.
+  /// @return The value in dp.
+  /// [PT] Converte polegadas para pixels independentes de densidade (dp).
+  /// @param inch O valor em polegadas.
   /// @param context O BuildContext.
-  /// @return O valor em centímetros.
-  static double pixelsToCm(double pixels, BuildContext context) {
-    return AppDimensUtils.convertUnit(pixels, UnitType.pt, UnitType.cm, context);
+  /// @return O valor em dp.
+  static double toDpFromInch(double inch, BuildContext context) {
+    return toDpFromMm(inch * mmPerInch, context);
   }
 
-  /// [EN] Converts logical pixels to inches.
-  /// @param pixels The value in logical pixels.
+  /// [EN] Converts inches to physical pixels (px).
+  /// @param inch The value in inches.
   /// @param context The BuildContext.
-  /// @return The value in inches.
-  /// [PT] Converte pixels lógicos para polegadas.
-  /// @param pixels O valor em pixels lógicos.
+  /// @return The value in pixels.
+  /// [PT] Converte polegadas para pixels físicos (px).
+  /// @param inch O valor em polegadas.
   /// @param context O BuildContext.
-  /// @return O valor em polegadas.
-  static double pixelsToInches(double pixels, BuildContext context) {
-    return AppDimensUtils.convertUnit(pixels, UnitType.pt, UnitType.inch, context);
+  /// @return O valor em pixels.
+  static double toPxFromInch(double inch, BuildContext context) {
+    return toPxFromMm(inch * mmPerInch, context);
   }
 
-  // MARK: - Convenience Methods
-
-  /// [EN] Gets the screen density in dots per inch.
+  /// [EN] Converts inches to scalable pixels (sp).
+  /// @param inch The value in inches.
   /// @param context The BuildContext.
-  /// @return The screen density in DPI.
-  /// [PT] Obtém a densidade da tela em pontos por polegada.
+  /// @return The value in sp.
+  /// [PT] Converte polegadas para pixels escaláveis (sp).
+  /// @param inch O valor em polegadas.
   /// @param context O BuildContext.
-  /// @return A densidade da tela em DPI.
-  static double getScreenDensity(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
-    return mediaQuery.devicePixelRatio * pixelsPerInch;
-  }
-
-  /// [EN] Gets the screen size in physical units.
-  /// @param context The BuildContext.
-  /// @param unit The target unit type.
-  /// @return The screen size in the specified unit.
-  /// [PT] Obtém o tamanho da tela em unidades físicas.
-  /// @param context O BuildContext.
-  /// @param unit O tipo de unidade de destino.
-  /// @return O tamanho da tela na unidade especificada.
-  static Size getScreenSizeInUnit(BuildContext context, UnitType unit) {
-    final mediaQuery = MediaQuery.of(context);
-    final size = mediaQuery.size;
-    
-    final width = AppDimensUtils.convertUnit(size.width, UnitType.pt, unit, context);
-    final height = AppDimensUtils.convertUnit(size.height, UnitType.pt, unit, context);
-    
-    return Size(width, height);
-  }
-
-  /// [EN] Gets the screen diagonal in physical units.
-  /// @param context The BuildContext.
-  /// @param unit The target unit type.
-  /// @return The screen diagonal in the specified unit.
-  /// [PT] Obtém a diagonal da tela em unidades físicas.
-  /// @param context O BuildContext.
-  /// @param unit O tipo de unidade de destino.
-  /// @return A diagonal da tela na unidade especificada.
-  static double getScreenDiagonalInUnit(BuildContext context, UnitType unit) {
-    final mediaQuery = MediaQuery.of(context);
-    final size = mediaQuery.size;
-    
-    final diagonalPixels = (size.width * size.width + size.height * size.height).sqrt();
-    return AppDimensUtils.convertUnit(diagonalPixels, UnitType.pt, unit, context);
+  /// @return O valor em sp.
+  static double toSpFromInch(double inch, BuildContext context) {
+    return toSpFromMm(inch * mmPerInch, context);
   }
 
   // MARK: - Utility Methods
 
-  /// [EN] Calculates the optimal font size for a given physical height.
-  /// @param physicalHeight The physical height in the specified unit.
-  /// @param unit The unit type.
+  /// [EN] Converts a diameter value in a specific physical unit to radius in dp.
+  /// @param diameter The diameter value.
+  /// @param unitType The unit type (mm, cm, inch).
   /// @param context The BuildContext.
-  /// @return The optimal font size in logical pixels.
-  /// [PT] Calcula o tamanho ótimo da fonte para uma altura física dada.
-  /// @param physicalHeight A altura física na unidade especificada.
-  /// @param unit O tipo de unidade.
+  /// @return The radius in dp.
+  /// [PT] Converte um valor de diâmetro em uma unidade física específica para raio em dp.
+  /// @param diameter O valor do diâmetro.
+  /// @param unitType O tipo de unidade (mm, cm, inch).
   /// @param context O BuildContext.
-  /// @return O tamanho ótimo da fonte em pixels lógicos.
-  static double calculateOptimalFontSize(
-    double physicalHeight,
-    UnitType unit,
-    BuildContext context,
-  ) {
-    final heightInPixels = AppDimensUtils.convertUnit(physicalHeight, unit, UnitType.pt, context);
+  /// @return O raio em dp.
+  static double radiusFromDiameter(double diameter, UnitType unitType, BuildContext context) {
+    double diameterInDp;
     
-    // Base font size calculation (adjust based on your needs)
-    final baseFontSize = heightInPixels * 0.1; // 10% of the height
+    switch (unitType) {
+      case UnitType.mm:
+        diameterInDp = toDpFromMm(diameter, context);
+        break;
+      case UnitType.cm:
+        diameterInDp = toDpFromCm(diameter, context);
+        break;
+      case UnitType.inch:
+        diameterInDp = toDpFromInch(diameter, context);
+        break;
+      case UnitType.dp:
+        diameterInDp = diameter;
+        break;
+      case UnitType.sp:
+        diameterInDp = diameter;
+        break;
+      case UnitType.pt:
+        diameterInDp = diameter;
+        break;
+      case UnitType.px:
+        final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
+        diameterInDp = diameter / devicePixelRatio;
+        break;
+    }
     
-    // Apply device type adjustments
-    final deviceType = DeviceType.current(context);
-    final deviceTypeFactors = {
-      DeviceType.phone: 1.0,
-      DeviceType.tablet: 1.2,
-      DeviceType.watch: 0.8,
-      DeviceType.tv: 1.5,
-      DeviceType.carPlay: 1.3,
-      DeviceType.desktop: 1.1,
-      DeviceType.foldable: 1.1,
-      DeviceType.unknown: 1.0,
-    };
-    
-    final factor = deviceTypeFactors[deviceType] ?? 1.0;
-    return baseFontSize * factor;
+    return diameterInDp / 2.0;
   }
 
-  /// [EN] Calculates the optimal spacing for a given physical distance.
-  /// @param physicalDistance The physical distance in the specified unit.
-  /// @param unit The unit type.
+  /// [EN] Converts a circumference value in a specific physical unit to radius in dp.
+  /// @param circumference The circumference value.
+  /// @param unitType The unit type (mm, cm, inch).
   /// @param context The BuildContext.
-  /// @return The optimal spacing in logical pixels.
-  /// [PT] Calcula o espaçamento ótimo para uma distância física dada.
-  /// @param physicalDistance A distância física na unidade especificada.
-  /// @param unit O tipo de unidade.
+  /// @return The radius in dp.
+  /// [PT] Converte um valor de circunferência em uma unidade física específica para raio em dp.
+  /// @param circumference O valor da circunferência.
+  /// @param unitType O tipo de unidade (mm, cm, inch).
   /// @param context O BuildContext.
-  /// @return O espaçamento ótimo em pixels lógicos.
-  static double calculateOptimalSpacing(
-    double physicalDistance,
-    UnitType unit,
-    BuildContext context,
-  ) {
-    final distanceInPixels = AppDimensUtils.convertUnit(physicalDistance, unit, UnitType.pt, context);
+  /// @return O raio em dp.
+  static double radiusFromCircumference(double circumference, UnitType unitType, BuildContext context) {
+    double circumferenceInDp;
     
-    // Apply device type adjustments
-    final deviceType = DeviceType.current(context);
-    final deviceTypeFactors = {
-      DeviceType.phone: 1.0,
-      DeviceType.tablet: 1.1,
-      DeviceType.watch: 0.9,
-      DeviceType.tv: 1.3,
-      DeviceType.carPlay: 1.2,
-      DeviceType.desktop: 1.05,
-      DeviceType.foldable: 1.05,
-      DeviceType.unknown: 1.0,
-    };
+    switch (unitType) {
+      case UnitType.mm:
+        circumferenceInDp = toDpFromMm(circumference, context);
+        break;
+      case UnitType.cm:
+        circumferenceInDp = toDpFromCm(circumference, context);
+        break;
+      case UnitType.inch:
+        circumferenceInDp = toDpFromInch(circumference, context);
+        break;
+      case UnitType.dp:
+        circumferenceInDp = circumference;
+        break;
+      case UnitType.sp:
+        circumferenceInDp = circumference;
+        break;
+      case UnitType.pt:
+        circumferenceInDp = circumference;
+        break;
+      case UnitType.px:
+        final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
+        circumferenceInDp = circumference / devicePixelRatio;
+        break;
+    }
     
-    final factor = deviceTypeFactors[deviceType] ?? 1.0;
-    return distanceInPixels * factor;
+    return circumferenceInDp / (2.0 * math.pi);
   }
+}
 
-  // MARK: - Validation Methods
+// MARK: - Conversion Extensions
 
-  /// [EN] Validates if a physical unit value is within reasonable bounds.
-  /// @param value The value to validate.
-  /// @param unit The unit type.
-  /// @param context The BuildContext.
-  /// @return True if the value is within reasonable bounds.
-  /// [PT] Valida se um valor de unidade física está dentro de limites razoáveis.
-  /// @param value O valor a ser validado.
-  /// @param unit O tipo de unidade.
-  /// @param context O BuildContext.
-  /// @return True se o valor está dentro de limites razoáveis.
-  static bool isValidPhysicalValue(double value, UnitType unit, BuildContext context) {
-    if (value <= 0) return false;
-    
-    final mediaQuery = MediaQuery.of(context);
-    final screenSize = mediaQuery.size;
-    
-    // Convert to pixels for validation
-    final valueInPixels = AppDimensUtils.convertUnit(value, unit, UnitType.pt, context);
-    
-    // Check if the value is within reasonable bounds (0.1% to 100% of screen size)
-    final minValue = (screenSize.width + screenSize.height) * 0.001;
-    final maxValue = (screenSize.width + screenSize.height) * 1.0;
-    
-    return valueInPixels >= minValue && valueInPixels <= maxValue;
-  }
+/// [EN] Extensions for double to convert between physical units.
+/// [PT] Extensões para double para converter entre unidades físicas.
+extension PhysicalUnitConversionsDouble on double {
+  /// [EN] Converts MM to CM.
+  /// [PT] Converte MM para CM.
+  double mmToCm() => this / 10.0;
+
+  /// [EN] Converts MM to Inch.
+  /// [PT] Converte MM para Inch.
+  double mmToInch() => this / AppDimensPhysicalUnits.mmPerInch;
+
+  /// [EN] Converts CM to MM.
+  /// [PT] Converte CM para MM.
+  double cmToMm() => this * 10.0;
+
+  /// [EN] Converts CM to Inch.
+  /// [PT] Converte CM para Inch.
+  double cmToInch() => this / AppDimensPhysicalUnits.cmPerInch;
+
+  /// [EN] Converts Inch to MM.
+  /// [PT] Converte Inch para MM.
+  double inchToMm() => this * AppDimensPhysicalUnits.mmPerInch;
+
+  /// [EN] Converts Inch to CM.
+  /// [PT] Converte Inch para CM.
+  double inchToCm() => this * AppDimensPhysicalUnits.cmPerInch;
+}
+
+/// [EN] Extensions for int to convert between physical units.
+/// [PT] Extensões para int para converter entre unidades físicas.
+extension PhysicalUnitConversionsInt on int {
+  /// [EN] Converts MM to CM.
+  /// [PT] Converte MM para CM.
+  double mmToCm() => this.toDouble() / 10.0;
+
+  /// [EN] Converts MM to Inch.
+  /// [PT] Converte MM para Inch.
+  double mmToInch() => this.toDouble() / AppDimensPhysicalUnits.mmPerInch;
+
+  /// [EN] Converts CM to MM.
+  /// [PT] Converte CM para MM.
+  double cmToMm() => this.toDouble() * 10.0;
+
+  /// [EN] Converts CM to Inch.
+  /// [PT] Converte CM para Inch.
+  double cmToInch() => this.toDouble() / AppDimensPhysicalUnits.cmPerInch;
+
+  /// [EN] Converts Inch to MM.
+  /// [PT] Converte Inch para MM.
+  double inchToMm() => this.toDouble() * AppDimensPhysicalUnits.mmPerInch;
+
+  /// [EN] Converts Inch to CM.
+  /// [PT] Converte Inch para CM.
+  double inchToCm() => this.toDouble() * AppDimensPhysicalUnits.cmPerInch;
+}
+
+/// [EN] Extensions with BuildContext for physical unit conversions to dp/px/sp.
+/// [PT] Extensões com BuildContext para conversões de unidades físicas para dp/px/sp.
+extension PhysicalUnitContextConversionsDouble on double {
+  /// [EN] Converts MM to dp.
+  /// [PT] Converte MM para dp.
+  double mmToDp(BuildContext context) => AppDimensPhysicalUnits.toDpFromMm(this, context);
+
+  /// [EN] Converts MM to px.
+  /// [PT] Converte MM para px.
+  double mmToPx(BuildContext context) => AppDimensPhysicalUnits.toPxFromMm(this, context);
+
+  /// [EN] Converts MM to sp.
+  /// [PT] Converte MM para sp.
+  double mmToSp(BuildContext context) => AppDimensPhysicalUnits.toSpFromMm(this, context);
+
+  /// [EN] Converts CM to dp.
+  /// [PT] Converte CM para dp.
+  double cmToDp(BuildContext context) => AppDimensPhysicalUnits.toDpFromCm(this, context);
+
+  /// [EN] Converts CM to px.
+  /// [PT] Converte CM para px.
+  double cmToPx(BuildContext context) => AppDimensPhysicalUnits.toPxFromCm(this, context);
+
+  /// [EN] Converts CM to sp.
+  /// [PT] Converte CM para sp.
+  double cmToSp(BuildContext context) => AppDimensPhysicalUnits.toSpFromCm(this, context);
+
+  /// [EN] Converts Inch to dp.
+  /// [PT] Converte Inch para dp.
+  double inchToDp(BuildContext context) => AppDimensPhysicalUnits.toDpFromInch(this, context);
+
+  /// [EN] Converts Inch to px.
+  /// [PT] Converte Inch para px.
+  double inchToPx(BuildContext context) => AppDimensPhysicalUnits.toPxFromInch(this, context);
+
+  /// [EN] Converts Inch to sp.
+  /// [PT] Converte Inch para sp.
+  double inchToSp(BuildContext context) => AppDimensPhysicalUnits.toSpFromInch(this, context);
+}
+
+/// [EN] Extensions with BuildContext for physical unit conversions to dp/px/sp (Int).
+/// [PT] Extensões com BuildContext para conversões de unidades físicas para dp/px/sp (Int).
+extension PhysicalUnitContextConversionsInt on int {
+  /// [EN] Converts MM to dp.
+  /// [PT] Converte MM para dp.
+  double mmToDp(BuildContext context) => AppDimensPhysicalUnits.toDpFromMm(this.toDouble(), context);
+
+  /// [EN] Converts MM to px.
+  /// [PT] Converte MM para px.
+  double mmToPx(BuildContext context) => AppDimensPhysicalUnits.toPxFromMm(this.toDouble(), context);
+
+  /// [EN] Converts MM to sp.
+  /// [PT] Converte MM para sp.
+  double mmToSp(BuildContext context) => AppDimensPhysicalUnits.toSpFromMm(this.toDouble(), context);
+
+  /// [EN] Converts CM to dp.
+  /// [PT] Converte CM para dp.
+  double cmToDp(BuildContext context) => AppDimensPhysicalUnits.toDpFromCm(this.toDouble(), context);
+
+  /// [EN] Converts CM to px.
+  /// [PT] Converte CM para px.
+  double cmToPx(BuildContext context) => AppDimensPhysicalUnits.toPxFromCm(this.toDouble(), context);
+
+  /// [EN] Converts CM to sp.
+  /// [PT] Converte CM para sp.
+  double cmToSp(BuildContext context) => AppDimensPhysicalUnits.toSpFromCm(this.toDouble(), context);
+
+  /// [EN] Converts Inch to dp.
+  /// [PT] Converte Inch para dp.
+  double inchToDp(BuildContext context) => AppDimensPhysicalUnits.toDpFromInch(this.toDouble(), context);
+
+  /// [EN] Converts Inch to px.
+  /// [PT] Converte Inch para px.
+  double inchToPx(BuildContext context) => AppDimensPhysicalUnits.toPxFromInch(this.toDouble(), context);
+
+  /// [EN] Converts Inch to sp.
+  /// [PT] Converte Inch para sp.
+  double inchToSp(BuildContext context) => AppDimensPhysicalUnits.toSpFromInch(this.toDouble(), context);
 }

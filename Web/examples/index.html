@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebDimens - Exemplo HTML</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--wd-fx-24, 24px);
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: var(--wd-fx-16, 16px);
+            padding: var(--wd-fx-32, 32px);
+            margin-bottom: var(--wd-fx-24, 24px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: var(--wd-fx-16, 16px);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--wd-fx-16, 16px);
+            margin-top: var(--wd-fx-24, 24px);
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--wd-fx-12, 12px);
+            padding: var(--wd-fx-20, 20px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .info-card h3 {
+            color: #667eea;
+            margin-bottom: var(--wd-fx-12, 12px);
+        }
+
+        .info-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .demo-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--wd-fx-16, 16px);
+            padding: var(--wd-fx-32, 32px);
+            margin-bottom: var(--wd-fx-24, 24px);
+        }
+
+        .demo-section h2 {
+            color: #667eea;
+            margin-bottom: var(--wd-fx-20, 20px);
+        }
+
+        .button-group {
+            display: flex;
+            gap: var(--wd-fx-12, 12px);
+            flex-wrap: wrap;
+            margin-top: var(--wd-fx-16, 16px);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: var(--wd-fx-8, 8px);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .responsive-grid {
+            display: grid;
+            gap: var(--wd-fx-16, 16px);
+            margin-top: var(--wd-fx-24, 24px);
+        }
+
+        .grid-item {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: var(--wd-fx-12, 12px);
+            padding: var(--wd-fx-20, 20px);
+            text-align: center;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .grid-item:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            border-color: rgba(102, 126, 234, 0.4);
+        }
+
+        .stats {
+            display: flex;
+            gap: var(--wd-fx-8, 8px);
+            flex-wrap: wrap;
+            margin-top: var(--wd-fx-12, 12px);
+        }
+
+        .stat-badge {
+            background: #667eea;
+            color: white;
+            padding: var(--wd-fx-4, 4px) var(--wd-fx-12, 12px);
+            border-radius: var(--wd-fx-16, 16px);
+            font-size: 0.875rem;
+        }
+
+        .code-block {
+            background: #282c34;
+            color: #abb2bf;
+            padding: var(--wd-fx-16, 16px);
+            border-radius: var(--wd-fx-8, 8px);
+            overflow-x: auto;
+            margin-top: var(--wd-fx-12, 12px);
+            font-family: 'Courier New', monospace;
+        }
+
+        .alert {
+            background: #667eea;
+            color: white;
+            padding: var(--wd-fx-16, 16px);
+            border-radius: var(--wd-fx-8, 8px);
+            margin-top: var(--wd-fx-16, 16px);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            }
+
+            .header, .info-card, .demo-section {
+                background: rgba(30, 30, 46, 0.95);
+            }
+
+            h1, h2, h3 {
+                color: #a8b2ff;
+            }
+
+            .info-card p {
+                color: #b8b8b8;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 id="title">📐 WebDimens - Demonstração HTML</h1>
+            <p>Sistema Avançado de Dimensionamento Responsivo para Web</p>
+            <div class="stats">
+                <span class="stat-badge">TypeScript</span>
+                <span class="stat-badge">Zero Dependencies</span>
+                <span class="stat-badge">Cache Inteligente</span>
+                <span class="stat-badge">Performance</span>
+            </div>
+        </div>
+
+        <!-- Informações do Viewport -->
+        <div class="demo-section">
+            <h2>📱 Informações do Viewport</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Dimensões</h3>
+                    <p id="viewport-size">Carregando...</p>
+                </div>
+                <div class="info-card">
+                    <h3>Aspect Ratio</h3>
+                    <p id="aspect-ratio">Carregando...</p>
+                </div>
+                <div class="info-card">
+                    <h3>Orientação</h3>
+                    <p id="orientation">Carregando...</p>
+                </div>
+                <div class="info-card">
+                    <h3>Breakpoint</h3>
+                    <p id="breakpoint">Carregando...</p>
+                </div>
+                <div class="info-card">
+                    <h3>DPR</h3>
+                    <p id="dpr">Carregando...</p>
+                </div>
+                <div class="info-card">
+                    <h3>DPI</h3>
+                    <p id="dpi">Carregando...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Demonstração de Dimensões -->
+        <div class="demo-section">
+            <h2>📏 Dimensões Calculadas</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Fixed (16px)</h3>
+                    <p id="fixed-16">Carregando...</p>
+                </div>
+                <div class="info-card">
+                    <h3>Fixed (24px)</h3>
+                    <p id="fixed-24">Carregando...</p>
+                </div>
+                <div class="info-card">
+                    <h3>Dynamic (300px)</h3>
+                    <p id="dynamic-300">Carregando...</p>
+                </div>
+                <div class="info-card">
+                    <h3>Fluid (16-24px)</h3>
+                    <p id="fluid-16-24">Carregando...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Unidades Físicas -->
+        <div class="demo-section">
+            <h2>📐 Unidades Físicas</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>10mm em pixels</h3>
+                    <p id="mm-conversion">Carregando...</p>
+                </div>
+                <div class="info-card">
+                    <h3>2cm em pixels</h3>
+                    <p id="cm-conversion">Carregando...</p>
+                </div>
+                <div class="info-card">
+                    <h3>1 inch em pixels</h3>
+                    <p id="inch-conversion">Carregando...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Media Features -->
+        <div class="demo-section">
+            <h2>🎭 Media Features</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Color Scheme</h3>
+                    <p id="color-scheme">Carregando...</p>
+                </div>
+                <div class="info-card">
+                    <h3>Hover Capability</h3>
+                    <p id="hover-capability">Carregando...</p>
+                </div>
+                <div class="info-card">
+                    <h3>Pointer Type</h3>
+                    <p id="pointer-type">Carregando...</p>
+                </div>
+                <div class="info-card">
+                    <h3>Display Mode</h3>
+                    <p id="display-mode">Carregando...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid Responsivo -->
+        <div class="demo-section">
+            <h2>🎨 Grid Responsivo</h2>
+            <p>Este grid adapta o número de colunas baseado no breakpoint atual</p>
+            <div class="responsive-grid" id="responsive-grid">
+                <!-- Grid items serão adicionados via JS -->
+            </div>
+        </div>
+
+        <!-- Botões com Dimensões Adaptativas -->
+        <div class="demo-section">
+            <h2>🎯 Botões Adaptativos</h2>
+            <p>Estes botões ajustam seu tamanho baseado no tipo de pointer (touch vs mouse)</p>
+            <div class="button-group">
+                <button class="btn" id="btn-small">Botão Pequeno</button>
+                <button class="btn" id="btn-medium">Botão Médio</button>
+                <button class="btn" id="btn-large">Botão Grande</button>
+            </div>
+        </div>
+
+        <!-- Cache Statistics -->
+        <div class="demo-section">
+            <h2>⚡ Estatísticas de Cache</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Total Entries</h3>
+                    <p id="cache-entries">0</p>
+                </div>
+                <div class="info-card">
+                    <h3>Cache Hits</h3>
+                    <p id="cache-hits">0</p>
+                </div>
+                <div class="info-card">
+                    <h3>Hit Rate</h3>
+                    <p id="cache-hitrate">0%</p>
+                </div>
+                <div class="info-card">
+                    <h3>Avg Calc Time</h3>
+                    <p id="cache-avgtime">0ms</p>
+                </div>
+            </div>
+            <button class="btn" id="refresh-cache" style="margin-top: 16px;">🔄 Atualizar Estatísticas</button>
+        </div>
+
+        <!-- Exemplo de Código -->
+        <div class="demo-section">
+            <h2>💻 Exemplo de Código</h2>
+            <div class="code-block">
+<pre>// Importar WebDimens
+import { fixed, dynamic, fluid } from 'webdimens';
+
+// Fixed - para elementos de UI
+const buttonPadding = fixed(16).toPx();  // "17.2px"
+
+// Dynamic - para layouts
+const containerWidth = dynamic(300).toPx();
+
+// Fluid - transições suaves
+const fluidFont = fluid(16, 24).toString();
+
+// Com qualificadores
+const adaptive = fixed(16)
+  .screen('min-width', 768, 24)
+  .toPx();</pre>
+            </div>
+        </div>
+
+        <div class="alert">
+            <strong>💡 Dica:</strong> Redimensione a janela do navegador para ver as dimensões se ajustarem automaticamente!
+        </div>
+    </div>
+
+    <script type="module">
+        // Simulação da biblioteca WebDimens para demonstração
+        // Em produção, você importaria: import { WebDimens } from 'webdimens'
+        
+        class WebDimensDemo {
+            constructor() {
+                this.viewport = {
+                    width: window.innerWidth,
+                    height: window.innerHeight,
+                    aspectRatio: window.innerWidth / window.innerHeight,
+                    orientation: window.innerWidth >= window.innerHeight ? 'landscape' : 'portrait',
+                    dpr: window.devicePixelRatio || 1
+                };
+                this.cacheStats = {
+                    entries: 0,
+                    hits: 0,
+                    misses: 0,
+                    hitRate: 0,
+                    avgTime: 0
+                };
+                this.init();
+            }
+
+            init() {
+                this.detectDPI();
+                this.updateViewportInfo();
+                this.updateDimensions();
+                this.updatePhysicalUnits();
+                this.updateMediaFeatures();
+                this.createResponsiveGrid();
+                this.styleButtons();
+                this.setupEventListeners();
+                this.updateCacheStats();
+            }
+
+            detectDPI() {
+                const div = document.createElement('div');
+                div.style.width = '1in';
+                div.style.position = 'absolute';
+                div.style.left = '-100%';
+                document.body.appendChild(div);
+                this.dpi = div.offsetWidth || 96;
+                document.body.removeChild(div);
+            }
+
+            fixed(value) {
+                // Simulação do cálculo Fixed (logarítmico)
+                const baseWidth = 300;
+                const increment = 30;
+                const smallest = Math.min(this.viewport.width, this.viewport.height);
+                const difference = smallest - baseWidth;
+                const factor = difference / increment;
+                const adjustment = 1 + factor * 0.1;
+                
+                this.cacheStats.misses++;
+                return value * adjustment;
+            }
+
+            dynamic(value) {
+                // Simulação do cálculo Dynamic (proporcional)
+                const baseWidth = 300;
+                const smallest = Math.min(this.viewport.width, this.viewport.height);
+                const percentage = value / baseWidth;
+                
+                this.cacheStats.misses++;
+                return smallest * percentage;
+            }
+
+            fluid(min, max) {
+                // Simulação do cálculo Fluid (clamp)
+                const minVw = 320;
+                const maxVw = 1920;
+                const slope = (max - min) / (maxVw - minVw);
+                const yAxis = -minVw * slope + min;
+                
+                return `clamp(${min}px, ${yAxis.toFixed(2)}px + ${(slope * 100).toFixed(2)}vw, ${max}px)`;
+            }
+
+            getCurrentBreakpoint() {
+                const width = this.viewport.width;
+                if (width < 640) return 'xs';
+                if (width < 768) return 'sm';
+                if (width < 1024) return 'md';
+                if (width < 1280) return 'lg';
+                if (width < 1536) return 'xl';
+                return '2xl';
+            }
+
+            updateViewportInfo() {
+                document.getElementById('viewport-size').textContent = 
+                    `${this.viewport.width} × ${this.viewport.height}px`;
+                document.getElementById('aspect-ratio').textContent = 
+                    this.viewport.aspectRatio.toFixed(2);
+                document.getElementById('orientation').textContent = 
+                    this.viewport.orientation;
+                document.getElementById('breakpoint').textContent = 
+                    this.getCurrentBreakpoint();
+                document.getElementById('dpr').textContent = 
+                    this.viewport.dpr;
+                document.getElementById('dpi').textContent = 
+                    `${this.dpi} DPI`;
+            }
+
+            updateDimensions() {
+                const fixed16 = this.fixed(16);
+                const fixed24 = this.fixed(24);
+                const dynamic300 = this.dynamic(300);
+                const fluid1624 = this.fluid(16, 24);
+
+                document.getElementById('fixed-16').textContent = 
+                    `${fixed16.toFixed(2)}px (ajustado de 16px)`;
+                document.getElementById('fixed-24').textContent = 
+                    `${fixed24.toFixed(2)}px (ajustado de 24px)`;
+                document.getElementById('dynamic-300').textContent = 
+                    `${dynamic300.toFixed(2)}px (${((dynamic300/this.viewport.width)*100).toFixed(1)}% da tela)`;
+                document.getElementById('fluid-16-24').textContent = 
+                    fluid1624;
+            }
+
+            updatePhysicalUnits() {
+                const mmToPx = (mm) => (mm / 25.4) * this.dpi;
+                const cmToPx = (cm) => (cm / 2.54) * this.dpi;
+                const inchToPx = (inch) => inch * this.dpi;
+
+                document.getElementById('mm-conversion').textContent = 
+                    `${mmToPx(10).toFixed(2)}px`;
+                document.getElementById('cm-conversion').textContent = 
+                    `${cmToPx(2).toFixed(2)}px`;
+                document.getElementById('inch-conversion').textContent = 
+                    `${inchToPx(1).toFixed(2)}px`;
+            }
+
+            updateMediaFeatures() {
+                const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const hasHover = window.matchMedia('(hover: hover)').matches;
+                const pointerFine = window.matchMedia('(pointer: fine)').matches;
+                const pointerCoarse = window.matchMedia('(pointer: coarse)').matches;
+                const standalone = window.matchMedia('(display-mode: standalone)').matches;
+
+                document.getElementById('color-scheme').textContent = 
+                    isDark ? '🌙 Dark Mode' : '☀️ Light Mode';
+                document.getElementById('hover-capability').textContent = 
+                    hasHover ? '✅ Hover Disponível' : '❌ Sem Hover';
+                document.getElementById('pointer-type').textContent = 
+                    pointerFine ? '🖱️ Fine (Mouse)' : pointerCoarse ? '👆 Coarse (Touch)' : '❓ Nenhum';
+                document.getElementById('display-mode').textContent = 
+                    standalone ? '📱 Standalone (PWA)' : '🌐 Browser';
+            }
+
+            createResponsiveGrid() {
+                const grid = document.getElementById('responsive-grid');
+                const breakpoint = this.getCurrentBreakpoint();
+                
+                const columns = {
+                    'xs': 1,
+                    'sm': 2,
+                    'md': 3,
+                    'lg': 4,
+                    'xl': 6,
+                    '2xl': 6
+                }[breakpoint] || 1;
+
+                grid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+                
+                grid.innerHTML = '';
+                for (let i = 0; i < 12; i++) {
+                    const item = document.createElement('div');
+                    item.className = 'grid-item';
+                    item.innerHTML = `
+                        <strong>Item ${i + 1}</strong>
+                        <p style="margin-top: 8px; font-size: 0.875rem;">
+                            ${columns} colunas
+                        </p>
+                    `;
+                    grid.appendChild(item);
+                }
+            }
+
+            styleButtons() {
+                const pointerCoarse = window.matchMedia('(pointer: coarse)').matches;
+                const minSize = pointerCoarse ? 44 : 32;
+                
+                const buttons = document.querySelectorAll('.btn');
+                buttons.forEach((btn, index) => {
+                    const sizes = [
+                        { padding: this.fixed(12), fontSize: this.fixed(14) },
+                        { padding: this.fixed(16), fontSize: this.fixed(16) },
+                        { padding: this.fixed(20), fontSize: this.fixed(18) }
+                    ];
+                    
+                    const size = sizes[index] || sizes[0];
+                    btn.style.padding = `${size.padding}px ${size.padding * 1.5}px`;
+                    btn.style.fontSize = `${size.fontSize}px`;
+                    btn.style.minWidth = `${this.fixed(minSize)}px`;
+                    btn.style.minHeight = `${this.fixed(minSize)}px`;
+                });
+            }
+
+            updateCacheStats() {
+                const total = this.cacheStats.hits + this.cacheStats.misses;
+                const hitRate = total > 0 ? (this.cacheStats.hits / total * 100) : 0;
+                
+                document.getElementById('cache-entries').textContent = 
+                    this.cacheStats.entries;
+                document.getElementById('cache-hits').textContent = 
+                    this.cacheStats.hits;
+                document.getElementById('cache-hitrate').textContent = 
+                    `${hitRate.toFixed(1)}%`;
+                document.getElementById('cache-avgtime').textContent = 
+                    `${this.cacheStats.avgTime.toFixed(3)}ms`;
+                
+                // Simular incremento
+                this.cacheStats.entries++;
+                this.cacheStats.hits += Math.floor(Math.random() * 5);
+            }
+
+            setupEventListeners() {
+                let resizeTimeout;
+                window.addEventListener('resize', () => {
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(() => {
+                        this.viewport = {
+                            width: window.innerWidth,
+                            height: window.innerHeight,
+                            aspectRatio: window.innerWidth / window.innerHeight,
+                            orientation: window.innerWidth >= window.innerHeight ? 'landscape' : 'portrait',
+                            dpr: window.devicePixelRatio || 1
+                        };
+                        this.updateViewportInfo();
+                        this.updateDimensions();
+                        this.createResponsiveGrid();
+                        this.styleButtons();
+                    }, 100);
+                });
+
+                document.getElementById('refresh-cache').addEventListener('click', () => {
+                    this.updateCacheStats();
+                });
+
+                // Atualizar título com dimensão Fixed
+                const titleSize = this.fixed(32);
+                const title = document.getElementById('title');
+                title.style.fontSize = `${titleSize}px`;
+            }
+        }
+
+        // Inicializar demonstração
+        const demo = new WebDimensDemo();
+
+        console.log('🎉 WebDimens Demo inicializado!');
+        console.log('📊 Viewport:', demo.viewport);
+        console.log('📏 DPI detectado:', demo.dpi);
+    </script>
+</body>
+</html>
+

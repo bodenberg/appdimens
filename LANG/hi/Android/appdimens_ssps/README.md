@@ -3,7 +3,7 @@
     <p><strong>शर्त-आधारित नियमों के साथ डायनामिक टेक्स्ट स्केलिंग</strong></p>
     <p>SSP (Scaled SP) जो प्राथमिकता-आधारित नियमों से Compose और XML में उत्तरदायी टाइपोग्राफी सक्षम करता है।</p>
 
-[![संस्करण](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![संस्करण](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![लाइसेंस](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![प्लेटफ़ॉर्म](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
@@ -18,7 +18,7 @@
 
 ## 🚀 इंस्टॉलेशन
 ```kotlin
-dependencies { implementation("io.github.bodenberg:appdimens-ssps:1.0.6") }
+dependencies { implementation("io.github.bodenberg:appdimens-ssps:1.0.8") }
 ```
 
 ## 🎨 उदाहरण (Compose)

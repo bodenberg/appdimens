@@ -215,6 +215,50 @@ public class AppDimensAdjustmentFactors {
     }
     
     /**
+     * [EN] Gets the system font scale factor.
+     * Compatible with Android API.
+     * @return The font scale factor (typically 1.0, but varies based on accessibility settings).
+     * [PT] Obtém o fator de escala de fonte do sistema.
+     * Compatível com API Android.
+     * @return O fator de escala de fonte (tipicamente 1.0, mas varia baseado nas configurações de acessibilidade).
+     */
+    public static func getFontScale() -> CGFloat {
+        // In iOS, the font scale is controlled by Dynamic Type
+        // We can approximate it using the preferred content size category
+        let contentSizeCategory = UIApplication.shared.preferredContentSizeCategory
+        
+        // Map content size categories to scale factors
+        switch contentSizeCategory {
+        case .extraSmall:
+            return 0.8
+        case .small:
+            return 0.9
+        case .medium:
+            return 1.0
+        case .large:
+            return 1.0 // Default size
+        case .extraLarge:
+            return 1.1
+        case .extraExtraLarge:
+            return 1.2
+        case .extraExtraExtraLarge:
+            return 1.3
+        case .accessibilityMedium:
+            return 1.4
+        case .accessibilityLarge:
+            return 1.6
+        case .accessibilityExtraLarge:
+            return 1.8
+        case .accessibilityExtraExtraLarge:
+            return 2.0
+        case .accessibilityExtraExtraExtraLarge:
+            return 2.3
+        default:
+            return 1.0
+        }
+    }
+    
+    /**
      * [EN] Converts pixels to points based on the current screen scale.
      * [PT] Converte pixels para pontos baseado na escala atual da tela.
      */

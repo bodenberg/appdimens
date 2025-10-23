@@ -71,7 +71,7 @@ end
 1. Xcode にて：
    - File → Add Package Dependencies
    - 入力: `https://github.com/bodenberg/appdimens.git`
-   - バージョン選択: `1.0.6` 以上
+   - バージョン選択: `1.0.8` 以上
    - ターゲットに追加
 
 2. Swift ファイルにインポート：
@@ -83,7 +83,7 @@ import AppDimens
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.6")
+    .package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.8")
 ]
 ```
 

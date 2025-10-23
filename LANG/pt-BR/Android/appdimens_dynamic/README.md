@@ -3,7 +3,7 @@
     <p><strong>Dimensionamento Responsivo Core para Android</strong></p>
     <p>Módulo essencial com modelos Fixed e Dynamic para Jetpack Compose, Views/XML e Data Binding.</p>
 
-[![Versão](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Versão](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![Licença](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![Plataforma](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
@@ -20,7 +20,7 @@ Modelos:
 
 ## 🚀 Instalação
 ```kotlin
-dependencies { implementation("io.github.bodenberg:appdimens-dynamic:1.0.6") }
+dependencies { implementation("io.github.bodenberg:appdimens-dynamic:1.0.8") }
 ```
 
 ## 🎨 Exemplos (Compose)

@@ -76,7 +76,7 @@ Swift Package Manager is Apple's official dependency management tool.
 1. **In Xcode:**
    - File → Add Package Dependencies
    - Enter the repository URL: `https://github.com/bodenberg/appdimens.git`
-   - Select version `1.0.7` and add to your target
+   - Select version `1.0.8` and add to your target
 
 2. **Import in your Swift files:**
 ```swift
@@ -89,7 +89,7 @@ Add to your `Package.swift` file:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.7")
+    .package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.8")
 ]
 ```
 

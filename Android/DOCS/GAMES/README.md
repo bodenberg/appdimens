@@ -10,7 +10,7 @@ The AppDimens Games module provides native C++ implementation for high-performan
 
 ```kotlin
 dependencies {
-    implementation("io.github.bodenberg:appdimens-games:1.0.6")
+    implementation("io.github.bodenberg:appdimens-games:1.0.8")
 }
 ```
 
@@ -331,5 +331,5 @@ Log.i("AppDimensGames", "Performance settings: ${gamesManager.getPerformanceSett
 ---
 
 **Last Updated**: 2025-01-27  
-**Version**: 1.0.6  
+**Version**: 1.0.8  
 **Native Implementation**: C++/NDK with OpenGL ES support

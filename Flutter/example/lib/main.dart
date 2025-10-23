@@ -152,18 +152,18 @@ class _MyHomePageState extends State<MyHomePage> {
             
             // Example 4: Physical units
             Container(
-              width: AppDimensPhysicalUnits.mmToPixels(50, context),
-              height: AppDimensPhysicalUnits.mmToPixels(25, context),
+              width: AppDimensPhysicalUnits.toPxFromMm(50, context),
+              height: AppDimensPhysicalUnits.toPxFromMm(25, context),
               decoration: BoxDecoration(
                 color: Colors.purple,
-                borderRadius: BorderRadius.circular(AppDimensPhysicalUnits.mmToPixels(5, context)),
+                borderRadius: BorderRadius.circular(AppDimensPhysicalUnits.toPxFromMm(5, context)),
               ),
               child: Center(
                 child: Text(
                   '50mm x 25mm',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: AppDimensPhysicalUnits.calculateOptimalFontSize(5, UnitType.mm, context),
+                    fontSize: AppDimensPhysicalUnits.toSpFromMm(5, context),
                   ),
                 ),
               ),

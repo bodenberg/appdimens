@@ -17,13 +17,33 @@
 - **Ajuste Multi-Window**: Opção para ignorar ajustes quando o app está em modo multi-window
 - **Extensões Convenientes**: Extensões para widgets Flutter para uso simplificado
 
+## 📋 Requisitos Mínimos
+
+| Requisito | Versão Mínima | Recomendado |
+|-----------|---------------|-------------|
+| **Dart SDK** | 3.0.0 | 3.5.0+ |
+| **Flutter SDK** | 3.10.0 | 3.24.0+ |
+
+### Plataformas Suportadas
+
+| Plataforma | Suporte | Observações |
+|------------|---------|-------------|
+| **Android** | ✅ | API 21+ |
+| **iOS** | ✅ | iOS 12.0+ |
+| **Web** | ✅ | Todos os navegadores modernos |
+| **Windows** | ✅ | Windows 10+ |
+| **macOS** | ✅ | macOS 10.14+ |
+| **Linux** | ✅ | |
+
+---
+
 ## 📦 Instalação
 
 Adicione ao seu `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  appdimens: ^1.0.7
+  appdimens: ^1.0.8
 ```
 
 Execute:

@@ -4,7 +4,7 @@
     <p><strong>Smart and Responsive Dimensioning for iOS</strong></p>
     <p>Mathematically responsive scaling that ensures your UI design adapts perfectly to any screen size or aspect ratio — from iPhones to iPads, Apple TV, and Apple Watch.</p>
 
-[![Version](https://img.shields.io/badge/version-1.0.7-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Version](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../LICENSE)
 [![Platform](https://img.shields.io/badge/platform-iOS%2013+-orange.svg)](https://developer.apple.com/ios/)
 [![Swift](https://img.shields.io/badge/Swift-5.0+-blue.svg)](https://swift.org/)
@@ -81,6 +81,28 @@ struct GameView: View {
 
 ---
 
+## 📋 Requisitos Mínimos
+
+| Requisito | Versão Mínima | Recomendado |
+|-----------|---------------|-------------|
+| **iOS** | 13.0 | 17.0+ |
+| **macOS** | 10.15 | 14.0+ |
+| **tvOS** | 13.0 | 17.0+ |
+| **watchOS** | 6.0 | 10.0+ |
+| **Swift** | 5.0 | 5.9+ |
+| **Xcode** | 13.0 | 15.0+ |
+
+### Plataformas Suportadas
+
+| Plataforma | Min Version | SwiftUI | UIKit | Games (Metal) |
+|------------|-------------|---------|-------|---------------|
+| **iOS** | 13.0 | ✅ | ✅ | ✅ |
+| **macOS** | 10.15 | ✅ | AppKit | ✅ |
+| **tvOS** | 13.0 | ✅ | ✅ | ✅ |
+| **watchOS** | 6.0 | ✅ | ❌ | ❌ |
+
+---
+
 ## 🚀 Installation
 
 ### CocoaPods (Recommended)
@@ -104,13 +126,13 @@ pod install
 1. **In Xcode:**
    - File → Add Package Dependencies
    - Enter: `https://github.com/bodenberg/appdimens.git`
-   - Select version: `1.0.7` or higher
+   - Select version: `1.0.8` or higher
    - Add to your target
 
 2. **Or add to Package.swift:**
 ```swift
 dependencies: [
-    .package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.7")
+    .package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.8")
 ]
 ```
 

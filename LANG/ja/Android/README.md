@@ -4,7 +4,7 @@
     <p><strong>Android向けスマートでレスポンシブな寸法システム</strong></p>
     <p>数学的に正確なレスポンシブスケーリングにより、UIデザインがあらゆる画面サイズやアスペクト比に適応します — スマートフォンからテレビ、車、ウェアラブルまで。</p>
 
-[![バージョン](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![バージョン](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![ライセンス](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../LICENSE)
 [![プラットフォーム](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 [![ドキュメント](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)

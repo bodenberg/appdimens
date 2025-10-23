@@ -3,7 +3,7 @@
     <p><strong>Android के लिए C++/NDK सपोर्ट के साथ रिस्पॉन्सिव गेम डेवलपमेंट</strong></p>
     <p>OpenGL ES, व्यूपोर्ट प्रबंधन और गेम-विशिष्ट डाइमेंशन गणनाओं वाला विशेष मॉड्यूल।</p>
 
-[![संस्करण](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![संस्करण](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![लाइसेंस](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![प्लेटफ़ॉर्म](https://img.shields.io/badge/platform-Android%2023+-orange.svg)](https://developer.android.com/)
 [![NDK](https://img.shields.io/badge/NDK-r21+-green.svg)](https://developer.android.com/ndk)
@@ -20,7 +20,7 @@
 
 ## 🚀 इंस्टॉलेशन
 ```kotlin
-dependencies { implementation("io.github.bodenberg:appdimens-games:1.0.6") }
+dependencies { implementation("io.github.bodenberg:appdimens-games:1.0.8") }
 ```
 
 ## 🎨 उपयोग (Kotlin)

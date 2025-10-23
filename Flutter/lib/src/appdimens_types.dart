@@ -23,7 +23,7 @@
 
 import 'dart:io';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
 
 /// [EN] Device types for custom dimension values.
 /// [PT] Tipos de dispositivos para valores de dimensão customizados.
@@ -58,11 +58,9 @@ enum DeviceType {
   static DeviceType _getWebDeviceType(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final size = mediaQuery.size;
-    final devicePixelRatio = mediaQuery.devicePixelRatio;
     
-    // Get the logical size
+    // Get the logical width
     final logicalWidth = size.width;
-    final logicalHeight = size.height;
     
     if (logicalWidth < 600) {
       return DeviceType.phone;
@@ -210,18 +208,7 @@ enum ScreenQualifier {
   w1920h1080;
 }
 
-/// [EN] Defines the supported physical measurement units for conversion
-/// into logical pixels.
-/// [PT] Define as unidades de medida física suportadas para conversão
-/// em pixels lógicos.
-enum UnitType {
-  inch,
-  cm,
-  mm,
-  sp,
-  pt,
-  px;
-}
+// UnitType foi movido para appdimens_physical_units.dart para evitar duplicação
 
 /// [EN] Screen information containing dimensions and properties.
 /// [PT] Informações da tela contendo dimensões e propriedades.

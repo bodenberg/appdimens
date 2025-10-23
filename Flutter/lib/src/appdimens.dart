@@ -169,6 +169,99 @@ class AppDimens {
     return dimensionToUse * percentage;
   }
 
+  /// [EN] Calculates a dynamic dimension value based on a percentage in Dp.
+  /// Compatible with Android API.
+  /// @param percentage The percentage (0.0 to 1.0).
+  /// @param context The BuildContext.
+  /// @param type The screen dimension to use (LOWEST/HIGHEST).
+  /// @return The adjusted value in Dp.
+  /// [PT] Calcula um valor de dimensão dinâmico com base em uma porcentagem em Dp.
+  /// Compatível com API Android.
+  /// @param percentage A porcentagem (0.0 a 1.0).
+  /// @param context O BuildContext.
+  /// @param type A dimensão da tela a ser usada (LOWEST/HIGHEST).
+  /// @return O valor ajustado em Dp.
+  static double dynamicPercentageDp(
+    double percentage,
+    BuildContext context, {
+    ScreenType type = ScreenType.lowest,
+  }) {
+    return dynamicPercentage(percentage, context, type: type);
+  }
+
+  /// [EN] Calculates a dynamic dimension value based on a percentage in physical pixels.
+  /// Compatible with Android API.
+  /// @param percentage The percentage (0.0 to 1.0).
+  /// @param context The BuildContext.
+  /// @param type The screen dimension to use (LOWEST/HIGHEST).
+  /// @return The adjusted value in physical pixels.
+  /// [PT] Calcula um valor de dimensão dinâmico com base em uma porcentagem em pixels físicos.
+  /// Compatível com API Android.
+  /// @param percentage A porcentagem (0.0 a 1.0).
+  /// @param context O BuildContext.
+  /// @param type A dimensão da tela a ser usada (LOWEST/HIGHEST).
+  /// @return O valor ajustado em pixels físicos.
+  static double dynamicPercentagePx(
+    double percentage,
+    BuildContext context, {
+    ScreenType type = ScreenType.lowest,
+  }) {
+    final dpValue = dynamicPercentageDp(percentage, context, type: type);
+    final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
+    return dpValue * devicePixelRatio;
+  }
+
+  /// [EN] Calculates a dynamic dimension value based on a percentage in scalable pixels (Sp).
+  /// Compatible with Android API.
+  /// @param percentage The percentage (0.0 to 1.0).
+  /// @param context The BuildContext.
+  /// @param type The screen dimension to use (LOWEST/HIGHEST).
+  /// @return The adjusted value in Sp.
+  /// [PT] Calcula um valor de dimensão dinâmico com base em uma porcentagem em pixels escaláveis (Sp).
+  /// Compatível com API Android.
+  /// @param percentage A porcentagem (0.0 a 1.0).
+  /// @param context O BuildContext.
+  /// @param type A dimensão da tela a ser usada (LOWEST/HIGHEST).
+  /// @return O valor ajustado em Sp.
+  static double dynamicPercentageSp(
+    double percentage,
+    BuildContext context, {
+    ScreenType type = ScreenType.lowest,
+  }) {
+    final dpValue = dynamicPercentageDp(percentage, context, type: type);
+    final textScaleFactor = MediaQuery.of(context).textScaleFactor;
+    return dpValue * textScaleFactor;
+  }
+
+  /// [EN] Calculates the maximum number of items that can fit in a container.
+  /// Compatible with Android API.
+  /// @param containerSizePx The size (width or height) of the container in pixels.
+  /// @param itemSizeDp The size of each item in Dp.
+  /// @param itemMarginDp The margin of each item in Dp.
+  /// @param context The BuildContext.
+  /// @return The number of items that can fit.
+  /// [PT] Calcula o número máximo de itens que cabem em um container.
+  /// Compatível com API Android.
+  /// @param containerSizePx O tamanho (largura ou altura) do container em pixels.
+  /// @param itemSizeDp O tamanho de cada item em Dp.
+  /// @param itemMarginDp A margem de cada item em Dp.
+  /// @param context O BuildContext.
+  /// @return O número de itens que cabem.
+  static int calculateAvailableItemCount(
+    double containerSizePx,
+    double itemSizeDp,
+    double itemMarginDp,
+    BuildContext context,
+  ) {
+    final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
+    final itemSizePx = itemSizeDp * devicePixelRatio;
+    final itemMarginPx = itemMarginDp * devicePixelRatio;
+
+    final totalItemSizePx = itemSizePx + (itemMarginPx * 2);
+
+    return totalItemSizePx > 0 ? (containerSizePx / totalItemSizePx).floor() : 0;
+  }
+
   /// [EN] Gets the current screen information.
   /// @param context The BuildContext.
   /// @return ScreenInfo containing screen dimensions and properties.

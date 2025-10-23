@@ -4,7 +4,7 @@
     <p><strong>Dimensionamiento Inteligente y Responsivo para Android</strong></p>
     <p>Escalado responsivo matemáticamente preciso que garantiza que su diseño de UI se adapte perfectamente a cualquier tamaño de pantalla o relación de aspecto — desde teléfonos hasta TVs, autos y wearables.</p>
 
-[![Versión](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Versión](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![Licencia](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../LICENSE)
 [![Plataforma](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 [![Documentación](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)
@@ -71,17 +71,17 @@ val scaledPosition = appDimensGames.calculateVector2D(position, GameDimensionTyp
 ```kotlin
 dependencies {
     // Biblioteca principal (escalado Dynamic + Fixed)
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.6")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.8")
     
     // Opcional: Escalado SDP & SSP
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.6")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.6")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.8")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.8")
     
     // Paquete completo (no incluye módulo de juegos)
-    implementation("io.github.bodenberg:appdimens-all:1.0.6")
+    implementation("io.github.bodenberg:appdimens-all:1.0.8")
     
     // Desarrollo de juegos con soporte C++/NDK (dependencia separada)
-    implementation("io.github.bodenberg:appdimens-games:1.0.6")
+    implementation("io.github.bodenberg:appdimens-games:1.0.8")
 }
 ```
 
@@ -89,11 +89,11 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'io.github.bodenberg:appdimens-dynamic:1.0.6'
-    implementation 'io.github.bodenberg:appdimens-sdps:1.0.6'
-    implementation 'io.github.bodenberg:appdimens-ssps:1.0.6'
-    implementation 'io.github.bodenberg:appdimens-all:1.0.6'
-    implementation 'io.github.bodenberg:appdimens-games:1.0.6'
+    implementation 'io.github.bodenberg:appdimens-dynamic:1.0.8'
+    implementation 'io.github.bodenberg:appdimens-sdps:1.0.8'
+    implementation 'io.github.bodenberg:appdimens-ssps:1.0.8'
+    implementation 'io.github.bodenberg:appdimens-all:1.0.8'
+    implementation 'io.github.bodenberg:appdimens-games:1.0.8'
 }
 ```
 

@@ -22,6 +22,7 @@
  * limitations under the License.
  */
 
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'appdimens_types.dart';
 import 'appdimens_utils.dart';
@@ -31,7 +32,6 @@ import 'appdimens_utils.dart';
 class AppDimensFixed {
   final double _initialValue;
   final bool _ignoreMultiWindowAdjustment;
-  final Map<String, double> _customValues = {};
   final Map<String, double> _uiModeValues = {};
   final Map<String, double> _dpQualifierValues = {};
   final Map<String, double> _deviceTypeValues = {};
@@ -51,74 +51,127 @@ class AppDimensFixed {
     bool ignoreMultiWindowAdjustment = false,
   }) : _ignoreMultiWindowAdjustment = ignoreMultiWindowAdjustment;
 
-  // MARK: - Custom Value Methods
+  // MARK: - Custom Value Methods (Standardized API - Compatible with Android/iOS)
 
   /// [EN] Sets a custom dimension value for a specific UI mode.
-  /// @param uiMode The UI mode type.
-  /// @param value The custom dimension value.
+  /// Compatible with Android/iOS API.
+  /// @param uiModeType The UI mode type.
+  /// @param customValue The custom dimension value.
   /// @return The AppDimensFixed instance for chaining.
-  /// [PT] Define um valor de dimensão personalizado para um modo de UI específico.
-  /// @param uiMode O tipo de modo de UI.
-  /// @param value O valor de dimensão personalizado.
+  /// [PT] Define um valor de dimensão customizado para um modo de UI específico.
+  /// Compatível com API Android/iOS.
+  /// @param uiModeType O tipo de modo de UI.
+  /// @param customValue O valor de dimensão customizado.
   /// @return A instância AppDimensFixed para encadeamento.
-  AppDimensFixed uiMode(UiModeType uiMode, double value) {
-    _uiModeValues[uiMode.name] = value;
+  AppDimensFixed screen(UiModeType uiModeType, double customValue) {
+    _uiModeValues[uiModeType.name] = customValue;
+    return this;
+  }
+
+  /// [EN] Sets a custom dimension value for a specific device type and screen size.
+  /// Compatible with Android/iOS API.
+  /// @param deviceType The device type.
+  /// @param screenSize The minimum screen size (in dp).
+  /// @param customValue The custom dimension value.
+  /// @return The AppDimensFixed instance for chaining.
+  /// [PT] Define um valor de dimensão customizado para um tipo de dispositivo e tamanho de tela.
+  /// Compatível com API Android/iOS.
+  /// @param deviceType O tipo de dispositivo.
+  /// @param screenSize O tamanho mínimo de tela (em dp).
+  /// @param customValue O valor de dimensão customizado.
+  /// @return A instância AppDimensFixed para encadeamento.
+  AppDimensFixed screenWithSize(DeviceType deviceType, double screenSize, double customValue) {
+    final key = '${deviceType.name}_$screenSize';
+    _screenQualifierValues[key] = customValue;
     return this;
   }
 
   /// [EN] Sets a custom dimension value for a specific DP qualifier.
-  /// @param qualifier The DP qualifier.
-  /// @param value The custom dimension value.
+  /// Compatible with Android/iOS API.
+  /// @param dpQualifier The DP qualifier.
+  /// @param qualifierValue The qualifier value (e.g., 600 for sw600dp).
+  /// @param customValue The custom dimension value.
   /// @return The AppDimensFixed instance for chaining.
-  /// [PT] Define um valor de dimensão personalizado para um qualificador DP específico.
-  /// @param qualifier O qualificador DP.
-  /// @param value O valor de dimensão personalizado.
+  /// [PT] Define um valor de dimensão customizado para um qualificador DP específico.
+  /// Compatível com API Android/iOS.
+  /// @param dpQualifier O qualificador DP.
+  /// @param qualifierValue O valor do qualificador (ex: 600 para sw600dp).
+  /// @param customValue O valor de dimensão customizado.
   /// @return A instância AppDimensFixed para encadeamento.
+  AppDimensFixed screenWithQualifier(DpQualifier dpQualifier, int qualifierValue, double customValue) {
+    final key = '${dpQualifier.name}_$qualifierValue';
+    _dpQualifierValues[key] = customValue;
+    return this;
+  }
+
+  /// [EN] Sets a custom dimension value for the intersection of UI mode and DP qualifier.
+  /// Compatible with Android/iOS API.
+  /// @param uiModeType The UI mode type.
+  /// @param dpQualifier The DP qualifier.
+  /// @param qualifierValue The qualifier value (e.g., 600 for sw600dp).
+  /// @param customValue The custom dimension value.
+  /// @return The AppDimensFixed instance for chaining.
+  /// [PT] Define um valor de dimensão customizado para a interseção de modo UI e qualificador DP.
+  /// Compatível com API Android/iOS.
+  /// @param uiModeType O tipo de modo de UI.
+  /// @param dpQualifier O qualificador DP.
+  /// @param qualifierValue O valor do qualificador (ex: 600 para sw600dp).
+  /// @param customValue O valor de dimensão customizado.
+  /// @return A instância AppDimensFixed para encadeamento.
+  AppDimensFixed screenWithIntersection(
+    UiModeType uiModeType,
+    DpQualifier dpQualifier,
+    int qualifierValue,
+    double customValue,
+  ) {
+    final key = '${uiModeType.name}_${dpQualifier.name}_$qualifierValue';
+    _intersectionValues[key] = customValue;
+    return this;
+  }
+
+  // MARK: - Deprecated Methods (Kept for backward compatibility)
+
+  /// [DEPRECATED] Use screen() instead.
+  /// [EN] Sets a custom dimension value for a specific UI mode.
+  /// @deprecated Use screen(UiModeType, double) instead for consistency with Android/iOS.
+  @deprecated
+  AppDimensFixed uiMode(UiModeType uiMode, double value) {
+    return screen(uiMode, value);
+  }
+
+  /// [DEPRECATED] Use screenWithQualifier() instead.
+  /// [EN] Sets a custom dimension value for a specific DP qualifier.
+  /// @deprecated Use screenWithQualifier(DpQualifier, int, double) instead for consistency with Android/iOS.
+  @deprecated
   AppDimensFixed dpQualifier(DpQualifier qualifier, double value) {
     _dpQualifierValues[qualifier.name] = value;
     return this;
   }
 
+  /// [DEPRECATED] Use screen() or screenWithSize() instead.
   /// [EN] Sets a custom dimension value for a specific device type.
-  /// @param deviceType The device type.
-  /// @param value The custom dimension value.
-  /// @return The AppDimensFixed instance for chaining.
-  /// [PT] Define um valor de dimensão personalizado para um tipo de dispositivo específico.
-  /// @param deviceType O tipo de dispositivo.
-  /// @param value O valor de dimensão personalizado.
-  /// @return A instância AppDimensFixed para encadeamento.
+  /// @deprecated Use screen(DeviceType, double) or screenWithSize(DeviceType, double, double) instead.
+  @deprecated
   AppDimensFixed deviceType(DeviceType deviceType, double value) {
     _deviceTypeValues[deviceType.name] = value;
     return this;
   }
 
+  /// [DEPRECATED] Use screenWithQualifier() instead.
   /// [EN] Sets a custom dimension value for a specific screen qualifier.
-  /// @param qualifier The screen qualifier.
-  /// @param value The custom dimension value.
-  /// @return The AppDimensFixed instance for chaining.
-  /// [PT] Define um valor de dimensão personalizado para um qualificador de tela específico.
-  /// @param qualifier O qualificador de tela.
-  /// @param value O valor de dimensão personalizado.
-  /// @return A instância AppDimensFixed para encadeamento.
+  /// @deprecated Use screenWithQualifier() instead for consistency with Android/iOS.
+  @deprecated
   AppDimensFixed screenQualifier(ScreenQualifier qualifier, double value) {
     _screenQualifierValues[qualifier.name] = value;
     return this;
   }
 
+  /// [DEPRECATED] Use screenWithIntersection() instead.
   /// [EN] Sets a custom dimension value for a specific intersection of qualifiers.
-  /// @param uiMode The UI mode type.
-  /// @param dpQualifier The DP qualifier.
-  /// @param value The custom dimension value.
-  /// @return The AppDimensFixed instance for chaining.
-  /// [PT] Define um valor de dimensão personalizado para uma interseção específica de qualificadores.
-  /// @param uiMode O tipo de modo de UI.
-  /// @param dpQualifier O qualificador DP.
-  /// @param value O valor de dimensão personalizado.
-  /// @return A instância AppDimensFixed para encadeamento.
+  /// @deprecated Use screenWithIntersection() instead for consistency with Android/iOS.
+  @deprecated
   AppDimensFixed intersection(UiModeType uiMode, DpQualifier dpQualifier, double value) {
-    final key = '${uiMode.name}_${dpQualifier.name}';
-    _intersectionValues[key] = value;
-    return this;
+    return screenWithIntersection(uiMode, dpQualifier, 0, value);
   }
 
   // MARK: - Cache Control Methods
@@ -180,6 +233,96 @@ class AppDimensFixed {
     return _calculateValue(context);
   }
 
+  // MARK: - Conversion Methods (Compatible with Android/iOS)
+
+  /// [EN] Returns the adjusted value in density-independent pixels (dp).
+  /// @param context The BuildContext.
+  /// @return The value in dp as a double.
+  /// [PT] Retorna o valor ajustado em pixels independentes de densidade (dp).
+  /// @param context O BuildContext.
+  /// @return O valor em dp como double.
+  double toDp(BuildContext context) {
+    return calculate(context);
+  }
+
+  /// [EN] Returns the adjusted value in density-independent pixels (dp) as an integer.
+  /// @param context The BuildContext.
+  /// @return The value in dp as an int.
+  /// [PT] Retorna o valor ajustado em pixels independentes de densidade (dp) como inteiro.
+  /// @param context O BuildContext.
+  /// @return O valor em dp como int.
+  int toDpInt(BuildContext context) {
+    return calculate(context).round();
+  }
+
+  /// [EN] Returns the adjusted value in physical pixels (px).
+  /// @param context The BuildContext.
+  /// @return The value in pixels as a double.
+  /// [PT] Retorna o valor ajustado em pixels físicos (px).
+  /// @param context O BuildContext.
+  /// @return O valor em pixels como double.
+  double toPx(BuildContext context) {
+    final dpValue = calculate(context);
+    final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
+    return dpValue * devicePixelRatio;
+  }
+
+  /// [EN] Returns the adjusted value in physical pixels (px) as an integer.
+  /// @param context The BuildContext.
+  /// @return The value in pixels as an int.
+  /// [PT] Retorna o valor ajustado em pixels físicos (px) como inteiro.
+  /// @param context O BuildContext.
+  /// @return O valor em pixels como int.
+  int toPxInt(BuildContext context) {
+    return toPx(context).round();
+  }
+
+  /// [EN] Returns the adjusted value in scalable pixels (sp) for text.
+  /// This respects the system font scale setting.
+  /// @param context The BuildContext.
+  /// @return The value in sp as a double.
+  /// [PT] Retorna o valor ajustado em pixels escaláveis (sp) para texto.
+  /// Isso respeita a configuração de escala de fonte do sistema.
+  /// @param context O BuildContext.
+  /// @return O valor em sp como double.
+  double toSp(BuildContext context) {
+    final dpValue = calculate(context);
+    final textScaleFactor = MediaQuery.of(context).textScaleFactor;
+    return dpValue * textScaleFactor;
+  }
+
+  /// [EN] Returns the adjusted value in scalable pixels (sp) as an integer.
+  /// @param context The BuildContext.
+  /// @return The value in sp as an int.
+  /// [PT] Retorna o valor ajustado em pixels escaláveis (sp) como inteiro.
+  /// @param context O BuildContext.
+  /// @return O valor em sp como int.
+  int toSpInt(BuildContext context) {
+    return toSp(context).round();
+  }
+
+  /// [EN] Returns the adjusted value in em units (ignoring font scale).
+  /// This is similar to sp but without the font scale factor applied.
+  /// @param context The BuildContext.
+  /// @return The value in em as a double.
+  /// [PT] Retorna o valor ajustado em unidades em (ignorando escala de fonte).
+  /// Isso é similar ao sp mas sem o fator de escala de fonte aplicado.
+  /// @param context O BuildContext.
+  /// @return O valor em em como double.
+  double toEm(BuildContext context) {
+    return calculate(context);
+  }
+
+  /// [EN] Returns the adjusted value in em units as an integer.
+  /// @param context The BuildContext.
+  /// @return The value in em as an int.
+  /// [PT] Retorna o valor ajustado em unidades em como inteiro.
+  /// @param context O BuildContext.
+  /// @return O valor em em como int.
+  int toEmInt(BuildContext context) {
+    return toEm(context).round();
+  }
+
   // MARK: - Private Methods
 
   /// [EN] Generates a cache key for the current context.
@@ -209,7 +352,6 @@ class AppDimensFixed {
   double _calculateValue(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final size = mediaQuery.size;
-    final devicePixelRatio = mediaQuery.devicePixelRatio;
     
     final deviceType = DeviceType.current(context);
     final uiModeType = UiModeType.current(context);
@@ -278,7 +420,7 @@ class AppDimensFixed {
     }
     
     // Apply logarithmic scaling for fixed dimensions
-    final scalingFactor = (baseDimension / 320.0).log() / (1080.0 / 320.0).log();
+    final scalingFactor = math.log(baseDimension / 320.0) / math.log(1080.0 / 320.0);
     final scaledValue = baseValue * scalingFactor;
     
     // Apply all factors

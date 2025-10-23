@@ -39,6 +39,11 @@ export {
 
 // Utilities
 export {AppDimensUtils} from './utils/AppDimensUtils';
+export {
+  AppDimensPhysicalUnits,
+  PhysicalUnitConversions,
+  UnitType,
+} from './utils/AppDimensPhysicalUnits';
 
 // Types
 export * from './types';

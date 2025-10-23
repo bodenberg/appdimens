@@ -102,9 +102,9 @@ void main() {
         MaterialApp(
           home: Builder(
             builder: (context) {
-              final mmToPixels = AppDimensPhysicalUnits.mmToPixels(25.4, context);
-              final cmToPixels = AppDimensPhysicalUnits.cmToPixels(2.54, context);
-              final inchesToPixels = AppDimensPhysicalUnits.inchesToPixels(1.0, context);
+              final mmToPixels = AppDimensPhysicalUnits.toPxFromMm(25.4, context);
+              final cmToPixels = AppDimensPhysicalUnits.toPxFromCm(2.54, context);
+              final inchesToPixels = AppDimensPhysicalUnits.toPxFromInch(1.0, context);
               
               expect(mmToPixels, isA<double>());
               expect(cmToPixels, isA<double>());
@@ -166,9 +166,11 @@ void main() {
               final factors = AppDimens.calculateAdjustmentFactors(context);
               
               expect(factors, isA<ScreenAdjustmentFactors>());
-              expect(factors.aspectRatioFactor, greaterThan(0));
-              expect(factors.densityFactor, greaterThan(0));
-              expect(factors.deviceTypeFactor, greaterThan(0));
+              expect(factors.adjustmentFactorLowest, greaterThan(0));
+              expect(factors.adjustmentFactorHighest, greaterThan(0));
+              expect(factors.withArFactorLowest, greaterThan(0));
+              expect(factors.withArFactorHighest, greaterThan(0));
+              expect(factors.withoutArFactor, greaterThan(0));
               
               return Container();
             },

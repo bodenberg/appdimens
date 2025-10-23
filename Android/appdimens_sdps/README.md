@@ -26,6 +26,50 @@
 
 ---
 
+## 📋 Requisitos Mínimos
+
+| Requisito | Versão Mínima | Recomendado |
+|-----------|---------------|-------------|
+| **Kotlin** | 2.0.0 | 2.2.20 |
+| **Android Gradle Plugin** | 8.0.0 | 8.13.0 |
+| **compileSdk** | 34 | 36 |
+| **minSdk** | 21 | 23 |
+| **targetSdk** | 34 | 36 |
+| **Jetpack Compose BOM** | 2024.01.00 | 2025.10.00 |
+| **Page Size** | Compatível com 16KB | ✅ |
+
+### Configuração do Projeto
+
+```kotlin
+// build.gradle.kts (Project)
+plugins {
+    id("com.android.application") version "8.13.0" apply false
+    id("org.jetbrains.kotlin.android") version "2.2.20" apply false
+}
+
+// build.gradle.kts (Module)
+android {
+    namespace = "com.example.app"
+    compileSdk = 36
+    
+    defaultConfig {
+        minSdk = 23
+        targetSdk = 36
+    }
+    
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+}
+```
+
+---
+
 ## 🚀 Installation
 
 ```kotlin
@@ -148,6 +192,77 @@ fun AdvancedConditionalExample() {
     )
 }
 ```
+
+### 📱 Direct Code Access (code package)
+
+The `code` package provides direct access to dimension resources for use in traditional Android Views (Kotlin/Java).
+
+#### AppDimensSdp Object
+
+```kotlin
+import com.appdimens.sdps.code.AppDimensSdp
+import com.appdimens.library.DpQualifier
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        
+        // Get dimension in pixels using SDP (smallest width)
+        val widthPx = AppDimensSdp.getDimensionInPx(
+            context = this,
+            dpQualifier = DpQualifier.SMALL_WIDTH,
+            value = 100  // 100sdp
+        )
+        
+        // Get dimension in pixels using HDP (height)
+        val heightPx = AppDimensSdp.getDimensionInPx(
+            context = this,
+            dpQualifier = DpQualifier.HEIGHT,
+            value = 50  // 50hdp
+        )
+        
+        // Get dimension in pixels using WDP (width)
+        val paddingPx = AppDimensSdp.getDimensionInPx(
+            context = this,
+            dpQualifier = DpQualifier.WIDTH,
+            value = 16  // 16wdp
+        )
+        
+        // Apply to views
+        myView.layoutParams.width = widthPx.toInt()
+        myView.layoutParams.height = heightPx.toInt()
+        myView.setPadding(paddingPx.toInt(), 0, paddingPx.toInt(), 0)
+    }
+}
+```
+
+#### Get Resource ID
+
+```kotlin
+// Get the resource ID for manual resolution
+val resourceId = AppDimensSdp.getResourceId(
+    context = this,
+    dpQualifier = DpQualifier.SMALL_WIDTH,
+    value = 100
+)
+
+// Use with resources
+val dimension = resources.getDimension(resourceId)
+```
+
+#### Supported Value Range
+
+- **Minimum**: -330 (for negative margins)
+- **Maximum**: 600
+- Values outside this range are automatically clamped
+
+#### Supported Qualifiers
+
+| DpQualifier | Suffix | Description | Use Case |
+|-------------|--------|-------------|----------|
+| `SMALL_WIDTH` | `sdp` | Based on smallest width | Default, most restrictive |
+| `HEIGHT` | `hdp` | Based on screen height | Vertical elements |
+| `WIDTH` | `wdp` | Based on screen width | Horizontal elements |
 
 ### 📄 XML Views
 
@@ -381,6 +496,7 @@ println("Factors: ${factors}")
 |-------|-------------|-------------|
 | **Scaled** | Conditional scaling | `screen()`, `.sdp`, `.hdp`, `.wdp` |
 | **AppDimens** | Main entry point | `calculateAvailableItemCount()` |
+| **AppDimensSdp** | Direct resource access (code package) | `getDimensionInPx()`, `getResourceId()` |
 
 ### 🔧 Extension Functions
 
