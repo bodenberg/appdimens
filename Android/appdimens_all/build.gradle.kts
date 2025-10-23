@@ -47,7 +47,7 @@ mavenPublishing {
             developer {
                 id.set("bodenberg")
                 name.set("Jean Bodenberg")
-                email.set("jean.bodenberg@gmail.com")
+                email.set("jc8752719@gmail.com")
             }
         }
         scm {

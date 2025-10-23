@@ -641,7 +641,6 @@ Apache License 2.0 - veja [LICENSE](../LICENSE) para detalhes.
 
 **Jean Bodenberg**
 - 🌐 [GitHub](https://github.com/bodenberg)
-- 📧 Email: jean.bodenberg@gmail.com
 
 ---
 

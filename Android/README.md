@@ -109,6 +109,123 @@ repositories {
 
 ---
 
+## 📋 Minimum Requirements
+
+### Required Versions
+
+| Component | Minimum Version | Recommended |
+|-----------|----------------|-------------|
+| **Kotlin** | 2.2.20 | 2.2.20 |
+| **Android Gradle Plugin** | 8.13.0 | 8.13.0 |
+| **Gradle** | 8.5 | 8.5 |
+| **compileSdk** | 36 | 36 |
+| **minSdk** | 21 (Android 5.0) | 23 (Android 6.0) |
+| **targetSdk** | 36 | 36 |
+| **Java** | 17 | 17 |
+| **Jetpack Compose BOM** | 2025.01.00 | 2025.01.00 |
+
+### Build Configuration Example
+
+```kotlin
+// build.gradle.kts (Project level)
+plugins {
+    id("com.android.application") version "8.13.0" apply false
+    id("org.jetbrains.kotlin.android") version "2.2.20" apply false
+    id("org.jetbrains.kotlin.plugin.compose") version "2.2.20" apply false
+}
+```
+
+```kotlin
+// build.gradle.kts (Module level)
+android {
+    namespace = "com.example.app"
+    compileSdk = 36
+
+    defaultConfig {
+        applicationId = "com.example.app"
+        minSdk = 23
+        targetSdk = 36
+        versionCode = 1
+        versionName = "1.0"
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
+    buildFeatures {
+        compose = true
+        dataBinding = true
+        viewBinding = true
+    }
+}
+
+dependencies {
+    // Jetpack Compose BOM
+    implementation(platform("androidx.compose:compose-bom:2025.01.00"))
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.material3:material3")
+    
+    // AppDimens
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.8")
+}
+```
+
+### Special Requirements
+
+#### For Games Module (C++/NDK)
+
+| Component | Minimum Version |
+|-----------|----------------|
+| **NDK** | 21.0.6113669 |
+| **CMake** | 3.18.1 |
+| **C++ Standard** | C++17 |
+
+```kotlin
+android {
+    ndkVersion = "26.1.10909125"
+    
+    defaultConfig {
+        externalNativeBuild {
+            cmake {
+                cppFlags += "-std=c++17"
+            }
+        }
+    }
+    
+    externalNativeBuild {
+        cmake {
+            path = file("src/main/cpp/CMakeLists.txt")
+            version = "3.22.1"
+        }
+    }
+}
+```
+
+#### For 16KB Page Size Compatibility
+
+AppDimens is **fully compatible** with Android's 16KB page size. No special configuration needed.
+
+```kotlin
+android {
+    defaultConfig {
+        // Optional: Enable 16KB page size testing
+        testOptions {
+            unitTests {
+                isIncludeAndroidResources = true
+            }
+        }
+    }
+}
+```
+
+---
+
 ## 🧠 Core Dimension Models
 
 | Model | Philosophy | Ideal Use Case | Supported In |

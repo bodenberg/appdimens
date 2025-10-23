@@ -12,7 +12,7 @@ Pod::Spec.new do |spec|
                       DESC
   spec.homepage     = "https://github.com/bodenberg/appdimens"
   spec.license      = { :type => "Apache License, Version 2.0", :file => "LICENSE" }
-  spec.author       = { "Jean Bodenberg" => "jean.bodenberg@gmail.com" }
+  spec.author       = { "Jean Bodenberg" => "jc8752719@gmail.com" }
   spec.source       = { :git => "https://github.com/bodenberg/appdimens.git", :tag => "#{spec.version}" }
   
   spec.ios.deployment_target = "13.0"
