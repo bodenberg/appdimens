@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "resolveIntersectionCondition"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-adjustment-factors/resolve-intersection-condition.html
 ---
 
 # resolveIntersectionCondition

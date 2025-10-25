@@ -1,0 +1,105 @@
+# Jekyll Configuration for AppDimens Android Documentation
+# Este arquivo configura o Jekyll para processar a documentação do Android
+
+# Site settings
+title: "AppDimens Android Documentation"
+description: "Complete API Documentation and Implementation Guide for AppDimens Android"
+baseurl: "/Android/DOCS"
+url: "https://bodenberg.github.io/AppDimens"
+
+# Build settings
+markdown: kramdown
+theme: jekyll-theme-minimal
+
+# Kramdown settings
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+      start_line: 1
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: "DYNAMIC"
+    values:
+      category: "dynamic"
+  - scope:
+      path: "GAMES"
+    values:
+      category: "games"
+  - scope:
+      path: "LIBRARY"
+    values:
+      category: "library"
+  - scope:
+      path: "SDPS"
+    values:
+      category: "sdps"
+  - scope:
+      path: "SSPS"
+    values:
+      category: "ssps"
+
+# Exclude from processing
+exclude:
+  - package-list
+  - "*.gradle"
+  - "*.properties"
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+
+# Include hidden files
+include:
+  - .htaccess
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# SEO settings
+author: "Bodenberg"
+twitter:
+  username: bodenberg
+  card: summary
+social:
+  name: "AppDimens"
+  links:
+    - https://github.com/bodenberg/AppDimens
+
+# Navigation
+navigation:
+  - title: "Home"
+    url: /
+  - title: "Dynamic"
+    url: /DYNAMIC/
+  - title: "Games"
+    url: /GAMES/
+  - title: "Library"
+    url: /LIBRARY/
+  - title: "SDPS"
+    url: /SDPS/
+  - title: "SSPS"
+    url: /SSPS/
+

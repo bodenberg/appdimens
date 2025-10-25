@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "GameViewportMode"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-viewport-mode/index.html
 ---
 
 # GameViewportMode

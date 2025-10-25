@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "AppDimensSdp"
+category: sdps
+permalink: /SDPS/MARKDOWN/appdimens_sdps/com.appdimens.sdps.code/-app-dimens-sdp/index.html
 ---
 
 # AppDimensSdp

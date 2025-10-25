@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "adjustmentFactorLowest"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-screen-adjustment-factors/adjustment-factor-lowest.html
 ---
 
 # adjustmentFactorLowest

@@ -10,7 +10,7 @@
 
 </div>
 
-> **Idiomas:** [English](../../README.md) | [Português (BR)](../pt-BR/README.md) | Español | [हिन्दी](../hi/README.md) | [Русский](../ru/README.md) | [中文](../zh/README.md) | [日本語](../ja/README.md)
+> **Idiomas:** [English](../../README.md) | [Português (BR)](../pt-BR/README.md) | Español
 
 ---
 

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "GameVector2D"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-vector2-d/-game-vector2-d.html
 ---
 
 # GameVector2D

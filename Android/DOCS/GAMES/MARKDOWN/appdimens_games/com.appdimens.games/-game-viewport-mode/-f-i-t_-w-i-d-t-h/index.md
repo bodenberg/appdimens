@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "FIT_WIDTH"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-viewport-mode/-f-i-t_-w-i-d-t-h/index.html
 ---
 
 # FIT_WIDTH

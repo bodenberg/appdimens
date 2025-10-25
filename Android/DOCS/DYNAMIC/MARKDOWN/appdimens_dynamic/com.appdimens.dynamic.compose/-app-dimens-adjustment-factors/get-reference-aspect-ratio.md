@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "getReferenceAspectRatio"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-adjustment-factors/get-reference-aspect-ratio.html
 ---
 
 # getReferenceAspectRatio

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "scaledDp"
+category: sdps
+permalink: /SDPS/MARKDOWN/appdimens_sdps/com.appdimens.sdps.compose/scaled-dp.html
 ---
 
 # scaledDp

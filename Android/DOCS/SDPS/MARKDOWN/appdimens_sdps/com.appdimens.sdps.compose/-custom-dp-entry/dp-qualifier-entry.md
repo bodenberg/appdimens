@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "dpQualifierEntry"
+category: sdps
+permalink: /SDPS/MARKDOWN/appdimens_sdps/com.appdimens.sdps.compose/-custom-dp-entry/dp-qualifier-entry.html
 ---
 
 # dpQualifierEntry

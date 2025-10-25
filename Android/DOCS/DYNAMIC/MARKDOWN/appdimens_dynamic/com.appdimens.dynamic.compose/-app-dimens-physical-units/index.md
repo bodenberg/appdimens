@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "AppDimensPhysicalUnits"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-physical-units/index.html
 ---
 
 # AppDimensPhysicalUnits

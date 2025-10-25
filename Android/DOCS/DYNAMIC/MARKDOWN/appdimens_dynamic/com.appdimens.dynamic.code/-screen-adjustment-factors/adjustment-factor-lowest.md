@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "adjustmentFactorLowest"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-screen-adjustment-factors/adjustment-factor-lowest.html
 ---
 
 # adjustmentFactorLowest

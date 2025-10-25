@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "HEIGHT"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-dp-qualifier/-h-e-i-g-h-t/index.html
 ---
 
 # HEIGHT

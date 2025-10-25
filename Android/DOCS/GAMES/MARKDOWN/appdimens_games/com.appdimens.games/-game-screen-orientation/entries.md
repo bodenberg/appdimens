@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "entries"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-screen-orientation/entries.html
 ---
 
 # entries

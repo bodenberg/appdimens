@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "VR_HEADSET"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-type/-v-r_-h-e-a-d-s-e-t/index.html
 ---
 
 # VR_HEADSET

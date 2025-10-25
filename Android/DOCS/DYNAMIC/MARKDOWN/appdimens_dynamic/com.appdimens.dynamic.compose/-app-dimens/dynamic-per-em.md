@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "dynamicPerEm"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens/dynamic-per-em.html
 ---
 
 # dynamicPerEm

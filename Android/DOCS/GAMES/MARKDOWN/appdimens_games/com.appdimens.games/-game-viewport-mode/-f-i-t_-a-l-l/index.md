@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "FIT_ALL"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-viewport-mode/-f-i-t_-a-l-l/index.html
 ---
 
 # FIT_ALL

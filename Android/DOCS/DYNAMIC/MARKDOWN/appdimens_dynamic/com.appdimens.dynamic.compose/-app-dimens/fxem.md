@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "fxem"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens/fxem.html
 ---
 
 # fxem

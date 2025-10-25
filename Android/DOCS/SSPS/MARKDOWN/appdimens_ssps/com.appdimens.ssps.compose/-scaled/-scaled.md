@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "Scaled"
+category: ssps
+permalink: /SSPS/MARKDOWN/appdimens_ssps/com.appdimens.ssps.compose/-scaled/-scaled.html
 ---
 
 # Scaled

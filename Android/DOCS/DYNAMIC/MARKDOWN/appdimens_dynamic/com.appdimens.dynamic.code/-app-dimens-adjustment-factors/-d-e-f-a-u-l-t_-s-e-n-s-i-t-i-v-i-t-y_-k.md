@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "DEFAULT_SENSITIVITY_K"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-adjustment-factors/-d-e-f-a-u-l-t_-s-e-n-s-i-t-i-v-i-t-y_-k.html
 ---
 
 # DEFAULT_SENSITIVITY_K

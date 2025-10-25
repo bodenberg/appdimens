@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "🎮 AppDimens Games - Android Game Development"
+category: games
+permalink: /GAMES/README.html
 ---
 
 # 🎮 AppDimens Games - Android Game Development

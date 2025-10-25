@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "contains"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-rectangle/contains.html
 ---
 
 # contains

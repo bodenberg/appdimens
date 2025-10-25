@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "Package-level declarations"
+category: sdps
+permalink: /SDPS/MARKDOWN/appdimens_sdps/com.appdimens.sdps.code/index.html
 ---
 
 # Package-level declarations

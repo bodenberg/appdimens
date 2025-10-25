@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "adjustmentFactorHighest"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-screen-adjustment-factors/adjustment-factor-highest.html
 ---
 
 # adjustmentFactorHighest

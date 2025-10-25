@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "wem"
+category: ssps
+permalink: /SSPS/MARKDOWN/appdimens_ssps/com.appdimens.ssps.compose/wem.html
 ---
 
 # wem

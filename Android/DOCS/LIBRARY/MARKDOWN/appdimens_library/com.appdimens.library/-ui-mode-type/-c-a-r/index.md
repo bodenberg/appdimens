@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "CAR"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-type/-c-a-r/index.html
 ---
 
 # CAR

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "UI_OVERLAY"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-dimension-type/-u-i_-o-v-e-r-l-a-y/index.html
 ---
 
 # UI_OVERLAY

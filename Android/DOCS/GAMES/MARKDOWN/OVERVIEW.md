@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "🎮 AppDimens Games — C++ Overview"
+category: games
+permalink: /GAMES/MARKDOWN/OVERVIEW.html
 ---
 
 # 🎮 AppDimens Games — C++ Overview

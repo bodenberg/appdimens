@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "Companion"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-type/-companion/index.html
 ---
 
 # Companion

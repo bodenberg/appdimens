@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "SMALL_WIDTH"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-dp-qualifier/-s-m-a-l-l_-w-i-d-t-h/index.html
 ---
 
 # SMALL_WIDTH

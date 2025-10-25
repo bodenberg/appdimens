@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "convertInchToCm"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-physical-units/convert-inch-to-cm.html
 ---
 
 # convertInchToCm

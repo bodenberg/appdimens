@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "getDimensionInPx"
+category: sdps
+permalink: /SDPS/MARKDOWN/appdimens_sdps/com.appdimens.sdps.code/-app-dimens-sdp/get-dimension-in-px.html
 ---
 
 # getDimensionInPx

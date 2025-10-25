@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "calculateRectangle"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-app-dimens-games/calculate-rectangle.html
 ---
 
 # calculateRectangle

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "valueOf"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-type/value-of.html
 ---
 
 # valueOf

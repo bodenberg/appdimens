@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "DESK"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-type/-d-e-s-k/index.html
 ---
 
 # DESK

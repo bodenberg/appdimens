@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "type"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-dynamic/type.html
 ---
 
 # type

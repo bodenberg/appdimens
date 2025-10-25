@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "values"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-dp-qualifier/values.html
 ---
 
 # values

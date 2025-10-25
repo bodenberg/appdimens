@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "type"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-dp-qualifier-entry/type.html
 ---
 
 # type

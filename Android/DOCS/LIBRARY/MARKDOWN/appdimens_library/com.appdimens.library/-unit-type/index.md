@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "UnitType"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-unit-type/index.html
 ---
 
 # UnitType

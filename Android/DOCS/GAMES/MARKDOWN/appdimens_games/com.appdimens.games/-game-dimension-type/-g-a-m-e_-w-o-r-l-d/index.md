@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "GAME_WORLD"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-dimension-type/-g-a-m-e_-w-o-r-l-d/index.html
 ---
 
 # GAME_WORLD

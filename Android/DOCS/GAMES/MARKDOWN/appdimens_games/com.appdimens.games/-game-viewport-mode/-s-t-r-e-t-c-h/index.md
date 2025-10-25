@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "STRETCH"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-viewport-mode/-s-t-r-e-t-c-h/index.html
 ---
 
 # STRETCH

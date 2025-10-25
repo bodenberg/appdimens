@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "WATCH"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-type/-w-a-t-c-h/index.html
 ---
 
 # WATCH

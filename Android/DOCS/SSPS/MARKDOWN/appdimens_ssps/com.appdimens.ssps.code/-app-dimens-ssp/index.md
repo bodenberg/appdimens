@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "AppDimensSsp"
+category: ssps
+permalink: /SSPS/MARKDOWN/appdimens_ssps/com.appdimens.ssps.code/-app-dimens-ssp/index.html
 ---
 
 # AppDimensSsp

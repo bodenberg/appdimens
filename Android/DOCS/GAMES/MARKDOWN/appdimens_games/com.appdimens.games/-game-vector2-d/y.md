@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "y"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-vector2-d/y.html
 ---
 
 # y

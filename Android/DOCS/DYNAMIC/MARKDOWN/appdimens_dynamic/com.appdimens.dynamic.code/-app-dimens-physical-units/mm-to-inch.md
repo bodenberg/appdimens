@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "mmToInch"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-physical-units/mm-to-inch.html
 ---
 
 # mmToInch

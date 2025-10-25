@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "radius"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-physical-units/radius.html
 ---
 
 # radius

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "toEmInt"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-dynamic/to-em-int.html
 ---
 
 # toEmInt

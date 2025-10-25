@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "NORMAL"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-type/-n-o-r-m-a-l/index.html
 ---
 
 # NORMAL

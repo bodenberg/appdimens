@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "minus"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-vector2-d/minus.html
 ---
 
 # minus

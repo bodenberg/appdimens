@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "updateScreenConfiguration"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-app-dimens-games/update-screen-configuration.html
 ---
 
 # updateScreenConfiguration

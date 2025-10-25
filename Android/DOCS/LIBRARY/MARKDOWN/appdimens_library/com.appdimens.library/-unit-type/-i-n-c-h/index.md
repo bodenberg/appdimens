@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "INCH"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-unit-type/-i-n-c-h/index.html
 ---
 
 # INCH

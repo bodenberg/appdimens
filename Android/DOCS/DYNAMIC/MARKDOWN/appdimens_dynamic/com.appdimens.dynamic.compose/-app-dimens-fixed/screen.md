@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "screen"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-fixed/screen.html
 ---
 
 # screen

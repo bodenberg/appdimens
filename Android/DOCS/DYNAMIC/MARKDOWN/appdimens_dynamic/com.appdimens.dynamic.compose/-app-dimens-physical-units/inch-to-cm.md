@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "inchToCm"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-physical-units/inch-to-cm.html
 ---
 
 # inchToCm

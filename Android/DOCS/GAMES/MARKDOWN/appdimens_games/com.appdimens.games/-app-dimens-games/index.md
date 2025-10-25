@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "AppDimensGames"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-app-dimens-games/index.html
 ---
 
 # AppDimensGames

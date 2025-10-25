@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "scaledDensity"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-screen-config/scaled-density.html
 ---
 
 # scaledDensity

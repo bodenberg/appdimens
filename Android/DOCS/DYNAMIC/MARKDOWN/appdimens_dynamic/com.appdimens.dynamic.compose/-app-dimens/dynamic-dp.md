@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "dynamicDp"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens/dynamic-dp.html
 ---
 
 # dynamicDp

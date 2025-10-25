@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "FIT_HEIGHT"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-viewport-mode/-f-i-t_-h-e-i-g-h-t/index.html
 ---
 
 # FIT_HEIGHT

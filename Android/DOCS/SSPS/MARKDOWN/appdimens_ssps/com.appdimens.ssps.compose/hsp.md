@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "hsp"
+category: ssps
+permalink: /SSPS/MARKDOWN/appdimens_ssps/com.appdimens.ssps.compose/hsp.html
 ---
 
 # hsp

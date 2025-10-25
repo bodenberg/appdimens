@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "fixedSp"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens/fixed-sp.html
 ---
 
 # fixedSp

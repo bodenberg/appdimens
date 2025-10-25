@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "resolveQualifierDp"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-adjustment-factors/resolve-qualifier-dp.html
 ---
 
 # resolveQualifierDp

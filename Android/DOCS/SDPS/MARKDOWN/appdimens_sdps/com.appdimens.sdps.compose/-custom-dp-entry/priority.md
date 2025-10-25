@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "priority"
+category: sdps
+permalink: /SDPS/MARKDOWN/appdimens_sdps/com.appdimens.sdps.compose/-custom-dp-entry/priority.html
 ---
 
 # priority

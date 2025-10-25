@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "LANDSCAPE"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-screen-orientation/-l-a-n-d-s-c-a-p-e/index.html
 ---
 
 # LANDSCAPE

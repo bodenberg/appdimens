@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "dyhem"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens/dyhem.html
 ---
 
 # dyhem

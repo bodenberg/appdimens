@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "CustomDpEntry"
+category: sdps
+permalink: /SDPS/MARKDOWN/appdimens_sdps/com.appdimens.sdps.compose/-custom-dp-entry/-custom-dp-entry.html
 ---
 
 # CustomDpEntry

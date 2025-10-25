@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "GameScreenConfig"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-screen-config/index.html
 ---
 
 # GameScreenConfig

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "Package-level declarations"
+category: ssps
+permalink: /SSPS/MARKDOWN/appdimens_ssps/com.appdimens.ssps.compose/index.html
 ---
 
 # Package-level declarations

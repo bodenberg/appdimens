@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "withArFactorHighest"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-screen-adjustment-factors/with-ar-factor-highest.html
 ---
 
 # withArFactorHighest

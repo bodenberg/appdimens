@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "LOWEST"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-screen-type/-l-o-w-e-s-t/index.html
 ---
 
 # LOWEST

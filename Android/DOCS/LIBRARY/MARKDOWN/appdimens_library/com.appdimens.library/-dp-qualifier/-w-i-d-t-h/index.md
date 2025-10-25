@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "WIDTH"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-dp-qualifier/-w-i-d-t-h/index.html
 ---
 
 # WIDTH

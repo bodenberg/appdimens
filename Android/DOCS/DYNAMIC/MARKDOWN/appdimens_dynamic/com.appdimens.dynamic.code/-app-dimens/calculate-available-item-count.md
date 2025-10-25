@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "calculateAvailableItemCount"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens/calculate-available-item-count.html
 ---
 
 # calculateAvailableItemCount

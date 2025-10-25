@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "REFERENCE_AR"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-adjustment-factors/-r-e-f-e-r-e-n-c-e_-a-r.html
 ---
 
 # REFERENCE_AR

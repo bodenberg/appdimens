@@ -2,7 +2,7 @@
 
 **Quick Navigation Guide - Find What You Need in Seconds**
 
-> **Languages:** English | [Português (BR)](LANG/pt-BR/DOCS_QUICK_REFERENCE.md) | [Español](LANG/es/DOCS_QUICK_REFERENCE.md) | [हिन्दी](LANG/hi/DOCS_QUICK_REFERENCE.md) | [Русский](LANG/ru/DOCS_QUICK_REFERENCE.md) | [中文](LANG/zh/DOCS_QUICK_REFERENCE.md) | [日本語](LANG/ja/DOCS_QUICK_REFERENCE.md)
+> **Languages:** English | [Português (BR)](LANG/pt-BR/DOCS_QUICK_REFERENCE.md) | [Español](LANG/es/DOCS_QUICK_REFERENCE.md)
 
 ---
 

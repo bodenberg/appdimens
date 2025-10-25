@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "configValue"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-type/config-value.html
 ---
 
 # configValue

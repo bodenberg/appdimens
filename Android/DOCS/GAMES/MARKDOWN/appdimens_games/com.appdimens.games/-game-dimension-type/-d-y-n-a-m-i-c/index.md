@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "DYNAMIC"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-dimension-type/-d-y-n-a-m-i-c/index.html
 ---
 
 # DYNAMIC

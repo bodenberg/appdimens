@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "cmToMm"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-physical-units/cm-to-mm.html
 ---
 
 # cmToMm

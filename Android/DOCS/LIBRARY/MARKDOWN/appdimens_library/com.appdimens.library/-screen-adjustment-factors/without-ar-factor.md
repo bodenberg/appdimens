@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "withoutArFactor"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-screen-adjustment-factors/without-ar-factor.html
 ---
 
 # withoutArFactor

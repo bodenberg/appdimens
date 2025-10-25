@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "HIGHEST"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-screen-type/-h-i-g-h-e-s-t/index.html
 ---
 
 # HIGHEST

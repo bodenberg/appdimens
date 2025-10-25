@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "initialize"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-app-dimens-games/initialize.html
 ---
 
 # initialize

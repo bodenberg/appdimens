@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "times"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-vector2-d/times.html
 ---
 
 # times

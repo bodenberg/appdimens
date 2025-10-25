@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "sem"
+category: ssps
+permalink: /SSPS/MARKDOWN/appdimens_ssps/com.appdimens.ssps.compose/sem.html
 ---
 
 # sem

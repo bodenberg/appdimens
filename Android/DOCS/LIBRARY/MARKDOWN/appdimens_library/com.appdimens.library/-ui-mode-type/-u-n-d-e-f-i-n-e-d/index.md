@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "UNDEFINED"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-type/-u-n-d-e-f-i-n-e-d/index.html
 ---
 
 # UNDEFINED

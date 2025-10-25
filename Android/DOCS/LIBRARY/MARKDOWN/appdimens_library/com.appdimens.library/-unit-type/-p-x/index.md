@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "PX"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-unit-type/-p-x/index.html
 ---
 
 # PX

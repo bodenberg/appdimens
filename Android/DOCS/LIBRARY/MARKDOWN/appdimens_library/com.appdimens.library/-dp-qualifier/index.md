@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "DpQualifier"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-dp-qualifier/index.html
 ---
 
 # DpQualifier

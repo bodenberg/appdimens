@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "Package-level declarations"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/index.html
 ---
 
 # Package-level declarations

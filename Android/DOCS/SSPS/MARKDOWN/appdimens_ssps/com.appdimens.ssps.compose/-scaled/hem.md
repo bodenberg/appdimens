@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "hem"
+category: ssps
+permalink: /SSPS/MARKDOWN/appdimens_ssps/com.appdimens.ssps.compose/-scaled/hem.html
 ---
 
 # hem

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "toDynamicScaledSp"
+category: ssps
+permalink: /SSPS/MARKDOWN/appdimens_ssps/com.appdimens.ssps.compose/to-dynamic-scaled-sp.html
 ---
 
 # toDynamicScaledSp

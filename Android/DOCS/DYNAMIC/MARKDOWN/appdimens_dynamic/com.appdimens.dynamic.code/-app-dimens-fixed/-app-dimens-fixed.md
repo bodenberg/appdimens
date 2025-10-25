@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "AppDimensFixed"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-fixed/-app-dimens-fixed.html
 ---
 
 # AppDimensFixed

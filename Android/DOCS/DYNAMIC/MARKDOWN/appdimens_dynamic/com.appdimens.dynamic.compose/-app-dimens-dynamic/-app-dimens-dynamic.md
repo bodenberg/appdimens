@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "AppDimensDynamic"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-dynamic/-app-dimens-dynamic.html
 ---
 
 # AppDimensDynamic

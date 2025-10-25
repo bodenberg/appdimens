@@ -1,6 +1,6 @@
 # 📐 AppDimens: Mathematical Theory and Scientific Foundation
 
-> **Languages:** English | [Português (BR)](LANG/pt-BR/MATHEMATICAL_THEORY.md) | [Español](LANG/es/MATHEMATICAL_THEORY.md) | [हिन्दी](LANG/hi/MATHEMATICAL_THEORY.md) | [Русский](LANG/ru/MATHEMATICAL_THEORY.md) | [中文](LANG/zh/MATHEMATICAL_THEORY.md) | [日本語](LANG/ja/MATHEMATICAL_THEORY.md)
+> **Languages:** English | [Português (BR)](LANG/pt-BR/MATHEMATICAL_THEORY.md) | [Español](LANG/es/MATHEMATICAL_THEORY.md)
 
 **Detailed Technical Documentation - Universal Mathematical Model**  
 *Author: Jean Bodenberg*  

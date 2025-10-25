@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "sdp"
+category: sdps
+permalink: /SDPS/MARKDOWN/appdimens_sdps/com.appdimens.sdps.compose/sdp.html
 ---
 
 # sdp

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "calculateAdjustedValue"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-fixed/calculate-adjusted-value.html
 ---
 
 # calculateAdjustedValue

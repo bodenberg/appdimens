@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "withArFactorHighest"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-screen-adjustment-factors/with-ar-factor-highest.html
 ---
 
 # withArFactorHighest

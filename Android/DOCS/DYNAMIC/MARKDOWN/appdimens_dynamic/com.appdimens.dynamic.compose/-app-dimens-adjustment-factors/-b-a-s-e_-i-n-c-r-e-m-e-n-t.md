@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "BASE_INCREMENT"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-adjustment-factors/-b-a-s-e_-i-n-c-r-e-m-e-n-t.html
 ---
 
 # BASE_INCREMENT

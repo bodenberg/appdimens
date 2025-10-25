@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "shutdown"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-app-dimens-games/shutdown.html
 ---
 
 # shutdown

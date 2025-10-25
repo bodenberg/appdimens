@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "calculateVector2D"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-app-dimens-games/calculate-vector2-d.html
 ---
 
 # calculateVector2D

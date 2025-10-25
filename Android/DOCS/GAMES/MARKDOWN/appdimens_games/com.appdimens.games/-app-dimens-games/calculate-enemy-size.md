@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "calculateEnemySize"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-app-dimens-games/calculate-enemy-size.html
 ---
 
 # calculateEnemySize

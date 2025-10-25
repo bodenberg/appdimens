@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "fromConfiguration"
+category: ssps
+permalink: /SSPS/MARKDOWN/appdimens_ssps/com.appdimens.ssps.compose/from-configuration.html
 ---
 
 # fromConfiguration

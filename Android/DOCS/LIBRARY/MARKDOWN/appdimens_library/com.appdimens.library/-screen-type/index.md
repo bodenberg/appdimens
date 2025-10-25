@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "ScreenType"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-screen-type/index.html
 ---
 
 # ScreenType

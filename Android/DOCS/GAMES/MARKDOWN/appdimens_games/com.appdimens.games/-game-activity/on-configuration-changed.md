@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "onConfigurationChanged"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-activity/on-configuration-changed.html
 ---
 
 # onConfigurationChanged

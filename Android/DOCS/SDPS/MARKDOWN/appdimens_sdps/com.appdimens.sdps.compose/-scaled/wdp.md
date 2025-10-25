@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "wdp"
+category: sdps
+permalink: /SDPS/MARKDOWN/appdimens_sdps/com.appdimens.sdps.compose/-scaled/wdp.html
 ---
 
 # wdp

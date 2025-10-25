@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "calculateDimension"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-app-dimens-games/calculate-dimension.html
 ---
 
 # calculateDimension

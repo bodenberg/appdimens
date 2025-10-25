@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "valueOf"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-screen-orientation/value-of.html
 ---
 
 # valueOf

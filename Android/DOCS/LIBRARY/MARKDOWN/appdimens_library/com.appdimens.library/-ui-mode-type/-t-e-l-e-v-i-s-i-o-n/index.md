@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "TELEVISION"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-type/-t-e-l-e-v-i-s-i-o-n/index.html
 ---
 
 # TELEVISION

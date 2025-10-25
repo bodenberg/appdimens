@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "Package-level declarations"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/index.html
 ---
 
 # Package-level declarations

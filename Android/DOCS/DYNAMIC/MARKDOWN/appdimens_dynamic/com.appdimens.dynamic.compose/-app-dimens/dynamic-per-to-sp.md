@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "dynamicPerToSp"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens/dynamic-per-to-sp.html
 ---
 
 # dynamicPerToSp

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "GameActivity"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-activity/index.html
 ---
 
 # GameActivity

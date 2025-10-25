@@ -1,95 +1,141 @@
----
-layout: default
-title: "🌐 AppDimens - Traduções / Translations"
----
+# 🌍 AppDimens - Documentação Multilíngue
 
-# 🌐 AppDimens - Traduções / Translations
+## Idiomas Disponíveis
 
-Este diretório contém traduções da documentação do AppDimens em vários idiomas.
+AppDimens oferece documentação completa nos seguintes idiomas:
 
-This directory contains translations of AppDimens documentation in multiple languages.
+### 🇬🇧 English (Inglês)
+**Localização:** Raiz do projeto  
+**Status:** ✅ Completo (Idioma Original)
 
----
-
-## 📚 Idiomas Disponíveis / Available Languages
-
-### 🇧🇷 Português Brasileiro (Brazilian Portuguese)
-- [README.md](pt-BR/README.md) - Documentação principal
-- [CONTRIBUTING.md](pt-BR/CONTRIBUTING.md) - Guia de contribuição
-
-### 🇪🇸 Español (Spanish)
-- [README.md](es/README.md) - Documentación principal
-
-### 🇮🇳 हिन्दी (Hindi)
-- [README.md](hi/README.md) - मुख्य दस्तावेज़ीकरण
-
-### 🇷🇺 Русский (Russian)
-- [README.md](ru/README.md) - Основная документация
-
-### 🇨🇳 中文 (Chinese)
-- [README.md](zh/README.md) - 主要文档
-
-### 🇯🇵 日本語 (Japanese)
-- [README.md](ja/README.md) - メインドキュメント
+Documentação principal em inglês disponível nos arquivos na raiz do repositório.
 
 ---
 
-## 🤝 Contribuindo com Traduções / Contributing Translations
+### 🇧🇷 Português (Brasil)
+**Localização:** [`LANG/pt-BR/`](pt-BR/)  
+**Status:** ✅ Completo
 
-Se você deseja contribuir com traduções ou melhorar as existentes, por favor:
+Documentação completa traduzida para português brasileiro, incluindo:
+- README.md principal
+- Teoria Matemática (completa e simplificada)
+- Comparação de Fórmulas
+- Guia Técnico Completo
+- Referência Rápida
+- Documentação específica por plataforma
 
-If you would like to contribute translations or improve existing ones, please:
+---
 
-1. Leia o [Guia de Contribuição](../CONTRIBUTING.md) / Read the [Contributing Guide](../CONTRIBUTING.md)
-2. Crie uma issue ou pull request / Create an issue or pull request
-3. Siga a estrutura de pastas existente / Follow the existing folder structure
+### 🇪🇸 Español (Espanhol)
+**Localização:** [`LANG/es/`](es/)  
+**Status:** ✅ Completo
 
-### Estrutura de Pastas / Folder Structure
+Documentación completa traducida al español, incluyendo:
+- README.md principal
+- Teoría Matemática (completa y simplificada)
+- Comparación de Fórmulas
+- Guía Técnica Completa
+- Referencia Rápida
+- Documentación específica por plataforma
+
+---
+
+## Estrutura de Diretórios
 
 ```
 LANG/
-├── pt-BR/          # Português Brasileiro
+├── README.md (este arquivo)
+├── pt-BR/
 │   ├── README.md
-│   └── CONTRIBUTING.md
-├── es/             # Español
-│   └── README.md
-├── hi/             # हिन्दी
-│   └── README.md
-├── ru/             # Русский
-│   └── README.md
-├── zh/             # 中文
-│   └── README.md
-└── ja/             # 日本語
-    └── README.md
+│   ├── MATHEMATICAL_THEORY.md
+│   ├── MATHEMATICAL_THEORY_SIMPLIFIED.md
+│   ├── FORMULA_COMPARISON.md
+│   ├── COMPREHENSIVE_TECHNICAL_GUIDE.md
+│   ├── DOCS_QUICK_REFERENCE.md
+│   ├── Android/
+│   └── iOS/
+└── es/
+    ├── README.md
+    ├── MATHEMATICAL_THEORY.md
+    ├── MATHEMATICAL_THEORY_SIMPLIFIED.md
+    ├── FORMULA_COMPARISON.md
+    ├── COMPREHENSIVE_TECHNICAL_GUIDE.md
+    ├── DOCS_QUICK_REFERENCE.md
+    ├── Android/
+    └── iOS/
 ```
 
 ---
 
-## 📝 Documentos para Traduzir / Documents to Translate
+## Navegação Rápida
 
-Documentos principais que podem ser traduzidos:
+### 📱 Android
+- **English:** [Android/README.md](../Android/README.md)
+- **Português (BR):** [pt-BR/Android/README.md](pt-BR/Android/README.md)
+- **Español:** [es/Android/README.md](es/Android/README.md)
 
-Main documents that can be translated:
+### 🍎 iOS
+- **English:** [iOS/README.md](../iOS/README.md)
+- **Português (BR):** [pt-BR/iOS/README.md](pt-BR/iOS/README.md)
+- **Español:** [es/iOS/README.md](es/iOS/README.md)
 
-- ✅ `README.md` - Documentação principal / Main documentation
-- ✅ `CONTRIBUTING.md` - Guia de contribuição / Contributing guide (pt-BR only)
-- ⏳ `EXAMPLES.md` - Exemplos práticos / Practical examples
-- ⏳ `PRESENTATION.md` - Visão geral da biblioteca / Library overview
-- ⏳ `CODE_OF_CONDUCT.md` - Código de conduta / Code of conduct
-- ⏳ `SECURITY.md` - Política de segurança / Security policy
+### 🎯 Flutter
+- **English:** [Flutter/README.md](../Flutter/README.md)
 
-**Legenda / Legend:**
-- ✅ Traduzido / Translated
-- ⏳ Pendente / Pending
+### ⚛️ React Native
+- **English:** [ReactNative/README.md](../ReactNative/README.md)
 
----
-
-## 🌟 Agradecimentos / Acknowledgments
-
-Obrigado a todos os contribuidores que ajudam a tornar o AppDimens acessível em múltiplos idiomas!
-
-Thanks to all contributors who help make AppDimens accessible in multiple languages!
+### 🌐 Web
+- **English:** [Web/README.md](../Web/README.md)
 
 ---
 
-[⬆️ Voltar para o README principal / Back to main README](../README.md)
+## Documentação Técnica
+
+### 📐 Teoria Matemática Completa
+- **English:** [MATHEMATICAL_THEORY.md](../MATHEMATICAL_THEORY.md)
+- **Português (BR):** [pt-BR/MATHEMATICAL_THEORY.md](pt-BR/MATHEMATICAL_THEORY.md)
+- **Español:** [es/MATHEMATICAL_THEORY.md](es/MATHEMATICAL_THEORY.md)
+
+### 📘 Teoria Matemática Simplificada
+- **English:** [MATHEMATICAL_THEORY_SIMPLIFIED.md](../MATHEMATICAL_THEORY_SIMPLIFIED.md)
+- **Português (BR):** [pt-BR/MATHEMATICAL_THEORY_SIMPLIFIED.md](pt-BR/MATHEMATICAL_THEORY_SIMPLIFIED.md)
+- **Español:** [es/MATHEMATICAL_THEORY_SIMPLIFIED.md](es/MATHEMATICAL_THEORY_SIMPLIFIED.md)
+
+### 🔬 Comparação de Fórmulas
+- **English:** [FORMULA_COMPARISON.md](../FORMULA_COMPARISON.md)
+- **Português (BR):** [pt-BR/FORMULA_COMPARISON.md](pt-BR/FORMULA_COMPARISON.md)
+- **Español:** [es/FORMULA_COMPARISON.md](es/FORMULA_COMPARISON.md)
+
+### 📚 Guia Técnico Completo
+- **English:** [COMPREHENSIVE_TECHNICAL_GUIDE.md](../COMPREHENSIVE_TECHNICAL_GUIDE.md)
+- **Português (BR):** [pt-BR/COMPREHENSIVE_TECHNICAL_GUIDE.md](pt-BR/COMPREHENSIVE_TECHNICAL_GUIDE.md)
+- **Español:** [es/COMPREHENSIVE_TECHNICAL_GUIDE.md](es/COMPREHENSIVE_TECHNICAL_GUIDE.md)
+
+### ⚡ Referência Rápida
+- **English:** [DOCS_QUICK_REFERENCE.md](../DOCS_QUICK_REFERENCE.md)
+- **Português (BR):** [pt-BR/DOCS_QUICK_REFERENCE.md](pt-BR/DOCS_QUICK_REFERENCE.md)
+- **Español:** [es/DOCS_QUICK_REFERENCE.md](es/DOCS_QUICK_REFERENCE.md)
+
+---
+
+## Contribuindo com Traduções
+
+As traduções são mantidas manualmente para garantir qualidade e precisão técnica. 
+
+Se você encontrar erros ou tiver sugestões de melhoria nas traduções existentes, por favor:
+
+1. Abra uma [Issue](https://github.com/bodenberg/appdimens/issues) descrevendo o problema
+2. Ou envie um [Pull Request](https://github.com/bodenberg/appdimens/pulls) com as correções
+
+---
+
+## Licença
+
+Toda a documentação está licenciada sob [Apache 2.0](../LICENSE), assim como o código-fonte do projeto.
+
+---
+
+**Autor:** Jean Bodenberg  
+**Repositório:** https://github.com/bodenberg/appdimens  
+**Versão:** 1.0.8

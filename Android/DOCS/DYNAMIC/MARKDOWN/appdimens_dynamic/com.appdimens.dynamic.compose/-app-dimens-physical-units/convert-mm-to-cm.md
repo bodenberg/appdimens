@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "convertMmToCm"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-physical-units/convert-mm-to-cm.html
 ---
 
 # convertMmToCm

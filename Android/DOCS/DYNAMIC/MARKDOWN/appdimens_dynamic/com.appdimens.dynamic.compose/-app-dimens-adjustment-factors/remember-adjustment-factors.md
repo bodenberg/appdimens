@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "rememberAdjustmentFactors"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-adjustment-factors/remember-adjustment-factors.html
 ---
 
 # rememberAdjustmentFactors

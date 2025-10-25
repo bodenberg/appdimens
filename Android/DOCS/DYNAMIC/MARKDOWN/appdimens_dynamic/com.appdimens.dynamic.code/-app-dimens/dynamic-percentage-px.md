@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "dynamicPercentagePx"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens/dynamic-percentage-px.html
 ---
 
 # dynamicPercentagePx

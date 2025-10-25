@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "isInitialized"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-app-dimens-games/is-initialized.html
 ---
 
 # isInitialized

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "onSurfaceCreated"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-renderer/on-surface-created.html
 ---
 
 # onSurfaceCreated

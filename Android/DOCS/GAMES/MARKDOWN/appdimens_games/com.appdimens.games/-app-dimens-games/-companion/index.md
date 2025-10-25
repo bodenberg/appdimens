@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "Companion"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-app-dimens-games/-companion/index.html
 ---
 
 # Companion

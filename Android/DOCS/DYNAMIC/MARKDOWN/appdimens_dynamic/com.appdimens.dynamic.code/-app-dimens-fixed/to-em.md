@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "toEm"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-fixed/to-em.html
 ---
 
 # toEm

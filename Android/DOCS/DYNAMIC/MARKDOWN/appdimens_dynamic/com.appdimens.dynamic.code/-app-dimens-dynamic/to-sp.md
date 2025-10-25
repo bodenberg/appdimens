@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "toSp"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-dynamic/to-sp.html
 ---
 
 # toSp

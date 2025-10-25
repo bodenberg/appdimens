@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "UiModeType"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-type/index.html
 ---
 
 # UiModeType

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "📚 AppDimens Android Documentation"
+permalink: /README.html
 ---
 
 # 📚 AppDimens Android Documentation
@@ -8,6 +9,8 @@ title: "📚 AppDimens Android Documentation"
 > **Complete API Documentation and Implementation Guide**
 
 This directory contains comprehensive documentation for all AppDimens Android modules, generated automatically from source code comments and enhanced with detailed examples.
+
+📑 **[Ver Guia Completo de Navegação →](NAVIGATION.md)** - Índice detalhado com todos os 356 arquivos organizados por categoria
 
 ## 📖 Documentation Structure
 
@@ -152,6 +155,27 @@ GamePerformanceSettings.LOW_PERFORMANCE   // 30 FPS for simple games
 | **SDP/SSP** | 23+ | ✅ | ✅ | ❌ |
 | **Physical Units** | 23+ | ✅ | ✅ | ✅ |
 | **Game Development** | 23+ | ✅ | ✅ | ✅ (C++/NDK) |
+
+## 🌐 Jekyll Documentation
+
+Esta documentação foi convertida para Jekyll e está pronta para deploy:
+
+- **[NAVIGATION.md](NAVIGATION.md)** - Guia completo de navegação com índice detalhado
+- **[_config.yml](_config.yml)** - Configuração Jekyll (layout, plugins, SEO)
+- **[Gemfile](Gemfile)** - Dependências Ruby para build local
+
+### 🚀 Quick Start Jekyll
+
+```bash
+# Instalar dependências
+cd Android/DOCS
+bundle install
+
+# Servir localmente
+bundle exec jekyll serve
+
+# Acessar: http://localhost:4000/Android/DOCS
+```
 
 ## 🔗 Related Documentation
 

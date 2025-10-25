@@ -1,6 +1,6 @@
 # 🔬 Detailed Comparison: Responsive Sizing Formulas
 
-> **Languages:** English | [Português (BR)](LANG/pt-BR/FORMULA_COMPARISON.md) | [Español](LANG/es/FORMULA_COMPARISON.md) | [हिन्दी](LANG/hi/FORMULA_COMPARISON.md) | [Русский](LANG/ru/FORMULA_COMPARISON.md) | [中文](LANG/zh/FORMULA_COMPARISON.md) | [日本語](LANG/ja/FORMULA_COMPARISON.md)
+> **Languages:** English | [Português (BR)](LANG/pt-BR/FORMULA_COMPARISON.md) | [Español](LANG/es/FORMULA_COMPARISON.md)
 
 **Complete Mathematical and Comparative Analysis**  
 *Author: Jean Bodenberg*  

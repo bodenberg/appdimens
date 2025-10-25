@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "Package-level declarations"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/index.html
 ---
 
 # Package-level declarations

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "em"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-dynamic/em.html
 ---
 
 # em

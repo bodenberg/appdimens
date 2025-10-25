@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "uiModeType"
+category: sdps
+permalink: /SDPS/MARKDOWN/appdimens_sdps/com.appdimens.sdps.compose/-custom-dp-entry/ui-mode-type.html
 ---
 
 # uiModeType

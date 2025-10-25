@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "CustomSpEntry"
+category: ssps
+permalink: /SSPS/MARKDOWN/appdimens_ssps/com.appdimens.ssps.compose/-custom-sp-entry/-custom-sp-entry.html
 ---
 
 # CustomSpEntry

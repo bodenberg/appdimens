@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "displayMeasureDiameter"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-physical-units/display-measure-diameter.html
 ---
 
 # displayMeasureDiameter

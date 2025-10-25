@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "BASE_WIDTH_DP"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-adjustment-factors/-b-a-s-e_-w-i-d-t-h_-d-p.html
 ---
 
 # BASE_WIDTH_DP

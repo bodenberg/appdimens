@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "height"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-rectangle/height.html
 ---
 
 # height

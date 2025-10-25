@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "FIXED"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-dimension-type/-f-i-x-e-d/index.html
 ---
 
 # FIXED

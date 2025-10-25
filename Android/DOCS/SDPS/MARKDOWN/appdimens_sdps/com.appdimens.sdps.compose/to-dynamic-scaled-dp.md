@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "toDynamicScaledDp"
+category: sdps
+permalink: /SDPS/MARKDOWN/appdimens_sdps/com.appdimens.sdps.compose/to-dynamic-scaled-dp.html
 ---
 
 # toDynamicScaledDp

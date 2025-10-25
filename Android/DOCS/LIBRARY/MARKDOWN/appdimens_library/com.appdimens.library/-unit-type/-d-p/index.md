@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "DP"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-unit-type/-d-p/index.html
 ---
 
 # DP

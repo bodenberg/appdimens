@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "getResourceId"
+category: ssps
+permalink: /SSPS/MARKDOWN/appdimens_ssps/com.appdimens.ssps.code/-app-dimens-ssp/get-resource-id.html
 ---
 
 # getResourceId

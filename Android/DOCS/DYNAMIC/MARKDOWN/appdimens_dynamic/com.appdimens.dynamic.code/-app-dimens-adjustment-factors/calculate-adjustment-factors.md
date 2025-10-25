@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "calculateAdjustmentFactors"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-adjustment-factors/calculate-adjustment-factors.html
 ---
 
 # calculateAdjustmentFactors

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "toDpInt"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-dynamic/to-dp-int.html
 ---
 
 # toDpInt

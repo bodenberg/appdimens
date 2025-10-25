@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "isLandscape"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-screen-config/is-landscape.html
 ---
 
 # isLandscape

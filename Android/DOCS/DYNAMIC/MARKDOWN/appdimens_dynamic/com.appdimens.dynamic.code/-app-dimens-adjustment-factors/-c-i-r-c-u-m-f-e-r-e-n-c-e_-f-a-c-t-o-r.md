@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "CIRCUMFERENCE_FACTOR"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-adjustment-factors/-c-i-r-c-u-m-f-e-r-e-n-c-e_-f-a-c-t-o-r.html
 ---
 
 # CIRCUMFERENCE_FACTOR

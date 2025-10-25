@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "dynamicPercentage"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens/dynamic-percentage.html
 ---
 
 # dynamicPercentage

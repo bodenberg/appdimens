@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "aspectRatio"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-fixed/aspect-ratio.html
 ---
 
 # aspectRatio

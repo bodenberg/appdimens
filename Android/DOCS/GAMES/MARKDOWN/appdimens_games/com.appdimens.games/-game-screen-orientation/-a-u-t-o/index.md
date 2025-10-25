@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "AUTO"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-screen-orientation/-a-u-t-o/index.html
 ---
 
 # AUTO

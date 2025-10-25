@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "dyhsp"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens/dyhsp.html
 ---
 
 # dyhsp

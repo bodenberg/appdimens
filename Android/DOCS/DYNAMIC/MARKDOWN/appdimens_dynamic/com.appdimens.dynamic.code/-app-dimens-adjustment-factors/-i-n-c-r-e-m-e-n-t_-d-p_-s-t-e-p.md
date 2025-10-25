@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "INCREMENT_DP_STEP"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-adjustment-factors/-i-n-c-r-e-m-e-n-t_-d-p_-s-t-e-p.html
 ---
 
 # INCREMENT_DP_STEP

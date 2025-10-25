@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "APPLIANCE"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-type/-a-p-p-l-i-a-n-c-e/index.html
 ---
 
 # APPLIANCE

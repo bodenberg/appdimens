@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "calculateUISize"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-app-dimens-games/calculate-u-i-size.html
 ---
 
 # calculateUISize

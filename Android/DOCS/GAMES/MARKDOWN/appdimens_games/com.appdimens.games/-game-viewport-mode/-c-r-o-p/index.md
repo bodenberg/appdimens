@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "CROP"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-viewport-mode/-c-r-o-p/index.html
 ---
 
 # CROP

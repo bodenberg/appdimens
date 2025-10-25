@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "BASE_DP_FACTOR"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-adjustment-factors/-b-a-s-e_-d-p_-f-a-c-t-o-r.html
 ---
 
 # BASE_DP_FACTOR

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "values"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-viewport-mode/values.html
 ---
 
 # values

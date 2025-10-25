@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "isTablet"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-screen-config/is-tablet.html
 ---
 
 # isTablet

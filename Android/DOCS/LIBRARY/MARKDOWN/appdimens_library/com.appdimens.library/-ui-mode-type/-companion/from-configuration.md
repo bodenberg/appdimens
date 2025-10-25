@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "fromConfiguration"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-type/-companion/from-configuration.html
 ---
 
 # fromConfiguration

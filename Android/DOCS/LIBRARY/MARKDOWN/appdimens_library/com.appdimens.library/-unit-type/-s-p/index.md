@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "SP"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-unit-type/-s-p/index.html
 ---
 
 # SP

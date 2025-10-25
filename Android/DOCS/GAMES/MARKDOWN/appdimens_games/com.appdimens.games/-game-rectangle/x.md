@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "x"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-rectangle/x.html
 ---
 
 # x

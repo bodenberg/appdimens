@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "orientation"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-screen-config/orientation.html
 ---
 
 # orientation

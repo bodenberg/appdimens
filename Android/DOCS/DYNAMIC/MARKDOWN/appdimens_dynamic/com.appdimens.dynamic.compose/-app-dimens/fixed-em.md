@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "fixedEm"
+category: dynamic
+permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens/fixed-em.html
 ---
 
 # fixedEm

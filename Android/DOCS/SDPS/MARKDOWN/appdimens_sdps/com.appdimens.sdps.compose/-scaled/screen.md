@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "screen"
+category: sdps
+permalink: /SDPS/MARKDOWN/appdimens_sdps/com.appdimens.sdps.compose/-scaled/screen.html
 ---
 
 # screen

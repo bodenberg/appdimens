@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "entries"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-type/entries.html
 ---
 
 # entries

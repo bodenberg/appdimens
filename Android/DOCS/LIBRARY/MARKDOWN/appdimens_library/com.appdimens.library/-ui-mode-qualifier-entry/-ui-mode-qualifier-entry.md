@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "UiModeQualifierEntry"
+category: library
+permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-qualifier-entry/-ui-mode-qualifier-entry.html
 ---
 
 # UiModeQualifierEntry

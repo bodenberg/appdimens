@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "PORTRAIT"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-screen-orientation/-p-o-r-t-r-a-i-t/index.html
 ---
 
 # PORTRAIT

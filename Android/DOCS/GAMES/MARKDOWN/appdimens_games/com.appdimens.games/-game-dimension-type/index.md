@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "GameDimensionType"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-dimension-type/index.html
 ---
 
 # GameDimensionType

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "customValue"
+category: sdps
+permalink: /SDPS/MARKDOWN/appdimens_sdps/com.appdimens.sdps.compose/-custom-dp-entry/custom-value.html
 ---
 
 # customValue

@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "width"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-rectangle/width.html
 ---
 
 # width

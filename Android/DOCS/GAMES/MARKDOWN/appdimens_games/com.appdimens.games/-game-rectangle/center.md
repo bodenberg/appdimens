@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "center"
+category: games
+permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-rectangle/center.html
 ---
 
 # center
