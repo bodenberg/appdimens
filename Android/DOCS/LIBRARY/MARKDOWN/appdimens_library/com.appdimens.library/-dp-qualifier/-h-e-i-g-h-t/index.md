@@ -5,7 +5,7 @@ title: "HEIGHT"
 
 # HEIGHT
 
-[androidJvm]\
+[androidJvm]
 [HEIGHT](index.md)
 
 ## Properties

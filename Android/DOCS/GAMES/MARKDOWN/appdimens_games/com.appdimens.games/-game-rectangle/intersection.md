@@ -5,5 +5,5 @@ title: "intersection"
 
 # intersection
 
-[androidJvm]\
+[androidJvm]
 fun [intersection](intersection.md)(other: [GameRectangle](index.md)): [GameRectangle](index.md)

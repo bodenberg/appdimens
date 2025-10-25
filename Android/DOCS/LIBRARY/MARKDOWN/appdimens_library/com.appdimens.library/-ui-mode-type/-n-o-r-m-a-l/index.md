@@ -5,7 +5,7 @@ title: "NORMAL"
 
 # NORMAL
 
-[androidJvm]\
+[androidJvm]
 [NORMAL](index.md)
 
 EN Default Phone/Tablet.

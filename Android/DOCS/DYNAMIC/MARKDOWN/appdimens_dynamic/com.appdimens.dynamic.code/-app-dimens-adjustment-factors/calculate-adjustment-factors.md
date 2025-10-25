@@ -5,7 +5,7 @@ title: "calculateAdjustmentFactors"
 
 # calculateAdjustmentFactors
 
-[androidJvm]\
+[androidJvm]
 fun [calculateAdjustmentFactors](calculate-adjustment-factors.md)(configuration: [Configuration](https://developer.android.com/reference/kotlin/android/content/res/Configuration.html)): [ScreenAdjustmentFactors](../-screen-adjustment-factors/index.md)
 
 EN Calculates the Basic Adjustment Factors.

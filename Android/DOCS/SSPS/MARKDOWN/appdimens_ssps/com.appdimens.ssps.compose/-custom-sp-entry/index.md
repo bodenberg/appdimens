@@ -5,7 +5,7 @@ title: "CustomSpEntry"
 
 # CustomSpEntry
 
-[androidJvm]\
+[androidJvm]
 data class [CustomSpEntry](index.md)(val uiModeType: UiModeType? = null, val dpQualifierEntry: DpQualifierEntry? = null, val customValue: [TextUnit](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/TextUnit.html), val priority: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html))
 
 EN Represents a custom text dimension (Sp) configuration entry. Used to define specific text (Sp) values based on the UI mode (e.g., car, TV), DP qualifier (e.g., smallest width), and priority.

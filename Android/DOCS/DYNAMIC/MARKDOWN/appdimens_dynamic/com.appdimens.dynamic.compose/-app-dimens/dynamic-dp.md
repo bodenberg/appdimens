@@ -5,7 +5,7 @@ title: "dynamicDp"
 
 # dynamicDp
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -15,7 +15,7 @@ EN Builds the adjusted Dp.
 
 PT Constrói o Dp ajustado.
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -25,7 +25,7 @@ EN Converts TextUnit (Sp) to Dp and applies dimension adjustment.
 
 PT Converte TextUnit (Sp) para Dp e aplica o ajuste de dimensão.
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -35,7 +35,7 @@ EN Converts Float to Dp and applies dimension adjustment.
 
 PT Converte Float para Dp e aplica o ajuste de dimensão.
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 

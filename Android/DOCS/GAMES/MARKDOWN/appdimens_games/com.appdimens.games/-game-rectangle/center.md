@@ -5,5 +5,5 @@ title: "center"
 
 # center
 
-[androidJvm]\
+[androidJvm]
 fun [center](center.md)(): [GameVector2D](../-game-vector2-d/index.md)

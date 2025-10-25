@@ -5,7 +5,7 @@ title: "DESK"
 
 # DESK
 
-[androidJvm]\
+[androidJvm]
 [DESK](index.md)
 
 EN Desk Device (Docked).

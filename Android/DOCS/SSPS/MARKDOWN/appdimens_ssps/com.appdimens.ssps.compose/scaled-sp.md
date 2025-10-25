@@ -5,7 +5,7 @@ title: "scaledSp"
 
 # scaledSp
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -15,7 +15,7 @@ EN Starts the `Scaled` build chain from a `TextUnit`.
 
 PT Inicia a cadeia de construção `Scaled` a partir de um `TextUnit`.
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 

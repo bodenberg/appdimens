@@ -5,7 +5,7 @@ title: "shutdown"
 
 # shutdown
 
-[androidJvm]\
+[androidJvm]
 fun [shutdown](shutdown.md)()
 
 EN Shuts down the AppDimens Games library. PT Desliga a biblioteca AppDimens Games.

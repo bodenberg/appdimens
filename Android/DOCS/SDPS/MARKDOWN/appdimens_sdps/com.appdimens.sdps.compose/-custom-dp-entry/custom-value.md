@@ -5,7 +5,7 @@ title: "customValue"
 
 # customValue
 
-[androidJvm]\
+[androidJvm]
 val [customValue](custom-value.md): [Dp](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/Dp.html)
 
 #### Parameters

@@ -5,7 +5,7 @@ title: "scaledDp"
 
 # scaledDp
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -15,7 +15,7 @@ EN Starts the build chain for the custom dimension [Scaled](-scaled/index.md) fr
 
 PT Inicia a cadeia de construção para a dimensão customizada [Scaled](-scaled/index.md) a partir de um [Dp](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/Dp.html) base. Exemplo de uso: `100.dp.scaled().screen(...)`.
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 

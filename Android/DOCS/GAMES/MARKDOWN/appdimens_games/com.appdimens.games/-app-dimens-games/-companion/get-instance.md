@@ -5,7 +5,7 @@ title: "getInstance"
 
 # getInstance
 
-[androidJvm]\
+[androidJvm]
 fun [getInstance](get-instance.md)(): [AppDimensGames](../index.md)
 
 EN Gets the singleton instance of AppDimensGames. PT Obtém a instância singleton do AppDimensGames.

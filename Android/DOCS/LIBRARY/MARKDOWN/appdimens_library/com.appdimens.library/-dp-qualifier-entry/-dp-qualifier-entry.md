@@ -5,5 +5,5 @@ title: "DpQualifierEntry"
 
 # DpQualifierEntry
 
-[androidJvm]\
+[androidJvm]
 constructor(type: [DpQualifier](../-dp-qualifier/index.md), value: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html))

@@ -5,7 +5,7 @@ title: "calculateButtonSize"
 
 # calculateButtonSize
 
-[androidJvm]\
+[androidJvm]
 fun [calculateButtonSize](calculate-button-size.md)(baseSize: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html) = 48.0f): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Calculates button size for games.

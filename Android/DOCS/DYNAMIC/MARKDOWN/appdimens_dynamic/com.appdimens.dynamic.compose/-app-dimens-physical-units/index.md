@@ -5,7 +5,7 @@ title: "AppDimensPhysicalUnits"
 
 # AppDimensPhysicalUnits
 
-[androidJvm]\
+[androidJvm]
 object [AppDimensPhysicalUnits](index.md)
 
 EN Singleton object providing functions for physical unit conversion (MM, CM, Inch) and measurement utilities.

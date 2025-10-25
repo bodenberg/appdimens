@@ -5,7 +5,7 @@ title: "toPx"
 
 # toPx
 
-[androidJvm]\
+[androidJvm]
 fun [toPx](to-px.md)(resources: [Resources](https://developer.android.com/reference/kotlin/android/content/res/Resources.html)): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Builds the dynamically adjusted Dp value and converts it to Pixels (Float).

@@ -5,7 +5,7 @@ title: "fixedSp"
 
 # fixedSp
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -15,7 +15,7 @@ EN Builds the adjusted TextUnit (Sp).
 
 PT Constrói o TextUnit (Sp) ajustado.
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -25,7 +25,7 @@ EN Applies dimension adjustment directly to the TextUnit (Sp).
 
 PT Aplica o ajuste de dimensão diretamente no TextUnit (Sp).
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -35,7 +35,7 @@ EN Converts Float to Dp, applies dimension adjustment, and returns in Sp.
 
 PT Converte Float para Dp, aplica o ajuste de dimensão e retorna em Sp.
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 

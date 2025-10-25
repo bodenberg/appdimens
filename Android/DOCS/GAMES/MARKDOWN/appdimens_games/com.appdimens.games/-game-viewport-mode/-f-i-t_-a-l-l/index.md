@@ -5,7 +5,7 @@ title: "FIT_ALL"
 
 # FIT_ALL
 
-[androidJvm]\
+[androidJvm]
 [FIT_ALL](index.md)
 
 ## Properties

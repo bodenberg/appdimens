@@ -5,7 +5,7 @@ title: "uiModeType"
 
 # uiModeType
 
-[androidJvm]\
+[androidJvm]
 val [uiModeType](ui-mode-type.md): UiModeType? = null
 
 #### Parameters

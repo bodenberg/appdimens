@@ -5,7 +5,7 @@ title: "getScreenConfig"
 
 # getScreenConfig
 
-[androidJvm]\
+[androidJvm]
 fun [getScreenConfig](get-screen-config.md)(): [GameScreenConfig](../-game-screen-config/index.md)?
 
 EN Gets the current screen configuration.

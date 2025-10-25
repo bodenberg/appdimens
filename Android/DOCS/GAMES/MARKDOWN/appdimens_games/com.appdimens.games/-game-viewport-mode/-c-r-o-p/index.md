@@ -5,7 +5,7 @@ title: "CROP"
 
 # CROP
 
-[androidJvm]\
+[androidJvm]
 [CROP](index.md)
 
 ## Properties

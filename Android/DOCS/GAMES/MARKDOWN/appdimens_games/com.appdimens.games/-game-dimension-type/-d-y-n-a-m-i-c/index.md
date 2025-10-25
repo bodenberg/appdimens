@@ -5,7 +5,7 @@ title: "DYNAMIC"
 
 # DYNAMIC
 
-[androidJvm]\
+[androidJvm]
 [DYNAMIC](index.md)
 
 ## Properties

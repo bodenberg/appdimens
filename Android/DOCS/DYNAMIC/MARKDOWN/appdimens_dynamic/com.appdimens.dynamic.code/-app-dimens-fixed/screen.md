@@ -5,7 +5,7 @@ title: "screen"
 
 # screen
 
-[androidJvm]\
+[androidJvm]
 fun [screen](screen.md)(type: UiModeType, customValue: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)): [AppDimensFixed](index.md)
 
 EN Sets a custom dimension value for a specific UI mode.
@@ -27,14 +27,14 @@ androidJvm
 | type | O modo de UI (`UiModeType`). |
 | customValue | O valor de dimensão customizado em Dp. |
 
-[androidJvm]\
+[androidJvm]
 fun [screen](screen.md)(type: UiModeType, customValue: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)): [AppDimensFixed](index.md)
 
 fun [screen](screen.md)(uiModeType: UiModeType, qualifierType: DpQualifier, qualifierValue: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html), customValue: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)): [AppDimensFixed](index.md)
 
 fun [screen](screen.md)(type: DpQualifier, value: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html), customValue: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)): [AppDimensFixed](index.md)
 
-[androidJvm]\
+[androidJvm]
 fun [screen](screen.md)(uiModeType: UiModeType, qualifierType: DpQualifier, qualifierValue: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html), customValue: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)): [AppDimensFixed](index.md)
 
 EN Sets a custom dimension for the intersection of a UI mode and a screen qualifier.
@@ -58,7 +58,7 @@ androidJvm
 | qualifierValue | O valor do qualificador (ex: 600 para sw600dp). |
 | customValue | O valor de dimensão customizado em Dp. |
 
-[androidJvm]\
+[androidJvm]
 fun [screen](screen.md)(type: DpQualifier, value: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html), customValue: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)): [AppDimensFixed](index.md)
 
 EN Sets a custom dimension value for a specific screen qualifier.

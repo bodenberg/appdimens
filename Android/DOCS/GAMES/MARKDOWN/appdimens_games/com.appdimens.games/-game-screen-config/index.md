@@ -5,7 +5,7 @@ title: "GameScreenConfig"
 
 # GameScreenConfig
 
-[androidJvm]\
+[androidJvm]
 data class [GameScreenConfig](index.md)(val width: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html), val height: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html), val density: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), val scaledDensity: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), val orientation: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html), val isTablet: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html), val isLandscape: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html))
 
 EN Game screen configuration data. PT Dados de configuração da tela do jogo.

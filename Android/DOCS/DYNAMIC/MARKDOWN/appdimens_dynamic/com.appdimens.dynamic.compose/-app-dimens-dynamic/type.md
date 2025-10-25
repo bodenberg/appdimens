@@ -5,7 +5,7 @@ title: "type"
 
 # type
 
-[androidJvm]\
+[androidJvm]
 fun [type](type.md)(type: ScreenType): [AppDimensDynamic](index.md)
 
 EN Sets the screen dimension type to be used as a reference (HIGHEST or LOWEST).

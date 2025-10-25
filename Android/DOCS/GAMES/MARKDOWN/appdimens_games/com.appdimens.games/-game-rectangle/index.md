@@ -5,7 +5,7 @@ title: "GameRectangle"
 
 # GameRectangle
 
-[androidJvm]\
+[androidJvm]
 data class [GameRectangle](index.md)(val x: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), val y: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), val width: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), val height: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html))
 
 EN Rectangle for game bounds and viewports. PT Retângulo para limites e viewports de jogo.

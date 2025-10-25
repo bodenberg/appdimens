@@ -5,7 +5,7 @@ title: "fromConfiguration"
 
 # fromConfiguration
 
-[androidJvm]\
+[androidJvm]
 fun [fromConfiguration](from-configuration.md)(uiMode: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)): UiModeType
 
 EN Maps the UI mode mask from the Android Configuration to the UiModeType enum.

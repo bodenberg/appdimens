@@ -5,7 +5,7 @@ title: "toSpInt"
 
 # toSpInt
 
-[androidJvm]\
+[androidJvm]
 fun [toSpInt](to-sp-int.md)(resources: [Resources](https://developer.android.com/reference/kotlin/android/content/res/Resources.html)): [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)
 
 EN Builds the dynamically adjusted Dp value and converts it to Scalable Pixels (SP) in Pixels (Int).

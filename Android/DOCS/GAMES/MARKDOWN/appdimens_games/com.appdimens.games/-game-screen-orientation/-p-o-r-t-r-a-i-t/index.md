@@ -5,7 +5,7 @@ title: "PORTRAIT"
 
 # PORTRAIT
 
-[androidJvm]\
+[androidJvm]
 [PORTRAIT](index.md)
 
 ## Properties

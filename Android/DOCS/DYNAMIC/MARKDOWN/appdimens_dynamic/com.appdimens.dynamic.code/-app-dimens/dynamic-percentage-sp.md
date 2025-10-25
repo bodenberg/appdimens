@@ -5,7 +5,7 @@ title: "dynamicPercentageSp"
 
 # dynamicPercentageSp
 
-[androidJvm]\
+[androidJvm]
 fun [dynamicPercentageSp](dynamic-percentage-sp.md)(percentage: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), type: ScreenType = ScreenType.LOWEST, resources: [Resources](https://developer.android.com/reference/kotlin/android/content/res/Resources.html)): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Calculates a dynamic dimension value based on a percentage and converts it to Scalable Pixels (SP) in PX.

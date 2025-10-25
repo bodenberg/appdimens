@@ -5,7 +5,7 @@ title: "dynamicEm"
 
 # dynamicEm
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -15,7 +15,7 @@ EN Builds the adjusted TextUnit (Em), ignoring font scaling.
 
 PT Constrói o TextUnit (Em) ajustado, ignorando a escala da fonte.
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -25,7 +25,7 @@ EN Applies dimension adjustment directly to the TextUnit (Em), ignoring font sca
 
 PT Aplica o ajuste de dimensão diretamente no TextUnit (Em), ignorando a escala da fonte.
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -35,7 +35,7 @@ EN Converts Float to Dp, applies dimension adjustment, and returns in Em (ignori
 
 PT Converte Float para Dp, aplica o ajuste de dimensão e retorna em Em (ignorando a escala da fonte).
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 

@@ -5,7 +5,7 @@ title: "VR_HEADSET"
 
 # VR_HEADSET
 
-[androidJvm]\
+[androidJvm]
 @[RequiresApi](https://developer.android.com/reference/kotlin/androidx/annotation/RequiresApi.html)(value = 26)
 
 [VR_HEADSET](index.md)

@@ -5,7 +5,7 @@ title: "calculateDimension"
 
 # calculateDimension
 
-[androidJvm]\
+[androidJvm]
 fun [calculateDimension](calculate-dimension.md)(baseValue: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), type: [GameDimensionType](../-game-dimension-type/index.md)): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Calculates a dimension value using the specified type.

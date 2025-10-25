@@ -5,7 +5,7 @@ title: "GameVector2D"
 
 # GameVector2D
 
-[androidJvm]\
+[androidJvm]
 data class [GameVector2D](index.md)(val x: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), val y: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html))
 
 EN 2D Vector for game coordinates. PT Vetor 2D para coordenadas de jogo.

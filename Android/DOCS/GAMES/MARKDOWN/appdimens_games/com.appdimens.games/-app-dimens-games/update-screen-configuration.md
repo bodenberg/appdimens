@@ -5,7 +5,7 @@ title: "updateScreenConfiguration"
 
 # updateScreenConfiguration
 
-[androidJvm]\
+[androidJvm]
 fun [updateScreenConfiguration](update-screen-configuration.md)()
 
 EN Updates the screen configuration. PT Atualiza a configuração da tela.

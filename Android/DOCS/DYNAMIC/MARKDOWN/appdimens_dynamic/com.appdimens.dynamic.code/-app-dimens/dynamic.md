@@ -5,7 +5,7 @@ title: "dynamic"
 
 # dynamic
 
-[androidJvm]\
+[androidJvm]
 fun [dynamic](dynamic.md)(initialValueDp: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), ignoreMultiViewAdjustment: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html) = false): [AppDimensDynamic](../-app-dimens-dynamic/index.md)
 
 EN Initializes the `AppDimensDynamic` constructor from a Float value in Dp.
@@ -19,7 +19,7 @@ androidJvm
 | initialValueDp | O valor inicial em Dp (Float). |
 | ignoreMultiViewAdjustment | Se verdadeiro, ignora os ajustes de multi-view. |
 
-[androidJvm]\
+[androidJvm]
 fun [dynamic](dynamic.md)(initialValueInt: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html), ignoreMultiViewAdjustment: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html) = false): [AppDimensDynamic](../-app-dimens-dynamic/index.md)
 
 EN Initializes the `AppDimensDynamic` constructor from an Int value in Dp.

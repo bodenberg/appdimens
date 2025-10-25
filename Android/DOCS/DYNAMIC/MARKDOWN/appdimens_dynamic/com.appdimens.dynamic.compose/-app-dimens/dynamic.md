@@ -5,7 +5,7 @@ title: "dynamic"
 
 # dynamic
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -15,7 +15,7 @@ EN Initializes the `AppDimensDynamic` builder from a Dp, allowing for customizat
 
 PT Inicia o construtor `AppDimensDynamic` a partir de um Dp, permitindo customizações.
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -25,7 +25,7 @@ EN Initializes the `AppDimensDynamic` builder from a TextUnit (Sp), converting i
 
 PT Inicia o construtor `AppDimensDynamic` a partir de um TextUnit (Sp), convertendo-o primeiro para Dp.
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -35,7 +35,7 @@ EN Initializes the `AppDimensDynamic` builder from a Float, converting it to Dp 
 
 PT Inicia o construtor `AppDimensDynamic` a partir de um Float, convertendo-o primeiro para Dp.
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 

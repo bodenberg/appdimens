@@ -5,7 +5,7 @@ title: "AppDimensSdp"
 
 # AppDimensSdp
 
-[androidJvm]\
+[androidJvm]
 object [AppDimensSdp](index.md)
 
 EN Utility object for handling SDP (Scalable Dp) dimensions.

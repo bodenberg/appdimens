@@ -5,7 +5,7 @@ title: "dynamicPer"
 
 # dynamicPer
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 

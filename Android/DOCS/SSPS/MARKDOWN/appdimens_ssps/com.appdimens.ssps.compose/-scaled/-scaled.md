@@ -5,7 +5,7 @@ title: "Scaled"
 
 # Scaled
 
-[androidJvm]\
+[androidJvm]
 constructor(initialBaseSp: [TextUnit](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/TextUnit.html))
 
 EN Secondary constructor to start the build chain.

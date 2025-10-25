@@ -5,7 +5,7 @@ title: "REFERENCE_AR"
 
 # REFERENCE_AR
 
-[androidJvm]\
+[androidJvm]
 const val [REFERENCE_AR](-r-e-f-e-r-e-n-c-e_-a-r.md): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html) = 1.78f
 
 EN Reference screen aspect ratio (e.g., 16:9), where the adjustment is neutral.

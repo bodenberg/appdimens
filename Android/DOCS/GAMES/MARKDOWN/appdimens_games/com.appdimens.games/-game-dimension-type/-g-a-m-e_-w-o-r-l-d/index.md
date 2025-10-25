@@ -5,7 +5,7 @@ title: "GAME_WORLD"
 
 # GAME_WORLD
 
-[androidJvm]\
+[androidJvm]
 [GAME_WORLD](index.md)
 
 ## Properties

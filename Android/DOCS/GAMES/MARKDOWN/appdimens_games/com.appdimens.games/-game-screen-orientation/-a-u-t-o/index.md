@@ -5,7 +5,7 @@ title: "AUTO"
 
 # AUTO
 
-[androidJvm]\
+[androidJvm]
 [AUTO](index.md)
 
 ## Properties

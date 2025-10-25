@@ -5,5 +5,5 @@ title: "orientation"
 
 # orientation
 
-[androidJvm]\
+[androidJvm]
 val [orientation](orientation.md): [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)

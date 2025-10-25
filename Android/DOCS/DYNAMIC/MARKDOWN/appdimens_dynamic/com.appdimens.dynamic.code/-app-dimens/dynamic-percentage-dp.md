@@ -5,7 +5,7 @@ title: "dynamicPercentageDp"
 
 # dynamicPercentageDp
 
-[androidJvm]\
+[androidJvm]
 fun [dynamicPercentageDp](dynamic-percentage-dp.md)(percentage: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), type: ScreenType = ScreenType.LOWEST, resources: [Resources](https://developer.android.com/reference/kotlin/android/content/res/Resources.html)): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Calculates a dynamic dimension value based on a percentage (0.0 to 1.0) of the screen dimension. Returns the value in Dp (Float).

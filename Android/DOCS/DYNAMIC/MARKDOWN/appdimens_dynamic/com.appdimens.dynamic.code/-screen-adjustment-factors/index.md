@@ -5,7 +5,7 @@ title: "ScreenAdjustmentFactors"
 
 # ScreenAdjustmentFactors
 
-[androidJvm]\
+[androidJvm]
 data class [ScreenAdjustmentFactors](index.md)(val withArFactorLowest: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), val withArFactorHighest: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), val withoutArFactor: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), val adjustmentFactorLowest: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), val adjustmentFactorHighest: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html))
 
 EN Data class to store screen adjustment factors. PT Data class para armazenar os fatores de ajuste de tela.

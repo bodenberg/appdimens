@@ -5,7 +5,7 @@ title: "FIT_HEIGHT"
 
 # FIT_HEIGHT
 
-[androidJvm]\
+[androidJvm]
 [FIT_HEIGHT](index.md)
 
 ## Properties

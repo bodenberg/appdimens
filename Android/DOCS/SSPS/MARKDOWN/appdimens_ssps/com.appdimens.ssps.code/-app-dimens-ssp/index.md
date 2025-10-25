@@ -5,7 +5,7 @@ title: "AppDimensSsp"
 
 # AppDimensSsp
 
-[androidJvm]\
+[androidJvm]
 object [AppDimensSsp](index.md)
 
 EN Utility object for handling SSP (Scalable Sp) dimensions.

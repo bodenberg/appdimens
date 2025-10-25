@@ -5,7 +5,7 @@ title: "calculateUISize"
 
 # calculateUISize
 
-[androidJvm]\
+[androidJvm]
 fun [calculateUISize](calculate-u-i-size.md)(baseSize: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html) = 24.0f): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Calculates UI overlay size for games.

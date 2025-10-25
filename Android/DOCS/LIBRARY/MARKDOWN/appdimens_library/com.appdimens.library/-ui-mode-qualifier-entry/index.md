@@ -5,7 +5,7 @@ title: "UiModeQualifierEntry"
 
 # UiModeQualifierEntry
 
-[androidJvm]\
+[androidJvm]
 data class [UiModeQualifierEntry](index.md)(val uiModeType: [UiModeType](../-ui-mode-type/index.md), val dpQualifierEntry: [DpQualifierEntry](../-dp-qualifier-entry/index.md))
 
 EN Represents a qualifier entry that combines a UI Mode type (device) AND a screen qualifier (SW, H, W). This combination has the HIGHEST PRIORITY.

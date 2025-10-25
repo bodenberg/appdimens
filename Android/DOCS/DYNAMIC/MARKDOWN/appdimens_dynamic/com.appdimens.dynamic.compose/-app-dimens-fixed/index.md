@@ -5,12 +5,12 @@ title: "AppDimensFixed"
 
 # AppDimensFixed
 
-[androidJvm]\
+[androidJvm]
 class [AppDimensFixed](index.md)(initialBaseDp: [Dp](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/Dp.html), ignoreMultiViewAdjustment: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html) = false)
 
-EN A builder class for creating &quot;fixed&quot; dimensions that are automatically adjusted based on the device's `smallestScreenWidthDp` and screen aspect ratio.
+EN A builder class for creating "fixed" dimensions that are automatically adjusted based on the device's `smallestScreenWidthDp` and screen aspect ratio.
 
-PT Uma classe construtora para criar dimensões &quot;fixas&quot; que são ajustadas automaticamente com base no `smallestScreenWidthDp` do dispositivo e na proporção da tela.
+PT Uma classe construtora para criar dimensões "fixas" que são ajustadas automaticamente com base no `smallestScreenWidthDp` do dispositivo e na proporção da tela.
 
 ## Constructors
 

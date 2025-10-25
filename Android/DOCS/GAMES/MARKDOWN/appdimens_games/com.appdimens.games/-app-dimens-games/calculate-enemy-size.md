@@ -5,7 +5,7 @@ title: "calculateEnemySize"
 
 # calculateEnemySize
 
-[androidJvm]\
+[androidJvm]
 fun [calculateEnemySize](calculate-enemy-size.md)(baseSize: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html) = 32.0f): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Calculates enemy size for games.

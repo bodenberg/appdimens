@@ -5,5 +5,5 @@ title: "GameActivity"
 
 # GameActivity
 
-[androidJvm]\
+[androidJvm]
 constructor()

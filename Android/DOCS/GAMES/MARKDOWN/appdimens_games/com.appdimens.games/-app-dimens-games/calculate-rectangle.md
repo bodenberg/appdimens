@@ -5,7 +5,7 @@ title: "calculateRectangle"
 
 # calculateRectangle
 
-[androidJvm]\
+[androidJvm]
 fun [calculateRectangle](calculate-rectangle.md)(rectangle: [GameRectangle](../-game-rectangle/index.md), type: [GameDimensionType](../-game-dimension-type/index.md)): [GameRectangle](../-game-rectangle/index.md)
 
 EN Calculates a rectangle using the specified type.

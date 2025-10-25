@@ -5,7 +5,7 @@ title: "fromConfiguration"
 
 # fromConfiguration
 
-[androidJvm]\
+[androidJvm]
 fun [fromConfiguration](from-configuration.md)(uiMode: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)): UiModeType
 
 EN Maps the [uiMode](from-configuration.md) value from the configuration to the library's UiModeType enum.

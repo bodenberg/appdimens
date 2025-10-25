@@ -5,7 +5,7 @@ title: "Scaled"
 
 # Scaled
 
-[androidJvm]\
+[androidJvm]
 @[Stable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Stable.html)
 
 class [Scaled](index.md)

@@ -5,17 +5,17 @@ title: "fxhem"
 
 # fxhem
 
-[androidJvm]\
+[androidJvm]
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
-@get:[JvmName](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-name/index.html)(name = &quot;hdpFxem&quot;)
+@get:[JvmName](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-name/index.html)(name = "hdpFxem")
 
 val [Dp](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/Dp.html).[fxhem](fxhem.md): [TextUnit](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/TextUnit.html)
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
-@get:[JvmName](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-name/index.html)(name = &quot;hspFxem&quot;)
+@get:[JvmName](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-name/index.html)(name = "hspFxem")
 
 val [TextUnit](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/TextUnit.html).[fxhem](fxhem.md): [TextUnit](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/TextUnit.html)
 
@@ -23,11 +23,11 @@ EN Builds the adjusted TextUnit (Em) (defaults: HIGHEST, multiView=true, ignorin
 
 PT Constrói o TextUnit (Em) ajustado (padrões: HIGHEST, multiView=true, ignorando a escala da fonte).
 
-[androidJvm]\
+[androidJvm]
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
-@get:[JvmName](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-name/index.html)(name = &quot;hfloatFxem&quot;)
+@get:[JvmName](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-name/index.html)(name = "hfloatFxem")
 
 val [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html).[fxhem](fxhem.md): [TextUnit](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/TextUnit.html)
 
@@ -35,11 +35,11 @@ EN Builds the adjusted TextUnit (Em) from a Float (defaults: HIGHEST, multiView=
 
 PT Constrói o TextUnit (Em) ajustado a partir de um Float (padrões: HIGHEST, multiView=true, ignorando a escala da fonte).
 
-[androidJvm]\
+[androidJvm]
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
-@get:[JvmName](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-name/index.html)(name = &quot;hintFxem&quot;)
+@get:[JvmName](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-name/index.html)(name = "hintFxem")
 
 val [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html).[fxhem](fxhem.md): [TextUnit](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/TextUnit.html)
 

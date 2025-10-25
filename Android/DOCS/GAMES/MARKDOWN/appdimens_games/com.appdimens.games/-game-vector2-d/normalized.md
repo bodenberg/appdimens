@@ -5,5 +5,5 @@ title: "normalized"
 
 # normalized
 
-[androidJvm]\
+[androidJvm]
 fun [normalized](normalized.md)(): [GameVector2D](index.md)

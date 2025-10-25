@@ -5,7 +5,7 @@ title: "GameRenderer"
 
 # GameRenderer
 
-[androidJvm]\
+[androidJvm]
 class [GameRenderer](index.md)(appDimensGames: [AppDimensGames](../-app-dimens-games/index.md)) : [GLSurfaceView.Renderer](https://developer.android.com/reference/kotlin/android/opengl/GLSurfaceView.Renderer.html)
 
 EN Simple OpenGL renderer for demonstration purposes. PT Renderizador OpenGL simples para fins de demonstração.

@@ -5,7 +5,7 @@ title: "mm"
 
 # mm
 
-[androidJvm]\
+[androidJvm]
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -15,7 +15,7 @@ EN Float extension to convert MM to PX.
 
 PT Extensão de Float para converter MM para PX.
 
-[androidJvm]\
+[androidJvm]
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 

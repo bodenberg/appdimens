@@ -5,7 +5,7 @@ title: "calculatePlayerSize"
 
 # calculatePlayerSize
 
-[androidJvm]\
+[androidJvm]
 fun [calculatePlayerSize](calculate-player-size.md)(baseSize: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html) = 64.0f): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Calculates player size for games.

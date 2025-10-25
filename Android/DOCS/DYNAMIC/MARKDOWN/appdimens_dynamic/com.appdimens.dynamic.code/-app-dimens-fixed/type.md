@@ -5,7 +5,7 @@ title: "type"
 
 # type
 
-[androidJvm]\
+[androidJvm]
 fun [type](type.md)(type: ScreenType): [AppDimensFixed](index.md)
 
 EN Sets the screen dimension type (LOWEST or HIGHEST) to be used as the base for adjustments.

@@ -5,7 +5,7 @@ title: "CustomDpEntry"
 
 # CustomDpEntry
 
-[androidJvm]\
+[androidJvm]
 constructor(uiModeType: UiModeType? = null, dpQualifierEntry: DpQualifierEntry? = null, customValue: [Dp](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/Dp.html), priority: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html))
 
 #### Parameters

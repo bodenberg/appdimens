@@ -5,7 +5,7 @@ title: "inch"
 
 # inch
 
-[androidJvm]\
+[androidJvm]
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -15,7 +15,7 @@ EN Float extension to convert Inch to PX.
 
 PT Extensão de Float para converter Inch para PX.
 
-[androidJvm]\
+[androidJvm]
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 

@@ -5,7 +5,7 @@ title: "dpQualifierEntry"
 
 # dpQualifierEntry
 
-[androidJvm]\
+[androidJvm]
 val [dpQualifierEntry](dp-qualifier-entry.md): DpQualifierEntry? = null
 
 #### Parameters

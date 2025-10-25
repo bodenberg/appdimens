@@ -5,7 +5,7 @@ title: "INCH"
 
 # INCH
 
-[androidJvm]\
+[androidJvm]
 [INCH](index.md)
 
 ## Properties

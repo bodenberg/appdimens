@@ -5,7 +5,7 @@ title: "STRETCH"
 
 # STRETCH
 
-[androidJvm]\
+[androidJvm]
 [STRETCH](index.md)
 
 ## Properties

@@ -5,7 +5,7 @@ title: "UI_OVERLAY"
 
 # UI_OVERLAY
 
-[androidJvm]\
+[androidJvm]
 [UI_OVERLAY](index.md)
 
 ## Properties

@@ -5,7 +5,7 @@ title: "wem"
 
 # wem
 
-[androidJvm]\
+[androidJvm]
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 

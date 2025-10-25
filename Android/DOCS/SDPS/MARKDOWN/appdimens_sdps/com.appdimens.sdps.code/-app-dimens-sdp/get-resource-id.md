@@ -5,7 +5,7 @@ title: "getResourceId"
 
 # getResourceId
 
-[androidJvm]\
+[androidJvm]
 fun [getResourceId](get-resource-id.md)(context: [Context](https://developer.android.com/reference/kotlin/android/content/Context.html), dpQualifier: DpQualifier, value: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)): [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)
 
 EN Gets the resource ID for an SDP value.

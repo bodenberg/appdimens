@@ -5,7 +5,7 @@ title: "Companion"
 
 # Companion
 
-[androidJvm]\
+[androidJvm]
 object [Companion](index.md)
 
 ## Functions

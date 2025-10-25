@@ -5,5 +5,5 @@ title: "UiModeQualifierEntry"
 
 # UiModeQualifierEntry
 
-[androidJvm]\
+[androidJvm]
 constructor(uiModeType: [UiModeType](../-ui-mode-type/index.md), dpQualifierEntry: [DpQualifierEntry](../-dp-qualifier-entry/index.md))

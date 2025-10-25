@@ -5,7 +5,7 @@ title: "toDp"
 
 # toDp
 
-[androidJvm]\
+[androidJvm]
 fun [toDp](to-dp.md)(resources: [Resources](https://developer.android.com/reference/kotlin/android/content/res/Resources.html)): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Returns the dynamically adjusted Dp value (in Dp, not converted to PX).

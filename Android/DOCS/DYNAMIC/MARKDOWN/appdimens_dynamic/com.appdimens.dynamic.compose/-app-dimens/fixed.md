@@ -5,7 +5,7 @@ title: "fixed"
 
 # fixed
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -15,7 +15,7 @@ EN Initializes the `AppDimensFixed` builder from a Dp, allowing for customizatio
 
 PT Inicia o construtor `AppDimensFixed` a partir de um Dp, permitindo customizações.
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -25,7 +25,7 @@ EN Initializes the `AppDimensFixed` builder from a TextUnit (Sp), converting it 
 
 PT Inicia o construtor `AppDimensFixed` a partir de um TextUnit (Sp), convertendo-o primeiro para Dp.
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -35,7 +35,7 @@ EN Initializes the `AppDimensFixed` builder from a Float, converting it to Dp fi
 
 PT Inicia o construtor `AppDimensFixed` a partir de um Float, convertendo-o primeiro para Dp.
 
-[androidJvm]\
+[androidJvm]
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 

@@ -5,5 +5,5 @@ title: "type"
 
 # type
 
-[androidJvm]\
+[androidJvm]
 val [type](type.md): [DpQualifier](../-dp-qualifier/index.md)

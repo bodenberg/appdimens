@@ -5,7 +5,7 @@ title: "cm"
 
 # cm
 
-[androidJvm]\
+[androidJvm]
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -15,7 +15,7 @@ EN Float extension to convert CM to PX.
 
 PT Extensão de Float para converter CM para PX.
 
-[androidJvm]\
+[androidJvm]
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 

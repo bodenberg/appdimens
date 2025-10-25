@@ -5,7 +5,7 @@ title: "AppDimens"
 
 # AppDimens
 
-[androidJvm]\
+[androidJvm]
 object [AppDimens](index.md)
 
 EN A singleton object that provides functions for responsive dimension management, acting as a gateway to the `AppDimensFixed` and `AppDimensDynamic` constructors.

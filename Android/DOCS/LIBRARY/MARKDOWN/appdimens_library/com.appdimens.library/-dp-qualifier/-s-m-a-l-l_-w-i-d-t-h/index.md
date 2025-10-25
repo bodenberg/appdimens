@@ -5,7 +5,7 @@ title: "SMALL_WIDTH"
 
 # SMALL_WIDTH
 
-[androidJvm]\
+[androidJvm]
 [SMALL_WIDTH](index.md)
 
 ## Properties

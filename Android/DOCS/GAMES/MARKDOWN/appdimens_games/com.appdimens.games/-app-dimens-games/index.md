@@ -5,7 +5,7 @@ title: "AppDimensGames"
 
 # AppDimensGames
 
-[androidJvm]\
+[androidJvm]
 class [AppDimensGames](index.md)
 
 EN Main AppDimens Games class for Android game development. PT Classe principal AppDimens Games para desenvolvimento de jogos Android.

@@ -5,7 +5,7 @@ title: "APPLIANCE"
 
 # APPLIANCE
 
-[androidJvm]\
+[androidJvm]
 [APPLIANCE](index.md)
 
 EN Projection Device (e.g., Android Auto, Cast).

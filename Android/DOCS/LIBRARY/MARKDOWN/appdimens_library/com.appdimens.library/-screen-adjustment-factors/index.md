@@ -5,7 +5,7 @@ title: "ScreenAdjustmentFactors"
 
 # ScreenAdjustmentFactors
 
-[androidJvm]\
+[androidJvm]
 data class [ScreenAdjustmentFactors](index.md)(val withArFactorLowest: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), val withArFactorHighest: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), val withoutArFactor: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), val adjustmentFactorLowest: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), val adjustmentFactorHighest: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html))
 
 EN Stores the adjustment factors calculated from the screen dimensions. The Aspect Ratio (AR) calculation is performed only once per screen configuration.

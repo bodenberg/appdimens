@@ -5,5 +5,5 @@ title: "uiModeType"
 
 # uiModeType
 
-[androidJvm]\
+[androidJvm]
 val [uiModeType](ui-mode-type.md): [UiModeType](../-ui-mode-type/index.md)

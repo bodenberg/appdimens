@@ -5,7 +5,7 @@ title: "DpQualifierEntry"
 
 # DpQualifierEntry
 
-[androidJvm]\
+[androidJvm]
 data class [DpQualifierEntry](index.md)(val type: [DpQualifier](../-dp-qualifier/index.md), val value: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html))
 
 EN Represents a custom qualifier entry, combining the type and the minimum DP value for the custom adjustment to be applied.

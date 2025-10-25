@@ -5,7 +5,7 @@ title: "calculateAdjustedValue"
 
 # calculateAdjustedValue
 
-[androidJvm]\
+[androidJvm]
 fun [calculateAdjustedValue](calculate-adjusted-value.md)(configuration: [Configuration](https://developer.android.com/reference/kotlin/android/content/res/Configuration.html)): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Performs the final dimension adjustment calculation.

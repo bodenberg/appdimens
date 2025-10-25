@@ -5,5 +5,5 @@ title: "height"
 
 # height
 
-[androidJvm]\
+[androidJvm]
 val [height](height.md): [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)

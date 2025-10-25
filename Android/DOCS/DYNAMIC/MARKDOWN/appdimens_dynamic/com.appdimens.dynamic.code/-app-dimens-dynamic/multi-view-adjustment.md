@@ -5,7 +5,7 @@ title: "multiViewAdjustment"
 
 # multiViewAdjustment
 
-[androidJvm]\
+[androidJvm]
 fun [multiViewAdjustment](multi-view-adjustment.md)(ignore: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html) = true): [AppDimensDynamic](index.md)
 
 EN Ignores adjustments when the app is in multi-window mode.

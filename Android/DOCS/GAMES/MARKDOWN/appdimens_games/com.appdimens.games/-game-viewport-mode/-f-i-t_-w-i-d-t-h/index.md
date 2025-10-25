@@ -5,7 +5,7 @@ title: "FIT_WIDTH"
 
 # FIT_WIDTH
 
-[androidJvm]\
+[androidJvm]
 [FIT_WIDTH](index.md)
 
 ## Properties

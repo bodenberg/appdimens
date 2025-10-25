@@ -5,7 +5,7 @@ title: "unitSizePerPx"
 
 # unitSizePerPx
 
-[androidJvm]\
+[androidJvm]
 fun [unitSizePerPx](unit-size-per-px.md)(type: UnitType, resources: [Resources](https://developer.android.com/reference/kotlin/android/content/res/Resources.html)): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Calculates the size of 1 unit (1.0f) in Pixels (PX) for a specific physical unit.

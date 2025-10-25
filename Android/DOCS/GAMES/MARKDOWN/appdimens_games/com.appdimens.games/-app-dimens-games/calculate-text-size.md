@@ -5,7 +5,7 @@ title: "calculateTextSize"
 
 # calculateTextSize
 
-[androidJvm]\
+[androidJvm]
 fun [calculateTextSize](calculate-text-size.md)(baseSize: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html) = 16.0f): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Calculates text size for games.

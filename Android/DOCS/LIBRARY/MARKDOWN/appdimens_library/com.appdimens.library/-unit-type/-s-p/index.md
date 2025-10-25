@@ -5,7 +5,7 @@ title: "SP"
 
 # SP
 
-[androidJvm]\
+[androidJvm]
 [SP](index.md)
 
 ## Properties

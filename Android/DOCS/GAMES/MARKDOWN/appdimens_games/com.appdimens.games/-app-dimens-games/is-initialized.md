@@ -5,7 +5,7 @@ title: "isInitialized"
 
 # isInitialized
 
-[androidJvm]\
+[androidJvm]
 fun [isInitialized](is-initialized.md)(): [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html)
 
 EN Checks if the library is initialized.

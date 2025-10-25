@@ -5,7 +5,7 @@ title: "AppDimensDynamic"
 
 # AppDimensDynamic
 
-[androidJvm]\
+[androidJvm]
 class [AppDimensDynamic](index.md)(initialBaseDp: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), ignoreMultiViewAdjustment: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html) = false)
 
 EN Class for building dynamic dimensions that allow base Dp customization via screen qualifiers (`.screen()`). The final value is scaled by the screen. Compatible with the View System (XML layouts).

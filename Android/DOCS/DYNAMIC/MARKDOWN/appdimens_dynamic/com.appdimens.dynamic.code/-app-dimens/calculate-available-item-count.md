@@ -5,7 +5,7 @@ title: "calculateAvailableItemCount"
 
 # calculateAvailableItemCount
 
-[androidJvm]\
+[androidJvm]
 fun [calculateAvailableItemCount](calculate-available-item-count.md)(containerSizePx: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html), itemSizeDp: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), itemMarginDp: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), resources: [Resources](https://developer.android.com/reference/kotlin/android/content/res/Resources.html)): [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)
 
 EN Calculates the maximum number of items that can fit in a container, given the container size in PX.
