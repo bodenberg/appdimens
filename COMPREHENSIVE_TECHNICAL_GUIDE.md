@@ -2,7 +2,7 @@
 
 > **Languages:** English | [Português (BR)](LANG/pt-BR/COMPREHENSIVE_TECHNICAL_GUIDE.md) | [Español](LANG/es/COMPREHENSIVE_TECHNICAL_GUIDE.md) | [हिन्दी](LANG/hi/COMPREHENSIVE_TECHNICAL_GUIDE.md) | [Русский](LANG/ru/COMPREHENSIVE_TECHNICAL_GUIDE.md) | [中文](LANG/zh/COMPREHENSIVE_TECHNICAL_GUIDE.md) | [日本語](LANG/ja/COMPREHENSIVE_TECHNICAL_GUIDE.md)
 
-**Comprehensive Technical Documentation - Theory, Implementation and Comparisons**  
+**Comprehensive Technical Documentation - Theory, Implementation and Comparisons** 
 *Author: Jean Bodenberg*  
 *Date: January 2025*  
 *Version: 1.0.8*
