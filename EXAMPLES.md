@@ -51,14 +51,14 @@ fun ResponsiveCard(
         ) {
             Text(
                 text = title,
-                fontSize = 18.fxsp,
+                fontSize = 18.fxsp,                    // Fixed font (RECOMMENDED)
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(bottom = 8.fxdp)
             )
             
             Text(
                 text = content,
-                fontSize = 14.dysp,
+                fontSize = 14.fxsp,                    // Fixed font (RECOMMENDED)
                 color = Color.Gray,
                 modifier = Modifier.weight(1f)
             )
@@ -70,7 +70,7 @@ fun ResponsiveCard(
                 Button(
                     onClick = onActionClick,
                     modifier = Modifier
-                        .width(100.dydp)
+                        .width(100.fxdp)               // Fixed width (RECOMMENDED)
                         .height(36.fxdp)
                 ) {
                     Text(
@@ -167,7 +167,7 @@ fun AdaptiveButton(
     text: String,
     onClick: () -> Unit
 ) {
-    val buttonSize = 80.scaledDp()
+    val buttonSize = 80.fixedDp()  // Fixed scaling (RECOMMENDED)
         // Priority 1: Watch with specific width
         .screen(
             uiModeType = UiModeType.WATCH,
@@ -613,10 +613,10 @@ class ResponsiveViewController: UIViewController {
         }
         
         NSLayoutConstraint.activate([
-            // Container - dynamic width, fixed height
+            // Container - fixed width (RECOMMENDED), fixed height
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            containerView.widthAnchor.constraint(equalToConstant: 300.dypt),
+            containerView.widthAnchor.constraint(equalToConstant: 300.fxpt),
             containerView.heightAnchor.constraint(equalToConstant: 200.fxpt),
             
             // Title
@@ -705,7 +705,7 @@ class ResponsiveCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300.dydp(),          // Dynamic width
+      width: 300.fxdp(),          // Fixed width (RECOMMENDED)
       height: 200.fxdp(),         // Fixed height
       padding: EdgeInsets.all(16.fxdp()),
       decoration: BoxDecoration(
@@ -725,7 +725,7 @@ class ResponsiveCard extends StatelessWidget {
           Text(
             title,
             style: TextStyle(
-              fontSize: 18.fxsp(),
+              fontSize: 18.fxsp(),          // Fixed font (RECOMMENDED)
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -734,7 +734,7 @@ class ResponsiveCard extends StatelessWidget {
             child: Text(
               content,
               style: TextStyle(
-                fontSize: 14.dysp(),
+                fontSize: 14.fxsp(),        // Fixed font (RECOMMENDED)
                 color: Colors.grey[600],
               ),
             ),
@@ -745,7 +745,7 @@ class ResponsiveCard extends StatelessWidget {
             child: ElevatedButton(
               onPressed: onAction,
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(100.dydp(), 36.fxdp()),
+                minimumSize: Size(100.fxdp(), 36.fxdp()),  // Fixed sizes (RECOMMENDED)
                 padding: EdgeInsets.symmetric(
                   horizontal: 20.fxdp(),
                   vertical: 8.fxdp(),
@@ -780,7 +780,7 @@ class ResponsiveGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     // Calculate columns based on screen size
     final screenWidth = MediaQuery.of(context).size.width;
-    final itemWidth = 120.dydp();
+    final itemWidth = 120.fxdp();  // Fixed width (RECOMMENDED)
     final columns = (screenWidth / itemWidth).floor().clamp(2, 6);
 
     return GridView.builder(
@@ -835,7 +835,7 @@ class GridItemCard extends StatelessWidget {
             SizedBox(height: 8.fxdp()),
             Text(
               item.title,
-              style: TextStyle(fontSize: 12.fxsp()),
+              style: TextStyle(fontSize: 12.fxsp()),  // Fixed font (RECOMMENDED)
               textAlign: TextAlign.center,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
@@ -1846,8 +1846,8 @@ struct LazyListWithDimensions: View {
 
 ### 1. Use Appropriate Scaling Types
 
-- **Fixed (FX)**: For UI elements that should maintain visual consistency
-- **Dynamic (DY)**: For layout containers that should scale proportionally
+- **Fixed (FX)** ⭐ **RECOMMENDED**: For most UI elements - buttons, paddings, margins, icons, fonts, containers, cards
+- **Dynamic (DY)**: Only for specific cases - large containers, full-width grids, viewport-dependent elements
 - **SDP/SSP**: For XML-based layouts with pre-calculated resources
 
 ### 2. Cache Frequently Used Dimensions
@@ -1855,8 +1855,8 @@ struct LazyListWithDimensions: View {
 ```kotlin
 // Android
 object AppDimensions {
-    val buttonHeight = 44.fxdp
-    val cardWidth = 300.dydp
+    val buttonHeight = 44.fxdp       // Fixed (RECOMMENDED)
+    val cardWidth = 300.fxdp          // Fixed (RECOMMENDED)
     val padding = 16.fxdp
     val cornerRadius = 8.fxdp
 }
@@ -1865,8 +1865,8 @@ object AppDimensions {
 ```swift
 // iOS
 struct AppDimensions {
-    static let buttonHeight = 44.fxpt
-    static let cardWidth = 300.dypt
+    static let buttonHeight = 44.fxpt     // Fixed (RECOMMENDED)
+    static let cardWidth = 300.fxpt       // Fixed (RECOMMENDED)
     static let padding = 16.fxpt
     static let cornerRadius = 8.fxpt
 }
@@ -1876,7 +1876,7 @@ struct AppDimensions {
 
 ```kotlin
 // Android
-val buttonSize = 80.scaledDp()
+val buttonSize = 80.fixedDp()  // Fixed (RECOMMENDED)
     .screen(UiModeType.WATCH, 40.dp)
     .screen(UiModeType.CAR, 120.dp)
     .screen(DpQualifier.SMALL_WIDTH, 720, 150)
@@ -1884,7 +1884,7 @@ val buttonSize = 80.scaledDp()
 
 ```swift
 // iOS
-let buttonSize = AppDimens.fixed(80)
+let buttonSize = AppDimens.fixed(80)  // Fixed (RECOMMENDED)
     .screen(.watch, 40)
     .screen(.tablet, 120)
     .toPoints()

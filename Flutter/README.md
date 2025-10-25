@@ -14,8 +14,8 @@ title: "AppDimens Flutter"
 
 ## 🚀 Características Principais
 
-- **Dimensionamento Fixo (FX)**: Escalonamento logarítmico para elementos de UI como botões, paddings, margens e ícones
-- **Dimensionamento Dinâmico (DY)**: Escalonamento proporcional para containers, grids e fontes fluidas
+- **Dimensionamento Fixo (FX)** ⭐ **RECOMENDADO**: Escalonamento logarítmico refinado e balanceado para a maioria dos elementos de UI - botões, paddings, margens, ícones, fontes, containers, cards
+- **Dimensionamento Dinâmico (DY)**: Escalonamento proporcional agressivo apenas para casos específicos - containers muito grandes, grids de largura completa, elementos dependentes de viewport
 - **Unidades Físicas**: Conversão de medidas reais (mm, cm, polegadas) para pixels da tela
 - **Qualificadores Condicionais**: Valores personalizados baseados em modo de UI, tipo de dispositivo e qualificadores de tela
 - **Cache Inteligente**: Sistema de cache otimizado para performance
@@ -78,10 +78,10 @@ void main() {
 }
 ```
 
-### 2. Dimensionamento Fixo (FX)
+### 2. Dimensionamento Fixo (FX) ⭐ RECOMENDADO
 
 ```dart
-// Uso básico
+// Uso básico (RECOMENDADO para a maioria dos casos)
 Container(
   width: 100.fx.calculate(context),
   height: 100.fx.calculate(context),
@@ -102,18 +102,22 @@ Container(
 )
 ```
 
-### 3. Dimensionamento Dinâmico (DY)
+### 3. Dimensionamento Dinâmico (DY) - Use Apenas para Casos Específicos
 
 ```dart
-// Uso básico
+// Nota: Este exemplo mostra Dynamic em ação
+// Use esta abordagem apenas quando precisar de escalonamento proporcional agressivo
+// Para a maioria dos casos, Fixed (FX) é RECOMENDADO
+
+// Uso básico do Dynamic (apenas quando necessário)
 Container(
-  width: 200.dy.calculate(context),
-  height: 100.dy.calculate(context),
+  width: 200.dy.calculate(context),  // Dynamic - proporcional à tela
+  height: 100.dy.calculate(context), // Dynamic - proporcional à tela
 )
 
 // Com valores personalizados
 Container(
-  width: AppDimens.dynamic(300)
+  width: AppDimens.dynamic(300)      // Dynamic para containers grandes
       .deviceType(DeviceType.tablet, 400)
       .deviceType(DeviceType.tv, 500)
       .calculate(context),

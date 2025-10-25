@@ -92,8 +92,8 @@ pod 'AppDimens'
 
 | Modelo | Filosofia | Caso de Uso Ideal | Plataformas Suportadas | Implementação |
 |-------|------------|----------------|-------------------|----------------|
-| **Fixed (FX)** | Escala logarítmica (refinada) | Botões, paddings, margens, ícones | Android + iOS | Ajuste matemático de proporção |
-| **Dynamic (DY)** | Escala proporcional (agressiva) | Containers, grids, fontes fluidas | Android + iOS | Escala proporcional baseada na tela |
+| **Fixed (FX)** ⭐ **RECOMENDADO** | Escala logarítmica (refinada e balanceada) | **Maioria dos elementos**: botões, paddings, margens, ícones, fontes, containers, cards | Android + iOS | Ajuste matemático de proporção |
+| **Dynamic (DY)** | Escala proporcional (agressiva) | **Casos específicos**: containers muito grandes, grids de largura completa, elementos dependentes de viewport | Android + iOS | Escala proporcional baseada na tela |
 | **SDP / SSP** | Recursos pré-calculados | Uso direto de `@dimen` em XML | Android | 426+ arquivos de dimensão pré-gerados |
 | **Unidades Físicas** | mm/cm/inch → Dp/Sp/Px/Points | Wearables, impressão, layouts de precisão | Android + iOS | Conversão de medidas do mundo real |
 | **Dimensões de Jogo** | Escala especializada para jogos | UI de jogo, viewports, Metal/OpenGL | Android + iOS | Implementação nativa C++/NDK + Metal |
@@ -141,7 +141,7 @@ pod 'AppDimens'
 fun ResponsiveCard() {
     Card(
         modifier = Modifier
-            .width(300.dydp)           // Largura dinâmica
+            .width(300.fxdp)           // Largura fixa (RECOMENDADO)
             .height(200.fxdp)          // Altura fixa
             .padding(16.fxdp)          // Padding fixo
     ) {
@@ -150,11 +150,11 @@ fun ResponsiveCard() {
         ) {
             Text(
                 text = "Título Responsivo",
-                fontSize = 18.fxsp     // Tamanho de fonte fixo
+                fontSize = 18.fxsp     // Tamanho de fonte fixo (RECOMENDADO)
             )
             Text(
                 text = "Este card se adapta a qualquer tamanho de tela",
-                fontSize = 14.dysp     // Tamanho de fonte dinâmico
+                fontSize = 14.fxsp     // Tamanho de fonte fixo (RECOMENDADO)
             )
         }
     }
@@ -175,7 +175,7 @@ struct ResponsiveCard: View {
                 .foregroundColor(.secondary)
         }
         .fxPadding(16)
-        .dyFrame(width: 300)           // Largura dinâmica
+        .fxFrame(width: 300)           // Largura fixa (RECOMENDADO)
         .fxFrame(height: 200)          // Altura fixa
         .background(Color(.systemGray6))
         .fxCornerRadius(12)

@@ -34,7 +34,7 @@ The library is organized into three modules:
 - **📱 Universal Compatibility**: Works seamlessly on iPhones, iPads, Apple TV, and Apple Watch
 - **⚡ Performance Optimized**: Minimal runtime overhead with cached calculations
 - **🔧 Easy Integration**: Simple API that works with SwiftUI and UIKit
-- **📐 Mathematical Precision**: Two scaling models (Fixed & Dynamic) for different design needs
+- **📐 Mathematical Precision**: Two scaling models - **Fixed (RECOMMENDED)** for most cases & Dynamic for specific needs
 - **🍎 Native iOS**: Built specifically for iOS with Swift and native APIs
 - **🎮 Game Development**: Specialized Metal module for high-performance game development
 - **🚀 Metal Integration**: Native Metal and MetalKit support with SIMD optimizations
@@ -158,8 +158,8 @@ git clone https://github.com/bodenberg/appdimens.git
 
 | Model | Philosophy | Ideal Use Case | Supported In |
 |-------|------------|----------------|--------------|
-| **Fixed (FX)** | Logarithmic scaling (refined) | Buttons, paddings, margins, icons | SwiftUI + UIKit |
-| **Dynamic (DY)** | Proportional scaling (aggressive) | Containers, grids, fluid fonts | SwiftUI + UIKit |
+| **Fixed (FX)** ⭐ **RECOMMENDED** | Logarithmic scaling (refined & balanced) | **Most UI elements**: buttons, paddings, margins, icons, fonts, containers, cards | SwiftUI + UIKit |
+| **Dynamic (DY)** | Proportional scaling (aggressive) | **Specific cases**: large containers, full-width grids, viewport-dependent elements | SwiftUI + UIKit |
 | **Physical Units** | mm/cm/inch → Points | Wearables, printing, precision layouts | SwiftUI + UIKit |
 
 ---
@@ -218,7 +218,7 @@ struct ResponsiveCard: View {
             }
         }
         .fxPadding(16)
-        .dyFrame(width: 300)           // Dynamic width
+        .fxFrame(width: 300)           // Fixed width (RECOMMENDED)
         .fxFrame(height: 200)          // Fixed height
         .background(Color(.systemGray6))
         .fxCornerRadius(12)
@@ -454,9 +454,9 @@ struct PercentageLayout: View {
 
 ## 📊 Mathematical Models
 
-### 🎯 Fixed (FX) Model
+### 🎯 Fixed (FX) Model ⭐ **RECOMMENDED**
 
-**Philosophy**: Logarithmic adjustment for refined scaling
+**Philosophy**: Logarithmic adjustment for refined and balanced scaling
 
 **Formula**: 
 ```
@@ -469,15 +469,18 @@ Final Value = Base Points × (1 + Adjustment Factor × (Base Increment + AR Adju
 - Maintains visual consistency
 - Ideal for UI elements
 
-**Use Cases**:
+**Use Cases** (RECOMMENDED):
 - Button heights and widths
 - Padding and margins
 - Icon sizes
 - Font sizes for readability
+- Container dimensions
+- Card sizes
+- Most UI elements
 
 ### 🚀 Dynamic (DY) Model
 
-**Philosophy**: Percentage-based proportional adjustment
+**Philosophy**: Percentage-based proportional adjustment (use sparingly)
 
 **Formula**:
 ```
@@ -490,11 +493,11 @@ Final Value = (Base Points / Reference Width) × Current Screen Dimension
 - Aggressive scaling on large screens
 - Ideal for layout containers
 
-**Use Cases**:
-- Container widths and heights
-- Grid item sizes
-- Spacer dimensions
-- Viewport-dependent elements
+**Use Cases** (specific scenarios only):
+- Very large container widths
+- Full-width grid layouts
+- Spacer dimensions for full-screen layouts
+- Viewport-dependent elements that need to scale aggressively
 
 ---
 
@@ -536,8 +539,8 @@ Final Value = (Base Points / Reference Width) × Current Screen Dimension
 
 ### 💡 Best Practices
 
-1. **Use Fixed for UI Elements**: Buttons, paddings, fonts, icons
-2. **Use Dynamic for Layout**: Container widths, spacers, grid items
+1. **Use Fixed (FX) for Most Cases** ⭐ **RECOMMENDED**: Buttons, paddings, fonts, icons, containers, cards
+2. **Use Dynamic (DY) Sparingly**: Only for specific large containers, full-width grids, viewport-dependent elements
 3. **Cache Dimensions**: Store frequently used dimensions in properties
 4. **Avoid Excessive Nesting**: Keep dimension chains simple
 

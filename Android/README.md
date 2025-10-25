@@ -28,7 +28,7 @@ layout: default
 - **📱 Universal Compatibility**: Works seamlessly on phones, tablets, TVs, cars, and wearables
 - **⚡ Performance Optimized**: Minimal runtime overhead with cached calculations
 - **🔧 Easy Integration**: Simple API that works with Jetpack Compose, XML Views, and Data Binding
-- **📐 Mathematical Precision**: Two scaling models (Fixed & Dynamic) for different design needs
+- **📐 Mathematical Precision**: Two scaling models - **Fixed (RECOMMENDED)** for most cases & Dynamic for specific needs
 - **🎮 Game Development**: Specialized C++/NDK module for high-performance game development
 - **🚀 Native Performance**: C++ implementation for game-specific calculations and OpenGL integration
 

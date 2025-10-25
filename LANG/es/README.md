@@ -29,7 +29,7 @@ title: "Podfile"
 - **📱 Compatibilidad Universal**: Funciona perfectamente en teléfonos, tablets, TVs, autos y wearables
 - **⚡ Optimizado para Rendimiento**: Sobrecarga mínima en tiempo de ejecución con cálculos en caché
 - **🔧 Integración Fácil**: API simple que funciona con Jetpack Compose, XML Views, SwiftUI y UIKit
-- **📐 Precisión Matemática**: Dos modelos de escala (Fixed & Dynamic) para diferentes necesidades de diseño
+- **📐 Precisión Matemática**: Dos modelos de escala - **Fixed (RECOMENDADO)** para la mayoría de los casos y Dynamic para necesidades específicas
 - **🎮 Desarrollo de Juegos**: Módulo especializado C++/NDK para desarrollo de juegos de alto rendimiento
 - **🚀 Rendimiento Nativo**: Implementación C++ para cálculos específicos de juegos e integración OpenGL
 

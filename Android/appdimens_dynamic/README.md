@@ -24,8 +24,8 @@ layout: default
 
 | Model | Philosophy | Ideal Use Case | Growth Pattern |
 |-------|------------|----------------|----------------|
-| **Fixed (FX)** | Logarithmic scaling (refined) | Buttons, paddings, margins, icons | Smooth, controlled growth |
-| **Dynamic (DY)** | Proportional scaling (aggressive) | Containers, grids, fluid fonts | Linear, percentage-based |
+| **Fixed (FX)** ⭐ **RECOMMENDED** | Logarithmic scaling (refined & balanced) | **Most UI elements**: buttons, paddings, margins, icons, fonts, containers, cards | Smooth, controlled growth |
+| **Dynamic (DY)** | Proportional scaling (aggressive) | **Specific cases**: large containers, full-width grids, viewport-dependent elements | Linear, percentage-based |
 
 ---
 
@@ -87,24 +87,24 @@ dependencies {
 
 ### 🧩 Jetpack Compose
 
-#### Fixed Scaling (FX) - Refined UI Elements
+#### Fixed Scaling (FX) - RECOMMENDED for Most UI Elements
 
 ```kotlin
 @Composable
 fun FixedScalingExample() {
     Column(
-        modifier = Modifier.padding(16.fxdp)  // Fixed padding - consistent feel
+        modifier = Modifier.padding(16.fxdp)  // Fixed padding (RECOMMENDED)
     ) {
         Text(
             text = "Title",
-            fontSize = 24.fxsp                // Fixed font size - comfortable reading
+            fontSize = 24.fxsp                // Fixed font size (RECOMMENDED)
         )
         
         Button(
             onClick = { },
             modifier = Modifier
-                .width(120.fxdp)              // Fixed width - consistent button size
-                .height(48.fxdp)              // Fixed height - standard touch target
+                .width(120.fxdp)              // Fixed width (RECOMMENDED)
+                .height(48.fxdp)              // Fixed height (RECOMMENDED)
         ) {
             Text("Action")
         }
@@ -112,26 +112,29 @@ fun FixedScalingExample() {
 }
 ```
 
-#### Dynamic Scaling (DY) - Proportional Layouts
+#### Dynamic Scaling (DY) - For Specific Large Container Cases
 
 ```kotlin
 @Composable
 fun DynamicScalingExample() {
+    // Note: This example shows Dynamic scaling in action
+    // Use this approach only when you need aggressive proportional scaling
+    // For most cases, Fixed (FX) is RECOMMENDED
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(24.dydp)                 // Dynamic padding - proportional to screen
+            .padding(24.dydp)                 // Dynamic padding - scales proportionally
     ) {
         items(10) { index ->
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(100.dydp)         // Dynamic height - proportional
-                    .padding(8.fxdp)          // Fixed padding - consistent spacing
+                    .height(100.dydp)         // Dynamic height - proportional to screen
+                    .padding(8.fxdp)          // Fixed padding for consistency
             ) {
                 Text(
                     text = "Item $index",
-                    fontSize = 16.dysp        // Dynamic font - proportional to screen
+                    fontSize = 16.dysp        // Dynamic font - proportional scaling
                 )
             }
         }
@@ -296,7 +299,7 @@ fun LayoutUtilitiesExample() {
 ```kotlin
 @Composable
 fun ConditionalScalingExample() {
-    val buttonSize = 80.dynamicDp() //or fixedDP
+    val buttonSize = 80.fixedDp()  // Fixed (RECOMMENDED)
         // Priority 1: Watch with specific width
         .screen(UiModeType.WATCH, DpQualifier.SMALL_WIDTH, 200, 40.dp)
         // Priority 2: Car mode
@@ -317,9 +320,9 @@ fun ConditionalScalingExample() {
 
 ## 📊 Mathematical Models
 
-### 🎯 Fixed (FX) Model
+### 🎯 Fixed (FX) Model ⭐ **RECOMMENDED**
 
-**Philosophy**: Logarithmic adjustment for refined scaling
+**Philosophy**: Logarithmic adjustment for refined and balanced scaling
 
 **Formula**: 
 ```
@@ -330,17 +333,20 @@ Final Value = Base DP × (1 + Adjustment Factor × (Base Increment + AR Adjustme
 - Smooth, controlled growth
 - Slows down on very large screens
 - Maintains visual consistency
-- Ideal for UI elements
+- Perfect balance for most UI scenarios
 
-**Use Cases**:
+**Use Cases** (RECOMMENDED):
 - Button heights and widths
 - Padding and margins
 - Icon sizes
 - Font sizes for readability
+- Container dimensions
+- Card sizes
+- Most UI elements
 
 ### 🚀 Dynamic (DY) Model
 
-**Philosophy**: Percentage-based proportional adjustment
+**Philosophy**: Percentage-based proportional adjustment (use sparingly)
 
 **Formula**:
 ```
@@ -351,13 +357,13 @@ Final Value = (Base DP / Reference Width) × Current Screen Dimension
 - Linear, proportional growth
 - Maintains percentage of screen space
 - Aggressive scaling on large screens
-- Ideal for layout containers
+- Use only when specifically needed
 
-**Use Cases**:
-- Container widths and heights
-- Grid item sizes
-- Spacer dimensions
-- Viewport-dependent elements
+**Use Cases** (specific scenarios only):
+- Very large container widths
+- Full-width grid layouts
+- Spacer dimensions for full-screen layouts
+- Viewport-dependent elements that need to scale aggressively
 
 ---
 
@@ -401,8 +407,8 @@ Final Value = (Base DP / Reference Width) × Current Screen Dimension
 
 ### 💡 Best Practices
 
-1. **Use Fixed for UI Elements**: Buttons, paddings, fonts, icons
-2. **Use Dynamic for Layout**: Container widths, spacers, grid items
+1. **Use Fixed (FX) for Most Cases** ⭐ **RECOMMENDED**: Buttons, paddings, fonts, icons, containers, cards
+2. **Use Dynamic (DY) Sparingly**: Only for specific large containers, full-width grids, viewport-dependent elements
 3. **Cache Dimensions**: Store frequently used dimensions in properties
 4. **Avoid Excessive Nesting**: Keep dimension chains simple
 

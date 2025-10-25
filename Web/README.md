@@ -27,7 +27,7 @@ Baseado na biblioteca [AppDimens Android](../Android/), traz os mesmos conceitos
 
 ### ✨ Principais Recursos
 
-- 🎨 **Três Modelos de Escalonamento**: Fixed (logarítmico), Dynamic (proporcional), Fluid (clamp)
+- 🎨 **Três Modelos de Escalonamento**: **Fixed (RECOMENDADO)** - logarítmico refinado e balanceado, Dynamic - proporcional agressivo para casos específicos, Fluid - clamp suave
 - 📱 **Sistema de Breakpoints Inteligente**: Baseado em viewport com suporte a container queries
 - 🔄 **Cache Automático**: Sistema de cache com invalidação inteligente baseado em dependências
 - 🎭 **Suporte a Media Queries**: Dark mode, reduced motion, hover, pointer type, etc
@@ -87,13 +87,14 @@ pnpm add webdimens
 ```typescript
 import { fixed, dynamic, fluid, webdimens } from 'webdimens';
 
-// Fixed (logarítmico) - para elementos de UI
-const buttonPadding = fixed(16).toPx();        // "17.2px"
-const iconSize = fixed(24).toPx();             // "25.8px"
+// Fixed (logarítmico) - RECOMENDADO para a maioria dos elementos
+const buttonPadding = fixed(16).toPx();        // "17.2px" (RECOMENDADO)
+const iconSize = fixed(24).toPx();             // "25.8px" (RECOMENDADO)
+const containerWidth = fixed(300).toPx();      // Crescimento balanceado (RECOMENDADO)
 
-// Dynamic (proporcional) - para layouts
-const containerWidth = dynamic(300).toPx();    // Proporcional à tela
-const cardHeight = dynamic(200).toVw();        // "15vw"
+// Dynamic (proporcional) - Use apenas para casos específicos
+const largeContainer = dynamic(800).toPx();    // Apenas quando necessário
+const fullWidthGrid = dynamic(1200).toVw();    // Para grids de largura completa
 
 // Fluid (clamp) - transições suaves
 const fluidFont = fluid(16, 24).toString();    // "clamp(16px, ...calc..., 24px)"
@@ -122,9 +123,9 @@ function ResponsiveCard() {
 
   return (
     <div style={{
-      padding: dimens.fixed(16).toPx(),
-      width: dimens.dynamic(300).toPx(),
-      fontSize: dimens.fluid(14, 18).toString(),
+      padding: dimens.fixed(16).toPx(),      // Fixed (RECOMENDADO)
+      width: dimens.fixed(300).toPx(),       // Fixed (RECOMENDADO)
+      fontSize: dimens.fixed(16).toPx(),     // Fixed (RECOMENDADO)
       backgroundColor: isDark ? '#1a1a1a' : '#ffffff'
     }}>
       <h2>Current Breakpoint: {breakpoint.current}</h2>
@@ -139,10 +140,10 @@ function ResponsiveCard() {
 
 ## 🎨 Modelos de Escalonamento
 
-### 1. Fixed (FX) - Logarítmico
+### 1. Fixed (FX) - Logarítmico ⭐ RECOMENDADO
 
-**Filosofia**: Crescimento suave e controlado  
-**Ideal para**: Botões, paddings, margens, ícones, fontes
+**Filosofia**: Crescimento suave, controlado e balanceado  
+**Ideal para**: A maioria dos elementos - botões, paddings, margens, ícones, fontes, containers, cards
 
 ```typescript
 const button = {
@@ -158,10 +159,10 @@ const button = {
 Valor Final = Base × (1 + Fator de Ajuste × (Incremento Base + Ajuste AR))
 ```
 
-### 2. Dynamic (DY) - Proporcional
+### 2. Dynamic (DY) - Proporcional (Use Apenas para Casos Específicos)
 
-**Filosofia**: Crescimento linear baseado em porcentagem  
-**Ideal para**: Containers, grids, layouts fluidos
+**Filosofia**: Crescimento linear agressivo baseado em porcentagem  
+**Ideal para**: Apenas casos específicos - containers muito grandes, grids de largura completa, elementos dependentes de viewport
 
 ```typescript
 const layout = {

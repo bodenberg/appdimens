@@ -26,7 +26,7 @@ Mathematically responsive scaling that ensures your UI design adapts perfectly t
 - **📱 Universal Compatibility**: Works seamlessly on phones, tablets, TVs, and wearables
 - **⚡ Performance Optimized**: Minimal runtime overhead with cached calculations
 - **🔧 Easy Integration**: Simple React hooks and TypeScript support
-- **📐 Mathematical Precision**: Two scaling models (Fixed & Dynamic) for different design needs
+- **📐 Mathematical Precision**: Two scaling models - **Fixed (RECOMMENDED)** for most cases & Dynamic for specific needs
 - **🎮 Game Development**: Specialized scaling for game UI elements
 - **🚀 TypeScript**: Full TypeScript support with comprehensive type definitions
 
@@ -82,17 +82,17 @@ function MyComponent() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: fx(16).toPixels(), // Fixed padding
+    padding: fx(16).toPixels(), // Fixed padding (RECOMMENDED)
   },
   title: {
-    fontSize: fx(24).toPixels(), // Fixed font size
-    marginBottom: dy(20).toPixels(), // Dynamic margin
+    fontSize: fx(24).toPixels(), // Fixed font size (RECOMMENDED)
+    marginBottom: fx(20).toPixels(), // Fixed margin (RECOMMENDED)
   },
   card: {
-    width: dy(300).toPixels(), // Dynamic width
-    height: fx(200).toPixels(), // Fixed height
+    width: fx(300).toPixels(), // Fixed width (RECOMMENDED)
+    height: fx(200).toPixels(), // Fixed height (RECOMMENDED)
     backgroundColor: '#007AFF',
-    borderRadius: fx(12).toPixels(), // Fixed border radius
+    borderRadius: fx(12).toPixels(), // Fixed border radius (RECOMMENDED)
   },
 });
 
@@ -111,9 +111,9 @@ function App() {
 
 | Model | Philosophy | Ideal Use Case | Implementation |
 |-------|------------|----------------|----------------|
-| **Fixed (FX)** | Logarithmic scaling (refined) | Buttons, paddings, margins, icons | `fx(value).toPixels()` |
-| **Dynamic (DY)** | Proportional scaling (aggressive) | Containers, grids, fluid fonts | `dy(value).toPixels()` |
-| **Percentage** | Screen-based percentage | Layout containers | `percentage(0.8)` |
+| **Fixed (FX)** ⭐ **RECOMMENDED** | Logarithmic scaling (refined & balanced) | **Most UI elements**: buttons, paddings, margins, icons, fonts, containers, cards | `fx(value).toPixels()` |
+| **Dynamic (DY)** | Proportional scaling (aggressive) | **Specific cases**: large containers, full-width grids, viewport-dependent elements | `dy(value).toPixels()` |
+| **Percentage** | Screen-based percentage | Layout containers (use sparingly) | `percentage(0.8)` |
 
 ---
 
@@ -139,15 +139,15 @@ function ResponsiveCard() {
 
 const styles = StyleSheet.create({
   card: {
-    width: dy(300).toPixels(),           // Dynamic width
-    height: fx(200).toPixels(),          // Fixed height
-    padding: fx(16).toPixels(),          // Fixed padding
+    width: fx(300).toPixels(),           // Fixed width (RECOMMENDED)
+    height: fx(200).toPixels(),          // Fixed height (RECOMMENDED)
+    padding: fx(16).toPixels(),          // Fixed padding (RECOMMENDED)
     backgroundColor: '#FFFFFF',
-    borderRadius: fx(12).toPixels(),     // Fixed border radius
+    borderRadius: fx(12).toPixels(),     // Fixed border radius (RECOMMENDED)
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: fx(2).toPixels(),          // Fixed shadow offset
+      height: fx(2).toPixels(),          // Fixed shadow offset (RECOMMENDED)
     },
     shadowOpacity: 0.1,
     shadowRadius: fx(4).toPixels(),      // Fixed shadow radius
