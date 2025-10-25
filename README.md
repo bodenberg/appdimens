@@ -1,14 +1,14 @@
-<div align="center"><img src="IMAGES/image_sample_devices.png" alt="AppDimens - Responsive Design Across All Devices" height="300"/>
+<div align="center">
+   <img src="/IMAGES/SSP.png" alt="AppDimens - Responsive Design Across All Devices" height="300"/>
 <h1>📐 AppDimens</h1>
 <p><strong>Smart Responsive Dimensions for Any Screen</strong></p>
+</div>
 
 [![Version](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Android%20%7C%20iOS%20%7C%20Flutter%20%7C%20RN%20%7C%20Web-orange.svg)](https://github.com/bodenberg/appdimens)
 
 [📚 Documentation](DOCS/README.md) | [⚡ Quick Reference](DOCS_QUICK_REFERENCE.md) | [🔬 Technical Details](COMPREHENSIVE_TECHNICAL_GUIDE.md)
-
-</div>
 
 > **Languages:** [Português (BR)](LANG/pt-BR/README.md) | [Español](LANG/es/README.md) | [हिन्दी](LANG/hi/README.md) | [Русский](LANG/ru/README.md) | [中文](LANG/zh/README.md) | [日本語](LANG/ja/README.md)
 
