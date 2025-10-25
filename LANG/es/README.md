@@ -1,219 +1,261 @@
----
-layout: default
-title: "Podfile"
----
-
-<div align="center">
-    <img src="../../IMAGES/image_sample_devices.png" alt="AppDimens - Diseño Responsivo en Todos los Dispositivos" height="300"/>
-    <h1>📐 AppDimens</h1>
-    <p><strong>Dimensionamiento Inteligente y Responsivo para Android & iOS</strong></p>
-    <p>Escalado responsivo matemáticamente preciso que garantiza que su diseño de UI se adapte perfectamente a cualquier tamaño de pantalla o relación de aspecto — desde teléfonos hasta TVs, autos y wearables.</p>
+<div align="center"><img src="../../IMAGES/image_sample_devices.png" alt="AppDimens - Diseño Responsivo en Todos los Dispositivos" height="300"/>
+<h1>📐 AppDimens</h1>
+<p><strong>Dimensiones Responsivas Inteligentes para Cualquier Pantalla</strong></p>
 
 [![Versión](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![Licencia](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
-[![Plataforma](https://img.shields.io/badge/platform-Android%20%7C%20iOS-orange.svg)](https://github.com/bodenberg/appdimens)
-[![Documentación](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)
+[![Plataforma](https://img.shields.io/badge/platform-Android%20%7C%20iOS%20%7C%20Flutter%20%7C%20RN%20%7C%20Web-orange.svg)](https://github.com/bodenberg/appdimens)
+
+[📚 Documentación](../../DOCS/README.md) | [⚡ Referencia Rápida](DOCS_QUICK_REFERENCE.md) | [🔬 Detalles Técnicos](COMPREHENSIVE_TECHNICAL_GUIDE.md)
+
 </div>
 
-> Idiomas: [English](../../README.md) | [Português (BR)](../pt-BR/README.md) | [हिन्दी](../hi/README.md) | [Русский](../ru/README.md) | [中文](../zh/README.md) | [日本語](../ja/README.md)
+> **Idiomas:** [English](../../README.md) | [Português (BR)](../pt-BR/README.md) | Español | [हिन्दी](../hi/README.md) | [Русский](../ru/README.md) | [中文](../zh/README.md) | [日本語](../ja/README.md)
 
 ---
 
-## 🎯 ¿Qué es AppDimens?
+## ⚡ Descripción General
 
-**AppDimens** es un sistema integral de dimensionamiento que reemplaza valores fijos de píxeles con dimensiones escaladas inteligentemente basadas en las características reales de la pantalla. Mientras que los DP/Points tradicionales son constantes, AppDimens los trata como valores base que escalan de manera predecible en diferentes tamaños de pantalla, densidades y relaciones de aspecto.
+**AppDimens** hace que tus elementos de UI se escalen perfectamente en todos los dispositivos - desde teléfonos hasta tabletas, TVs, relojes y navegadores web.
 
-### 🎨 Beneficios Principales
+En lugar de tamaños fijos que se ven diminutos en tabletas o enormes en relojes, AppDimens usa **escalado matemático** que se adapta inteligentemente al tamaño de pantalla y la relación de aspecto.
 
-- **🎯 Consistencia Visual**: Mantenga proporciones perfectas en todos los tipos de dispositivos
-- **📱 Compatibilidad Universal**: Funciona perfectamente en teléfonos, tablets, TVs, autos y wearables
-- **⚡ Optimizado para Rendimiento**: Sobrecarga mínima en tiempo de ejecución con cálculos en caché
-- **🔧 Integración Fácil**: API simple que funciona con Jetpack Compose, XML Views, SwiftUI y UIKit
-- **📐 Precisión Matemática**: Dos modelos de escala - **Fixed (RECOMENDADO)** para la mayoría de los casos y Dynamic para necesidades específicas
-- **🎮 Desarrollo de Juegos**: Módulo especializado C++/NDK para desarrollo de juegos de alto rendimiento
-- **🚀 Rendimiento Nativo**: Implementación C++ para cálculos específicos de juegos e integración OpenGL
+### ¿Por qué AppDimens?
 
----
+```
+❌ Sin AppDimens:
+   Teléfono (360dp): Botón = 48dp (13% de pantalla) ✅ Bien
+   Tableta (800dp): Botón = 48dp (6% de pantalla)  ❌ ¡Muy pequeño!
 
-## 🎮 Funcionalidades de Desarrollo de Juegos
+✅ Con AppDimens:
+   Teléfono (360dp): Botón = 48dp (13% de pantalla) ✅ Bien
+   Tableta (800dp): Botón = 68dp (8.5% de pantalla) ✅ ¡Perfecto!
+```
 
-### Android Games (C++/NDK)
-- **Rendimiento Nativo**: Implementación C++ para cálculos de alto rendimiento
-- **Tipos de Dimensión de Juego**: DYNAMIC, FIXED, GAME_WORLD, UI_OVERLAY
-- **Operaciones Vectoriales**: GameVector2D con operaciones matemáticas
-- **Gestión de Viewport**: Múltiples modos de escala para diferentes escenarios de juego
-- **Integración OpenGL**: Utilidades para renderizado OpenGL ES
+### Beneficios Clave
 
-### iOS Games (Metal)
-- **Integración Metal**: Soporte nativo Metal y MetalKit
-- **Escala de Viewport**: Modos uniform, horizontal, vertical, aspect-ratio, viewport
-- **Conversión de Coordenadas**: Transformaciones Screen ↔ NDC
-- **Optimizado para Rendimiento**: Extensiones SIMD para operaciones vectoriales
-- **Integración SwiftUI**: Extensiones SwiftUI específicas para juegos
+- ✅ **Proporciones perfectas** en cualquier tamaño de pantalla
+- ✅ **Funciona en todas partes**: Android, iOS, Flutter, React Native, Web
+- ✅ **API simple**: Solo agrega `.fxdp` o `.fxsp` a tus dimensiones
+- ✅ **Matemáticamente probado**: Basado en investigación psicofísica (Ley de Weber-Fechner)
+- ✅ **Mejor rendimiento**: Caché inteligente lo hace más rápido que las alternativas
 
 ---
 
-## 🚀 Inicio Rápido
+## 🚀 Instalación
 
 ### Android
 
 ```kotlin
 dependencies {
-    // Biblioteca principal (Dynamic + Fixed scaling)
+    // Biblioteca principal (Escalado Fixed + Dynamic + Unidades Físicas)
+    // Incluye: .fxdp, .dydp, Unidades Físicas (mm/cm/inch), Cálculos de grid
     implementation("io.github.bodenberg:appdimens-dynamic:1.0.8")
     
-    // Opcional: SDP & SSP scaling
+    // Escalado SDP (DP escalable para XML)
+    // Incluye: @dimen/_16sdp, etc.
     implementation("io.github.bodenberg:appdimens-sdps:1.0.8")
+    
+    // Escalado SSP (SP escalable para texto en XML)
+    // Incluye: @dimen/_18ssp, etc.
     implementation("io.github.bodenberg:appdimens-ssps:1.0.8")
     
-    // Paquete completo (no incluye módulo de juegos)
+    // Todo en uno (incluye dynamic, sdps, ssps)
+    // ⚠️ Nota: NO incluye el módulo de juegos
     implementation("io.github.bodenberg:appdimens-all:1.0.8")
     
-    // Desarrollo de juegos con soporte C++/NDK (dependencia separada)
+    // Desarrollo de juegos (C++/NDK + OpenGL)
+    // 🎮 Dependencia separada - no incluida en "all"
     implementation("io.github.bodenberg:appdimens-games:1.0.8")
 }
 ```
 
 ### iOS
 
+**CocoaPods:**
 ```ruby
-# Podfile
-pod 'AppDimens'
+# Paquete completo (Main + UI)
+pod 'AppDimens', '~> 1.0.8'
+
+# Solo módulo Main
+pod 'AppDimens/Main', '~> 1.0.8'
+
+# Módulo de juegos (separado)
+pod 'AppDimens/Games', '~> 1.0.8'
 ```
 
+**Swift Package Manager:**
 ```swift
-// Swift Package Manager
-.package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.8")
+dependencies: [
+    .package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.8")
+]
 ```
 
+### Flutter
+
+```yaml
+dependencies:
+  appdimens: ^1.0.8
+```
+
+### React Native
+
+```bash
+# npm
+npm install appdimens-react-native@1.0.8
+
+# yarn
+yarn add appdimens-react-native@1.0.8
+```
+
+### Web
+
+```bash
+# npm
+npm install webdimens@1.0.8
+
+# yarn
+yarn add webdimens@1.0.8
+
+# pnpm
+pnpm add webdimens@1.0.8
+```
+
+**Vanilla JavaScript (CDN):**
+```html
+<script src="https://cdn.jsdelivr.net/npm/webdimens@1.0.8/dist/index.js"></script>
+<script>
+  const { fixed, dynamic, fluid } = WebDimens;
+  
+  document.getElementById('myElement').style.width = fixed(300).toPx();
+</script>
+```
+
+**📖 [Guía Completa de Instalación](../../DOCS/README.md#-quick-start)**
+
 ---
 
-## 🧠 Modelos de Dimensión Principales
+## 💡 Uso Básico
 
-| Modelo | Filosofía | Caso de Uso Ideal | Plataformas Soportadas | Implementación |
-|-------|------------|----------------|-------------------|----------------|
-| **Fixed (FX)** | Escala logarítmica (refinada) | Botones, paddings, márgenes, íconos | Android + iOS | Ajuste matemático de proporción |
-| **Dynamic (DY)** | Escala proporcional (agresiva) | Contenedores, grids, fuentes fluidas | Android + iOS | Escalado proporcional basado en pantalla |
-| **SDP / SSP** | Recursos pre-calculados | Uso directo de `@dimen` en XML | Android | 426+ archivos de dimensión pre-generados |
-| **Unidades Físicas** | mm/cm/inch → Dp/Sp/Px/Points | Wearables, impresión, layouts de precisión | Android + iOS | Conversión de medidas del mundo real |
-| **Dimensiones de Juego** | Escalado especializado para juegos | UI de juego, viewports, Metal/OpenGL | Android + iOS | Implementación nativa C++/NDK + Metal |
-
----
-
-## 📱 Ejemplos de Plataforma
-
-### 🤖 Android - Jetpack Compose
+### Android (Jetpack Compose)
 
 ```kotlin
 @Composable
-fun ResponsiveCard() {
+fun MyCard() {
     Card(
         modifier = Modifier
-            .width(300.dydp)           // Ancho dinámico
-            .height(200.fxdp)          // Altura fija
-            .padding(16.fxdp)          // Padding fijo
+            .width(300.fxdp)      // ✨ Escalado fijo (RECOMENDADO)
+            .padding(16.fxdp)     // ✨ Se adapta a la pantalla
     ) {
-        Column(
-            modifier = Modifier.padding(16.fxdp)
-        ) {
-            Text(
-                text = "Título Responsivo",
-                fontSize = 18.fxsp     // Tamaño de fuente fijo
-            )
-            Text(
-                text = "Esta tarjeta se adapta a cualquier tamaño de pantalla",
-                fontSize = 14.dysp     // Tamaño de fuente dinámico
-            )
-        }
+        Text(
+            text = "Hola Mundo",
+            fontSize = 18.fxsp    // ✨ Legible en todas partes
+        )
     }
 }
 ```
 
-### 🍎 iOS - SwiftUI
-
-```swift
-struct ResponsiveCard: View {
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12.fxpt) {
-            Text("Título Responsivo")
-                .font(.fxSystem(size: 18, weight: .semibold))
-            
-            Text("Esta tarjeta se adapta a cualquier tamaño de pantalla")
-                .font(.fxSystem(size: 14))
-                .foregroundColor(.secondary)
-        }
-        .fxPadding(16)
-        .dyFrame(width: 300)           // Ancho dinámico
-        .fxFrame(height: 200)          // Altura fija
-        .background(Color(.systemGray6))
-        .fxCornerRadius(12)
-    }
-}
-```
-
-### 📄 Android - XML Views
+### Android (XML con SDP/SSP)
 
 ```xml
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:padding="@dimen/_16sdp">
     
     <TextView
         android:layout_width="@dimen/_300sdp"
         android:layout_height="wrap_content"
         android:textSize="@dimen/_18ssp"
-        android:text="Texto Responsivo" />
-        
-    <Button
-        android:layout_width="@dimen/_120sdp"
-        android:layout_height="@dimen/_48sdp"
-        android:text="Acción" />
+        android:text="Hola Mundo" />
 </LinearLayout>
 ```
 
----
-
-## 🎨 Características Avanzadas
-
-### 🔄 Escala Condicional
+### Android (View Binding)
 
 ```kotlin
-// Android
-val buttonSize = 80.scaledDp()
-    .screen(UiModeType.WATCH, DpQualifier.SMALL_WIDTH, 200, 40.dp)
-    .screen(UiModeType.CAR, 120.dp)
-    .screen(DpQualifier.SMALL_WIDTH, 720, 150)
+class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        
+        // Escalado dinámico
+        val width = 300.fixedDp().toPx(resources)
+        binding.card.layoutParams.width = width.toInt()
+        
+        // Unidades físicas
+        val margin = AppDimensPhysicalUnits.toCm(2f, resources)
+        binding.button.setPadding(margin.toInt(), 0, margin.toInt(), 0)
+    }
+}
 ```
 
-```swift
-// iOS
-let buttonSize = AppDimens.fixed(80)
-    .screen(.watch, 40)           // 40pt para Apple Watch
-    .screen(.tablet, 120)         // 120pt para iPad
-    .aspectRatio(enable: true)    // Activar ajuste de proporción
-    .toPoints()
-```
+### Android (Data Binding)
 
-### 📏 Unidades Físicas
+```xml
+<!-- layout/activity_main.xml -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <data>
+        <import type="com.appdimens.dynamic.compose.AppDimensExtKt"/>
+    </data>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_16sdp">
+        
+        <TextView
+            android:layout_width="@dimen/_300sdp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_18ssp"
+            android:text="Hola Mundo" />
+            
+        <!-- Dimensiones dinámicas en DataBinding -->
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="@{AppDimensExtKt.fixedDp(48).dp}"
+            android:text="Haz clic" />
+    </LinearLayout>
+</layout>
+```
 
 ```kotlin
-// Android
-val marginPx = AppDimensPhysicalUnits.toMm(5f, resources)
-view.setPadding(marginPx.toInt(), 0, 0, 0)
+// Activity con DataBinding
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val binding: ActivityMainBinding = 
+            DataBindingUtil.setContentView(this, R.layout.activity_main)
+        
+        // Establecer dimensiones programáticamente
+        binding.button.apply {
+            layoutParams.width = 200.fixedDp().toPx(resources).toInt()
+            layoutParams.height = 56.fixedDp().toPx(resources).toInt()
+        }
+    }
+}
 ```
 
-```swift
-// iOS
-Rectangle()
-    .frame(width: 2.cm, height: 1.cm)  // Unidades físicas
-```
-
-### 🧮 Utilidades de Layout
+### Android (Unidades Físicas - incluidas en appdimens-dynamic)
 
 ```kotlin
-// Android - Calcular número óptimo de columnas de grid
+// Usar medidas del mundo real
+// Las Unidades Físicas son parte de appdimens-dynamic
+val cardWidth = AppDimensPhysicalUnits.toCm(8f, resources)  // 8 cm
+val buttonHeight = AppDimensPhysicalUnits.toInch(0.5f, resources)  // 0.5 pulgadas
+val padding = AppDimensPhysicalUnits.toMm(10f, resources)  // 10 mm
+
+view.layoutParams.width = cardWidth.toInt()
+button.layoutParams.height = buttonHeight.toInt()
+view.setPadding(padding.toInt(), padding.toInt(), padding.toInt(), padding.toInt())
+
+// Cálculos de grid (también en appdimens-dynamic)
 val spanCount = AppDimens.calculateAvailableItemCount(
     containerSizePx = recyclerView.width,
     itemSizeDp = 100f,
@@ -222,105 +264,345 @@ val spanCount = AppDimens.calculateAvailableItemCount(
 )
 ```
 
+### Android (Módulo de Juegos)
+
+```kotlin
+@Composable
+fun GameScreen() {
+    val gamesManager = remember { AppDimensGames.getInstance() }
+    
+    LaunchedEffect(Unit) {
+        gamesManager.initialize(context)
+    }
+    
+    Canvas(modifier = Modifier.fillMaxSize()) {
+        // Dimensiones específicas para juegos
+        val buttonSize = gamesManager.calculateButtonSize(48f)
+        val playerSize = gamesManager.calculatePlayerSize(64f)
+        
+        // Dibujar elementos del juego con dimensiones escaladas
+        drawCircle(
+            color = Color.Blue,
+            radius = playerSize / 2
+        )
+    }
+}
+```
+
+### iOS (SwiftUI)
+
+```swift
+struct MyCard: View {
+    var body: some View {
+        VStack {
+            Text("Hola Mundo")
+                .font(.fxSystem(size: 18))
+        }
+        .fxPadding(16)
+        .fxFrame(width: 300)
+    }
+}
+```
+
+### iOS (UIKit)
+
+```swift
+class MyViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let containerView = UIView()
+        containerView.backgroundColor = .systemBlue
+        containerView.layer.cornerRadius = 16.fxpt
+        view.addSubview(containerView)
+        
+        let titleLabel = UILabel()
+        titleLabel.text = "Hola Mundo"
+        titleLabel.fxFontSize(18)
+        containerView.addSubview(titleLabel)
+    }
+}
+```
+
+### Flutter
+
+```dart
+Widget build(BuildContext context) {
+  return Container(
+    width: 300.fxdp(),
+    padding: EdgeInsets.all(16.fxdp()),
+    child: Text(
+      'Hola Mundo',
+      style: TextStyle(fontSize: 18.fxsp()),
+    ),
+  );
+}
+```
+
+### React Native
+
+```jsx
+function MyCard() {
+  const { fx } = useAppDimens();
+  
+  return (
+    <View style={{ width: fx(300), padding: fx(16) }}>
+      <Text style={{ fontSize: fx(18) }}>
+        Hola Mundo
+      </Text>
+    </View>
+  );
+}
+```
+
+### Web (Vanilla JavaScript)
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/webdimens@1.0.8/dist/index.js"></script>
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+      <h1 id="title">Hola Mundo</h1>
+    </header>
+  </div>
+  
+  <script type="module">
+    import { webdimens } from 'https://cdn.jsdelivr.net/npm/webdimens@1.0.8/dist/index.mjs';
+    
+    // Aplicar dimensiones fijas
+    document.getElementById('header').style.height = webdimens.fx(64);
+    document.getElementById('title').style.fontSize = webdimens.fl(24, 48);
+    document.getElementById('container').style.padding = webdimens.dy(24);
+  </script>
+</body>
+</html>
+```
+
+### Web (React)
+
+```jsx
+import { useWebDimens } from 'webdimens/react';
+
+function MyCard() {
+  const { fx, dy, fl } = useWebDimens();
+  
+  return (
+    <div style={{ width: dy(300), padding: fx(16) }}>
+      <h2 style={{ fontSize: fl(18, 24) }}>Hola Mundo</h2>
+    </div>
+  );
+}
+```
+
+### Web (Vue)
+
+```vue
+<template>
+  <div :style="{ width: dy(300), padding: fx(16) }">
+    <h2 :style="{ fontSize: fl(18, 24) }">Hola Mundo</h2>
+  </div>
+</template>
+
+<script setup>
+import { useWebDimens } from 'webdimens/vue';
+
+const { fx, dy, fl } = useWebDimens();
+</script>
+```
+
+### Web (Svelte)
+
+```svelte
+<script>
+  import { webDimensStore } from 'webdimens/svelte';
+  
+  $: wd = $webDimensStore;
+  $: width = wd.dy(300);
+  $: padding = wd.fx(16);
+  $: fontSize = wd.fl(18, 24);
+</script>
+
+<div style="width: {width}; padding: {padding};">
+  <h2 style="font-size: {fontSize};">Hola Mundo</h2>
+</div>
+```
+
+### Web (Angular)
+
+```typescript
+import { Component } from '@angular/core';
+import { WebDimensService } from 'webdimens/angular';
+
+@Component({
+  selector: 'app-card',
+  template: `
+    <div [ngStyle]="{ width: width, padding: padding }">
+      <h2 [ngStyle]="{ fontSize: fontSize }">Hola Mundo</h2>
+    </div>
+  `
+})
+export class CardComponent {
+  width = '';
+  padding = '';
+  fontSize = '';
+
+  constructor(private wd: WebDimensService) {
+    this.width = wd.dy(300);
+    this.padding = wd.fx(16);
+    this.fontSize = wd.fl(18, 24);
+  }
+}
+```
+
+**📖 [Más Ejemplos](../../EXAMPLES.md)**
+
 ---
 
-## 📊 Rendimiento y Compatibilidad
+## 🎯 Modelos de Escalado
 
-### ⚡ Características de Rendimiento
+AppDimens ofrece múltiples estrategias de escalado para diferentes necesidades:
 
-| Característica | Sobrecarga en Runtime | Uso de Memoria | Tiempo de Cálculo |
-|---------|------------------|--------------|------------------|
-| **Fixed/Dynamic** | ~0.001ms | ~50KB | Caché por configuración |
-| **SDP/SSP** | Cero | ~2MB (recursos) | Pre-calculado |
-| **Unidades Físicas** | ~0.002ms | ~10KB | Bajo demanda |
+| Modelo | Cuándo Usar | Ejemplo |
+|-------|-------------|---------|
+| **Fixed (FX)** ⭐ **RECOMENDADO** | 95% de los casos - botones, texto, padding, márgenes | `16.fxdp` |
+| **Dynamic (DY)** | Contenedores grandes, grids de ancho completo | `100.dydp` |
+| **Fluid (FL)** | Tipografía con límites mín/máx (Web) | `fl(16, 24)` |
+| **SDP/SSP** | Proyectos Android XML heredados | `@dimen/_16sdp` |
 
-### 📱 Soporte de Plataforma
-
-| Plataforma | Versión Mínima | Frameworks de UI | Características Especiales |
-|----------|-------------|---------------|------------------|
-| **Android** | API 21+ | Compose, Views, Data Binding | SDP/SSP, Unidades Físicas |
-| **iOS** | 13.0+ | SwiftUI, UIKit | Extensiones nativas |
+**📖 [Entendiendo los Modelos de Escalado](MATHEMATICAL_THEORY_SIMPLIFIED.md)**
 
 ---
 
-## 📚 Documentación y Recursos
+## 🏆 Por qué AppDimens es #1
 
-### 📖 Documentación Completa
+AppDimens fue comparado científicamente contra 7 otros enfoques de escalado:
 
-- **[📘 Documentación Completa](https://appdimens-project.web.app/)** - Guías completas y referencia de API
-- **[🤖 Guía Android](../../Android/README.md)** - Documentación específica para Android
-- **[🍎 Guía iOS](../../iOS/README.md)** - Documentación específica para iOS
-- **[🎮 Módulo de Juegos](../../Android/appdimens_games/README.md)** - Desarrollo de juegos con C++/NDK
+```
+🥇 #1 AppDimens:        91/100 ⭐⭐⭐⭐⭐
+🥈 #2 RN Moderate:      78/100
+🥉 #3 Flutter ScreenUtil: 72/100
+   #4 SDP/SSP:          65/100
+   #5 CSS vw/vh:        58/100
+```
 
-### 🎯 Enlaces Rápidos
+### ¿Qué lo hace mejor?
 
-- **[🚀 Guía de Instalación](../../Android/README.md#installation)** - Comience en minutos
-- **[📱 Ejemplos](../../Android/app/src/main/kotlin/)** - Ejemplos de uso en el mundo real
-- **[🔧 Referencia de API](../../Android/DOCS/)** - Documentación completa de la API
-- **[❓ FAQ](https://appdimens-project.web.app/faq)** - Preguntas y respuestas comunes
+- ✅ **Única biblioteca** con escalado logarítmico (controla el sobretamaño)
+- ✅ **Única biblioteca** con compensación automática de relación de aspecto
+- ✅ **3.5× más preciso** que el escalado lineal
+- ✅ **65% menos sobretamaño** en tabletas vs competidores
+- ✅ **Más rápido con caché** (0.002µs vs 0.005µs)
 
----
-
-## 🎯 Casos de Uso
-
-### 📱 Aplicaciones Móviles
-Perfecto para apps que necesitan funcionar en diferentes tamaños de teléfono y orientaciones.
-
-### 📺 Apps de TV y Auto
-Ideal para aplicaciones Android TV y Android Auto con tamaños de pantalla variados.
-
-### ⌚ Apps Wearable
-Esencial para apps Wear OS que necesitan adaptarse a diferentes tamaños de reloj.
-
-### 🎮 Desarrollo de Juegos
-Módulo especializado para desarrollo de juegos con soporte C++/NDK e integración OpenGL.
-
-### 🏢 Apps Empresariales
-Excelente para aplicaciones de negocios que necesitan funcionar en tablets, teléfonos y escritorio.
+**📊 [Ver Comparación Completa](FORMULA_COMPARISON.md)**
 
 ---
 
-## 🤝 Contribuyendo
+## 📚 Documentación
 
-¡Aceptamos contribuciones! Por favor, vea nuestras [Directrices de Contribución](CONTRIBUTING.md) para más detalles.
+### Primeros Pasos
 
-### 🐛 ¿Encontró un Error?
-- [Crear un issue](https://github.com/bodenberg/appdimens/issues)
-- Incluya información del dispositivo y pasos de reproducción
-- Adjunte capturas de pantalla si es aplicable
+1. **[Referencia Rápida](DOCS_QUICK_REFERENCE.md)** ⚡ Encuentra cualquier cosa en segundos
+2. **[Guía Simplificada](MATHEMATICAL_THEORY_SIMPLIFIED.md)** 📖 Entiende en 15 minutos
+3. **[Ejemplos](../../EXAMPLES.md)** 💻 Código listo para usar
 
-### 💡 ¿Tiene una Idea?
-- [Iniciar una discusión](https://github.com/bodenberg/appdimens/discussions)
-- Proponga nuevas características o mejoras
-- Comparta sus casos de uso
+### Documentación Técnica
+
+4. **[Guía Técnica Completa](COMPREHENSIVE_TECHNICAL_GUIDE.md)** 🔬 Todo en un solo lugar (lectura de 2h)
+5. **[Comparación de Fórmulas](FORMULA_COMPARISON.md)** 📊 Análisis científico y rankings
+6. **[Teoría Matemática](MATHEMATICAL_THEORY.md)** 📐 Fundamento matemático formal
+
+### Guías por Plataforma
+
+- 🤖 [Guía Android](../../Android/README.md)
+- 🍎 [Guía iOS](../../iOS/README.md)
+- 🎯 [Guía Flutter](../../Flutter/README.md)
+- ⚛️ [Guía React Native](../../ReactNative/README.md)
+- 🌐 [Guía Web](../../Web/README.md)
+
+**📚 [Índice Completo de Documentación](../../DOCS/README.md)**
+
+---
+
+## 🎮 Características Avanzadas
+
+### Reglas de Escalado Personalizadas
+
+```kotlin
+// Android - Diferentes tamaños para diferentes dispositivos
+val buttonSize = 56.fixedDp()
+    .screen(UiModeType.TV, 96.dp)           // TVs: 96dp
+    .screen(UiModeType.WATCH, 40.dp)        // Relojes: 40dp
+    .screen(DpQualifier.SMALL_WIDTH, 600, 72.dp)  // Tabletas: 72dp
+    .dp  // Otros: auto-escalado desde 56dp
+```
+
+### Unidades Físicas
+
+```kotlin
+// Android - Medidas del mundo real
+Rectangle()
+    .width(2.cm)    // 2 centímetros
+    .height(1.inch) // 1 pulgada
+```
+
+### Desarrollo de Juegos
+
+AppDimens incluye módulos especializados para desarrollo de juegos:
+
+- 🎮 **Android**: Soporte C++/NDK + OpenGL ES
+- 🎮 **iOS**: Integración Metal + MetalKit
+- 🎮 Cálculos nativos de alto rendimiento
+
+**📖 [Guía de Desarrollo de Juegos](../../Android/appdimens_games/README.md)**
+
+---
+
+## 🤝 Contribuir
+
+¡Damos la bienvenida a contribuciones!
+
+- 🐛 [Reportar bugs](https://github.com/bodenberg/appdimens/issues)
+- 💡 [Sugerir características](https://github.com/bodenberg/appdimens/discussions)
+- 📝 Mejorar documentación
+- ⭐ ¡Dale estrella a este repo!
+
+**📖 [Guía de Contribución](../../CONTRIBUTING.md)**
 
 ---
 
 ## 📄 Licencia
 
-Este proyecto está licenciado bajo la Licencia Apache 2.0 - vea el archivo [LICENSE](../../LICENSE) para más detalles.
+Apache License 2.0 - ver archivo [LICENSE](../../LICENSE)
 
 ---
 
 ## 👨‍💻 Autor
 
 **Jean Bodenberg**
-- 🌐 [GitHub](https://github.com/bodenberg)
+- GitHub: [@bodenberg](https://github.com/bodenberg)
+- Sitio web: [appdimens-project.web.app](https://appdimens-project.web.app/)
 
 ---
 
-## 🌟 Muestre su Apoyo
+## 🌟 Apoyo
 
-Si AppDimens ha ayudado a su proyecto, por favor considere:
+Si AppDimens ayuda a tu proyecto:
 
-- ⭐ **Dar una estrella** a este repositorio
-- 🐦 **Compartir** en redes sociales
-- 📝 **Escribir** una reseña o publicación de blog
-- 🤝 **Contribuir** con código o documentación
+- ⭐ **Dale estrella** a este repositorio
+- 🐦 **Comparte** en redes sociales
+- 📝 **Escribe** una reseña
+- 🤝 **Contribuye** al proyecto
 
 ---
 
 <div align="center">
-    <p><strong>Hecho con ❤️ para la comunidad de desarrollo móvil</strong></p>
-    <p>AppDimens - Donde el diseño responsivo se encuentra con la precisión matemática</p>
+
+**Hecho con ❤️ para desarrolladores de todo el mundo**
+
+[Documentación](../../DOCS/README.md) • [Ejemplos](../../EXAMPLES.md) • [Guía Técnica](COMPREHENSIVE_TECHNICAL_GUIDE.md)
+
 </div>
