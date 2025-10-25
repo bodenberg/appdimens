@@ -1,4 +1,7 @@
-//[appdimens_ssps](../../../index.md)/[com.appdimens.ssps.compose](../index.md)/[Scaled](index.md)/[screen](screen.md)
+---
+layout: default
+title: "screen"
+---
 
 # screen
 

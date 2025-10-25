@@ -1,4 +1,7 @@
-//[appdimens_sdps](../../index.md)/[com.appdimens.sdps.compose](index.md)/[wdp](wdp.md)
+---
+layout: default
+title: "wdp"
+---
 
 # wdp
 

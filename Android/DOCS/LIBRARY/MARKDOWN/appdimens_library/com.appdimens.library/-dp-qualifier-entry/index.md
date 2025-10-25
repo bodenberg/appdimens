@@ -1,4 +1,7 @@
-//[appdimens_library](../../../index.md)/[com.appdimens.library](../index.md)/[DpQualifierEntry](index.md)
+---
+layout: default
+title: "DpQualifierEntry"
+---
 
 # DpQualifierEntry
 

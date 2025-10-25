@@ -1,3 +1,8 @@
+---
+layout: default
+title: "🚀 AppDimens iOS - Guia de Uso"
+---
+
 # 🚀 AppDimens iOS - Guia de Uso
 
 > Idiomas: [English](../../../iOS/USAGE_GUIDE.md) | [Español](../../es/iOS/USAGE_GUIDE.md) | [हिन्दी](../../hi/iOS/USAGE_GUIDE.md) | [Русский](../../ru/iOS/USAGE_GUIDE.md) | [中文](../../zh/iOS/USAGE_GUIDE.md) | [日本語](../../ja/iOS/USAGE_GUIDE.md)

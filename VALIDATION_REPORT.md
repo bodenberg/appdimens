@@ -1,3 +1,8 @@
+---
+layout: default
+title: "📋 Relatório de Validação - AppDimens v1.0.8"
+---
+
 # 📋 Relatório de Validação - AppDimens v1.0.8
 
 **Data:** 23 de Outubro de 2025  

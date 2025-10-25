@@ -1,4 +1,7 @@
-//[appdimens_library](../../../index.md)/[com.appdimens.library](../index.md)/[ScreenAdjustmentFactors](index.md)/[withArFactorHighest](with-ar-factor-highest.md)
+---
+layout: default
+title: "withArFactorHighest"
+---
 
 # withArFactorHighest
 

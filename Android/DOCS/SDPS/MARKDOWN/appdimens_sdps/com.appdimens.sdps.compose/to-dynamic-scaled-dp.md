@@ -1,4 +1,7 @@
-//[appdimens_sdps](../../index.md)/[com.appdimens.sdps.compose](index.md)/[toDynamicScaledDp](to-dynamic-scaled-dp.md)
+---
+layout: default
+title: "toDynamicScaledDp"
+---
 
 # toDynamicScaledDp
 

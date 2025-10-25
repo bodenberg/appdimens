@@ -1,4 +1,7 @@
-//[appdimens_games](../../../../index.md)/[com.appdimens.games](../../index.md)/[GameDimensionType](../index.md)/[UI_OVERLAY](index.md)
+---
+layout: default
+title: "UI_OVERLAY"
+---
 
 # UI_OVERLAY
 

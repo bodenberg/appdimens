@@ -1,4 +1,7 @@
-//[appdimens_library](../../../index.md)/[com.appdimens.library](../index.md)/[DpQualifierEntry](index.md)/[value](value.md)
+---
+layout: default
+title: "value"
+---
 
 # value
 

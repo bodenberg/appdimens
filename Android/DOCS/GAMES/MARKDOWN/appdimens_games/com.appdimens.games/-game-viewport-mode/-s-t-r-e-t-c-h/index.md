@@ -1,4 +1,7 @@
-//[appdimens_games](../../../../index.md)/[com.appdimens.games](../../index.md)/[GameViewportMode](../index.md)/[STRETCH](index.md)
+---
+layout: default
+title: "STRETCH"
+---
 
 # STRETCH
 

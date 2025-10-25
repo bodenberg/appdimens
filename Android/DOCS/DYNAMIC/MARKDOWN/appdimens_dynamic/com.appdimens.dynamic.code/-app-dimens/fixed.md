@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[AppDimens](index.md)/[fixed](fixed.md)
+---
+layout: default
+title: "fixed"
+---
 
 # fixed
 

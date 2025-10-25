@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.compose](../index.md)/[AppDimensPhysicalUnits](index.md)/[measureDiameter](measure-diameter.md)
+---
+layout: default
+title: "measureDiameter"
+---
 
 # measureDiameter
 

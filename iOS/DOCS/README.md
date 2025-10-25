@@ -1,3 +1,8 @@
+---
+layout: default
+title: "📚 AppDimens iOS Documentation"
+---
+
 # 📚 AppDimens iOS Documentation
 
 > **Complete API Documentation and Implementation Guide for iOS, macOS, tvOS, and watchOS**

@@ -1,4 +1,7 @@
-//[appdimens_dynamic](index.md)
+---
+layout: default
+title: "appdimens_dynamic"
+---
 
 # appdimens_dynamic
 

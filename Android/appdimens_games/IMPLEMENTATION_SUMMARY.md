@@ -1,3 +1,8 @@
+---
+layout: default
+title: "AppDimens Games - Implementation Summary"
+---
+
 # AppDimens Games - Implementation Summary
 
 ## Overview

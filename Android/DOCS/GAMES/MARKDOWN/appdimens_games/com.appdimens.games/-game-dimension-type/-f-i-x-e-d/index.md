@@ -1,4 +1,7 @@
-//[appdimens_games](../../../../index.md)/[com.appdimens.games](../../index.md)/[GameDimensionType](../index.md)/[FIXED](index.md)
+---
+layout: default
+title: "FIXED"
+---
 
 # FIXED
 

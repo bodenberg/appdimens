@@ -1,3 +1,8 @@
+---
+layout: default
+title: "AI Prompt for AppDimens Library"
+---
+
 # AI Prompt for AppDimens Library
 
 > Languages: [Português (BR)](LANG/pt-BR/PROMPT_ANDROID.md) | [Español](LANG/es/PROMPT_ANDROID.md) | [हिन्दी](LANG/hi/PROMPT_ANDROID.md) | [Русский](LANG/ru/PROMPT_ANDROID.md) | [中文](LANG/zh/PROMPT_ANDROID.md) | [日本語](LANG/ja/PROMPT_ANDROID.md)

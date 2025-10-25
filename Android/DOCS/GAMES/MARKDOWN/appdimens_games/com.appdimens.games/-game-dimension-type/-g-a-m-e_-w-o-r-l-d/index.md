@@ -1,4 +1,7 @@
-//[appdimens_games](../../../../index.md)/[com.appdimens.games](../../index.md)/[GameDimensionType](../index.md)/[GAME_WORLD](index.md)
+---
+layout: default
+title: "GAME_WORLD"
+---
 
 # GAME_WORLD
 

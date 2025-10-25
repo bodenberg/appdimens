@@ -1,4 +1,7 @@
-//[appdimens_games](../../../../index.md)/[com.appdimens.games](../../index.md)/[GameViewportMode](../index.md)/[FIT_WIDTH](index.md)
+---
+layout: default
+title: "FIT_WIDTH"
+---
 
 # FIT_WIDTH
 

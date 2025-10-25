@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.compose](../index.md)/[AppDimensDynamic](index.md)/[px](px.md)
+---
+layout: default
+title: "px"
+---
 
 # px
 

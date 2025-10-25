@@ -1,3 +1,8 @@
+---
+layout: default
+title: "🚀 AppDimens: クイックガイドとライブラリ概要"
+---
+
 # 🚀 AppDimens: クイックガイドとライブラリ概要
 
 > 言語: [English](../../../../Android/appdimens_all/README.md) | [Português (BR)](../../pt-BR/Android/appdimens_all/README.md) | [Español](../../es/Android/appdimens_all/README.md) | [हिन्दी](../../hi/Android/appdimens_all/README.md) | [Русский](../../ru/Android/appdimens_all/README.md) | [中文](../../zh/Android/appdimens_all/README.md)

@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[AppDimensGames](index.md)/[initialize](initialize.md)
+---
+layout: default
+title: "initialize"
+---
 
 # initialize
 

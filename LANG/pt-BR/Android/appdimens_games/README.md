@@ -1,3 +1,8 @@
+---
+layout: default
+title: "🎮 AppDimens Games - Desenvolvimento de Jogos Android"
+---
+
 # 🎮 AppDimens Games - Desenvolvimento de Jogos Android
 
 > **Integração C++/NDK para Desenvolvimento de Jogos de Alta Performance**

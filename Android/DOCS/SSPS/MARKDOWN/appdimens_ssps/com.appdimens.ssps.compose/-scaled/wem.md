@@ -1,4 +1,7 @@
-//[appdimens_ssps](../../../index.md)/[com.appdimens.ssps.compose](../index.md)/[Scaled](index.md)/[wem](wem.md)
+---
+layout: default
+title: "wem"
+---
 
 # wem
 

@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[GameScreenConfig](index.md)/[width](width.md)
+---
+layout: default
+title: "width"
+---
 
 # width
 

@@ -1,4 +1,7 @@
-//[appdimens_games](index.md)
+---
+layout: default
+title: "appdimens_games"
+---
 
 # appdimens_games
 

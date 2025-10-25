@@ -1,3 +1,8 @@
+---
+layout: default
+title: "システム知識更新リクエスト: SwiftUI AppDimens 次元システム"
+---
+
 # システム知識更新リクエスト: SwiftUI AppDimens 次元システム
 
 > 言語: [English](../../PROMPT_IOS.md) | [Português (BR)](../pt-BR/PROMPT_IOS.md) | [Español](../es/PROMPT_IOS.md) | [हिन्दी](../hi/PROMPT_IOS.md) | [Русский](../ru/PROMPT_IOS.md) | [中文](../zh/PROMPT_IOS.md)

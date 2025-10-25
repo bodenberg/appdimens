@@ -1,3 +1,8 @@
+---
+layout: default
+title: "Changelog (iOS)"
+---
+
 # Changelog (iOS)
 
 > Idiomas: [English](../../../iOS/CHANGELOG.md) | [Español](../../es/iOS/CHANGELOG.md) | [हिन्दी](../../hi/iOS/CHANGELOG.md) | [Русский](../../ru/iOS/CHANGELOG.md) | [中文](../../zh/iOS/CHANGELOG.md) | [日本語](../../ja/iOS/CHANGELOG.md)

@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[AppDimensGames](index.md)/[updateScreenConfiguration](update-screen-configuration.md)
+---
+layout: default
+title: "updateScreenConfiguration"
+---
 
 # updateScreenConfiguration
 

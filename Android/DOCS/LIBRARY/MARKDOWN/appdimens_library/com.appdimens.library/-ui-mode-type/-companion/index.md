@@ -1,4 +1,7 @@
-//[appdimens_library](../../../../index.md)/[com.appdimens.library](../../index.md)/[UiModeType](../index.md)/[Companion](index.md)
+---
+layout: default
+title: "Companion"
+---
 
 # Companion
 

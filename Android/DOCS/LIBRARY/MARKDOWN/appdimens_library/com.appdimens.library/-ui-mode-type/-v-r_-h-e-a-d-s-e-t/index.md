@@ -1,4 +1,7 @@
-//[appdimens_library](../../../../index.md)/[com.appdimens.library](../../index.md)/[UiModeType](../index.md)/[VR_HEADSET](index.md)
+---
+layout: default
+title: "VR_HEADSET"
+---
 
 # VR_HEADSET
 

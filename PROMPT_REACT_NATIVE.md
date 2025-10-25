@@ -1,3 +1,8 @@
+---
+layout: default
+title: "AI Prompt for AppDimens React Native Library"
+---
+
 # AI Prompt for AppDimens React Native Library
 
 > Languages: [Português (BR)](LANG/pt-BR/PROMPT_REACT_NATIVE.md) | [Español](LANG/es/PROMPT_REACT_NATIVE.md) | [हिन्दी](LANG/hi/PROMPT_REACT_NATIVE.md) | [Русский](LANG/ru/PROMPT_REACT_NATIVE.md) | [中文](LANG/zh/PROMPT_REACT_NATIVE.md) | [日本語](LANG/ja/PROMPT_REACT_NATIVE.md)

@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.compose](../index.md)/[AppDimensPhysicalUnits](index.md)/[cmToInch](cm-to-inch.md)
+---
+layout: default
+title: "cmToInch"
+---
 
 # cmToInch
 

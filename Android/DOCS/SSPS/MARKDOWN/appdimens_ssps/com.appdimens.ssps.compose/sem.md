@@ -1,4 +1,7 @@
-//[appdimens_ssps](../../index.md)/[com.appdimens.ssps.compose](index.md)/[sem](sem.md)
+---
+layout: default
+title: "sem"
+---
 
 # sem
 

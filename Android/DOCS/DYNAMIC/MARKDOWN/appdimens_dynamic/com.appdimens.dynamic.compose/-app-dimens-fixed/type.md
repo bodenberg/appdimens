@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.compose](../index.md)/[AppDimensFixed](index.md)/[type](type.md)
+---
+layout: default
+title: "type"
+---
 
 # type
 

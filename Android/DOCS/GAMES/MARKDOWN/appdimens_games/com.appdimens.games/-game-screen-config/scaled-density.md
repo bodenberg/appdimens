@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[GameScreenConfig](index.md)/[scaledDensity](scaled-density.md)
+---
+layout: default
+title: "scaledDensity"
+---
 
 # scaledDensity
 

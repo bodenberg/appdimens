@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[GameActivity](index.md)/[onConfigurationChanged](on-configuration-changed.md)
+---
+layout: default
+title: "onConfigurationChanged"
+---
 
 # onConfigurationChanged
 

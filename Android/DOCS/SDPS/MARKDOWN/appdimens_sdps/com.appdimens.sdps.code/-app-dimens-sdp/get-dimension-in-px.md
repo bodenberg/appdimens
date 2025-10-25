@@ -1,4 +1,7 @@
-//[appdimens_sdps](../../../index.md)/[com.appdimens.sdps.code](../index.md)/[AppDimensSdp](index.md)/[getDimensionInPx](get-dimension-in-px.md)
+---
+layout: default
+title: "getDimensionInPx"
+---
 
 # getDimensionInPx
 

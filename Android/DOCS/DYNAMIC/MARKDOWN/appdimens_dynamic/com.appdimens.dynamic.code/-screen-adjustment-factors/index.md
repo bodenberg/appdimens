@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[ScreenAdjustmentFactors](index.md)
+---
+layout: default
+title: "ScreenAdjustmentFactors"
+---
 
 # ScreenAdjustmentFactors
 

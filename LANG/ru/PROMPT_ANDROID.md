@@ -1,3 +1,8 @@
+---
+layout: default
+title: "ИИ-промпт для библиотеки AppDimens (Android)"
+---
+
 # ИИ-промпт для библиотеки AppDimens (Android)
 
 > Языки: [English](../../PROMPT_ANDROID.md) | [Português (BR)](../pt-BR/PROMPT_ANDROID.md) | [Español](../es/PROMPT_ANDROID.md) | [हिन्दी](../hi/PROMPT_ANDROID.md) | [中文](../zh/PROMPT_ANDROID.md) | [日本語](../ja/PROMPT_ANDROID.md)

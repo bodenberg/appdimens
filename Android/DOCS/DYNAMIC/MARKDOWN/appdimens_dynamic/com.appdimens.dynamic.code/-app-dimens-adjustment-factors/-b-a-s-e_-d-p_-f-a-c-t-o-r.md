@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[AppDimensAdjustmentFactors](index.md)/[BASE_DP_FACTOR](-b-a-s-e_-d-p_-f-a-c-t-o-r.md)
+---
+layout: default
+title: "BASE_DP_FACTOR"
+---
 
 # BASE_DP_FACTOR
 

@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[GameViewportMode](index.md)/[values](values.md)
+---
+layout: default
+title: "values"
+---
 
 # values
 

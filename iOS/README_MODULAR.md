@@ -1,3 +1,8 @@
+---
+layout: default
+title: "📱 AppDimens iOS - Modular Structure"
+---
+
 # 📱 AppDimens iOS - Modular Structure
 
 > Languages: [Português (BR)](../LANG/pt-BR/iOS/README_MODULAR.md) | [Español](../LANG/es/iOS/README_MODULAR.md) | [हिन्दी](../LANG/hi/iOS/README_MODULAR.md) | [Русский](../LANG/ru/iOS/README_MODULAR.md) | [中文](../LANG/zh/iOS/README_MODULAR.md) | [日本語](../LANG/ja/iOS/README_MODULAR.md)

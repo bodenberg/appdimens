@@ -1,4 +1,7 @@
-//[appdimens_library](../../../index.md)/[com.appdimens.library](../index.md)/[DpQualifierEntry](index.md)/[type](type.md)
+---
+layout: default
+title: "type"
+---
 
 # type
 

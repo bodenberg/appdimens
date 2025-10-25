@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[AppDimensFixed](index.md)/[calculateAdjustedValue](calculate-adjusted-value.md)
+---
+layout: default
+title: "calculateAdjustedValue"
+---
 
 # calculateAdjustedValue
 

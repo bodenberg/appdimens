@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[AppDimensGames](index.md)/[calculateEnemySize](calculate-enemy-size.md)
+---
+layout: default
+title: "calculateEnemySize"
+---
 
 # calculateEnemySize
 

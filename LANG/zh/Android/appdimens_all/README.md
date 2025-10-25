@@ -1,3 +1,8 @@
+---
+layout: default
+title: "🚀 AppDimens：快速指南与库概览"
+---
+
 # 🚀 AppDimens：快速指南与库概览
 
 > 语言: [English](../../../../Android/appdimens_all/README.md) | [Português (BR)](../../pt-BR/Android/appdimens_all/README.md) | [Español](../../es/Android/appdimens_all/README.md) | [हिन्दी](../../hi/Android/appdimens_all/README.md) | [Русский](../../ru/Android/appdimens_all/README.md) | [日本語](../../ja/Android/appdimens_all/README.md)

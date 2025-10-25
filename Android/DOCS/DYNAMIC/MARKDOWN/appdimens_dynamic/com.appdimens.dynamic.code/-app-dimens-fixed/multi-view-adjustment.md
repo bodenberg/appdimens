@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[AppDimensFixed](index.md)/[multiViewAdjustment](multi-view-adjustment.md)
+---
+layout: default
+title: "multiViewAdjustment"
+---
 
 # multiViewAdjustment
 

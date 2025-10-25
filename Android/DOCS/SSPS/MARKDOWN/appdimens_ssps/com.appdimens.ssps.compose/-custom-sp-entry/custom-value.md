@@ -1,4 +1,7 @@
-//[appdimens_ssps](../../../index.md)/[com.appdimens.ssps.compose](../index.md)/[CustomSpEntry](index.md)/[customValue](custom-value.md)
+---
+layout: default
+title: "customValue"
+---
 
 # customValue
 

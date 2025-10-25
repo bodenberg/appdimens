@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[GameVector2D](index.md)/[y](y.md)
+---
+layout: default
+title: "y"
+---
 
 # y
 

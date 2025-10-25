@@ -1,3 +1,8 @@
+---
+layout: default
+title: "面向 Android 的 AppDimens 库 AI 提示"
+---
+
 # 面向 Android 的 AppDimens 库 AI 提示
 
 > 语言: [English](../../PROMPT_ANDROID.md) | [Português (BR)](../pt-BR/PROMPT_ANDROID.md) | [Español](../es/PROMPT_ANDROID.md) | [हिन्दी](../hi/PROMPT_ANDROID.md) | [Русский](../ru/PROMPT_ANDROID.md) | [日本語](../ja/PROMPT_ANDROID.md)

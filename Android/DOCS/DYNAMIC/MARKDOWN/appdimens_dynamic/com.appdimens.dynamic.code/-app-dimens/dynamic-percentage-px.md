@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[AppDimens](index.md)/[dynamicPercentagePx](dynamic-percentage-px.md)
+---
+layout: default
+title: "dynamicPercentagePx"
+---
 
 # dynamicPercentagePx
 

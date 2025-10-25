@@ -1,4 +1,7 @@
-//[appdimens_library](index.md)
+---
+layout: default
+title: "appdimens_library"
+---
 
 # appdimens_library
 

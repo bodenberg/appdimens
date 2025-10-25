@@ -1,4 +1,7 @@
-//[appdimens_games](../../../../index.md)/[com.appdimens.games](../../index.md)/[GameScreenOrientation](../index.md)/[LANDSCAPE](index.md)
+---
+layout: default
+title: "LANDSCAPE"
+---
 
 # LANDSCAPE
 

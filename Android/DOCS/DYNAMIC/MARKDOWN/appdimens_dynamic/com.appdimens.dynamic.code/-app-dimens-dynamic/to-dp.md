@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[AppDimensDynamic](index.md)/[toDp](to-dp.md)
+---
+layout: default
+title: "toDp"
+---
 
 # toDp
 

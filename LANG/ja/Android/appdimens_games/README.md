@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 <div align="center">
     <h1>🎮 AppDimens Games</h1>
     <p><strong>Android 向け C++/NDK 対応のレスポンシブなゲーム開発</strong></p>

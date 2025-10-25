@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.compose](../index.md)/[AppDimens](index.md)/[fxhpx](fxhpx.md)
+---
+layout: default
+title: "fxhpx"
+---
 
 # fxhpx
 

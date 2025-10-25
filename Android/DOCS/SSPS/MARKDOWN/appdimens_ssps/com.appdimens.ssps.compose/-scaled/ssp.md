@@ -1,4 +1,7 @@
-//[appdimens_ssps](../../../index.md)/[com.appdimens.ssps.compose](../index.md)/[Scaled](index.md)/[ssp](ssp.md)
+---
+layout: default
+title: "ssp"
+---
 
 # ssp
 

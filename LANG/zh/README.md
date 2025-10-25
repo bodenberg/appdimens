@@ -1,3 +1,8 @@
+---
+layout: default
+title: "Podfile"
+---
+
 <div align="center">
     <img src="../../IMAGES/image_sample_devices.png" alt="AppDimens - 所有设备的响应式设计" height="300"/>
     <h1>📐 AppDimens</h1>

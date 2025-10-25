@@ -1,3 +1,8 @@
+---
+layout: default
+title: "AppDimens iOS - System Knowledge Documentation"
+---
+
 # AppDimens iOS - System Knowledge Documentation
 
 > Languages: [Português (BR)](LANG/pt-BR/PROMPT_IOS.md) | [Español](LANG/es/PROMPT_IOS.md) | [हिन्दी](LANG/hi/PROMPT_IOS.md) | [Русский](LANG/ru/PROMPT_IOS.md) | [中文](LANG/zh/PROMPT_IOS.md) | [日本語](LANG/ja/PROMPT_IOS.md)

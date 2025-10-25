@@ -1,4 +1,7 @@
-//[appdimens_library](../../../index.md)/[com.appdimens.library](../index.md)/[ScreenType](index.md)/[entries](entries.md)
+---
+layout: default
+title: "entries"
+---
 
 # entries
 

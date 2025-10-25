@@ -1,3 +1,8 @@
+---
+layout: default
+title: "Solicitud de Actualización de Conocimiento: Sistema de Dimensiones AppDimens (SwiftUI)"
+---
+
 # Solicitud de Actualización de Conocimiento: Sistema de Dimensiones AppDimens (SwiftUI)
 
 > Idiomas: [English](../../PROMPT_IOS.md) | [Português (BR)](../pt-BR/PROMPT_IOS.md) | [हिन्दी](../hi/PROMPT_IOS.md) | [Русский](../ru/PROMPT_IOS.md) | [中文](../zh/PROMPT_IOS.md) | [日本語](../ja/PROMPT_IOS.md)

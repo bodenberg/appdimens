@@ -1,4 +1,7 @@
-//[appdimens_sdps](../../index.md)/[com.appdimens.sdps.compose](index.md)/[scaledDp](scaled-dp.md)
+---
+layout: default
+title: "scaledDp"
+---
 
 # scaledDp
 

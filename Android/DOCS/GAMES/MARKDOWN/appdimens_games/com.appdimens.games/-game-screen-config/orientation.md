@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[GameScreenConfig](index.md)/[orientation](orientation.md)
+---
+layout: default
+title: "orientation"
+---
 
 # orientation
 

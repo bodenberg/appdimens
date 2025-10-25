@@ -1,3 +1,8 @@
+---
+layout: default
+title: "📝 Changelog"
+---
+
 # 📝 Changelog
 
 > Languages: [Português (BR)](LANG/pt-BR/CHANGELOG.md) | [Español](LANG/es/CHANGELOG.md) | [हिन्दी](LANG/hi/CHANGELOG.md) | [Русский](LANG/ru/CHANGELOG.md) | [中文](LANG/zh/CHANGELOG.md) | [日本語](LANG/ja/CHANGELOG.md)

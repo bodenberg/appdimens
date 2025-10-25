@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[AppDimensGames](index.md)/[calculateVector2D](calculate-vector2-d.md)
+---
+layout: default
+title: "calculateVector2D"
+---
 
 # calculateVector2D
 

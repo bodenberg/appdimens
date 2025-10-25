@@ -1,4 +1,7 @@
-//[appdimens_ssps](../../index.md)/[com.appdimens.ssps.compose](index.md)/[toDynamicScaledSp](to-dynamic-scaled-sp.md)
+---
+layout: default
+title: "toDynamicScaledSp"
+---
 
 # toDynamicScaledSp
 

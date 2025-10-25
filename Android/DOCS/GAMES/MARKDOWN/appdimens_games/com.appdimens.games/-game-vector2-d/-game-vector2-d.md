@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[GameVector2D](index.md)/[GameVector2D](-game-vector2-d.md)
+---
+layout: default
+title: "GameVector2D"
+---
 
 # GameVector2D
 

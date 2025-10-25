@@ -1,0 +1,65 @@
+# Jekyll configuration for AppDimens
+theme: jekyll-theme-primer
+title: AppDimens Documentation
+description: Responsive dimension management library for Android, iOS, Flutter, React Native and Web
+
+# Markdown processing
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Exclude directories and files
+exclude:
+  - Android/app/
+  - Android/gradle/
+  - Android/gradlew
+  - Android/gradlew.bat
+  - "*.gradle"
+  - "*.gradle.kts"
+  - "*.properties"
+  - "*.jar"
+  - Flutter/example/
+  - Flutter/test/
+  - ReactNative/__tests__/
+  - ReactNative/node_modules/
+  - Web/node_modules/
+  - iOS/Tests/
+  - "*.podspec"
+  - "*.pbxproj"
+  - "*.xcodeproj"
+  - "*.lock"
+  - "package.json"
+  - "tsconfig*.json"
+  - "vitest.config.ts"
+  - "jest.config.js"
+  - "package-list"
+  - "**/package-list"
+  - "*.dart"
+  - "*.kt"
+  - "*.swift"
+  - "*.cpp"
+  - "*.h"
+  - ".git"
+  - ".github"
+  - "JEKYLL_COMPATIBILITY.md"
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: "Android/DOCS"
+    values:
+      layout: "default"
+      section: "android"
+

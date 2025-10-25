@@ -1,3 +1,8 @@
+---
+layout: default
+title: "CMakeLists.txt"
+---
+
 <div align="center">
     <h1>🎮 AppDimens Games</h1>
     <p><strong>Responsive Game Development for Android with C++/NDK Support</strong></p>

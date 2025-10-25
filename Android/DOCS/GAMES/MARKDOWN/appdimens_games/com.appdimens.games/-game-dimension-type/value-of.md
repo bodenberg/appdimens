@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[GameDimensionType](index.md)/[valueOf](value-of.md)
+---
+layout: default
+title: "valueOf"
+---
 
 # valueOf
 

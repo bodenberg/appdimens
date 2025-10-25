@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[GameScreenOrientation](index.md)/[values](values.md)
+---
+layout: default
+title: "values"
+---
 
 # values
 

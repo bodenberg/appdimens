@@ -1,3 +1,8 @@
+---
+layout: default
+title: "एंड्रॉयड के लिए AppDimens लाइब्रेरी हेतु AI प्रॉम्प्ट"
+---
+
 # एंड्रॉयड के लिए AppDimens लाइब्रेरी हेतु AI प्रॉम्प्ट
 
 > भाषाएँ: [English](../../PROMPT_ANDROID.md) | [Português (BR)](../pt-BR/PROMPT_ANDROID.md) | [Español](../es/PROMPT_ANDROID.md) | [Русский](../ru/PROMPT_ANDROID.md) | [中文](../zh/PROMPT_ANDROID.md) | [日本語](../ja/PROMPT_ANDROID.md)

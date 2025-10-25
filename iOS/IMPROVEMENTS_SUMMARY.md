@@ -1,4 +1,9 @@
- # 🚀 AppDimens iOS - Summary of Implemented Improvements
+---
+layout: default
+title: "🚀 AppDimens iOS - Summary of Implemented Improvements"
+---
+
+# 🚀 AppDimens iOS - Summary of Implemented Improvements
  
  > Languages: [Português (BR)](../LANG/pt-BR/iOS/IMPROVEMENTS_SUMMARY.md) | [Español](../LANG/es/iOS/IMPROVEMENTS_SUMMARY.md) | [हिन्दी](../LANG/hi/iOS/IMPROVEMENTS_SUMMARY.md) | [Русский](../LANG/ru/iOS/IMPROVEMENTS_SUMMARY.md) | [中文](../LANG/zh/iOS/IMPROVEMENTS_SUMMARY.md) | [日本語](../LANG/ja/iOS/IMPROVEMENTS_SUMMARY.md)
  

@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[AppDimensAdjustmentFactors](index.md)/[INCREMENT_DP_STEP](-i-n-c-r-e-m-e-n-t_-d-p_-s-t-e-p.md)
+---
+layout: default
+title: "INCREMENT_DP_STEP"
+---
 
 # INCREMENT_DP_STEP
 

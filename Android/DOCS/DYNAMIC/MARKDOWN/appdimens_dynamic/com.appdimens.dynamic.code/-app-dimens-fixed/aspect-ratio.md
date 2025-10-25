@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[AppDimensFixed](index.md)/[aspectRatio](aspect-ratio.md)
+---
+layout: default
+title: "aspectRatio"
+---
 
 # aspectRatio
 

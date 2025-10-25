@@ -1,3 +1,8 @@
+---
+layout: default
+title: "🎮 AppDimens Games — C++ Overview"
+---
+
 # 🎮 AppDimens Games — C++ Overview
 
 This document summarizes the native C++ headers and sources provided by the Games module.

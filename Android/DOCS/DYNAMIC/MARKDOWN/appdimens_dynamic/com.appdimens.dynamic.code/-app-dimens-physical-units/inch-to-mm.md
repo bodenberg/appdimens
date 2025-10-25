@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[AppDimensPhysicalUnits](index.md)/[inchToMm](inch-to-mm.md)
+---
+layout: default
+title: "inchToMm"
+---
 
 # inchToMm
 

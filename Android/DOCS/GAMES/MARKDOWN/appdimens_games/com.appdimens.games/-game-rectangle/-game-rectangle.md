@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[GameRectangle](index.md)/[GameRectangle](-game-rectangle.md)
+---
+layout: default
+title: "GameRectangle"
+---
 
 # GameRectangle
 

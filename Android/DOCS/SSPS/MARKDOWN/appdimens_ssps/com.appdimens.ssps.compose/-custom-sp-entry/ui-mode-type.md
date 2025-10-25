@@ -1,4 +1,7 @@
-//[appdimens_ssps](../../../index.md)/[com.appdimens.ssps.compose](../index.md)/[CustomSpEntry](index.md)/[uiModeType](ui-mode-type.md)
+---
+layout: default
+title: "uiModeType"
+---
 
 # uiModeType
 

@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.compose](../index.md)/[AppDimensFixed](index.md)/[AppDimensFixed](-app-dimens-fixed.md)
+---
+layout: default
+title: "AppDimensFixed"
+---
 
 # AppDimensFixed
 

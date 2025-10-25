@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[GameScreenConfig](index.md)/[density](density.md)
+---
+layout: default
+title: "density"
+---
 
 # density
 

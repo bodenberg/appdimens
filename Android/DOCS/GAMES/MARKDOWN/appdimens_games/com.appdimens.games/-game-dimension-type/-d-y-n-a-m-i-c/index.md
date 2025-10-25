@@ -1,4 +1,7 @@
-//[appdimens_games](../../../../index.md)/[com.appdimens.games](../../index.md)/[GameDimensionType](../index.md)/[DYNAMIC](index.md)
+---
+layout: default
+title: "DYNAMIC"
+---
 
 # DYNAMIC
 

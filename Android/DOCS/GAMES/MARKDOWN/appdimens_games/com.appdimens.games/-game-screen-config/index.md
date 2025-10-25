@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[GameScreenConfig](index.md)
+---
+layout: default
+title: "GameScreenConfig"
+---
 
 # GameScreenConfig
 

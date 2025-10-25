@@ -1,4 +1,7 @@
-//[appdimens_games](../../../../index.md)/[com.appdimens.games](../../index.md)/[GameScreenOrientation](../index.md)/[PORTRAIT](index.md)
+---
+layout: default
+title: "PORTRAIT"
+---
 
 # PORTRAIT
 

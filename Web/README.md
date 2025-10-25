@@ -1,3 +1,8 @@
+---
+layout: default
+title: "📐 Web"
+---
+
 # 📐 Web
 
 <div align="center">

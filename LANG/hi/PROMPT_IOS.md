@@ -1,3 +1,8 @@
+---
+layout: default
+title: "सिस्टम नॉलेज अपडेट अनुरोध: SwiftUI AppDimens डाइमेंशन सिस्टम"
+---
+
 # सिस्टम नॉलेज अपडेट अनुरोध: SwiftUI AppDimens डाइमेंशन सिस्टम
 
 > भाषाएँ: [English](../../PROMPT_IOS.md) | [Português (BR)](../pt-BR/PROMPT_IOS.md) | [Español](../es/PROMPT_IOS.md) | [Русский](../ru/PROMPT_IOS.md) | [中文](../zh/PROMPT_IOS.md) | [日本語](../ja/PROMPT_IOS.md)

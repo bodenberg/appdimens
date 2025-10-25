@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[GameDimensionType](index.md)/[values](values.md)
+---
+layout: default
+title: "values"
+---
 
 # values
 

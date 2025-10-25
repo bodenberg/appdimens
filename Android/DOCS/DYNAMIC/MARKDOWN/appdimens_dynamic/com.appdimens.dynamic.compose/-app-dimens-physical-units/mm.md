@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.compose](../index.md)/[AppDimensPhysicalUnits](index.md)/[mm](mm.md)
+---
+layout: default
+title: "mm"
+---
 
 # mm
 

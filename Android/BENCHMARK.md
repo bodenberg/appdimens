@@ -1,3 +1,8 @@
+---
+layout: default
+title: "Performance Comparison: AppDimens vs. Competing Solutions"
+---
+
 # Performance Comparison: AppDimens vs. Competing Solutions
 
 ## Introduction

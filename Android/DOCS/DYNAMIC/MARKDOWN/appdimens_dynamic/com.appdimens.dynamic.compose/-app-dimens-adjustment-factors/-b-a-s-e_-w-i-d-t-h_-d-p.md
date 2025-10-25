@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.compose](../index.md)/[AppDimensAdjustmentFactors](index.md)/[BASE_WIDTH_DP](-b-a-s-e_-w-i-d-t-h_-d-p.md)
+---
+layout: default
+title: "BASE_WIDTH_DP"
+---
 
 # BASE_WIDTH_DP
 

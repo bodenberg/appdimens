@@ -1,3 +1,8 @@
+---
+layout: default
+title: "📦 AppDimens iOS - इंस्टॉलेशन गाइड"
+---
+
 # 📦 AppDimens iOS - इंस्टॉलेशन गाइड
 
 > भाषाएँ: [English](../../../iOS/INSTALLATION.md) | [Português (BR)](../../pt-BR/iOS/INSTALLATION.md) | [Español](../../es/iOS/INSTALLATION.md) | [Русский](../../ru/iOS/INSTALLATION.md) | [中文](../../zh/iOS/INSTALLATION.md) | [日本語](../../ja/iOS/INSTALLATION.md)

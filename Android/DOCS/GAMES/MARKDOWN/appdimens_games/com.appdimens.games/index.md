@@ -1,4 +1,7 @@
-//[appdimens_games](../../index.md)/[com.appdimens.games](index.md)
+---
+layout: default
+title: "Package-level declarations"
+---
 
 # Package-level declarations
 

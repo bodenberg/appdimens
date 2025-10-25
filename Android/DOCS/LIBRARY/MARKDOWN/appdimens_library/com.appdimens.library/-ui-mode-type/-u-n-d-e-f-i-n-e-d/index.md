@@ -1,4 +1,7 @@
-//[appdimens_library](../../../../index.md)/[com.appdimens.library](../../index.md)/[UiModeType](../index.md)/[UNDEFINED](index.md)
+---
+layout: default
+title: "UNDEFINED"
+---
 
 # UNDEFINED
 

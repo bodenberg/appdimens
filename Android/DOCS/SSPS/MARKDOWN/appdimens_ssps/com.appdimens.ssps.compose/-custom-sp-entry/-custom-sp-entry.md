@@ -1,4 +1,7 @@
-//[appdimens_ssps](../../../index.md)/[com.appdimens.ssps.compose](../index.md)/[CustomSpEntry](index.md)/[CustomSpEntry](-custom-sp-entry.md)
+---
+layout: default
+title: "CustomSpEntry"
+---
 
 # CustomSpEntry
 

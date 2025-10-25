@@ -1,4 +1,7 @@
-//[appdimens_library](../../../../index.md)/[com.appdimens.library](../../index.md)/[ScreenType](../index.md)/[HIGHEST](index.md)
+---
+layout: default
+title: "HIGHEST"
+---
 
 # HIGHEST
 

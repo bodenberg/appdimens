@@ -1,3 +1,8 @@
+---
+layout: default
+title: "🌐 AppDimens - Traduções / Translations"
+---
+
 # 🌐 AppDimens - Traduções / Translations
 
 Este diretório contém traduções da documentação do AppDimens em vários idiomas.

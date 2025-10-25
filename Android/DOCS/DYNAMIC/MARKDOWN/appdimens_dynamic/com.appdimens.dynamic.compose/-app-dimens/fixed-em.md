@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.compose](../index.md)/[AppDimens](index.md)/[fixedEm](fixed-em.md)
+---
+layout: default
+title: "fixedEm"
+---
 
 # fixedEm
 

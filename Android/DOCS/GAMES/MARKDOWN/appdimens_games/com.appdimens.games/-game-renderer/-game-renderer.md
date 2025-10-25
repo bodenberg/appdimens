@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[GameRenderer](index.md)/[GameRenderer](-game-renderer.md)
+---
+layout: default
+title: "GameRenderer"
+---
 
 # GameRenderer
 

@@ -1,4 +1,7 @@
-//[appdimens_ssps](../../../index.md)/[com.appdimens.ssps.code](../index.md)/[AppDimensSsp](index.md)
+---
+layout: default
+title: "AppDimensSsp"
+---
 
 # AppDimensSsp
 

@@ -1,3 +1,8 @@
+---
+layout: default
+title: "🚀 Web - Início Rápido"
+---
+
 # 🚀 Web - Início Rápido
 
 ## 📦 Instalação

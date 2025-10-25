@@ -1,3 +1,8 @@
+---
+layout: default
+title: "Changelog"
+---
+
 # Changelog
 
 > Languages: [Português (BR)](../LANG/pt-BR/iOS/CHANGELOG.md) | [Español](../LANG/es/iOS/CHANGELOG.md) | [हिन्दी](../LANG/hi/iOS/CHANGELOG.md) | [Русский](../LANG/ru/iOS/CHANGELOG.md) | [中文](../LANG/zh/iOS/CHANGELOG.md) | [日本語](../LANG/ja/iOS/CHANGELOG.md)

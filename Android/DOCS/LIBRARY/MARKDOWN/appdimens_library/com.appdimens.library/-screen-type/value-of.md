@@ -1,4 +1,7 @@
-//[appdimens_library](../../../index.md)/[com.appdimens.library](../index.md)/[ScreenType](index.md)/[valueOf](value-of.md)
+---
+layout: default
+title: "valueOf"
+---
 
 # valueOf
 

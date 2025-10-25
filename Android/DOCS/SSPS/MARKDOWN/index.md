@@ -1,4 +1,7 @@
-//[appdimens_ssps](index.md)
+---
+layout: default
+title: "appdimens_ssps"
+---
 
 # appdimens_ssps
 

@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 <div align="center">
     <img src="../../IMAGES/image_sample_devices.png" alt="AppDimens Android - Diseño Responsivo" height="250"/>
     <h1>📐 AppDimens Android</h1>

@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 <div align="center">
     <h1>📐 AppDimens SSP</h1>
     <p><strong>带条件规则的动态文本缩放</strong></p>

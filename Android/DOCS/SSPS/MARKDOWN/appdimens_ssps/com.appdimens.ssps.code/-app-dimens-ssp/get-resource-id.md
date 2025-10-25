@@ -1,4 +1,7 @@
-//[appdimens_ssps](../../../index.md)/[com.appdimens.ssps.code](../index.md)/[AppDimensSsp](index.md)/[getResourceId](get-resource-id.md)
+---
+layout: default
+title: "getResourceId"
+---
 
 # getResourceId
 

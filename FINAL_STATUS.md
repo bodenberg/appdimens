@@ -1,3 +1,8 @@
+---
+layout: default
+title: "✅ Status Final - AppDimens v1.0.8"
+---
+
 # ✅ Status Final - AppDimens v1.0.8
 
 **Data de Conclusão:** 23 de Outubro de 2025  

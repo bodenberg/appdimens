@@ -1,4 +1,7 @@
-//[appdimens_library](../../index.md)/[com.appdimens.library](index.md)
+---
+layout: default
+title: "Package-level declarations"
+---
 
 # Package-level declarations
 

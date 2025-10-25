@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[GameRectangle](index.md)/[height](height.md)
+---
+layout: default
+title: "height"
+---
 
 # height
 

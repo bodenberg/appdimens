@@ -1,3 +1,8 @@
+---
+layout: default
+title: "📖 AppDimens Library Overview: The Core of Responsiveness"
+---
+
 # 📖 AppDimens Library Overview: The Core of Responsiveness
 
 **AppDimens** is a unified dimension management system designed to solve a central challenge of modern UI development: **ensuring that layouts and user experiences remain consistent and visually comfortable across any screen size, ratio, or device type.**

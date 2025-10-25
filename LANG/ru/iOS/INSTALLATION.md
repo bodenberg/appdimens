@@ -1,3 +1,8 @@
+---
+layout: default
+title: "📦 AppDimens iOS - Руководство по установке"
+---
+
 # 📦 AppDimens iOS - Руководство по установке
 
 > Языки: [English](../../../iOS/INSTALLATION.md) | [Português (BR)](../../pt-BR/iOS/INSTALLATION.md) | [Español](../../es/iOS/INSTALLATION.md) | [हिन्दी](../../hi/iOS/INSTALLATION.md) | [中文](../../zh/iOS/INSTALLATION.md) | [日本語](../../ja/iOS/INSTALLATION.md)

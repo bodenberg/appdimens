@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 <div align="center">
     <h1>📐 AppDimens SDP</h1>
     <p><strong>带条件规则的动态缩放</strong></p>

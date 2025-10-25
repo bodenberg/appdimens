@@ -1,4 +1,7 @@
-//[appdimens_library](../../../index.md)/[com.appdimens.library](../index.md)/[ScreenAdjustmentFactors](index.md)/[withArFactorLowest](with-ar-factor-lowest.md)
+---
+layout: default
+title: "withArFactorLowest"
+---
 
 # withArFactorLowest
 

@@ -1,4 +1,7 @@
-//[appdimens_library](../../../../index.md)/[com.appdimens.library](../../index.md)/[DpQualifier](../index.md)/[WIDTH](index.md)
+---
+layout: default
+title: "WIDTH"
+---
 
 # WIDTH
 

@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.compose](../index.md)/[AppDimens](index.md)/[dyhem](dyhem.md)
+---
+layout: default
+title: "dyhem"
+---
 
 # dyhem
 

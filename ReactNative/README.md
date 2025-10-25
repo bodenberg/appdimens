@@ -1,3 +1,8 @@
+---
+layout: default
+title: "📐 AppDimens React Native"
+---
+
 # 📐 AppDimens React Native
 
 > **Smart and Responsive Dimensioning for React Native**

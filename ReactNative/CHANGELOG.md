@@ -1,3 +1,8 @@
+---
+layout: default
+title: "Changelog"
+---
+
 # Changelog
 
 All notable changes to the AppDimens React Native library will be documented in this file.

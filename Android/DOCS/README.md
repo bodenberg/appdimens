@@ -1,3 +1,8 @@
+---
+layout: default
+title: "📚 AppDimens Android Documentation"
+---
+
 # 📚 AppDimens Android Documentation
 
 > **Complete API Documentation and Implementation Guide**

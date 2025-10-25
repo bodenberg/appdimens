@@ -1,4 +1,7 @@
-//[appdimens_games](../../../../index.md)/[com.appdimens.games](../../index.md)/[AppDimensGames](../index.md)/[Companion](index.md)/[getInstance](get-instance.md)
+---
+layout: default
+title: "getInstance"
+---
 
 # getInstance
 

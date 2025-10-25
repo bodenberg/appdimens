@@ -1,3 +1,7 @@
+---
+layout: default
+title: "AI Prompt for AppDimens Library"
+---
 
 # AI Prompt for AppDimens Library
 

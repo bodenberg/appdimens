@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.compose](../index.md)/[AppDimens](index.md)/[dynamicSp](dynamic-sp.md)
+---
+layout: default
+title: "dynamicSp"
+---
 
 # dynamicSp
 

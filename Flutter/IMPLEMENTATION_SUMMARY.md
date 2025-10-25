@@ -1,3 +1,8 @@
+---
+layout: default
+title: "AppDimens Flutter - Resumo da Implementação"
+---
+
 # AppDimens Flutter - Resumo da Implementação
 
 ## 📋 Visão Geral

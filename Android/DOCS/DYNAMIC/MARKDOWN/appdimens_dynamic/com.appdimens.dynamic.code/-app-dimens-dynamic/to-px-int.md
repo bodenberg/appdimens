@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[AppDimensDynamic](index.md)/[toPxInt](to-px-int.md)
+---
+layout: default
+title: "toPxInt"
+---
 
 # toPxInt
 

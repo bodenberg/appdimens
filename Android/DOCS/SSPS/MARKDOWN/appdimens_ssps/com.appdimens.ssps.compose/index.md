@@ -1,4 +1,7 @@
-//[appdimens_ssps](../../index.md)/[com.appdimens.ssps.compose](index.md)
+---
+layout: default
+title: "Package-level declarations"
+---
 
 # Package-level declarations
 

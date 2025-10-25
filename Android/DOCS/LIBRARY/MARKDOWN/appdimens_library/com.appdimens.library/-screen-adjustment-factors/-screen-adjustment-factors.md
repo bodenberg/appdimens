@@ -1,4 +1,7 @@
-//[appdimens_library](../../../index.md)/[com.appdimens.library](../index.md)/[ScreenAdjustmentFactors](index.md)/[ScreenAdjustmentFactors](-screen-adjustment-factors.md)
+---
+layout: default
+title: "ScreenAdjustmentFactors"
+---
 
 # ScreenAdjustmentFactors
 

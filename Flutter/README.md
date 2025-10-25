@@ -1,3 +1,8 @@
+---
+layout: default
+title: "AppDimens Flutter"
+---
+
 # AppDimens Flutter
 
 [![pub package](https://img.shields.io/pub/v/appdimens.svg)](https://pub.dev/packages/appdimens)

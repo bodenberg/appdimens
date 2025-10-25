@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[AppDimensAdjustmentFactors](index.md)/[calculateAdjustmentFactors](calculate-adjustment-factors.md)
+---
+layout: default
+title: "calculateAdjustmentFactors"
+---
 
 # calculateAdjustmentFactors
 

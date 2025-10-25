@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[ScreenAdjustmentFactors](index.md)/[adjustmentFactorLowest](adjustment-factor-lowest.md)
+---
+layout: default
+title: "adjustmentFactorLowest"
+---
 
 # adjustmentFactorLowest
 

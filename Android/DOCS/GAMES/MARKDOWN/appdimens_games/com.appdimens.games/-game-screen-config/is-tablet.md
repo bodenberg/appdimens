@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[GameScreenConfig](index.md)/[isTablet](is-tablet.md)
+---
+layout: default
+title: "isTablet"
+---
 
 # isTablet
 

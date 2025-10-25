@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.compose](../index.md)/[AppDimens](index.md)/[CalculateAvailableItemCount](-calculate-available-item-count.md)
+---
+layout: default
+title: "CalculateAvailableItemCount"
+---
 
 # CalculateAvailableItemCount
 

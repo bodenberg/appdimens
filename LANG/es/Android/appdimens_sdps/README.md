@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 <div align="center">
     <h1>📐 AppDimens SDP</h1>
     <p><strong>Escalado Dinámico con Reglas Condicionales</strong></p>

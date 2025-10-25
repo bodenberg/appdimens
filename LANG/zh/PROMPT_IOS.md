@@ -1,3 +1,8 @@
+---
+layout: default
+title: "系统知识更新请求：SwiftUI AppDimens 尺寸系统"
+---
+
 # 系统知识更新请求：SwiftUI AppDimens 尺寸系统
 
 > 语言: [English](../../PROMPT_IOS.md) | [Português (BR)](../pt-BR/PROMPT_IOS.md) | [Español](../es/PROMPT_IOS.md) | [हिन्दी](../hi/PROMPT_IOS.md) | [Русский](../ru/PROMPT_IOS.md) | [日本語](../ja/PROMPT_IOS.md)

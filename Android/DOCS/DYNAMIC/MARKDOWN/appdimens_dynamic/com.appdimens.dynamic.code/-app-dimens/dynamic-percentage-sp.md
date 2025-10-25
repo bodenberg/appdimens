@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[AppDimens](index.md)/[dynamicPercentageSp](dynamic-percentage-sp.md)
+---
+layout: default
+title: "dynamicPercentageSp"
+---
 
 # dynamicPercentageSp
 

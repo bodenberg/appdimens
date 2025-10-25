@@ -1,3 +1,8 @@
+---
+layout: default
+title: "AppDimens ライブラリ（Android）向け AI プロンプト"
+---
+
 # AppDimens ライブラリ（Android）向け AI プロンプト
 
 > 言語: [English](../../PROMPT_ANDROID.md) | [Português (BR)](../pt-BR/PROMPT_ANDROID.md) | [Español](../es/PROMPT_ANDROID.md) | [हिन्दी](../hi/PROMPT_ANDROID.md) | [Русский](../ru/PROMPT_ANDROID.md) | [中文](../zh/PROMPT_ANDROID.md)

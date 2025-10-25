@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[AppDimensPhysicalUnits](index.md)/[convertCmToInch](convert-cm-to-inch.md)
+---
+layout: default
+title: "convertCmToInch"
+---
 
 # convertCmToInch
 

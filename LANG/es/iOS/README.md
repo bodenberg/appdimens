@@ -1,3 +1,8 @@
+---
+layout: default
+title: "Podfile"
+---
+
 <div align="center">
     <img src="../../IMAGES/image_sample_devices.png" alt="AppDimens iOS - Diseño Responsivo" height="250"/>
     <h1>📐 AppDimens iOS</h1>

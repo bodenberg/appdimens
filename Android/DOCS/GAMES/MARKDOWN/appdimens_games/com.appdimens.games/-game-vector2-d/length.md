@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[GameVector2D](index.md)/[length](length.md)
+---
+layout: default
+title: "length"
+---
 
 # length
 

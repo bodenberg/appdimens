@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 <div align="center">
     <h1>📐 AppDimens SSP</h1>
     <p><strong>条件付きルールによるダイナミックなテキストスケーリング</strong></p>

@@ -1,4 +1,7 @@
-//[appdimens_ssps](../../../index.md)/[com.appdimens.ssps.compose](../index.md)/[CustomSpEntry](index.md)/[priority](priority.md)
+---
+layout: default
+title: "priority"
+---
 
 # priority
 

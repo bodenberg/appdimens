@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[AppDimensDynamic](index.md)/[toEm](to-em.md)
+---
+layout: default
+title: "toEm"
+---
 
 # toEm
 

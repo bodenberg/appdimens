@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[AppDimensGames](index.md)/[calculatePlayerSize](calculate-player-size.md)
+---
+layout: default
+title: "calculatePlayerSize"
+---
 
 # calculatePlayerSize
 

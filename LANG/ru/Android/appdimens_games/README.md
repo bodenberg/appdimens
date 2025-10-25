@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 <div align="center">
     <h1>🎮 AppDimens Games</h1>
     <p><strong>Адаптивная разработка игр для Android с поддержкой C++/NDK</strong></p>

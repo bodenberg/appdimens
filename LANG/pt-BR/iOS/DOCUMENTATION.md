@@ -1,3 +1,8 @@
+---
+layout: default
+title: "📚 AppDimens iOS - Documentação Técnica (Resumo)"
+---
+
 # 📚 AppDimens iOS - Documentação Técnica (Resumo)
 
 > Idiomas: [English](../../../iOS/DOCUMENTATION.md) | [Español](../../es/iOS/DOCUMENTATION.md) | [हिन्दी](../../hi/iOS/DOCUMENTATION.md) | [Русский](../../ru/iOS/DOCUMENTATION.md) | [中文](../../zh/iOS/DOCUMENTATION.md) | [日本語](../../ja/iOS/DOCUMENTATION.md)

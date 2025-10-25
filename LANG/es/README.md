@@ -1,3 +1,8 @@
+---
+layout: default
+title: "Podfile"
+---
+
 <div align="center">
     <img src="../../IMAGES/image_sample_devices.png" alt="AppDimens - Diseño Responsivo en Todos los Dispositivos" height="300"/>
     <h1>📐 AppDimens</h1>

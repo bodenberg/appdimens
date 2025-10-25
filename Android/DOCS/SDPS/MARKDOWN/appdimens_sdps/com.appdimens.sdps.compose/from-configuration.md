@@ -1,4 +1,7 @@
-//[appdimens_sdps](../../index.md)/[com.appdimens.sdps.compose](index.md)/[fromConfiguration](from-configuration.md)
+---
+layout: default
+title: "fromConfiguration"
+---
 
 # fromConfiguration
 

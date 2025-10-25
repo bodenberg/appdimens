@@ -1,4 +1,7 @@
-//[appdimens_library](../../../index.md)/[com.appdimens.library](../index.md)/[UiModeQualifierEntry](index.md)/[UiModeQualifierEntry](-ui-mode-qualifier-entry.md)
+---
+layout: default
+title: "UiModeQualifierEntry"
+---
 
 # UiModeQualifierEntry
 

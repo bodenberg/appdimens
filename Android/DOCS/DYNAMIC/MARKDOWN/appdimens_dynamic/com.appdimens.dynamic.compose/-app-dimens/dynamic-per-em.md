@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.compose](../index.md)/[AppDimens](index.md)/[dynamicPerEm](dynamic-per-em.md)
+---
+layout: default
+title: "dynamicPerEm"
+---
 
 # dynamicPerEm
 

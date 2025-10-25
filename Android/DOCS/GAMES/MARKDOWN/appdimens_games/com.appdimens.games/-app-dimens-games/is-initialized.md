@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[AppDimensGames](index.md)/[isInitialized](is-initialized.md)
+---
+layout: default
+title: "isInitialized"
+---
 
 # isInitialized
 

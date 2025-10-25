@@ -1,3 +1,8 @@
+---
+layout: default
+title: "AI Prompt for Web Library"
+---
+
 # AI Prompt for Web Library
 
 > Languages: [Português (BR)](LANG/pt-BR/PROMPT_WEB.md) | [Español](LANG/es/PROMPT_WEB.md) | [हिन्दी](LANG/hi/PROMPT_WEB.md) | [Русский](LANG/ru/PROMPT_WEB.md) | [中文](LANG/zh/PROMPT_WEB.md) | [日本語](LANG/ja/PROMPT_WEB.md)

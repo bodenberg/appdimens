@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.compose](../index.md)/[AppDimensAdjustmentFactors](index.md)/[rememberAdjustmentFactors](remember-adjustment-factors.md)
+---
+layout: default
+title: "rememberAdjustmentFactors"
+---
 
 # rememberAdjustmentFactors
 

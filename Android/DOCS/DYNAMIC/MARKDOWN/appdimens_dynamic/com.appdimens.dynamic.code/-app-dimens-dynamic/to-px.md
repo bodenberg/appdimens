@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[AppDimensDynamic](index.md)/[toPx](to-px.md)
+---
+layout: default
+title: "toPx"
+---
 
 # toPx
 

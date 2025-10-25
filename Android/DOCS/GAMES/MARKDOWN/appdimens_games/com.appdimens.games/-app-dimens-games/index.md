@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[AppDimensGames](index.md)
+---
+layout: default
+title: "AppDimensGames"
+---
 
 # AppDimensGames
 

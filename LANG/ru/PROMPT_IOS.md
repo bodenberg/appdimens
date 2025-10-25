@@ -1,3 +1,8 @@
+---
+layout: default
+title: "Запрос на обновление знаний системы: SwiftUI AppDimens"
+---
+
 # Запрос на обновление знаний системы: SwiftUI AppDimens
 
 > Языки: [English](../../PROMPT_IOS.md) | [Português (BR)](../pt-BR/PROMPT_IOS.md) | [Español](../es/PROMPT_IOS.md) | [हिन्दी](../hi/PROMPT_IOS.md) | [中文](../zh/PROMPT_IOS.md) | [日本語](../ja/PROMPT_IOS.md)

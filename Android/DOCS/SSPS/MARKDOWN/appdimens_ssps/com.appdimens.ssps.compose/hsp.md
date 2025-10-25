@@ -1,4 +1,7 @@
-//[appdimens_ssps](../../index.md)/[com.appdimens.ssps.compose](index.md)/[hsp](hsp.md)
+---
+layout: default
+title: "hsp"
+---
 
 # hsp
 

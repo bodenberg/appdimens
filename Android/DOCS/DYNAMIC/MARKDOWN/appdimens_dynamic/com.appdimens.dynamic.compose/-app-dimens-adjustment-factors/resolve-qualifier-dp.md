@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.compose](../index.md)/[AppDimensAdjustmentFactors](index.md)/[resolveQualifierDp](resolve-qualifier-dp.md)
+---
+layout: default
+title: "resolveQualifierDp"
+---
 
 # resolveQualifierDp
 

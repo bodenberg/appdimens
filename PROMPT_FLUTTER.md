@@ -1,3 +1,8 @@
+---
+layout: default
+title: "AI Prompt for AppDimens Flutter Library"
+---
+
 # AI Prompt for AppDimens Flutter Library
 
 > Languages: [Português (BR)](LANG/pt-BR/PROMPT_FLUTTER.md) | [Español](LANG/es/PROMPT_FLUTTER.md) | [हिन्दी](LANG/hi/PROMPT_FLUTTER.md) | [Русский](LANG/ru/PROMPT_FLUTTER.md) | [中文](LANG/zh/PROMPT_FLUTTER.md) | [日本語](LANG/ja/PROMPT_FLUTTER.md)

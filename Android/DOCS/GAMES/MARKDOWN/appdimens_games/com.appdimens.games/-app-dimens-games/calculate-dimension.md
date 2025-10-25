@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[AppDimensGames](index.md)/[calculateDimension](calculate-dimension.md)
+---
+layout: default
+title: "calculateDimension"
+---
 
 # calculateDimension
 

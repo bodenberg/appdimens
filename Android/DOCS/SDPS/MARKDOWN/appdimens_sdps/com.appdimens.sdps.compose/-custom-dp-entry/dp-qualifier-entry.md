@@ -1,4 +1,7 @@
-//[appdimens_sdps](../../../index.md)/[com.appdimens.sdps.compose](../index.md)/[CustomDpEntry](index.md)/[dpQualifierEntry](dp-qualifier-entry.md)
+---
+layout: default
+title: "dpQualifierEntry"
+---
 
 # dpQualifierEntry
 

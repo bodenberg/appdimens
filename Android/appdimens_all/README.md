@@ -1,3 +1,8 @@
+---
+layout: default
+title: "🚀 AppDimens: Quick Guide & Library Overview"
+---
+
 # 🚀 AppDimens: Quick Guide & Library Overview
 
 > Languages: [Português (BR)](../../LANG/pt-BR/Android/appdimens_all/README.md) | [Español](../../LANG/es/Android/appdimens_all/README.md) | [हिन्दी](../../LANG/hi/Android/appdimens_all/README.md) | [Русский](../../LANG/ru/Android/appdimens_all/README.md) | [中文](../../LANG/zh/Android/appdimens_all/README.md) | [日本語](../../LANG/ja/Android/appdimens_all/README.md)

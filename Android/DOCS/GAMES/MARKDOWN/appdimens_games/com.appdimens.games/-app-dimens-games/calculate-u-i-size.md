@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[AppDimensGames](index.md)/[calculateUISize](calculate-u-i-size.md)
+---
+layout: default
+title: "calculateUISize"
+---
 
 # calculateUISize
 

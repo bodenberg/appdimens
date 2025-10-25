@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[GameRenderer](index.md)/[onSurfaceCreated](on-surface-created.md)
+---
+layout: default
+title: "onSurfaceCreated"
+---
 
 # onSurfaceCreated
 

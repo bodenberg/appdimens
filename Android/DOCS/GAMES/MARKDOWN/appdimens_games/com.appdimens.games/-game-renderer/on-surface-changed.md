@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[GameRenderer](index.md)/[onSurfaceChanged](on-surface-changed.md)
+---
+layout: default
+title: "onSurfaceChanged"
+---
 
 # onSurfaceChanged
 

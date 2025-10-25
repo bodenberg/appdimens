@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[AppDimensFixed](index.md)/[screen](screen.md)
+---
+layout: default
+title: "screen"
+---
 
 # screen
 

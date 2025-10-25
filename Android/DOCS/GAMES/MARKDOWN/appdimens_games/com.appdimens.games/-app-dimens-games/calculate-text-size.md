@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[AppDimensGames](index.md)/[calculateTextSize](calculate-text-size.md)
+---
+layout: default
+title: "calculateTextSize"
+---
 
 # calculateTextSize
 

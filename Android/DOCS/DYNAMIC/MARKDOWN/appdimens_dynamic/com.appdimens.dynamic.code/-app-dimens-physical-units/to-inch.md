@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[AppDimensPhysicalUnits](index.md)/[toInch](to-inch.md)
+---
+layout: default
+title: "toInch"
+---
 
 # toInch
 

@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.compose](../index.md)/[AppDimens](index.md)/[fixedPx](fixed-px.md)
+---
+layout: default
+title: "fixedPx"
+---
 
 # fixedPx
 

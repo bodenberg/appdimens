@@ -1,3 +1,8 @@
+---
+layout: default
+title: "🎨 AppDimens - Practical Examples"
+---
+
 # 🎨 AppDimens - Practical Examples
 
 This document provides comprehensive, real-world examples of how to use AppDimens across different platforms and scenarios.

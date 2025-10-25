@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[AppDimensGames](index.md)/[calculateButtonSize](calculate-button-size.md)
+---
+layout: default
+title: "calculateButtonSize"
+---
 
 # calculateButtonSize
 

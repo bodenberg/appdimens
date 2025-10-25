@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.compose](../index.md)/[AppDimensDynamic](index.md)/[em](em.md)
+---
+layout: default
+title: "em"
+---
 
 # em
 

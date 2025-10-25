@@ -1,3 +1,8 @@
+---
+layout: default
+title: "🤝 Contribuindo para o AppDimens"
+---
+
 # 🤝 Contribuindo para o AppDimens
 
 Obrigado pelo seu interesse em contribuir para o AppDimens! Este documento fornece diretrizes e informações para contribuidores.

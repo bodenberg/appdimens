@@ -1,4 +1,7 @@
-//[appdimens_library](../../../index.md)/[com.appdimens.library](../index.md)/[UnitType](index.md)
+---
+layout: default
+title: "UnitType"
+---
 
 # UnitType
 

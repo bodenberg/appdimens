@@ -1,4 +1,7 @@
-//[appdimens_games](../../../index.md)/[com.appdimens.games](../index.md)/[AppDimensGames](index.md)/[calculateRectangle](calculate-rectangle.md)
+---
+layout: default
+title: "calculateRectangle"
+---
 
 # calculateRectangle
 

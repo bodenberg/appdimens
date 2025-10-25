@@ -1,4 +1,7 @@
-//[appdimens_sdps](../../../index.md)/[com.appdimens.sdps.compose](../index.md)/[Scaled](index.md)/[hdp](hdp.md)
+---
+layout: default
+title: "hdp"
+---
 
 # hdp
 

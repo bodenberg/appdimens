@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.compose](../index.md)/[AppDimensAdjustmentFactors](index.md)/[getReferenceAspectRatio](get-reference-aspect-ratio.md)
+---
+layout: default
+title: "getReferenceAspectRatio"
+---
 
 # getReferenceAspectRatio
 

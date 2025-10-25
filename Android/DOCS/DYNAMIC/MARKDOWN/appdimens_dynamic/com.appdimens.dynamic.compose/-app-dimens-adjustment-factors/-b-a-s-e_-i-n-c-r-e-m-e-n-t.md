@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.compose](../index.md)/[AppDimensAdjustmentFactors](index.md)/[BASE_INCREMENT](-b-a-s-e_-i-n-c-r-e-m-e-n-t.md)
+---
+layout: default
+title: "BASE_INCREMENT"
+---
 
 # BASE_INCREMENT
 

@@ -1,4 +1,7 @@
-//[appdimens_library](../../../index.md)/[com.appdimens.library](../index.md)/[ScreenAdjustmentFactors](index.md)/[withoutArFactor](without-ar-factor.md)
+---
+layout: default
+title: "withoutArFactor"
+---
 
 # withoutArFactor
 

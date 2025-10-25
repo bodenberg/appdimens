@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[AppDimensDynamic](index.md)/[toSpInt](to-sp-int.md)
+---
+layout: default
+title: "toSpInt"
+---
 
 # toSpInt
 

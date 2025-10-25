@@ -1,4 +1,7 @@
-//[appdimens_dynamic](../../../index.md)/[com.appdimens.dynamic.code](../index.md)/[AppDimensAdjustmentFactors](index.md)/[CIRCUMFERENCE_FACTOR](-c-i-r-c-u-m-f-e-r-e-n-c-e_-f-a-c-t-o-r.md)
+---
+layout: default
+title: "CIRCUMFERENCE_FACTOR"
+---
 
 # CIRCUMFERENCE_FACTOR
 

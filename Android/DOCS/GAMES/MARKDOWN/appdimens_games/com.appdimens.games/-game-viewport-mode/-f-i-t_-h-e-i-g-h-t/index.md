@@ -1,4 +1,7 @@
-//[appdimens_games](../../../../index.md)/[com.appdimens.games](../../index.md)/[GameViewportMode](../index.md)/[FIT_HEIGHT](index.md)
+---
+layout: default
+title: "FIT_HEIGHT"
+---
 
 # FIT_HEIGHT
 

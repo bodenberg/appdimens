@@ -1,3 +1,8 @@
+---
+layout: default
+title: "🚀 AppDimens: त्वरित गाइड और लाइब्रेरी अवलोकन"
+---
+
 # 🚀 AppDimens: त्वरित गाइड और लाइब्रेरी अवलोकन
 
 > भाषाएँ: [English](../../../../Android/appdimens_all/README.md) | [Português (BR)](../../pt-BR/Android/appdimens_all/README.md) | [Español](../../es/Android/appdimens_all/README.md) | [Русский](../../ru/Android/appdimens_all/README.md) | [中文](../../zh/Android/appdimens_all/README.md) | [日本語](../../ja/Android/appdimens_all/README.md)

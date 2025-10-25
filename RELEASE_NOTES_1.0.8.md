@@ -1,3 +1,8 @@
+---
+layout: default
+title: "🚀 Release Notes - AppDimens v1.0.8"
+---
+
 # 🚀 Release Notes - AppDimens v1.0.8
 
 **Data de Release:** 23 de Outubro de 2025  

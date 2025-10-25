@@ -1,3 +1,8 @@
+---
+layout: default
+title: "Prompt de IA para a Biblioteca AppDimens (Android)"
+---
+
 # Prompt de IA para a Biblioteca AppDimens (Android)
 
 > Idiomas: [English](../../PROMPT_ANDROID.md) | [Español](../es/PROMPT_ANDROID.md) | [हिन्दी](../hi/PROMPT_ANDROID.md) | [Русский](../ru/PROMPT_ANDROID.md) | [中文](../zh/PROMPT_ANDROID.md) | [日本語](../ja/PROMPT_ANDROID.md)

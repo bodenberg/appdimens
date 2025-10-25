@@ -1,4 +1,7 @@
-//[appdimens_library](../../../index.md)/[com.appdimens.library](../index.md)/[UnitType](index.md)/[values](values.md)
+---
+layout: default
+title: "values"
+---
 
 # values
 

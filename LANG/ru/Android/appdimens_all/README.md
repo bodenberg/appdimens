@@ -1,3 +1,8 @@
+---
+layout: default
+title: "🚀 AppDimens: Краткое руководство и обзор библиотеки"
+---
+
 # 🚀 AppDimens: Краткое руководство и обзор библиотеки
 
 > Языки: [English](../../../../Android/appdimens_all/README.md) | [Português (BR)](../../pt-BR/Android/appdimens_all/README.md) | [Español](../../es/Android/appdimens_all/README.md) | [हिन्दी](../../hi/Android/appdimens_all/README.md) | [中文](../../zh/Android/appdimens_all/README.md) | [日本語](../../ja/Android/appdimens_all/README.md)

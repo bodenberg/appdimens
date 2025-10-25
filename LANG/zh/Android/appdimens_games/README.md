@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 <div align="center">
     <h1>🎮 AppDimens Games</h1>
     <p><strong>面向 Android 的响应式游戏开发（支持 C++/NDK）</strong></p>

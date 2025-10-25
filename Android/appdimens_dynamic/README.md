@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 <div align="center">
     <h1>📐 AppDimens Dynamic</h1>
     <p><strong>Core Responsive Dimensioning for Android</strong></p>
