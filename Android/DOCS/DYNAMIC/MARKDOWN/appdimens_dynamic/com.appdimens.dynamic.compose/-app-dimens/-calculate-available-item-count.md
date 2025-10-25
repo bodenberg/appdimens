@@ -1,17 +1,12 @@
----
-layout: default
-title: "CalculateAvailableItemCount"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens/-calculate-available-item-count.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.compose](../README.md)/[AppDimens](README.md)/[CalculateAvailableItemCount](-calculate-available-item-count.md)
 
 # CalculateAvailableItemCount
 
-[androidJvm]
+[androidJvm]\
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
-fun [CalculateAvailableItemCount](-calculate-available-item-count.md)(itemSize: [Dp](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/Dp.html), itemPadding: [Dp](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/Dp.html), direction: DpQualifier = DpQualifier.HEIGHT, modifier: [Modifier](https://developer.android.com/reference/kotlin/androidx/compose/ui/Modifier.html) = Modifier, onResult: (count: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)) -> [Unit](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html))
+fun [CalculateAvailableItemCount](-calculate-available-item-count.md)(itemSize: [Dp](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/Dp.html), itemPadding: [Dp](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/Dp.html), direction: DpQualifier = DpQualifier.HEIGHT, modifier: [Modifier](https://developer.android.com/reference/kotlin/androidx/compose/ui/Modifier.html) = Modifier, onResult: (count: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)) -&gt; [Unit](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html))
 
 EN Calculates the maximum number of items that can fit in a Composable container.
 

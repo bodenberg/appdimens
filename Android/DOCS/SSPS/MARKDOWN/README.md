@@ -11,5 +11,5 @@ permalink: /SSPS/MARKDOWN/README.html
 
 | Name |
 |---|
-| [com.appdimens.ssps.code](appdimens_ssps/com.appdimens.ssps.code/index.md) |
-| [com.appdimens.ssps.compose](appdimens_ssps/com.appdimens.ssps.compose/index.md) |
+| [com.appdimens.ssps.code](appdimens_ssps/com.appdimens.ssps.code/README.md) |
+| [com.appdimens.ssps.compose](appdimens_ssps/com.appdimens.ssps.compose/README.md) |

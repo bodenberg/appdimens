@@ -1,9 +1,4 @@
----
-layout: default
-title: "📦 AppDimens Dynamic - Module Overview"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/README.html
----
+//[appdimens_dynamic](README.md)
 
 # appdimens_dynamic
 
@@ -11,5 +6,5 @@ permalink: /DYNAMIC/MARKDOWN/README.html
 
 | Name |
 |---|
-| [com.appdimens.dynamic.code](appdimens_dynamic/com.appdimens.dynamic.code/index.md) |
-| [com.appdimens.dynamic.compose](appdimens_dynamic/com.appdimens.dynamic.compose/index.md) |
+| [com.appdimens.dynamic.code](appdimens_dynamic/com.appdimens.dynamic.code/README.md) |
+| [com.appdimens.dynamic.compose](appdimens_dynamic/com.appdimens.dynamic.compose/README.md) |

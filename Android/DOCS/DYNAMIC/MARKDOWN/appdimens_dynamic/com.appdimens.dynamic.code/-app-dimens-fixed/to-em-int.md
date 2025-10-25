@@ -1,13 +1,8 @@
----
-layout: default
-title: "toEmInt"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-fixed/to-em-int.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.code](../README.md)/[AppDimensFixed](README.md)/[toEmInt](to-em-int.md)
 
 # toEmInt
 
-[androidJvm]
+[androidJvm]\
 fun [toEmInt](to-em-int.md)(resources: [Resources](https://developer.android.com/reference/kotlin/android/content/res/Resources.html)): [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)
 
 EN Builds the adjusted Dp value and converts it to Scalable Pixels (SP) in Pixels (Int), ignoring the system's font scale ('em' unit).

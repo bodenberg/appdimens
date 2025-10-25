@@ -8,6 +8,6 @@ permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-app-dimens-games
 # getInstance
 
 [androidJvm]
-fun [getInstance](get-instance.md)(): [AppDimensGames](../index.md)
+fun [getInstance](get-instance.md)(): [AppDimensGames](../README.md)
 
 EN Gets the singleton instance of AppDimensGames. PT Obtém a instância singleton do AppDimensGames.

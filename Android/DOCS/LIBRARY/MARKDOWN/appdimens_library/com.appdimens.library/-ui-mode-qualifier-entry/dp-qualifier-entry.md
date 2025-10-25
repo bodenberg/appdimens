@@ -8,4 +8,4 @@ permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-qu
 # dpQualifierEntry
 
 [androidJvm]
-val [dpQualifierEntry](dp-qualifier-entry.md): [DpQualifierEntry](../-dp-qualifier-entry/index.md)
+val [dpQualifierEntry](dp-qualifier-entry.md): [DpQualifierEntry](../-dp-qualifier-entry/README.md)

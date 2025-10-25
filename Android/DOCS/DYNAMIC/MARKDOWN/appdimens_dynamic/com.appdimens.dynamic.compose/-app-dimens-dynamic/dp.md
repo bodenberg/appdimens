@@ -1,13 +1,8 @@
----
-layout: default
-title: "dp"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-dynamic/dp.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.compose](../README.md)/[AppDimensDynamic](README.md)/[dp](dp.md)
 
 # dp
 
-[androidJvm]
+[androidJvm]\
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 

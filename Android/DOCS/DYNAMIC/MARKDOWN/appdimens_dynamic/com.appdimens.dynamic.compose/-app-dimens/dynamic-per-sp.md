@@ -1,13 +1,8 @@
----
-layout: default
-title: "dynamicPerSp"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens/dynamic-per-sp.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.compose](../README.md)/[AppDimens](README.md)/[dynamicPerSp](dynamic-per-sp.md)
 
 # dynamicPerSp
 
-[androidJvm]
+[androidJvm]\
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 

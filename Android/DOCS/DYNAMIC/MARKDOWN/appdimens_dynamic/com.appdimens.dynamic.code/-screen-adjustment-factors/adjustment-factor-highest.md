@@ -1,11 +1,6 @@
----
-layout: default
-title: "adjustmentFactorHighest"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-screen-adjustment-factors/adjustment-factor-highest.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.code](../README.md)/[ScreenAdjustmentFactors](README.md)/[adjustmentFactorHighest](adjustment-factor-highest.md)
 
 # adjustmentFactorHighest
 
-[androidJvm]
+[androidJvm]\
 val [adjustmentFactorHighest](adjustment-factor-highest.md): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)

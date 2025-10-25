@@ -1,13 +1,8 @@
----
-layout: default
-title: "displayMeasureDiameter"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-physical-units/display-measure-diameter.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.compose](../README.md)/[AppDimensPhysicalUnits](README.md)/[displayMeasureDiameter](display-measure-diameter.md)
 
 # displayMeasureDiameter
 
-[androidJvm]
+[androidJvm]\
 fun [displayMeasureDiameter](display-measure-diameter.md)(diameter: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), isCircumference: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html)): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Adjusts a diameter value to Circumference if requested.

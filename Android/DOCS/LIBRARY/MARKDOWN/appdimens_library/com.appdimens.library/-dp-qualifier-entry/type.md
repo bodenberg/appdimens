@@ -8,4 +8,4 @@ permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-dp-qualifi
 # type
 
 [androidJvm]
-val [type](type.md): [DpQualifier](../-dp-qualifier/index.md)
+val [type](type.md): [DpQualifier](../-dp-qualifier/README.md)

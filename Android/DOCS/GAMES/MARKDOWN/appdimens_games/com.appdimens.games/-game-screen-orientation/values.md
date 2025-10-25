@@ -8,7 +8,7 @@ permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-screen-orie
 # values
 
 [androidJvm]
-fun [values](values.md)(): [Array](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html)<[GameScreenOrientation](index.md)>
+fun [values](values.md)(): [Array](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html)<[GameScreenOrientation](README.md)>
 
 Returns an array containing the constants of this enum type, in the order they're declared.
 

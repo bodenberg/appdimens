@@ -1,11 +1,6 @@
----
-layout: default
-title: "withoutArFactor"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-screen-adjustment-factors/without-ar-factor.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.code](../README.md)/[ScreenAdjustmentFactors](README.md)/[withoutArFactor](without-ar-factor.md)
 
 # withoutArFactor
 
-[androidJvm]
+[androidJvm]\
 val [withoutArFactor](without-ar-factor.md): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)

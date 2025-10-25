@@ -11,4 +11,4 @@ permalink: /LIBRARY/MARKDOWN/README.html
 
 | Name |
 |---|
-| [com.appdimens.library](appdimens_library/com.appdimens.library/index.md) |
+| [com.appdimens.library](appdimens_library/com.appdimens.library/README.md) |

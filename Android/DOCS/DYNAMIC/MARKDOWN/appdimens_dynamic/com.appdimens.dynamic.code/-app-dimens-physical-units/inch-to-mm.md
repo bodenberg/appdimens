@@ -1,18 +1,8 @@
----
-layout: default
-title: "inchToMm"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-physical-units/inch-to-mm.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.code](../README.md)/[AppDimensPhysicalUnits](README.md)/[inchToMm](inch-to-mm.md)
 
 # inchToMm
 
-[androidJvm]
+[androidJvm]\
 fun [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html).[inchToMm](inch-to-mm.md)(): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
-EN Extension function for Float to convert Inches to MM. PT Função de extensão para Float para converter Polegadas para MM.
-
-[androidJvm]
-fun [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html).[inchToMm](inch-to-mm.md)(): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
-
-EN Extension function for Int to convert Inches to MM. PT Função de extensão para Int para converter Polegadas para MM.
+EN Float extension to convert Inch to MM. PT Extensão de Float para converter Inch para MM.

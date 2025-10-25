@@ -8,4 +8,4 @@ permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-vector2-d/p
 # plus
 
 [androidJvm]
-operator fun [plus](plus.md)(other: [GameVector2D](index.md)): [GameVector2D](index.md)
+operator fun [plus](plus.md)(other: [GameVector2D](README.md)): [GameVector2D](README.md)

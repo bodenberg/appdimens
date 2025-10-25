@@ -1,14 +1,9 @@
----
-layout: default
-title: "CIRCUMFERENCE_FACTOR"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-adjustment-factors/-c-i-r-c-u-m-f-e-r-e-n-c-e_-f-a-c-t-o-r.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.compose](../README.md)/[AppDimensAdjustmentFactors](README.md)/[CIRCUMFERENCE_FACTOR](-c-i-r-c-u-m-f-e-r-e-n-c-e_-f-a-c-t-o-r.md)
 
 # CIRCUMFERENCE_FACTOR
 
-[androidJvm]
-const val [CIRCUMFERENCE_FACTOR](-c-i-r-c-u-m-f-e-r-e-n-c-e_-f-a-c-t-o-r.md): Double
+[androidJvm]\
+const val [CIRCUMFERENCE_FACTOR](-c-i-r-c-u-m-f-e-r-e-n-c-e_-f-a-c-t-o-r.md): &lt;Error class: unknown class&gt;
 
 EN Factor for circumference calculation (2π). Using kotlin.math.PI.
 

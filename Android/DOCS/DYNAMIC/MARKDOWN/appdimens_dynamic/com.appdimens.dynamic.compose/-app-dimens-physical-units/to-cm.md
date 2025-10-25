@@ -1,13 +1,8 @@
----
-layout: default
-title: "toCm"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-physical-units/to-cm.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.compose](../README.md)/[AppDimensPhysicalUnits](README.md)/[toCm](to-cm.md)
 
 # toCm
 
-[androidJvm]
+[androidJvm]\
 fun [toCm](to-cm.md)(cm: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), resources: [Resources](https://developer.android.com/reference/kotlin/android/content/res/Resources.html)): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Converts Centimeters (CM) to Pixels (PX).

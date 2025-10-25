@@ -1,13 +1,8 @@
----
-layout: default
-title: "unitSizePerPx"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-physical-units/unit-size-per-px.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.compose](../README.md)/[AppDimensPhysicalUnits](README.md)/[unitSizePerPx](unit-size-per-px.md)
 
 # unitSizePerPx
 
-[androidJvm]
+[androidJvm]\
 fun [unitSizePerPx](unit-size-per-px.md)(type: UnitType, resources: [Resources](https://developer.android.com/reference/kotlin/android/content/res/Resources.html)): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Calculates the size of 1 unit (1.0f) in Pixels (PX) for a specific physical unit.

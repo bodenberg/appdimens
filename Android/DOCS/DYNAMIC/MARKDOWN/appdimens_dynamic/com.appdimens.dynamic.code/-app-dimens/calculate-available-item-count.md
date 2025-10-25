@@ -1,13 +1,8 @@
----
-layout: default
-title: "calculateAvailableItemCount"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens/calculate-available-item-count.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.code](../README.md)/[AppDimens](README.md)/[calculateAvailableItemCount](calculate-available-item-count.md)
 
 # calculateAvailableItemCount
 
-[androidJvm]
+[androidJvm]\
 fun [calculateAvailableItemCount](calculate-available-item-count.md)(containerSizePx: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html), itemSizeDp: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), itemMarginDp: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), resources: [Resources](https://developer.android.com/reference/kotlin/android/content/res/Resources.html)): [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)
 
 EN Calculates the maximum number of items that can fit in a container, given the container size in PX.

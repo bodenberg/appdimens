@@ -60,7 +60,7 @@ Este documento serve como um **guia completo de navegação** para os **356 arqu
 ### 🔷 DYNAMIC (165 arquivos)
 ```
 DYNAMIC/MARKDOWN/
-├── index.md
+├── README.md
 └── appdimens_dynamic/
     ├── com.appdimens.dynamic.code/
     │   ├── -app-dimens/
@@ -87,7 +87,7 @@ DYNAMIC/MARKDOWN/
 ### 🎮 GAMES (81 arquivos)
 ```
 GAMES/MARKDOWN/
-├── index.md
+├── README.md
 ├── OVERVIEW.md
 └── appdimens_games/
     └── com.appdimens.games/
@@ -113,7 +113,7 @@ GAMES/MARKDOWN/
 ### 📚 LIBRARY (55 arquivos)
 ```
 LIBRARY/MARKDOWN/
-├── index.md
+├── README.md
 └── appdimens_library/
     └── com.appdimens.library/
         ├── -dp-qualifier/
@@ -135,7 +135,7 @@ LIBRARY/MARKDOWN/
 ### 📏 SDPS (24 arquivos)
 ```
 SDPS/MARKDOWN/
-├── index.md
+├── README.md
 └── appdimens_sdps/
     ├── com.appdimens.sdps.code/
     │   └── -app-dimens-sdp/
@@ -154,7 +154,7 @@ SDPS/MARKDOWN/
 ### 📝 SSPS (30 arquivos)
 ```
 SSPS/MARKDOWN/
-├── index.md
+├── README.md
 └── appdimens_ssps/
     ├── com.appdimens.ssps.code/
     │   └── -app-dimens-ssp/
@@ -177,25 +177,25 @@ SSPS/MARKDOWN/
 ### Por Funcionalidade
 
 #### Dimensionamento
-- [Dynamic Scaling](DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-dynamic/index.md)
-- [Fixed Scaling](DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-fixed/index.md)
-- [SDP Resources](SDPS/MARKDOWN/appdimens_sdps/com.appdimens.sdps.compose/index.md)
-- [SSP Resources](SSPS/MARKDOWN/appdimens_ssps/com.appdimens.ssps.compose/index.md)
+- [Dynamic Scaling](DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-dynamic/README.md)
+- [Fixed Scaling](DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-fixed/README.md)
+- [SDP Resources](SDPS/MARKDOWN/appdimens_sdps/com.appdimens.sdps.compose/README.md)
+- [SSP Resources](SSPS/MARKDOWN/appdimens_ssps/com.appdimens.ssps.compose/README.md)
 
 #### Desenvolvimento de Jogos
-- [AppDimensGames](GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-app-dimens-games/index.md)
-- [Game Vectors](GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-vector2-d/index.md)
-- [Game Renderer](GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-renderer/index.md)
+- [AppDimensGames](GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-app-dimens-games/README.md)
+- [Game Vectors](GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-vector2-d/README.md)
+- [Game Renderer](GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-renderer/README.md)
 - [C++ Overview](GAMES/MARKDOWN/OVERVIEW.md)
 
 #### Unidades Físicas
-- [Physical Units](DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-physical-units/index.md)
-- [Conversions](DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-physical-units/index.md)
+- [Physical Units](DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-physical-units/README.md)
+- [Conversions](DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-physical-units/README.md)
 
 #### Tipos e Interfaces
-- [Screen Types](LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-screen-type/index.md)
-- [UI Mode Types](LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-type/index.md)
-- [Unit Types](LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-unit-type/index.md)
+- [Screen Types](LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-screen-type/README.md)
+- [UI Mode Types](LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-type/README.md)
+- [Unit Types](LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-unit-type/README.md)
 
 ---
 

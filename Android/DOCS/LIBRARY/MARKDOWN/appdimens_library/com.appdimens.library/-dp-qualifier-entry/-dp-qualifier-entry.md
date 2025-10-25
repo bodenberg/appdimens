@@ -8,4 +8,4 @@ permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-dp-qualifi
 # DpQualifierEntry
 
 [androidJvm]
-constructor(type: [DpQualifier](../-dp-qualifier/index.md), value: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html))
+constructor(type: [DpQualifier](../-dp-qualifier/README.md), value: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html))

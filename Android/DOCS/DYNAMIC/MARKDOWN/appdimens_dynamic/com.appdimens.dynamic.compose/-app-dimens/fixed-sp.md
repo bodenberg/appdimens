@@ -1,13 +1,8 @@
----
-layout: default
-title: "fixedSp"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens/fixed-sp.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.compose](../README.md)/[AppDimens](README.md)/[fixedSp](fixed-sp.md)
 
 # fixedSp
 
-[androidJvm]
+[androidJvm]\
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -17,7 +12,7 @@ EN Builds the adjusted TextUnit (Sp).
 
 PT Constrói o TextUnit (Sp) ajustado.
 
-[androidJvm]
+[androidJvm]\
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -27,7 +22,7 @@ EN Applies dimension adjustment directly to the TextUnit (Sp).
 
 PT Aplica o ajuste de dimensão diretamente no TextUnit (Sp).
 
-[androidJvm]
+[androidJvm]\
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -37,7 +32,7 @@ EN Converts Float to Dp, applies dimension adjustment, and returns in Sp.
 
 PT Converte Float para Dp, aplica o ajuste de dimensão e retorna em Sp.
 
-[androidJvm]
+[androidJvm]\
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 

@@ -1,13 +1,8 @@
----
-layout: default
-title: "REFERENCE_AR"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-adjustment-factors/-r-e-f-e-r-e-n-c-e_-a-r.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.compose](../README.md)/[AppDimensAdjustmentFactors](README.md)/[REFERENCE_AR](-r-e-f-e-r-e-n-c-e_-a-r.md)
 
 # REFERENCE_AR
 
-[androidJvm]
+[androidJvm]\
 const val [REFERENCE_AR](-r-e-f-e-r-e-n-c-e_-a-r.md): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html) = 1.78f
 
 EN Reference screen aspect ratio (e.g., 16:9), where the adjustment is neutral.

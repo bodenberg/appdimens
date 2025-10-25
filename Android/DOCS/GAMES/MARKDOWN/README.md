@@ -11,4 +11,4 @@ permalink: /GAMES/MARKDOWN/README.html
 
 | Name |
 |---|
-| [com.appdimens.games](appdimens_games/com.appdimens.games/index.md) |
+| [com.appdimens.games](appdimens_games/com.appdimens.games/README.md) |

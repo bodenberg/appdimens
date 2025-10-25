@@ -8,4 +8,4 @@ permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-rectangle/c
 # center
 
 [androidJvm]
-fun [center](center.md)(): [GameVector2D](../-game-vector2-d/index.md)
+fun [center](center.md)(): [GameVector2D](../-game-vector2-d/README.md)

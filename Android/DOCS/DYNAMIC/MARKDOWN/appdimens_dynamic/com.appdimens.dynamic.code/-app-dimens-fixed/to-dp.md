@@ -1,13 +1,8 @@
----
-layout: default
-title: "toDp"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-fixed/to-dp.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.code](../README.md)/[AppDimensFixed](README.md)/[toDp](to-dp.md)
 
 # toDp
 
-[androidJvm]
+[androidJvm]\
 fun [toDp](to-dp.md)(resources: [Resources](https://developer.android.com/reference/kotlin/android/content/res/Resources.html)): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Returns the adjusted Dp value (in Dp, not converted to PX).

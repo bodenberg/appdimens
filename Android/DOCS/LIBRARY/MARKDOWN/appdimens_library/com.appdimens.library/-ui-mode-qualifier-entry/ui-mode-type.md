@@ -8,4 +8,4 @@ permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-qu
 # uiModeType
 
 [androidJvm]
-val [uiModeType](ui-mode-type.md): [UiModeType](../-ui-mode-type/index.md)
+val [uiModeType](ui-mode-type.md): [UiModeType](../-ui-mode-type/README.md)

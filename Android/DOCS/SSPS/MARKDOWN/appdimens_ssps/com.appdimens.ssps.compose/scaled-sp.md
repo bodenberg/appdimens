@@ -11,7 +11,7 @@ permalink: /SSPS/MARKDOWN/appdimens_ssps/com.appdimens.ssps.compose/scaled-sp.ht
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
-fun [TextUnit](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/TextUnit.html).[scaledSp](scaled-sp.md)(): [Scaled](-scaled/index.md)
+fun [TextUnit](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/TextUnit.html).[scaledSp](scaled-sp.md)(): [Scaled](-scaled/README.md)
 
 EN Starts the `Scaled` build chain from a `TextUnit`.
 
@@ -21,7 +21,7 @@ PT Inicia a cadeia de construção `Scaled` a partir de um `TextUnit`.
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
-fun [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html).[scaledSp](scaled-sp.md)(): [Scaled](-scaled/index.md)
+fun [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html).[scaledSp](scaled-sp.md)(): [Scaled](-scaled/README.md)
 
 EN Starts the `Scaled` build chain from an `Int` (converted to Sp).
 

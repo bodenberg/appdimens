@@ -1,13 +1,8 @@
----
-layout: default
-title: "dynamicPerEm"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens/dynamic-per-em.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.compose](../README.md)/[AppDimens](README.md)/[dynamicPerEm](dynamic-per-em.md)
 
 # dynamicPerEm
 
-[androidJvm]
+[androidJvm]\
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 

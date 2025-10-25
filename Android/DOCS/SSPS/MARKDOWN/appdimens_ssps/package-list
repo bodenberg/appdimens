@@ -1,10 +1,10 @@
 $dokka.format:gfm-v1
 $dokka.linkExtension:md
-$dokka.location:com.appdimens.ssps.code////PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.code/index.md
-$dokka.location:com.appdimens.ssps.code/AppDimensSsp///PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.code/-app-dimens-ssp/index.md
+$dokka.location:com.appdimens.ssps.code////PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.code/README.md
+$dokka.location:com.appdimens.ssps.code/AppDimensSsp///PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.code/-app-dimens-ssp/README.md
 $dokka.location:com.appdimens.ssps.code/AppDimensSsp/getDimensionInPx/#android.content.Context#com.appdimens.library.DpQualifier#kotlin.Int/PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.code/-app-dimens-ssp/get-dimension-in-px.md
 $dokka.location:com.appdimens.ssps.code/AppDimensSsp/getResourceId/#android.content.Context#com.appdimens.library.DpQualifier#kotlin.Int/PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.code/-app-dimens-ssp/get-resource-id.md
-$dokka.location:com.appdimens.ssps.compose////PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/index.md
+$dokka.location:com.appdimens.ssps.compose////PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/README.md
 $dokka.location:com.appdimens.ssps.compose//fromConfiguration/#kotlin.Int/PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/from-configuration.md
 $dokka.location:com.appdimens.ssps.compose//hem/kotlin.Int#/PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/hem.md
 $dokka.location:com.appdimens.ssps.compose//hsp/kotlin.Int#/PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/hsp.md
@@ -15,13 +15,13 @@ $dokka.location:com.appdimens.ssps.compose//ssp/kotlin.Int#/PointingToDeclaratio
 $dokka.location:com.appdimens.ssps.compose//toDynamicScaledSp/kotlin.Int#com.appdimens.library.DpQualifier#kotlin.Boolean/PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/to-dynamic-scaled-sp.md
 $dokka.location:com.appdimens.ssps.compose//wem/kotlin.Int#/PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/wem.md
 $dokka.location:com.appdimens.ssps.compose//wsp/kotlin.Int#/PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/wsp.md
-$dokka.location:com.appdimens.ssps.compose/CustomSpEntry///PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/-custom-sp-entry/index.md
+$dokka.location:com.appdimens.ssps.compose/CustomSpEntry///PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/-custom-sp-entry/README.md
 $dokka.location:com.appdimens.ssps.compose/CustomSpEntry/CustomSpEntry/#com.appdimens.library.UiModeType?#com.appdimens.library.DpQualifierEntry?#androidx.compose.ui.unit.TextUnit#kotlin.Int/PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/-custom-sp-entry/-custom-sp-entry.md
 $dokka.location:com.appdimens.ssps.compose/CustomSpEntry/customValue/#/PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/-custom-sp-entry/custom-value.md
 $dokka.location:com.appdimens.ssps.compose/CustomSpEntry/dpQualifierEntry/#/PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/-custom-sp-entry/dp-qualifier-entry.md
 $dokka.location:com.appdimens.ssps.compose/CustomSpEntry/priority/#/PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/-custom-sp-entry/priority.md
 $dokka.location:com.appdimens.ssps.compose/CustomSpEntry/uiModeType/#/PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/-custom-sp-entry/ui-mode-type.md
-$dokka.location:com.appdimens.ssps.compose/Scaled///PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/-scaled/index.md
+$dokka.location:com.appdimens.ssps.compose/Scaled///PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/-scaled/README.md
 $dokka.location:com.appdimens.ssps.compose/Scaled/Scaled/#androidx.compose.ui.unit.TextUnit/PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/-scaled/-scaled.md
 $dokka.location:com.appdimens.ssps.compose/Scaled/hem/#/PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/-scaled/hem.md
 $dokka.location:com.appdimens.ssps.compose/Scaled/hsp/#/PointingToDeclaration/appdimens_ssps/com.appdimens.ssps.compose/-scaled/hsp.md

@@ -8,4 +8,4 @@ permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-rectangle/i
 # intersection
 
 [androidJvm]
-fun [intersection](intersection.md)(other: [GameRectangle](index.md)): [GameRectangle](index.md)
+fun [intersection](intersection.md)(other: [GameRectangle](README.md)): [GameRectangle](README.md)

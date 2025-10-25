@@ -8,7 +8,7 @@ permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-app-dimens-games
 # calculateVector2D
 
 [androidJvm]
-fun [calculateVector2D](calculate-vector2-d.md)(vector: [GameVector2D](../-game-vector2-d/index.md), type: [GameDimensionType](../-game-dimension-type/index.md)): [GameVector2D](../-game-vector2-d/index.md)
+fun [calculateVector2D](calculate-vector2-d.md)(vector: [GameVector2D](../-game-vector2-d/README.md), type: [GameDimensionType](../-game-dimension-type/README.md)): [GameVector2D](../-game-vector2-d/README.md)
 
 EN Calculates a 2D vector using the specified type.
 

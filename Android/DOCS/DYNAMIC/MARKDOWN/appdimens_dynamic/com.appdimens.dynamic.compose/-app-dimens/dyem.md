@@ -1,23 +1,18 @@
----
-layout: default
-title: "dyem"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens/dyem.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.compose](../README.md)/[AppDimens](README.md)/[dyem](dyem.md)
 
 # dyem
 
-[androidJvm]
+[androidJvm]\
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
-@get:[JvmName](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-name/index.html)(name = "dpDyem")
+@get:[JvmName](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-name/index.html)(name = &quot;dpDyem&quot;)
 
 val [Dp](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/Dp.html).[dyem](dyem.md): [TextUnit](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/TextUnit.html)
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
-@get:[JvmName](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-name/index.html)(name = "spDyem")
+@get:[JvmName](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-name/index.html)(name = &quot;spDyem&quot;)
 
 val [TextUnit](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/TextUnit.html).[dyem](dyem.md): [TextUnit](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/TextUnit.html)
 
@@ -25,11 +20,11 @@ EN Builds the adjusted TextUnit (Em) (defaults: LOWEST, multiView=true, ignoring
 
 PT Constrói o TextUnit (Em) ajustado (padrões: LOWEST, multiView=true, ignorando a escala da fonte).
 
-[androidJvm]
+[androidJvm]\
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
-@get:[JvmName](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-name/index.html)(name = "floatDyem")
+@get:[JvmName](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-name/index.html)(name = &quot;floatDyem&quot;)
 
 val [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html).[dyem](dyem.md): [TextUnit](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/TextUnit.html)
 
@@ -37,11 +32,11 @@ EN Builds the adjusted TextUnit (Em) from a Float (defaults: LOWEST, multiView=t
 
 PT Constrói o TextUnit (Em) ajustado a partir de um Float (padrões: LOWEST, multiView=true, ignorando a escala da fonte).
 
-[androidJvm]
+[androidJvm]\
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
-@get:[JvmName](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-name/index.html)(name = "intDyem")
+@get:[JvmName](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-name/index.html)(name = &quot;intDyem&quot;)
 
 val [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html).[dyem](dyem.md): [TextUnit](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/TextUnit.html)
 

@@ -1,13 +1,8 @@
----
-layout: default
-title: "calculateAdjustedValue"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-fixed/calculate-adjusted-value.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.code](../README.md)/[AppDimensFixed](README.md)/[calculateAdjustedValue](calculate-adjusted-value.md)
 
 # calculateAdjustedValue
 
-[androidJvm]
+[androidJvm]\
 fun [calculateAdjustedValue](calculate-adjusted-value.md)(configuration: [Configuration](https://developer.android.com/reference/kotlin/android/content/res/Configuration.html)): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Performs the final dimension adjustment calculation.

@@ -1,13 +1,8 @@
----
-layout: default
-title: "dynamicPercentagePx"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens/dynamic-percentage-px.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.code](../README.md)/[AppDimens](README.md)/[dynamicPercentagePx](dynamic-percentage-px.md)
 
 # dynamicPercentagePx
 
-[androidJvm]
+[androidJvm]\
 fun [dynamicPercentagePx](dynamic-percentage-px.md)(percentage: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), type: ScreenType = ScreenType.LOWEST, resources: [Resources](https://developer.android.com/reference/kotlin/android/content/res/Resources.html)): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Calculates a dynamic dimension value based on a percentage and converts it to Pixels (PX).

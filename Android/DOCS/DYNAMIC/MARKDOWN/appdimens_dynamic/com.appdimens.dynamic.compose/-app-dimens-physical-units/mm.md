@@ -1,13 +1,8 @@
----
-layout: default
-title: "mm"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-physical-units/mm.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.compose](../README.md)/[AppDimensPhysicalUnits](README.md)/[mm](mm.md)
 
 # mm
 
-[androidJvm]
+[androidJvm]\
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -17,7 +12,7 @@ EN Float extension to convert MM to PX.
 
 PT Extensão de Float para converter MM para PX.
 
-[androidJvm]
+[androidJvm]\
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 

@@ -1,14 +1,9 @@
----
-layout: default
-title: "multiViewAdjustment"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-dynamic/multi-view-adjustment.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.code](../README.md)/[AppDimensDynamic](README.md)/[multiViewAdjustment](multi-view-adjustment.md)
 
 # multiViewAdjustment
 
-[androidJvm]
-fun [multiViewAdjustment](multi-view-adjustment.md)(ignore: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html) = true): [AppDimensDynamic](index.md)
+[androidJvm]\
+fun [multiViewAdjustment](multi-view-adjustment.md)(ignore: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html) = true): [AppDimensDynamic](README.md)
 
 EN Ignores adjustments when the app is in multi-window mode.
 

@@ -8,7 +8,7 @@ permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-viewport-mo
 # entries
 
 [androidJvm]
-val [entries](entries.md): [EnumEntries](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.enums/-enum-entries/index.html)<[GameViewportMode](index.md)>
+val [entries](entries.md): [EnumEntries](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.enums/-enum-entries/index.html)<[GameViewportMode](README.md)>
 
 Returns a representation of an immutable list of all enum entries, in the order they're declared.
 

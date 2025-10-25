@@ -8,7 +8,7 @@ permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-ty
 # valueOf
 
 [androidJvm]
-fun [valueOf](value-of.md)(value: [String](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html)): [UiModeType](index.md)
+fun [valueOf](value-of.md)(value: [String](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html)): [UiModeType](README.md)
 
 Returns the enum constant of this type with the specified name. The string must match exactly an identifier used to declare an enum constant in this type. (Extraneous whitespace characters are not permitted.)
 

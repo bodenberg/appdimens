@@ -1,14 +1,9 @@
----
-layout: default
-title: "type"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-fixed/type.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.code](../README.md)/[AppDimensFixed](README.md)/[type](type.md)
 
 # type
 
-[androidJvm]
-fun [type](type.md)(type: ScreenType): [AppDimensFixed](index.md)
+[androidJvm]\
+fun [type](type.md)(type: ScreenType): [AppDimensFixed](README.md)
 
 EN Sets the screen dimension type (LOWEST or HIGHEST) to be used as the base for adjustments.
 

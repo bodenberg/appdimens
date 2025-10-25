@@ -8,7 +8,7 @@ permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-unit-type/
 # values
 
 [androidJvm]
-fun [values](values.md)(): [Array](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html)<[UnitType](index.md)>
+fun [values](values.md)(): [Array](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html)<[UnitType](README.md)>
 
 Returns an array containing the constants of this enum type, in the order they're declared.
 

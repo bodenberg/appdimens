@@ -1,13 +1,8 @@
----
-layout: default
-title: "dynamicPx"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens/dynamic-px.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.compose](../README.md)/[AppDimens](README.md)/[dynamicPx](dynamic-px.md)
 
 # dynamicPx
 
-[androidJvm]
+[androidJvm]\
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -17,7 +12,7 @@ EN Builds the adjusted Pixel value (Float).
 
 PT Constrói o valor em Pixels (Float) ajustado.
 
-[androidJvm]
+[androidJvm]\
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -27,7 +22,7 @@ EN Converts TextUnit (Sp) to Dp, applies dimension adjustment, and returns in Pi
 
 PT Converte TextUnit (Sp) para Dp, aplica o ajuste de dimensão e retorna em Pixels (Float).
 
-[androidJvm]
+[androidJvm]\
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
@@ -37,7 +32,7 @@ EN Converts Float to Dp, applies dimension adjustment, and returns in Pixels (Fl
 
 PT Converte Float para Dp, aplica o ajuste de dimensão e retorna em Pixels (Float).
 
-[androidJvm]
+[androidJvm]\
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 

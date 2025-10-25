@@ -1,11 +1,6 @@
----
-layout: default
-title: "AppDimensDynamic"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-dynamic/-app-dimens-dynamic.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.code](../README.md)/[AppDimensDynamic](README.md)/[AppDimensDynamic](-app-dimens-dynamic.md)
 
 # AppDimensDynamic
 
-[androidJvm]
+[androidJvm]\
 constructor(initialBaseDp: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), ignoreMultiViewAdjustment: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html) = false)

@@ -1,13 +1,8 @@
----
-layout: default
-title: "rememberAdjustmentFactors"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-adjustment-factors/remember-adjustment-factors.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.compose](../README.md)/[AppDimensAdjustmentFactors](README.md)/[rememberAdjustmentFactors](remember-adjustment-factors.md)
 
 # rememberAdjustmentFactors
 
-[androidJvm]
+[androidJvm]\
 
 @[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 

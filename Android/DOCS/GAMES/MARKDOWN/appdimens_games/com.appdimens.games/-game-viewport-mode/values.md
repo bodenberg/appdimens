@@ -8,7 +8,7 @@ permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-viewport-mo
 # values
 
 [androidJvm]
-fun [values](values.md)(): [Array](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html)<[GameViewportMode](index.md)>
+fun [values](values.md)(): [Array](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html)<[GameViewportMode](README.md)>
 
 Returns an array containing the constants of this enum type, in the order they're declared.
 

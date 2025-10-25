@@ -1,13 +1,8 @@
----
-layout: default
-title: "toPx"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-dynamic/to-px.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.code](../README.md)/[AppDimensDynamic](README.md)/[toPx](to-px.md)
 
 # toPx
 
-[androidJvm]
+[androidJvm]\
 fun [toPx](to-px.md)(resources: [Resources](https://developer.android.com/reference/kotlin/android/content/res/Resources.html)): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Builds the dynamically adjusted Dp value and converts it to Pixels (Float).

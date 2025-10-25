@@ -1,24 +1,19 @@
----
-layout: default
-title: "calculateAdjustmentFactors"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.code/-app-dimens-adjustment-factors/calculate-adjustment-factors.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.code](../README.md)/[AppDimensAdjustmentFactors](README.md)/[calculateAdjustmentFactors](calculate-adjustment-factors.md)
 
 # calculateAdjustmentFactors
 
-[androidJvm]
-fun [calculateAdjustmentFactors](calculate-adjustment-factors.md)(configuration: [Configuration](https://developer.android.com/reference/kotlin/android/content/res/Configuration.html)): [ScreenAdjustmentFactors](../-screen-adjustment-factors/index.md)
+[androidJvm]\
+fun [calculateAdjustmentFactors](calculate-adjustment-factors.md)(configuration: [Configuration](https://developer.android.com/reference/kotlin/android/content/res/Configuration.html)): [ScreenAdjustmentFactors](../-screen-adjustment-factors/README.md)
 
 EN Calculates the Basic Adjustment Factors.
 
 #### Return
 
-A [ScreenAdjustmentFactors](../-screen-adjustment-factors/index.md) object containing the adjustment factors.
+A [ScreenAdjustmentFactors](../-screen-adjustment-factors/README.md) object containing the adjustment factors.
 
 PT Calcula os Fatores Básicos de Ajuste.
 
-Um objeto [ScreenAdjustmentFactors](../-screen-adjustment-factors/index.md) contendo os fatores de ajuste.
+Um objeto [ScreenAdjustmentFactors](../-screen-adjustment-factors/README.md) contendo os fatores de ajuste.
 
 #### Parameters
 

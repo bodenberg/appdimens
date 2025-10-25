@@ -8,4 +8,4 @@ permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-vector2-d/n
 # normalized
 
 [androidJvm]
-fun [normalized](normalized.md)(): [GameVector2D](index.md)
+fun [normalized](normalized.md)(): [GameVector2D](README.md)

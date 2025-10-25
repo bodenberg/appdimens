@@ -11,5 +11,5 @@ permalink: /SDPS/MARKDOWN/README.html
 
 | Name |
 |---|
-| [com.appdimens.sdps.code](appdimens_sdps/com.appdimens.sdps.code/index.md) |
-| [com.appdimens.sdps.compose](appdimens_sdps/com.appdimens.sdps.compose/index.md) |
+| [com.appdimens.sdps.code](appdimens_sdps/com.appdimens.sdps.code/README.md) |
+| [com.appdimens.sdps.compose](appdimens_sdps/com.appdimens.sdps.compose/README.md) |

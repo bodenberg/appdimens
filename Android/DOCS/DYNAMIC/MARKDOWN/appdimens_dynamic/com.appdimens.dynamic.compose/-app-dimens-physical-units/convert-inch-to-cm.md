@@ -1,13 +1,8 @@
----
-layout: default
-title: "convertInchToCm"
-category: dynamic
-permalink: /DYNAMIC/MARKDOWN/appdimens_dynamic/com.appdimens.dynamic.compose/-app-dimens-physical-units/convert-inch-to-cm.html
----
+//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.compose](../README.md)/[AppDimensPhysicalUnits](README.md)/[convertInchToCm](convert-inch-to-cm.md)
 
 # convertInchToCm
 
-[androidJvm]
+[androidJvm]\
 fun [convertInchToCm](convert-inch-to-cm.md)(inch: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
 
 EN Converts Inches (Inch) to Centimeters (CM).

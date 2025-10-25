@@ -8,7 +8,7 @@ permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-screen-typ
 # entries
 
 [androidJvm]
-val [entries](entries.md): [EnumEntries](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.enums/-enum-entries/index.html)<[ScreenType](index.md)>
+val [entries](entries.md): [EnumEntries](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.enums/-enum-entries/index.html)<[ScreenType](README.md)>
 
 Returns a representation of an immutable list of all enum entries, in the order they're declared.
 

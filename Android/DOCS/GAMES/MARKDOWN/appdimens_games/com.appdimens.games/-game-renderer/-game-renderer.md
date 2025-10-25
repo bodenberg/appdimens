@@ -8,4 +8,4 @@ permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-renderer/-g
 # GameRenderer
 
 [androidJvm]
-constructor(appDimensGames: [AppDimensGames](../-app-dimens-games/index.md))
+constructor(appDimensGames: [AppDimensGames](../-app-dimens-games/README.md))
