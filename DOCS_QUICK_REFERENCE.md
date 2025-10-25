@@ -1,187 +1,189 @@
-# ⚡ AppDimens: Referência Rápida da Documentação
+# ⚡ AppDimens: Documentation Quick Reference
 
-**Guia de Navegação Rápida - Encontre o que você precisa em segundos**
+**Quick Navigation Guide - Find What You Need in Seconds**
 
----
-
-## 🎯 Escolha Seu Caminho
-
-### Eu quero...
-
-**... aprender AppDimens do zero** 🌱
-→ Leia: [MATHEMATICAL_THEORY_SIMPLIFIED.md](MATHEMATICAL_THEORY_SIMPLIFIED.md) (15min)
-
-**... ver exemplos de código** 💻
-→ Leia: [EXAMPLES.md](EXAMPLES.md) (20min)
-
-**... entender a teoria matemática completa** 🧮
-→ Leia: [MATHEMATICAL_THEORY.md](MATHEMATICAL_THEORY.md) (45min)
-
-**... comparar AppDimens com outras soluções** ⚖️
-→ Leia: [FORMULA_COMPARISON.md](FORMULA_COMPARISON.md) (30min)
-
-**... ver TUDO em um só documento** 📚
-→ Leia: [COMPREHENSIVE_TECHNICAL_GUIDE.md](COMPREHENSIVE_TECHNICAL_GUIDE.md) (2h)
-
-**... validar se a implementação está correta** ✅
-→ Leia: [VALIDATION_REPORT.md](VALIDATION_REPORT.md) (20min)
-
-**... navegar toda a documentação** 🗺️
-→ Leia: [DOCS/README.md](DOCS/README.md) (5min para navegar)
+> **Languages:** English | [Português (BR)](LANG/pt-BR/DOCS_QUICK_REFERENCE.md) | [Español](LANG/es/DOCS_QUICK_REFERENCE.md) | [हिन्दी](LANG/hi/DOCS_QUICK_REFERENCE.md) | [Русский](LANG/ru/DOCS_QUICK_REFERENCE.md) | [中文](LANG/zh/DOCS_QUICK_REFERENCE.md) | [日本語](LANG/ja/DOCS_QUICK_REFERENCE.md)
 
 ---
 
-## 📊 Documentos por Objetivo
+## 🎯 Choose Your Path
 
-### Para Decidir se Usa AppDimens
+### I want to...
 
-1. [README.md](README.md) - Visão geral
-2. [MATHEMATICAL_THEORY_SIMPLIFIED.md](MATHEMATICAL_THEORY_SIMPLIFIED.md) - Teoria simples
-3. [FORMULA_COMPARISON.md](FORMULA_COMPARISON.md) - Ver ranking #1 com 91/100
+**... learn AppDimens from scratch** 🌱
+→ Read: [MATHEMATICAL_THEORY_SIMPLIFIED.md](MATHEMATICAL_THEORY_SIMPLIFIED.md) (15min)
 
-**Decisão em: 50 minutos**
+**... see code examples** 💻
+→ Read: [EXAMPLES.md](EXAMPLES.md) (20min)
+
+**... understand the complete mathematical theory** 🧮
+→ Read: [MATHEMATICAL_THEORY.md](MATHEMATICAL_THEORY.md) (45min)
+
+**... compare AppDimens with other solutions** ⚖️
+→ Read: [FORMULA_COMPARISON.md](FORMULA_COMPARISON.md) (30min)
+
+**... see EVERYTHING in one document** 📚
+→ Read: [COMPREHENSIVE_TECHNICAL_GUIDE.md](COMPREHENSIVE_TECHNICAL_GUIDE.md) (2h)
+
+**... validate if the implementation is correct** ✅
+→ Read: [VALIDATION_REPORT.md](VALIDATION_REPORT.md) (20min)
+
+**... navigate all documentation** 🗺️
+→ Read: [DOCS/README.md](DOCS/README.md) (5min to browse)
 
 ---
 
-### Para Implementar no Projeto
+## 📊 Documents by Objective
 
-1. [EXAMPLES.md](EXAMPLES.md) - Código pronto
-2. [Android/README.md](Android/README.md) - Específico da plataforma
+### To Decide if You Use AppDimens
+
+1. [README.md](README.md) - Overview
+2. [MATHEMATICAL_THEORY_SIMPLIFIED.md](MATHEMATICAL_THEORY_SIMPLIFIED.md) - Simple theory
+3. [FORMULA_COMPARISON.md](FORMULA_COMPARISON.md) - See #1 ranking with 91/100
+
+**Decision in: 50 minutes**
+
+---
+
+### To Implement in Your Project
+
+1. [EXAMPLES.md](EXAMPLES.md) - Ready-to-use code
+2. [Android/README.md](Android/README.md) - Platform-specific
 3. [MATHEMATICAL_THEORY_SIMPLIFIED.md](MATHEMATICAL_THEORY_SIMPLIFIED.md) - FAQ
 
-**Pronto para codificar em: 30 minutos**
+**Ready to code in: 30 minutes**
 
 ---
 
-### Para Pesquisa/Artigo Acadêmico
+### For Research/Academic Paper
 
-1. [MATHEMATICAL_THEORY.md](MATHEMATICAL_THEORY.md) - Teoria formal
-2. [FORMULA_COMPARISON.md](FORMULA_COMPARISON.md) - Comparações científicas
-3. [VALIDATION_REPORT.md](VALIDATION_REPORT.md) - Validação
-4. [COMPREHENSIVE_TECHNICAL_GUIDE.md](COMPREHENSIVE_TECHNICAL_GUIDE.md) - Tudo
+1. [MATHEMATICAL_THEORY.md](MATHEMATICAL_THEORY.md) - Formal theory
+2. [FORMULA_COMPARISON.md](FORMULA_COMPARISON.md) - Scientific comparisons
+3. [VALIDATION_REPORT.md](VALIDATION_REPORT.md) - Validation
+4. [COMPREHENSIVE_TECHNICAL_GUIDE.md](COMPREHENSIVE_TECHNICAL_GUIDE.md) - Everything
 
-**Material completo para publicação**
-
----
-
-## 🏆 Principais Conquistas Documentadas
-
-### Ranking e Certificações
-
-- **#1 de 7 fórmulas** com **91/100 pontos** 🥇
-- **3.5× mais precisa** que linear
-- **65% menos oversizing** que concorrentes
-- **Única com compensação de AR**
-- **Única com fundamentação psicofísica**
-
-📍 Veja em: [FORMULA_COMPARISON.md](FORMULA_COMPARISON.md#63-certificado-de-excelência)
+**Complete material for publication**
 
 ---
 
-### Inovações Técnicas
+## 🏆 Main Documented Achievements
 
-1. ✅ Primeira biblioteca com escalonamento logarítmico
-2. ✅ Primeira com compensação automática de aspect ratio
-3. ✅ Primeira com sistema de 4 prioridades hierárquico
-4. ✅ Primeira com fundamentação em Lei de Weber-Fechner
-5. ✅ Performance superior com cache (0.002µs vs 0.005µs)
+### Rankings and Certifications
 
-📍 Veja em: [COMPREHENSIVE_TECHNICAL_GUIDE.md](COMPREHENSIVE_TECHNICAL_GUIDE.md#12-inovação-e-originalidade)
+- **#1 out of 7 formulas** with **91/100 points** 🥇
+- **3.5× more accurate** than linear
+- **65% less oversizing** than competitors
+- **Only one with AR compensation**
+- **Only one with psychophysical foundation**
+
+📍 See at: [FORMULA_COMPARISON.md](FORMULA_COMPARISON.md#63-certificate-of-excellence)
 
 ---
 
-## 📐 Fórmulas Principais
+### Technical Innovations
 
-### Fórmula Logarítmica (Fixed)
+1. ✅ First library with logarithmic scaling
+2. ✅ First with automatic aspect ratio compensation
+3. ✅ First with 4-priority hierarchical system
+4. ✅ First with Weber-Fechner Law foundation
+5. ✅ Superior performance with cache (0.002µs vs 0.005µs)
+
+📍 See at: [COMPREHENSIVE_TECHNICAL_GUIDE.md](COMPREHENSIVE_TECHNICAL_GUIDE.md#12-innovation-and-originality)
+
+---
+
+## 📐 Main Formulas
+
+### Logarithmic Formula (Fixed)
 
 ```
 f_FX(B, S, AR) = B × [1 + ((S - 300) / 30) × (0.10 + 0.08 × ln(AR / 1.78))]
 ```
 
-### Sistema de Prioridades
+### Priority System
 
 ```
-1. Intersection (UiMode + DpQualifier) ← Mais específico
-2. UiMode (apenas tipo de dispositivo)
-3. DpQualifier (apenas tamanho)
-4. Logarithmic (escalonamento automático) ← Fallback
+1. Intersection (UiMode + DpQualifier) ← Most specific
+2. UiMode (device type only)
+3. DpQualifier (size only)
+4. Logarithmic (automatic scaling) ← Fallback
 ```
 
-📍 Detalhes em: [COMPREHENSIVE_TECHNICAL_GUIDE.md](COMPREHENSIVE_TECHNICAL_GUIDE.md#4-sistema-de-prioridades-hierarchy-system)
+📍 Details at: [COMPREHENSIVE_TECHNICAL_GUIDE.md](COMPREHENSIVE_TECHNICAL_GUIDE.md#4-priority-system-hierarchy-system)
 
 ---
 
-## 🔬 Comparações Importantes
+## 🔬 Important Comparisons
 
 ### vs. SDP/SSP (Linear)
 
-| Aspecto | SDP/SSP | AppDimens |
+| Aspect | SDP/SSP | AppDimens |
 |---------|---------|-----------|
-| Fórmula | Linear | Logarítmica |
-| AR | ❌ Ignora | ✅ Compensa |
+| Formula | Linear | Logarithmic |
+| AR | ❌ Ignores | ✅ Compensates |
 | Tablet 800dp | 107dp (🔴 +123%) | 68dp (✅ +42%) |
 
 ### vs. CSS clamp()
 
-| Aspecto | CSS clamp() | AppDimens |
+| Aspect | CSS clamp() | AppDimens |
 |---------|-------------|-----------|
-| Escalonamento | Linear | Logarítmico |
-| AR | ❌ Ignora | ✅ Compensa |
-| Plataforma | Apenas Web | Universal |
+| Scaling | Linear | Logarithmic |
+| AR | ❌ Ignores | ✅ Compensates |
+| Platform | Web Only | Universal |
 
 ### vs. Flutter ScreenUtil
 
-| Aspecto | ScreenUtil | AppDimens |
+| Aspect | ScreenUtil | AppDimens |
 |---------|-----------|-----------|
-| Fórmula | Quadrática | Logarítmica |
-| Base teórica | ❌ Nenhuma | ✅ Weber-Fechner |
+| Formula | Quadratic | Logarithmic |
+| Theoretical basis | ❌ None | ✅ Weber-Fechner |
 | Tablet 800dp | 89dp (🟡 +86%) | 68dp (✅ +42%) |
 
-📍 Comparação completa: [FORMULA_COMPARISON.md](FORMULA_COMPARISON.md#7-comparação-com-7-fórmulas-fundamentais)
+📍 Complete comparison: [FORMULA_COMPARISON.md](FORMULA_COMPARISON.md#7-comparison-with-7-fundamental-formulas)
 
 ---
 
-## 🎓 Fundamentação Científica
+## 🎓 Scientific Foundation
 
-### Lei de Weber-Fechner (1860)
+### Weber-Fechner Law (1860)
 
 ```
 S = k × ln(I / I₀)
 ```
 
-**Aplicação:** Percepção humana de tamanho é logarítmica, não linear.
+**Application:** Human perception of size is logarithmic, not linear.
 
-### Lei de Stevens (1957)
+### Stevens' Power Law (1957)
 
 ```
-ψ = k × φⁿ  (onde n < 1 para percepção espacial)
+ψ = k × φⁿ  (where n < 1 for spatial perception)
 ```
 
-**Aplicação:** Crescimento sublinear é mais natural para UI.
+**Application:** Sublinear growth is more natural for UI.
 
-📍 Detalhes em: [MATHEMATICAL_THEORY.md](MATHEMATICAL_THEORY.md#6-fundamentação-científica)
+📍 Details at: [MATHEMATICAL_THEORY.md](MATHEMATICAL_THEORY.md#6-scientific-foundation)
 
 ---
 
-## 💡 FAQ Rápido
+## 💡 Quick FAQ
 
-**P: Por que logaritmo?**  
-R: Porque a percepção humana é logarítmica (Lei de Weber-Fechner). Evita oversizing natural.
+**Q: Why logarithm?**  
+A: Because human perception is logarithmic (Weber-Fechner Law). Prevents natural oversizing.
 
-**P: É lento?**  
-R: Com cache, é a MAIS RÁPIDA (0.002µs vs 0.005µs da porcentagem).
+**Q: Is it slow?**  
+A: With cache, it's the FASTEST (0.002µs vs 0.005µs for percentage).
 
-**P: Funciona em iOS/Flutter/Web?**  
-R: Sim! Universal, mesma fórmula em todas as plataformas.
+**Q: Does it work on iOS/Flutter/Web?**  
+A: Yes! Universal, same formula on all platforms.
 
-**P: É difícil de usar?**  
-R: Não! API simples: `16.fxdp` ou `16.fixedDp().dp`
+**Q: Is it difficult to use?**  
+A: No! Simple API: `16.fxdp` or `16.fixedDp().dp`
 
-📍 FAQ completo: [MATHEMATICAL_THEORY_SIMPLIFIED.md](MATHEMATICAL_THEORY_SIMPLIFIED.md#-perguntas-frequentes-faq)
+📍 Complete FAQ: [MATHEMATICAL_THEORY_SIMPLIFIED.md](MATHEMATICAL_THEORY_SIMPLIFIED.md#-frequently-asked-questions-faq)
 
 ---
 
-## 📱 Exemplos Rápidos
+## 📱 Quick Examples
 
 ### Android Compose
 
@@ -218,73 +220,72 @@ Text(
 </Text>
 ```
 
-📍 Mais exemplos: [EXAMPLES.md](EXAMPLES.md)
+📍 More examples: [EXAMPLES.md](EXAMPLES.md)
 
 ---
 
-## 🗺️ Mapa de Documentação
+## 🗺️ Documentation Map
 
 ```
 AppDimens/
 │
 ├─ README.md ← START HERE
 │
-├─ Documentação Simplificada (Iniciante)
+├─ Simplified Documentation (Beginner)
 │  ├─ MATHEMATICAL_THEORY_SIMPLIFIED.md ⭐
 │  ├─ EXAMPLES.md
 │  └─ Platform READMEs
 │
-├─ Documentação Técnica (Intermediário)
+├─ Technical Documentation (Intermediate)
 │  ├─ MATHEMATICAL_THEORY.md
 │  ├─ FORMULA_COMPARISON.md ⭐
 │  └─ VALIDATION_REPORT.md
 │
-├─ Documentação Avançada (Especialistas)
+├─ Advanced Documentation (Experts)
 │  └─ COMPREHENSIVE_TECHNICAL_GUIDE.md ⭐⭐⭐
 │
-└─ Navegação
-   ├─ DOCS/README.md (índice completo)
-   └─ DOCS_QUICK_REFERENCE.md (você está aqui!)
+└─ Navigation
+   ├─ DOCS/README.md (complete index)
+   └─ DOCS_QUICK_REFERENCE.md (you are here!)
 ```
 
 ---
 
-## ⚡ Links Diretos
+## ⚡ Direct Links
 
-### Mais Acessados
+### Most Accessed
 
-- [Guia Simplificado](MATHEMATICAL_THEORY_SIMPLIFIED.md) ← 80% dos usuários começam aqui
-- [Exemplos de Código](EXAMPLES.md)
-- [Comparação com Outras Bibliotecas](FORMULA_COMPARISON.md)
+- [Simplified Guide](MATHEMATICAL_THEORY_SIMPLIFIED.md) ← 80% of users start here
+- [Code Examples](EXAMPLES.md)
+- [Comparison with Other Libraries](FORMULA_COMPARISON.md)
 
-### Documentação Completa
+### Complete Documentation
 
-- [Teoria Matemática Formal](MATHEMATICAL_THEORY.md)
-- [Guia Técnico Completo](COMPREHENSIVE_TECHNICAL_GUIDE.md) ← Tudo em um lugar
-- [Índice de Toda Documentação](DOCS/README.md)
+- [Formal Mathematical Theory](MATHEMATICAL_THEORY.md)
+- [Complete Technical Guide](COMPREHENSIVE_TECHNICAL_GUIDE.md) ← Everything in one place
+- [Full Documentation Index](DOCS/README.md)
 
-### Validação e Certificações
+### Validation and Certifications
 
-- [Relatório de Validação](VALIDATION_REPORT.md)
-- [Certificado de Excelência](FORMULA_COMPARISON.md#63-certificado-de-excelência)
+- [Validation Report](VALIDATION_REPORT.md)
+- [Certificate of Excellence](FORMULA_COMPARISON.md#63-certificate-of-excellence)
 
 ---
 
-## 📞 Precisa de Ajuda?
+## 📞 Need Help?
 
-1. **Documentação** ← Você está aqui!
+1. **Documentation** ← You are here!
 2. [GitHub Issues](https://github.com/bodenberg/appdimens/issues)
 3. [GitHub Discussions](https://github.com/bodenberg/appdimens/discussions)
-4. [Site Oficial](https://appdimens-project.web.app/)
+4. [Official Website](https://appdimens-project.web.app/)
 
 ---
 
-**Última atualização:** Janeiro 2025  
-**Versão:** 1.0.8  
-**Autor:** Jean Bodenberg  
-**Licença:** Apache 2.0
+**Last updated:** January 2025  
+**Version:** 1.0.8  
+**Author:** Jean Bodenberg  
+**License:** Apache 2.0
 
 ---
 
-*"A informação certa, no momento certo, da forma certa."*
-
+*"The right information, at the right time, in the right way."*

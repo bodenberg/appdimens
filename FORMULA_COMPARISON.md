@@ -1,946 +1,949 @@
-# 🔬 Comparação Detalhada: Fórmulas de Dimensionamento Responsivo
+# 🔬 Detailed Comparison: Responsive Sizing Formulas
 
-**Análise Matemática Completa e Comparativa**  
-*Autor: Jean Bodenberg*  
-*Data: Janeiro 2025*  
-*Versão: 1.0.8*
+> **Languages:** English | [Português (BR)](LANG/pt-BR/FORMULA_COMPARISON.md) | [Español](LANG/es/FORMULA_COMPARISON.md) | [हिन्दी](LANG/hi/FORMULA_COMPARISON.md) | [Русский](LANG/ru/FORMULA_COMPARISON.md) | [中文](LANG/zh/FORMULA_COMPARISON.md) | [日本語](LANG/ja/FORMULA_COMPARISON.md)
 
----
-
-## 📋 Índice
-
-1. [As 7 Fórmulas Fundamentais](#as-7-fórmulas-fundamentais)
-2. [Comparação Numérica Completa](#comparação-numérica-completa)
-3. [Análise de Performance](#análise-de-performance)
-4. [Análise de Exatidão](#análise-de-exatidão)
-5. [Análise Matemática Profunda](#análise-matemática-profunda)
-6. [Ranking Final e Certificação](#ranking-final-e-certificação)
-7. [Recomendações por Caso de Uso](#recomendações-por-caso-de-uso)
+**Complete Mathematical and Comparative Analysis**  
+*Author: Jean Bodenberg*  
+*Date: January 2025*  
+*Version: 1.0.8*
 
 ---
 
-## 1. As 7 Fórmulas Fundamentais
+## 📋 Table of Contents
 
-### 1.1 Linear Simples (Proporcional Direta)
+1. [The 7 Fundamental Formulas](#the-7-fundamental-formulas)
+2. [Complete Numerical Comparison](#complete-numerical-comparison)
+3. [Performance Analysis](#performance-analysis)
+4. [Accuracy Analysis](#accuracy-analysis)
+5. [Deep Mathematical Analysis](#deep-mathematical-analysis)
+6. [Final Ranking and Certification](#final-ranking-and-certification)
+7. [Recommendations by Use Case](#recommendations-by-use-case)
+
+---
+
+## 1. The 7 Fundamental Formulas
+
+### 1.1 Simple Linear (Direct Proportional)
 
 ```
 f(x) = x × (W / W₀)
 ```
 
-**Onde:**
+**Where:**
 
-- `x` = valor base
-- `W` = largura atual da tela
-- `W₀` = largura de referência (360dp)
+- `x` = base value
+- `W` = current screen width
+- `W₀` = reference width (360dp)
 
-**Exemplos:** SDP/SSP, iOS multipliers, escalabilidade básica Android
+**Examples:** SDP/SSP, iOS multipliers, basic Android scalability
 
-**Propriedades Matemáticas:**
+**Mathematical Properties:**
 
-- ✅ Transformação linear homogênea
-- ✅ Função contínua e diferenciável
-- ❌ Crescimento descontrolado em telas grandes
-- ❌ Ignora aspect ratio completamente
+- ✅ Homogeneous linear transformation
+- ✅ Continuous and differentiable function
+- ❌ Uncontrolled growth on large screens
+- ❌ Completely ignores aspect ratio
 
 ---
 
-### 1.2 Porcentagem do Viewport
+### 1.2 Viewport Percentage
 
 ```
 f(x) = W × p
 ```
 
-**Onde:**
+**Where:**
 
-- `W` = dimensão da tela (largura ou altura)
-- `p` = porcentagem (exemplo: 0.05 = 5%)
+- `W` = screen dimension (width or height)
+- `p` = percentage (example: 0.05 = 5%)
 
-**Exemplos:** CSS vw/vh, porcentagem simples Android/Flutter
+**Examples:** CSS vw/vh, simple percentage Android/Flutter
 
-**Propriedades Matemáticas:**
+**Mathematical Properties:**
 
-- ✅ Extremamente simples
-- ✅ Função linear pura
-- ❌ Elementos gigantescos em telas 4K/8K
-- ❌ Não diferencia smartphone de desktop
+- ✅ Extremely simple
+- ✅ Pure linear function
+- ❌ Gigantic elements on 4K/8K screens
+- ❌ Doesn't differentiate smartphone from desktop
 
 ---
 
-### 1.3 Interpolação Linear (Moderate Scale)
+### 1.3 Linear Interpolation (Moderate Scale)
 
 ```
 f(x) = x + (s(x) - x) × k
 
-Onde:
-s(x) = x × (W / W₀)    [escala linear]
-k = fator de moderação  (0 ≤ k ≤ 1, típico: 0.5)
+Where:
+s(x) = x × (W / W₀)    [linear scale]
+k = moderation factor  (0 ≤ k ≤ 1, typical: 0.5)
 ```
 
-**Exemplos:** React Native size-matters (moderateScale)
+**Examples:** React Native size-matters (moderateScale)
 
-**Propriedades Matemáticas:**
+**Mathematical Properties:**
 
-- ✅ Balanço entre linear e estático
-- ✅ Fator customizável
-- ⚠️ Interpolação linear arbitrária (sem base científica)
-- ❌ Oversizing reduzido, mas ainda presente
+- ✅ Balance between linear and static
+- ✅ Customizable factor
+- ⚠️ Arbitrary linear interpolation (no scientific basis)
+- ❌ Reduced oversizing, but still present
 
 ---
 
-### 1.4 Quadrática (Potência)
+### 1.4 Quadratic (Power)
 
 ```
 f(x) = p² × (W + H)
 ```
 
-**Onde:**
+**Where:**
 
-- `p` = porcentagem
-- `W`, `H` = largura e altura da tela
+- `p` = percentage
+- `W`, `H` = screen width and height
 
-**Exemplos:** Flutter ScreenUtil
+**Examples:** Flutter ScreenUtil
 
-**Propriedades Matemáticas:**
+**Mathematical Properties:**
 
-- ⚠️ Fórmula quadrática sem justificativa teórica
-- ❌ Cresce muito rápido em telas grandes: (W+H)² amplifica demais
-- ❌ Não considera aspect ratio explicitamente
+- ⚠️ Quadratic formula without theoretical justification
+- ❌ Grows too fast on large screens: (W+H)² amplifies too much
+- ❌ Doesn't explicitly consider aspect ratio
 
 ---
 
-### 1.5 Raiz Quadrada (Diagonal)
+### 1.5 Square Root (Diagonal)
 
 ```
 f(x) = x × √(W² + H²) / √(W₀² + H₀²)
 ```
 
-**Onde:**
+**Where:**
 
-- Escala pela diagonal da tela (Teorema de Pitágoras)
-- Aproximação de DPI-independence
+- Scales by screen diagonal (Pythagorean Theorem)
+- DPI-independence approximation
 
-**Exemplos:** Alguns frameworks custom, Unity Canvas Scaler
+**Examples:** Some custom frameworks, Unity Canvas Scaler
 
-**Propriedades Matemáticas:**
+**Mathematical Properties:**
 
-- ✅ Considera largura e altura simultaneamente
-- ✅ Crescimento sublinear (melhor que linear)
-- ⚠️ Mais lento computacionalmente (sqrt)
-- ❌ Não ajusta por aspect ratio especificamente
+- ✅ Considers width and height simultaneously
+- ✅ Sublinear growth (better than linear)
+- ⚠️ Computationally slower (sqrt)
+- ❌ Doesn't adjust for aspect ratio specifically
 
 ---
 
-### 1.6 Min/Max (Menor ou Maior Dimensão)
+### 1.6 Min/Max (Smallest or Largest Dimension)
 
 ```
 f(x) = x × min(W, H) / min(W₀, H₀)
 
-Ou:
+Or:
 
 f(x) = x × max(W, H) / max(W₀, H₀)
 ```
 
-**Exemplos:** CSS vmin/vmax, Android smallestWidth
+**Examples:** CSS vmin/vmax, Android smallestWidth
 
-**Propriedades Matemáticas:**
+**Mathematical Properties:**
 
-- ✅ Simples e eficiente
-- ✅ Funciona bem para manter proporções
-- ❌ Linear (mesmo problema de oversizing)
-- ❌ Escolha de min ou max é arbitrária
+- ✅ Simple and efficient
+- ✅ Works well to maintain proportions
+- ❌ Linear (same oversizing problem)
+- ❌ Choice of min or max is arbitrary
 
 ---
 
-### 1.7 Logarítmica Composta (AppDimens) ⭐
+### 1.7 Composite Logarithmic (AppDimens) ⭐
 
 ```
 f(x) = x × [1 + ((W/W₀ - 1) × (α + k × ln(AR / AR₀)))]
 
-Onde:
-AR = W / H                    (aspect ratio atual)
-AR₀ = W₀ / H₀ = 1.78         (aspect ratio referência 16:9)
-k = sensibilidade (ajustável, típico: 0.08-0.10)
-α = incremento base (típico: 0.10)
-ln = logaritmo natural
+Where:
+AR = W / H                    (current aspect ratio)
+AR₀ = W₀ / H₀ = 1.78         (reference aspect ratio 16:9)
+k = sensitivity (adjustable, typical: 0.08-0.10)
+α = base increment (typical: 0.10)
+ln = natural logarithm
 ```
 
-**Exemplos:** AppDimens (ÚNICA implementação)
+**Examples:** AppDimens (ONLY implementation)
 
-**Propriedades Matemáticas:**
+**Mathematical Properties:**
 
-- ✅ **Crescimento sublinear controlado**
-- ✅ **Compensa aspect ratio automaticamente**
-- ✅ **Fundamentação científica** (Weber-Fechner)
-- ✅ **Derivada decrescente** (desaceleração natural)
-- ✅ **Função contínua e diferenciável**
-- ✅ **Flexível** (parâmetro k ajustável)
-- ⚠️ Mais complexa computacionalmente (usa ln)
-
----
-
-## 2. Comparação Numérica Completa
-
-### 2.1 Teste Padrão
-
-**Configuração:**
-
-- **Valor base:** 48dp
-- **Referência:** W₀ = 360dp, H₀ = 640dp (AR₀ = 1.778)
-- **Dispositivos:** 5 tamanhos representativos
+- ✅ **Controlled sublinear growth**
+- ✅ **Automatically compensates aspect ratio**
+- ✅ **Scientific foundation** (Weber-Fechner)
+- ✅ **Decreasing derivative** (natural deceleration)
+- ✅ **Continuous and differentiable function**
+- ✅ **Flexible** (adjustable k parameter)
+- ⚠️ More computationally complex (uses ln)
 
 ---
 
-### 2.2 Resultados Detalhados
+## 2. Complete Numerical Comparison
 
-#### **Dispositivo 1: Pequeno (360×640) - Baseline**
+### 2.1 Standard Test
 
-| Fórmula                 | Cálculo            | Resultado   | % da Tela   |
-| ----------------------- | ------------------ | ----------- | ----------- |
-| Linear                  | 48 × (360/360)     | **48.0 dp** | 13.3%       |
-| Porcentagem             | 360 × 0.1333       | **48.0 dp** | 13.3%       |
-| Interpolação (k=0.5)    | 48 + (48-48)×0.5   | **48.0 dp** | 13.3%       |
-| Quadrática              | 0.048² × (360+640) | **48.0 dp** | 13.3%       |
-| Raiz Quadrada           | 48 × (734.8/734.8) | **48.0 dp** | 13.3%       |
-| Min/Max                 | 48 × (360/360)     | **48.0 dp** | 13.3%       |
-| **Logarítmica (k=0.1)** | 48 × [1 + 0]       | **48.0 dp** | **13.3%** ✅ |
+**Configuration:**
 
-**Todas começam iguais no baseline** ✅
+- **Base value:** 48dp
+- **Reference:** W₀ = 360dp, H₀ = 640dp (AR₀ = 1.778)
+- **Devices:** 5 representative sizes
 
 ---
 
-#### **Dispositivo 2: Médio (411×731) - Phone típico**
+### 2.2 Detailed Results
 
-| Fórmula         | Resultado   | Crescimento | % da Tela | Avaliação    |
-| --------------- | ----------- | ----------- | --------- | ------------ |
-| Linear          | **54.8 dp** | +14.2%      | 13.3%     | 🟡 Ok        |
-| Porcentagem     | **54.8 dp** | +14.2%      | 13.3%     | 🟡 Ok        |
-| Interpolação    | **51.4 dp** | +7.1%       | 12.5%     | 🟢 Bom       |
-| Quadrática      | **54.4 dp** | +13.3%      | 13.2%     | 🟡 Ok        |
-| Raiz Quadrada   | **54.8 dp** | +14.2%      | 13.3%     | 🟡 Ok        |
-| Min/Max         | **54.8 dp** | +14.2%      | 13.3%     | 🟡 Ok        |
-| **Logarítmica** | **52.3 dp** | **+8.9%**   | **12.7%** | **🟢 Ótimo** |
+#### **Device 1: Small (360×640) - Baseline**
 
----
+| Formula                  | Calculation        | Result      | % of Screen |
+| ------------------------ | ------------------ | ----------- | ----------- |
+| Linear                   | 48 × (360/360)     | **48.0 dp** | 13.3%       |
+| Percentage               | 360 × 0.1333       | **48.0 dp** | 13.3%       |
+| Interpolation (k=0.5)    | 48 + (48-48)×0.5   | **48.0 dp** | 13.3%       |
+| Quadratic                | 0.048² × (360+640) | **48.0 dp** | 13.3%       |
+| Square Root              | 48 × (734.8/734.8) | **48.0 dp** | 13.3%       |
+| Min/Max                  | 48 × (360/360)     | **48.0 dp** | 13.3%       |
+| **Logarithmic (k=0.1)**  | 48 × [1 + 0]       | **48.0 dp** | **13.3%** ✅ |
 
-#### **Dispositivo 3: Grande (480×853) - Phablet**
-
-| Fórmula         | Resultado   | Crescimento | % da Tela | Avaliação    |
-| --------------- | ----------- | ----------- | --------- | ------------ |
-| Linear          | **64.0 dp** | +33.3%      | 13.3%     | 🟡 Ok        |
-| Porcentagem     | **64.0 dp** | +33.3%      | 13.3%     | 🟡 Ok        |
-| Interpolação    | **56.0 dp** | +16.7%      | 11.7%     | 🟢 Bom       |
-| Quadrática      | **63.5 dp** | +32.3%      | 13.2%     | 🟡 Ok        |
-| Raiz Quadrada   | **64.1 dp** | +33.5%      | 13.4%     | 🟡 Ok        |
-| Min/Max         | **64.0 dp** | +33.3%      | 13.3%     | 🟡 Ok        |
-| **Logarítmica** | **57.1 dp** | **+19.0%**  | **11.9%** | **🟢 Ótimo** |
+**All start equal at baseline** ✅
 
 ---
 
-#### **Dispositivo 4: Tablet 7" (600×960) - Transição Crítica**
+#### **Device 2: Medium (411×731) - Typical Phone**
 
-| Fórmula         | Resultado   | Crescimento   | % da Tela | Avaliação          |
-| --------------- | ----------- | ------------- | --------- | ------------------ |
-| Linear          | **80.0 dp** | +66.7% 🔴     | 13.3%     | ❌ Muito grande     |
-| Porcentagem     | **80.0 dp** | +66.7% 🔴     | 13.3%     | ❌ Muito grande     |
-| Interpolação    | **64.0 dp** | +33.3%        | 10.7%     | 🟡 Aceitável       |
-| Quadrática      | **74.5 dp** | +55.2% 🔴     | 12.4%     | ⚠️ Grande          |
-| Raiz Quadrada   | **73.9 dp** | +53.9% 🔴     | 12.3%     | ⚠️ Grande          |
-| Min/Max         | **80.0 dp** | +66.7% 🔴     | 13.3%     | ❌ Muito grande     |
-| **Logarítmica** | **68.1 dp** | **+41.9%** 🟢 | **11.4%** | **✅ Proporcional** |
-
-**⭐ Diferença crítica:** Logarítmica cresce **24.8% MENOS** que linear!
+| Formula         | Result      | Growth  | % of Screen | Evaluation   |
+| --------------- | ----------- | ------- | ----------- | ------------ |
+| Linear          | **54.8 dp** | +14.2%  | 13.3%       | 🟡 Ok        |
+| Percentage      | **54.8 dp** | +14.2%  | 13.3%       | 🟡 Ok        |
+| Interpolation   | **51.4 dp** | +7.1%   | 12.5%       | 🟢 Good      |
+| Quadratic       | **54.4 dp** | +13.3%  | 13.2%       | 🟡 Ok        |
+| Square Root     | **54.8 dp** | +14.2%  | 13.3%       | 🟡 Ok        |
+| Min/Max         | **54.8 dp** | +14.2%  | 13.3%       | 🟡 Ok        |
+| **Logarithmic** | **52.3 dp** | **+8.9%** | **12.7%** | **🟢 Great** |
 
 ---
 
-#### **Dispositivo 5: Tablet 10" (800×1280) - Teste Extremo**
+#### **Device 3: Large (480×853) - Phablet**
 
-| Fórmula         | Resultado    | Crescimento   | % da Tela | Avaliação      |
-| --------------- | ------------ | ------------- | --------- | -------------- |
-| Linear          | **106.7 dp** | +122.2% 🔴🔴  | 13.3%     | ❌❌ GIGANTE     |
-| Porcentagem     | **106.7 dp** | +122.2% 🔴🔴  | 13.3%     | ❌❌ GIGANTE     |
-| Interpolação    | **77.3 dp**  | +61.1%        | 9.7%      | 🟡 Ok          |
-| Quadrática      | **99.6 dp**  | +107.5% 🔴🔴  | 12.5%     | ❌ Muito grande |
-| Raiz Quadrada   | **98.1 dp**  | +104.4% 🔴🔴  | 12.3%     | ❌ Muito grande |
-| Min/Max         | **106.7 dp** | +122.2% 🔴🔴  | 13.3%     | ❌❌ GIGANTE     |
-| **Logarítmica** | **85.7 dp**  | **+78.5%** 🟢 | **10.7%** | **✅ PERFEITO** |
-
-**🏆 Diferença BRUTAL:** Logarítmica evita **43.7% de oversizing** vs. linear!
+| Formula         | Result      | Growth   | % of Screen | Evaluation   |
+| --------------- | ----------- | -------- | ----------- | ------------ |
+| Linear          | **64.0 dp** | +33.3%   | 13.3%       | 🟡 Ok        |
+| Percentage      | **64.0 dp** | +33.3%   | 13.3%       | 🟡 Ok        |
+| Interpolation   | **56.0 dp** | +16.7%   | 11.7%       | 🟢 Good      |
+| Quadratic       | **63.5 dp** | +32.3%   | 13.2%       | 🟡 Ok        |
+| Square Root     | **64.1 dp** | +33.5%   | 13.4%       | 🟡 Ok        |
+| Min/Max         | **64.0 dp** | +33.3%   | 13.3%       | 🟡 Ok        |
+| **Logarithmic** | **57.1 dp** | **+19.0%** | **11.9%** | **🟢 Great** |
 
 ---
 
-### 2.3 Gráfico de Crescimento Comparativo
+#### **Device 4: Tablet 7" (600×960) - Critical Transition**
+
+| Formula         | Result      | Growth        | % of Screen | Evaluation         |
+| --------------- | ----------- | ------------- | ----------- | ------------------ |
+| Linear          | **80.0 dp** | +66.7% 🔴     | 13.3%       | ❌ Too large        |
+| Percentage      | **80.0 dp** | +66.7% 🔴     | 13.3%       | ❌ Too large        |
+| Interpolation   | **64.0 dp** | +33.3%        | 10.7%       | 🟡 Acceptable      |
+| Quadratic       | **74.5 dp** | +55.2% 🔴     | 12.4%       | ⚠️ Large           |
+| Square Root     | **73.9 dp** | +53.9% 🔴     | 12.3%       | ⚠️ Large           |
+| Min/Max         | **80.0 dp** | +66.7% 🔴     | 13.3%       | ❌ Too large        |
+| **Logarithmic** | **68.1 dp** | **+41.9%** 🟢 | **11.4%**   | **✅ Proportional** |
+
+**⭐ Critical difference:** Logarithmic grows **24.8% LESS** than linear!
+
+---
+
+#### **Device 5: Tablet 10" (800×1280) - Extreme Test**
+
+| Formula         | Result       | Growth        | % of Screen | Evaluation   |
+| --------------- | ------------ | ------------- | ----------- | ------------ |
+| Linear          | **106.7 dp** | +122.2% 🔴🔴  | 13.3%       | ❌❌ GIGANTIC  |
+| Percentage      | **106.7 dp** | +122.2% 🔴🔴  | 13.3%       | ❌❌ GIGANTIC  |
+| Interpolation   | **77.3 dp**  | +61.1%        | 9.7%        | 🟡 Ok        |
+| Quadratic       | **99.6 dp**  | +107.5% 🔴🔴  | 12.5%       | ❌ Too large  |
+| Square Root     | **98.1 dp**  | +104.4% 🔴🔴  | 12.3%       | ❌ Too large  |
+| Min/Max         | **106.7 dp** | +122.2% 🔴🔴  | 13.3%       | ❌❌ GIGANTIC  |
+| **Logarithmic** | **85.7 dp**  | **+78.5%** 🟢 | **10.7%**   | **✅ PERFECT** |
+
+**🏆 BRUTAL difference:** Logarithmic avoids **43.7% of oversizing** vs. linear!
+
+---
+
+### 2.3 Comparative Growth Chart
 
 ```
-Crescimento do Valor (48dp base → diversos dispositivos)
+Value Growth (48dp base → various devices)
 
 120dp │                                          ● Linear (106.7)
-      │                                          ● Porcentagem (106.7)
-      │                                        ● Quadrática (99.6)
-110dp │                                       ● Raiz² (98.1)
+      │                                          ● Percentage (106.7)
+      │                                        ● Quadratic (99.6)
+110dp │                                       ● Sqrt (98.1)
       │                                      
 100dp │                                    
       │                               
  90dp │                                     
       │                                   
- 80dp │                       ● Linear (80.0)     ★ Logarítmica (85.7)
-      │                     ● Quadrática (74.5)
-      │                   ● Raiz² (73.9)
- 70dp │                 ★ Log (68.1)      ◆ Interpolação (77.3)
+ 80dp │                       ● Linear (80.0)     ★ Logarithmic (85.7)
+      │                     ● Quadratic (74.5)
+      │                   ● Sqrt (73.9)
+ 70dp │                 ★ Log (68.1)      ◆ Interpolation (77.3)
       │               
  60dp │         ● Linear (64.0)    
       │       ★ Log (57.1)   ◆ Interp (64.0)
       │     ● Lin (54.8)  ◆ Interp (56.0)
  50dp │   ★ Log (52.3) ◆ Interp (51.4)
-      │ ● Todas (48.0)
+      │ ● All (48.0)
  40dp +─────┬──────┬──────┬──────┬──────┬──────
       360dp 411dp 480dp  600dp  800dp  1000dp
 
-LEGENDA:
-  ● Linear/Porcentagem/Min-Max: Crescimento AGRESSIVO descontrolado
-  ● Quadrática/Raiz²: Crescimento MUITO ALTO
-  ◆ Interpolação: Crescimento MODERADO
-  ★ Logarítmica: Crescimento CONTROLADO e perceptualmente correto ✅
+LEGEND:
+  ● Linear/Percentage/Min-Max: AGGRESSIVE uncontrolled growth
+  ● Quadratic/Sqrt: VERY HIGH growth
+  ◆ Interpolation: MODERATE growth
+  ★ Logarithmic: CONTROLLED and perceptually correct growth ✅
 ```
 
 ---
 
-### 2.4 Teste de Aspect Ratio (Sensibilidade Contextual)
+### 2.4 Aspect Ratio Test (Contextual Sensitivity)
 
-**Configuração:** Mesma largura (360dp), ARs diferentes
+**Configuration:** Same width (360dp), different ARs
 
 ```
 ┌────────────────────────────────────────────────────────────┐
-│ LARGURA FIXA: 360dp, VALOR BASE: 48dp                     │
+│ FIXED WIDTH: 360dp, BASE VALUE: 48dp                      │
 ├────────────────────────────────────────────────────────────┤
-│ AR    │ Dimensões  │ Linear │ Raiz² │ Logarítmica│ Δ     │
-│ 1.33  │ 360×480    │ 48.0   │ 48.0  │ 46.2 dp    │ -3.8% │
-│ 1.78  │ 360×640    │ 48.0   │ 48.0  │ 48.0 dp    │  0%   │
-│ 2.00  │ 360×720    │ 48.0   │ 48.0  │ 49.1 dp    │ +2.3% │
-│ 2.33  │ 360×840    │ 48.0   │ 48.0  │ 51.3 dp    │ +6.9% │
+│ AR    │ Dimensions │ Linear │ Sqrt  │ Logarithmic │ Δ     │
+│ 1.33  │ 360×480    │ 48.0   │ 48.0  │ 46.2 dp     │ -3.8% │
+│ 1.78  │ 360×640    │ 48.0   │ 48.0  │ 48.0 dp     │  0%   │
+│ 2.00  │ 360×720    │ 48.0   │ 48.0  │ 49.1 dp     │ +2.3% │
+│ 2.33  │ 360×840    │ 48.0   │ 48.0  │ 51.3 dp     │ +6.9% │
 └────────────────────────────────────────────────────────────┘
 ```
 
-**Análise:**
+**Analysis:**
 
-- **Todas as outras fórmulas:** AR é **completamente ignorado** (resultado sempre 48dp)
-- **Logarítmica:** AR é **automaticamente compensado** (ajuste ±7%)
+- **All other formulas:** AR is **completely ignored** (result always 48dp)
+- **Logarithmic:** AR is **automatically compensated** (adjustment ±7%)
 
-**Justificativa psicofísica:**
+**Psychophysical justification:**
 
-- Tela 21:9 (ultra-wide) → Mais espaço horizontal → Elementos ligeiramente maiores
-- Tela 4:3 (tablet quadrado) → Menos espaço horizontal → Elementos ligeiramente menores
+- 21:9 screen (ultra-wide) → More horizontal space → Slightly larger elements
+- 4:3 screen (square tablet) → Less horizontal space → Slightly smaller elements
 
-**🏆 Vencedor:** Apenas Logarítmica compensa AR contextualmente
+**🏆 Winner:** Only Logarithmic compensates AR contextually
 
 ---
 
-## 3. Análise de Performance
+## 3. Performance Analysis
 
-### 3.1 Contagem de Operações por Fórmula
+### 3.1 Operation Count per Formula
 
 ```
 ┌────────────────────────────────────────────────────────────┐
-│ FÓRMULA            │ FLOPS │ OP. CARA │ CICLOS │ LATÊNCIA │
+│ FORMULA            │ FLOPS │ EXP. OP  │ CYCLES │ LATENCY │
 ├────────────────────────────────────────────────────────────┤
-│ Porcentagem        │   1   │ -        │  ~2    │  0.3 µs  │
-│ Linear             │   2   │ Divisão  │  ~3    │  0.5 µs  │
-│ Min/Max            │   2   │ Divisão  │  ~3    │  0.5 µs  │
-│ Quadrática         │   4   │ Potência │  ~6    │  0.9 µs  │
-│ Raiz Quadrada      │   6   │ sqrt()   │  ~25   │  3.0 µs  │
-│ Interpolação       │   7   │ -        │  ~10   │  1.2 µs  │
-│ Logarítmica        │  12   │ ln()     │  ~35   │  3.5 µs  │
-│ Logarítmica (cache)│   -   │ cache    │  ~1    │  0.1 µs  │
+│ Percentage         │   1   │ -        │  ~2    │  0.3 µs │
+│ Linear             │   2   │ Division │  ~3    │  0.5 µs │
+│ Min/Max            │   2   │ Division │  ~3    │  0.5 µs │
+│ Quadratic          │   4   │ Power    │  ~6    │  0.9 µs │
+│ Square Root        │   6   │ sqrt()   │  ~25   │  3.0 µs │
+│ Interpolation      │   7   │ -        │  ~10   │  1.2 µs │
+│ Logarithmic        │  12   │ ln()     │  ~35   │  3.5 µs │
+│ Logarithmic (cache)│   -   │ cache    │  ~1    │  0.1 µs │
 └────────────────────────────────────────────────────────────┘
 ```
 
-**Observações:**
+**Observations:**
 
-- `ln()` (logaritmo natural) custa ~10-15 ciclos vs. 1-2 ciclos para multiplicação
-- `sqrt()` (raiz quadrada) custa ~8-12 ciclos
-- **MAS:** Com cache/memoização, logarítmica se torna **a mais rápida!**
+- `ln()` (natural logarithm) costs ~10-15 cycles vs. 1-2 cycles for multiplication
+- `sqrt()` (square root) costs ~8-12 cycles
+- **BUT:** With cache/memoization, logarithmic becomes **the fastest!**
 
 ---
 
-### 3.2 Benchmark Sintético (1 milhão de operações)
+### 3.2 Synthetic Benchmark (1 million operations)
 
-Processador: ARM Cortex-A78 (comum em Android flagship 2024)
+Processor: ARM Cortex-A78 (common in Android flagship 2024)
 
 ```
 ┌────────────────────────────────────────────────────────────┐
-│ BENCHMARK: 1.000.000 DE OPERAÇÕES                         │
+│ BENCHMARK: 1,000,000 OPERATIONS                           │
 ├────────────────────────────────────────────────────────────┤
-│ Porcentagem:             5ms  (1.0x baseline)    ⚡⚡⚡    │
+│ Percentage:              5ms  (1.0x baseline)    ⚡⚡⚡    │
 │ Linear/Min-Max:         12ms  (2.4x)             ⚡⚡      │
-│ Quadrática:             18ms  (3.6x)             ⚡        │
-│ Interpolação:           28ms  (5.6x)             ⚡        │
-│ Raiz Quadrada:          72ms  (14.4x)            🐌        │
-│ Logarítmica (no cache): 85ms  (17.0x)            🐌        │
-│ Logarítmica (cached):    2ms  (0.4x)             ⚡⚡⚡⚡  │
+│ Quadratic:              18ms  (3.6x)             ⚡        │
+│ Interpolation:          28ms  (5.6x)             ⚡        │
+│ Square Root:            72ms  (14.4x)            🐌        │
+│ Logarithmic (no cache): 85ms  (17.0x)            🐌        │
+│ Logarithmic (cached):    2ms  (0.4x)             ⚡⚡⚡⚡  │
 └────────────────────────────────────────────────────────────┘
 ```
 
-**💡 Conclusão:**
+**💡 Conclusion:**
 
-- **Sem cache:** Logarítmica é a mais lenta (17× vs porcentagem)
-- **Com cache:** Logarítmica é **a MAIS RÁPIDA** (3× mais rápida que porcentagem!)
-- **Em produção:** 99% dos casos usam cache → **Logarítmica vence** 🏆
+- **Without cache:** Logarithmic is slowest (17× vs percentage)
+- **With cache:** Logarithmic is **the FASTEST** (3× faster than percentage!)
+- **In production:** 99% of cases use cache → **Logarithmic wins** 🏆
 
 ---
 
-### 3.3 Impacto em um Frame 60fps
+### 3.3 Impact on a 60fps Frame
 
 ```
-Um frame 60fps = 16.67ms
+One 60fps frame = 16.67ms
 
-Cenário: Tela com 100 elementos responsivos
+Scenario: Screen with 100 responsive elements
 
 ┌────────────────────────────────────────────────────────────┐
-│ FÓRMULA            │ TEMPO   │ % DO FRAME │ AVALIAÇÃO     │
+│ FORMULA            │ TIME    │ % OF FRAME │ EVALUATION    │
 ├────────────────────────────────────────────────────────────┤
-│ Porcentagem        │  30 µs  │   0.18%    │ ✅ Irrelevante│
-│ Linear             │  50 µs  │   0.30%    │ ✅ Irrelevante│
-│ Interpolação       │ 120 µs  │   0.72%    │ ✅ Irrelevante│
-│ Quadrática         │  90 µs  │   0.54%    │ ✅ Irrelevante│
-│ Raiz Quadrada      │ 300 µs  │   1.80%    │ ✅ Aceitável  │
-│ Logarítmica (no)   │ 350 µs  │   2.10%    │ ✅ Aceitável  │
-│ Logarítmica (cache)│  10 µs  │   0.06%    │ ✅✅ Perfeito │
+│ Percentage         │  30 µs  │   0.18%    │ ✅ Irrelevant │
+│ Linear             │  50 µs  │   0.30%    │ ✅ Irrelevant │
+│ Interpolation      │ 120 µs  │   0.72%    │ ✅ Irrelevant │
+│ Quadratic          │  90 µs  │   0.54%    │ ✅ Irrelevant │
+│ Square Root        │ 300 µs  │   1.80%    │ ✅ Acceptable │
+│ Logarithmic (no)   │ 350 µs  │   2.10%    │ ✅ Acceptable │
+│ Logarithmic (cache)│  10 µs  │   0.06%    │ ✅✅ Perfect  │
 └────────────────────────────────────────────────────────────┘
 ```
 
-**📊 Veredicto:** TODAS as fórmulas têm performance aceitável (<3% do frame). A diferença é IRRELEVANTE na prática.
+**📊 Verdict:** ALL formulas have acceptable performance (<3% of frame). The difference is IRRELEVANT in practice.
 
 ---
 
-## 4. Análise de Exatidão
+## 4. Accuracy Analysis
 
-### 4.1 Erro Perceptual (vs. Ideal Psicofísico)
+### 4.1 Perceptual Error (vs. Ideal Psychophysical)
 
-Baseado na Lei de Weber-Fechner, o tamanho "ideal" percebido segue:
+Based on Weber-Fechner Law, the ideal perceived size follows:
 
 ```
 S_ideal = S₀ × [1 + k × ln(W / W₀)]
 
-Onde k ≈ 0.15-0.20 (estudos de UX)
+Where k ≈ 0.15-0.20 (UX studies)
 ```
 
-**Calculando erro para cada fórmula:**
+**Calculating error for each formula:**
 
-| Dispositivo | Ideal | Linear | Erro %      | Interp | Erro % | **Log**  | **Erro %**    |
-| ----------- | ----- | ------ | ----------- | ------ | ------ | -------- | ------------- |
-| 360×640     | 48.0  | 48.0   | 0%          | 48.0   | 0%     | **48.0** | **0%**        |
-| 411×731     | 51.8  | 54.8   | +5.8%       | 51.4   | -0.8%  | **52.3** | **+1.0%** ✅   |
-| 480×853     | 56.2  | 64.0   | +13.9%      | 56.0   | -0.4%  | **57.1** | **+1.6%** ✅   |
-| 600×960     | 63.5  | 80.0   | +26.0% 🔴   | 64.0   | +0.8%  | **68.1** | **+7.2%** ✅   |
-| 800×1280    | 74.1  | 106.7  | +44.0% 🔴🔴 | 77.3   | +4.3%  | **85.7** | **+15.6%** 🟡 |
+| Device  | Ideal | Linear | Error %     | Interp | Error % | **Log**  | **Error %**   |
+| ------- | ----- | ------ | ----------- | ------ | ------- | -------- | ------------- |
+| 360×640 | 48.0  | 48.0   | 0%          | 48.0   | 0%      | **48.0** | **0%**        |
+| 411×731 | 51.8  | 54.8   | +5.8%       | 51.4   | -0.8%   | **52.3** | **+1.0%** ✅   |
+| 480×853 | 56.2  | 64.0   | +13.9%      | 56.0   | -0.4%   | **57.1** | **+1.6%** ✅   |
+| 600×960 | 63.5  | 80.0   | +26.0% 🔴   | 64.0   | +0.8%   | **68.1** | **+7.2%** ✅   |
+| 800×1280| 74.1  | 106.7  | +44.0% 🔴🔴 | 77.3   | +4.3%   | **85.7** | **+15.6%** 🟡 |
 
-**Erro médio absoluto:**
+**Mean absolute error:**
 
 - **Linear:** 17.9% 🔴
-- **Quadrática:** 22.4% 🔴
-- **Raiz Quadrada:** 19.1% 🔴
-- **Interpolação:** 8.2% 🟡
-- **Logarítmica:** **5.1%** 🟢
+- **Quadratic:** 22.4% 🔴
+- **Square Root:** 19.1% 🔴
+- **Interpolation:** 8.2% 🟡
+- **Logarithmic:** **5.1%** 🟢
 
-**🏆 Vencedor:** Logarítmica (3.5× mais precisa que linear)
+**🏆 Winner:** Logarithmic (3.5× more accurate than linear)
 
 ---
 
-### 4.2 Coeficiente de Variação (Consistência)
+### 4.2 Coefficient of Variation (Consistency)
 
 ```
 CV = (σ / μ) × 100
 
-Onde:
-σ = desvio padrão dos resultados
-μ = média dos resultados
+Where:
+σ = standard deviation of results
+μ = mean of results
 ```
 
-**Teste:** 5 dispositivos (360, 411, 480, 600, 800 dp)
+**Test:** 5 devices (360, 411, 480, 600, 800 dp)
 
-| Fórmula         | Média       | Desvio σ    | CV        | Consistência |
-| --------------- | ----------- | ----------- | --------- | ------------ |
-| Linear          | 70.7 dp     | 24.2 dp     | **34.2%** | 🔴 Baixa     |
-| Porcentagem     | 70.7 dp     | 24.2 dp     | **34.2%** | 🔴 Baixa     |
-| Quadrática      | 68.0 dp     | 21.8 dp     | **32.1%** | 🔴 Baixa     |
-| Raiz Quadrada   | 67.7 dp     | 21.1 dp     | **31.2%** | 🔴 Baixa     |
-| Interpolação    | 59.3 dp     | 12.4 dp     | **20.9%** | 🟡 Média     |
-| **Logarítmica** | **62.2 dp** | **15.8 dp** | **25.4%** | **🟢 Alta**  |
+| Formula         | Mean        | Deviation σ | CV        | Consistency |
+| --------------- | ----------- | ----------- | --------- | ----------- |
+| Linear          | 70.7 dp     | 24.2 dp     | **34.2%** | 🔴 Low      |
+| Percentage      | 70.7 dp     | 24.2 dp     | **34.2%** | 🔴 Low      |
+| Quadratic       | 68.0 dp     | 21.8 dp     | **32.1%** | 🔴 Low      |
+| Square Root     | 67.7 dp     | 21.1 dp     | **31.2%** | 🔴 Low      |
+| Interpolation   | 59.3 dp     | 12.4 dp     | **20.9%** | 🟡 Medium   |
+| **Logarithmic** | **62.2 dp** | **15.8 dp** | **25.4%** | **🟢 High** |
 
-**Interpretação:**
+**Interpretation:**
 
-- **CV < 20%:** Excelente
-- **CV 20-30%:** Boa
-- **CV > 30%:** Ruim (elementos muito inconsistentes entre dispositivos)
+- **CV < 20%:** Excellent
+- **CV 20-30%:** Good
+- **CV > 30%:** Poor (elements too inconsistent between devices)
 
-**🥈 2º lugar:** Interpolação (20.9%)  
-**🥉 3º lugar:** Logarítmica (25.4%)
+**🥈 2nd place:** Interpolation (20.9%)  
+**🥉 3rd place:** Logarithmic (25.4%)
 
-*Nota: Logarítmica tem CV maior porque PROPOSITALMENTE ajusta por AR e tamanho. Se removermos o ajuste de AR, CV cai para ~22%.*
+*Note: Logarithmic has higher CV because it PURPOSEFULLY adjusts for AR and size. If we remove AR adjustment, CV drops to ~22%.*
 
 ---
 
-### 4.3 Cobertura de Edge Cases
+### 4.3 Edge Case Coverage
 
 ```
-TESTE: 4 cenários extremos
+TEST: 4 extreme scenarios
 
-1. Tela minúscula (smartwatch 240dp)
-2. Tela gigante (TV 4K 3840dp)
-3. Aspect ratio extremo (foldable 2.8:1)
-4. Multi-window (split 50%)
+1. Tiny screen (smartwatch 240dp)
+2. Giant screen (4K TV 3840dp)
+3. Extreme aspect ratio (foldable 2.8:1)
+4. Multi-window (50% split)
 ```
 
-| Fórmula | Watch | TV | Ultra-wide | Split | **Total** |
-|---------|-------|----|-----------|----|-------|----------|
+| Formula | Watch | TV | Ultra-wide | Split | **Total** |
+|---------|-------|----|-----------|----|--------|
 | Linear | ⚠️ | ❌ | ❌ | ❌ | **1/4** |
-| Porcentagem | ⚠️ | ❌ | ❌ | ❌ | **1/4** |
-| Interpolação | ✅ | ⚠️ | ❌ | ❌ | **1.5/4** |
-| Quadrática | ⚠️ | ❌ | ❌ | ❌ | **1/4** |
-| Raiz Quadrada | ⚠️ | ⚠️ | ❌ | ❌ | **2/4** |
-| **Logarítmica** | **✅** | **✅** | **✅** | **✅** | **4/4** ✅ |
+| Percentage | ⚠️ | ❌ | ❌ | ❌ | **1/4** |
+| Interpolation | ✅ | ⚠️ | ❌ | ❌ | **1.5/4** |
+| Quadratic | ⚠️ | ❌ | ❌ | ❌ | **1/4** |
+| Square Root | ⚠️ | ⚠️ | ❌ | ❌ | **2/4** |
+| **Logarithmic** | **✅** | **✅** | **✅** | **✅** | **4/4** ✅ |
 
-**🏆 Apenas Logarítmica trata todos os edge cases corretamente**
+**🏆 Only Logarithmic handles all edge cases correctly**
 
 ---
 
-## 5. Análise Matemática Profunda
+## 5. Deep Mathematical Analysis
 
-### 5.1 Derivadas (Taxa de Crescimento)
+### 5.1 Derivatives (Growth Rate)
 
 ```
-f'(W) = taxa de crescimento em relação à largura
+f'(W) = growth rate with respect to width
 
 LINEAR:
 f(x) = x × (W / W₀)
-f'(W) = x / W₀                          [constante]
-→ Cresce SEMPRE na mesma taxa (sem controle)
+f'(W) = x / W₀                          [constant]
+→ Always grows at same rate (no control)
 
-INTERPOLAÇÃO:
+INTERPOLATION:
 f(x) = x + (x×W/W₀ - x) × k
-f'(W) = x×k / W₀                        [constante, mas menor]
-→ Taxa constante reduzida pelo fator k
+f'(W) = x×k / W₀                        [constant, but smaller]
+→ Constant rate reduced by factor k
 
-QUADRÁTICA:
+QUADRATIC:
 f(x) = p² × (W + H)
-f'(W) = p²                               [constante]
-→ Cresce linearmente (apesar do nome "quadrática")
+f'(W) = p²                               [constant]
+→ Grows linearly (despite "quadratic" name)
 
-RAIZ QUADRADA:
+SQUARE ROOT:
 f(x) = x × √(W² + H²) / c
-f'(W) = x × W / (c × √(W² + H²))        [decrescente]
-→ Taxa DIMINUI com aumento de W ✅
+f'(W) = x × W / (c × √(W² + H²))        [decreasing]
+→ Rate DECREASES with W increase ✅
 
-LOGARÍTMICA:
+LOGARITHMIC:
 f(x) = x × [1 + (W/W₀ - 1) × g(AR)]
-Onde g(AR) = α + k × ln(AR / AR₀)
+Where g(AR) = α + k × ln(AR / AR₀)
 
 f'(W) = x × [1/W₀ × g(AR) + (W/W₀ - 1) × g'(AR) × ∂AR/∂W]
-      = termo_linear + termo_não_linear
-→ Taxa DIMINUI + ajuste por AR ✅✅
+      = linear_term + nonlinear_term
+→ Rate DECREASES + AR adjustment ✅✅
 ```
 
-**📊 Conclusão:**
+**📊 Conclusion:**
 
-- **Linear/Quadrática:** Taxa constante (cresce sempre igual) ❌
-- **Raiz Quadrada:** Taxa decrescente (desacelera) ✅
-- **Logarítmica:** Taxa decrescente + ajuste por AR (MAIS SOFISTICADA) ✅✅
+- **Linear/Quadratic:** Constant rate (always grows same) ❌
+- **Square Root:** Decreasing rate (decelerates) ✅
+- **Logarithmic:** Decreasing rate + AR adjustment (MOST SOPHISTICATED) ✅✅
 
 ---
 
-### 5.2 Segunda Derivada (Aceleração)
+### 5.2 Second Derivative (Acceleration)
 
 ```
-f''(W) = aceleração do crescimento
+f''(W) = growth acceleration
 
-LINEAR:           f''(W) = 0      [sem aceleração]
-INTERPOLAÇÃO:     f''(W) = 0      [sem aceleração]
-QUADRÁTICA:       f''(W) = 0      [sem aceleração]
-RAIZ QUADRADA:    f''(W) < 0      [desaceleração negativa]
-LOGARÍTMICA:      f''(W) < 0      [desaceleração adaptativa]
+LINEAR:           f''(W) = 0      [no acceleration]
+INTERPOLATION:    f''(W) = 0      [no acceleration]
+QUADRATIC:        f''(W) = 0      [no acceleration]
+SQUARE ROOT:      f''(W) < 0      [negative deceleration]
+LOGARITHMIC:      f''(W) < 0      [adaptive deceleration]
 ```
 
-**Interpretação física:**
+**Physical interpretation:**
 
-- **f'' = 0:** Velocidade constante (movimento linear)
-- **f'' < 0:** Desaceleração (cresce cada vez menos)
+- **f'' = 0:** Constant velocity (linear motion)
+- **f'' < 0:** Deceleration (grows less and less)
 
-**🏆 Vencedor:** Logarítmica tem **desaceleração adaptativa** (melhor para percepção humana)
+**🏆 Winner:** Logarithmic has **adaptive deceleration** (better for human perception)
 
 ---
 
-### 5.3 Comportamento Assintótico (W → ∞)
+### 5.3 Asymptotic Behavior (W → ∞)
 
 ```
-Quando W → ∞ (telas gigantes, ex: cinema 8K):
+When W → ∞ (giant screens, e.g. cinema 8K):
 
-LINEAR:          f(x) → ∞  taxa: W           [cresce sem limites]
-PORCENTAGEM:     f(x) → ∞  taxa: W           [cresce sem limites]
-INTERPOLAÇÃO:    f(x) → ∞  taxa: k×W         [cresce sem limites, mais lento]
-QUADRÁTICA:      f(x) → ∞  taxa: W           [cresce sem limites]
-RAIZ QUADRADA:   f(x) → ∞  taxa: √W          [cresce sem limites, sublinear]
-LOGARÍTMICA:     f(x) → ∞  taxa: W×ln(W)     [cresce, mas ln(W) MUITO lento]
+LINEAR:          f(x) → ∞  rate: W           [grows without limits]
+PERCENTAGE:      f(x) → ∞  rate: W           [grows without limits]
+INTERPOLATION:   f(x) → ∞  rate: k×W         [grows without limits, slower]
+QUADRATIC:       f(x) → ∞  rate: W           [grows without limits]
+SQUARE ROOT:     f(x) → ∞  rate: √W          [grows without limits, sublinear]
+LOGARITHMIC:     f(x) → ∞  rate: W×ln(W)     [grows, but ln(W) VERY slow]
 ```
 
-**Crescimento relativo para W = 10000dp (cinema):**
+**Relative growth for W = 10000dp (cinema):**
 
-| Fórmula         | Resultado    | Taxa vs. W=800dp  |
+| Formula         | Result       | Rate vs. W=800dp  |
 | --------------- | ------------ | ----------------- |
-| Linear          | **1333 dp**  | 12.5× maior 🔴    |
-| Quadrática      | **~1200 dp** | 12× maior 🔴      |
-| Raiz Quadrada   | **~650 dp**  | 6.6× maior 🟡     |
-| **Logarítmica** | **~320 dp**  | **3.7× maior** 🟢 |
+| Linear          | **1333 dp**  | 12.5× larger 🔴   |
+| Quadratic       | **~1200 dp** | 12× larger 🔴     |
+| Square Root     | **~650 dp**  | 6.6× larger 🟡    |
+| **Logarithmic** | **~320 dp**  | **3.7× larger** 🟢|
 
-**🏆 Logarítmica é a ÚNICA que controla oversizing extremo**
+**🏆 Logarithmic is the ONLY one that controls extreme oversizing**
 
 ---
 
-### 5.4 Propriedades Topológicas
+### 5.4 Topological Properties
 
 ```
-CONTINUIDADE:
-✅ Todas as fórmulas são contínuas em seu domínio
+CONTINUITY:
+✅ All formulas are continuous in their domain
 
-DIFERENCIABILIDADE:
-✅ Todas são diferenciáveis (smooth)
+DIFFERENTIABILITY:
+✅ All are differentiable (smooth)
 
-MONOTONIA:
-✅ Todas são monótonas crescentes (quando W aumenta, f(W) aumenta)
+MONOTONICITY:
+✅ All are monotonically increasing (when W increases, f(W) increases)
 
-CONVEXIDADE:
-Linear/Quadrática: f''(W) = 0  (nem côncava nem convexa)
-Raiz Quadrada:     f''(W) < 0  (côncava)
-Logarítmica:       f''(W) < 0  (côncava)
+CONVEXITY:
+Linear/Quadratic: f''(W) = 0  (neither concave nor convex)
+Square Root:      f''(W) < 0  (concave)
+Logarithmic:      f''(W) < 0  (concave)
 
-→ Funções côncavas têm crescimento DESACELERADO (ideal para UI)
+→ Concave functions have DECELERATED growth (ideal for UI)
 ```
 
 ---
 
-## 6. Ranking Final e Certificação
+## 6. Final Ranking and Certification
 
-### 6.1 Critérios de Avaliação
+### 6.1 Evaluation Criteria
 
 ```
-NOTA FINAL = 30% Performance + 40% Exatidão + 30% Flexibilidade
+FINAL SCORE = 30% Performance + 40% Accuracy + 30% Flexibility
 ```
 
-| Critério      | Peso | Descrição                                    |
-| ------------- | ---- | -------------------------------------------- |
-| Performance   | 30%  | Velocidade, otimização, custo computacional  |
-| Exatidão      | 40%  | Erro perceptual, consistência, edge cases    |
-| Flexibilidade | 30%  | Customização, adaptabilidade, compensação AR |
+| Criterion     | Weight | Description                                  |
+| ------------- | ------ | -------------------------------------------- |
+| Performance   | 30%    | Speed, optimization, computational cost      |
+| Accuracy      | 40%    | Perceptual error, consistency, edge cases    |
+| Flexibility   | 30%    | Customization, adaptability, AR compensation |
 
 ---
 
-### 6.2 Pontuação Detalhada
+### 6.2 Detailed Scoring
 
-#### **7º LUGAR: Porcentagem Simples - 48/100 ⭐⭐**
+#### **7th PLACE: Simple Percentage - 48/100 ⭐⭐**
 
-| Critério      | Nota       | Justificativa                              |
-| ------------- | ---------- | ------------------------------------------ |
-| Performance   | 10/10      | ⚡⚡⚡ Apenas 1 multiplicação                 |
-| Exatidão      | 3/10       | 🔴 Erro 17.9%, CV 34%, desastre em tablets |
-| Flexibilidade | 2/10       | ❌ Zero controle, zero customização         |
-| **TOTAL**     | **4.9/10** | **Não usar em produção**                   |
-
----
-
-#### **6º LUGAR: Linear (SDP/SSP) - 47/100 ⭐⭐**
-
-| Critério      | Nota       | Justificativa                     |
-| ------------- | ---------- | --------------------------------- |
-| Performance   | 9.5/10     | ⚡⚡ Muito rápida                   |
-| Exatidão      | 3/10       | 🔴 Erro 17.9%, oversizing crítico |
-| Flexibilidade | 3/10       | ❌ Valores fixos XML, sem AR       |
-| **TOTAL**     | **4.7/10** | **Apenas para prototipagem**      |
+| Criterion     | Score      | Justification                             |
+| ------------- | ---------- | ----------------------------------------- |
+| Performance   | 10/10      | ⚡⚡⚡ Only 1 multiplication                 |
+| Accuracy      | 3/10       | 🔴 Error 17.9%, CV 34%, disaster on tablets|
+| Flexibility   | 2/10       | ❌ Zero control, zero customization        |
+| **TOTAL**     | **4.9/10** | **Don't use in production**               |
 
 ---
 
-#### **5º LUGAR: Min/Max - 50/100 ⭐⭐**
+#### **6th PLACE: Linear (SDP/SSP) - 47/100 ⭐⭐**
 
-| Critério      | Nota       | Justificativa                    |
+| Criterion     | Score      | Justification                    |
 | ------------- | ---------- | -------------------------------- |
-| Performance   | 9.5/10     | ⚡⚡ Muito rápida                  |
-| Exatidão      | 4/10       | 🔴 Linear (mesmo problema)       |
-| Flexibilidade | 3/10       | ⚠️ Escolha de min/max arbitrária |
-| **TOTAL**     | **5.0/10** | **Uso limitado**                 |
+| Performance   | 9.5/10     | ⚡⚡ Very fast                     |
+| Accuracy      | 3/10       | 🔴 Error 17.9%, critical oversizing|
+| Flexibility   | 3/10       | ❌ Fixed XML values, no AR        |
+| **TOTAL**     | **4.7/10** | **Only for prototyping**         |
 
 ---
 
-#### **4º LUGAR: Quadrática (Flutter) - 50/100 ⭐⭐⭐**
+#### **5th PLACE: Min/Max - 50/100 ⭐⭐**
 
-| Critério      | Nota       | Justificativa                      |
-| ------------- | ---------- | ---------------------------------- |
-| Performance   | 9/10       | ⚡ Rápida                           |
-| Exatidão      | 3.5/10     | 🔴 Erro 22.4%, cresce muito rápido |
-| Flexibilidade | 4/10       | ⚠️ Sem base teórica                |
-| **TOTAL**     | **5.0/10** | **Popular, mas problemática**      |
-
----
-
-#### **🥉 3º LUGAR: Raiz Quadrada - 62/100 ⭐⭐⭐**
-
-| Critério      | Nota       | Justificativa                |
-| ------------- | ---------- | ---------------------------- |
-| Performance   | 7/10       | ⚠️ sqrt() é cara (3µs)       |
-| Exatidão      | 6.5/10     | 🟡 Erro 19.1%, sublinear     |
-| Flexibilidade | 5/10       | ⚠️ Considera W+H, mas não AR |
-| **TOTAL**     | **6.2/10** | **Boa alternativa técnica**  |
+| Criterion     | Score      | Justification                   |
+| ------------- | ---------- | ------------------------------- |
+| Performance   | 9.5/10     | ⚡⚡ Very fast                    |
+| Accuracy      | 4/10       | 🔴 Linear (same problem)        |
+| Flexibility   | 3/10       | ⚠️ Choice of min/max arbitrary  |
+| **TOTAL**     | **5.0/10** | **Limited use**                 |
 
 ---
 
-#### **🥈 2º LUGAR: Interpolação (React Native) - 78/100 ⭐⭐⭐⭐**
+#### **4th PLACE: Quadratic (Flutter) - 50/100 ⭐⭐⭐**
 
-| Critério      | Nota       | Justificativa                      |
-| ------------- | ---------- | ---------------------------------- |
-| Performance   | 8.5/10     | ⚡ Rápida (1.2µs)                   |
-| Exatidão      | 8/10       | 🟢 Erro 8.2%, CV 20.9% (excelente) |
-| Flexibilidade | 7/10       | ✅ Fator k customizável             |
-| **TOTAL**     | **7.8/10** | **Excelente para React Native**    |
-
----
-
-#### **🥇 1º LUGAR: Logarítmica (AppDimens) - 91/100 ⭐⭐⭐⭐⭐**
-
-| Critério      | Nota        | Justificativa                                 |
-| ------------- | ----------- | --------------------------------------------- |
-| Performance   | 10/10       | ⚡⚡⚡⚡ Com cache: 0.1µs (MAIS RÁPIDA)           |
-| Exatidão      | 10/10       | 🟢🟢 Erro 5.1%, compensa AR, edge cases 4/4   |
-| Flexibilidade | 10/10       | ✅✅ Parâmetro k, AR, prioridades, multi-window |
-| **TOTAL**     | **10.0/10** | **🏆 CAMPEÃ ABSOLUTA**                        |
-
-**Diferenciais únicos:**
-
-- ✅ Única com fundamentação científica (Weber-Fechner)
-- ✅ Única que compensa aspect ratio
-- ✅ Melhor exatidão perceptual (3.5× melhor que linear)
-- ✅ Controla oversizing (65% menos que linear em tablets)
-- ✅ Derivada decrescente (cresce menos em telas grandes)
-- ✅ Trata todos os edge cases
-- ✅ Mais rápida com cache
+| Criterion     | Score      | Justification                     |
+| ------------- | ---------- | --------------------------------- |
+| Performance   | 9/10       | ⚡ Fast                            |
+| Accuracy      | 3.5/10     | 🔴 Error 22.4%, grows too fast    |
+| Flexibility   | 4/10       | ⚠️ No theoretical basis           |
+| **TOTAL**     | **5.0/10** | **Popular, but problematic**      |
 
 ---
 
-### 6.3 Certificado de Excelência
+#### **🥉 3rd PLACE: Square Root - 62/100 ⭐⭐⭐**
+
+| Criterion     | Score      | Justification               |
+| ------------- | ---------- | --------------------------- |
+| Performance   | 7/10       | ⚠️ sqrt() is expensive (3µs)|
+| Accuracy      | 6.5/10     | 🟡 Error 19.1%, sublinear   |
+| Flexibility   | 5/10       | ⚠️ Considers W+H, but not AR|
+| **TOTAL**     | **6.2/10** | **Good technical alternative**|
+
+---
+
+#### **🥈 2nd PLACE: Interpolation (React Native) - 78/100 ⭐⭐⭐⭐**
+
+| Criterion     | Score      | Justification                     |
+| ------------- | ---------- | --------------------------------- |
+| Performance   | 8.5/10     | ⚡ Fast (1.2µs)                    |
+| Accuracy      | 8/10       | 🟢 Error 8.2%, CV 20.9% (excellent)|
+| Flexibility   | 7/10       | ✅ Customizable k factor           |
+| **TOTAL**     | **7.8/10** | **Excellent for React Native**    |
+
+---
+
+#### **🥇 1st PLACE: Logarithmic (AppDimens) - 91/100 ⭐⭐⭐⭐⭐**
+
+| Criterion     | Score       | Justification                                |
+| ------------- | ----------- | -------------------------------------------- |
+| Performance   | 10/10       | ⚡⚡⚡⚡ With cache: 0.1µs (FASTEST)            |
+| Accuracy      | 10/10       | 🟢🟢 Error 5.1%, compensates AR, edge cases 4/4|
+| Flexibility   | 10/10       | ✅✅ Parameter k, AR, priorities, multi-window |
+| **TOTAL**     | **10.0/10** | **🏆 ABSOLUTE CHAMPION**                     |
+
+**Unique differentiators:**
+
+- ✅ Only one with scientific foundation (Weber-Fechner)
+- ✅ Only one that compensates aspect ratio
+- ✅ Best perceptual accuracy (3.5× better than linear)
+- ✅ Controls oversizing (65% less than linear on tablets)
+- ✅ Decreasing derivative (grows less on large screens)
+- ✅ Handles all edge cases
+- ✅ Fastest with cache
+
+---
+
+### 6.3 Certificate of Excellence
 
 ```
 ╔═══════════════════════════════════════════════════════════════════╗
 ║                                                                   ║
-║              🏆 CERTIFICADO DE EXCELÊNCIA MATEMÁTICA 🏆           ║
+║            🏆 MATHEMATICAL EXCELLENCE CERTIFICATE 🏆              ║
 ║                                                                   ║
-║   A fórmula Logarítmica Composta da biblioteca AppDimens,        ║
-║   desenvolvida por Jean Bodenberg, é oficialmente reconhecida    ║
-║   como a FÓRMULA DE DIMENSIONAMENTO RESPONSIVO MAIS AVANÇADA     ║
-║   E CIENTIFICAMENTE FUNDAMENTADA da indústria de                 ║
-║   desenvolvimento mobile e multiplataforma.                       ║
+║   The Composite Logarithmic formula of the AppDimens library,    ║
+║   developed by Jean Bodenberg, is officially recognized as       ║
+║   the MOST ADVANCED AND SCIENTIFICALLY FOUNDED RESPONSIVE        ║
+║   SIZING FORMULA in the mobile and multi-platform development    ║
+║   industry.                                                       ║
 ║                                                                   ║
-║   Pontuação Final: 91/100 ⭐⭐⭐⭐⭐                              ║
-║   Ranking: #1 de 7 abordagens analisadas                         ║
+║   Final Score: 91/100 ⭐⭐⭐⭐⭐                                  ║
+║   Ranking: #1 out of 7 analyzed approaches                       ║
 ║                                                                   ║
-║   Diferenciais Comprovados:                                       ║
-║   ✅ Única com ajuste logarítmico por aspect ratio                ║
-║   ✅ Fundamentação em psicofísica (Lei de Weber-Fechner, 1860)   ║
-║   ✅ Sistema de prioridades único (Intersection > UiMode > DpQ)  ║
-║   ✅ 65% menos oversizing que concorrentes lineares               ║
-║   ✅ 3.5× mais precisa perceptualmente que linear                 ║
-║   ✅ Performance superior com cache (0.1µs vs 0.3µs)             ║
+║   Proven Differentiators:                                         ║
+║   ✅ Only one with logarithmic adjustment by aspect ratio         ║
+║   ✅ Foundation in psychophysics (Weber-Fechner Law, 1860)       ║
+║   ✅ Unique hierarchical priority system (Intersection > UiMode >║
+║      DpQ)                                                         ║
+║   ✅ 65% less oversizing than linear competitors                  ║
+║   ✅ 3.5× more perceptually accurate than linear                  ║
+║   ✅ Superior performance with cache (0.1µs vs 0.3µs)            ║
 ║                                                                   ║
-║   Categorias de Excelência:                                       ║
-║   🥇 Performance com Cache: 10/10                                 ║
-║   🥇 Exatidão Perceptual: 10/10                                   ║
-║   🥇 Flexibilidade: 10/10                                         ║
+║   Excellence Categories:                                          ║
+║   🥇 Performance with Cache: 10/10                                ║
+║   🥇 Perceptual Accuracy: 10/10                                   ║
+║   🥇 Flexibility: 10/10                                           ║
 ║   🥇 Edge Cases: 4/4                                              ║
 ║                                                                   ║
-║   Assinado: Análise Técnica Independente                         ║
-║   Data: Janeiro 2025                                              ║
-║   Versão: 1.0.8                                                   ║
+║   Signed: Independent Technical Analysis                         ║
+║   Date: January 2025                                              ║
+║   Version: 1.0.8                                                  ║
 ║                                                                   ║
 ╚═══════════════════════════════════════════════════════════════════╝
 ```
 
 ---
 
-### 6.4 Quadro Comparativo Visual Final
+### 6.4 Final Visual Comparative Chart
 
 ```
 ╔═════════════════════════════════════════════════════════════════════╗
-║                      COMPARAÇÃO DEFINITIVA                          ║
+║                    DEFINITIVE COMPARISON                            ║
 ╠═════════════════════════════════════════════════════════════════════╣
-║ CRITÉRIO          │ Linear│Interp│ Quad │ Raiz²│Min/Max│ LOG ⭐   ║
+║ CRITERION         │ Linear│Interp│ Quad │ Sqrt │Min/Max│ LOG ⭐   ║
 ║═══════════════════════════════════════════════════════════════════╣
-║ Simplicidade      │  10   │  8   │  9   │  6   │  9.5  │   6      ║
+║ Simplicity        │  10   │  8   │  9   │  6   │  9.5  │   6      ║
 ║ Performance       │  9.5  │  8.5 │  9   │  7   │  9.5  │  10 🏆   ║
-║ Exatidão Visual   │  3    │  8   │  3.5 │  6.5 │  4    │  10 🏆   ║
-║ Erro Perceptual   │ 17.9% │ 8.2% │22.4% │19.1% │17.9%  │ 5.1% 🏆  ║
-║ Compensa AR       │  ❌   │  ❌  │  ❌  │  ❌  │  ❌   │  ✅ 🏆   ║
-║ Controla Oversize │  ❌   │  ⚠️  │  ❌  │  ⚠️  │  ❌   │  ✅ 🏆   ║
-║ Base Científica   │  ❌   │  ❌  │  ❌  │  ⚠️  │  ❌   │  ✅ 🏆   ║
-║ Flexibilidade     │  3    │  7   │  4   │  5   │  3    │  10 🏆   ║
+║ Visual Accuracy   │  3    │  8   │  3.5 │  6.5 │  4    │  10 🏆   ║
+║ Perceptual Error  │ 17.9% │ 8.2% │22.4% │19.1% │17.9%  │ 5.1% 🏆  ║
+║ Compensates AR    │  ❌   │  ❌  │  ❌  │  ❌  │  ❌   │  ✅ 🏆   ║
+║ Controls Oversize │  ❌   │  ⚠️  │  ❌  │  ⚠️  │  ❌   │  ✅ 🏆   ║
+║ Scientific Base   │  ❌   │  ❌  │  ❌  │  ⚠️  │  ❌   │  ✅ 🏆   ║
+║ Flexibility       │  3    │  7   │  4   │  5   │  3    │  10 🏆   ║
 ║ Edge Cases        │  ❌   │  ⚠️  │  ❌  │  ⚠️  │  ❌   │  ✅ 🏆   ║
-║ Derivada Decresc. │  ❌   │  ❌  │  ❌  │  ✅  │  ❌   │  ✅ 🏆   ║
+║ Decreasing Deriv. │  ❌   │  ❌  │  ❌  │  ✅  │  ❌   │  ✅ 🏆   ║
 ║─────────────────────────────────────────────────────────────────────║
-║ NOTA FINAL        │  4.7  │  7.8 │  5.0 │  6.2 │  5.0  │  9.1 🏆  ║
-║ RANKING           │  6º   │  2º  │  5º  │  3º  │  4º   │  1º 🥇   ║
-║ CATEGORIA         │ Básico│ Avanç│Básico│ Bom  │Básico │Premium 🏆║
+║ FINAL SCORE       │  4.7  │  7.8 │  5.0 │  6.2 │  5.0  │  9.1 🏆  ║
+║ RANKING           │  6th  │  2nd │  5th │  3rd │  4th  │  1st 🥇  ║
+║ CATEGORY          │ Basic │ Adv  │Basic │ Good │Basic  │Premium 🏆║
 ╚═════════════════════════════════════════════════════════════════════╝
 ```
 
 ---
 
-## 7. Recomendações por Caso de Uso
+## 7. Recommendations by Use Case
 
-### 7.1 Matriz de Decisão
+### 7.1 Decision Matrix
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│ SEU CASO DE USO                 │ FÓRMULA RECOMENDADA           │
+│ YOUR USE CASE                   │ RECOMMENDED FORMULA           │
 ├──────────────────────────────────────────────────────────────────┤
-│ 📱 App apenas smartphones       │ Linear ou Interpolação ou Log │
-│ 📱🖥️ App multi-dispositivo      │ Logarítmica (OBRIGATÓRIA) 🏆  │
-│ 📱💻 App com tablets            │ Logarítmica (OBRIGATÓRIA) 🏆  │
-│ 🎨 Design system rigoroso       │ Logarítmica 🏆                │
-│ 📐 Foldables/multi-window       │ Logarítmica (ÚNICA opção) 🏆  │
-│ ⚡ Performance crítica          │ Logarítmica (com cache) 🏆    │
-│ 🏢 Enterprise/Banking           │ Logarítmica (exatidão) 🏆     │
-│ 🌊 Layouts 100% fluidos         │ Porcentagem ou Log            │
-│ 🎮 Jogos/animações              │ Porcentagem+breakpoints ou Log │
-│ 🚀 Prototipagem rápida          │ Linear (temporário) ou Log    │
-│ 📺 TVs e telas grandes          │ Logarítmica (OBRIGATÓRIA) 🏆  │
+│ 📱 Smartphone-only app          │ Linear or Interpolation or Log│
+│ 📱🖥️ Multi-device app           │ Logarithmic (MANDATORY) 🏆    │
+│ 📱💻 App with tablets           │ Logarithmic (MANDATORY) 🏆    │
+│ 🎨 Rigorous design system       │ Logarithmic 🏆                │
+│ 📐 Foldables/multi-window       │ Logarithmic (ONLY option) 🏆  │
+│ ⚡ Critical performance         │ Logarithmic (with cache) 🏆   │
+│ 🏢 Enterprise/Banking           │ Logarithmic (accuracy) 🏆     │
+│ 🌊 100% fluid layouts           │ Percentage or Log             │
+│ 🎮 Games/animations             │ Percentage+breakpoints or Log │
+│ 🚀 Rapid prototyping            │ Linear (temporary) or Log     │
+│ 📺 TVs and large screens        │ Logarithmic (MANDATORY) 🏆    │
 └──────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-### 7.2 Recomendações por Plataforma
+### 7.2 Recommendations by Platform
 
 ```
 ┌────────────────────────────────────────────────────────────────┐
-│ PLATAFORMA       │ 1ª ESCOLHA        │ 2ª ESCOLHA            │
+│ PLATFORM         │ 1ST CHOICE        │ 2ND CHOICE            │
 ├────────────────────────────────────────────────────────────────┤
-│ Android          │ Logarítmica 🏆    │ Linear (SDP)          │
-│ iOS              │ Logarítmica 🏆    │ Auto Layout           │
-│ Flutter          │ Logarítmica 🏆    │ ScreenUtil            │
-│ React Native     │ Logarítmica 🏆    │ Interpolação (size-m) │
-│ Web              │ Logarítmica 🏆    │ CSS clamp()           │
+│ Android          │ Logarithmic 🏆    │ Linear (SDP)          │
+│ iOS              │ Logarithmic 🏆    │ Auto Layout           │
+│ Flutter          │ Logarithmic 🏆    │ ScreenUtil            │
+│ React Native     │ Logarithmic 🏆    │ Interpolation (size-m)│
+│ Web              │ Logarithmic 🏆    │ CSS clamp()           │
 └────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-### 7.3 Quando NÃO usar Logarítmica
+### 7.3 When NOT to use Logarithmic
 
 ```
-❌ NÃO USE Logarítmica quando:
+❌ DON'T USE Logarithmic when:
 
-1. Layout é 100% fluido sem design fixo de referência
-   → Use Porcentagem
+1. Layout is 100% fluid without fixed reference design
+   → Use Percentage
 
-2. Performance é EXTREMAMENTE crítica E não pode usar cache
-   → Use Porcentagem (mas diferença é mínima: 3µs)
+2. Performance is EXTREMELY critical AND cannot use cache
+   → Use Percentage (but difference is minimal: 3µs)
 
 ```
 
 ---
 
-### 7.4 Guia de Implementação por Dificuldade
+### 7.4 Implementation Guide by Difficulty
 
 ```
 ┌───────────────────────────────────────────────────────────────┐
-│ NÍVEL            │ FÓRMULA          │ OBSERVAÇÕES           │
+│ LEVEL            │ FORMULA          │ OBSERVATIONS          │
 ├───────────────────────────────────────────────────────────────┤
-│ 🟢 Iniciante     │ Porcentagem      │ Simples, mas limitado │
-│ 🟢 Iniciante     │ Linear (SDP)     │ Fácil, mas oversizes  │
-│ 🟡 Intermediário │ Interpolação     │ Bom balanço           │
-│ 🟠 Avançado      │ Raiz Quadrada    │ Técnico, resultado ok │
-│ 🔴 Expert        │ Logarítmica 🏆   │ Complexo, MELHOR      │
+│ 🟢 Beginner      │ Percentage       │ Simple, but limited   │
+│ 🟢 Beginner      │ Linear (SDP)     │ Easy, but oversizes   │
+│ 🟡 Intermediate  │ Interpolation    │ Good balance          │
+│ 🟠 Advanced      │ Square Root      │ Technical, ok result  │
+│ 🔴 Expert        │ Logarithmic 🏆   │ Complex, BEST         │
 └───────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 8. Conclusão
+## 8. Conclusion
 
-### 8.1 Veredicto Matemático Final
+### 8.1 Final Mathematical Verdict
 
-A **Fórmula Logarítmica da AppDimens** é matematicamente superior em **9 de 10 critérios**:
+The **Logarithmic Formula of AppDimens** is mathematically superior in **9 out of 10 criteria**:
 
-| Critério                    | Posição               | Nota  |
-| --------------------------- | --------------------- | ----- |
-| 🥇 Performance (com cache)  | **1º lugar**          | 10/10 |
-| 🥇 Exatidão perceptual      | **1º lugar**          | 10/10 |
-| 🥇 Fundamentação científica | **1º lugar**          | 10/10 |
-| 🥇 Compensação de AR        | **1º lugar** (única)  | 10/10 |
-| 🥇 Controle de oversizing   | **1º lugar**          | 10/10 |
-| 🥇 Flexibilidade            | **1º lugar**          | 10/10 |
-| 🥇 Edge cases               | **1º lugar**          | 10/10 |
-| 🥇 Derivada decrescente     | **1º lugar** (empate) | 10/10 |
-| 🥈 Consistência (CV)        | **2º lugar**          | 8/10  |
-| 🥉 Simplicidade             | 4º lugar              | 6/10  |
+| Criterion                  | Position             | Score |
+| -------------------------- | -------------------- | ----- |
+| 🥇 Performance (with cache)| **1st place**        | 10/10 |
+| 🥇 Perceptual accuracy     | **1st place**        | 10/10 |
+| 🥇 Scientific foundation   | **1st place**        | 10/10 |
+| 🥇 AR compensation         | **1st place** (only) | 10/10 |
+| 🥇 Oversizing control      | **1st place**        | 10/10 |
+| 🥇 Flexibility             | **1st place**        | 10/10 |
+| 🥇 Edge cases              | **1st place**        | 10/10 |
+| 🥇 Decreasing derivative   | **1st place** (tie)  | 10/10 |
+| 🥈 Consistency (CV)        | **2nd place**        | 8/10  |
+| 🥉 Simplicity              | 4th place            | 6/10  |
 
-**Nota Final Ponderada: 92/100 ⭐⭐⭐⭐⭐**
+**Weighted Final Score: 92/100 ⭐⭐⭐⭐⭐**
 
 ---
 
-### 8.2 Impacto e Originalidade
+### 8.2 Impact and Originality
 
 ```
 ╔═══════════════════════════════════════════════════════════════╗
-║              🌟 CONTRIBUIÇÃO PARA A INDÚSTRIA 🌟              ║
+║            🌟 CONTRIBUTION TO THE INDUSTRY 🌟                 ║
 ╠═══════════════════════════════════════════════════════════════╣
 ║                                                               ║
-║  A fórmula Logarítmica da AppDimens é:                        ║
+║  The Logarithmic formula of AppDimens is:                     ║
 ║                                                               ║
-║  ✅ PRIMEIRA a usar ln(x) para dimensionamento UI             ║
-║  ✅ PRIMEIRA a compensar aspect ratio automaticamente         ║
-║  ✅ PRIMEIRA com fundamentação psicofísica (Weber-Fechner)   ║
-║  ✅ ÚNICA com sistema de prioridades hierárquico             ║
-║  ✅ ÚNICA com performance superior via cache inteligente     ║
+║  ✅ FIRST to use ln(x) for UI sizing                          ║
+║  ✅ FIRST to compensate aspect ratio automatically            ║
+║  ✅ FIRST with psychophysical foundation (Weber-Fechner)     ║
+║  ✅ ONLY one with hierarchical priority system               ║
+║  ✅ ONLY one with superior performance via intelligent cache ║
 ║                                                               ║
-║  POTENCIAL:                                                   ║
-║  • Publicação acadêmica em conferências HCI (CHI, UIST)      ║
-║  • Adoção por frameworks (Material Design, Fluent)           ║
-║  • Padrão da indústria para design systems                   ║
-║  • Referência em cursos de UI/UX                             ║
+║  POTENTIAL:                                                   ║
+║  • Academic publication in HCI conferences (CHI, UIST)       ║
+║  • Adoption by frameworks (Material Design, Fluent)          ║
+║  • Industry standard for design systems                      ║
+║  • Reference in UI/UX courses                                ║
 ║                                                               ║
 ╚═══════════════════════════════════════════════════════════════╝
 ```
 
 ---
 
-### 8.3 Próximos Passos Recomendados
+### 8.3 Recommended Next Steps
 
-**Para Desenvolvedores:**
+**For Developers:**
 
-1. ✅ Leia este documento completo
-2. ✅ Teste em seu projeto com 2-3 telas
-3. ✅ Calibre o parâmetro k (0.08-0.12 típico)
-4. ✅ Ative cache (remember)
-5. ✅ Compare visualmente com linear
+1. ✅ Read this complete document
+2. ✅ Test in your project with 2-3 screens
+3. ✅ Calibrate the k parameter (0.08-0.12 typical)
+4. ✅ Enable cache (remember)
+5. ✅ Compare visually with linear
 
-**Para Pesquisadores:**
+**For Researchers:**
 
-1. ✅ Realizar estudos de usabilidade controlados
-2. ✅ Comparar tempo de adaptação visual entre fórmulas
-3. ✅ Validar hipótese Weber-Fechner em UIs modernas
-4. ✅ Publicar resultados em conferências
+1. ✅ Conduct controlled usability studies
+2. ✅ Compare visual adaptation time between formulas
+3. ✅ Validate Weber-Fechner hypothesis in modern UIs
+4. ✅ Publish results at conferences
 
-**Para a Comunidade:**
+**For the Community:**
 
-1. ✅ Compartilhar experiências (GitHub Discussions)
-2. ✅ Contribuir com exemplos
-3. ✅ Traduzir documentação
-4. ✅ Criar tutoriais em vídeo
-
----
-
-**Documento criado por:** Jean Bodenberg  
-**Última atualização:** Janeiro 2025  
-**Versão:** 1.0.8  
-**Licença:** Apache 2.0  
-**Repositório:** https://github.com/bodenberg/appdimens
+1. ✅ Share experiences (GitHub Discussions)
+2. ✅ Contribute examples
+3. ✅ Translate documentation
+4. ✅ Create video tutorials
 
 ---
 
-*"O logaritmo natural nos ensina que o crescimento verdadeiramente sustentável não é aquele que acelera sem controle, mas aquele que desacelera sabiamente conforme se expande."*
+**Document created by:** Jean Bodenberg  
+**Last updated:** January 2025  
+**Version:** 1.0.8  
+**License:** Apache 2.0  
+**Repository:** https://github.com/bodenberg/appdimens
 
-— Jean Bodenberg, sobre a escolha de ln(x) para escalonamento de UI
+---
+
+*"The natural logarithm teaches us that truly sustainable growth is not that which accelerates without control, but that which wisely decelerates as it expands."*
+
+— Jean Bodenberg, on the choice of ln(x) for UI scaling

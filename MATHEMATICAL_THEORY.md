@@ -1,369 +1,371 @@
-# 📐 AppDimens: Teoria Matemática e Fundamentação Científica
+# 📐 AppDimens: Mathematical Theory and Scientific Foundation
 
-**Documentação Técnica Detalhada - Modelo Matemático Universal**  
-*Autor: Jean Bodenberg*  
-*Data: Janeiro 2025*  
-*Versão: 1.0.8*
+> **Languages:** English | [Português (BR)](LANG/pt-BR/MATHEMATICAL_THEORY.md) | [Español](LANG/es/MATHEMATICAL_THEORY.md) | [हिन्दी](LANG/hi/MATHEMATICAL_THEORY.md) | [Русский](LANG/ru/MATHEMATICAL_THEORY.md) | [中文](LANG/zh/MATHEMATICAL_THEORY.md) | [日本語](LANG/ja/MATHEMATICAL_THEORY.md)
 
-> **Nota:** Esta documentação apresenta a teoria matemática fundamental do AppDimens, aplicável universalmente a qualquer plataforma (Android, iOS, Flutter, React Native, Web). As implementações específicas são exemplos da aplicação prática destes modelos.
+**Detailed Technical Documentation - Universal Mathematical Model**  
+*Author: Jean Bodenberg*  
+*Date: January 2025*  
+*Version: 1.0.8*
 
-> **📚 Documentação Complementar:**
-> - [Guia Simplificado](MATHEMATICAL_THEORY_SIMPLIFIED.md) - Para iniciantes (15min)
-> - [Comparação de Fórmulas](FORMULA_COMPARISON.md) - Análise de 7 fórmulas + Rankings (30min)
-> - [Guia Técnico Completo](COMPREHENSIVE_TECHNICAL_GUIDE.md) - Documento definitivo com TUDO (2h)
-> - [Índice da Documentação](DOCS/README.md) - Navegação completa
-> - [Referência Rápida](DOCS_QUICK_REFERENCE.md) - Encontre qualquer informação em segundos
+> **Note:** This documentation presents the fundamental mathematical theory of AppDimens, universally applicable to any platform (Android, iOS, Flutter, React Native, Web). Specific implementations are examples of the practical application of these models.
 
----
-
-## 📋 Índice
-
-1. [Visão Geral e Contexto](#visão-geral-e-contexto)
-2. [Teoria do Modelo Fixed (FX) - Escalonamento Logarítmico](#teoria-do-modelo-fixed-fx---escalonamento-logarítmico)
-3. [Teoria do Modelo Dynamic (DY) - Escalonamento Proporcional](#teoria-do-modelo-dynamic-dy---escalonamento-proporcional)
-4. [Fundamentação Matemática Avançada](#fundamentação-matemática-avançada)
-5. [Análise Comparativa de Modelos de Escalonamento](#análise-comparativa-de-modelos-de-escalonamento)
-6. [Estado da Arte e Inovação](#estado-da-arte-e-inovação)
-7. [Modelos Complementares](#modelos-complementares)
-8. [Aplicações Práticas e Validação](#aplicações-práticas-e-validação)
-9. [Referências e Discussões Técnicas](#referências-e-discussões-técnicas)
+> **📚 Complementary Documentation:**
+> - [Simplified Guide](MATHEMATICAL_THEORY_SIMPLIFIED.md) - For beginners (15min)
+> - [Formula Comparison](FORMULA_COMPARISON.md) - Analysis of 7 formulas + Rankings (30min)
+> - [Complete Technical Guide](COMPREHENSIVE_TECHNICAL_GUIDE.md) - Definitive document with EVERYTHING (2h)
+> - [Documentation Index](DOCS/README.md) - Complete navigation
+> - [Quick Reference](DOCS_QUICK_REFERENCE.md) - Find any information in seconds
 
 ---
 
-## 1. Visão Geral e Contexto
+## 📋 Table of Contents
 
-### 1.1 O Problema Fundamental do Dimensionamento Responsivo
+1. [Overview and Context](#overview-and-context)
+2. [Theory of Fixed (FX) Model - Logarithmic Scaling](#theory-of-fixed-fx-model---logarithmic-scaling)
+3. [Theory of Dynamic (DY) Model - Proportional Scaling](#theory-of-dynamic-dy-model---proportional-scaling)
+4. [Advanced Mathematical Foundation](#advanced-mathematical-foundation)
+5. [Comparative Analysis of Scaling Models](#comparative-analysis-of-scaling-models)
+6. [State of the Art and Innovation](#state-of-the-art-and-innovation)
+7. [Complementary Models](#complementary-models)
+8. [Practical Applications and Validation](#practical-applications-and-validation)
+9. [References and Technical Discussions](#references-and-technical-discussions)
 
-Em sistemas de interface de usuário modernos, existe um desafio matemático fundamental: **como escalar elementos visuais de forma consistente e proporcional através de dispositivos com tamanhos e proporções drasticamente diferentes?**
+---
 
-#### 1.1.1 Abordagem Tradicional (Densidade-Invariante)
+## 1. Overview and Context
 
-O modelo tradicional utiliza **unidades densidade-independentes** que mantêm tamanho físico constante:
+### 1.1 The Fundamental Problem of Responsive Sizing
+
+In modern user interface systems, there exists a fundamental mathematical challenge: **how to scale visual elements consistently and proportionally across devices with drastically different sizes and proportions?**
+
+#### 1.1.1 Traditional Approach (Density-Independent)
+
+The traditional model uses **density-independent units** that maintain constant physical size:
 
 ```
-Tamanho em Pixels = Valor Base × (DPI do Dispositivo / DPI de Referência)
+Size in Pixels = Base Value × (Device DPI / Reference DPI)
 ```
 
-**Propriedades Matemáticas:**
-- Transformação linear baseada apenas em densidade
-- Invariante ao tamanho absoluto da tela
-- Não considera proporções (aspect ratio)
+**Mathematical Properties:**
+- Linear transformation based only on density
+- Invariant to absolute screen size
+- Does not consider proportions (aspect ratio)
 
-**Limitações Teóricas:**
-- ❌ **Isomorfismo falho**: Elementos mantêm tamanho físico, mas não proporção visual relativa
-- ❌ **Desconsideração dimensional**: Um valor de 48 unidades ocupa ~15% de uma tela de 320 unidades, mas apenas ~4.4% de uma tela de 1080 unidades
-- ❌ **Ignorância geométrica**: Não ajusta para diferentes relações de aspecto (4:3 vs 21:9)
-- ❌ **Violação da Lei de Weber-Fechner**: Não considera percepção logarítmica humana de tamanho relativo
+**Theoretical Limitations:**
+- ❌ **Failed isomorphism**: Elements maintain physical size, but not relative visual proportion
+- ❌ **Dimensional disregard**: A 48 unit value occupies ~15% of a 320 unit screen, but only ~4.4% of a 1080 unit screen
+- ❌ **Geometric ignorance**: Does not adjust for different aspect ratios (4:3 vs 21:9)
+- ❌ **Weber-Fechner Law violation**: Does not consider logarithmic human perception of relative size
 
-### 1.2 Fundamentos da Solução AppDimens
+### 1.2 Foundations of the AppDimens Solution
 
-AppDimens propõe um sistema baseado em **funções matemáticas não-lineares** que modelam o escalonamento responsivo como um **problema de transformação multi-dimensional**:
+AppDimens proposes a system based on **non-linear mathematical functions** that model responsive scaling as a **multi-dimensional transformation problem**:
 
-#### 1.2.1 Variáveis de Entrada
+#### 1.2.1 Input Variables
 
-**Dimensionais:**
-- `W` = Largura da tela (em unidades independentes)
-- `H` = Altura da tela (em unidades independentes)
-- `S` = Menor dimensão (smallest width)
+**Dimensional:**
+- `W` = Screen width (in independent units)
+- `H` = Screen height (in independent units)
+- `S` = Smallest dimension (smallest width)
 - `AR = max(W,H) / min(W,H)` = Aspect ratio
 
-**Contextuais:**
-- `D` = Tipo de dispositivo (classificação categórica)
-- `M` = Modo de exibição (single-view, multi-window)
-- `B` = Valor base a ser escalonado
+**Contextual:**
+- `D` = Device type (categorical classification)
+- `M` = Display mode (single-view, multi-window)
+- `B` = Base value to be scaled
 
-**Constantes de Referência:**
-- `W₀ = 300` = Largura de referência (baseline)
-- `AR₀ = 1.78` = Aspect ratio de referência (16:9)
-- `Step = 30` = Passo de incremento dimensional
+**Reference Constants:**
+- `W₀ = 300` = Reference width (baseline)
+- `AR₀ = 1.78` = Reference aspect ratio (16:9)
+- `Step = 30` = Dimensional increment step
 
-#### 1.2.2 Modelos Matemáticos Propostos
+#### 1.2.2 Proposed Mathematical Models
 
-AppDimens define **dois mapeamentos funcionais** distintos:
+AppDimens defines **two distinct functional mappings**:
 
-**1. Fixed (FX) - Transformação Logarítmica:**
+**1. Fixed (FX) - Logarithmic Transformation:**
 ```
 f_FX: ℝ⁺ × ℝ⁺ → ℝ⁺
 f_FX(B, S, AR) = B × [α + β(S) × γ(AR)]
 
-onde:
-β(S) = (S - W₀) / Step          (componente linear de tamanho)
-γ(AR) = ε₀ + K × ln(AR / AR₀)   (componente logarítmica de proporção)
+where:
+β(S) = (S - W₀) / Step          (linear size component)
+γ(AR) = ε₀ + K × ln(AR / AR₀)   (logarithmic proportion component)
 ```
 
-**2. Dynamic (DY) - Transformação Proporcional:**
+**2. Dynamic (DY) - Proportional Transformation:**
 ```
 f_DY: ℝ⁺ × ℝ⁺ → ℝ⁺
 f_DY(B, S) = B × (S / W₀)
 
-(transformação linear homogênea)
+(homogeneous linear transformation)
 ```
 
-### 1.3 Hipótese Central
+### 1.3 Central Hypothesis
 
-> **Hipótese**: O escalonamento logarítmico (modelo Fixed) produz resultados visualmente mais proporcionais e perceptualmente mais consistentes do que o escalonamento linear, especialmente em dispositivos com dimensões extremas, devido ao alinhamento com a percepção psicofísica humana de tamanho relativo.
+> **Hypothesis**: Logarithmic scaling (Fixed model) produces visually more proportional and perceptually more consistent results than linear scaling, especially on devices with extreme dimensions, due to alignment with human psychophysical perception of relative size.
 
-Esta hipótese é fundamentada em:
-1. **Lei de Weber-Fechner**: Percepção sensorial segue relação logarítmica
-2. **Escalas de Razão**: Crescimento relativo deve desacelerar em objetos grandes
-3. **Ergonomia Visual**: Elementos não devem crescer proporcionalmente em telas muito grandes
+This hypothesis is founded on:
+1. **Weber-Fechner Law**: Sensory perception follows logarithmic relationship
+2. **Ratio Scales**: Relative growth should decelerate in large objects
+3. **Visual Ergonomics**: Elements should not grow proportionally on very large screens
 
 ---
 
-## 2. Teoria do Modelo Fixed (FX) - Escalonamento Logarítmico
+## 2. Theory of Fixed (FX) Model - Logarithmic Scaling
 
-### 2.1 Fundamentação Teórica
+### 2.1 Theoretical Foundation
 
-O modelo **Fixed** baseia-se na aplicação de **transformações logarítmicas** para modelar o escalonamento de dimensões visuais. Esta abordagem é fundamentada em três princípios teóricos:
+The **Fixed** model is based on the application of **logarithmic transformations** to model visual dimension scaling. This approach is founded on three theoretical principles:
 
-#### 2.1.1 Princípio da Percepção Logarítmica (Lei de Weber-Fechner)
+#### 2.1.1 Principle of Logarithmic Perception (Weber-Fechner Law)
 
-A percepção humana de estímulos sensoriais segue uma relação logarítmica:
+Human perception of sensory stimuli follows a logarithmic relationship:
 
 ```
 P = K × log(I / I₀)
 
-onde:
-P = Percepção subjetiva
-I = Intensidade do estímulo
-I₀ = Intensidade de referência
-K = Constante de sensibilidade
+where:
+P = Subjective perception
+I = Stimulus intensity
+I₀ = Reference intensity
+K = Sensitivity constant
 ```
 
-**Aplicação ao Dimensionamento:**
-O tamanho percebido de um elemento visual não cresce linearmente com o tamanho da tela. Um botão que dobra de tamanho físico não é percebido como "duas vezes maior" pelo usuário.
+**Application to Sizing:**
+The perceived size of a visual element does not grow linearly with screen size. A button that doubles in physical size is not perceived as "twice as large" by the user.
 
-#### 2.1.2 Princípio da Escala Perceptiva Visual
+#### 2.1.2 Principle of Visual Perceptual Scale
 
-A base do modelo AppDimens é fundamentada no conceito de **escala perceptiva visual humana**, que observa:
+The foundation of the AppDimens model is based on the concept of **human visual perceptual scale**, which observes:
 
-> **"A percepção de tamanho relativo é logarítmica em relação à variação angular do campo de visão"**  
+> **"The perception of relative size is logarithmic in relation to angular variation of the field of view"**  
 > — Loomis et al., *Journal of Vision Science* (1999)
 
-**Implicações Práticas:**
+**Practical Implications:**
 
-1. **Sublinearidade Perceptual:**
-   - Dobrar a largura da tela não dobra a percepção de tamanho
-   - O cérebro responde de forma sublinear a mudanças de escala
-   - Adaptação visual compensa parcialmente mudanças dimensionais
+1. **Perceptual Sublinearity:**
+   - Doubling screen width does not double size perception
+   - The brain responds sublinearly to scale changes
+   - Visual adaptation partially compensates for dimensional changes
 
-2. **Distância de Visualização:**
+2. **Viewing Distance:**
    ```
-   Ângulo Visual (θ) = 2 × arctan(Tamanho / 2 × Distância)
+   Visual Angle (θ) = 2 × arctan(Size / 2 × Distance)
    
-   Percepção ∝ log(θ)
+   Perception ∝ log(θ)
    ```
    
-   Dispositivos diferentes têm distâncias de visualização diferentes:
+   Different devices have different viewing distances:
    - Smartphone: ~30-40cm
    - Tablet: ~40-50cm  
    - TV: ~2-4m
    - Smartwatch: ~20-30cm
    
-   A mesma dimensão física resulta em ângulos visuais muito diferentes.
+   The same physical dimension results in very different visual angles.
 
-3. **Consistência Perceptiva:**
-   Uma função logarítmica melhora a consistência perceptiva entre dispositivos, mantendo elementos "visualmente similares" mesmo em tamanhos físicos diferentes.
+3. **Perceptual Consistency:**
+   A logarithmic function improves perceptual consistency between devices, keeping elements "visually similar" even at different physical sizes.
 
-**Fundamentação Neurocientífica:**
+**Neuroscientific Foundation:**
 
-Estudos em neurociência visual demonstram que:
-- Neurônios visuais no córtex V1 respondem logaritmicamente a mudanças de tamanho
-- A representação cortical de espaço visual é logarítmica (log-polar)
-- A lei de Stevens generaliza: `P = k × I^n` onde n < 1 para tamanho visual
+Studies in visual neuroscience demonstrate that:
+- Visual neurons in cortex V1 respond logarithmically to size changes
+- Cortical representation of visual space is logarithmic (log-polar)
+- Stevens' law generalizes: `P = k × I^n` where n < 1 for visual size
 
-#### 2.1.3 Princípio do Crescimento Assintótico
+#### 2.1.3 Principle of Asymptotic Growth
 
-Em telas muito grandes, o crescimento deve desacelerar para evitar:
-- Elementos desproporcionalmente grandes
-- Perda de densidade informacional
-- Violação de affordances visuais
+On very large screens, growth should decelerate to avoid:
+- Disproportionately large elements
+- Loss of informational density
+- Violation of visual affordances
 
-O logaritmo natural `ln(x)` tem a propriedade desejada:
+The natural logarithm `ln(x)` has the desired property:
 
 ```
 lim[x→∞] (d/dx)[ln(x)] = lim[x→∞] (1/x) = 0
 
-(a taxa de crescimento tende a zero conforme x aumenta)
+(the growth rate tends to zero as x increases)
 ```
 
-#### 2.1.4 Princípio da Continuidade e Suavidade
+#### 2.1.4 Principle of Continuity and Smoothness
 
-A função deve ser:
-- **Contínua**: Sem saltos discretos entre tamanhos de tela
-- **Diferenciável**: Transições suaves (sem "quebras")
-- **Monotônica crescente**: Telas maiores sempre resultam em dimensões maiores ou iguais
+The function must be:
+- **Continuous**: No discrete jumps between screen sizes
+- **Differentiable**: Smooth transitions (no "breaks")
+- **Monotonically increasing**: Larger screens always result in larger or equal dimensions
 
-**Propriedades Matemáticas Requeridas:**
+**Required Mathematical Properties:**
 
 ```
-1. Continuidade: lim[x→a] f(x) = f(a) para todo a no domínio
+1. Continuity: lim[x→a] f(x) = f(a) for all a in domain
 
-2. Diferenciabilidade: f'(x) existe e é contínua
+2. Differentiability: f'(x) exists and is continuous
 
-3. Monotonicidade: f(x₂) ≥ f(x₁) se x₂ ≥ x₁
+3. Monotonicity: f(x₂) ≥ f(x₁) if x₂ ≥ x₁
 
-4. Identidade no ponto de referência: f(B, W₀, AR₀) = B
+4. Identity at reference point: f(B, W₀, AR₀) = B
 ```
 
-Essas propriedades garantem que:
-- Não há "saltos" visuais ao mudar configuração de tela
-- Animações e transições são suaves
-- Comportamento é previsível e deterministico
+These properties ensure that:
+- There are no visual "jumps" when changing screen configuration
+- Animations and transitions are smooth
+- Behavior is predictable and deterministic
 
-### 2.2 Formulação Matemática Completa
+### 2.2 Complete Mathematical Formulation
 
-#### 2.2.1 Definição Formal
+#### 2.2.1 Formal Definition
 
-**Função de Transformação Fixed:**
+**Fixed Transformation Function:**
 
 ```
 f_FX: ℝ⁺ × ℝ⁺ × ℝ⁺ → ℝ⁺
 
 f_FX(B, S, AR) = B × F(S, AR)
 
-onde F(S, AR) é o Fator de Ajuste Composto:
+where F(S, AR) is the Composite Adjustment Factor:
 
 F(S, AR) = α + β(S) × γ(AR)
 ```
 
-**Componentes:**
+**Components:**
 
 ```
-1. α = 1.0 (fator base neutro)
-   Garante que f_FX(B, W₀, AR₀) = B (identidade no ponto de referência)
+1. α = 1.0 (neutral base factor)
+   Ensures that f_FX(B, W₀, AR₀) = B (identity at reference point)
 
 2. β(S) = (S - W₀) / δ
-   onde:
-   S = dimensão da tela (smallest width ou highest dimension)
-   W₀ = 300 (largura de referência)
-   δ = 30 (step, define sensibilidade ao tamanho)
+   where:
+   S = screen dimension (smallest width or highest dimension)
+   W₀ = 300 (reference width)
+   δ = 30 (step, defines size sensitivity)
    
-   Propriedades:
-   - β(W₀) = 0 (neutro na referência)
-   - β(S) > 0 se S > W₀ (amplificação)
-   - β(S) < 0 se S < W₀ (redução)
-   - Linear em S
+   Properties:
+   - β(W₀) = 0 (neutral at reference)
+   - β(S) > 0 if S > W₀ (amplification)
+   - β(S) < 0 if S < W₀ (reduction)
+   - Linear in S
 
 3. γ(AR) = ε₀ + K × ln(AR / AR₀)
-   onde:
-   AR = aspect ratio atual
-   AR₀ = 1.78 (referência 16:9)
-   ε₀ = 0.10 (incremento base, ~10%)
-   K = 0.08 (sensibilidade logarítmica)
+   where:
+   AR = current aspect ratio
+   AR₀ = 1.78 (16:9 reference)
+   ε₀ = 0.10 (base increment, ~10%)
+   K = 0.08 (logarithmic sensitivity)
    
-   Propriedades:
-   - γ(AR₀) = ε₀ (base quando AR = AR₀)
-   - γ(AR) > ε₀ se AR > AR₀ (telas mais alongadas)
-   - γ(AR) < ε₀ se AR < AR₀ (telas mais quadradas)
-   - Não-linear (logarítmica) em AR
+   Properties:
+   - γ(AR₀) = ε₀ (base when AR = AR₀)
+   - γ(AR) > ε₀ if AR > AR₀ (more elongated screens)
+   - γ(AR) < ε₀ if AR < AR₀ (squarer screens)
+   - Non-linear (logarithmic) in AR
 ```
 
-#### 2.2.2 Forma Expandida
+#### 2.2.2 Expanded Form
 
-Substituindo os componentes:
+Substituting the components:
 
 ```
 f_FX(B, S, AR) = B × [1.0 + ((S - W₀) / δ) × (ε₀ + K × ln(AR / AR₀))]
 
-Simplificando:
+Simplifying:
 f_FX(B, S, AR) = B × [1.0 + ((S - 300) / 30) × (0.10 + 0.08 × ln(AR / 1.78))]
 ```
 
-#### 2.2.3 Variantes do Modelo
+#### 2.2.3 Model Variants
 
-**Sem Ajuste de Aspect Ratio:**
+**Without Aspect Ratio Adjustment:**
 ```
 f_FX_simple(B, S) = B × [1.0 + ((S - W₀) / δ) × ε₀]
                   = B × [1.0 + ((S - 300) / 30) × 0.10]
 ```
 
-**Com Sensibilidade Customizada:**
+**With Custom Sensitivity:**
 ```
 f_FX_custom(B, S, AR, K_custom) = B × [1.0 + ((S - W₀) / δ) × (ε₀ + K_custom × ln(AR / AR₀))]
 ```
 
-### 2.3 Constantes do Sistema
+### 2.3 System Constants
 
-| Símbolo | Nome | Valor | Justificativa |
-|---------|------|-------|---------------|
-| `α` | Fator Base | 1.0 | Identidade no ponto de referência |
-| `W₀` | Largura Referência | 300 | Dispositivo médio histórico (~360dp smartphones) |
-| `AR₀` | Aspect Ratio Referência | 1.78 | Proporção 16:9 (padrão histórico) |
-| `δ` | Step Dimensional | 30 | Incremento de ~10% (300/30 = 10) |
-| `ε₀` | Incremento Base | 0.10 | 10% de crescimento por step |
-| `K` | Sensibilidade Log | 0.08 | Calibrado empiricamente para suavidade |
+| Symbol | Name | Value | Justification |
+|--------|------|-------|---------------|
+| `α` | Base Factor | 1.0 | Identity at reference point |
+| `W₀` | Reference Width | 300 | Historical average device (~360dp smartphones) |
+| `AR₀` | Reference Aspect Ratio | 1.78 | 16:9 proportion (historical standard) |
+| `δ` | Dimensional Step | 30 | ~10% increment (300/30 = 10) |
+| `ε₀` | Base Increment | 0.10 | 10% growth per step |
+| `K` | Log Sensitivity | 0.08 | Empirically calibrated for smoothness |
 
-### 2.4 Análise Matemática do Comportamento
+### 2.4 Mathematical Analysis of Behavior
 
-#### 2.4.1 Propriedades da Função
+#### 2.4.1 Function Properties
 
-**1. Domínio e Contradomínio:**
+**1. Domain and Codomain:**
 ```
 f_FX: (0, ∞) × (0, ∞) × (0, ∞) → (0, ∞)
 
-Para todo B, S, AR > 0: f_FX(B, S, AR) > 0
+For all B, S, AR > 0: f_FX(B, S, AR) > 0
 ```
 
-**2. Monotonia:**
+**2. Monotonicity:**
 ```
-∂f_FX/∂S > 0  (estritamente crescente em S)
-∂f_FX/∂AR > 0 (estritamente crescente em AR, se AR > AR₀)
-∂f_FX/∂B > 0  (estritamente crescente em B)
+∂f_FX/∂S > 0  (strictly increasing in S)
+∂f_FX/∂AR > 0 (strictly increasing in AR, if AR > AR₀)
+∂f_FX/∂B > 0  (strictly increasing in B)
 ```
 
-**3. Ponto Crítico (Referência):**
+**3. Critical Point (Reference):**
 ```
 f_FX(B, W₀, AR₀) = B × [1.0 + 0 × (ε₀ + K × ln(1))]
                  = B × [1.0 + 0 × (ε₀ + 0)]
                  = B × 1.0
                  = B
 
-(Identidade no ponto de referência)
+(Identity at reference point)
 ```
 
-**4. Comportamento Assintótico:**
+**4. Asymptotic Behavior:**
 ```
-lim[S→∞] f_FX(B, S, AR) = ∞  (sem limite superior, mas crescimento sublinear)
+lim[S→∞] f_FX(B, S, AR) = ∞  (no upper limit, but sublinear growth)
 
-Taxa de crescimento:
-lim[S→∞] [d f_FX/dS] = B × γ(AR) / δ (constante, não acelera)
+Growth rate:
+lim[S→∞] [d f_FX/dS] = B × γ(AR) / δ (constant, does not accelerate)
 ```
 
-#### 2.4.2 Análise da Componente Logarítmica
+#### 2.4.2 Analysis of Logarithmic Component
 
-**Função γ(AR) = ε₀ + K × ln(AR / AR₀):**
+**Function γ(AR) = ε₀ + K × ln(AR / AR₀):**
 
-**Derivada:**
+**Derivative:**
 ```
 dγ/dAR = K / AR
 
-Propriedades:
-- dγ/dAR > 0 para todo AR > 0 (monotonicamente crescente)
-- lim[AR→∞] dγ/dAR = 0 (taxa de crescimento tende a zero)
-- Em AR = AR₀: dγ/dAR = K / AR₀ = 0.08 / 1.78 ≈ 0.045
+Properties:
+- dγ/dAR > 0 for all AR > 0 (monotonically increasing)
+- lim[AR→∞] dγ/dAR = 0 (growth rate tends to zero)
+- At AR = AR₀: dγ/dAR = K / AR₀ = 0.08 / 1.78 ≈ 0.045
 ```
 
-**Segunda Derivada:**
+**Second Derivative:**
 ```
 d²γ/dAR² = -K / AR²
 
-Propriedades:
-- d²γ/dAR² < 0 para todo AR > 0 (função côncava)
-- Crescimento desacelera conforme AR aumenta
+Properties:
+- d²γ/dAR² < 0 for all AR > 0 (concave function)
+- Growth decelerates as AR increases
 ```
 
-**Integral (para análise de área):**
+**Integral (for area analysis):**
 ```
 ∫γ(AR) dAR = ∫[ε₀ + K × ln(AR / AR₀)] dAR
             = ε₀ × AR + K × [AR × ln(AR / AR₀) - AR] + C
 ```
 
-#### 2.4.3 Exemplo Numérico Completo
+#### 2.4.3 Complete Numerical Example
 
-**Cenário:** Dispositivo com S = 360, AR = 2.22, B = 16
+**Scenario:** Device with S = 360, AR = 2.22, B = 16
 
-**Cálculo Passo a Passo:**
+**Step-by-Step Calculation:**
 
 ```
 1. β(S) = (360 - 300) / 30 = 60/30 = 2.0
@@ -377,97 +379,97 @@ Propriedades:
 5. f_FX(16, 360, 2.22) = 16 × 1.2352 = 19.76 ≈ 19.8
 ```
 
-**Interpretação:**
-- Fator de escala: 1.2352 (aumento de 23.52%)
-- Contribuição do tamanho (β): 2.0 steps acima da referência
-- Contribuição do AR (γ): Incremento de 11.76% (vs 10% base)
-- Ajuste logarítmico: +1.76% adicional devido ao AR alongado
+**Interpretation:**
+- Scale factor: 1.2352 (increase of 23.52%)
+- Size contribution (β): 2.0 steps above reference
+- AR contribution (γ): Increment of 11.76% (vs 10% base)
+- Logarithmic adjustment: +1.76% additional due to elongated AR
 
-### 2.5 Características do Crescimento Logarítmico
+### 2.5 Characteristics of Logarithmic Growth
 
-**Por que Logaritmo?**
+**Why Logarithm?**
 
-A função logarítmica `ln(x)` tem propriedades ideais para escalonamento de UI:
+The logarithmic function `ln(x)` has ideal properties for UI scaling:
 
-1. **Crescimento Desacelerado:**
+1. **Decelerated Growth:**
    ```
-   ln(1.1) = 0.095  →  Pequeno ajuste (+9.5%)
-   ln(1.5) = 0.405  →  Ajuste moderado (+40.5%)
-   ln(2.0) = 0.693  →  Ajuste maior (+69.3%)
-   ln(3.0) = 1.099  →  Crescimento limitado (+109.9%)
+   ln(1.1) = 0.095  →  Small adjustment (+9.5%)
+   ln(1.5) = 0.405  →  Moderate adjustment (+40.5%)
+   ln(2.0) = 0.693  →  Larger adjustment (+69.3%)
+   ln(3.0) = 1.099  →  Limited growth (+109.9%)
    ```
 
-2. **Suavidade Natural:**
-   - A derivada `d/dx[ln(x)] = 1/x` garante transição suave
-   - Não há "saltos" bruscos entre diferentes tamanhos de tela
+2. **Natural Smoothness:**
+   - The derivative `d/dx[ln(x)] = 1/x` ensures smooth transition
+   - No abrupt "jumps" between different screen sizes
 
-3. **Limitação Assintótica:**
-   - Em telas muito grandes, o crescimento desacelera naturalmente
-   - Evita elementos desproporcionalmente grandes
+3. **Asymptotic Limitation:**
+   - On very large screens, growth naturally decelerates
+   - Avoids disproportionately large elements
 
-**Comparação Visual:**
+**Visual Comparison:**
 
 ```
-Tamanho Tela   Linear(%)   Fixed(Log)   Diferença
+Screen Size   Linear(%)   Fixed(Log)   Difference
 ───────────────────────────────────────────────────
 300dp (ref)    100%        100%         Base
-360dp          120%        112%         -8%  (mais controlado)
-480dp          160%        130%         -30% (muito mais controlado)
-720dp          240%        155%         -85% (evita despropor em tablets)
-1080dp         360%        180%         -180% (controle essencial em TVs)
+360dp          120%        112%         -8%  (more controlled)
+480dp          160%        130%         -30% (much more controlled)
+720dp          240%        155%         -85% (avoids disproportion on tablets)
+1080dp         360%        180%         -180% (essential control on TVs)
 ```
 
-### 2.6 Sensibilidade Customizável
+### 2.6 Customizable Sensitivity
 
-O parâmetro `K` (sensibilidade) controla a **intensidade** do ajuste:
+The `K` parameter (sensitivity) controls the **intensity** of the adjustment:
 
 ```kotlin
-// Padrão (RECOMENDADO):
-K = 0.08  // Crescimento suave e balanceado
+// Default (RECOMMENDED):
+K = 0.08  // Smooth and balanced growth
 
-// Mais agressivo:
-K = 0.15  // Para designs que precisam escalar mais
+// More aggressive:
+K = 0.15  // For designs that need more scaling
 
-// Mais conservador:
-K = 0.04  // Para manter elementos bem pequenos
+// More conservative:
+K = 0.04  // To keep elements quite small
 ```
 
-**Impacto do K:**
+**Impact of K:**
 
 ```
-Aspect Ratio 2.0:20:9 com diferentes valores de K:
+Aspect Ratio 2.0 (20:9) with different K values:
 
-K = 0.04:  Incremento = 0.10 + (0.04 × 0.22) = 0.1088
-K = 0.08:  Incremento = 0.10 + (0.08 × 0.22) = 0.1176 (padrão)
-K = 0.12:  Incremento = 0.10 + (0.12 × 0.22) = 0.1264
+K = 0.04:  Increment = 0.10 + (0.04 × 0.22) = 0.1088
+K = 0.08:  Increment = 0.10 + (0.08 × 0.22) = 0.1176 (default)
+K = 0.12:  Increment = 0.10 + (0.12 × 0.22) = 0.1264
 ```
 
 ---
 
-## 3. Modelo Dynamic (DY) - Escalonamento Proporcional
+## 3. Dynamic (DY) Model - Proportional Scaling
 
-### 3.1 Filosofia
+### 3.1 Philosophy
 
-O modelo **Dynamic** utiliza **escalonamento proporcional linear** baseado em **porcentagem da tela**. É mais **agressivo** e deve ser usado **apenas para casos específicos**.
+The **Dynamic** model uses **linear proportional scaling** based on **screen percentage**. It is more **aggressive** and should be used **only for specific cases**.
 
-### 3.2 Fórmula Matemática
+### 3.2 Mathematical Formula
 
 ```kotlin
-// FÓRMULA - Dynamic Model
-Valor Final = (Valor Base / Largura Referência) × Dimensão Atual da Tela
+// FORMULA - Dynamic Model
+Final Value = (Base Value / Reference Width) × Current Screen Dimension
 
-// Simplificado:
-Percentual = Valor Base / 300dp
-Valor Final = Percentual × smallestScreenWidthDp
+// Simplified:
+Percentage = Base Value / 300dp
+Final Value = Percentage × smallestScreenWidthDp
 
-// ou ainda:
-Valor Final = Valor Base × (smallestScreenWidthDp / 300)
+// or alternatively:
+Final Value = Base Value × (smallestScreenWidthDp / 300)
 ```
 
-### 3.3 Implementação Detalhada
+### 3.3 Detailed Implementation
 
 ```kotlin
-// 1. Obter dimensão base de referência
+// 1. Get base reference dimension
 val screenDimensionToUse = when (screenType) {
     ScreenType.LOWEST  -> configuration.smallestScreenWidthDp.toFloat()
     ScreenType.HIGHEST -> maxOf(
@@ -476,161 +478,161 @@ val screenDimensionToUse = when (screenType) {
     )
 }
 
-// 2. Calcular percentual
+// 2. Calculate percentage
 val baseReferenceDp = 300f
 val scalingFactor = screenDimensionToUse / baseReferenceDp
 
-// 3. Aplicar ao valor base
+// 3. Apply to base value
 val adjustedDp = baseDp * scalingFactor
 ```
 
-### 3.4 Exemplo Numérico
+### 3.4 Numerical Example
 
-**Dispositivo:** Smartphone com `smallestWidthDp = 360`
+**Device:** Smartphone with `smallestWidthDp = 360`
 
 ```
-Valor Base: 100dp
+Base Value: 100dp
 
-Cálculo Dynamic:
+Dynamic Calculation:
   = 100 × (360 / 300)
   = 100 × 1.20
   = 120dp
 
-Crescimento: +20% (linear e diretamente proporcional)
+Growth: +20% (linear and directly proportional)
 ```
 
 **Tablet:** `smallestWidthDp = 720`
 
 ```
-Cálculo Dynamic:
+Dynamic Calculation:
   = 100 × (720 / 300)
   = 100 × 2.40
   = 240dp
 
-Crescimento: +140% (muito agressivo!)
+Growth: +140% (very aggressive!)
 ```
 
-### 3.5 Características do Crescimento Proporcional
+### 3.5 Characteristics of Proportional Growth
 
-**Por que Proporcional?**
+**Why Proportional?**
 
 ```
-Tamanho Tela   Fixed    Dynamic   Relação
+Screen Size   Fixed    Dynamic   Relation
 ──────────────────────────────────────────
 300dp          100%     100%      Base
-360dp          112%     120%      Dynamic +7% maior
-480dp          130%     160%      Dynamic +23% maior
-720dp          155%     240%      Dynamic +55% maior
-1080dp         180%     360%      Dynamic +100% maior!
+360dp          112%     120%      Dynamic +7% larger
+480dp          130%     160%      Dynamic +23% larger
+720dp          155%     240%      Dynamic +55% larger
+1080dp         180%     360%      Dynamic +100% larger!
 ```
 
-**Quando Usar Dynamic:**
+**When to Use Dynamic:**
 
-✅ **Casos Específicos:**
-- Containers muito grandes que devem ocupar % da tela
-- Grids de largura completa
-- Espaçadores para layouts full-screen
-- Elementos que DEVEM manter proporção exata com a tela
+✅ **Specific Cases:**
+- Very large containers that should occupy % of screen
+- Full-width grids
+- Spacers for full-screen layouts
+- Elements that MUST maintain exact proportion with screen
 
-❌ **Não Usar Para:**
-- Botões (ficarão grandes demais em tablets)
-- Textos (ilegíveis em telas grandes)
-- Ícones (perdem definição)
-- Paddings/margins (espaçamento excessivo)
+❌ **Don't Use For:**
+- Buttons (will be too large on tablets)
+- Text (illegible on large screens)
+- Icons (lose definition)
+- Padding/margins (excessive spacing)
 
 ---
 
-## 4. Fundamentação Matemática
+## 4. Advanced Mathematical Foundation
 
-### 4.1 Base Teórica do Modelo Fixed
+### 4.1 Theoretical Basis of Fixed Model
 
-#### 4.1.1 Função Logarítmica Natural
+#### 4.1.1 Natural Logarithmic Function
 
-A função logarítmica natural `ln(x)` é definida como:
+The natural logarithmic function `ln(x)` is defined as:
 
 ```
-ln(x) = ∫(1 a x) (1/t) dt
+ln(x) = ∫(1 to x) (1/t) dt
 
-Propriedades:
-- ln(1) = 0  (ponto neutro)
+Properties:
+- ln(1) = 0  (neutral point)
 - ln(e) = 1
 - ln(a×b) = ln(a) + ln(b)
 - ln(a/b) = ln(a) - ln(b)
 ```
 
-**Aplicação no AppDimens:**
+**Application in AppDimens:**
 
 ```
-Ajuste = K × ln(AR_atual / AR_referência)
+Adjustment = K × ln(Current_AR / Reference_AR)
 
-Quando AR_atual = AR_referência:
-  Ajuste = K × ln(1) = K × 0 = 0  (sem ajuste)
+When Current_AR = Reference_AR:
+  Adjustment = K × ln(1) = K × 0 = 0  (no adjustment)
 
-Quando AR_atual > AR_referência (tela mais alongada):
-  Ajuste > 0  (aumenta dimensões)
+When Current_AR > Reference_AR (more elongated screen):
+  Adjustment > 0  (increases dimensions)
 
-Quando AR_atual < AR_referência (tela mais quadrada):
-  Ajuste < 0  (reduz dimensões)
+When Current_AR < Reference_AR (squarer screen):
+  Adjustment < 0  (reduces dimensions)
 ```
 
-#### 4.1.2 Derivada e Taxa de Variação
+#### 4.1.2 Derivative and Rate of Change
 
 ```
 f(x) = K × ln(x / x₀)
 
 f'(x) = K / x
 
-Significado:
-- A taxa de crescimento DIMINUI conforme x aumenta
-- Em telas pequenas: f'(x) é maior → ajustes mais notáveis
-- Em telas grandes: f'(x) é menor → ajustes mais sutis
+Meaning:
+- The growth rate DECREASES as x increases
+- On small screens: f'(x) is larger → more noticeable adjustments
+- On large screens: f'(x) is smaller → more subtle adjustments
 ```
 
-#### 4.1.3 Série de Taylor (Aproximação)
+#### 4.1.3 Taylor Series (Approximation)
 
-Para valores próximos a 1, o logaritmo pode ser aproximado:
+For values close to 1, the logarithm can be approximated:
 
 ```
 ln(1 + ε) ≈ ε - ε²/2 + ε³/3 - ...
 
-Para pequenos desvios do AR de referência:
-ln(AR/1.78) ≈ (AR - 1.78)/1.78  quando AR ≈ 1.78
+For small deviations from reference AR:
+ln(AR/1.78) ≈ (AR - 1.78)/1.78  when AR ≈ 1.78
 ```
 
-### 4.2 Base Teórica do Modelo Dynamic
+### 4.2 Theoretical Basis of Dynamic Model
 
-#### 4.2.1 Transformação Linear
+#### 4.2.1 Linear Transformation
 
 ```
 f(x) = a × x + b
 
-No AppDimens Dynamic (simplificado):
+In AppDimens Dynamic (simplified):
 f(w) = (base_dp / 300) × w
 
-onde:
-- w = largura da tela
-- 300 = largura de referência
-- base_dp / 300 = coeficiente angular
+where:
+- w = screen width
+- 300 = reference width
+- base_dp / 300 = angular coefficient
 ```
 
-#### 4.2.2 Proporcionalidade Direta
+#### 4.2.2 Direct Proportionality
 
 ```
-Valor Final ∝ Largura da Tela
+Final Value ∝ Screen Width
 
-V_final / V_base = W_tela / W_referência
+V_final / V_base = W_screen / W_reference
 
-Lei da Proporcionalidade:
-Se W dobra → V dobra
-Se W triplica → V triplica
+Proportionality Law:
+If W doubles → V doubles
+If W triples → V triples
 ```
 
-### 4.3 Análise Comparativa das Funções
+### 4.3 Comparative Analysis of Functions
 
-#### Tabela de Crescimento Detalhada
+#### Detailed Growth Table
 
-| Tela (dp) | Fixed K=0.08 | Dynamic | Ratio D/F |
-|-----------|-------------|---------|-----------|
+| Screen (dp) | Fixed K=0.08 | Dynamic | Ratio D/F |
+|-------------|-------------|---------|-----------|
 | 240       | 0.90x       | 0.80x   | 0.89      |
 | 300       | 1.00x (ref) | 1.00x   | 1.00      |
 | 360       | 1.12x       | 1.20x   | 1.07      |
@@ -641,37 +643,37 @@ Se W triplica → V triplica
 | 960       | 1.65x       | 3.20x   | 1.94      |
 | 1280      | 1.82x       | 4.27x   | 2.35      |
 
-**Análise:**
-- Em telas pequenas (240-360dp): Fixed e Dynamic são próximos
-- Em telas médias (411-600dp): Dynamic começa a crescer significativamente mais
-- Em telas grandes (720+dp): Dynamic cresce exponencialmente, Fixed mantém controle
+**Analysis:**
+- On small screens (240-360dp): Fixed and Dynamic are close
+- On medium screens (411-600dp): Dynamic starts to grow significantly more
+- On large screens (720+dp): Dynamic grows exponentially, Fixed maintains control
 
 ---
 
-## 5. Comparação com Outras Abordagens
+## 5. Comparative Analysis of Scaling Models
 
-### 5.1 Dimensionamento Tradicional (DP/SP Constante)
+### 5.1 Traditional Sizing (Constant DP/SP)
 
-#### 5.1.1 Modelo Densidade-Invariante
+#### 5.1.1 Density-Invariant Model
 
-**Fórmula Fundamental:**
+**Fundamental Formula:**
 ```
-Pixels = DP × (DPI_dispositivo / 160)
+Pixels = DP × (Device_DPI / 160)
 
-onde:
-DP = valor em density-independent pixels
-DPI_dispositivo = densidade de pixels do dispositivo
-160 = DPI de referência (MDPI)
+where:
+DP = value in density-independent pixels
+Device_DPI = device pixel density
+160 = reference DPI (MDPI)
 ```
 
-**Características Matemáticas:**
-- **Transformação Linear**: Proporcional apenas à densidade
-- **Invariante ao Tamanho**: Não considera dimensões absolutas da tela
-- **Densidade como Único Fator**: Ignora proporções e contexto
+**Mathematical Characteristics:**
+- **Linear Transformation**: Proportional only to density
+- **Size-Invariant**: Does not consider absolute screen dimensions
+- **Density as Only Factor**: Ignores proportions and context
 
-**Exemplo Numérico:**
+**Numerical Example:**
 ```
-16dp em diferentes densidades:
+16dp at different densities:
 ldpi (120dpi):  16 × (120/160) = 12px  (~0.127mm @ 96dpi)
 mdpi (160dpi):  16 × (160/160) = 16px  (~0.169mm)
 hdpi (240dpi):  16 × (240/160) = 24px  (~0.254mm)
@@ -679,53 +681,53 @@ xhdpi (320dpi): 16 × (320/160) = 32px  (~0.338mm)
 xxhdpi (480dpi): 16 × (480/160) = 48px (~0.508mm)
 ```
 
-**Problema Fundamental:**
+**Fundamental Problem:**
 
-Todos mantêm **16dp**, mas em telas de tamanhos diferentes:
-- Smartphone 5": 16dp = ~4.4% da largura (360dp)
-- Tablet 10": 16dp = ~2.2% da largura (720dp)
-- TV 42": 16dp = ~1.5% da largura (1080dp)
+All maintain **16dp**, but on screens of different sizes:
+- Smartphone 5": 16dp = ~4.4% of width (360dp)
+- Tablet 10": 16dp = ~2.2% of width (720dp)
+- TV 42": 16dp = ~1.5% of width (1080dp)
 
-**Proporção Visual Inconsistente!**
+**Inconsistent Visual Proportion!**
 
-#### 5.1.2 Limitações Demonstradas
+#### 5.1.2 Demonstrated Limitations
 
-| Dispositivo | Largura (dp) | 16dp (% da tela) | Percepção Visual |
-|-------------|--------------|------------------|------------------|
-| Phone Small | 320dp | 5.0% | Adequado |
-| Phone Normal | 360dp | 4.4% | Adequado |
-| Phone Large | 411dp | 3.9% | Começa a parecer pequeno |
-| Tablet 7" | 600dp | 2.7% | Desproporcional |
-| Tablet 10" | 720dp | 2.2% | Muito pequeno |
-| TV HD | 960dp | 1.7% | Quase invisível |
-| TV 4K | 1920dp | 0.8% | Imperceptível |
+| Device | Width (dp) | 16dp (% of screen) | Visual Perception |
+|---------|--------------|------------------|------------------|
+| Phone Small | 320dp | 5.0% | Adequate |
+| Phone Normal | 360dp | 4.4% | Adequate |
+| Phone Large | 411dp | 3.9% | Starts to look small |
+| Tablet 7" | 600dp | 2.7% | Disproportional |
+| Tablet 10" | 720dp | 2.2% | Too small |
+| TV HD | 960dp | 1.7% | Almost invisible |
+| TV 4K | 1920dp | 0.8% | Imperceptible |
 
-**Conclusão:** O modelo tradicional **não escala perceptivamente**.
+**Conclusion:** The traditional model **does not scale perceptually**.
 
-### 5.2 Escalonamento Linear Simples (Percentage-Based)
+### 5.2 Simple Linear Scaling (Percentage-Based)
 
-#### 5.2.1 Modelo Screen Percentage Scaling
+#### 5.2.1 Screen Percentage Scaling Model
 
-**Fórmula Fundamental:**
+**Fundamental Formula:**
 ```
 dp_scaled = dp_ref × (W_device / W_ref)
 
-onde:
-dp_ref = valor de referência (ex: 16dp)
-W_device = largura atual do dispositivo
-W_ref = largura base (ex: 360dp)
+where:
+dp_ref = reference value (e.g., 16dp)
+W_device = current device width
+W_ref = base width (e.g., 360dp)
 ```
 
-**Características Matemáticas:**
-- **Transformação Linear Homogênea**: Crescimento proporcional direto
-- **Mantém Razões**: Se a tela dobra, o valor dobra
-- **Simplicidade**: Apenas uma divisão e multiplicação
+**Mathematical Characteristics:**
+- **Homogeneous Linear Transformation**: Direct proportional growth
+- **Maintains Ratios**: If screen doubles, value doubles
+- **Simplicity**: Only one division and multiplication
 
-#### 5.2.2 Análise Comparativa Quantitativa
+#### 5.2.2 Quantitative Comparative Analysis
 
-**Teste: Padding de 16dp em diferentes telas**
+**Test: 16dp padding on different screens**
 
-| Tela | DP Tradicional | Linear (%) | AppDimens Fixed | AppDimens Dynamic |
+| Screen | Traditional DP | Linear (%) | AppDimens Fixed | AppDimens Dynamic |
 |------|----------------|------------|-----------------|-------------------|
 | 240dp | 16dp (5.0%) | 10.7dp (4.5%) | 14.4dp (6.0%) | 12.8dp (5.3%) |
 | 300dp | 16dp (5.3%) | 13.3dp (4.4%) | 16.0dp (5.3%) | 16.0dp (5.3%) |
@@ -737,117 +739,117 @@ W_ref = largura base (ex: 360dp)
 | 960dp | 16dp (1.7%) | 42.7dp (4.4%) | 26.9dp (2.8%) | 51.2dp (5.3%) |
 | 1080dp | 16dp (1.5%) | 48.0dp (4.4%) | 28.8dp (2.7%) | 57.6dp (5.3%) |
 
-**Análise dos Resultados:**
+**Results Analysis:**
 
-1. **DP Tradicional:**
-   - Proporção da tela diminui drasticamente (5.0% → 1.5%)
-   - Elementos "desaparecem" visualmente em telas grandes
-   - ❌ Não escala perceptivamente
+1. **Traditional DP:**
+   - Screen proportion decreases drastically (5.0% → 1.5%)
+   - Elements "disappear" visually on large screens
+   - ❌ Does not scale perceptually
 
 2. **Linear (Percentage):**
-   - Mantém proporção constante (4.4%)
-   - Mas valores absolutos crescem muito (16dp → 48dp)
-   - ❌ Elementos ficam desproporcionalmente grandes
+   - Maintains constant proportion (4.4%)
+   - But absolute values grow too much (16dp → 48dp)
+   - ❌ Elements become disproportionately large
 
 3. **AppDimens Fixed:**
-   - Proporção da tela decresce suavemente (5.0% → 2.7%)
-   - Crescimento controlado (14.4dp → 28.8dp, apenas 2x)
-   - ✅ Balanceamento entre tamanho absoluto e proporção
+   - Screen proportion decreases smoothly (5.0% → 2.7%)
+   - Controlled growth (14.4dp → 28.8dp, only 2x)
+   - ✅ Balance between absolute size and proportion
 
 4. **AppDimens Dynamic:**
-   - Mantém proporção rigorosamente (5.3% constante)
-   - Crescimento agressivo similar ao linear
-   - ⚠️ Adequado apenas para containers grandes
+   - Maintains proportion rigorously (5.3% constant)
+   - Aggressive growth similar to linear
+   - ⚠️ Suitable only for large containers
 
-#### 5.2.3 Comparação Matemática de Taxas de Crescimento
+#### 5.2.3 Mathematical Comparison of Growth Rates
 
-**Taxa de Crescimento Relativa (derivada):**
-
-```
-Modelo Tradicional:  df/dW = 0         (sem crescimento)
-Modelo Linear:       df/dW = B/W_ref   (constante linear)
-Modelo Fixed:        df/dW = B × β(S) × γ(AR) / δ  (constante controlada)
-                            ≈ B × 0.003 a 0.012    (dependendo de AR)
-```
-
-**Análise Assintótica:**
+**Relative Growth Rate (derivative):**
 
 ```
-lim[W→∞] f_tradicional(W) = B           (constante)
-lim[W→∞] f_linear(W) = ∞                (cresce indefinidamente)
-lim[W→∞] f_fixed(W) = ∞                 (mas cresce sublinearmente)
+Traditional Model:  df/dW = 0         (no growth)
+Linear Model:       df/dW = B/W_ref   (constant linear)
+Fixed Model:        df/dW = B × β(S) × γ(AR) / δ  (controlled constant)
+                            ≈ B × 0.003 to 0.012    (depending on AR)
+```
 
-Taxa de crescimento:
+**Asymptotic Analysis:**
+
+```
+lim[W→∞] f_traditional(W) = B           (constant)
+lim[W→∞] f_linear(W) = ∞                (grows indefinitely)
+lim[W→∞] f_fixed(W) = ∞                 (but grows sublinearly)
+
+Growth rate:
 f_linear: O(W)        (linear)
-f_fixed: O(W × ln(AR)) ≈ O(W)  (linear × fator logarítmico)
+f_fixed: O(W × ln(AR)) ≈ O(W)  (linear × logarithmic factor)
 ```
 
-**Comparação Visual (Gráfico Textual):**
+**Visual Comparison (Textual Chart):**
 
 ```
-Crescimento Relativo (Base 300dp = 100%)
+Relative Growth (Base 300dp = 100%)
 
-Tela:    240dp   360dp   480dp   720dp   1080dp
+Screen:  240dp   360dp   480dp   720dp   1080dp
 ─────────────────────────────────────────────────────────
-DP Trad:  100%    100%    100%    100%    100%     ══════ [Constante]
-Linear:    67%    120%    160%    240%    360%     ╱╱╱╱╱╱ [Linear Agressivo]
-Fixed:     90%    112%    128%    150%    180%     ╱──── [Logarítmico Suave] ⭐
-Dynamic:   80%    120%    160%    240%    360%     ╱╱╱╱╱╱ [Proporcional]
+DP Trad:  100%    100%    100%    100%    100%     ══════ [Constant]
+Linear:    67%    120%    160%    240%    360%     ╱╱╱╱╱╱ [Aggressive Linear]
+Fixed:     90%    112%    128%    150%    180%     ╱──── [Smooth Logarithmic] ⭐
+Dynamic:   80%    120%    160%    240%    360%     ╱╱╱╱╱╱ [Proportional]
 
-Legenda:
-══════ Sem adaptação (problema em telas grandes)
-╱╱╱╱╱╱ Crescimento muito rápido (problema visual)
-╱──── Crescimento controlado e balanceado (ideal)
+Legend:
+══════ No adaptation (problem on large screens)
+╱╱╱╱╱╱ Very fast growth (visual problem)
+╱──── Controlled and balanced growth (ideal)
 ```
 
-#### 5.2.4 Conclusão da Comparação
+#### 5.2.4 Comparison Conclusion
 
-| Critério | Tradicional | Linear | Fixed | Dynamic |
+| Criterion | Traditional | Linear | Fixed | Dynamic |
 |----------|-------------|--------|-------|---------|
-| **Modelo Matemático** | Densidade apenas | Linear proporcional | Logarítmico híbrido | Linear proporcional |
-| **Crescimento** | Nenhum | Agressivo | Controlado | Agressivo |
-| **Considera AR** | ❌ | ❌ | ✅ | ❌ |
-| **Proporção Visual** | Inconsistente | Excessiva | Balanceada | Excessiva |
-| **Complexidade** | Muito Baixa | Baixa | Moderada | Baixa |
-| **Adequação** | ❌ Ruim | ⚠️ Limitada | ✅ Excelente | ⚠️ Casos específicos |
+| **Mathematical Model** | Density only | Linear proportional | Logarithmic hybrid | Linear proportional |
+| **Growth** | None | Aggressive | Controlled | Aggressive |
+| **Considers AR** | ❌ | ❌ | ✅ | ❌ |
+| **Visual Proportion** | Inconsistent | Excessive | Balanced | Excessive |
+| **Complexity** | Very Low | Low | Moderate | Low |
+| **Adequacy** | ❌ Poor | ⚠️ Limited | ✅ Excellent | ⚠️ Specific cases |
 
-**Resumo:**
-- **Tradicional**: Inadequado para múltiplos form factors
-- **Linear**: Simples mas visualmente problemático em extremos
-- **Fixed**: Balanceamento ideal entre adaptação e controle ⭐
-- **Dynamic**: Útil apenas para containers muito grandes
+**Summary:**
+- **Traditional**: Inadequate for multiple form factors
+- **Linear**: Simple but visually problematic at extremes
+- **Fixed**: Ideal balance between adaptation and control ⭐
+- **Dynamic**: Useful only for very large containers
 
-### 5.3 Bibliotecas de Mercado
+### 5.3 Market Libraries
 
-#### 5.3.1 **SDP/SSP (Scalable DP/SP)** - Modelo de Referência
+#### 5.3.1 **SDP/SSP (Scalable DP/SP)** - Reference Model
 
-**Nota:** O AppDimens possui sua própria implementação de SDP/SSP nos módulos `appdimens_sdps` e `appdimens_ssps`.
+**Note:** AppDimens has its own implementation of SDP/SSP in the `appdimens_sdps` and `appdimens_ssps` modules.
 
-**Modelo Original:** Baseado no conceito de escalonamento linear proporcional
+**Original Model:** Based on the concept of linear proportional scaling
 
-**Modelo Matemático:**
+**Mathematical Model:**
 ```
-valor_sdp = valor_base × (smallestWidth_atual / 360)
-valor_ssp = valor_base × (smallestWidth_atual / 360)  // Para texto
+sdp_value = base_value × (current_smallestWidth / 360)
+ssp_value = base_value × (current_smallestWidth / 360)  // For text
 ```
 
-**Abordagem do Modelo:**
-- Gera arquivos XML pré-calculados para diferentes `sw` qualifiers
-- Baseado exclusivamente em `smallestScreenWidthDp`
-- Escalonamento **linear proporcional direto**
-- Valores pré-computados para cada breakpoint
+**Model Approach:**
+- Generates pre-calculated XML files for different `sw` qualifiers
+- Based exclusively on `smallestScreenWidthDp`
+- Direct **linear proportional** scaling
+- Pre-computed values for each breakpoint
 
-**Implementação no AppDimens:**
+**Implementation in AppDimens:**
 
-O AppDimens oferece este modelo através dos módulos `appdimens_sdps` e `appdimens_ssps`:
+AppDimens offers this model through the `appdimens_sdps` and `appdimens_ssps` modules:
 
 ```kotlin
-// Módulo: appdimens_sdps
+// Module: appdimens_sdps
 dependencies {
     implementation("io.github.bodenberg:appdimens-sdps:1.0.8")
 }
 
-// Uso em Compose
+// Use in Compose
 @Composable
 fun Example() {
     Text(
@@ -857,7 +859,7 @@ fun Example() {
     )
 }
 
-// Uso em XML
+// Use in XML
 ```
 
 ```xml
@@ -867,7 +869,7 @@ fun Example() {
     android:layout_width="@dimen/_200sdp" />
 ```
 
-**Estrutura de Recursos (appdimens_sdps):**
+**Resource Structure (appdimens_sdps):**
 ```xml
 <!-- res/values-sw300dp/sdps.xml -->
 <dimen name="_16sdp">13.3dp</dimen>
@@ -882,122 +884,122 @@ fun Example() {
 <dimen name="_16sdp">32dp</dimen>
 ```
 
-**Análise Comparativa entre Modelos AppDimens:**
+**Comparative Analysis between AppDimens Models:**
 
-| Aspecto | AppDimens SDP/SSP | AppDimens Fixed | AppDimens Dynamic |
+| Aspect | AppDimens SDP/SSP | AppDimens Fixed | AppDimens Dynamic |
 |---------|-------------------|-----------------|-------------------|
-| **Módulo** | `appdimens_sdps` / `appdimens_ssps` | `appdimens_dynamic` | `appdimens_dynamic` |
-| **Modelo Matemático** | Linear: `V × (W/360)` | Logarítmico: `V × [1 + β(S) × (ε₀ + K×ln(AR/AR₀))]` | Linear: `V × (S/W₀)` |
-| **Arquivos** | 536 XMLs (recursos pré-calculados) | 0 (cálculo runtime) | 0 (cálculo runtime) |
-| **Tamanho** | ~150KB de recursos XML | ~50KB de código | ~40KB de código |
-| **Aspect Ratio** | ❌ Não considera | ✅ Considera (K×ln(AR)) | ❌ Não considera |
-| **Crescimento** | Agressivo (linear) | Controlado (logarítmico) | Agressivo (linear) |
-| **Customização** | ✅ Conditional (screen qualifiers) | ✅ Completa (screen, aspectRatio, type) | ✅ Completa |
-| **Contexto (UiMode)** | ✅ Suporta (via conditional) | ✅ Suporta (TV, Watch, Car, etc.) | ✅ Suporta |
-| **Jetpack Compose** | ✅ Nativo (.sdp, .ssp) | ✅ Nativo (@Composable) | ✅ Nativo (@Composable) |
-| **View System (XML)** | ✅ Nativo (@dimen) | ✅ Suportado | ✅ Suportado |
-| **Multi-window** | ❌ Não detecta | ✅ Detecta e ajusta | ✅ Detecta e ajusta |
-| **Performance** | ✅ Excelente (pré-calc) | ✅ Muito boa (cache) | ✅ Muito boa (cache) |
-| **Flexibilidade** | ⚠️ Média | ✅ Alta | ✅ Alta |
+| **Module** | `appdimens_sdps` / `appdimens_ssps` | `appdimens_dynamic` | `appdimens_dynamic` |
+| **Mathematical Model** | Linear: `V × (W/360)` | Logarithmic: `V × [1 + β(S) × (ε₀ + K×ln(AR/AR₀))]` | Linear: `V × (S/W₀)` |
+| **Files** | 536 XMLs (pre-calculated resources) | 0 (runtime calculation) | 0 (runtime calculation) |
+| **Size** | ~150KB of XML resources | ~50KB of code | ~40KB of code |
+| **Aspect Ratio** | ❌ Does not consider | ✅ Considers (K×ln(AR)) | ❌ Does not consider |
+| **Growth** | Aggressive (linear) | Controlled (logarithmic) | Aggressive (linear) |
+| **Customization** | ✅ Conditional (screen qualifiers) | ✅ Complete (screen, aspectRatio, type) | ✅ Complete |
+| **Context (UiMode)** | ✅ Supports (via conditional) | ✅ Supports (TV, Watch, Car, etc.) | ✅ Supports |
+| **Jetpack Compose** | ✅ Native (.sdp, .ssp) | ✅ Native (@Composable) | ✅ Native (@Composable) |
+| **View System (XML)** | ✅ Native (@dimen) | ✅ Supported | ✅ Supported |
+| **Multi-window** | ❌ Does not detect | ✅ Detects and adjusts | ✅ Detects and adjusts |
+| **Performance** | ✅ Excellent (pre-calc) | ✅ Very good (cache) | ✅ Very good (cache) |
+| **Flexibility** | ⚠️ Medium | ✅ High | ✅ High |
 
-**Exemplo Comparativo Quantitativo:**
+**Quantitative Comparative Example:**
 
 ```
-Cenário: Padding de 16 em diferentes telas
+Scenario: 16 padding on different screens
 
-Tela 300dp (referência):
+300dp screen (reference):
 AppDimens SDP:      16 × (300/360) = 13.3dp
 AppDimens Fixed:    16 × 1.00 = 16.0dp  (base)
 AppDimens Dynamic:  16 × (300/300) = 16.0dp
 
-Tela 360dp (comum smartphone):
+360dp screen (common smartphone):
 AppDimens SDP:      16 × (360/360) = 16.0dp
 AppDimens Fixed:    16 × 1.12 = 17.9dp  (+11.9%)
 AppDimens Dynamic:  16 × (360/300) = 19.2dp  (+20.0%)
 
-Tela 720dp (tablet 10"):
-AppDimens SDP:      16 × (720/360) = 32.0dp  (+100% - DOBROU!)
-AppDimens Fixed:    16 × 1.50 = 24.0dp  (+50% - controlado)
-AppDimens Dynamic:  16 × (720/300) = 38.4dp  (+140% - agressivo)
+720dp screen (10" tablet):
+AppDimens SDP:      16 × (720/360) = 32.0dp  (+100% - DOUBLED!)
+AppDimens Fixed:    16 × 1.50 = 24.0dp  (+50% - controlled)
+AppDimens Dynamic:  16 × (720/300) = 38.4dp  (+140% - aggressive)
 
-Tela 1080dp (TV):
-AppDimens SDP:      16 × (1080/360) = 48.0dp  (+200% - TRIPLICOU!)
-AppDimens Fixed:    16 × 1.80 = 28.8dp  (+80% - ainda proporcional)
-AppDimens Dynamic:  16 × (1080/300) = 57.6dp  (+260% - muito grande)
+1080dp screen (TV):
+AppDimens SDP:      16 × (1080/360) = 48.0dp  (+200% - TRIPLED!)
+AppDimens Fixed:    16 × 1.80 = 28.8dp  (+80% - still proportional)
+AppDimens Dynamic:  16 × (1080/300) = 57.6dp  (+260% - too large)
 ```
 
-**Quando Usar Cada Modelo AppDimens:**
+**When to Use Each AppDimens Model:**
 
 ### 📐 AppDimens SDP/SSP (`appdimens_sdps` / `appdimens_ssps`)
 
-**Vantagens:**
-- ✅ Extremamente simples de usar (apenas `@dimen/_16sdp`)
-- ✅ Performance excelente (zero cálculo em runtime)
-- ✅ Previsível e determinístico
-- ✅ Suporte nativo para XML e Compose
-- ✅ Conditional scaling para casos específicos
+**Advantages:**
+- ✅ Extremely simple to use (just `@dimen/_16sdp`)
+- ✅ Excellent performance (zero runtime calculation)
+- ✅ Predictable and deterministic
+- ✅ Native support for XML and Compose
+- ✅ Conditional scaling for specific cases
 
-**Limitações:**
-- ❌ Crescimento linear excessivo em telas grandes
-- ❌ Não considera aspect ratio automaticamente
-- ❌ 536 arquivos XML (aumenta tamanho do APK em ~150KB)
-- ❌ Menos flexível que Fixed/Dynamic
+**Limitations:**
+- ❌ Excessive linear growth on large screens
+- ❌ Does not automatically consider aspect ratio
+- ❌ 536 XML files (increases APK size by ~150KB)
+- ❌ Less flexible than Fixed/Dynamic
 
-**Ideal para:**
-- Projetos que priorizam simplicidade
-- Layouts XML extensivos
-- Compatibilidade com ferramentas de design
-- Quando previsibilidade é crucial
+**Ideal for:**
+- Projects prioritizing simplicity
+- Extensive XML layouts
+- Compatibility with design tools
+- When predictability is crucial
 
 ### 📐 AppDimens Fixed (`appdimens_dynamic`)
 
-**Vantagens:**
-- ✅ Crescimento logarítmico balanceado
-- ✅ Considera aspect ratio automaticamente
-- ✅ Customização completa por contexto (UiMode, qualifiers)
-- ✅ Nenhum arquivo de recurso (código dinâmico)
-- ✅ Detecção de multi-window
-- ✅ Sensibilidade ajustável
+**Advantages:**
+- ✅ Balanced logarithmic growth
+- ✅ Automatically considers aspect ratio
+- ✅ Complete customization by context (UiMode, qualifiers)
+- ✅ No resource files (dynamic code)
+- ✅ Multi-window detection
+- ✅ Adjustable sensitivity
 
-**Limitações:**
-- ⚠️ Ligeiramente mais complexo que SDP
-- ⚠️ Requer compreensão do modelo logarítmico
+**Limitations:**
+- ⚠️ Slightly more complex than SDP
+- ⚠️ Requires understanding of logarithmic model
 
-**Ideal para:**
-- Múltiplos form factors (phone, tablet, foldable, TV, watch)
-- Aspect ratios variados
-- Jetpack Compose moderno
-- Designs que precisam escalar "inteligentemente"
-- Controle fino sobre crescimento
+**Ideal for:**
+- Multiple form factors (phone, tablet, foldable, TV, watch)
+- Varied aspect ratios
+- Modern Jetpack Compose
+- Designs that need "intelligent" scaling
+- Fine control over growth
 
 ### 📐 AppDimens Dynamic (`appdimens_dynamic`)
 
-**Vantagens:**
-- ✅ Escala proporcional direta
-- ✅ Mantém porcentagem da tela constante
-- ✅ Customização completa
-- ✅ Detecção de multi-window
+**Advantages:**
+- ✅ Direct proportional scaling
+- ✅ Maintains constant screen percentage
+- ✅ Complete customization
+- ✅ Multi-window detection
 
-**Limitações:**
-- ❌ Crescimento agressivo (similar ao SDP)
-- ❌ Não considera aspect ratio
+**Limitations:**
+- ❌ Aggressive growth (similar to SDP)
+- ❌ Does not consider aspect ratio
 
-**Ideal para:**
-- Containers muito grandes
-- Grids de largura completa
-- Layouts full-screen
-- Elementos que DEVEM manter proporção com a tela
+**Ideal for:**
+- Very large containers
+- Full-width grids
+- Full-screen layouts
+- Elements that MUST maintain proportion with screen
 
-#### 5.3.2 **AutoSize** - Android Nativo
+#### 5.3.2 **AutoSize** - Native Android
 
-**Documentação:** https://developer.android.com/guide/topics/ui/look-and-feel/autosizing-textview
+**Documentation:** https://developer.android.com/guide/topics/ui/look-and-feel/autosizing-textview
 
-**Abordagem:**
-- Ajusta automaticamente o tamanho do texto para caber no espaço disponível
-- Apenas para TextView
-- Baseado em limites min/max
+**Approach:**
+- Automatically adjusts text size to fit available space
+- Only for TextView
+- Based on min/max limits
 
-**Implementação:**
+**Implementation:**
 ```xml
 <TextView
     android:layout_width="match_parent"
@@ -1008,14 +1010,14 @@ AppDimens Dynamic:  16 × (1080/300) = 57.6dp  (+260% - muito grande)
     android:autoSizeStepGranularity="2sp" />
 ```
 
-**Limitações:**
-- ❌ Apenas para texto
-- ❌ Não considera proporções da tela
-- ❌ Pode gerar tamanhos inconsistentes
+**Limitations:**
+- ❌ Only for text
+- ❌ Does not consider screen proportions
+- ❌ Can generate inconsistent sizes
 
 #### 5.3.3 **DimenXer** - Material Design
 
-**Conceito:** Usa breakpoints pré-definidos do Material Design
+**Concept:** Uses pre-defined Material Design breakpoints
 
 ```xml
 <!-- res/values/dimens.xml -->
@@ -1028,16 +1030,16 @@ AppDimens Dynamic:  16 × (1080/300) = 57.6dp  (+260% - muito grande)
 <dimen name="spacing_small">16dp</dimen>
 ```
 
-**Limitações:**
-- ❌ Saltos discretos (não contínuo)
-- ❌ Muitos arquivos de recursos
-- ❌ Não considera aspect ratio
+**Limitations:**
+- ❌ Discrete jumps (not continuous)
+- ❌ Many resource files
+- ❌ Does not consider aspect ratio
 
-### 5.4 Comparação Quantitativa
+### 5.4 Quantitative Comparison
 
-#### Teste: Padding de 16dp em diferentes telas
+#### Test: 16dp padding on different screens
 
-| Tela | Tradicional | Linear | SDP | Fixed | Dynamic |
+| Screen | Traditional | Linear | SDP | Fixed | Dynamic |
 |------|-------------|--------|-----|-------|---------|
 | 240dp | 16dp | 10.7dp | 10.7dp | 14.4dp | 12.8dp |
 | 300dp | 16dp | 13.3dp | 13.3dp | 16.0dp | 16.0dp |
@@ -1048,194 +1050,194 @@ AppDimens Dynamic:  16 × (1080/300) = 57.6dp  (+260% - muito grande)
 | 720dp | 16dp | 32.0dp | 32.0dp | 24.0dp | 38.4dp |
 | 1080dp | 16dp | 48.0dp | 48.0dp | 28.8dp | 57.6dp |
 
-**Análise Visual:**
+**Visual Analysis:**
 
 ```
-📊 Crescimento Relativo (Base 300dp = 100%)
+📊 Relative Growth (Base 300dp = 100%)
 
                 240dp   360dp   480dp   720dp   1080dp
-Tradicional:     100%    100%    100%    100%    100%    [Flat Line]
+Traditional:     100%    100%    100%    100%    100%    [Flat Line]
 Linear:           67%    120%    160%    240%    360%    [Steep Curve]
 SDP:              67%    120%    160%    240%    360%    [Steep Curve]
 Fixed:            90%    112%    128%    150%    180%    [Smooth Curve]
 Dynamic:          80%    120%    160%    240%    360%    [Steep Curve]
 ```
 
-**Conclusão:**
-- **Tradicional:** Não se adapta (linha reta)
-- **Linear/SDP/Dynamic:** Crescem muito rápido (curva íngreme)
-- **Fixed:** Crescimento controlado e balanceado (curva suave)
+**Conclusion:**
+- **Traditional:** Does not adapt (straight line)
+- **Linear/SDP/Dynamic:** Grow too fast (steep curve)
+- **Fixed:** Controlled and balanced growth (smooth curve)
 
-### 5.5 Tabela Consolidada Comparativa de Bibliotecas
+### 5.5 Consolidated Comparative Table of Libraries
 
-**Resumo Completo de Todas as Abordagens do Mercado:**
+**Complete Summary of All Market Approaches:**
 
-| Biblioteca/Método | Modelo Matemático | Considera AR | Contínuo | Customizável | Compose | Manutenção |
+| Library/Method | Mathematical Model | Considers AR | Continuous | Customizable | Compose | Maintenance |
 |-------------------|-------------------|--------------|----------|--------------|---------|------------|
-| **DP Tradicional** | Densidade apenas | ❌ | ✅ | ❌ | ✅ | Baixa |
-| **Linear (%)** | Proporcional `V×(W/Wref)` | ❌ | ✅ | ⚠️ | ⚠️ | Baixa |
-| **SDP/SSP (Intuit)** | Linear `V×(W/360)` | ❌ | ⚠️ Discreto | ❌ | ⚠️ | Baixa |
-| **AutoSizeText** | Fit-to-bounds | ❌ | ✅ | ⚠️ | ⚠️ | Baixa |
-| **DimenXer/Manual** | Breakpoints | ❌ | ❌ Discreto | ✅ | ✅ | Alta |
-| **WindowSizeClass** | Classificação | ❌ | ❌ | ✅ | ✅ | Média |
-| **Accompanist** | Grid breakpoints | ❌ | ❌ | ⚠️ | ✅ | Média |
-| **ConstraintLayout %** | Percentual | ❌ | ✅ | ⚠️ | ⚠️ | Baixa |
+| **Traditional DP** | Density only | ❌ | ✅ | ❌ | ✅ | Low |
+| **Linear (%)** | Proportional `V×(W/Wref)` | ❌ | ✅ | ⚠️ | ⚠️ | Low |
+| **SDP/SSP (Intuit)** | Linear `V×(W/360)` | ❌ | ⚠️ Discrete | ❌ | ⚠️ | Low |
+| **AutoSizeText** | Fit-to-bounds | ❌ | ✅ | ⚠️ | ⚠️ | Low |
+| **DimenXer/Manual** | Breakpoints | ❌ | ❌ Discrete | ✅ | ✅ | High |
+| **WindowSizeClass** | Classification | ❌ | ❌ | ✅ | ✅ | Medium |
+| **Accompanist** | Grid breakpoints | ❌ | ❌ | ⚠️ | ✅ | Medium |
+| **ConstraintLayout %** | Percentage | ❌ | ✅ | ⚠️ | ⚠️ | Low |
 | | | | | | | |
-| **AppDimens Fixed** ⭐ | Logarítmico híbrido | ✅ | ✅ | ✅ | ✅ | Baixa |
-| **AppDimens Dynamic** | Proporcional `V×(S/W₀)` | ❌ | ✅ | ✅ | ✅ | Baixa |
+| **AppDimens Fixed** ⭐ | Logarithmic hybrid | ✅ | ✅ | ✅ | ✅ | Low |
+| **AppDimens Dynamic** | Proportional `V×(S/W₀)` | ❌ | ✅ | ✅ | ✅ | Low |
 
-**Matriz de Adequação por Caso de Uso:**
+**Adequacy Matrix by Use Case:**
 
-| Caso de Uso | 1ª Escolha | 2ª Escolha | 3ª Escolha |
+| Use Case | 1st Choice | 2nd Choice | 3rd Choice |
 |-------------|------------|------------|------------|
-| **Projeto legado XML** | SDP/SSP | DimenXer | DP Tradicional |
-| **Máxima simplicidade** | DP Tradicional | Linear % | - |
-| **Múltiplos form factors** | **AppDimens Fixed** ⭐ | SDP | WindowSizeClass |
-| **Apenas texto** | AutoSizeText | SDP/SSP | AppDimens |
+| **Legacy XML project** | SDP/SSP | DimenXer | Traditional DP |
+| **Maximum simplicity** | Traditional DP | Linear % | - |
+| **Multiple form factors** | **AppDimens Fixed** ⭐ | SDP | WindowSizeClass |
+| **Text only** | AutoSizeText | SDP/SSP | AppDimens |
 | **Layout structure** | WindowSizeClass | Accompanist | AppDimens |
-| **Controle máximo** | **AppDimens Fixed** ⭐ | DimenXer | - |
-| **Performance extrema** | SDP (pré-calc) | DP Tradicional | AppDimens (cache) |
-| **Aspect ratios variados** | **AppDimens Fixed** ⭐ | - (nenhum outro) | - |
-| **Jetpack Compose moderno** | **AppDimens Fixed** ⭐ | WindowSizeClass | Accompanist |
-| **Containers grandes** | AppDimens Dynamic | Linear % | SDP |
-| **Foldables/Ultra-wide** | **AppDimens Fixed** ⭐ | - (nenhum outro) | - |
-| **TVs e Tablets** | **AppDimens Fixed** ⭐ | WindowSizeClass | SDP |
+| **Maximum control** | **AppDimens Fixed** ⭐ | DimenXer | - |
+| **Extreme performance** | SDP (pre-calc) | Traditional DP | AppDimens (cache) |
+| **Varied aspect ratios** | **AppDimens Fixed** ⭐ | - (no other) | - |
+| **Modern Jetpack Compose** | **AppDimens Fixed** ⭐ | WindowSizeClass | Accompanist |
+| **Large containers** | AppDimens Dynamic | Linear % | SDP |
+| **Foldables/Ultra-wide** | **AppDimens Fixed** ⭐ | - (no other) | - |
+| **TVs and Tablets** | **AppDimens Fixed** ⭐ | WindowSizeClass | SDP |
 
-**Análise Crítica:**
+**Critical Analysis:**
 
-✅ **AppDimens Fixed é único em:**
-1. Escalonamento logarítmico (perceptivamente consistente)
-2. Consideração de aspect ratio (crítico para dispositivos modernos)
-3. Customização por contexto (UiMode, qualifiers, sensibilidade)
-4. Balanceamento matemático entre adaptação e controle
+✅ **AppDimens Fixed is unique in:**
+1. Logarithmic scaling (perceptually consistent)
+2. Aspect ratio consideration (critical for modern devices)
+3. Context customization (UiMode, qualifiers, sensitivity)
+4. Mathematical balance between adaptation and control
 
-⚠️ **Limitações comparadas:**
-- SDP tem performance marginalmente superior (pré-cálculo)
-- DP Tradicional é mais simples (mas inadequado para multi-dispositivo)
-- WindowSizeClass é mais "idiomático" Android (mas não calcula dimensões)
+⚠️ **Compared limitations:**
+- SDP has marginally superior performance (pre-calculation)
+- Traditional DP is simpler (but inadequate for multi-device)
+- WindowSizeClass is more "idiomatic" Android (but doesn't calculate dimensions)
 
-**Recomendação Geral:**
+**General Recommendation:**
 
 ```
-Para projetos modernos (2025+) com Jetpack Compose:
+For modern projects (2025+) with Jetpack Compose:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   🏆 AppDimens Fixed
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Razões:
-1. Única solução que escala perceptivamente (logaritmo)
-2. Única que considera aspect ratio (foldables, ultra-wide)
-3. Suporte nativo a Compose com API elegante
-4. Customização completa sem arquivos de recurso
-5. Matematicamente fundamentada (Weber-Fechner, Loomis)
+Reasons:
+1. Only solution that scales perceptually (logarithm)
+2. Only one that considers aspect ratio (foldables, ultra-wide)
+3. Native Compose support with elegant API
+4. Complete customization without resource files
+5. Mathematically founded (Weber-Fechner, Loomis)
 
-Alternativas válidas:
-- SDP/SSP: Se já está em projeto legado XML
-- WindowSizeClass: Para layout structure (não dimensões)
-- DP Tradicional: Se dispositivos são uniformes
+Valid alternatives:
+- SDP/SSP: If already in legacy XML project
+- WindowSizeClass: For layout structure (not dimensions)
+- Traditional DP: If devices are uniform
 ```
 
 ---
 
-## 6. Estado da Arte e Inovação
+## 6. State of the Art and Innovation
 
-### 6.1 Busca por Fórmulas Logarítmicas em UI Scaling
+### 6.1 Search for Logarithmic Formulas in UI Scaling
 
-**Pesquisa Realizada:**
-- ✅ GitHub: Busca por "logarithmic UI scaling", "adaptive dimensions", "responsive dp"
+**Research Conducted:**
+- ✅ GitHub: Search for "logarithmic UI scaling", "adaptive dimensions", "responsive dp"
 - ✅ Academic Papers: "logarithmic scaling user interfaces", "adaptive layout algorithms"
 - ✅ Stack Overflow: "responsive dimension android", "adaptive UI scaling"
 
-**Resultado:**
-- ❌ **Nenhuma biblioteca popular usa escalonamento logarítmico para dimensões de UI**
-- ⚠️ Escalas logarítmicas são comuns em outros contextos:
-  - Audio (decibéis)
-  - Brilho de tela
-  - Zoom de mapas
-  - Mas **não para dimensionamento responsivo de UI**
+**Result:**
+- ❌ **No popular library uses logarithmic scaling for UI dimensions**
+- ⚠️ Logarithmic scales are common in other contexts:
+  - Audio (decibels)
+  - Screen brightness
+  - Map zoom
+  - But **not for responsive UI sizing**
 
-### 6.2 Por Que o Logaritmo é Raro em UI Scaling?
+### 6.2 Why is Logarithm Rare in UI Scaling?
 
-**Razões Identificadas:**
+**Identified Reasons:**
 
-1. **Complexidade Matemática:**
-   - Requer compreensão de funções não-lineares
-   - Mais difícil de explicar para designers
+1. **Mathematical Complexity:**
+   - Requires understanding of non-linear functions
+   - Harder to explain to designers
 
-2. **Tradição da Simplicidade:**
-   - Indústria prefere soluções lineares simples
-   - "16dp é 16dp" é mais fácil de comunicar
+2. **Tradition of Simplicity:**
+   - Industry prefers simple linear solutions
+   - "16dp is 16dp" is easier to communicate
 
-3. **Falta de Pesquisa:**
-   - Poucos estudos sobre crescimento "ideal" de UI
-   - Foco em breakpoints discretos (Material Design)
+3. **Lack of Research:**
+   - Few studies on "ideal" UI growth
+   - Focus on discrete breakpoints (Material Design)
 
-4. **Suporte Histórico:**
-   - XML resources incentivam valores fixos
-   - Compose/SwiftUI são relativamente novos
+4. **Historical Support:**
+   - XML resources encourage fixed values
+   - Compose/SwiftUI are relatively new
 
-### 6.3 Inovação do AppDimens
+### 6.3 AppDimens Innovation
 
-**AppDimens é pioneiro em:**
+**AppDimens is pioneer in:**
 
-1. ✅ **Uso de Logaritmo Natural para UI Scaling**
-   - Primeira implementação conhecida para dimensionamento responsivo de UI
-   - Baseado em princípios matemáticos sólidos
+1. ✅ **Use of Natural Logarithm for UI Scaling**
+   - First known implementation for responsive UI sizing
+   - Based on solid mathematical principles
 
-2. ✅ **Combinação de Múltiplos Fatores:**
-   - Tamanho da tela (smallestWidth)
-   - Aspect ratio (proporcionalidade)
-   - Tipo de dispositivo (qualificadores)
+2. ✅ **Combination of Multiple Factors:**
+   - Screen size (smallestWidth)
+   - Aspect ratio (proportionality)
+   - Device type (qualifiers)
 
-3. ✅ **Dualidade de Modelos:**
-   - Fixed (logarítmico) para controle
-   - Dynamic (linear) para casos específicos
-   - Permite escolha consciente
+3. ✅ **Duality of Models:**
+   - Fixed (logarithmic) for control
+   - Dynamic (linear) for specific cases
+   - Allows conscious choice
 
-4. ✅ **Sensibilidade Ajustável:**
-   - Parâmetro K customizável
-   - Adaptável a diferentes design systems
+4. ✅ **Adjustable Sensitivity:**
+   - Customizable K parameter
+   - Adaptable to different design systems
 
 ---
 
-## 7. Outros Modelos Suportados
+## 7. Complementary Models
 
 ### 7.1 SDP/SSP (Scalable Dimensions)
 
-**Descrição:** Recursos XML pré-calculados para diferentes tamanhos de tela
+**Description:** Pre-calculated XML resources for different screen sizes
 
-**Fórmula:**
+**Formula:**
 ```
-SDP = Valor Base × (smallestWidth / 300)
-SSP = Valor Base × (smallestWidth / 300)  // Para texto
+SDP = Base Value × (smallestWidth / 300)
+SSP = Base Value × (smallestWidth / 300)  // For text
 ```
 
-**Implementação AppDimens:**
+**AppDimens Implementation:**
 ```xml
-<!-- res/values-sw360dp/sdp.xml (gerado) -->
+<!-- res/values-sw360dp/sdp.xml (generated) -->
 <dimen name="_16sdp">19.2dp</dimen>
 <dimen name="_16ssp">19.2sp</dimen>
 ```
 
-**Uso:**
+**Usage:**
 ```xml
 <TextView
     android:textSize="@dimen/_16ssp"
     android:padding="@dimen/_8sdp" />
 ```
 
-**Quando Usar:**
-- ✅ Projetos legados com XML
-- ✅ Designers preferem valores "fixos"
-- ✅ Simplicidade sobre customização
+**When to Use:**
+- ✅ Legacy projects with XML
+- ✅ Designers prefer "fixed" values
+- ✅ Simplicity over customization
 
-### 7.2 Unidades Físicas (Physical Units)
+### 7.2 Physical Units
 
-**Descrição:** Conversão de medidas reais (mm, cm, inch) para unidades de tela
+**Description:** Conversion of real measurements (mm, cm, inch) to screen units
 
-**Fórmulas:**
+**Formulas:**
 ```kotlin
-// Milímetros para DP
+// Millimeters to DP
 fun mmToDp(mm: Float, resources: Resources): Float {
     val dpi = resources.displayMetrics.xdpi
     val inches = mm / 25.4f  // 1 inch = 25.4mm
@@ -1243,12 +1245,12 @@ fun mmToDp(mm: Float, resources: Resources): Float {
     return pixels / resources.displayMetrics.density
 }
 
-// Centímetros para DP
+// Centimeters to DP
 fun cmToDp(cm: Float, resources: Resources): Float {
     return mmToDp(cm * 10f, resources)
 }
 
-// Polegadas para DP
+// Inches to DP
 fun inchToDp(inch: Float, resources: Resources): Float {
     val dpi = resources.displayMetrics.xdpi
     val pixels = inch * dpi
@@ -1256,28 +1258,28 @@ fun inchToDp(inch: Float, resources: Resources): Float {
 }
 ```
 
-**Uso:**
+**Usage:**
 ```kotlin
-// Botão com 10mm de largura física
+// Button with 10mm physical width
 val buttonWidth = AppDimensPhysicalUnits.mmToPixels(10f, resources)
 
-// Texto com 3mm de altura
+// Text with 3mm height
 val fontSize = AppDimensPhysicalUnits.calculateOptimalFontSize(
     3f, UnitType.MM, resources
 )
 ```
 
-**Quando Usar:**
-- ✅ Wearables (tamanhos físicos consistentes)
-- ✅ Interfaces de impressão
-- ✅ Aplicações médicas/científicas
-- ✅ Acessibilidade (tamanhos mínimos de toque)
+**When to Use:**
+- ✅ Wearables (consistent physical sizes)
+- ✅ Print interfaces
+- ✅ Medical/scientific applications
+- ✅ Accessibility (minimum touch sizes)
 
 ### 7.3 Percentage-Based Dimensions
 
-**Descrição:** Dimensões baseadas em porcentagem da tela
+**Description:** Dimensions based on screen percentage
 
-**Fórmula:**
+**Formula:**
 ```kotlin
 fun percentageWidth(percent: Float, resources: Resources): Float {
     val screenWidth = resources.displayMetrics.widthPixels
@@ -1285,58 +1287,58 @@ fun percentageWidth(percent: Float, resources: Resources): Float {
 }
 ```
 
-**Uso:**
+**Usage:**
 ```kotlin
-// Componente que ocupa 80% da largura
+// Component that occupies 80% of width
 val width = dynamic(80f).percentage().dp
 
-// Margem de 5% de cada lado
+// 5% margin on each side
 val margin = dynamic(5f).percentage().dp
 ```
 
-**Quando Usar:**
-- ✅ Layouts full-width
-- ✅ Grids responsivos
-- ✅ Espaçadores proporcionais
+**When to Use:**
+- ✅ Full-width layouts
+- ✅ Responsive grids
+- ✅ Proportional spacers
 
 ### 7.4 Conditional Dimensions (Screen Qualifiers)
 
-**Descrição:** Dimensões diferentes para diferentes configurações de tela
+**Description:** Different dimensions for different screen configurations
 
-**Sistema de Prioridades:**
+**Priority System:**
 ```
-1. INTERSECTION (UiMode + DpQualifier)  - Máxima especificidade
-2. UI_MODE (TV, Watch, Car, etc.)       - Modo de dispositivo
-3. DP_QUALIFIER (sw, w, h)              - Tamanho de tela
+1. INTERSECTION (UiMode + DpQualifier)  - Maximum specificity
+2. UI_MODE (TV, Watch, Car, etc.)       - Device mode
+3. DP_QUALIFIER (sw, w, h)              - Screen size
 ```
 
-**Uso:**
+**Usage:**
 ```kotlin
 val buttonSize = 80.fixedDp()
-    // Prioridade 1: Watch com sw < 200dp
+    // Priority 1: Watch with sw < 200dp
     .screen(UiModeType.WATCH, DpQualifier.SMALL_WIDTH, 200, 40.dp)
-    // Prioridade 2: Car mode (qualquer tamanho)
+    // Priority 2: Car mode (any size)
     .screen(UiModeType.CAR, 120.dp)
-    // Prioridade 3: Tablets (sw >= 600dp)
+    // Priority 3: Tablets (sw >= 600dp)
     .screen(DpQualifier.SMALL_WIDTH, 600, 100.dp)
 ```
 
-**Quando Usar:**
-- ✅ Designs específicos por dispositivo
-- ✅ Otimização para TVs/Watches
-- ✅ Layouts adaptativos complexos
+**When to Use:**
+- ✅ Specific designs per device
+- ✅ Optimization for TVs/Watches
+- ✅ Complex adaptive layouts
 
 ### 7.5 Multi-Window Adjustment
 
-**Descrição:** Ignora ajustes quando em modo split-screen/multi-window
+**Description:** Ignores adjustments when in split-screen/multi-window mode
 
-**Implementação:**
+**Implementation:**
 ```kotlin
 val size = 100.fixedDp()
-    .multiViewAdjustment(ignore = true)  // Desabilita ajuste em multi-window
+    .multiViewAdjustment(ignore = true)  // Disables adjustment in multi-window
 ```
 
-**Lógica:**
+**Logic:**
 ```kotlin
 val isLayoutSplit = configuration.screenLayout and 
     Configuration.SCREENLAYOUT_SIZE_MASK != Configuration.SCREENLAYOUT_SIZE_MASK
@@ -1344,85 +1346,85 @@ val isSmallDifference = (smallestWidthDp - currentScreenWidthDp) < (smallestWidt
 val isMultiWindow = isLayoutSplit && !isSmallDifference
 
 if (isMultiWindow && ignoreMultiViewAdjustment) {
-    return baseDp  // Sem ajuste
+    return baseDp  // No adjustment
 }
 ```
 
-**Quando Usar:**
-- ✅ Apps que rodam em split-screen
-- ✅ Tablets com multi-tasking
+**When to Use:**
+- ✅ Apps that run in split-screen
+- ✅ Tablets with multi-tasking
 - ✅ Desktop modes (Samsung DeX, etc.)
 
 ---
 
-## 8. Casos de Uso e Performance
+## 8. Practical Applications and Validation
 
-### 8.1 Casos de Uso Recomendados
+### 8.1 Recommended Use Cases
 
-#### Fixed (FX) - RECOMENDADO para maioria dos casos
+#### Fixed (FX) - RECOMMENDED for most cases
 
-**Elementos de UI:**
+**UI Elements:**
 ```kotlin
-// Botões
+// Buttons
 Button(
     modifier = Modifier
-        .width(120.fxdp)    // Largura controlada
-        .height(48.fxdp),   // Altura padrão de toque
-    fontSize = 16.fxsp      // Texto legível
+        .width(120.fxdp)    // Controlled width
+        .height(48.fxdp),   // Standard touch height
+    fontSize = 16.fxsp      // Legible text
 )
 
 // Cards
 Card(
     modifier = Modifier
-        .width(300.fxdp)    // Largura balanceada
-        .height(200.fxdp),  // Altura proporcional
+        .width(300.fxdp)    // Balanced width
+        .height(200.fxdp),  // Proportional height
     elevation = 4.fxdp
 )
 
-// Espaçamentos
+// Spacing
 Spacer(modifier = Modifier.height(16.fxdp))
 Column(modifier = Modifier.padding(24.fxdp))
 
-// Ícones
+// Icons
 Icon(
     modifier = Modifier.size(24.fxdp),
     tint = Color.Primary
 )
 ```
 
-**Por que Fixed?**
-- ✅ Crescimento suave e previsível
-- ✅ Evita elementos desproporcionais em tablets
-- ✅ Mantém legibilidade em todas as telas
-- ✅ Aspect ratio considerado automaticamente
+**Why Fixed?**
+- ✅ Smooth and predictable growth
+- ✅ Avoids disproportional elements on tablets
+- ✅ Maintains legibility on all screens
+- ✅ Aspect ratio automatically considered
 
-#### Dynamic (DY) - Para casos específicos
+#### Dynamic (DY) - For specific cases
 
-**Containers Grandes:**
+**Large Containers:**
 ```kotlin
-// Container que deve ocupar proporção significativa da tela
+// Container that should occupy significant proportion of screen
 LazyColumn(
     modifier = Modifier
-        .width(800.dydp)    // Proporcional em telas grandes
+        .width(800.dydp)    // Proportional on large screens
         .fillMaxHeight()
 )
 
-// Grid full-width
+// Full-width grid
 LazyVerticalGrid(
-    columns = GridCells.Adaptive(120.dydp),  // Células proporcionais
+    columns = GridCells.Adaptive(120.dydp),  // Proportional cells
     horizontalArrangement = Arrangement.spacedBy(16.dydp)
 )
 ```
 
-**Quando Dynamic?**
-- ✅ Elementos que DEVEM crescer proporcionalmente
-- ✅ Layouts que ocupam % da tela
-- ✅ Grids adaptativos
-- ⚠️ NUNCA para texto ou ícones pequenos
+**When Dynamic?**
+- ✅ Elements that MUST grow proportionally
+- ✅ Layouts that occupy % of screen
+- ✅ Adaptive grids
+- ⚠️ NEVER for small text or icons
 
-### 8.2 Performance e Cache
+### 8.2 Performance and Cache
 
-#### 8.2.1 Sistema de Cache
+#### 8.2.1 Cache System
 
 **Compose (Remember):**
 ```kotlin
@@ -1452,25 +1454,25 @@ fun calculateAdjustedValue(configuration: Configuration): Float {
 
 #### 8.2.2 Benchmarks
 
-**Tempo de Cálculo (média de 10,000 operações):**
+**Calculation Time (average of 10,000 operations):**
 
-| Operação | Sem Cache | Com Cache | Speedup |
+| Operation | Without Cache | With Cache | Speedup |
 |----------|-----------|-----------|---------|
 | Fixed (Compose) | 0.0012ms | 0.0001ms | 12x |
 | Fixed (Code) | 0.0015ms | 0.0001ms | 15x |
 | Dynamic | 0.0008ms | 0.0001ms | 8x |
-| SDP (XML) | 0.0000ms | - | N/A (pré-calculado) |
+| SDP (XML) | 0.0000ms | - | N/A (pre-calculated) |
 
-**Memória:**
+**Memory:**
 
-| Componente | Uso de Memória |
+| Component | Memory Usage |
 |------------|----------------|
 | Fixed Instance | ~50 bytes |
 | Dynamic Instance | ~40 bytes |
 | Adjustment Factors Cache | ~100 bytes |
-| SDP XMLs (426 arquivos) | ~2MB |
+| SDP XMLs (426 files) | ~2MB |
 
-#### 8.2.3 Otimizações Implementadas
+#### 8.2.3 Implemented Optimizations
 
 1. **Lazy Initialization:**
 ```kotlin
@@ -1479,7 +1481,7 @@ private val customDpMap: MutableMap<DpQualifierEntry, Float> by lazy {
 }
 ```
 
-2. **Cache Invalidation Inteligente:**
+2. **Intelligent Cache Invalidation:**
 ```kotlin
 private fun checkAndInvalidateCacheIfNeeded(configuration: Configuration) {
     if (lastScreenConfig != Triple(width, height, uiMode)) {
@@ -1494,20 +1496,20 @@ private fun checkAndInvalidateCacheIfNeeded(configuration: Configuration) {
 @Composable
 fun calculate() {
     val factors = remember(
-        config.screenWidthDp,    // Apenas mudanças relevantes
+        config.screenWidthDp,    // Only relevant changes
         config.screenHeightDp,
         customSensitivityK
     ) { ... }
 }
 ```
 
-### 8.3 Recomendações Práticas
+### 8.3 Practical Recommendations
 
-#### Design System Exemplo
+#### Example Design System
 
 ```kotlin
 object AppDimensions {
-    // Espaçamentos (Fixed)
+    // Spacing (Fixed)
     val spacingXXSmall = 4.fxdp
     val spacingXSmall = 8.fxdp
     val spacingSmall = 12.fxdp
@@ -1516,7 +1518,7 @@ object AppDimensions {
     val spacingXLarge = 32.fxdp
     val spacingXXLarge = 48.fxdp
     
-    // Tamanhos de Fonte (Fixed)
+    // Font Sizes (Fixed)
     val fontCaption = 12.fxsp
     val fontBody = 14.fxsp
     val fontSubtitle = 16.fxsp
@@ -1524,182 +1526,182 @@ object AppDimensions {
     val fontHeadline = 24.fxsp
     val fontDisplay = 32.fxsp
     
-    // Ícones (Fixed)
+    // Icons (Fixed)
     val iconSmall = 16.fxdp
     val iconMedium = 24.fxdp
     val iconLarge = 32.fxdp
     val iconXLarge = 48.fxdp
     
-    // Componentes (Fixed)
+    // Components (Fixed)
     val buttonHeight = 48.fxdp
     val cardMaxWidth = 360.fxdp
     val appBarHeight = 56.fxdp
     
-    // Containers (Dynamic - casos específicos)
+    // Containers (Dynamic - specific cases)
     val maxContentWidth = 1200.dydp
     val gridItemMin = 120.dydp
 }
 ```
 
-#### Guidelines de Uso
+#### Usage Guidelines
 
 **DO ✅:**
-- Use Fixed para 95% dos casos
-- Cache dimensões frequentemente usadas
-- Teste em múltiplos tamanhos de tela
-- Considere aspect ratio em designs
+- Use Fixed for 95% of cases
+- Cache frequently used dimensions
+- Test on multiple screen sizes
+- Consider aspect ratio in designs
 
 **DON'T ❌:**
-- Não use Dynamic para textos/ícones pequenos
-- Não misture Fixed e Dynamic no mesmo elemento sem razão
-- Não ignore multi-window em apps split-screen
-- Não use sensibilidade K muito alta (> 0.15)
+- Don't use Dynamic for small text/icons
+- Don't mix Fixed and Dynamic on same element without reason
+- Don't ignore multi-window in split-screen apps
+- Don't use sensitivity K too high (> 0.15)
 
 ---
 
-## 9. Conclusões
+## 9. Conclusions
 
-### 9.1 Contribuições Originais
+### 9.1 Original Contributions
 
-O **AppDimens** introduz:
+**AppDimens** introduces:
 
-1. **Escalonamento Logarítmico para UI** (primeiro na indústria)
-2. **Consideração de Aspect Ratio** em dimensionamento responsivo
-3. **Dualidade Fixed/Dynamic** com escolha consciente
-4. **Sistema de Qualificadores com Prioridades**
-5. **Performance Otimizada** com cache inteligente
+1. **Logarithmic Scaling for UI** (first in industry)
+2. **Aspect Ratio Consideration** in responsive sizing
+3. **Fixed/Dynamic Duality** with conscious choice
+4. **Qualifier System with Priorities**
+5. **Optimized Performance** with intelligent cache
 
-### 9.2 Quando Usar AppDimens
+### 9.2 When to Use AppDimens
 
-**Cenários Ideais:**
-- ✅ Apps que precisam rodar em múltiplos formatos (phone, tablet, TV)
-- ✅ Design systems que valorizam proporções visuais
-- ✅ Projetos que querem controle fino sobre escalonamento
-- ✅ Apps com requisitos de acessibilidade
+**Ideal Scenarios:**
+- ✅ Apps that need to run on multiple formats (phone, tablet, TV)
+- ✅ Design systems that value visual proportions
+- ✅ Projects that want fine control over scaling
+- ✅ Apps with accessibility requirements
 
-**Alternativas:**
-- ⚠️ Apps simples com suporte apenas a phones: DP tradicional pode ser suficiente
-- ⚠️ Projetos com designers que preferem valores "fixos": SDP pode ser mais fácil
+**Alternatives:**
+- ⚠️ Simple apps with phone-only support: Traditional DP may suffice
+- ⚠️ Projects with designers who prefer "fixed" values: SDP may be easier
 
-### 9.3 Trabalhos Futuros
+### 9.3 Future Work
 
-**Pesquisa:**
-- 📊 Estudos de usabilidade comparando Fixed vs Linear
-- 🧪 Testes A/B com diferentes valores de sensibilidade K
-- 📐 Otimização de constantes para diferentes design systems
+**Research:**
+- 📊 Usability studies comparing Fixed vs Linear
+- 🧪 A/B tests with different sensitivity K values
+- 📐 Constant optimization for different design systems
 
-**Implementação:**
-- 🚀 Suporte para mais plataformas (Desktop, Web completo)
-- 🎨 Ferramentas visuais de design (plugins Figma/Sketch)
-- 📱 Modo automático que escolhe Fixed/Dynamic baseado no elemento
+**Implementation:**
+- 🚀 Support for more platforms (Desktop, Full Web)
+- 🎨 Visual design tools (Figma/Sketch plugins)
+- 📱 Auto mode that chooses Fixed/Dynamic based on element
 
 ---
 
-## 9. Referências e Discussões Técnicas
+## 9. References and Technical Discussions
 
-### 9.1 Análise Técnica Detalhada
+### 9.1 Detailed Technical Analysis
 
-Esta documentação abrange uma análise aprofundada da biblioteca AppDimens, incluindo:
+This documentation covers an in-depth analysis of the AppDimens library, including:
 
-- **Arquitetura Matemática**: Análise detalhada da estrutura de cálculo logarítmico e suas justificativas teóricas
-- **Comparações de Desempenho**: Benchmarks comparando Fixed, Dynamic e outras abordagens
-- **Casos de Uso**: Exemplos práticos de aplicação em diferentes plataformas
-- **Discussão sobre Constantes**: Justificativas para os valores escolhidos (K=0.08, W₀=300, etc.)
+- **Mathematical Architecture**: Detailed analysis of logarithmic calculation structure and its theoretical justifications
+- **Performance Comparisons**: Benchmarks comparing Fixed, Dynamic and other approaches
+- **Use Cases**: Practical examples of application on different platforms
+- **Constants Discussion**: Justifications for chosen values (K=0.08, W₀=300, etc.)
 
-**Principais Pontos:**
+**Key Points:**
 
-1. **Inovação do Modelo Logarítmico:**
-   - Primeira aplicação conhecida de ln(x) para dimensionamento responsivo de UI
-   - Fundamentação em psicofísica (Lei de Weber-Fechner)
-   - Validação através de testes visuais em múltiplos dispositivos
+1. **Innovation of the Logarithmic Model:**
+   - First known application of ln(x) for responsive UI sizing
+   - Foundation in psychophysics (Weber-Fechner Law)
+   - Validation through visual tests on multiple devices
 
-2. **Comparação com SDP/SSP:**
-   - SDP usa escalonamento linear: `V_final = V_base × (W_atual / W_ref)`
-   - AppDimens Fixed usa logarítmico: `V_final = V_base × [1 + β(S) × (ε₀ + K×ln(AR/AR₀))]`
-   - Diferença significativa em telas grandes (tablets 10", TVs)
+2. **Comparison with SDP/SSP:**
+   - SDP uses linear scaling: `V_final = V_base × (W_current / W_ref)`
+   - AppDimens Fixed uses logarithmic: `V_final = V_base × [1 + β(S) × (ε₀ + K×ln(AR/AR₀))]`
+   - Significant difference on large screens (10" tablets, TVs)
 
-3. **Universalidade da Fórmula:**
-   - O modelo matemático é agnóstico à plataforma
-   - Implementações em Kotlin, Swift, Dart, TypeScript, JavaScript
-   - Mesmos princípios aplicáveis a qualquer sistema de UI
+3. **Formula Universality:**
+   - Mathematical model is platform-agnostic
+   - Implementations in Kotlin, Swift, Dart, TypeScript, JavaScript
+   - Same principles applicable to any UI system
 
-### 9.2 Fundamentação Teórica Adicional
+### 9.2 Additional Theoretical Foundation
 
-A análise complementar explora:
+The complementary analysis explores:
 
-- **Fundamentação Teórica**: Análise matemática das propriedades da função logarítmica
-- **Comparações Alternativas**: Outras abordagens possíveis (exponencial, raiz quadrada, sigmóide)
-- **Calibração de Parâmetros**: Como os valores das constantes foram determinados
-- **Extensões Futuras**: Possíveis melhorias e variações do modelo
+- **Theoretical Foundation**: Mathematical analysis of logarithmic function properties
+- **Alternative Comparisons**: Other possible approaches (exponential, square root, sigmoid)
+- **Parameter Calibration**: How constant values were determined
+- **Future Extensions**: Possible improvements and model variations
 
-**Insights Adicionais:**
+**Additional Insights:**
 
-1. **Por que ln(x) e não log₁₀(x) ou log₂(x)?**
-   - ln(x) tem base natural `e`, alinhada com fenômenos de crescimento natural
-   - Propriedades de derivação mais simples: d/dx[ln(x)] = 1/x
-   - Alinhamento com fórmulas psicofísicas estabelecidas
+1. **Why ln(x) and not log₁₀(x) or log₂(x)?**
+   - ln(x) has natural base `e`, aligned with natural growth phenomena
+   - Simpler derivative properties: d/dx[ln(x)] = 1/x
+   - Alignment with established psychophysical formulas
 
-2. **Alternativas Consideradas:**
+2. **Alternatives Considered:**
    
-   **Raiz Quadrada:**
+   **Square Root:**
    ```
    f(x) = B × √(S / W₀)
    ```
-   - Crescimento muito lento em telas grandes
-   - Não considera aspect ratio naturalmente
+   - Very slow growth on large screens
+   - Does not naturally consider aspect ratio
    
-   **Exponencial Inverso:**
+   **Inverse Exponential:**
    ```
    f(x) = B × [2 - e^(-(S-W₀)/δ)]
    ```
-   - Comportamento assintótico muito rápido
-   - Difícil calibração de parâmetros
+   - Very fast asymptotic behavior
+   - Difficult parameter calibration
    
-   **Sigmóide (Logística):**
+   **Sigmoid (Logistic):**
    ```
    f(x) = B × [1 / (1 + e^(-(S-W₀)/δ))]
    ```
-   - Boa para transições suaves, mas satura muito rápido
-   - Não adequado para crescimento contínuo
+   - Good for smooth transitions, but saturates too quickly
+   - Not suitable for continuous growth
 
-3. **Validação Empírica:**
-   - Testes com designers e usuários
-   - Comparação visual entre Fixed, Dynamic e DP tradicional
-   - Preferência por Fixed em 78% dos casos (vs 12% Dynamic, 10% Tradicional)
+3. **Empirical Validation:**
+   - Tests with designers and users
+   - Visual comparison between Fixed, Dynamic and Traditional DP
+   - Preference for Fixed in 78% of cases (vs 12% Dynamic, 10% Traditional)
 
-### 9.2 Fundamentos Matemáticos e Psicofísicos
+### 9.2 Mathematical and Psychophysical Foundations
 
-#### 9.2.1 Lei de Weber-Fechner
+#### 9.2.1 Weber-Fechner Law
 
-**Formulação Original (1860):**
+**Original Formulation (1860):**
 ```
 S = k × log(I/I₀)
 
-onde:
-S = sensação percebida
-I = intensidade do estímulo
-I₀ = limiar mínimo de percepção
-k = constante de sensibilidade
+where:
+S = perceived sensation
+I = stimulus intensity
+I₀ = minimum perception threshold
+k = sensitivity constant
 ```
 
-**Aplicação em AppDimens:**
+**Application in AppDimens:**
 
-A percepção de "tamanho" em interfaces segue princípios similares. Um elemento que dobra de tamanho físico não é percebido como "duas vezes maior" perceptualmente.
+Perception of "size" in interfaces follows similar principles. An element that doubles in physical size is not perceived as "twice as large" perceptually.
 
-**Referências:**
+**References:**
 - Fechner, G. T. (1860). "Elemente der Psychophysik"
 - Stevens, S. S. (1957). "On the psychophysical law". *Psychological Review*, 64(3), 153–181
 
-#### 9.2.2 Função Logarítmica Natural
+#### 9.2.2 Natural Logarithmic Function
 
-**Propriedades Fundamentais:**
+**Fundamental Properties:**
 
-1. **Definição:**
+1. **Definition:**
    ```
    ln(x) = ∫₁ˣ (1/t) dt
    ```
 
-2. **Identidades Úteis:**
+2. **Useful Identities:**
    ```
    ln(ab) = ln(a) + ln(b)
    ln(a/b) = ln(a) - ln(b)
@@ -1708,122 +1710,122 @@ A percepção de "tamanho" em interfaces segue princípios similares. Um element
    ln(1) = 0
    ```
 
-3. **Série de Taylor (expansão):**
+3. **Taylor Series (expansion):**
    ```
-   ln(1+x) = x - x²/2 + x³/3 - x⁴/4 + ... para |x| < 1
+   ln(1+x) = x - x²/2 + x³/3 - x⁴/4 + ... for |x| < 1
    ```
 
-4. **Limites Importantes:**
+4. **Important Limits:**
    ```
    lim[x→0⁺] ln(x) = -∞
    lim[x→∞] ln(x) = ∞
-   lim[x→∞] ln(x)/x = 0  (cresce mais lento que qualquer potência)
+   lim[x→∞] ln(x)/x = 0  (grows slower than any power)
    ```
 
-**Referências:**
+**References:**
 - Knuth, D. E. (1997). "The Art of Computer Programming, Vol. 1: Fundamental Algorithms"
 - Graham, R. L., Knuth, D. E., & Patashnik, O. (1994). "Concrete Mathematics"
 
-#### 9.2.3 Teoria da Percepção Visual em UI
+#### 9.2.3 Theory of Visual Perception in UI
 
-**Princípios Aplicáveis:**
+**Applicable Principles:**
 
-1. **Affordances Visuais:**
+1. **Visual Affordances:**
    - Gibson, J. J. (1979). "The Ecological Approach to Visual Perception"
-   - Elementos devem manter affordances mesmo em diferentes tamanhos
+   - Elements must maintain affordances even at different sizes
 
-2. **Densidade Informacional:**
+2. **Informational Density:**
    - Tufte, E. R. (2001). "The Visual Display of Quantitative Information"
-   - Balanceamento entre tamanho e densidade
+   - Balance between size and density
 
-3. **Lei de Fitts:**
+3. **Fitts' Law:**
    ```
    T = a + b × log₂(D/W + 1)
    
-   T = tempo para alcançar alvo
-   D = distância até o alvo
-   W = largura do alvo
+   T = time to reach target
+   D = distance to target
+   W = target width
    ```
-   - Relação logarítmica entre tamanho e usabilidade
+   - Logarithmic relationship between size and usability
 
-**Referências:**
+**References:**
 - Fitts, P. M. (1954). "The information capacity of the human motor system"
 - MacKenzie, I. S. (1992). "Fitts' law as a research and design tool in human-computer interaction"
 
-### 9.3 Design de Interfaces e Responsive Design
+### 9.3 Interface Design and Responsive Design
 
 #### 9.3.1 Material Design Guidelines
 
 **Google Material Design:**
 - "Responsive Layout Grid": https://material.io/design/layout/responsive-layout-grid.html
-- Baseado em breakpoints discretos (não contínuo)
-- Foco em sistemas de grid, não em escalonamento matemático
+- Based on discrete breakpoints (not continuous)
+- Focus on grid systems, not mathematical scaling
 
-**Limitações do Approach de Breakpoints:**
-- Transições abruptas entre tamanhos
-- Muitos arquivos de recursos (valores para cada breakpoint)
-- Não adapta suavemente entre breakpoints
+**Limitations of Breakpoint Approach:**
+- Abrupt transitions between sizes
+- Many resource files (values for each breakpoint)
+- Does not adapt smoothly between breakpoints
 
 #### 9.3.2 Apple Human Interface Guidelines
 
 **iOS/iPadOS HIG:**
 - "Layout": https://developer.apple.com/design/human-interface-guidelines/layout
-- Ênfase em Auto Layout e Size Classes
-- Dimensões fixas em pontos, não escalonamento matemático
+- Emphasis on Auto Layout and Size Classes
+- Fixed dimensions in points, not mathematical scaling
 
 **watchOS HIG:**
-- Dimensões absolutas em pontos
-- Adaptação manual por tamanho de caixa
+- Absolute dimensions in points
+- Manual adaptation by case size
 
 #### 9.3.3 Responsive Web Design
 
-**Conceitos Estabelecidos:**
+**Established Concepts:**
 
 1. **Fluid Typography (Viewport Units):**
    ```css
    font-size: calc(1rem + 0.5vw);
    ```
-   - Linear em relação ao viewport
-   - Sem controle logarítmico
+   - Linear relative to viewport
+   - No logarithmic control
 
 2. **CSS Clamp:**
    ```css
    font-size: clamp(1rem, 2vw, 2rem);
    ```
-   - Limitação de min/max
-   - Crescimento linear entre limites
+   - Min/max limitation
+   - Linear growth between limits
 
 3. **Media Queries:**
-   - Breakpoints discretos
-   - Não contínuo
+   - Discrete breakpoints
+   - Not continuous
 
 **AppDimens Fluid Model** (Web/React Native):
 ```typescript
-// Inspirado em CSS clamp, mas com função logarítmica
+// Inspired by CSS clamp, but with logarithmic function
 fluid(base, min, max).withCurve('logarithmic')
 ```
 
-### 9.4 Bibliotecas e Ferramentas Relacionadas
+### 9.4 Related Libraries and Tools
 
 #### 9.4.1 SDP/SSP (Scalable DP/SP)
 
-**Repositório:** https://github.com/intuit/sdp  
-**Autor:** Intuit
+**Repository:** https://github.com/intuit/sdp  
+**Author:** Intuit
 
-**Modelo:**
+**Model:**
 ```xml
-<!-- Escalonamento linear proporcional -->
-valor_sdp = valor_base × (smallestWidth_atual / 360)
+<!-- Linear proportional scaling -->
+sdp_value = base_value × (current_smallestWidth / 360)
 ```
 
-**Limitações:**
-- ❌ 426+ arquivos XML pré-gerados
-- ❌ Crescimento linear (não logarítmico)
-- ❌ Não considera aspect ratio
-- ❌ Apenas Android XML (suporte limitado a Compose)
+**Limitations:**
+- ❌ 426+ pre-generated XML files
+- ❌ Linear growth (not logarithmic)
+- ❌ Does not consider aspect ratio
+- ❌ Android XML only (limited Compose support)
 
-**Comparação Direta:**
-| Tela | SDP 16 | AppDimens Fixed 16 | Diferença |
+**Direct Comparison:**
+| Screen | SDP 16 | AppDimens Fixed 16 | Difference |
 |------|--------|-------------------|-----------|
 | 360dp | 16dp | 17.9dp | +11.9% |
 | 720dp | 32dp | 24.0dp | -25.0% |
@@ -1831,187 +1833,187 @@ valor_sdp = valor_base × (smallestWidth_atual / 360)
 
 #### 9.4.2 ScreenSize (Jetpack Compose)
 
-**Android Nativo:**
+**Android Native:**
 ```kotlin
 WindowSizeClass.calculateFromSize(size)
-// Retorna: Compact, Medium, Expanded
+// Returns: Compact, Medium, Expanded
 ```
 
-**Limitações:**
-- Apenas 3 categorias discretas
-- Sem escalonamento matemático contínuo
-- Responsabilidade do desenvolvedor implementar adaptações
+**Limitations:**
+- Only 3 discrete categories
+- No continuous mathematical scaling
+- Developer responsibility to implement adaptations
 
 #### 9.4.3 AutoSizeText (Android)
 
-**Documentação:** https://developer.android.com/guide/topics/ui/look-and-feel/autosizing-textview
+**Documentation:** https://developer.android.com/guide/topics/ui/look-and-feel/autosizing-textview
 
-**Modelo:**
-- Ajuste automático para caber no espaço disponível
-- Baseado em limites min/max
-- Apenas para texto, não aplicável a dimensões gerais
+**Model:**
+- Automatic adjustment to fit available space
+- Based on min/max limits
+- Only for text, not applicable to general dimensions
 
 #### 9.4.4 DimenRes (Airbnb)
 
 **Approach:**
-- Múltiplos arquivos `dimens.xml` para diferentes qualificadores
-- Valores definidos manualmente por designers
-- Não há fórmula matemática subjacente
+- Multiple `dimens.xml` files for different qualifiers
+- Values manually defined by designers
+- No underlying mathematical formula
 
-### 9.5 Trabalhos Acadêmicos Relacionados
+### 9.5 Related Academic Work
 
-#### 9.5.1 Escalonamento em Interfaces
+#### 9.5.1 Scaling in Interfaces
 
-**Trabalhos Relevantes:**
+**Relevant Work:**
 
 1. **Baudisch, P., & Rosenholtz, R. (2003).**  
    "Halo: a technique for visualizing off-screen objects"  
    *Proceedings of CHI 2003*
-   - Escalas não-lineares para visualização
+   - Non-linear scales for visualization
 
 2. **Furnas, G. W. (1986).**  
    "Generalized fisheye views"  
    *Proceedings of CHI 1986*
-   - Distorção não-linear de espaço visual
+   - Non-linear distortion of visual space
 
 3. **Cockburn, A., Karlson, A., & Bederson, B. B. (2009).**  
    "A review of overview+detail, zooming, and focus+context interfaces"  
    *ACM Computing Surveys, 41(1)*
-   - Técnicas de escalonamento contextual
+   - Contextual scaling techniques
 
-**Observação:** Nenhum desses trabalhos aplica logaritmo natural especificamente para dimensionamento responsivo de elementos de UI fixos.
+**Observation:** None of these works apply natural logarithm specifically for responsive sizing of fixed UI elements.
 
-#### 9.5.2 Percepção e Cognição
+#### 9.5.2 Perception and Cognition
 
 1. **Weber, E. H. (1834).**  
    "De pulsu, resorptione, auditu et tactu"
-   - Fundamentos da Lei de Weber (JND - Just Noticeable Difference)
+   - Foundations of Weber's Law (JND - Just Noticeable Difference)
 
 2. **Fechner, G. T. (1860).**  
    "Elemente der Psychophysik"
-   - Formalização matemática da relação estímulo-percepção
+   - Mathematical formalization of stimulus-perception relationship
 
 3. **Stevens, S. S. (1961).**  
    "To honor Fechner and repeal his law"  
    *Science, 133(3446)*
-   - Lei de Potência de Stevens (alternativa à Lei de Weber-Fechner)
+   - Stevens' Power Law (alternative to Weber-Fechner Law)
 
 4. **Loomis, J. M., Da Silva, J. A., Fujita, N., & Fukusima, S. S. (1992).**  
    "Visual space perception and visually directed action"  
    *Journal of Experimental Psychology: Human Perception and Performance, 18(4), 906*
-   - Percepção logarítmica de distância e tamanho visual
-   - Fundamentação para escala perceptiva em displays
+   - Logarithmic perception of distance and visual size
+   - Foundation for perceptual scale in displays
 
 5. **Loomis, J. M., Klatzky, R. L., Philbeck, J. W., & Golledge, R. G. (1998).**  
    "Assessing auditory distance perception using perceptually directed action"  
    *Perception & Psychophysics, 60(6), 966-980*
-   - Extensão da teoria perceptiva logarítmica
+   - Extension of logarithmic perceptual theory
 
 6. **Schwartz, E. L. (1980).**  
    "Computational anatomy and functional architecture of striate cortex: A spatial mapping approach to perceptual coding"  
    *Vision Research, 20(8), 645-669*
-   - Mapeamento log-polar no córtex visual V1
-   - Base neurocientífica para representação logarítmica de espaço visual
+   - Log-polar mapping in visual cortex V1
+   - Neuroscientific basis for logarithmic representation of visual space
 
-### 9.6 Originalidade e Contribuição Científica
+### 9.6 Originality and Scientific Contribution
 
-#### 9.6.1 Busca por Prior Art
+#### 9.6.1 Prior Art Search
 
-**Metodologia de Busca:**
+**Search Methodology:**
 
-1. **Bases de Dados Acadêmicas:**
+1. **Academic Databases:**
    - IEEE Xplore: "logarithmic scaling user interface"
    - ACM Digital Library: "adaptive dimensions mobile"
    - Google Scholar: "responsive UI scaling logarithmic"
    
-2. **Repositórios de Código:**
+2. **Code Repositories:**
    - GitHub: "logarithmic ui scaling", "adaptive dp"
-   - GitLab, Bitbucket: Termos similares
+   - GitLab, Bitbucket: Similar terms
    
-3. **Patentes:**
+3. **Patents:**
    - USPTO, EPO: "user interface scaling", "adaptive display"
 
-**Resultado:**
-- ❌ **Nenhuma biblioteca anterior usa ln(x) para dimensionamento responsivo de UI**
-- ⚠️ Logaritmo usado em outros contextos (áudio, brilho, zoom de mapas)
-- ✅ **AppDimens aparenta ser a primeira implementação deste modelo específico**
+**Result:**
+- ❌ **No previous library uses ln(x) for responsive UI sizing**
+- ⚠️ Logarithm used in other contexts (audio, brightness, map zoom)
+- ✅ **AppDimens appears to be the first implementation of this specific model**
 
-#### 9.6.2 Contribuições Originais
+#### 9.6.2 Original Contributions
 
-**AppDimens introduz:**
+**AppDimens introduces:**
 
-1. **Modelo Matemático Híbrido:**
-   - Combinação de componente linear β(S) e logarítmica γ(AR)
-   - Não encontrado em literatura prévia
+1. **Hybrid Mathematical Model:**
+   - Combination of linear component β(S) and logarithmic γ(AR)
+   - Not found in previous literature
 
-2. **Consideração de Aspect Ratio:**
-   - Primeira biblioteca a ajustar dimensões baseando-se em AR
-   - Fórmula: `K × ln(AR / AR₀)`
+2. **Aspect Ratio Consideration:**
+   - First library to adjust dimensions based on AR
+   - Formula: `K × ln(AR / AR₀)`
 
-3. **Dualidade Consciente:**
-   - Fixed (logarítmico) vs Dynamic (linear)
-   - Escolha explícita baseada em contexto
+3. **Conscious Duality:**
+   - Fixed (logarithmic) vs Dynamic (linear)
+   - Explicit choice based on context
 
-4. **Universalidade Cross-Platform:**
-   - Mesma fórmula implementada em 5+ plataformas
-   - Consistência matemática entre ecosistemas
+4. **Cross-Platform Universality:**
+   - Same formula implemented in 5+ platforms
+   - Mathematical consistency between ecosystems
 
-### 9.7 Documentação Adicional
+### 9.7 Additional Documentation
 
-**Repositório Oficial:**
+**Official Repository:**
 - https://github.com/bodenberg/appdimens
 
-**Documentação por Plataforma:**
+**Documentation by Platform:**
 - Android: `/Android/README.md`
 - iOS: `/iOS/README.md`
 - Flutter: `/Flutter/README.md`
 - React Native: `/ReactNative/README.md`
 - Web: `/Web/README.md`
 
-**Exemplos e Benchmarks:**
-- `/EXAMPLES.md` - Exemplos práticos
-- `/Android/BENCHMARK.md` - Testes de performance
+**Examples and Benchmarks:**
+- `/EXAMPLES.md` - Practical examples
+- `/Android/BENCHMARK.md` - Performance tests
 
 ---
 
-## 11. Apêndices
+## 11. Appendices
 
-### A. Constantes de Configuração
+### A. Configuration Constants
 
 ```kotlin
 // AppDimensAdjustmentFactors.kt
 
-const val BASE_DP_FACTOR = 1.00f           // Fator neutro
-const val BASE_WIDTH_DP = 300f             // Referência: Nexus 5 (~360dp)
-const val INCREMENT_DP_STEP = 30f          // Passo de 10%
+const val BASE_DP_FACTOR = 1.00f           // Neutral factor
+const val BASE_WIDTH_DP = 300f             // Reference: Nexus 5 (~360dp)
+const val INCREMENT_DP_STEP = 30f          // 10% step
 const val REFERENCE_AR = 1.78f             // 16:9
-const val DEFAULT_SENSITIVITY_K = 0.08f    // Sensibilidade padrão
-const val BASE_INCREMENT = 0.10f           // Incremento base 10%
+const val DEFAULT_SENSITIVITY_K = 0.08f    // Default sensitivity
+const val BASE_INCREMENT = 0.10f           // 10% base increment
 ```
 
-### B. Fórmulas de Conversão
+### B. Conversion Formulas
 
 ```kotlin
-// DP para Pixels
+// DP to Pixels
 fun dpToPx(dp: Float, density: Float): Float = dp * density
 
-// SP para Pixels
+// SP to Pixels
 fun spToPx(sp: Float, density: Float, fontScale: Float): Float = 
     sp * density * fontScale
 
-// MM para Pixels
+// MM to Pixels
 fun mmToPx(mm: Float, xdpi: Float): Float = 
     (mm / 25.4f) * xdpi
 
-// Pixels para DP
+// Pixels to DP
 fun pxToDp(px: Float, density: Float): Float = px / density
 ```
 
-### C. Tabelas de Referência
+### C. Reference Tables
 
-**Tamanhos de Tela Comuns (smallestWidth):**
+**Common Screen Sizes (smallestWidth):**
 
-| Dispositivo | smallestWidthDp |
+| Device | smallestWidthDp |
 |-------------|-----------------|
 | Phone Small | 240-320 |
 | Phone Normal | 360-411 |
@@ -2020,12 +2022,12 @@ fun pxToDp(px: Float, density: Float): Float = px / density
 | Tablet 10" | 720-800 |
 | TV / Desktop | 960-1280+ |
 
-**Aspect Ratios Comuns:**
+**Common Aspect Ratios:**
 
-| Ratio | Decimal | Dispositivos |
+| Ratio | Decimal | Devices |
 |-------|---------|--------------|
-| 16:9  | 1.78 | TVs, Phones antigos |
-| 18:9  | 2.00 | Phones modernos |
+| 16:9  | 1.78 | TVs, Old phones |
+| 18:9  | 2.00 | Modern phones |
 | 19:9  | 2.11 | Phones 2019+ |
 | 20:9  | 2.22 | Phones 2020+ |
 | 21:9  | 2.33 | Ultra-wide |
@@ -2033,129 +2035,127 @@ fun pxToDp(px: Float, density: Float): Float = px / density
 
 ---
 
----
+## 10. Conclusion: Universality of the Mathematical Model
 
-## 10. Conclusão: Universalidade do Modelo Matemático
+### 10.1 Theoretical Synthesis
 
-### 10.1 Síntese Teórica
+AppDimens presents a **universal mathematical model for responsive user interface scaling**, founded on three pillars:
 
-O AppDimens apresenta um **modelo matemático universal para escalonamento responsivo de interfaces de usuário**, fundamentado em três pilares:
+1. **Psychophysical Foundation:**
+   - Based on Weber-Fechner Law
+   - Aligned with logarithmic human perception
+   - Validated by visual ergonomics principles
 
-1. **Fundamentação Psicofísica:**
-   - Baseado na Lei de Weber-Fechner
-   - Alinhado com a percepção logarítmica humana
-   - Validado por princípios de ergonomia visual
+2. **Mathematical Elegance:**
+   - Continuous, differentiable and monotonic function
+   - Controlled asymptotic behavior
+   - Composition of linear and logarithmic components
 
-2. **Elegância Matemática:**
-   - Função contínua, diferenciável e monotônica
-   - Comportamento assintótico controlado
-   - Composição de componentes linear e logarítmica
+3. **Universal Applicability:**
+   - Platform-agnostic (Android, iOS, Web, Flutter, etc.)
+   - Programming language independent
+   - Adaptable to different UI paradigms
 
-3. **Aplicabilidade Universal:**
-   - Agnóstico à plataforma (Android, iOS, Web, Flutter, etc.)
-   - Independente de linguagem de programação
-   - Adaptável a diferentes paradigmas de UI
+### 10.2 Central Formula (Summary)
 
-### 10.2 Fórmula Central (Resumo)
-
-**Modelo Fixed (Recomendado):**
+**Fixed Model (Recommended):**
 ```
 f_FX(B, S, AR) = B × [1 + ((S - W₀) / δ) × (ε₀ + K × ln(AR / AR₀))]
 
-Constantes universais:
-W₀ = 300    (referência dimensional)
-AR₀ = 1.78  (proporção 16:9)
-δ = 30      (step dimensional)
-ε₀ = 0.10   (incremento base 10%)
-K = 0.08    (sensibilidade logarítmica)
+Universal constants:
+W₀ = 300    (dimensional reference)
+AR₀ = 1.78  (16:9 proportion)
+δ = 30      (dimensional step)
+ε₀ = 0.10   (10% base increment)
+K = 0.08    (logarithmic sensitivity)
 ```
 
-**Modelo Dynamic (Casos específicos):**
+**Dynamic Model (Specific cases):**
 ```
 f_DY(B, S) = B × (S / W₀)
 ```
 
-### 10.3 Inovação e Originalidade
+### 10.3 Innovation and Originality
 
-**AppDimens é pioneiro em:**
+**AppDimens is pioneer in:**
 
-✅ **Primeira aplicação de logaritmo natural para dimensionamento responsivo de UI**
-- Busca extensiva em literatura acadêmica e código aberto
-- Sem precedentes identificados em bases IEEE, ACM, GitHub
-- Modelo original desenvolvido por Jean Bodenberg (2024-2025)
+✅ **First application of natural logarithm for responsive UI sizing**
+- Extensive search in academic literature and open source code
+- No precedents identified in IEEE, ACM, GitHub databases
+- Original model developed by Jean Bodenberg (2024-2025)
 
-✅ **Consideração de Aspect Ratio em escalonamento dimensional**
-- Primeira biblioteca a ajustar dimensões baseando-se em proporção de tela
-- Fórmula híbrida linear + logarítmica
+✅ **Aspect Ratio consideration in dimensional scaling**
+- First library to adjust dimensions based on screen proportion
+- Hybrid linear + logarithmic formula
 
-✅ **Universalidade cross-platform com consistência matemática**
-- Mesma teoria implementada em 5+ plataformas
-- Resultados visuais consistentes entre ecosistemas
+✅ **Cross-platform universality with mathematical consistency**
+- Same theory implemented in 5+ platforms
+- Consistent visual results between ecosystems
 
-### 10.4 Fundamentação Técnica
+### 10.4 Technical Foundation
 
-Este trabalho foi extensamente analisado considerando:
+This work was extensively analyzed considering:
 
-1. **Análise Matemática Profunda:**
-   - Validação teórica do modelo logarítmico
-   - Comparações com SDP/SSP e outras bibliotecas
-   - Validação de implementação em múltiplas plataformas
+1. **Deep Mathematical Analysis:**
+   - Theoretical validation of logarithmic model
+   - Comparisons with SDP/SSP and other libraries
+   - Implementation validation on multiple platforms
 
-2. **Exploração de Modelos Alternativos:**
-   - Comparação com abordagens exponenciais, raiz quadrada e sigmóides
-   - Justificativas matemáticas para escolha de ln(x)
-   - Discussão sobre calibração de parâmetros e constantes
+2. **Exploration of Alternative Models:**
+   - Comparison with exponential, square root and sigmoid approaches
+   - Mathematical justifications for ln(x) choice
+   - Discussion about parameter and constant calibration
 
-### 10.5 Aplicabilidade Prática
+### 10.5 Practical Applicability
 
-**Esta teoria matemática pode ser implementada em qualquer sistema que:**
+**This mathematical theory can be implemented in any system that:**
 
-- Renderize interfaces visuais em múltiplos tamanhos de tela
-- Necessite escalonamento adaptativo de dimensões
-- Deseje consistência perceptual entre dispositivos
-- Busque controle fino sobre crescimento de elementos
+- Renders visual interfaces at multiple screen sizes
+- Needs adaptive dimension scaling
+- Desires perceptual consistency between devices
+- Seeks fine control over element growth
 
-**Linguagens e Frameworks Compatíveis:**
+**Compatible Languages and Frameworks:**
 - Kotlin, Java (Android)
 - Swift, Objective-C (iOS)
 - Dart (Flutter)
 - TypeScript, JavaScript (Web, React Native)
 - C++, C# (Unity, Unreal, .NET MAUI)
 - Python (Kivy, PyQt)
-- E qualquer outra plataforma de UI
+- And any other UI platform
 
-**A implementação requer apenas:**
-1. Acesso às dimensões da tela (width, height, smallest width)
-2. Função logarítmica natural `ln(x)`
-3. Operações aritméticas básicas (+, -, ×, /)
+**Implementation requires only:**
+1. Access to screen dimensions (width, height, smallest width)
+2. Natural logarithmic function `ln(x)`
+3. Basic arithmetic operations (+, -, ×, /)
 
-### 10.6 Trabalhos Futuros
+### 10.6 Future Work
 
-**Pesquisa Acadêmica:**
-- 📊 Estudos de usabilidade quantitativos (A/B testing em larga escala)
-- 🧠 Validação experimental com neurofisiologia (eye-tracking, EEG)
-- 📐 Otimização matemática das constantes por tipo de aplicação
+**Academic Research:**
+- 📊 Quantitative usability studies (large-scale A/B testing)
+- 🧠 Experimental validation with neurophysiology (eye-tracking, EEG)
+- 📐 Mathematical optimization of constants by application type
 
-**Extensões do Modelo:**
-- 🎯 Calibração automática de K baseada em densidade informacional
-- 🌐 Modelo híbrido Fixed+Dynamic com transição suave
-- 📱 Adaptação para displays flexíveis e dobráveis
+**Model Extensions:**
+- 🎯 Automatic K calibration based on informational density
+- 🌐 Fixed+Dynamic hybrid model with smooth transition
+- 📱 Adaptation for flexible and foldable displays
 
-**Ferramentas e Ecossistema:**
-- 🎨 Plugins para Figma, Sketch, Adobe XD
-- 🤖 Gerador automático de design tokens
-- 📊 Dashboard de visualização de curvas de escalonamento
+**Tools and Ecosystem:**
+- 🎨 Plugins for Figma, Sketch, Adobe XD
+- 🤖 Automatic design token generator
+- 📊 Scaling curve visualization dashboard
 
-### 10.7 Citação Sugerida
+### 10.7 Suggested Citation
 
-**Formato Acadêmico:**
+**Academic Format:**
 
 ```
 Bodenberg, J. (2025). AppDimens: A Logarithmic Approach to Responsive UI Scaling.
 Technical Documentation. https://github.com/bodenberg/appdimens
 ```
 
-**Formato BibTeX:**
+**BibTeX Format:**
 
 ```bibtex
 @techreport{bodenberg2025appdimens,
@@ -2168,39 +2168,38 @@ Technical Documentation. https://github.com/bodenberg/appdimens
 }
 ```
 
-### 10.8 Licença e Uso
+### 10.8 License and Usage
 
-**Licença:** Apache 2.0
+**License:** Apache 2.0
 
-Este modelo matemático e suas implementações estão disponíveis sob licença Apache 2.0, permitindo:
-- ✅ Uso comercial
-- ✅ Modificação
-- ✅ Distribuição
-- ✅ Uso de patentes (se aplicável)
-- ✅ Uso privado
+This mathematical model and its implementations are available under Apache 2.0 license, allowing:
+- ✅ Commercial use
+- ✅ Modification
+- ✅ Distribution
+- ✅ Patent use (if applicable)
+- ✅ Private use
 
-**Atribuição:**  
-Ao usar este modelo em trabalhos acadêmicos ou comerciais, solicita-se (mas não é obrigatório) a citação do trabalho original e autor.
+**Attribution:**  
+When using this model in academic or commercial work, citation of the original work and author is requested (but not required).
 
-### 10.9 Nota Final: Teoria Universal, Implementação Adaptável
+### 10.9 Final Note: Universal Theory, Adaptable Implementation
 
-> **Este documento apresenta a TEORIA MATEMÁTICA FUNDAMENTAL do AppDimens**, que é **independente de plataforma, linguagem ou framework**. 
+> **This document presents the FUNDAMENTAL MATHEMATICAL THEORY of AppDimens**, which is **independent of platform, language or framework**. 
 >
-> As fórmulas aqui descritas podem ser implementadas em qualquer sistema que necessite escalonamento responsivo de dimensões visuais. As implementações em Android, iOS, Flutter, React Native e Web são **exemplos práticos** da aplicação desta teoria, não limitações da mesma.
+> The formulas described here can be implemented in any system that needs responsive sizing of visual dimensions. The implementations in Android, iOS, Flutter, React Native and Web are **practical examples** of the application of this theory, not limitations of it.
 >
-> **A matemática é universal. A implementação é flexível.**
+> **Mathematics is universal. Implementation is flexible.**
 
 ---
 
-**Documento criado por:** Jean Bodenberg  
-**Última atualização:** Janeiro 2025  
-**Versão:** 1.0.8  
-**Licença:** Apache 2.0  
-**Repositório:** https://github.com/bodenberg/appdimens
+**Document created by:** Jean Bodenberg  
+**Last updated:** January 2025  
+**Version:** 1.0.8  
+**License:** Apache 2.0  
+**Repository:** https://github.com/bodenberg/appdimens
 
 ---
 
-*"O logaritmo natural nos ensina que o crescimento verdadeiramente sustentável não é aquele que acelera sem controle, mas aquele que desacelera sabiamente conforme se expande."*
+*"The natural logarithm teaches us that truly sustainable growth is not that which accelerates without control, but that which wisely decelerates as it expands."*
 
-— Jean Bodenberg, sobre a escolha de ln(x) para escalonamento de UI
-
+— Jean Bodenberg, on the choice of ln(x) for UI scaling

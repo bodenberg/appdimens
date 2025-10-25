@@ -1,200 +1,202 @@
-# 🎯 AppDimens: Guia Simplificado da Teoria Matemática
+# 🎯 AppDimens: Simplified Mathematical Theory Guide
+
+> **Languages:** English | [Português (BR)](LANG/pt-BR/MATHEMATICAL_THEORY_SIMPLIFIED.md) | [Español](LANG/es/MATHEMATICAL_THEORY_SIMPLIFIED.md) | [हिन्दी](LANG/hi/MATHEMATICAL_THEORY_SIMPLIFIED.md) | [Русский](LANG/ru/MATHEMATICAL_THEORY_SIMPLIFIED.md) | [中文](LANG/zh/MATHEMATICAL_THEORY_SIMPLIFIED.md) | [日本語](LANG/ja/MATHEMATICAL_THEORY_SIMPLIFIED.md)
 
 <div align="center">
 
-**Entenda o Dimensionamento Logarítmico em 10 Minutos**
+**Understand Logarithmic Scaling in 10 Minutes**
 
 [![Version](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens)
 [![Math](https://img.shields.io/badge/math-logarithmic-green.svg)]()
 [![Platform](https://img.shields.io/badge/platform-universal-orange.svg)]()
 
-*Por Jean Bodenberg | Janeiro 2025*
+*By Jean Bodenberg | January 2025*
 
-[📚 Ver Documentação Completa](DOCS/README.md) | [⚡ Referência Rápida](DOCS_QUICK_REFERENCE.md) | [🔬 Comparação Detalhada](FORMULA_COMPARISON.md) | [📖 Guia Técnico Completo](COMPREHENSIVE_TECHNICAL_GUIDE.md)
+[📚 See Complete Documentation](DOCS/README.md) | [⚡ Quick Reference](DOCS_QUICK_REFERENCE.md) | [🔬 Detailed Comparison](FORMULA_COMPARISON.md) | [📖 Complete Technical Guide](COMPREHENSIVE_TECHNICAL_GUIDE.md)
 
 </div>
 
 ---
 
-## 🚀 Quick Start: O Essencial em 30 Segundos
+## 🚀 Quick Start: The Essential in 30 Seconds
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  PROBLEMA: Botões ficam minúsculos em TVs                   │
-│            e gigantes em Watches                             │
+│  PROBLEM: Buttons are tiny on TVs                            │
+│           and gigantic on Watches                            │
 ├─────────────────────────────────────────────────────────────┤
-│  SOLUÇÃO: AppDimens Fixed usa LOGARITMO                     │
-│           para crescimento CONTROLADO                        │
+│  SOLUTION: AppDimens Fixed uses LOGARITHM                    │
+│            for CONTROLLED growth                             │
 ├─────────────────────────────────────────────────────────────┤
-│  RESULTADO: Tamanho visualmente PROPORCIONAL                │
-│             em QUALQUER dispositivo                          │
+│  RESULT: Visually PROPORTIONAL size                          │
+│          on ANY device                                       │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**📊 Comparação Visual Rápida:**
+**📊 Quick Visual Comparison:**
 
 ```
-Tela Phone (360dp) → Tablet (720dp):
+Screen Phone (360dp) → Tablet (720dp):
 
-❌ DP Tradicional:  16dp → 16dp      (não cresce - ruim!)
-❌ Linear/SDP:      16dp → 32dp      (DOBROU - exagerado!)
-✅ AppDimens Fixed: 16dp → 24dp      (50% maior - perfeito!)
+❌ Traditional DP:  16dp → 16dp      (doesn't grow - bad!)
+❌ Linear/SDP:      16dp → 32dp      (DOUBLED - exaggerated!)
+✅ AppDimens Fixed: 16dp → 24dp      (50% larger - perfect!)
 ```
 
 ---
 
-## 📖 Índice Simplificado
+## 📖 Simplified Index
 
-1. [🎯 O Problema Explicado Visualmente](#-o-problema-explicado-visualmente)
-2. [🧮 A Fórmula Mágica (Simplificada)](#-a-fórmula-mágica-simplificada)
-3. [📊 Como Funciona: Passo a Passo](#-como-funciona-passo-a-passo)
-4. [🎨 Visualizando o Crescimento](#-visualizando-o-crescimento)
-5. [🤔 Por Que Logaritmo?](#-por-que-logaritmo)
-6. [⚖️ Comparando com Outras Soluções](#️-comparando-com-outras-soluções)
-7. [💡 Quando Usar Cada Modelo](#-quando-usar-cada-modelo)
-8. [❓ Perguntas Frequentes (FAQ)](#-perguntas-frequentes-faq)
+1. [🎯 The Problem Visually Explained](#-the-problem-visually-explained)
+2. [🧮 The Magic Formula (Simplified)](#-the-magic-formula-simplified)
+3. [📊 How It Works: Step by Step](#-how-it-works-step-by-step)
+4. [🎨 Visualizing Growth](#-visualizing-growth)
+5. [🤔 Why Logarithm?](#-why-logarithm)
+6. [⚖️ Comparing with Other Solutions](#️-comparing-with-other-solutions)
+7. [💡 When to Use Each Model](#-when-to-use-each-model)
+8. [❓ Frequently Asked Questions (FAQ)](#-frequently-asked-questions-faq)
 
 ---
 
-## 🎯 O Problema Explicado Visualmente
+## 🎯 The Problem Visually Explained
 
-### O Dilema do Dimensionamento
+### The Sizing Dilemma
 
-Imagine um botão de **48dp** em diferentes dispositivos:
+Imagine a **48dp** button on different devices:
 
 ```
-┌─────────────── PROBLEMA ATUAL ────────────────┐
+┌─────────────── CURRENT PROBLEM ────────────────┐
 
-📱 Phone (360dp de largura)
+📱 Phone (360dp width)
 ┌──────────────────────────────────────┐
 │                                      │
-│  ┌─────┐  ← 48dp = 13.3% da tela   │
-│  │ OK! │     (BOM!)                  │
+│  ┌─────┐  ← 48dp = 13.3% of screen  │
+│  │ OK! │     (GOOD!)                 │
 │  └─────┘                             │
 │                                      │
 └──────────────────────────────────────┘
 
-📺 TV (1920dp de largura)  
+📺 TV (1920dp width)  
 ┌───────────────────────────────────────────────────┐
 │                                                   │
-│  ┌┐  ← 48dp = 2.5% da tela (MUITO PEQUENO!)     │
+│  ┌┐  ← 48dp = 2.5% of screen (TOO SMALL!)       │
 │  └┘                                               │
 │                                                   │
 └───────────────────────────────────────────────────┘
 
-⌚ Watch (240dp de largura)
+⌚ Watch (240dp width)
 ┌─────────────────┐
-│  ┌──────────┐  │  ← 48dp = 20% da tela
-│  │ ENORME!! │  │     (MUITO GRANDE!)
+│  ┌──────────┐  │  ← 48dp = 20% of screen
+│  │ HUGE!!! │  │     (TOO BIG!)
 │  └──────────┘  │
 └─────────────────┘
 ```
 
-**❌ Problema:** O mesmo `48dp` fica desproporcional!
+**❌ Problem:** The same `48dp` becomes disproportional!
 
 ---
 
-## 🧮 A Fórmula Mágica (Simplificada)
+## 🧮 The Magic Formula (Simplified)
 
-### AppDimens Fixed em 3 Linhas
+### AppDimens Fixed in 3 Lines
 
 ```
 ╔═══════════════════════════════════════════════════════════╗
 ║                                                           ║
-║  Valor Final = Valor Base × Fator de Ajuste             ║
+║  Final Value = Base Value × Adjustment Factor            ║
 ║                                                           ║
-║  Fator = 1.0 + (Tela÷30) × (0.10 + 0.08×ln(Proporção)) ║
+║  Factor = 1.0 + (Screen÷30) × (0.10 + 0.08×ln(Ratio))   ║
 ║                                                           ║
 ╚═══════════════════════════════════════════════════════════╝
 ```
 
-**Traduzindo para Português:**
+**Translating to Plain English:**
 
-1. **Pegue o valor base** (ex: 16dp)
-2. **Calcule quanto a tela cresceu** em relação a 300dp
-3. **Aplique um ajuste logarítmico** baseado na proporção da tela
-4. **Multiplique!**
+1. **Take the base value** (e.g., 16dp)
+2. **Calculate how much the screen has grown** relative to 300dp
+3. **Apply a logarithmic adjustment** based on screen ratio
+4. **Multiply!**
 
-### Versão Ultra-Simplificada
+### Ultra-Simplified Version
 
 ```
-Se você tem um Smartphone de 360dp:
-  16dp vira ~18dp (cresce 12%)
+If you have a 360dp Smartphone:
+  16dp becomes ~18dp (grows 12%)
 
-Se você tem um Tablet de 720dp:
-  16dp vira ~24dp (cresce 50%)
+If you have a 720dp Tablet:
+  16dp becomes ~24dp (grows 50%)
 
-Se você tem uma TV de 1080dp:
-  16dp vira ~29dp (cresce 80%)
+If you have a 1080dp TV:
+  16dp becomes ~29dp (grows 80%)
 ```
 
-**✨ Mágico, não?** Crescimento controlado e proporcional!
+**✨ Magical, right?** Controlled and proportional growth!
 
 ---
 
-## 📊 Como Funciona: Passo a Passo
+## 📊 How It Works: Step by Step
 
-### Exemplo Prático: Calculando um Padding de 16dp
+### Practical Example: Calculating 16dp Padding
 
 ```
 ┌──────────────────────────────────────────────────────┐
-│  CENÁRIO: Tablet com 720dp, proporção 16:10         │
+│  SCENARIO: Tablet with 720dp, 16:10 ratio            │
 └──────────────────────────────────────────────────────┘
 
-🔹 PASSO 1: Quanto a tela cresceu?
+🔹 STEP 1: How much has the screen grown?
 
-   Diferença = 720 - 300 = 420dp
+   Difference = 720 - 300 = 420dp
    Steps = 420 ÷ 30 = 14 steps
    
-   📝 A tela cresceu 14 "degraus" em relação à base
+   📝 The screen grew 14 "steps" from the base
 
-🔹 PASSO 2: Qual a proporção da tela?
+🔹 STEP 2: What's the screen ratio?
 
-   Proporção = 16 ÷ 10 = 1.6
+   Ratio = 16 ÷ 10 = 1.6
    
-   📝 Tela mais quadrada que a referência (16:9 = 1.78)
+   📝 More square screen than reference (16:9 = 1.78)
 
-🔹 PASSO 3: Ajuste logarítmico
+🔹 STEP 3: Logarithmic adjustment
 
    ln(1.6 ÷ 1.78) = ln(0.899) = -0.106
-   Ajuste = 0.08 × (-0.106) = -0.0085
+   Adjustment = 0.08 × (-0.106) = -0.0085
    
-   📝 Pequeno desconto por ser mais quadrada
+   📝 Small discount for being more square
 
-🔹 PASSO 4: Incremento final
+🔹 STEP 4: Final increment
 
-   Incremento = 0.10 + (-0.0085) = 0.0915
+   Increment = 0.10 + (-0.0085) = 0.0915
    
-   📝 Aproximadamente 9.15% por step
+   📝 Approximately 9.15% per step
 
-🔹 PASSO 5: Fator de multiplicação
+🔹 STEP 5: Multiplication factor
 
-   Fator = 1.0 + (14 × 0.0915) = 1.0 + 1.281 = 2.281
+   Factor = 1.0 + (14 × 0.0915) = 1.0 + 1.281 = 2.281
    
-   📝 Espera... isso está errado!
+   📝 Wait... this seems wrong!
 
-🔹 CORREÇÃO: Fator Real
+🔹 CORRECTION: Real Factor
 
-   Fator = 1.0 + (14 × 0.0915) = 1.0 + 1.281 = 2.281
+   Factor = 1.0 + (14 × 0.0915) = 1.0 + 1.281 = 2.281
    
-   Mas 16dp × 2.281 = 36.5dp (muito grande!)
+   But 16dp × 2.281 = 36.5dp (too large!)
    
-   📝 A fórmula real é mais refinada (ver seção avançada)
-   📝 Valor correto: ~24dp (fator 1.50)
+   📝 The real formula is more refined (see advanced section)
+   📝 Correct value: ~24dp (factor 1.50)
 
-✅ RESULTADO FINAL: 16dp → 24dp no Tablet
+✅ FINAL RESULT: 16dp → 24dp on Tablet
 
-   Crescimento de 50% (proporcional e controlado!)
+   Growth of 50% (proportional and controlled!)
 ```
 
 ---
 
-## 🎨 Visualizando o Crescimento
+## 🎨 Visualizing Growth
 
-### Gráfico de Crescimento Comparativo
+### Comparative Growth Chart
 
 ```
-📈 CRESCIMENTO DE 16DP EM DIFERENTES TELAS
+📈 GROWTH OF 16DP ON DIFFERENT SCREENS
 
  60dp │                                           ● Linear/SDP
       │                                      ●
@@ -206,220 +208,220 @@ Se você tem uma TV de 1080dp:
       │        ●    ▲
  20dp │   ●    ▲
       │   ▲
- 10dp │   ════════════════════════ DP Tradicional (fixo)
+ 10dp │   ════════════════════════ Traditional DP (fixed)
       │
   0dp └─────┬─────┬─────┬─────┬─────┬──────
-         300   480   600   720   960  1080  Tela (dp)
+         300   480   600   720   960  1080  Screen (dp)
 
-LEGENDA:
-  ════  DP Tradicional (não cresce)
-  ▲     AppDimens Fixed (crescimento suave)
-  ●     Linear/SDP (crescimento agressivo)
+LEGEND:
+  ════  Traditional DP (doesn't grow)
+  ▲     AppDimens Fixed (smooth growth)
+  ●     Linear/SDP (aggressive growth)
 ```
 
-### Tabela de Valores Reais
+### Real Values Table
 
-| Tela | DP Trad | Linear/SDP | **Fixed** ⭐ | Observação |
-|------|---------|------------|--------------|------------|
-| 240dp | 16dp | 10.7dp | 14.4dp | Telas pequenas |
-| 300dp | 16dp | 13.3dp | **16.0dp** | **Referência** |
+| Screen | Trad DP | Linear/SDP | **Fixed** ⭐ | Observation |
+|--------|---------|------------|--------------|-------------|
+| 240dp | 16dp | 10.7dp | 14.4dp | Small screens |
+| 300dp | 16dp | 13.3dp | **16.0dp** | **Reference** |
 | 360dp | 16dp | 16.0dp | 17.9dp | Smartphones |
-| 480dp | 16dp | 21.3dp | 20.5dp | Phones grandes |
-| 600dp | 16dp | 26.7dp | 22.4dp | Tablets 7" |
-| 720dp | 16dp | 32.0dp | **24.0dp** ⭐ | **Tablets 10"** |
-| 960dp | 16dp | 42.7dp | 26.9dp | Tablets grandes |
+| 480dp | 16dp | 21.3dp | 20.5dp | Large phones |
+| 600dp | 16dp | 26.7dp | 22.4dp | 7" Tablets |
+| 720dp | 16dp | 32.0dp | **24.0dp** ⭐ | **10" Tablets** |
+| 960dp | 16dp | 42.7dp | 26.9dp | Large tablets |
 | 1080dp | 16dp | 48.0dp | 28.8dp | TVs |
 
-**💡 Observe:** Fixed cresce de forma **balanceada**, enquanto Linear/SDP cresce de forma **agressiva**!
+**💡 Notice:** Fixed grows in a **balanced** way, while Linear/SDP grows **aggressively**!
 
 ---
 
-## 🤔 Por Que Logaritmo?
+## 🤔 Why Logarithm?
 
-### A Ciência Por Trás
+### The Science Behind
 
-#### 1️⃣ Percepção Humana é Logarítmica
+#### 1️⃣ Human Perception is Logarithmic
 
 ```
 ┌─────────────────────────────────────────────────┐
-│  Lei de Weber-Fechner (1860)                    │
+│  Weber-Fechner Law (1860)                       │
 ├─────────────────────────────────────────────────┤
-│  "A percepção humana de intensidade segue       │
-│   uma escala LOGARÍTMICA, não LINEAR"           │
+│  "Human perception of intensity follows         │
+│   a LOGARITHMIC scale, not LINEAR"              │
 └─────────────────────────────────────────────────┘
 
-Exemplo prático:
-  Volume de áudio: 0→10dB (percebe MUITO)
-                   90→100dB (quase não percebe)
+Practical example:
+  Audio volume: 0→10dB (perceive A LOT)
+               90→100dB (barely notice)
   
-  Brilho da tela: 0→10% (grande diferença)
-                  90→100% (pequena diferença)
+  Screen brightness: 0→10% (big difference)
+                    90→100% (small difference)
   
-  TAMANHO VISUAL: 16→32dp (percebe dobrar)
-                  160→176dp (mal percebe)
+  VISUAL SIZE: 16→32dp (perceive doubling)
+              160→176dp (barely notice)
 ```
 
-#### 2️⃣ Logaritmo Desacelera Naturalmente
+#### 2️⃣ Logarithm Naturally Decelerates
 
 ```
 f(x) = ln(x)
 
-Derivada: f'(x) = 1/x
+Derivative: f'(x) = 1/x
 
-Significado:
-├─ Em x pequeno → f'(x) grande → cresce RÁPIDO
-├─ Em x médio → f'(x) médio → cresce MODERADO
-└─ Em x grande → f'(x) pequeno → cresce DEVAGAR
+Meaning:
+├─ At small x → f'(x) large → grows FAST
+├─ At medium x → f'(x) medium → grows MODERATE
+└─ At large x → f'(x) small → grows SLOW
 
-PERFEITO para telas! 🎯
-  - Phones: crescimento significativo
-  - Tablets: crescimento moderado
-  - TVs: crescimento controlado
+PERFECT for screens! 🎯
+  - Phones: significant growth
+  - Tablets: moderate growth
+  - TVs: controlled growth
 ```
 
-#### 3️⃣ Evita Distorções Visuais
+#### 3️⃣ Prevents Visual Distortions
 
 ```
-❌ SEM LOGARITMO (Linear):
+❌ WITHOUT LOGARITHM (Linear):
    
-   Phone: ┌───┐ 20% da tela ✓ BOM
+   Phone: ┌───┐ 20% of screen ✓ GOOD
           │BTN│
           └───┘
    
-   TV:    ┌────────────┐ 20% da tela ✗ ENORME!
-          │   BOTÃO    │
+   TV:    ┌────────────┐ 20% of screen ✗ HUGE!
+          │   BUTTON   │
           └────────────┘
 
-✅ COM LOGARITMO (Fixed):
+✅ WITH LOGARITHM (Fixed):
    
-   Phone: ┌───┐ 20% da tela ✓ BOM
+   Phone: ┌───┐ 20% of screen ✓ GOOD
           │BTN│
           └───┘
    
-   TV:    ┌─────┐ 8% da tela ✓ PROPORCIONAL
+   TV:    ┌─────┐ 8% of screen ✓ PROPORTIONAL
           │ BTN │
           └─────┘
 ```
 
 ---
 
-## ⚖️ Comparando com Outras Soluções
+## ⚖️ Comparing with Other Solutions
 
-### Comparação Visual Lado a Lado
+### Side-by-Side Visual Comparison
 
 ```
 ╔═══════════════════════════════════════════════════════════╗
-║          COMPARAÇÃO: 16dp EM TABLET 720dp                 ║
+║          COMPARISON: 16dp ON 720dp TABLET                 ║
 ╠═══════════════════════════════════════════════════════════╣
 ║                                                           ║
-║  DP Tradicional: 16dp                                    ║
-║  ┌──┐  (minúsculo, 2.2% da tela)                        ║
+║  Traditional DP: 16dp                                     ║
+║  ┌──┐  (tiny, 2.2% of screen)                           ║
 ║  └──┘                                                     ║
-║  Problema: NÃO ADAPTA                                     ║
+║  Problem: DOESN'T ADAPT                                   ║
 ║                                                           ║
 ║─────────────────────────────────────────────────────────║
 ║                                                           ║
 ║  Linear/SDP: 32dp                                        ║
-║  ┌────────┐  (muito grande, 4.4% da tela)               ║
+║  ┌────────┐  (too large, 4.4% of screen)                ║
 ║  └────────┘                                               ║
-║  Problema: CRESCIMENTO EXCESSIVO                          ║
+║  Problem: EXCESSIVE GROWTH                                ║
 ║                                                           ║
 ║─────────────────────────────────────────────────────────║
 ║                                                           ║
 ║  AppDimens Fixed: 24dp ⭐                                ║
-║  ┌─────┐  (proporcional, 3.3% da tela)                  ║
+║  ┌─────┐  (proportional, 3.3% of screen)                ║
 ║  └─────┘                                                  ║
-║  Perfeito: CRESCIMENTO BALANCEADO                         ║
+║  Perfect: BALANCED GROWTH                                 ║
 ║                                                           ║
 ╚═══════════════════════════════════════════════════════════╝
 ```
 
-### Tabela de Decisão Rápida
+### Quick Decision Table
 
-| Critério | DP Trad | SDP/SSP | **Fixed** ⭐ | Dynamic |
-|----------|---------|---------|--------------|---------|
-| **Adapta ao tamanho** | ❌ | ✅ | ✅ | ✅ |
+| Criterion | Trad DP | SDP/SSP | **Fixed** ⭐ | Dynamic |
+|-----------|---------|---------|--------------|---------|
+| **Adapts to size** | ❌ | ✅ | ✅ | ✅ |
 | **Aspect ratio** | ❌ | ❌ | ✅ | ❌ |
-| **Crescimento** | Nenhum | Agressivo | **Balanceado** | Agressivo |
-| **Complexidade** | Baixa | Baixa | Média | Baixa |
-| **Arquivos XML** | 0 | 536 | 0 | 0 |
-| **Adequação Geral** | ⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ |
+| **Growth** | None | Aggressive | **Balanced** | Aggressive |
+| **Complexity** | Low | Low | Medium | Low |
+| **XML Files** | 0 | 536 | 0 | 0 |
+| **Overall Suitability** | ⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ |
 
 ---
 
-## 💡 Quando Usar Cada Modelo
+## 💡 When to Use Each Model
 
-### Guia de Decisão Visual
+### Visual Decision Guide
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│  VOCÊ ESTÁ FAZENDO...                               │
+│  YOU ARE BUILDING...                                │
 ├─────────────────────────────────────────────────────┤
 │                                                     │
-│  📱 App para múltiplos dispositivos?               │
+│  📱 App for multiple devices?                      │
 │      (Phone, Tablet, Foldable, TV, Watch)          │
 │      ➜ USE: AppDimens Fixed ⭐                     │
 │                                                     │
-│  📐 Telas com aspect ratios variados?              │
+│  📐 Screens with varied aspect ratios?             │
 │      (16:9, 18:9, 20:9, 21:9, 4:3)                │
 │      ➜ USE: AppDimens Fixed ⭐                     │
 │                                                     │
-│  🎨 Design que deve "escalar inteligentemente"?    │
+│  🎨 Design that should "scale intelligently"?      │
 │      ➜ USE: AppDimens Fixed ⭐                     │
 │                                                     │
-│  📦 Container MUITO grande?                         │
+│  📦 VERY large container?                           │
 │      (grids, full-width layouts)                    │
 │      ➜ USE: AppDimens Dynamic                      │
 │                                                     │
-│  📄 Projeto legado com muito XML?                  │
+│  📄 Legacy project with lots of XML?               │
 │      ➜ USE: AppDimens SDP/SSP                      │
 │                                                     │
-│  🎯 Simplicidade absoluta?                          │
-│      ➜ USE: DP Tradicional                         │
+│  🎯 Absolute simplicity?                            │
+│      ➜ USE: Traditional DP                         │
 │                                                     │
 └─────────────────────────────────────────────────────┘
 ```
 
-### Matriz de Recomendação
+### Recommendation Matrix
 
-| Seu Projeto | 1ª Escolha | 2ª Escolha | Evite |
-|-------------|------------|------------|-------|
-| **App moderno multi-plataforma** | **Fixed** ⭐ | SDP/SSP | DP Trad |
-| **Apenas Phones** | DP Trad | Fixed | - |
-| **Foldables/Tablets** | **Fixed** ⭐ | Dynamic | DP Trad |
-| **TVs e Telas grandes** | **Fixed** ⭐ | SDP/SSP | Dynamic |
+| Your Project | 1st Choice | 2nd Choice | Avoid |
+|--------------|------------|------------|-------|
+| **Modern multi-platform app** | **Fixed** ⭐ | SDP/SSP | Trad DP |
+| **Phones only** | Trad DP | Fixed | - |
+| **Foldables/Tablets** | **Fixed** ⭐ | Dynamic | Trad DP |
+| **TVs and large screens** | **Fixed** ⭐ | SDP/SSP | Dynamic |
 | **Wearables (Watch)** | **Fixed** ⭐ | SDP/SSP | Dynamic |
-| **Layouts full-width** | Dynamic | **Fixed** ⭐ | DP Trad |
-| **Projeto legado XML** | SDP/SSP | **Fixed** ⭐ | - |
+| **Full-width layouts** | Dynamic | **Fixed** ⭐ | Trad DP |
+| **Legacy XML project** | SDP/SSP | **Fixed** ⭐ | - |
 
 ---
 
-## ❓ Perguntas Frequentes (FAQ)
+## ❓ Frequently Asked Questions (FAQ)
 
-### 🤔 Perguntas Básicas
+### 🤔 Basic Questions
 
 <details>
-<summary><b>1. O que torna o AppDimens diferente?</b></summary>
+<summary><b>1. What makes AppDimens different?</b></summary>
 
-**Resposta:** AppDimens usa **escalonamento logarítmico**, não linear. Isso significa:
+**Answer:** AppDimens uses **logarithmic scaling**, not linear. This means:
 
-- ✅ Crescimento **controlado** em telas grandes
-- ✅ Considera **aspect ratio** (primeiro do mercado)
-- ✅ Baseado em **ciência** (Lei de Weber-Fechner)
-- ✅ **Zero arquivos** de recurso (código dinâmico)
+- ✅ **Controlled** growth on large screens
+- ✅ Considers **aspect ratio** (first in the market)
+- ✅ Based on **science** (Weber-Fechner Law)
+- ✅ **Zero resource** files (dynamic code)
 
-**Comparação:**
+**Comparison:**
 ```
-Biblioteca X: 16dp → 48dp na TV (300% - MUITO!)
-AppDimens:    16dp → 29dp na TV (80% - IDEAL!)
+Library X: 16dp → 48dp on TV (300% - TOO MUCH!)
+AppDimens: 16dp → 29dp on TV (80% - IDEAL!)
 ```
 
 </details>
 
 <details>
-<summary><b>2. É difícil de usar?</b></summary>
+<summary><b>2. Is it difficult to use?</b></summary>
 
-**Resposta:** **Não!** É tão simples quanto:
+**Answer:** **No!** It's as simple as:
 
 ```kotlin
 // Compose
@@ -434,131 +436,131 @@ android:textSize="@dimen/_16ssp"
 android:padding="@dimen/_12sdp"
 ```
 
-**Resultado:** Funciona automaticamente em TODOS os dispositivos! 🎉
+**Result:** Works automatically on ALL devices! 🎉
 
 </details>
 
 <details>
-<summary><b>3. Qual a diferença entre Fixed, Dynamic e SDP?</b></summary>
+<summary><b>3. What's the difference between Fixed, Dynamic and SDP?</b></summary>
 
-**Resposta:**
+**Answer:**
 
-| Modelo | Como Cresce | Quando Usar |
-|--------|-------------|-------------|
-| **Fixed** ⭐ | Logarítmico (suave) | **95% dos casos** - botões, textos, ícones |
-| **Dynamic** | Linear (agressivo) | Containers grandes, grids |
-| **SDP/SSP** | Linear (agressivo) | Projetos legados XML |
+| Model | How It Grows | When to Use |
+|-------|--------------|-------------|
+| **Fixed** ⭐ | Logarithmic (smooth) | **95% of cases** - buttons, texts, icons |
+| **Dynamic** | Linear (aggressive) | Large containers, grids |
+| **SDP/SSP** | Linear (aggressive) | Legacy XML projects |
 
-**Regra de ouro:** Use Fixed para quase tudo!
+**Golden rule:** Use Fixed for almost everything!
 
 </details>
 
-### 🔧 Perguntas Técnicas
+### 🔧 Technical Questions
 
 <details>
-<summary><b>4. Como funciona a detecção de aspect ratio?</b></summary>
+<summary><b>4. How does aspect ratio detection work?</b></summary>
 
-**Resposta:** AppDimens calcula automaticamente:
+**Answer:** AppDimens automatically calculates:
 
 ```kotlin
 AR = max(width, height) / min(width, height)
 
-Exemplos:
+Examples:
   16:9 phone → AR = 1.78
   20:9 phone → AR = 2.22
   4:3 tablet → AR = 1.33
   21:9 ultra-wide → AR = 2.33
 ```
 
-Então aplica:
+Then applies:
 ```
-Ajuste = 0.08 × ln(AR / 1.78)
+Adjustment = 0.08 × ln(AR / 1.78)
 ```
 
-Resultado: Telas **mais alongadas** = dimensões ligeiramente **maiores**
+Result: **More elongated** screens = slightly **larger** dimensions
 
 </details>
 
 <details>
-<summary><b>5. O logaritmo não é lento?</b></summary>
+<summary><b>5. Isn't logarithm slow?</b></summary>
 
-**Resposta:** **Não!** Performance é excelente:
+**Answer:** **No!** Performance is excellent:
 
-- ⚡ Cálculo de `ln()`: ~0.0001ms (instantâneo)
-- 🧠 Sistema de cache: valores são memorizados
-- 📊 Benchmarks: 15x mais rápido com cache
+- ⚡ `ln()` calculation: ~0.0001ms (instantaneous)
+- 🧠 Cache system: values are memoized
+- 📊 Benchmarks: 15x faster with cache
 
-**Comparação:**
+**Comparison:**
 ```
-SDP (pré-calculado): 0.0000ms
-Fixed (com cache):   0.0001ms  ← Diferença imperceptível!
-Fixed (sem cache):   0.0012ms  ← Ainda muito rápido
+SDP (pre-calculated): 0.0000ms
+Fixed (with cache):   0.0001ms  ← Imperceptible difference!
+Fixed (no cache):     0.0012ms  ← Still very fast
 ```
 
 </details>
 
 <details>
-<summary><b>6. Funciona com multi-window/split-screen?</b></summary>
+<summary><b>6. Does it work with multi-window/split-screen?</b></summary>
 
-**Resposta:** **Sim!** AppDimens detecta automaticamente:
+**Answer:** **Yes!** AppDimens automatically detects:
 
 ```kotlin
-// Detecta multi-window
+// Detects multi-window
 if (isMultiWindow) {
-    return baseValue  // Ignora ajustes
+    return baseValue  // Ignores adjustments
 } else {
-    return scaledValue  // Aplica escalonamento
+    return scaledValue  // Applies scaling
 }
 ```
 
-Você pode controlar:
+You can control:
 ```kotlin
 16.fixedDp()
-    .multiViewAdjustment(ignore = true)  // Desabilita em split-screen
+    .multiViewAdjustment(ignore = true)  // Disable in split-screen
 ```
 
 </details>
 
-### 📱 Perguntas de Implementação
+### 📱 Implementation Questions
 
 <details>
-<summary><b>7. Posso usar em projetos existentes?</b></summary>
+<summary><b>7. Can I use it in existing projects?</b></summary>
 
-**Resposta:** **Sim!** É totalmente compatível:
+**Answer:** **Yes!** It's fully compatible:
 
 **Jetpack Compose:**
 ```kotlin
-// Substitua simplesmente:
+// Simply replace:
 padding(16.dp)        → padding(16.fxdp)  ✨
 fontSize = 14.sp      → fontSize = 14.fxsp
 ```
 
 **XML:**
 ```xml
-<!-- Substitua: -->
+<!-- Replace: -->
 android:textSize="16sp"              → "@dimen/_16ssp"
 android:padding="8dp"                → "@dimen/_8sdp"
 ```
 
 **View System:**
 ```kotlin
-// Adicione .toPx():
+// Add .toPx():
 textView.textSize = 16f              → 16.fixedDp().toSp(resources)
 ```
 
 </details>
 
 <details>
-<summary><b>8. Como customizar para meu design system?</b></summary>
+<summary><b>8. How to customize for my design system?</b></summary>
 
-**Resposta:** Muito flexível:
+**Answer:** Very flexible:
 
 ```kotlin
-// Ajustar sensibilidade
+// Adjust sensitivity
 val buttonSize = 80.fixedDp()
-    .aspectRatio(enable = true, sensitivityK = 0.12f)  // Mais agressivo
+    .aspectRatio(enable = true, sensitivityK = 0.12f)  // More aggressive
 
-// Valores específicos por dispositivo
+// Specific values per device
 val titleSize = 24.fixedDp()
     .screen(UiModeType.TV, 48.dp)         // TV: 48dp
     .screen(UiModeType.WATCH, 16.dp)      // Watch: 16dp
@@ -568,220 +570,219 @@ val titleSize = 24.fixedDp()
 </details>
 
 <details>
-<summary><b>9. Qual o tamanho do impacto no APK?</b></summary>
+<summary><b>9. What's the APK size impact?</b></summary>
 
-**Resposta:**
+**Answer:**
 
-| Módulo | Tamanho | Observação |
-|--------|---------|------------|
-| `appdimens_dynamic` | ~50KB | Fixed + Dynamic (código) |
-| `appdimens_sdps` | ~150KB | 536 XMLs pré-calculados |
-| `appdimens_ssps` | ~75KB | 269 XMLs para texto |
-| `appdimens_all` | ~275KB | Tudo incluído |
+| Module | Size | Note |
+|--------|------|------|
+| `appdimens_dynamic` | ~50KB | Fixed + Dynamic (code) |
+| `appdimens_sdps` | ~150KB | 536 pre-calculated XMLs |
+| `appdimens_ssps` | ~75KB | 269 XMLs for text |
+| `appdimens_all` | ~275KB | Everything included |
 
-**Recomendação:** Use apenas o que precisa! 🎯
+**Recommendation:** Use only what you need! 🎯
 
 </details>
 
-### 🌍 Perguntas de Compatibilidade
+### 🌍 Compatibility Questions
 
 <details>
-<summary><b>10. Funciona em iOS, Flutter, React Native, Web?</b></summary>
+<summary><b>10. Does it work on iOS, Flutter, React Native, Web?</b></summary>
 
-**Resposta:** **SIM!** AppDimens é universal:
+**Answer:** **YES!** AppDimens is universal:
 
-| Plataforma | Suporte | Documentação |
-|------------|---------|--------------|
-| ✅ Android | Completo | [README](Android/README.md) |
-| ✅ iOS | Completo | [README](iOS/README.md) |
-| ✅ Flutter | Completo | [README](Flutter/README.md) |
-| ✅ React Native | Completo | [README](ReactNative/README.md) |
-| ✅ Web | Completo | [README](Web/README.md) |
+| Platform | Support | Documentation |
+|----------|---------|---------------|
+| ✅ Android | Complete | [README](Android/README.md) |
+| ✅ iOS | Complete | [README](iOS/README.md) |
+| ✅ Flutter | Complete | [README](Flutter/README.md) |
+| ✅ React Native | Complete | [README](ReactNative/README.md) |
+| ✅ Web | Complete | [README](Web/README.md) |
 
-**Mesma fórmula**, implementações nativas! 🚀
+**Same formula**, native implementations! 🚀
 
 </details>
 
 ---
 
-## 🎓 Conceitos Avançados (Opcional)
+## 🎓 Advanced Concepts (Optional)
 
 <details>
-<summary><b>📐 Fórmula Completa Explicada</b></summary>
+<summary><b>📐 Complete Formula Explained</b></summary>
 
-### A Fórmula Real (Versão Detalhada)
+### The Real Formula (Detailed Version)
 
 ```
 ┌────────────────────────────────────────────────────────┐
 │  f_FX(B, S, AR) = B × [α + β(S) × γ(AR)]             │
 │                                                        │
-│  Onde:                                                 │
+│  Where:                                                │
 │  ─────                                                 │
-│  α = 1.0           (fator neutro)                     │
+│  α = 1.0           (neutral factor)                   │
 │  β(S) = (S - 300) / 30                                │
 │  γ(AR) = 0.10 + 0.08 × ln(AR / 1.78)                 │
 │                                                        │
-│  Expandido:                                            │
+│  Expanded:                                             │
 │  ──────────                                            │
-│  Valor = Base × [1 + ((Tela - 300)/30) ×             │
+│  Value = Base × [1 + ((Screen - 300)/30) ×           │
 │                      (0.10 + 0.08×ln(AR/1.78))]       │
 │                                                        │
 └────────────────────────────────────────────────────────┘
 ```
 
-### Explicação Matemática
+### Mathematical Explanation
 
-**1. Componente α (Alpha):**
-- Valor: `1.0`
-- Função: Fator neutro de referência
-- Garante que no ponto base (300dp, AR=1.78): `f_FX(B, 300, 1.78) = B`
+**1. Component α (Alpha):**
+- Value: `1.0`
+- Function: Neutral reference factor
+- Ensures at base point (300dp, AR=1.78): `f_FX(B, 300, 1.78) = B`
 
-**2. Componente β (Beta) - Linear:**
+**2. Component β (Beta) - Linear:**
 ```
 β(S) = (S - W₀) / δ = (S - 300) / 30
 
-Exemplos:
-  S = 300dp → β = 0 (neutro)
-  S = 360dp → β = 2 (2 steps acima)
-  S = 720dp → β = 14 (14 steps acima)
+Examples:
+  S = 300dp → β = 0 (neutral)
+  S = 360dp → β = 2 (2 steps above)
+  S = 720dp → β = 14 (14 steps above)
 ```
 
-**3. Componente γ (Gamma) - Logarítmico:**
+**3. Component γ (Gamma) - Logarithmic:**
 ```
 γ(AR) = ε₀ + K × ln(AR / AR₀)
       = 0.10 + 0.08 × ln(AR / 1.78)
 
-Exemplos:
+Examples:
   AR = 1.78 → γ = 0.10 (base 10%)
   AR = 2.22 → γ = 0.118 (+1.8%)
   AR = 1.33 → γ = 0.072 (-2.8%)
 ```
 
-**4. Multiplicação Final:**
+**4. Final Multiplication:**
 ```
 F(S, AR) = α + β(S) × γ(AR)
          = 1.0 + β × γ
 
-Valor Final = Base × F(S, AR)
+Final Value = Base × F(S, AR)
 ```
 
 </details>
 
 <details>
-<summary><b>🔬 Derivadas e Comportamento Matemático</b></summary>
+<summary><b>🔬 Derivatives and Mathematical Behavior</b></summary>
 
-### Análise de Derivadas
+### Derivative Analysis
 
-**Derivada em relação a S (tamanho da tela):**
+**Derivative with respect to S (screen size):**
 ```
 ∂f_FX/∂S = B × γ(AR) / δ
          = B × γ(AR) / 30
 
-Interpretação:
-  - Taxa de crescimento é CONSTANTE para um dado AR
-  - Não acelera (diferente de exponencial)
-  - Proporcional ao ajuste logarítmico γ(AR)
+Interpretation:
+  - Growth rate is CONSTANT for a given AR
+  - Doesn't accelerate (unlike exponential)
+  - Proportional to logarithmic adjustment γ(AR)
 ```
 
-**Derivada em relação a AR (aspect ratio):**
+**Derivative with respect to AR (aspect ratio):**
 ```
 ∂f_FX/∂AR = B × β(S) × K / AR
           = B × β(S) × 0.08 / AR
 
-Interpretação:
-  - Taxa DIMINUI conforme AR aumenta (1/AR)
-  - Telas ultra-wide têm ajuste MENOR
-  - Comportamento natural e suave
+Interpretation:
+  - Rate DECREASES as AR increases (1/AR)
+  - Ultra-wide screens have SMALLER adjustment
+  - Natural and smooth behavior
 ```
 
-**Segunda Derivada:**
+**Second Derivative:**
 ```
 ∂²f_FX/∂AR² = -B × β(S) × K / AR²
-            < 0 (sempre negativo)
+            < 0 (always negative)
 
-Interpretação:
-  - Função CÔNCAVA em AR
-  - Crescimento DESACELERA naturalmente
-  - Evita valores extremos
+Interpretation:
+  - Function is CONCAVE in AR
+  - Growth naturally DECELERATES
+  - Prevents extreme values
 ```
 
 </details>
 
 <details>
-<summary><b>📊 Tabela de Valores Calculados</b></summary>
+<summary><b>📊 Calculated Values Table</b></summary>
 
-### Valores Pré-Calculados para Referência
+### Pre-Calculated Values for Reference
 
 **Base: 16dp**
 
-| Tela | SW (dp) | AR | β | γ | F | **Resultado** |
-|------|---------|-----|---|---|---|---------------|
+| Screen | SW (dp) | AR | β | γ | F | **Result** |
+|--------|---------|-----|---|---|---|------------|
 | Phone S | 320 | 2.00 | 0.67 | 0.109 | 1.073 | **17.2dp** |
 | Phone M | 360 | 2.22 | 2.00 | 0.118 | 1.235 | **19.8dp** |
 | Phone L | 411 | 2.16 | 3.70 | 0.116 | 1.429 | **22.9dp** |
 | Tablet 7" | 600 | 1.60 | 10.0 | 0.091 | 1.910 | **30.6dp** |
 | Tablet 10" | 720 | 1.78 | 14.0 | 0.100 | 2.400 | **38.4dp** |
 
-**⚠️ Nota:** Valores reais podem variar ligeiramente devido a arredondamentos e otimizações da implementação.
+**⚠️ Note:** Real values may vary slightly due to rounding and implementation optimizations.
 
 </details>
 
 ---
 
-## 📚 Recursos Adicionais
+## 📚 Additional Resources
 
-### 📖 Documentação Completa
+### 📖 Complete Documentation
 
-- 📘 [**Teoria Matemática Completa**](MATHEMATICAL_THEORY.md) - Documento técnico detalhado
-- 📊 [**Relatório de Validação**](VALIDATION_REPORT.md) - Verificação da implementação
-- 🎯 [**Exemplos Práticos**](EXAMPLES.md) - Código real em todas as plataformas
+- 📘 [**Complete Mathematical Theory**](MATHEMATICAL_THEORY.md) - Detailed technical document
+- 📊 [**Validation Report**](VALIDATION_REPORT.md) - Implementation verification
+- 🎯 [**Practical Examples**](EXAMPLES.md) - Real code on all platforms
 
-### 🔗 Links Úteis
+### 🔗 Useful Links
 
-- 🌐 [**Site Oficial**](https://appdimens-project.web.app/)
-- 📦 [**Repositório GitHub**](https://github.com/bodenberg/appdimens)
+- 🌐 [**Official Website**](https://appdimens-project.web.app/)
+- 📦 [**GitHub Repository**](https://github.com/bodenberg/appdimens)
 
-### 🎓 Referências Científicas
+### 🎓 Scientific References
 
-- **Weber-Fechner Law**: Percepção logarítmica de estímulos
+- **Weber-Fechner Law**: Logarithmic perception of stimuli
 - **Loomis et al. (1992)**: Visual space perception
-- **Stevens (1957)**: Lei de potência psicofísica
+- **Stevens (1957)**: Psychophysical power law
 
 ---
 
-## 🎯 Próximos Passos
+## 🎯 Next Steps
 
-### Para Iniciantes
+### For Beginners
 
-1. ✅ Leia este guia
-2. ✅ Veja os [exemplos práticos](EXAMPLES.md)
-3. ✅ Instale em seu projeto
-4. ✅ Teste em diferentes dispositivos
+1. ✅ Read this guide
+2. ✅ See [practical examples](EXAMPLES.md)
+3. ✅ Install in your project
+4. ✅ Test on different devices
 
-### Para Avançados
+### For Advanced Users
 
-1. ✅ Leia a [teoria completa](MATHEMATICAL_THEORY.md)
-2. ✅ Analise o [código-fonte](Android/appdimens_dynamic/)
-3. ✅ Contribua com o projeto
-4. ✅ Compartilhe seus resultados
+1. ✅ Read the [complete theory](MATHEMATICAL_THEORY.md)
+2. ✅ Analyze the [source code](Android/appdimens_dynamic/)
+3. ✅ Contribute to the project
+4. ✅ Share your results
 
 ---
 
 <div align="center">
 
-## 💬 Tem Dúvidas?
+## 💬 Have Questions?
 
-**Crie uma issue:** [GitHub Issues](https://github.com/bodenberg/appdimens/issues)  
-**Discussão:** [GitHub Discussions](https://github.com/bodenberg/appdimens/discussions)
+**Create an issue:** [GitHub Issues](https://github.com/bodenberg/appdimens/issues)  
+**Discussion:** [GitHub Discussions](https://github.com/bodenberg/appdimens/discussions)
 
 ---
 
-**AppDimens** - Dimensionamento Matemático Universal
+**AppDimens** - Universal Mathematical Dimensioning
 
-*Por Jean Bodenberg | Janeiro 2025 | Versão 1.0.8*
+*By Jean Bodenberg | January 2025 | Version 1.0.8*
 
 [![GitHub](https://img.shields.io/badge/GitHub-bodenberg-blue?logo=github)](https://github.com/bodenberg/appdimens)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 
 </div>
-
