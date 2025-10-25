@@ -323,7 +323,7 @@ const grid = {
     padding: fixed(16).screen('min-width', 768, 24).toPx()
   },
   column: (span: number) => ({
-    width: `${(span / 12) * 100}%`,
+    width: ((span / 12) * 100) + '%',
     padding: fixed(8).toPx()
   })
 };

@@ -1177,7 +1177,7 @@ function ResponsiveCard() {
       </p>
       <button style={{
         marginTop: fx(12),
-        padding: `${fx(10)} ${fx(20)}`,
+        padding: fx(10) + ' ' + fx(20),
         borderRadius: fx(6),
         border: 'none',
         backgroundColor: '#007AFF',
@@ -1256,7 +1256,7 @@ const infoStyles = computed(() => ({
 
 const buttonStyles = computed(() => ({
   marginTop: fx(12),
-  padding: `${fx(10)} ${fx(20)}`,
+  padding: fx(10) + ' ' + fx(20),
   borderRadius: fx(6),
   border: 'none',
   backgroundColor: '#007AFF',
@@ -1340,7 +1340,7 @@ export class ResponsiveCardComponent {
     
     this.buttonStyles = {
       marginTop: wd.fx(12),
-      padding: `${wd.fx(10)} ${wd.fx(20)}`,
+      padding: wd.fx(10) + ' ' + wd.fx(20),
       borderRadius: wd.fx(6),
       border: 'none',
       backgroundColor: '#007AFF',

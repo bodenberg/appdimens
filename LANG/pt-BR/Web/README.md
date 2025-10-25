@@ -466,7 +466,7 @@ function ResponsiveComponent() {
   return (
     <div style={{
       display: 'grid',
-      gridTemplateColumns: `repeat(${columns}, 1fr)`,
+      gridTemplateColumns: 'repeat(' + columns + ', 1fr)',
       gap: dimens.fixed(16).toPx(),
       padding: dimens.safeArea('top', 16),
       backgroundColor: isDark ? '#1a1a1a' : '#ffffff'
@@ -547,7 +547,7 @@ const grid = {
     padding: fixed(16).screen('min-width', 768, 24).toPx()
   },
   column: (span: number) => ({
-    width: `${(span / 12) * 100}%`,
+    width: ((span / 12) * 100) + '%',
     padding: fixed(8).toPx()
   })
 };

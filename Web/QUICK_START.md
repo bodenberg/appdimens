@@ -192,7 +192,7 @@ export const colors = {
 
 export const components = {
   button: {
-    padding: `${spacing[4]} ${spacing[8]}`,
+    padding: spacing[4] + ' ' + spacing[8],
     fontSize: typography.base,
     borderRadius: spacing[2]
   },
