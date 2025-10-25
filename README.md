@@ -1,12 +1,6 @@
----
-layout: default
-title: "AppDimens"
----
-
-<div align="center">
-    <img src="IMAGES/image_sample_devices.png" alt="AppDimens - Responsive Design Across All Devices" height="300"/>
-    <h1>📐 AppDimens</h1>
-    <p><strong>Smart Responsive Dimensions for Any Screen</strong></p>
+<div align="center"><img src="IMAGES/image_sample_devices.png" alt="AppDimens - Responsive Design Across All Devices" height="300"/>
+<h1>📐 AppDimens</h1>
+<p><strong>Smart Responsive Dimensions for Any Screen</strong></p>
 
 [![Version](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
