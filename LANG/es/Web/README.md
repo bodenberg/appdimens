@@ -319,7 +319,6 @@ Apache 2.0 - vea [LICENSE](../../LICENSE) para detalles.
 
 - **Issues**: [GitHub Issues](https://github.com/bodenberg/appdimens/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/bodenberg/appdimens/discussions)
-- **Email**: [contato@bodenberg.dev](mailto:contato@bodenberg.dev)
 
 ---
 

@@ -278,7 +278,6 @@ Este proyecto está licenciado bajo la Licencia Apache 2.0 - vea el archivo [LIC
 
 - **Issues**: [GitHub Issues](https://github.com/bodenberg/appdimens/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/bodenberg/appdimens/discussions)
-- **Email**: [contato@bodenberg.dev](mailto:contato@bodenberg.dev)
 
 ---
 
