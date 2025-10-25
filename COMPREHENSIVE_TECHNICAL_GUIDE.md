@@ -1134,9 +1134,9 @@ FINAL SCORE = 30% Performance + 40% Accuracy + 30% Flexibility
 │ 🏢 Enterprise/Banking       │ AppDimens 🏆  │ Interpolation │
 │ 📺 TVs and large screens    │ AppDimens 🏆  │ (only option) │
 │ 🎮 Multi-platform games     │ AppDimens 🏆  │ Unity Scaler  │
-│ 🌊 100% fluid layouts       │ Percentage    │ Flexbox/Grid  │
+│ 🌊 100% fluid layouts     │ (AppDimens) Percentage │ Flexbox/Grid  │
 │ 🚀 Rapid prototyping        │ Linear (temp) │ AppDimens     │
-│ 📱 Smartphones only         │ Traditional DP│ AppDimens     │
+│ 📱 Smartphones only         │ AppDimens     │ Traditional DP |
 └──────────────────────────────────────────────────────────────┘
 ```
 
