@@ -1,11 +1,16 @@
 ---
-layout: default
-title: "contains"
-category: games
-permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-rectangle/contains.html
+title: contains
 ---
+//[appdimens_games](../../../index.html)/[com.appdimens.games](../index.html)/[GameRectangle](index.html)/[contains](contains.html)
+
+
 
 # contains
 
-[androidJvm]
-fun [contains](contains.md)(point: [GameVector2D](../-game-vector2-d/README.md)): [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html)
+
+
+[androidJvm]\
+fun [contains](contains.html)(point: [GameVector2D](../-game-vector2-d/index.html)): [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html)
+
+
+

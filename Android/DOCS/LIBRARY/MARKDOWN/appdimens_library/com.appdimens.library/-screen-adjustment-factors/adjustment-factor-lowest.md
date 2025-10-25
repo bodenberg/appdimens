@@ -1,11 +1,16 @@
 ---
-layout: default
-title: "adjustmentFactorLowest"
-category: library
-permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-screen-adjustment-factors/adjustment-factor-lowest.html
+title: adjustmentFactorLowest
 ---
+//[appdimens_library](../../../index.html)/[com.appdimens.library](../index.html)/[ScreenAdjustmentFactors](index.html)/[adjustmentFactorLowest](adjustment-factor-lowest.html)
+
+
 
 # adjustmentFactorLowest
 
-[androidJvm]
-val [adjustmentFactorLowest](adjustment-factor-lowest.md): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
+
+
+[androidJvm]\
+val [adjustmentFactorLowest](adjustment-factor-lowest.html): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
+
+
+

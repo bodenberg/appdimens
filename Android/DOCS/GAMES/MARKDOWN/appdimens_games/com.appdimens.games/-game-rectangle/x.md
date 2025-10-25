@@ -1,11 +1,16 @@
 ---
-layout: default
-title: "x"
-category: games
-permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-rectangle/x.html
+title: x
 ---
+//[appdimens_games](../../../index.html)/[com.appdimens.games](../index.html)/[GameRectangle](index.html)/[x](x.html)
+
+
 
 # x
 
-[androidJvm]
-val [x](x.md): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
+
+
+[androidJvm]\
+val [x](x.html): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
+
+
+

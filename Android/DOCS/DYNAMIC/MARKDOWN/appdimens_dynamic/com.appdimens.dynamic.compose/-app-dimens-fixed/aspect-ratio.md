@@ -1,10 +1,24 @@
-//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.compose](../README.md)/[AppDimensFixed](README.md)/[aspectRatio](aspect-ratio.md)
+---
+title: aspectRatio
+---
+//[appdimens_dynamic](../../../index.html)/[com.appdimens.dynamic.compose](../index.html)/[AppDimensFixed](index.html)/[aspectRatio](aspect-ratio.html)
+
+
 
 # aspectRatio
 
+
+
 [androidJvm]\
-fun [aspectRatio](aspect-ratio.md)(enable: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html) = true, sensitivityK: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)? = null): [AppDimensFixed](README.md)
+fun [aspectRatio](aspect-ratio.html)(enable: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html) = true, sensitivityK: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)? = null): [AppDimensFixed](index.html)
+
+
 
 EN Enables or disables aspect ratio adjustment and sets a custom sensitivity.
 
+
+
 PT Ativa ou desativa o ajuste de proporção da tela e define uma sensibilidade customizada.
+
+
+

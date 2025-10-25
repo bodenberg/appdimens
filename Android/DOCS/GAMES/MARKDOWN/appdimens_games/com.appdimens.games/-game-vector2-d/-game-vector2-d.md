@@ -1,11 +1,16 @@
 ---
-layout: default
-title: "GameVector2D"
-category: games
-permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-vector2-d/-game-vector2-d.html
+title: GameVector2D
 ---
+//[appdimens_games](../../../index.html)/[com.appdimens.games](../index.html)/[GameVector2D](index.html)/[GameVector2D](-game-vector2-d.html)
+
+
 
 # GameVector2D
 
-[androidJvm]
+
+
+[androidJvm]\
 constructor(x: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), y: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html))
+
+
+

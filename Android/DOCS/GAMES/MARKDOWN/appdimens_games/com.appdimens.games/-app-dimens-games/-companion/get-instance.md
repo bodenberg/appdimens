@@ -1,13 +1,20 @@
 ---
-layout: default
-title: "getInstance"
-category: games
-permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-app-dimens-games/-companion/get-instance.html
+title: getInstance
 ---
+//[appdimens_games](../../../../index.html)/[com.appdimens.games](../../index.html)/[AppDimensGames](../index.html)/[Companion](index.html)/[getInstance](get-instance.html)
+
+
 
 # getInstance
 
-[androidJvm]
-fun [getInstance](get-instance.md)(): [AppDimensGames](../README.md)
+
+
+[androidJvm]\
+fun [getInstance](get-instance.html)(): [AppDimensGames](../index.html)
+
+
 
 EN Gets the singleton instance of AppDimensGames. PT Obtém a instância singleton do AppDimensGames.
+
+
+

@@ -14,7 +14,7 @@ tasks.dokkaHtml.configure {
     outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/SSPS/HTML"))
 }
 
-tasks.dokkaGfm.configure {
+tasks.dokkaJekyll.configure {
     outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/SSPS/MARKDOWN"))
 }
 

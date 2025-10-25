@@ -1,10 +1,24 @@
-//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.compose](../README.md)/[AppDimensPhysicalUnits](README.md)/[convertInchToMm](convert-inch-to-mm.md)
+---
+title: convertInchToMm
+---
+//[appdimens_dynamic](../../../index.html)/[com.appdimens.dynamic.compose](../index.html)/[AppDimensPhysicalUnits](index.html)/[convertInchToMm](convert-inch-to-mm.html)
+
+
 
 # convertInchToMm
 
+
+
 [androidJvm]\
-fun [convertInchToMm](convert-inch-to-mm.md)(inch: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
+fun [convertInchToMm](convert-inch-to-mm.html)(inch: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
+
+
 
 EN Converts Inches (Inch) to Millimeters (MM).
 
+
+
 PT Converte Polegadas (Inch) para Milímetros (MM).
+
+
+

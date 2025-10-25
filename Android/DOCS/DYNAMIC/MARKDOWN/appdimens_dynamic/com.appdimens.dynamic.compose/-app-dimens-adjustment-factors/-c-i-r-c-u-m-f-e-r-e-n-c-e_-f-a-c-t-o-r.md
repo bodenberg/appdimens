@@ -1,10 +1,24 @@
-//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.compose](../README.md)/[AppDimensAdjustmentFactors](README.md)/[CIRCUMFERENCE_FACTOR](-c-i-r-c-u-m-f-e-r-e-n-c-e_-f-a-c-t-o-r.md)
+---
+title: CIRCUMFERENCE_FACTOR
+---
+//[appdimens_dynamic](../../../index.html)/[com.appdimens.dynamic.compose](../index.html)/[AppDimensAdjustmentFactors](index.html)/[CIRCUMFERENCE_FACTOR](-c-i-r-c-u-m-f-e-r-e-n-c-e_-f-a-c-t-o-r.html)
+
+
 
 # CIRCUMFERENCE_FACTOR
 
+
+
 [androidJvm]\
-const val [CIRCUMFERENCE_FACTOR](-c-i-r-c-u-m-f-e-r-e-n-c-e_-f-a-c-t-o-r.md): &lt;Error class: unknown class&gt;
+const val [CIRCUMFERENCE_FACTOR](-c-i-r-c-u-m-f-e-r-e-n-c-e_-f-a-c-t-o-r.html): &lt;Error class: unknown class&gt;
+
+
 
 EN Factor for circumference calculation (2π). Using kotlin.math.PI.
 
+
+
 PT Fator para cálculo de circunferência (2π). Usando kotlin.math.PI.
+
+
+

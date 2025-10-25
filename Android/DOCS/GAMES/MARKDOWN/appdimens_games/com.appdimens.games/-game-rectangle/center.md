@@ -1,11 +1,16 @@
 ---
-layout: default
-title: "center"
-category: games
-permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-rectangle/center.html
+title: center
 ---
+//[appdimens_games](../../../index.html)/[com.appdimens.games](../index.html)/[GameRectangle](index.html)/[center](center.html)
+
+
 
 # center
 
-[androidJvm]
-fun [center](center.md)(): [GameVector2D](../-game-vector2-d/README.md)
+
+
+[androidJvm]\
+fun [center](center.html)(): [GameVector2D](../-game-vector2-d/index.html)
+
+
+

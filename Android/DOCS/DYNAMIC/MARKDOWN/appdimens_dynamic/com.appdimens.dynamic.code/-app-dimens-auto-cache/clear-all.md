@@ -1,8 +1,20 @@
-//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.code](../README.md)/[AppDimensAutoCache](README.md)/[clearAll](clear-all.md)
+---
+title: clearAll
+---
+//[appdimens_dynamic](../../../index.html)/[com.appdimens.dynamic.code](../index.html)/[AppDimensAutoCache](index.html)/[clearAll](clear-all.html)
+
+
 
 # clearAll
 
+
+
 [androidJvm]\
-fun [clearAll](clear-all.md)()
+fun [clearAll](clear-all.html)()
+
+
 
 EN Clears all cache entries. PT Limpa todas as entradas do cache.
+
+
+

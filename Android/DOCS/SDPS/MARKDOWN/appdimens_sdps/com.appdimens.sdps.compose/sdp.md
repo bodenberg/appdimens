@@ -1,18 +1,32 @@
 ---
-layout: default
-title: "sdp"
-category: sdps
-permalink: /SDPS/MARKDOWN/appdimens_sdps/com.appdimens.sdps.compose/sdp.html
+title: sdp
 ---
+//[appdimens_sdps](../../index.html)/[com.appdimens.sdps.compose](index.html)/[sdp](sdp.html)
+
+
 
 # sdp
 
-[androidJvm]
+
+
+[androidJvm]\
+
+
+
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
-val [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html).[sdp](sdp.md): [Dp](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/Dp.html)
+
+
+val [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html).[sdp](sdp.html): [Dp](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/Dp.html)
+
+
 
 EN Extension for Dp with dynamic scaling based on the **Smallest Width (swDP)**. Usage example: `16.sdp`.
 
+
+
 PT Extensão para Dp com dimensionamento dinâmico baseado na **Smallest Width (swDP)**. Exemplo de uso: `16.sdp`.
+
+
+

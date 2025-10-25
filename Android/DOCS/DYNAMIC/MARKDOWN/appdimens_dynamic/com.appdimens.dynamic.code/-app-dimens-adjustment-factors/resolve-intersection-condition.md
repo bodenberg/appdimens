@@ -1,8 +1,20 @@
-//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.code](../README.md)/[AppDimensAdjustmentFactors](README.md)/[resolveIntersectionCondition](resolve-intersection-condition.md)
+---
+title: resolveIntersectionCondition
+---
+//[appdimens_dynamic](../../../index.html)/[com.appdimens.dynamic.code](../index.html)/[AppDimensAdjustmentFactors](index.html)/[resolveIntersectionCondition](resolve-intersection-condition.html)
+
+
 
 # resolveIntersectionCondition
 
+
+
 [androidJvm]\
-fun [resolveIntersectionCondition](resolve-intersection-condition.md)(entry: DpQualifierEntry, smallestWidthDp: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), currentScreenWidthDp: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), currentScreenHeightDp: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)): [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html)
+fun [resolveIntersectionCondition](resolve-intersection-condition.html)(entry: DpQualifierEntry, smallestWidthDp: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), currentScreenWidthDp: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html), currentScreenHeightDp: [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)): [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html)
+
+
 
 EN Helper function that checks if a DpQualifierEntry meets the current screen dimensions. PT Função auxiliar que verifica se um DpQualifierEntry atende às dimensões atuais da tela.
+
+
+

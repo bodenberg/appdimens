@@ -1,6 +1,16 @@
-//[appdimens_dynamic](../../../../README.md)/[com.appdimens.dynamic.code](../../README.md)/[AppDimensAutoCache](../README.md)/[CacheStats](README.md)/[memoryUsage](memory-usage.md)
+---
+title: memoryUsage
+---
+//[appdimens_dynamic](../../../../index.html)/[com.appdimens.dynamic.code](../../index.html)/[AppDimensAutoCache](../index.html)/[CacheStats](index.html)/[memoryUsage](memory-usage.html)
+
+
 
 # memoryUsage
 
+
+
 [androidJvm]\
-val [memoryUsage](memory-usage.md): [Long](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html)
+val [memoryUsage](memory-usage.html): [Long](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html)
+
+
+

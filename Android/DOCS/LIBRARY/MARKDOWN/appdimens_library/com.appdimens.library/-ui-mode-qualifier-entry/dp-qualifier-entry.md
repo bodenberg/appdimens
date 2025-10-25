@@ -1,11 +1,16 @@
 ---
-layout: default
-title: "dpQualifierEntry"
-category: library
-permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-qualifier-entry/dp-qualifier-entry.html
+title: dpQualifierEntry
 ---
+//[appdimens_library](../../../index.html)/[com.appdimens.library](../index.html)/[UiModeQualifierEntry](index.html)/[dpQualifierEntry](dp-qualifier-entry.html)
+
+
 
 # dpQualifierEntry
 
-[androidJvm]
-val [dpQualifierEntry](dp-qualifier-entry.md): [DpQualifierEntry](../-dp-qualifier-entry/README.md)
+
+
+[androidJvm]\
+val [dpQualifierEntry](dp-qualifier-entry.html): [DpQualifierEntry](../-dp-qualifier-entry/index.html)
+
+
+

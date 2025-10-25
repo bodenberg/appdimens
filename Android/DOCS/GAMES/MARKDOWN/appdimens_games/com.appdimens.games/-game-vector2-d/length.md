@@ -1,11 +1,16 @@
 ---
-layout: default
-title: "length"
-category: games
-permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-vector2-d/length.html
+title: length
 ---
+//[appdimens_games](../../../index.html)/[com.appdimens.games](../index.html)/[GameVector2D](index.html)/[length](length.html)
+
+
 
 # length
 
-[androidJvm]
-fun [length](length.md)(): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
+
+
+[androidJvm]\
+fun [length](length.html)(): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
+
+
+

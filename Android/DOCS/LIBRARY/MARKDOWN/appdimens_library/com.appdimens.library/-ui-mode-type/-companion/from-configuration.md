@@ -1,15 +1,24 @@
 ---
-layout: default
-title: "fromConfiguration"
-category: library
-permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-type/-companion/from-configuration.html
+title: fromConfiguration
 ---
+//[appdimens_library](../../../../index.html)/[com.appdimens.library](../../index.html)/[UiModeType](../index.html)/[Companion](index.html)/[fromConfiguration](from-configuration.html)
+
+
 
 # fromConfiguration
 
-[androidJvm]
-fun [fromConfiguration](from-configuration.md)(uiMode: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)): [UiModeType](../README.md)
 
-EN Returns the [UiModeType](../README.md) corresponding to the [Configuration.uiMode](https://developer.android.com/reference/kotlin/android/content/res/Configuration.html#uimode) value.
 
-PT Retorna o [UiModeType](../README.md) correspondente ao valor de [Configuration.uiMode](https://developer.android.com/reference/kotlin/android/content/res/Configuration.html#uimode).
+[androidJvm]\
+fun [fromConfiguration](from-configuration.html)(uiMode: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)): [UiModeType](../index.html)
+
+
+
+EN Returns the [UiModeType](../index.html) corresponding to the [Configuration.uiMode](https://developer.android.com/reference/kotlin/android/content/res/Configuration.html#uimode) value.
+
+
+
+PT Retorna o [UiModeType](../index.html) correspondente ao valor de [Configuration.uiMode](https://developer.android.com/reference/kotlin/android/content/res/Configuration.html#uimode).
+
+
+

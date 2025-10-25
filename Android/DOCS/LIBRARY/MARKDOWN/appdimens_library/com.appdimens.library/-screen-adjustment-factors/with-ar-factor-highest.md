@@ -1,11 +1,16 @@
 ---
-layout: default
-title: "withArFactorHighest"
-category: library
-permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-screen-adjustment-factors/with-ar-factor-highest.html
+title: withArFactorHighest
 ---
+//[appdimens_library](../../../index.html)/[com.appdimens.library](../index.html)/[ScreenAdjustmentFactors](index.html)/[withArFactorHighest](with-ar-factor-highest.html)
+
+
 
 # withArFactorHighest
 
-[androidJvm]
-val [withArFactorHighest](with-ar-factor-highest.md): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
+
+
+[androidJvm]\
+val [withArFactorHighest](with-ar-factor-highest.html): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
+
+
+

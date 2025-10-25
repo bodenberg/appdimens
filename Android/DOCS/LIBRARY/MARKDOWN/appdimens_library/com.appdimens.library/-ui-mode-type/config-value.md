@@ -1,11 +1,16 @@
 ---
-layout: default
-title: "configValue"
-category: library
-permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-ui-mode-type/config-value.html
+title: configValue
 ---
+//[appdimens_library](../../../index.html)/[com.appdimens.library](../index.html)/[UiModeType](index.html)/[configValue](config-value.html)
+
+
 
 # configValue
 
-[androidJvm]
-val [configValue](config-value.md): [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)
+
+
+[androidJvm]\
+val [configValue](config-value.html): [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)
+
+
+

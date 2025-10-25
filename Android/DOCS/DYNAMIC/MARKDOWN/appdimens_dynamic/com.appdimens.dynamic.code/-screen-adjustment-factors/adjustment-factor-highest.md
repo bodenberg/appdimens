@@ -1,6 +1,16 @@
-//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.code](../README.md)/[ScreenAdjustmentFactors](README.md)/[adjustmentFactorHighest](adjustment-factor-highest.md)
+---
+title: adjustmentFactorHighest
+---
+//[appdimens_dynamic](../../../index.html)/[com.appdimens.dynamic.code](../index.html)/[ScreenAdjustmentFactors](index.html)/[adjustmentFactorHighest](adjustment-factor-highest.html)
+
+
 
 # adjustmentFactorHighest
 
+
+
 [androidJvm]\
-val [adjustmentFactorHighest](adjustment-factor-highest.md): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
+val [adjustmentFactorHighest](adjustment-factor-highest.html): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html)
+
+
+

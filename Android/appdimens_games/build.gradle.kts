@@ -13,7 +13,7 @@ tasks.dokkaHtml.configure {
     outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/GAMES/HTML"))
 }
 
-tasks.dokkaGfm.configure {
+tasks.dokkaJekyll.configure {
     outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/GAMES/MARKDOWN"))
 }
 

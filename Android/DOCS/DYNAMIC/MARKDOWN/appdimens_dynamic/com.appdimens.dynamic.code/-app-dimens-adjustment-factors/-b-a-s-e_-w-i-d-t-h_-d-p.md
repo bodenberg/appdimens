@@ -1,8 +1,20 @@
-//[appdimens_dynamic](../../../README.md)/[com.appdimens.dynamic.code](../README.md)/[AppDimensAdjustmentFactors](README.md)/[BASE_WIDTH_DP](-b-a-s-e_-w-i-d-t-h_-d-p.md)
+---
+title: BASE_WIDTH_DP
+---
+//[appdimens_dynamic](../../../index.html)/[com.appdimens.dynamic.code](../index.html)/[AppDimensAdjustmentFactors](index.html)/[BASE_WIDTH_DP](-b-a-s-e_-w-i-d-t-h_-d-p.html)
+
+
 
 # BASE_WIDTH_DP
 
+
+
 [androidJvm]\
-const val [BASE_WIDTH_DP](-b-a-s-e_-w-i-d-t-h_-d-p.md): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html) = 300.0f
+const val [BASE_WIDTH_DP](-b-a-s-e_-w-i-d-t-h_-d-p.html): [Float](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-float/index.html) = 300.0f
+
+
 
 EN Base reference Dp width for adjustment calculation (e.g., 300dp). PT Largura DP de referência base para o cálculo de ajuste (ex: 300dp).
+
+
+

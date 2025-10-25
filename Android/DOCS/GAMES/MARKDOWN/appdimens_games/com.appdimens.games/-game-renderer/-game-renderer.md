@@ -1,11 +1,16 @@
 ---
-layout: default
-title: "GameRenderer"
-category: games
-permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-renderer/-game-renderer.html
+title: GameRenderer
 ---
+//[appdimens_games](../../../index.html)/[com.appdimens.games](../index.html)/[GameRenderer](index.html)/[GameRenderer](-game-renderer.html)
+
+
 
 # GameRenderer
 
-[androidJvm]
-constructor(appDimensGames: [AppDimensGames](../-app-dimens-games/README.md))
+
+
+[androidJvm]\
+constructor(appDimensGames: [AppDimensGames](../-app-dimens-games/index.html))
+
+
+

@@ -1,26 +1,41 @@
 ---
-layout: default
-title: "calculateVector2D"
-category: games
-permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-app-dimens-games/calculate-vector2-d.html
+title: calculateVector2D
 ---
+//[appdimens_games](../../../index.html)/[com.appdimens.games](../index.html)/[AppDimensGames](index.html)/[calculateVector2D](calculate-vector2-d.html)
+
+
 
 # calculateVector2D
 
-[androidJvm]
-fun [calculateVector2D](calculate-vector2-d.md)(vector: [GameVector2D](../-game-vector2-d/README.md), type: [GameDimensionType](../-game-dimension-type/README.md)): [GameVector2D](../-game-vector2-d/README.md)
+
+
+[androidJvm]\
+fun [calculateVector2D](calculate-vector2-d.html)(vector: [GameVector2D](../-game-vector2-d/index.html), type: [GameDimensionType](../-game-dimension-type/index.html)): [GameVector2D](../-game-vector2-d/index.html)
+
+
 
 EN Calculates a 2D vector using the specified type.
 
+
+
 #### Return
+
+
 
 The calculated vector.
 
+
+
 PT Calcula um vetor 2D usando o tipo especificado.
+
+
 
 O vetor calculado.
 
+
+
 #### Parameters
+
 
 androidJvm
 
@@ -28,3 +43,6 @@ androidJvm
 |---|---|
 | vector | O vetor base. |
 | type | O tipo de dimensão. |
+
+
+

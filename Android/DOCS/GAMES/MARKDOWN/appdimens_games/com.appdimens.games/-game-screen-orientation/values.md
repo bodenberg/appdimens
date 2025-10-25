@@ -1,15 +1,24 @@
 ---
-layout: default
-title: "values"
-category: games
-permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-screen-orientation/values.html
+title: values
 ---
+//[appdimens_games](../../../index.html)/[com.appdimens.games](../index.html)/[GameScreenOrientation](index.html)/[values](values.html)
+
+
 
 # values
 
-[androidJvm]
-fun [values](values.md)(): [Array](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html)<[GameScreenOrientation](README.md)>
+
+
+[androidJvm]\
+fun [values](values.html)(): [Array](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html)&lt;[GameScreenOrientation](index.html)&gt;
+
+
 
 Returns an array containing the constants of this enum type, in the order they're declared.
 
+
+
 This method may be used to iterate over the constants.
+
+
+

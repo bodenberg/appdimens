@@ -1,11 +1,16 @@
 ---
-layout: default
-title: "normalized"
-category: games
-permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-vector2-d/normalized.html
+title: normalized
 ---
+//[appdimens_games](../../../index.html)/[com.appdimens.games](../index.html)/[GameVector2D](index.html)/[normalized](normalized.html)
+
+
 
 # normalized
 
-[androidJvm]
-fun [normalized](normalized.md)(): [GameVector2D](README.md)
+
+
+[androidJvm]\
+fun [normalized](normalized.html)(): [GameVector2D](index.html)
+
+
+

@@ -1,16 +1,21 @@
 ---
-layout: default
-title: "CustomDpEntry"
-category: sdps
-permalink: /SDPS/MARKDOWN/appdimens_sdps/com.appdimens.sdps.compose/-custom-dp-entry/-custom-dp-entry.html
+title: CustomDpEntry
 ---
+//[appdimens_sdps](../../../index.html)/[com.appdimens.sdps.compose](../index.html)/[CustomDpEntry](index.html)/[CustomDpEntry](-custom-dp-entry.html)
+
+
 
 # CustomDpEntry
 
-[androidJvm]
+
+
+[androidJvm]\
 constructor(uiModeType: UiModeType? = null, dpQualifierEntry: DpQualifierEntry? = null, customValue: [Dp](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/Dp.html), priority: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html))
 
+
+
 #### Parameters
+
 
 androidJvm
 
@@ -20,3 +25,6 @@ androidJvm
 | dpQualifierEntry | The Dp qualifier entry (type and value, e.g., SMALL_WIDTH 600). Null if only UI mode is used. |
 | customValue | The Dp value to be used if the condition is met. |
 | priority | The resolution priority. 1 is more specific (UI + Qualifier), 3 is less specific (Qualifier only). |
+
+
+

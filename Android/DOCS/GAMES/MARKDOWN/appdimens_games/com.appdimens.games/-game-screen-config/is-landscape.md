@@ -1,11 +1,16 @@
 ---
-layout: default
-title: "isLandscape"
-category: games
-permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-screen-config/is-landscape.html
+title: isLandscape
 ---
+//[appdimens_games](../../../index.html)/[com.appdimens.games](../index.html)/[GameScreenConfig](index.html)/[isLandscape](is-landscape.html)
+
+
 
 # isLandscape
 
-[androidJvm]
-val [isLandscape](is-landscape.md): [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html)
+
+
+[androidJvm]\
+val [isLandscape](is-landscape.html): [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html)
+
+
+

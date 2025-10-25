@@ -13,7 +13,7 @@ tasks.dokkaHtml.configure {
     outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/DYNAMIC/HTML"))
 }
 
-tasks.dokkaGfm.configure {
+tasks.dokkaJekyll.configure {
     outputDirectory.set(rootProject.layout.projectDirectory.dir("DOCS/DYNAMIC/MARKDOWN"))
 }
 

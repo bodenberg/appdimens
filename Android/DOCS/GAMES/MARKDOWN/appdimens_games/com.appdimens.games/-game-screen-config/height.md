@@ -1,11 +1,16 @@
 ---
-layout: default
-title: "height"
-category: games
-permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-screen-config/height.html
+title: height
 ---
+//[appdimens_games](../../../index.html)/[com.appdimens.games](../index.html)/[GameScreenConfig](index.html)/[height](height.html)
+
+
 
 # height
 
-[androidJvm]
-val [height](height.md): [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)
+
+
+[androidJvm]\
+val [height](height.html): [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)
+
+
+

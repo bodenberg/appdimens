@@ -1,6 +1,16 @@
-//[appdimens_dynamic](../../../../README.md)/[com.appdimens.dynamic.code](../../README.md)/[AppDimensAutoCache](../README.md)/[CacheStats](README.md)/[totalEntries](total-entries.md)
+---
+title: totalEntries
+---
+//[appdimens_dynamic](../../../../index.html)/[com.appdimens.dynamic.code](../../index.html)/[AppDimensAutoCache](../index.html)/[CacheStats](index.html)/[totalEntries](total-entries.html)
+
+
 
 # totalEntries
 
+
+
 [androidJvm]\
-val [totalEntries](total-entries.md): [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)
+val [totalEntries](total-entries.html): [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)
+
+
+

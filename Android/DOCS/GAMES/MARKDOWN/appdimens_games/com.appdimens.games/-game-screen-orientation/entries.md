@@ -1,15 +1,24 @@
 ---
-layout: default
-title: "entries"
-category: games
-permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-screen-orientation/entries.html
+title: entries
 ---
+//[appdimens_games](../../../index.html)/[com.appdimens.games](../index.html)/[GameScreenOrientation](index.html)/[entries](entries.html)
+
+
 
 # entries
 
-[androidJvm]
-val [entries](entries.md): [EnumEntries](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.enums/-enum-entries/index.html)<[GameScreenOrientation](README.md)>
+
+
+[androidJvm]\
+val [entries](entries.html): [EnumEntries](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.enums/-enum-entries/index.html)&lt;[GameScreenOrientation](index.html)&gt;
+
+
 
 Returns a representation of an immutable list of all enum entries, in the order they're declared.
 
+
+
 This method may be used to iterate over the enum entries.
+
+
+

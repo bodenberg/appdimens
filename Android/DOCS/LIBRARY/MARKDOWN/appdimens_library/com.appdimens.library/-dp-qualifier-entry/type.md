@@ -1,11 +1,16 @@
 ---
-layout: default
-title: "type"
-category: library
-permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-dp-qualifier-entry/type.html
+title: type
 ---
+//[appdimens_library](../../../index.html)/[com.appdimens.library](../index.html)/[DpQualifierEntry](index.html)/[type](type.html)
+
+
 
 # type
 
-[androidJvm]
-val [type](type.md): [DpQualifier](../-dp-qualifier/README.md)
+
+
+[androidJvm]\
+val [type](type.html): [DpQualifier](../-dp-qualifier/index.html)
+
+
+

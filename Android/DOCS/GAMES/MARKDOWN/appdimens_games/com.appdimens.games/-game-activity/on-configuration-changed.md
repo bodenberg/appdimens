@@ -1,11 +1,16 @@
 ---
-layout: default
-title: "onConfigurationChanged"
-category: games
-permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-activity/on-configuration-changed.html
+title: onConfigurationChanged
 ---
+//[appdimens_games](../../../index.html)/[com.appdimens.games](../index.html)/[GameActivity](index.html)/[onConfigurationChanged](on-configuration-changed.html)
+
+
 
 # onConfigurationChanged
 
-[androidJvm]
-open override fun [onConfigurationChanged](on-configuration-changed.md)(newConfig: [Configuration](https://developer.android.com/reference/kotlin/android/content/res/Configuration.html))
+
+
+[androidJvm]\
+open override fun [onConfigurationChanged](on-configuration-changed.html)(newConfig: [Configuration](https://developer.android.com/reference/kotlin/android/content/res/Configuration.html))
+
+
+

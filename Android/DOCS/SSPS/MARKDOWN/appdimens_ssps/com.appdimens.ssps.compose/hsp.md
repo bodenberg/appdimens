@@ -1,18 +1,32 @@
 ---
-layout: default
-title: "hsp"
-category: ssps
-permalink: /SSPS/MARKDOWN/appdimens_ssps/com.appdimens.ssps.compose/hsp.html
+title: hsp
 ---
+//[appdimens_ssps](../../index.html)/[com.appdimens.ssps.compose](index.html)/[hsp](hsp.html)
+
+
 
 # hsp
 
-[androidJvm]
+
+
+[androidJvm]\
+
+
+
 
 @get:[Composable](https://developer.android.com/reference/kotlin/androidx/compose/runtime/Composable.html)
 
-val [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html).[hsp](hsp.md): [TextUnit](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/TextUnit.html)
+
+
+val [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html).[hsp](hsp.html): [TextUnit](https://developer.android.com/reference/kotlin/androidx/compose/ui/unit/TextUnit.html)
+
+
 
 EN Composable extension for Int that returns a dynamically scaled TextUnit (Sp) using the **Height** qualifier. Useful for text scaling based on the screen height (h).
 
+
+
 PT Extensão Composable para Int que retorna um TextUnit (Sp) escalado dinamicamente usando o qualificador **Height (Altura)**. Útil para escalonamento de texto baseado na altura da tela (h).
+
+
+

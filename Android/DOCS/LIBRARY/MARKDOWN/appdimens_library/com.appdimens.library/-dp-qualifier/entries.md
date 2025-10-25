@@ -1,15 +1,24 @@
 ---
-layout: default
-title: "entries"
-category: library
-permalink: /LIBRARY/MARKDOWN/appdimens_library/com.appdimens.library/-dp-qualifier/entries.html
+title: entries
 ---
+//[appdimens_library](../../../index.html)/[com.appdimens.library](../index.html)/[DpQualifier](index.html)/[entries](entries.html)
+
+
 
 # entries
 
-[androidJvm]
-val [entries](entries.md): [EnumEntries](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.enums/-enum-entries/index.html)<[DpQualifier](README.md)>
+
+
+[androidJvm]\
+val [entries](entries.html): [EnumEntries](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.enums/-enum-entries/index.html)&lt;[DpQualifier](index.html)&gt;
+
+
 
 Returns a representation of an immutable list of all enum entries, in the order they're declared.
 
+
+
 This method may be used to iterate over the enum entries.
+
+
+

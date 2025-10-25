@@ -1,11 +1,16 @@
 ---
-layout: default
-title: "plus"
-category: games
-permalink: /GAMES/MARKDOWN/appdimens_games/com.appdimens.games/-game-vector2-d/plus.html
+title: plus
 ---
+//[appdimens_games](../../../index.html)/[com.appdimens.games](../index.html)/[GameVector2D](index.html)/[plus](plus.html)
+
+
 
 # plus
 
-[androidJvm]
-operator fun [plus](plus.md)(other: [GameVector2D](README.md)): [GameVector2D](README.md)
+
+
+[androidJvm]\
+operator fun [plus](plus.html)(other: [GameVector2D](index.html)): [GameVector2D](index.html)
+
+
+
