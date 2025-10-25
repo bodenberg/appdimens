@@ -158,6 +158,7 @@ const { dy } = useAppDimens();
 
 Escalado **clamp-based** que garantiza transiciones suaves entre breakpoints. **Ideal para tipografía y layouts adaptativos**.
 
+{% raw %}
 ```tsx
 const { fl } = useAppDimens();
 
@@ -166,6 +167,7 @@ const { fl } = useAppDimens();
   fontSize: fl(14, { min: 12, max: 18 }).toPixels(),
 }} />
 ```
+{% endraw %}
 
 ---
 

@@ -65,6 +65,7 @@ const fluidFont = fluid(16, 24).toString();    // "clamp(...)"
 
 ### 3. React
 
+{% raw %}
 ```tsx
 import { useWeb, useBreakpoint } from 'webdimens/react';
 
@@ -82,6 +83,7 @@ function MyComponent() {
   );
 }
 ```
+{% endraw %}
 
 ## 🎯 Exemplos Rápidos
 
@@ -145,6 +147,7 @@ npx create-react-app my-app
 cd my-app
 npm install webdimens
 ```
+{% raw %}
 
 Edite `src/App.js`:
 ```jsx
@@ -172,6 +175,7 @@ function App() {
 
 export default App;
 ```
+{% endraw %}
 
 ## 🎨 Design System Rápido
 

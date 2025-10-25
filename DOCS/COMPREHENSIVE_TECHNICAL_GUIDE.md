@@ -1291,6 +1291,7 @@ Widget build(BuildContext context) {
 
 ### 15.5 React Native
 
+{% raw %}
 ```javascript
 // ReactNative/AppDimens.js
 import { fixedDp, fixedSp } from 'appdimens';
@@ -1309,9 +1310,11 @@ export default function App() {
   );
 }
 ```
+{% endraw %}
 
 ### 15.6 Web (React)
 
+{% raw %}
 ```jsx
 // Web/useAppDimens.js
 import { useAppDimens } from 'appdimens-web';
@@ -1332,6 +1335,7 @@ export default function Component() {
   );
 }
 ```
+{% endraw %}
 
 ---
 

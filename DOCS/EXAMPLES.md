@@ -1140,6 +1140,7 @@ export default FluidTypography;
 
 ### ⚛️ React with Hooks
 
+{% raw %}
 ```tsx
 import React from 'react';
 import { useWebDimens, useBreakpoint, useViewport } from 'webdimens/react';
@@ -1193,9 +1194,11 @@ function ResponsiveCard() {
 
 export default ResponsiveCard;
 ```
+{% endraw %}
 
 ### 🟢 Vue Composition API
 
+{% raw %}
 ```vue
 <template>
   <div class="responsive-card" :style="cardStyles">
@@ -1270,9 +1273,11 @@ const handleAction = () => {
 };
 </script>
 ```
+{% endraw %}
 
 ### 🔶 Angular Component
 
+{% raw %}
 ```typescript
 import { Component } from '@angular/core';
 import { WebDimensService } from 'webdimens/angular';
@@ -1355,6 +1360,7 @@ export class ResponsiveCardComponent {
   }
 }
 ```
+{% endraw %}
 
 ### 🎨 Svelte with Stores
 

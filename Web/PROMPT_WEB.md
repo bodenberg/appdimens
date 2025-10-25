@@ -92,6 +92,7 @@ const adaptiveSize = fixed(16)
 
 ### 4.3. React Integration
 
+{% raw %}
 ```tsx
 import { 
   useWebDimens, 
@@ -119,6 +120,7 @@ function ResponsiveCard() {
   );
 }
 ```
+{% endraw %}
 
 ### 4.4. Vue Integration
 

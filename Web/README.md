@@ -108,6 +108,7 @@ const adaptiveSize = fixed(16)
 
 ### React
 
+{% raw %}
 ```tsx
 import { 
   useWeb, 
@@ -135,6 +136,7 @@ function ResponsiveCard() {
   );
 }
 ```
+{% endraw %}
 
 ---
 
@@ -444,6 +446,7 @@ import {
 } from 'webdimens/react';
 ```
 
+{% raw %}
 ### Exemplo Completo
 
 ```tsx
@@ -474,6 +477,7 @@ function ResponsiveComponent() {
   );
 }
 ```
+{% endraw %}
 
 ---
 

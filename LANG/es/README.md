@@ -341,6 +341,7 @@ Widget build(BuildContext context) {
 
 ### React Native
 
+{% raw %}
 ```jsx
 function MyCard() {
   const { fx } = useAppDimens();
@@ -354,6 +355,7 @@ function MyCard() {
   );
 }
 ```
+{% endraw %}
 
 ### Web (Vanilla JavaScript)
 
@@ -384,6 +386,7 @@ function MyCard() {
 
 ### Web (React)
 
+{% raw %}
 ```jsx
 import { useWebDimens } from 'webdimens/react';
 
@@ -397,6 +400,7 @@ function MyCard() {
   );
 }
 ```
+{% endraw %}
 
 ### Web (Vue)
 

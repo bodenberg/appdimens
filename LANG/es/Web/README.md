@@ -113,6 +113,7 @@ const fluidFont = fluid(16, 24).toString();    // "clamp(16px, ...calc..., 24px)
 
 ### React
 
+{% raw %}
 ```tsx
 import React from 'react';
 import { useAppDimens } from 'webdimens/react';
@@ -133,6 +134,7 @@ function MyComponent() {
   );
 }
 ```
+{% endraw %}
 
 ### Vue
 

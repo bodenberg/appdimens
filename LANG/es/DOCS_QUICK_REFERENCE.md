@@ -214,11 +214,13 @@ Text(
 
 ### React Native
 
+{% raw %}
 ```javascript
 <Text style={{ fontSize: fixedSp(16) }}>
   Hola
 </Text>
 ```
+{% endraw %}
 
 📍 Más ejemplos: [EXAMPLES.md](../../DOCS/EXAMPLES.md)
 
