@@ -355,17 +355,106 @@ function MyCard() {
 }
 ```
 
+### Web (Vanilla JavaScript)
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/webdimens@1.0.8/dist/index.js"></script>
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+      <h1 id="title">Hello World</h1>
+    </header>
+  </div>
+  
+  <script type="module">
+    import { webdimens } from 'https://cdn.jsdelivr.net/npm/webdimens@1.0.8/dist/index.mjs';
+    
+    // Apply fixed dimensions
+    document.getElementById('header').style.height = webdimens.fx(64);
+    document.getElementById('title').style.fontSize = webdimens.fl(24, 48);
+    document.getElementById('container').style.padding = webdimens.dy(24);
+  </script>
+</body>
+</html>
+```
+
 ### Web (React)
 
 ```jsx
+import { useWebDimens } from 'webdimens/react';
+
 function MyCard() {
-  const { fx } = useWebDimens();
+  const { fx, dy, fl } = useWebDimens();
   
   return (
-    <div style={{ width: fx(300), padding: fx(16) }}>
-      <h2 style={{ fontSize: fx(18) }}>Hello World</h2>
+    <div style={{ width: dy(300), padding: fx(16) }}>
+      <h2 style={{ fontSize: fl(18, 24) }}>Hello World</h2>
     </div>
   );
+}
+```
+
+### Web (Vue)
+
+```vue
+<template>
+  <div :style="{ width: dy(300), padding: fx(16) }">
+    <h2 :style="{ fontSize: fl(18, 24) }">Hello World</h2>
+  </div>
+</template>
+
+<script setup>
+import { useWebDimens } from 'webdimens/vue';
+
+const { fx, dy, fl } = useWebDimens();
+</script>
+```
+
+### Web (Svelte)
+
+```svelte
+<script>
+  import { webDimensStore } from 'webdimens/svelte';
+  
+  $: wd = $webDimensStore;
+  $: width = wd.dy(300);
+  $: padding = wd.fx(16);
+  $: fontSize = wd.fl(18, 24);
+</script>
+
+<div style="width: {width}; padding: {padding};">
+  <h2 style="font-size: {fontSize};">Hello World</h2>
+</div>
+```
+
+### Web (Angular)
+
+```typescript
+import { Component } from '@angular/core';
+import { WebDimensService } from 'webdimens/angular';
+
+@Component({
+  selector: 'app-card',
+  template: `
+    <div [ngStyle]="{ width: width, padding: padding }">
+      <h2 [ngStyle]="{ fontSize: fontSize }">Hello World</h2>
+    </div>
+  `
+})
+export class CardComponent {
+  width = '';
+  padding = '';
+  fontSize = '';
+
+  constructor(private wd: WebDimensService) {
+    this.width = wd.dy(300);
+    this.padding = wd.fx(16);
+    this.fontSize = wd.fl(18, 24);
+  }
 }
 ```
 
