@@ -5,7 +5,7 @@ title: "🚀 AppDimens iOS - Usage Guide"
 
 # 🚀 AppDimens iOS - Usage Guide
 
-> Languages: [Português (BR)](../LANG/pt-BR/iOS/USAGE_GUIDE.md) | [Español](../LANG/es/iOS/USAGE_GUIDE.md) | [हिन्दी](../LANG/hi/iOS/USAGE_GUIDE.md) | [Русский](../LANG/ru/iOS/USAGE_GUIDE.md) | [中文](../LANG/zh/iOS/USAGE_GUIDE.md) | [日本語](../LANG/ja/iOS/USAGE_GUIDE.md)
+> **Languages:** English | [Português (BR)](../LANG/pt-BR/iOS/USAGE_GUIDE.md) | [Español](../LANG/es/iOS/USAGE_GUIDE.md)
 
 This comprehensive guide shows you how to use AppDimens iOS in your projects with practical examples and best practices.
 

@@ -1149,16 +1149,24 @@ function ResponsiveCard() {
   const breakpoint = useBreakpoint();
   const viewport = useViewport();
   
+  // Responsive styles using AppDimens
+  const cardStyle = {
+    width: dy(300),
+    height: fx(200),
+    padding: fx(16),
+    borderRadius: fx(12),
+    backgroundColor: '#fff',
+    boxShadow: '0 ' + fx(2) + ' ' + fx(8) + ' rgba(0,0,0,0.1)',
+  };
+  
+  const titleStyle = {
+    fontSize: fx(18),
+    marginBottom: fx(8)
+  };
+  
   return (
-    <div style={{
-      width: dy(300),
-      height: fx(200),
-      padding: fx(16),
-      borderRadius: fx(12),
-      backgroundColor: '#fff',
-      boxShadow: `0 ${fx(2)} ${fx(8)} rgba(0,0,0,0.1)`,
-    }}>
-      <h2 style={{ fontSize: fx(18), marginBottom: fx(8) }}>
+    <div style={cardStyle}>
+      <h2 style={titleStyle}>
         Responsive Card
       </h2>
       <p style={{ fontSize: fl(14, 18), color: '#666' }}>
@@ -1226,7 +1234,7 @@ const cardStyles = computed(() => ({
   padding: fx(16),
   borderRadius: fx(12),
   backgroundColor: '#fff',
-  boxShadow: `0 ${fx(2)} ${fx(8)} rgba(0,0,0,0.1)`,
+  boxShadow: '0 ' + fx(2) + ' ' + fx(8) + ' rgba(0,0,0,0.1)',
 }));
 
 const titleStyles = computed(() => ({
@@ -1311,7 +1319,7 @@ export class ResponsiveCardComponent {
       padding: wd.fx(16),
       borderRadius: wd.fx(12),
       backgroundColor: '#fff',
-      boxShadow: `0 ${wd.fx(2)} ${wd.fx(8)} rgba(0,0,0,0.1)`,
+      boxShadow: '0 ' + wd.fx(2) + ' ' + wd.fx(8) + ' rgba(0,0,0,0.1)',
     };
     
     this.titleStyles = {
@@ -1904,6 +1912,6 @@ let buttonSize = AppDimens.fixed(80)  // Fixed (RECOMMENDED)
 These examples demonstrate the power and flexibility of AppDimens across different platforms and use cases. By following these patterns and best practices, you can create responsive, consistent, and performant user interfaces that work seamlessly across all device types.
 
 For more examples and detailed documentation, visit:
-- [Android Documentation](Android/README.md)
-- [iOS Documentation](iOS/README.md)
+- [Android Documentation](../Android/README.md)
+- [iOS Documentation](../iOS/README.md)
 - [Complete API Reference](https://appdimens-project.web.app/)

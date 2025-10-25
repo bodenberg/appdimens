@@ -5,7 +5,9 @@ title: "AI Prompt for AppDimens React Native Library"
 
 # AI Prompt for AppDimens React Native Library
 
-> Languages: [Português (BR)](LANG/pt-BR/PROMPT_REACT_NATIVE.md) | [Español](LANG/es/PROMPT_REACT_NATIVE.md) | [हिन्दी](LANG/hi/PROMPT_REACT_NATIVE.md) | [Русский](LANG/ru/PROMPT_REACT_NATIVE.md) | [中文](LANG/zh/PROMPT_REACT_NATIVE.md) | [日本語](LANG/ja/PROMPT_REACT_NATIVE.md)
+> **Languages:** English | Português (BR) | Español
+
+> **Note:** Translation files are not yet available in other languages.
 
 You are an expert React Native developer AI. Your task is to understand and effectively use the AppDimens React Native library, a sophisticated dimension management system for React Native applications. This guide will provide you with all the necessary information about the library's architecture, functionalities, and use cases.
 

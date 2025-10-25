@@ -736,7 +736,7 @@ Interpretação:
 
 - 📘 [**Teoria Matemática Completa**](MATHEMATICAL_THEORY.md) - Documento técnico detalhado
 - 📊 [**Relatório de Validação**](../../VALIDATION_REPORT.md) - Verificação da implementação
-- 🎯 [**Exemplos Práticos**](../../EXAMPLES.md) - Código real em todas as plataformas
+- 🎯 [**Exemplos Práticos**](../../DOCS/EXAMPLES.md) - Código real em todas as plataformas
 
 ### 🔗 Links Úteis
 
@@ -756,14 +756,14 @@ Interpretação:
 ### Para Iniciantes
 
 1. ✅ Leia este guia
-2. ✅ Veja os [exemplos práticos](../../EXAMPLES.md)
+2. ✅ Veja os [exemplos práticos](../../DOCS/EXAMPLES.md)
 3. ✅ Instale em seu projeto
 4. ✅ Teste em diferentes dispositivos
 
 ### Para Avançados
 
 1. ✅ Leia a [teoria completa](MATHEMATICAL_THEORY.md)
-2. ✅ Analise o [código-fonte](Android/appdimens_dynamic/)
+2. ✅ Analise o [código-fonte](../../Android/appdimens_dynamic/)
 3. ✅ Contribua com o projeto
 4. ✅ Compartilhe seus resultados
 

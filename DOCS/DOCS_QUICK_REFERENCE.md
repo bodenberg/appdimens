@@ -29,7 +29,7 @@
 → Read: [VALIDATION_REPORT.md](VALIDATION_REPORT.md) (20min)
 
 **... navigate all documentation** 🗺️
-→ Read: [DOCS/README.md](DOCS/README.md) (5min to browse)
+→ Read: [DOCS/README.md](README.md) (5min to browse)
 
 ---
 
@@ -37,7 +37,7 @@
 
 ### To Decide if You Use AppDimens
 
-1. [README.md](README.md) - Overview
+1. [README.md](../README.md) - Overview
 2. [MATHEMATICAL_THEORY_SIMPLIFIED.md](MATHEMATICAL_THEORY_SIMPLIFIED.md) - Simple theory
 3. [FORMULA_COMPARISON.md](FORMULA_COMPARISON.md) - See #1 ranking with 91/100
 
@@ -48,7 +48,7 @@
 ### To Implement in Your Project
 
 1. [EXAMPLES.md](EXAMPLES.md) - Ready-to-use code
-2. [Android/README.md](Android/README.md) - Platform-specific
+2. [Android/README.md](../Android/README.md) - Platform-specific
 3. [MATHEMATICAL_THEORY_SIMPLIFIED.md](MATHEMATICAL_THEORY_SIMPLIFIED.md) - FAQ
 
 **Ready to code in: 30 minutes**
@@ -246,7 +246,7 @@ AppDimens/
 │
 └─ Navigation
    ├─ DOCS/README.md (complete index)
-   └─ DOCS_QUICK_REFERENCE.md (you are here!)
+   └─ DOCS/DOCS_QUICK_REFERENCE.md (you are here!)
 ```
 
 ---
@@ -263,7 +263,7 @@ AppDimens/
 
 - [Formal Mathematical Theory](MATHEMATICAL_THEORY.md)
 - [Complete Technical Guide](COMPREHENSIVE_TECHNICAL_GUIDE.md) ← Everything in one place
-- [Full Documentation Index](DOCS/README.md)
+- [Full Documentation Index](README.md)
 
 ### Validation and Certifications
 

@@ -5,7 +5,9 @@ title: "📝 Changelog"
 
 # 📝 Changelog
 
-> Languages: [Português (BR)](LANG/pt-BR/CHANGELOG.md) | [Español](LANG/es/CHANGELOG.md) | [हिन्दी](LANG/hi/CHANGELOG.md) | [Русский](LANG/ru/CHANGELOG.md) | [中文](LANG/zh/CHANGELOG.md) | [日本語](LANG/ja/CHANGELOG.md)
+> **Languages:** English | Português (BR) | Español
+
+> **Note:** Translation files for CHANGELOG are not yet available in other languages.
 
 All notable changes to AppDimens will be documented in this file.
 
@@ -21,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Advanced Configuration Examples**: Screen qualifiers, caching, and performance settings
 - **Game Development Integration**: Complete C++/NDK and Metal integration examples
 - **Platform Support Matrix**: Detailed compatibility information for all supported platforms
-- **Multilingual Documentation**: Enhanced Portuguese, Spanish, Hindi, Russian, Chinese, and Japanese documentation
+- **Multilingual Documentation**: Enhanced Portuguese (BR) and Spanish documentation
 
 ### Changed
 - **Documentation Standards**: Updated all documentation to professional standards with comprehensive examples

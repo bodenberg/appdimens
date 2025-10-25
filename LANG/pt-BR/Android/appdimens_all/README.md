@@ -5,7 +5,7 @@ title: "🚀 AppDimens: Guia Rápido e Visão Geral da Biblioteca"
 
 # 🚀 AppDimens: Guia Rápido e Visão Geral da Biblioteca
 
-> Idiomas: [English](../../../../Android/appdimens_all/README.md) | [Español](../../es/Android/appdimens_all/README.md) | [हिन्दी](../../hi/Android/appdimens_all/README.md) | [Русский](../../ru/Android/appdimens_all/README.md) | [中文](../../zh/Android/appdimens_all/README.md) | [日本語](../../ja/Android/appdimens_all/README.md)
+> **Idiomas:** [English](../../../../Android/appdimens_all/README.md) | Português (BR) | [Español](../../es/Android/appdimens_all/README.md)
 
 **AppDimens** é um sistema de gerenciamento de dimensões para Android (Views e Compose) com foco em responsividade matemática.
 

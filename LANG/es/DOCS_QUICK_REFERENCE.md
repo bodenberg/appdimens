@@ -14,7 +14,7 @@
 → Lee: [MATHEMATICAL_THEORY_SIMPLIFIED.md](MATHEMATICAL_THEORY_SIMPLIFIED.md) (15min)
 
 **... ver ejemplos de código** 💻
-→ Lee: [EXAMPLES.md](../../EXAMPLES.md) (20min)
+→ Lee: [EXAMPLES.md](../../DOCS/EXAMPLES.md) (20min)
 
 **... entender la teoría matemática completa** 🧮
 → Lee: [MATHEMATICAL_THEORY.md](MATHEMATICAL_THEORY.md) (45min)
@@ -47,7 +47,7 @@
 
 ### Para Implementar en Tu Proyecto
 
-1. [EXAMPLES.md](../../EXAMPLES.md) - Código listo para usar
+1. [EXAMPLES.md](../../DOCS/EXAMPLES.md) - Código listo para usar
 2. [Android/README.md](../../Android/README.md) - Específico de plataforma
 3. [MATHEMATICAL_THEORY_SIMPLIFIED.md](MATHEMATICAL_THEORY_SIMPLIFIED.md) - FAQ
 
@@ -220,7 +220,7 @@ Text(
 </Text>
 ```
 
-📍 Más ejemplos: [EXAMPLES.md](../../EXAMPLES.md)
+📍 Más ejemplos: [EXAMPLES.md](../../DOCS/EXAMPLES.md)
 
 ---
 
@@ -256,7 +256,7 @@ AppDimens/
 ### Más Accedidos
 
 - [Guía Simplificada](MATHEMATICAL_THEORY_SIMPLIFIED.md) ← 80% de usuarios comienzan aquí
-- [Ejemplos de Código](../../EXAMPLES.md)
+- [Ejemplos de Código](../../DOCS/EXAMPLES.md)
 - [Comparación con Otras Bibliotecas](FORMULA_COMPARISON.md)
 
 ### Documentación Completa

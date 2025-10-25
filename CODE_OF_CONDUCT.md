@@ -5,7 +5,9 @@ title: "📜 Code of Conduct"
 
 # 📜 Code of Conduct
 
-> Languages: [Português (BR)](LANG/pt-BR/CODE_OF_CONDUCT.md) | [Español](LANG/es/CODE_OF_CONDUCT.md) | [हिन्दी](LANG/hi/CODE_OF_CONDUCT.md) | [Русский](LANG/ru/CODE_OF_CONDUCT.md) | [中文](LANG/zh/CODE_OF_CONDUCT.md) | [日本語](LANG/ja/CODE_OF_CONDUCT.md)
+> **Languages:** English | Português (BR) | Español
+
+> **Note:** Translation files are not yet available in other languages.
 
 ## Our Pledge
 

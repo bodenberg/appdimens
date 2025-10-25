@@ -5,7 +5,7 @@ title: "📱 AppDimens iOS - Estrutura Modular"
 
 # 📱 AppDimens iOS - Estrutura Modular
 
-> Idiomas: [English](../../../iOS/README_MODULAR.md) | [Español](../../es/iOS/README_MODULAR.md) | [हिन्दी](../../hi/iOS/README_MODULAR.md) | [Русский](../../ru/iOS/README_MODULAR.md) | [中文](../../zh/iOS/README_MODULAR.md) | [日本語](../../ja/iOS/README_MODULAR.md)
+> **Idiomas:** [English](../../../iOS/README_MODULAR.md) | Português (BR) | [Español](../../es/iOS/README_MODULAR.md)
 
 [![Version](https://img.shields.io/cocoapods/v/AppDimens.svg?style=flat)](https://cocoapods.org/pods/AppDimens)
 [![License](https://img.shields.io/cocoapods/l/AppDimens.svg?style=flat)](https://cocoapods.org/pods/AppDimens)

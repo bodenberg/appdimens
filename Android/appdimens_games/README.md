@@ -14,7 +14,7 @@ title: "CMakeLists.txt"
 [![NDK](https://img.shields.io/badge/NDK-r21+-green.svg)](https://developer.android.com/ndk)
 </div>
 
-> Languages: [Português (BR)](../../LANG/pt-BR/Android/appdimens_games/README.md) | [Español](../../LANG/es/Android/appdimens_games/README.md) | [हिन्दी](../../LANG/hi/Android/appdimens_games/README.md) | [Русский](../../LANG/ru/Android/appdimens_games/README.md) | [中文](../../LANG/zh/Android/appdimens_games/README.md) | [日本語](../../LANG/ja/Android/appdimens_games/README.md)
+> **Languages:** English | [Português (BR)](../../LANG/pt-BR/Android/appdimens_games/README.md) | [Español](../../LANG/es/Android/appdimens_games/README.md)
 
 ---
 

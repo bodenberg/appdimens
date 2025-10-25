@@ -736,7 +736,7 @@ Interpretación:
 
 - 📘 [**Teoría Matemática Completa**](MATHEMATICAL_THEORY.md) - Documento técnico detallado
 - 📊 [**Reporte de Validación**](../../VALIDATION_REPORT.md) - Verificación de implementación
-- 🎯 [**Ejemplos Prácticos**](../../EXAMPLES.md) - Código real en todas las plataformas
+- 🎯 [**Ejemplos Prácticos**](../../DOCS/EXAMPLES.md) - Código real en todas las plataformas
 
 ### 🔗 Enlaces Útiles
 
@@ -756,7 +756,7 @@ Interpretación:
 ### Para Principiantes
 
 1. ✅ Lee esta guía
-2. ✅ Ve [ejemplos prácticos](../../EXAMPLES.md)
+2. ✅ Ve [ejemplos prácticos](../../DOCS/EXAMPLES.md)
 3. ✅ Instala en tu proyecto
 4. ✅ Prueba en diferentes dispositivos
 

@@ -5,7 +5,9 @@ title: "AI Prompt for Web Library"
 
 # AI Prompt for Web Library
 
-> Languages: [Português (BR)](LANG/pt-BR/PROMPT_WEB.md) | [Español](LANG/es/PROMPT_WEB.md) | [हिन्दी](LANG/hi/PROMPT_WEB.md) | [Русский](LANG/ru/PROMPT_WEB.md) | [中文](LANG/zh/PROMPT_WEB.md) | [日本語](LANG/ja/PROMPT_WEB.md)
+> **Languages:** English | Português (BR) | Español
+
+> **Note:** Translation files are not yet available in other languages.
 
 You are an expert web developer AI. Your task is to understand and effectively use the Web library, a sophisticated dimension management system for web applications. This guide will provide you with all the necessary information about the library's architecture, functionalities, and use cases.
 

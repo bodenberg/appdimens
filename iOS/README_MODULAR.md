@@ -5,7 +5,9 @@ title: "📱 AppDimens iOS - Modular Structure"
 
 # 📱 AppDimens iOS - Modular Structure
 
-> Languages: [Português (BR)](../LANG/pt-BR/iOS/README_MODULAR.md) | [Español](../LANG/es/iOS/README_MODULAR.md) | [हिन्दी](../LANG/hi/iOS/README_MODULAR.md) | [Русский](../LANG/ru/iOS/README_MODULAR.md) | [中文](../LANG/zh/iOS/README_MODULAR.md) | [日本語](../LANG/ja/iOS/README_MODULAR.md)
+> **Languages:** English | [Português (BR)](../LANG/pt-BR/iOS/README_MODULAR.md) | Español
+
+> **Note:** Spanish translation is not yet available.
 
 [![Version](https://img.shields.io/cocoapods/v/AppDimens.svg?style=flat)](https://cocoapods.org/pods/AppDimens)
 [![License](https://img.shields.io/cocoapods/l/AppDimens.svg?style=flat)](https://cocoapods.org/pods/AppDimens)

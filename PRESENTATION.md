@@ -9,7 +9,9 @@ title: "📖 AppDimens Library Overview: The Core of Responsiveness"
 
 It goes beyond the limitations of standard density-independent pixels (**Dp/Pt**), treating these values as mere starting points, which are then refined by sophisticated mathematical scaling algorithms.
 
-> Languages: [Português (BR)](LANG/pt-BR/PRESENTATION.md) | [Español](LANG/es/PRESENTATION.md) | [हिन्दी](LANG/hi/PRESENTATION.md) | [Русский](LANG/ru/PRESENTATION.md) | [中文](LANG/zh/PRESENTATION.md) | [日本語](LANG/ja/PRESENTATION.md)
+> **Languages:** English | Português (BR) | Español
+
+> **Note:** Translation files are not yet available in other languages.
 
 ---
 

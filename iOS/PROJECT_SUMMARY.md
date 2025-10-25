@@ -5,7 +5,9 @@ title: "📱 AppDimens iOS - Project Summary"
 
 # 📱 AppDimens iOS - Project Summary
 
-> Languages: [Português (BR)](../LANG/pt-BR/iOS/PROJECT_SUMMARY.md) | [Español](../LANG/es/iOS/PROJECT_SUMMARY.md) | [हिन्दी](../LANG/hi/iOS/PROJECT_SUMMARY.md) | [Русский](../LANG/ru/iOS/PROJECT_SUMMARY.md) | [中文](../LANG/zh/iOS/PROJECT_SUMMARY.md) | [日本語](../LANG/ja/iOS/PROJECT_SUMMARY.md)
+> **Languages:** English | [Português (BR)](../LANG/pt-BR/iOS/PROJECT_SUMMARY.md) | Español
+
+> **Note:** Spanish translation is not yet available.
 
 ## 🎯 Overview
 

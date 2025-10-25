@@ -12,7 +12,7 @@
 
 *By Jean Bodenberg | January 2025*
 
-[📚 See Complete Documentation](DOCS/README.md) | [⚡ Quick Reference](DOCS_QUICK_REFERENCE.md) | [🔬 Detailed Comparison](FORMULA_COMPARISON.md) | [📖 Complete Technical Guide](COMPREHENSIVE_TECHNICAL_GUIDE.md)
+[📚 See Complete Documentation](README.md) | [⚡ Quick Reference](DOCS_QUICK_REFERENCE.md) | [🔬 Detailed Comparison](FORMULA_COMPARISON.md) | [📖 Complete Technical Guide](COMPREHENSIVE_TECHNICAL_GUIDE.md)
 
 </div>
 
@@ -594,11 +594,11 @@ val titleSize = 24.fixedDp()
 
 | Platform | Support | Documentation |
 |----------|---------|---------------|
-| ✅ Android | Complete | [README](Android/README.md) |
-| ✅ iOS | Complete | [README](iOS/README.md) |
-| ✅ Flutter | Complete | [README](Flutter/README.md) |
-| ✅ React Native | Complete | [README](ReactNative/README.md) |
-| ✅ Web | Complete | [README](Web/README.md) |
+| ✅ Android | Complete | [README](../Android/README.md) |
+| ✅ iOS | Complete | [README](../iOS/README.md) |
+| ✅ Flutter | Complete | [README](../Flutter/README.md) |
+| ✅ React Native | Complete | [README](../ReactNative/README.md) |
+| ✅ Web | Complete | [README](../Web/README.md) |
 
 **Same formula**, native implementations! 🚀
 
@@ -763,7 +763,7 @@ Interpretation:
 ### For Advanced Users
 
 1. ✅ Read the [complete theory](MATHEMATICAL_THEORY.md)
-2. ✅ Analyze the [source code](Android/appdimens_dynamic/)
+2. ✅ Analyze the [source code](../Android/appdimens_dynamic/)
 3. ✅ Contribute to the project
 4. ✅ Share your results
 

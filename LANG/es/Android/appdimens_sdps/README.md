@@ -12,7 +12,7 @@ layout: default
 [![Plataforma](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
 
-> Idiomas: [English](../../../../Android/appdimens_sdps/README.md) | [Português (BR)](../../pt-BR/Android/appdimens_sdps/README.md) | [हिन्दी](../../hi/Android/appdimens_sdps/README.md) | [Русский](../../ru/Android/appdimens_sdps/README.md) | [中文](../../zh/Android/appdimens_sdps/README.md) | [日本語](../../ja/Android/appdimens_sdps/README.md)
+> **Idiomas:** [English](../../../../Android/appdimens_sdps/README.md) | [Português (BR)](../../pt-BR/Android/appdimens_sdps/README.md) | Español
 
 ---
 

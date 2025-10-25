@@ -5,7 +5,7 @@ title: "AppDimens iOS - System Knowledge Documentation"
 
 # AppDimens iOS - System Knowledge Documentation
 
-> Languages: [Português (BR)](LANG/pt-BR/PROMPT_IOS.md) | [Español](LANG/es/PROMPT_IOS.md) | [हिन्दी](LANG/hi/PROMPT_IOS.md) | [Русский](LANG/ru/PROMPT_IOS.md) | [中文](LANG/zh/PROMPT_IOS.md) | [日本語](LANG/ja/PROMPT_IOS.md)
+> **Languages:** English | [Português (BR)](LANG/pt-BR/PROMPT_IOS.md) | [Español](LANG/es/PROMPT_IOS.md)
 
 This document provides comprehensive information about the **AppDimens iOS** dimension management system. AppDimens is a responsive dimension management library that provides density-independent sizing and physical unit support for iOS development with SwiftUI and UIKit.
 

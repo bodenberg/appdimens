@@ -5,7 +5,7 @@ title: "AI Prompt for AppDimens Library"
 
 # AI Prompt for AppDimens Library
 
-> Languages: [Português (BR)](LANG/pt-BR/PROMPT_ANDROID.md) | [Español](LANG/es/PROMPT_ANDROID.md) | [हिन्दी](LANG/hi/PROMPT_ANDROID.md) | [Русский](LANG/ru/PROMPT_ANDROID.md) | [中文](LANG/zh/PROMPT_ANDROID.md) | [日本語](LANG/ja/PROMPT_ANDROID.md)
+> **Languages:** English | [Português (BR)](LANG/pt-BR/PROMPT_ANDROID.md) | [Español](LANG/es/PROMPT_ANDROID.md)
 
 You are an expert Android developer AI. Your task is to understand and effectively use the AppDimens library, a sophisticated dimension management system for Android Views and Jetpack Compose. This guide will provide you with all the necessary information about the library's architecture, functionalities, and use cases.
 

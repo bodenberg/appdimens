@@ -5,7 +5,7 @@ title: "🚀 AppDimens iOS - Resumo das Melhorias Implementadas"
 
 # 🚀 AppDimens iOS - Resumo das Melhorias Implementadas
 
-> Idiomas: [English](../../../iOS/IMPROVEMENTS_SUMMARY.md) | [Español](../../es/iOS/IMPROVEMENTS_SUMMARY.md) | [हिन्दी](../../hi/iOS/IMPROVEMENTS_SUMMARY.md) | [Русский](../../ru/iOS/IMPROVEMENTS_SUMMARY.md) | [中文](../../zh/iOS/IMPROVEMENTS_SUMMARY.md) | [日本語](../../ja/iOS/IMPROVEMENTS_SUMMARY.md)
+> **Idiomas:** [English](../../../iOS/IMPROVEMENTS_SUMMARY.md) | Português (BR) | [Español](../../es/iOS/IMPROVEMENTS_SUMMARY.md)
 
 ## 📊 Análise da Implementação iOS Existente
 

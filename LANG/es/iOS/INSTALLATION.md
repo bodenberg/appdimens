@@ -5,7 +5,7 @@ title: "📦 AppDimens iOS - Guía de Instalación"
 
 # 📦 AppDimens iOS - Guía de Instalación
 
-> Idiomas: [English](../../../iOS/INSTALLATION.md) | [Português (BR)](../../pt-BR/iOS/INSTALLATION.md) | [हिन्दी](../../hi/iOS/INSTALLATION.md) | [Русский](../../ru/iOS/INSTALLATION.md) | [中文](../../zh/iOS/INSTALLATION.md) | [日本語](../../ja/iOS/INSTALLATION.md)
+> **Idiomas:** [English](../../../iOS/INSTALLATION.md) | [Português (BR)](../../pt-BR/iOS/INSTALLATION.md) | Español
 
 Esta guía completa le ayudará a instalar e integrar AppDimens iOS en su proyecto con instrucciones paso a paso.
 

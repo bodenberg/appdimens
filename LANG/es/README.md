@@ -458,7 +458,7 @@ export class CardComponent {
 }
 ```
 
-**📖 [Más Ejemplos](../../EXAMPLES.md)**
+**📖 [Más Ejemplos](../../DOCS/EXAMPLES.md)**
 
 ---
 
@@ -507,7 +507,7 @@ AppDimens fue comparado científicamente contra 7 otros enfoques de escalado:
 
 1. **[Referencia Rápida](DOCS_QUICK_REFERENCE.md)** ⚡ Encuentra cualquier cosa en segundos
 2. **[Guía Simplificada](MATHEMATICAL_THEORY_SIMPLIFIED.md)** 📖 Entiende en 15 minutos
-3. **[Ejemplos](../../EXAMPLES.md)** 💻 Código listo para usar
+3. **[Ejemplos](../../DOCS/EXAMPLES.md)** 💻 Código listo para usar
 
 ### Documentación Técnica
 
@@ -603,6 +603,6 @@ Si AppDimens ayuda a tu proyecto:
 
 **Hecho con ❤️ para desarrolladores de todo el mundo**
 
-[Documentación](../../DOCS/README.md) • [Ejemplos](../../EXAMPLES.md) • [Guía Técnica](COMPREHENSIVE_TECHNICAL_GUIDE.md)
+[Documentación](../../DOCS/README.md) • [Ejemplos](../../DOCS/EXAMPLES.md) • [Guía Técnica](COMPREHENSIVE_TECHNICAL_GUIDE.md)
 
 </div>

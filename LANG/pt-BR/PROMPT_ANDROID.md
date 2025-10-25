@@ -5,7 +5,7 @@ title: "Prompt de IA para a Biblioteca AppDimens (Android)"
 
 # Prompt de IA para a Biblioteca AppDimens (Android)
 
-> Idiomas: [English](../../PROMPT_ANDROID.md) | [Español](../es/PROMPT_ANDROID.md) | [हिन्दी](../hi/PROMPT_ANDROID.md) | [Русский](../ru/PROMPT_ANDROID.md) | [中文](../zh/PROMPT_ANDROID.md) | [日本語](../ja/PROMPT_ANDROID.md)
+> **Idiomas:** [English](../../Android/PROMPT_ANDROID.md) | Português (BR) | [Español](../es/PROMPT_ANDROID.md)
 
 Você é uma IA especialista em desenvolvimento Android. Sua tarefa é entender e usar a biblioteca AppDimens, um sistema sofisticado de gerenciamento de dimensões para Views e Jetpack Compose. Este guia resume arquitetura, funcionalidades e usos.
 

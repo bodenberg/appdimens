@@ -5,7 +5,7 @@ title: "📚 AppDimens iOS - Technical Documentation"
 
 # 📚 AppDimens iOS - Technical Documentation
 
-> Languages: [Português (BR)](../LANG/pt-BR/iOS/DOCUMENTATION.md) | [Español](../LANG/es/iOS/DOCUMENTATION.md) | [हिन्दी](../LANG/hi/iOS/DOCUMENTATION.md) | [Русский](../LANG/ru/iOS/DOCUMENTATION.md) | [中文](../LANG/zh/iOS/DOCUMENTATION.md) | [日本語](../LANG/ja/iOS/DOCUMENTATION.md)
+> **Languages:** English | [Português (BR)](../LANG/pt-BR/iOS/DOCUMENTATION.md) | [Español](../LANG/es/iOS/DOCUMENTATION.md)
 
 ## 🎯 Overview
 

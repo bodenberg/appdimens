@@ -7,7 +7,9 @@ title: "🤝 Contributing to AppDimens"
 
 Thank you for your interest in contributing to AppDimens! This document provides guidelines and information for contributors.
 
-> Languages: [Português (BR)](LANG/pt-BR/CONTRIBUTING.md) | [Español](LANG/es/CONTRIBUTING.md) | [हिन्दी](LANG/hi/CONTRIBUTING.md) | [Русский](LANG/ru/CONTRIBUTING.md) | [中文](LANG/zh/CONTRIBUTING.md) | [日本語](LANG/ja/CONTRIBUTING.md)
+> **Languages:** English | [Português (BR)](LANG/pt-BR/CONTRIBUTING.md) | Español
+
+> **Note:** Spanish translation is not yet available.
 
 ## 📋 Table of Contents
 

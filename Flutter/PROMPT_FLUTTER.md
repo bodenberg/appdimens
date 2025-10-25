@@ -5,7 +5,9 @@ title: "AI Prompt for AppDimens Flutter Library"
 
 # AI Prompt for AppDimens Flutter Library
 
-> Languages: [Português (BR)](LANG/pt-BR/PROMPT_FLUTTER.md) | [Español](LANG/es/PROMPT_FLUTTER.md) | [हिन्दी](LANG/hi/PROMPT_FLUTTER.md) | [Русский](LANG/ru/PROMPT_FLUTTER.md) | [中文](LANG/zh/PROMPT_FLUTTER.md) | [日本語](LANG/ja/PROMPT_FLUTTER.md)
+> **Languages:** English | Português (BR) | Español
+
+> **Note:** Translation files are not yet available in other languages.
 
 You are an expert Flutter developer AI. Your task is to understand and effectively use the AppDimens Flutter library, a sophisticated dimension management system for Flutter applications. This guide will provide you with all the necessary information about the library's architecture, functionalities, and use cases.
 

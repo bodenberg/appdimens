@@ -13,7 +13,7 @@
 > - [Guia Simplificado](MATHEMATICAL_THEORY_SIMPLIFIED.md) - Para iniciantes (15min)
 > - [Comparação de Fórmulas](FORMULA_COMPARISON.md) - Análise de 7 fórmulas + Rankings (30min)
 > - [Guia Técnico Completo](COMPREHENSIVE_TECHNICAL_GUIDE.md) - Documento definitivo com TUDO (2h)
-> - [Índice da Documentação](DOCS/README.md) - Navegação completa
+> - [Índice da Documentação](../../DOCS/README.md) - Navegação completa
 > - [Referência Rápida](DOCS_QUICK_REFERENCE.md) - Encontre qualquer informação em segundos
 
 ---

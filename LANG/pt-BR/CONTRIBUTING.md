@@ -7,7 +7,9 @@ title: "🤝 Contribuindo para o AppDimens"
 
 Obrigado pelo seu interesse em contribuir para o AppDimens! Este documento fornece diretrizes e informações para contribuidores.
 
-> Idiomas: [English](../../CONTRIBUTING.md) | [Español](../es/CONTRIBUTING.md) | [हिन्दी](../hi/CONTRIBUTING.md) | [Русский](../ru/CONTRIBUTING.md) | [中文](../zh/CONTRIBUTING.md) | [日本語](../ja/CONTRIBUTING.md)
+> **Idiomas:** [English](../../CONTRIBUTING.md) | Português (BR) | Español
+
+> **Nota:** Tradução em espanhol ainda não disponível.
 
 ## 📋 Índice
 

@@ -15,7 +15,7 @@ title: "Podfile"
 [![Swift](https://img.shields.io/badge/Swift-5.0+-blue.svg)](https://swift.org/)
 </div>
 
-> Idiomas: [English](../../../iOS/README.md) | [Español](../es/iOS/README.md) | [हिन्दी](../hi/iOS/README.md) | [Русский](../ru/iOS/README.md) | [中文](../zh/iOS/README.md) | [日本語](../ja/iOS/README.md)
+> **Idiomas:** [English](../../../iOS/README.md) | Português (BR) | [Español](../../es/iOS/README.md)
 
 ---
 

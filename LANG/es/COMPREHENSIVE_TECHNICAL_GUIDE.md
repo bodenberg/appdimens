@@ -1342,7 +1342,7 @@ export default function Component() {
 - 📘 [Teoría Matemática Completa](MATHEMATICAL_THEORY.md)
 - 📊 [Reporte de Validación](../../VALIDATION_REPORT.md)
 - 🔬 [Comparación de Fórmulas](FORMULA_COMPARISON.md)
-- 🎯 [Ejemplos Prácticos](../../EXAMPLES.md)
+- 🎯 [Ejemplos Prácticos](../../DOCS/EXAMPLES.md)
 - 🌐 [Sitio Web Oficial](https://appdimens-project.web.app/)
 
 ### 16.2 Papers Científicos

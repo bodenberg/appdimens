@@ -5,7 +5,9 @@ title: "🔒 Security Policy"
 
 # 🔒 Security Policy
 
-> Languages: [Português (BR)](LANG/pt-BR/SECURITY.md) | [Español](LANG/es/SECURITY.md) | [हिन्दी](LANG/hi/SECURITY.md) | [Русский](LANG/ru/SECURITY.md) | [中文](LANG/zh/SECURITY.md) | [日本語](LANG/ja/SECURITY.md)
+> **Languages:** English | Português (BR) | Español
+
+> **Note:** Translation files are not yet available in other languages.
 
 ## Supported Versions
 

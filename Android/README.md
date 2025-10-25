@@ -14,7 +14,7 @@ layout: default
 [![Documentation](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)
 </div>
 
-> Languages: [Português (BR)](../LANG/pt-BR/Android/README.md) | [Español](../LANG/es/Android/README.md) | [हिन्दी](../LANG/hi/Android/README.md) | [Русский](../LANG/ru/Android/README.md) | [中文](../LANG/zh/Android/README.md) | [日本語](../LANG/ja/Android/README.md)
+> **Languages:** English | [Português (BR)](../LANG/pt-BR/Android/README.md) | [Español](../LANG/es/Android/README.md)
 
 ---
 

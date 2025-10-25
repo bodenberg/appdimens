@@ -5,7 +5,9 @@ title: "Changelog"
 
 # Changelog
 
-> Languages: [Português (BR)](../LANG/pt-BR/iOS/CHANGELOG.md) | [Español](../LANG/es/iOS/CHANGELOG.md) | [हिन्दी](../LANG/hi/iOS/CHANGELOG.md) | [Русский](../LANG/ru/iOS/CHANGELOG.md) | [中文](../LANG/zh/iOS/CHANGELOG.md) | [日本語](../LANG/ja/iOS/CHANGELOG.md)
+> **Languages:** English | [Português (BR)](../LANG/pt-BR/iOS/CHANGELOG.md) | Español
+
+> **Note:** Spanish translation is not yet available.
 
 All notable changes to the AppDimens iOS library will be documented in this file.
 
