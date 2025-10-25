@@ -65,6 +65,7 @@ yarn add appdimens-react-native
 
 ### Uso Básico
 
+{% raw %}
 ```tsx
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
@@ -113,6 +114,7 @@ function App() {
 
 export default App;
 ```
+{% endraw %}
 
 ---
 
@@ -122,6 +124,7 @@ export default App;
 
 Escalado **logarítmico** que proporciona crecimiento suave y controlado. **Use para la mayoría de elementos de UI**.
 
+{% raw %}
 ```tsx
 const { fx } = useAppDimens();
 
@@ -139,11 +142,13 @@ const { fx } = useAppDimens();
   lineHeight: fx(24).toPixels(),   // ✅ Fixed
 }} />
 ```
+{% endraw %}
 
 ### 🎯 Dynamic (DY) - Use Solo para Casos Específicos
 
 Escalado **proporcional** que crece agresivamente con el tamaño de pantalla. **Use solo para contenedores grandes o elementos que deben ocupar porcentaje fijo de pantalla**.
 
+{% raw %}
 ```tsx
 const { dy } = useAppDimens();
 
@@ -153,6 +158,7 @@ const { dy } = useAppDimens();
   height: dy(200).toPixels(), // ⚠️ Dynamic - use solo cuando sea necesario
 }} />
 ```
+{% endraw %}
 
 ### 🎯 Fluid (FL) - Transiciones Suaves
 

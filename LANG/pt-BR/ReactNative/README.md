@@ -65,6 +65,7 @@ yarn add appdimens-react-native
 
 ### Uso Básico
 
+{% raw %}
 ```tsx
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
@@ -113,6 +114,7 @@ function App() {
 
 export default App;
 ```
+{% endraw %}
 
 ---
 
@@ -122,6 +124,7 @@ export default App;
 
 Escalado **logarítmico** que fornece crescimento suave e controlado. **Use para a maioria dos elementos de UI**.
 
+{% raw %}
 ```tsx
 const { fx } = useAppDimens();
 
@@ -139,11 +142,13 @@ const { fx } = useAppDimens();
   lineHeight: fx(24).toPixels(),   // ✅ Fixed
 }} />
 ```
+{% endraw %}
 
 ### 🎯 Dynamic (DY) - Use Apenas para Casos Específicos
 
 Escalado **proporcional** que cresce agressivamente com o tamanho da tela. **Use apenas para containers grandes ou elementos que devem ocupar porcentagem fixa da tela**.
 
+{% raw %}
 ```tsx
 const { dy } = useAppDimens();
 
@@ -153,11 +158,13 @@ const { dy } = useAppDimens();
   height: dy(200).toPixels(), // ⚠️ Dynamic - use apenas quando necessário
 }} />
 ```
+{% endraw %}
 
 ### 🎯 Fluid (FL) - Transições Suaves
 
 Escalado **clamp-based** que garante transições suaves entre breakpoints. **Ideal para tipografia e layouts adaptativos**.
 
+{% raw %}
 ```tsx
 const { fl } = useAppDimens();
 
@@ -166,6 +173,7 @@ const { fl } = useAppDimens();
   fontSize: fl(14, { min: 12, max: 18 }).toPixels(),
 }} />
 ```
+{% endraw %}
 
 ---
 
@@ -173,6 +181,7 @@ const { fl } = useAppDimens();
 
 ### Escalado para UI de Jogos
 
+{% raw %}
 ```tsx
 import { useGameDimens } from 'appdimens-react-native';
 
@@ -195,6 +204,7 @@ function GameUI() {
   );
 }
 ```
+{% endraw %}
 
 ---
 
@@ -202,6 +212,7 @@ function GameUI() {
 
 ### Provider Global
 
+{% raw %}
 ```tsx
 import { AppDimensProvider } from 'appdimens-react-native';
 
@@ -221,6 +232,7 @@ function App() {
   );
 }
 ```
+{% endraw %}
 
 ### Valores Personalizados por Dispositivo
 
