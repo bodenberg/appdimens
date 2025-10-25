@@ -10,7 +10,6 @@
 [📚 Documentation](DOCS/README.md) | [⚡ Quick Reference](DOCS_QUICK_REFERENCE.md) | [🔬 Technical Details](COMPREHENSIVE_TECHNICAL_GUIDE.md)
 
 > **Languages:** [Português (BR)](LANG/pt-BR/README.md) | [Español](LANG/es/README.md) | [हिन्दी](LANG/hi/README.md) | [Русский](LANG/ru/README.md) | [中文](LANG/zh/README.md) | [日本語](LANG/ja/README.md)
-
 </div>
 
 ---
