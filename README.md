@@ -1,5 +1,5 @@
 <div align="center">
-   <img src="IMAGES/image_sample_devices.png" alt="AppDimens - Responsive Design Across All Devices" height="300"/>
+   <img src="https://github.com/bodenberg/appdimens/blob/35a066e3f544effefb6989bebf32570b0d493660/IMAGES/image_sample_devices.png" alt="AppDimens - Responsive Design Across All Devices" height="300"/>
 <h1>📐 AppDimens</h1>
 <p><strong>Smart Responsive Dimensions for Any Screen</strong></p>
 
