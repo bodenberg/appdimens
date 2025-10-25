@@ -468,6 +468,7 @@ SDP expects scaled dimension resources in the format:
 
 ### 🔧 Debug Tools
 
+{% raw %}
 ```kotlin
 // Debug current screen configuration
 val (width, height) = AppDimensAdjustmentFactors.getCurrentScreenDimensions()
@@ -480,6 +481,7 @@ println("Device: ${DeviceType.current()}")
 val factors = AppDimensAdjustmentFactors.calculateAdjustmentFactors()
 println("Factors: ${factors}")
 ```
+{% endraw %}
 
 ### 📋 Test Coverage
 

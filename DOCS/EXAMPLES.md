@@ -1076,7 +1076,7 @@ function ResponsiveGrid({ items, onItemPress }: ResponsiveGridProps) {
       keyExtractor={(item) => item.id}
       numColumns={numColumns}
       contentContainerStyle={styles.container}
-      key={`${numColumns}-${orientation}`}
+      key={numColumns + '-' + orientation}
     />
   );
 }

@@ -246,6 +246,7 @@ ElevatedButton(
 
 ## 10. Debugging
 
+{% raw %}
 ```dart
 // Get current screen info
 final screenInfo = AppDimens.getCurrentScreenInfo(context);
@@ -256,6 +257,7 @@ print('Device Type: ${screenInfo.deviceType}');
 final factors = AppDimens.calculateAdjustmentFactors(context);
 print('Aspect Ratio Factor: ${factors.aspectRatioFactor}');
 ```
+{% endraw %}
 
 By following this guide, you should be able to effectively use the AppDimens Flutter library to create responsive and visually consistent applications across all Flutter platforms.
 

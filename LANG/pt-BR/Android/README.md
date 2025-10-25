@@ -441,6 +441,7 @@ Para documentação completa, veja [Módulo AppDimens Games](../../../Android/ap
 
 ### 🔧 Ferramentas de Teste
 
+{% raw %}
 ```kotlin
 // Debug da configuração atual da tela
 val (width, height) = AppDimensAdjustmentFactors.getCurrentScreenDimensions()
@@ -453,6 +454,7 @@ println("Dispositivo: ${DeviceType.current()}")
 val factors = AppDimensAdjustmentFactors.calculateAdjustmentFactors()
 println("Fatores: ${factors}")
 ```
+{% endraw %}
 
 ---
 

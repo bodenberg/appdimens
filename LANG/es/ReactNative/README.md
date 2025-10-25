@@ -181,6 +181,7 @@ const { fl } = useAppDimens();
 
 ### Escalado para UI de Juegos
 
+{% raw %}
 ```tsx
 import { useGameDimens } from 'appdimens-react-native';
 
@@ -203,6 +204,7 @@ function GameUI() {
   );
 }
 ```
+{% endraw %}
 
 ---
 
@@ -210,6 +212,7 @@ function GameUI() {
 
 ### Provider Global
 
+{% raw %}
 ```tsx
 import { AppDimensProvider } from 'appdimens-react-native';
 
@@ -229,6 +232,7 @@ function App() {
   );
 }
 ```
+{% endraw %}
 
 ### Valores Personalizados por Dispositivo
 

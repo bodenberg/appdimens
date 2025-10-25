@@ -232,6 +232,7 @@ val screenPoint = gamesManager.ndcToScreen(ndcPoint)
 
 ### Detecção Automática de Tela
 
+{% raw %}
 ```kotlin
 // Configuração de tela é detectada automaticamente
 gamesManager.updateScreenConfiguration()
@@ -245,6 +246,7 @@ screenConfig?.let { config ->
     Log.i("Games", "É Tablet: ${config.isTablet}")
 }
 ```
+{% endraw %}
 
 ### Orientação da Tela
 
@@ -342,12 +344,14 @@ class UnityGameManager {
 
 ### Informações de Debug
 
+{% raw %}
 ```kotlin
 // Habilitar log de debug
 Log.i("AppDimensGames", "Gerenciador de jogos inicializado: ${gamesManager.isInitialized()}")
 Log.i("AppDimensGames", "Config da tela: ${gamesManager.getScreenConfig()}")
 Log.i("AppDimensGames", "Configurações de performance: ${gamesManager.getPerformanceSettings()}")
 ```
+{% endraw %}
 
 ## 📚 Referência da API
 

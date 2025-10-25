@@ -134,6 +134,7 @@ android {
 
 ### CMake Configuration
 
+{% raw %}
 ```cmake
 # CMakeLists.txt
 cmake_minimum_required(VERSION 3.22.1)
@@ -145,6 +146,7 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../../../appdimens_games/src/main/c
 # Link to your target
 target_link_libraries(${CMAKE_PROJECT_NAME} appdimens_games)
 ```
+{% endraw %}
 
 ---
 

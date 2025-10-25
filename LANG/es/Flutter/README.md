@@ -168,6 +168,7 @@ Text(
 
 ### Grid Responsivo
 
+{% raw %}
 ```dart
 GridView.builder(
   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -193,6 +194,7 @@ GridView.builder(
   },
 )
 ```
+{% endraw %}
 
 ### Botón Responsivo
 

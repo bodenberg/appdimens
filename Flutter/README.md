@@ -166,6 +166,7 @@ Text(
 
 ### Grid Responsivo
 
+{% raw %}
 ```dart
 GridView.builder(
   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -191,6 +192,7 @@ GridView.builder(
   },
 )
 ```
+{% endraw %}
 
 ### Botão Responsivo
 
@@ -306,6 +308,7 @@ final dimension = AppDimens.fixed(100)
 
 ### Informações da Tela
 
+{% raw %}
 ```dart
 // Obter informações atuais da tela
 final screenInfo = AppDimens.getCurrentScreenInfo(context);
@@ -313,9 +316,11 @@ print('Screen: ${screenInfo.width}x${screenInfo.height}');
 print('Device Type: ${screenInfo.deviceType}');
 print('UI Mode: ${screenInfo.uiModeType}');
 ```
+{% endraw %}
 
 ### Fatores de Ajuste
 
+{% raw %}
 ```dart
 // Calcular fatores de ajuste
 final factors = AppDimens.calculateAdjustmentFactors(context);
@@ -323,6 +328,7 @@ print('Aspect Ratio Factor: ${factors.aspectRatioFactor}');
 print('Density Factor: ${factors.densityFactor}');
 print('Device Type Factor: ${factors.deviceTypeFactor}');
 ```
+{% endraw %}
 
 ## 📚 API Reference
 
