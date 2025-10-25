@@ -1,6 +1,6 @@
 # 📚 AppDimens: Complete and Definitive Technical Guide
 
-> **Languages:** English | [Português (BR)](LANG/pt-BR/COMPREHENSIVE_TECHNICAL_GUIDE.md) | [Español](LANG/es/COMPREHENSIVE_TECHNICAL_GUIDE.md)
+> **Languages:** English | [Português (BR)](../LANG/pt-BR/COMPREHENSIVE_TECHNICAL_GUIDE.md) | [Español](../LANG/es/COMPREHENSIVE_TECHNICAL_GUIDE.md)
 
 **Comprehensive Technical Documentation - Theory, Implementation and Comparisons** 
 *Author: Jean Bodenberg*  

@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Android%20%7C%20iOS%20%7C%20Flutter%20%7C%20RN%20%7C%20Web-orange.svg)](https://github.com/bodenberg/appdimens)
 
-[📚 Documentation](DOCS/README.md) | [⚡ Quick Reference](DOCS_QUICK_REFERENCE.md) | [🔬 Technical Details](COMPREHENSIVE_TECHNICAL_GUIDE.md)
+[📚 Documentation](DOCS/README.md) | [⚡ Quick Reference](DOCS/DOCS_QUICK_REFERENCE.md) | [🔬 Technical Details](DOCS/COMPREHENSIVE_TECHNICAL_GUIDE.md)
 
 > **Languages:** English | [Português (BR)](LANG/pt-BR/README.md) | [Español](LANG/es/README.md)
 </div>
@@ -458,7 +458,7 @@ export class CardComponent {
 }
 ```
 
-**📖 [More Examples](EXAMPLES.md)**
+**📖 [More Examples](DOCS/EXAMPLES.md)**
 
 ---
 
@@ -473,7 +473,7 @@ AppDimens offers multiple scaling strategies for different needs:
 | **Fluid (FL)** | Typography with min/max bounds (Web) | `fl(16, 24)` |
 | **SDP/SSP** | Legacy XML Android projects | `@dimen/_16sdp` |
 
-**📖 [Understanding Scaling Models](MATHEMATICAL_THEORY_SIMPLIFIED.md)**
+**📖 [Understanding Scaling Models](DOCS/MATHEMATICAL_THEORY_SIMPLIFIED.md)**
 
 ---
 
@@ -497,7 +497,7 @@ AppDimens was scientifically compared against 7 other scaling approaches:
 - ✅ **65% less oversizing** on tablets vs competitors
 - ✅ **Faster with cache** (0.002µs vs 0.005µs)
 
-**📊 [See Full Comparison](FORMULA_COMPARISON.md)**
+**📊 [See Full Comparison](DOCS/FORMULA_COMPARISON.md)**
 
 ---
 
@@ -505,15 +505,15 @@ AppDimens was scientifically compared against 7 other scaling approaches:
 
 ### Getting Started
 
-1. **[Quick Reference](DOCS_QUICK_REFERENCE.md)** ⚡ Find anything in seconds
-2. **[Simplified Guide](MATHEMATICAL_THEORY_SIMPLIFIED.md)** 📖 Understand in 15 minutes
-3. **[Examples](EXAMPLES.md)** 💻 Ready-to-use code
+1. **[Quick Reference](DOCS/DOCS_QUICK_REFERENCE.md)** ⚡ Find anything in seconds
+2. **[Simplified Guide](DOCS/MATHEMATICAL_THEORY_SIMPLIFIED.md)** 📖 Understand in 15 minutes
+3. **[Examples](DOCS/EXAMPLES.md)** 💻 Ready-to-use code
 
 ### Technical Documentation
 
-4. **[Complete Technical Guide](COMPREHENSIVE_TECHNICAL_GUIDE.md)** 🔬 Everything in one place (2h read)
-5. **[Formula Comparison](FORMULA_COMPARISON.md)** 📊 Scientific analysis & rankings
-6. **[Mathematical Theory](MATHEMATICAL_THEORY.md)** 📐 Formal mathematical foundation
+4. **[Complete Technical Guide](DOCS/COMPREHENSIVE_TECHNICAL_GUIDE.md)** 🔬 Everything in one place (2h read)
+5. **[Formula Comparison](DOCS/FORMULA_COMPARISON.md)** 📊 Scientific analysis & rankings
+6. **[Mathematical Theory](DOCS/MATHEMATICAL_THEORY.md)** 📐 Formal mathematical foundation
 
 ### Platform Guides
 
@@ -603,6 +603,6 @@ If AppDimens helps your project:
 
 **Made with ❤️ for developers worldwide**
 
-[Documentation](DOCS/README.md) • [Examples](EXAMPLES.md) • [Technical Guide](COMPREHENSIVE_TECHNICAL_GUIDE.md)
+[Documentation](DOCS/README.md) • [Examples](DOCS/EXAMPLES.md) • [Technical Guide](DOCS/COMPREHENSIVE_TECHNICAL_GUIDE.md)
 
 </div>

@@ -1,6 +1,6 @@
 # 📐 AppDimens: Teoría Matemática y Fundamento Científico
 
-> **Idiomas:** [English](../../MATHEMATICAL_THEORY.md) | [Português (BR)](../pt-BR/MATHEMATICAL_THEORY.md) | Español
+> **Idiomas:** [English](../../DOCS/MATHEMATICAL_THEORY.md) | [Português (BR)](../pt-BR/MATHEMATICAL_THEORY.md) | Español
 
 **Documentación Técnica Detallada - Modelo Matemático Universal**  
 *Autor: Jean Bodenberg*  

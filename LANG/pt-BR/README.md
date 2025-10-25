@@ -15,7 +15,7 @@ title: "Podfile"
 [![Documentação](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)
 </div>
 
-> Idiomas: [English](../../README.md) | [Español](../es/README.md) | [हिन्दी](../hi/README.md) | [Русский](../ru/README.md) | [中文](../zh/README.md) | [日本語](../ja/README.md)
+> **Idiomas:** [English](../../README.md) | Português (BR) | [Español](../es/README.md)
 
 ---
 

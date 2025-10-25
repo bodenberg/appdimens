@@ -1,6 +1,6 @@
 # 🔬 Comparación Detallada: Fórmulas de Dimensionamiento Responsivo
 
-> **Idiomas:** [English](../../FORMULA_COMPARISON.md) | [Português (BR)](../pt-BR/FORMULA_COMPARISON.md) | Español
+> **Idiomas:** [English](../../DOCS/FORMULA_COMPARISON.md) | [Português (BR)](../pt-BR/FORMULA_COMPARISON.md) | Español
 
 **Análisis Matemático y Comparativo Completo**  
 *Autor: Jean Bodenberg*  

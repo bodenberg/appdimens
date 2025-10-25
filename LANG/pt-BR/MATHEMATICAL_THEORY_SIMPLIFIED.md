@@ -1,6 +1,6 @@
 # 🎯 AppDimens: Guia Simplificado da Teoria Matemática
 
-> **Languages:** [English](../../MATHEMATICAL_THEORY_SIMPLIFIED.md) | Português (BR) | [Español](../es/MATHEMATICAL_THEORY_SIMPLIFIED.md) | [हिन्दी](../hi/MATHEMATICAL_THEORY_SIMPLIFIED.md) | [Русский](../ru/MATHEMATICAL_THEORY_SIMPLIFIED.md) | [中文](../zh/MATHEMATICAL_THEORY_SIMPLIFIED.md) | [日本語](../ja/MATHEMATICAL_THEORY_SIMPLIFIED.md)
+> **Idiomas:** [English](../../DOCS/MATHEMATICAL_THEORY_SIMPLIFIED.md) | Português (BR) | [Español](../es/MATHEMATICAL_THEORY_SIMPLIFIED.md)
 
 <div align="center">
 

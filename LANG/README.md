@@ -8,7 +8,13 @@ AppDimens oferece documentação completa nos seguintes idiomas:
 **Localização:** Raiz do projeto  
 **Status:** ✅ Completo (Idioma Original)
 
-Documentação principal em inglês disponível nos arquivos na raiz do repositório.
+Documentação principal em inglês disponível nos arquivos na raiz do repositório, incluindo:
+- README.md principal
+- Teoria Matemática (completa e simplificada)
+- Comparação de Fórmulas
+- Guia Técnico Completo
+- Referência Rápida
+- Documentação específica por plataforma (Android, iOS, Flutter, React Native, Web)
 
 ---
 
@@ -22,7 +28,7 @@ Documentação completa traduzida para português brasileiro, incluindo:
 - Comparação de Fórmulas
 - Guia Técnico Completo
 - Referência Rápida
-- Documentação específica por plataforma
+- Documentação específica por plataforma (Android, iOS, Flutter, React Native, Web)
 
 ---
 
@@ -36,7 +42,7 @@ Documentación completa traducida al español, incluyendo:
 - Comparación de Fórmulas
 - Guía Técnica Completa
 - Referencia Rápida
-- Documentación específica por plataforma
+- Documentación específica por plataforma (Android, iOS, Flutter, React Native, Web)
 
 ---
 
@@ -53,7 +59,10 @@ LANG/
 │   ├── COMPREHENSIVE_TECHNICAL_GUIDE.md
 │   ├── DOCS_QUICK_REFERENCE.md
 │   ├── Android/
-│   └── iOS/
+│   ├── iOS/
+│   ├── Flutter/
+│   ├── ReactNative/
+│   └── Web/
 └── es/
     ├── README.md
     ├── MATHEMATICAL_THEORY.md
@@ -62,7 +71,10 @@ LANG/
     ├── COMPREHENSIVE_TECHNICAL_GUIDE.md
     ├── DOCS_QUICK_REFERENCE.md
     ├── Android/
-    └── iOS/
+    ├── iOS/
+    ├── Flutter/
+    ├── ReactNative/
+    └── Web/
 ```
 
 ---
@@ -81,39 +93,45 @@ LANG/
 
 ### 🎯 Flutter
 - **English:** [Flutter/README.md](../Flutter/README.md)
+- **Português (BR):** [pt-BR/Flutter/README.md](pt-BR/Flutter/README.md)
+- **Español:** [es/Flutter/README.md](es/Flutter/README.md)
 
 ### ⚛️ React Native
 - **English:** [ReactNative/README.md](../ReactNative/README.md)
+- **Português (BR):** [pt-BR/ReactNative/README.md](pt-BR/ReactNative/README.md)
+- **Español:** [es/ReactNative/README.md](es/ReactNative/README.md)
 
 ### 🌐 Web
 - **English:** [Web/README.md](../Web/README.md)
+- **Português (BR):** [pt-BR/Web/README.md](pt-BR/Web/README.md)
+- **Español:** [es/Web/README.md](es/Web/README.md)
 
 ---
 
 ## Documentação Técnica
 
 ### 📐 Teoria Matemática Completa
-- **English:** [MATHEMATICAL_THEORY.md](../MATHEMATICAL_THEORY.md)
+- **English:** [DOCS/MATHEMATICAL_THEORY.md](../DOCS/MATHEMATICAL_THEORY.md)
 - **Português (BR):** [pt-BR/MATHEMATICAL_THEORY.md](pt-BR/MATHEMATICAL_THEORY.md)
 - **Español:** [es/MATHEMATICAL_THEORY.md](es/MATHEMATICAL_THEORY.md)
 
 ### 📘 Teoria Matemática Simplificada
-- **English:** [MATHEMATICAL_THEORY_SIMPLIFIED.md](../MATHEMATICAL_THEORY_SIMPLIFIED.md)
+- **English:** [DOCS/MATHEMATICAL_THEORY_SIMPLIFIED.md](../DOCS/MATHEMATICAL_THEORY_SIMPLIFIED.md)
 - **Português (BR):** [pt-BR/MATHEMATICAL_THEORY_SIMPLIFIED.md](pt-BR/MATHEMATICAL_THEORY_SIMPLIFIED.md)
 - **Español:** [es/MATHEMATICAL_THEORY_SIMPLIFIED.md](es/MATHEMATICAL_THEORY_SIMPLIFIED.md)
 
 ### 🔬 Comparação de Fórmulas
-- **English:** [FORMULA_COMPARISON.md](../FORMULA_COMPARISON.md)
+- **English:** [DOCS/FORMULA_COMPARISON.md](../DOCS/FORMULA_COMPARISON.md)
 - **Português (BR):** [pt-BR/FORMULA_COMPARISON.md](pt-BR/FORMULA_COMPARISON.md)
 - **Español:** [es/FORMULA_COMPARISON.md](es/FORMULA_COMPARISON.md)
 
 ### 📚 Guia Técnico Completo
-- **English:** [COMPREHENSIVE_TECHNICAL_GUIDE.md](../COMPREHENSIVE_TECHNICAL_GUIDE.md)
+- **English:** [DOCS/COMPREHENSIVE_TECHNICAL_GUIDE.md](../DOCS/COMPREHENSIVE_TECHNICAL_GUIDE.md)
 - **Português (BR):** [pt-BR/COMPREHENSIVE_TECHNICAL_GUIDE.md](pt-BR/COMPREHENSIVE_TECHNICAL_GUIDE.md)
 - **Español:** [es/COMPREHENSIVE_TECHNICAL_GUIDE.md](es/COMPREHENSIVE_TECHNICAL_GUIDE.md)
 
 ### ⚡ Referência Rápida
-- **English:** [DOCS_QUICK_REFERENCE.md](../DOCS_QUICK_REFERENCE.md)
+- **English:** [DOCS/DOCS_QUICK_REFERENCE.md](../DOCS/DOCS_QUICK_REFERENCE.md)
 - **Português (BR):** [pt-BR/DOCS_QUICK_REFERENCE.md](pt-BR/DOCS_QUICK_REFERENCE.md)
 - **Español:** [es/DOCS_QUICK_REFERENCE.md](es/DOCS_QUICK_REFERENCE.md)
 

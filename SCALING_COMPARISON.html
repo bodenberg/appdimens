@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppDimens - Comparação de 10 Técnicas de Redimensionamento</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .info-panel {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-panel h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .viewport-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-item label {
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .info-item value {
+            font-size: 1.3em;
+            color: #333;
+            font-family: 'Courier New', monospace;
+        }
+
+        .description {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        /* Ajuste para acomodar 10 colunas em telas maiores */
+        @media (min-width: 1400px) {
+            .comparison-grid {
+                grid-template-columns: repeat(5, 1fr) 1fr 1fr 1fr 1fr 1fr; /* 10 colunas */
+            }
+        }
+        @media (min-width: 1000px) and (max-width: 1399px) {
+            .comparison-grid {
+                grid-template-columns: repeat(4, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr; /* 7 colunas */
+            }
+        }
+        @media (min-width: 768px) and (max-width: 999px) {
+            .comparison-grid {
+                grid-template-columns: repeat(3, 1fr); /* 4 colunas */
+            }
+        }
+
+
+        .scaling-method {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .scaling-method:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .scaling-method h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .scaling-method .formula {
+            background: #f5f5f5;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            overflow-x: auto;
+            color: #666;
+        }
+
+        .scaling-method .description {
+            font-size: 0.95em;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .demo-area {
+            background: #f9f9f9;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .demo-element {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .demo-element:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.6);
+        }
+
+        .demo-element:active {
+            transform: scale(0.98);
+        }
+
+        .size-display {
+            text-align: center;
+            margin-top: 15px;
+            font-family: 'Courier New', monospace;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .size-display .label {
+            font-size: 0.9em;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .size-display .value {
+            font-size: 1.5em;
+            color: #667eea;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+
+        .comparison-table h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table thead {
+            background: #f5f5f5;
+        }
+
+        table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #333;
+            border-bottom: 2px solid #667eea;
+        }
+
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            font-family: 'Courier New', monospace;
+        }
+
+        table tbody tr:hover {
+            background: #f9f9f9;
+        }
+
+        .legend {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .legend h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .legend-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .legend-item:last-child {
+            border-bottom: none;
+        }
+
+        .legend-item h4 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .legend-item p {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .viewport-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📐 AppDimens - Comparação de 10 Técnicas de Redimensionamento</h1>
+            <p>Redimensione a janela do navegador para ver como cada técnica se comporta</p>
+        </div>
+
+        <div class="info-panel">
+            <h2>Informações da Viewport</h2>
+            <div class="viewport-info">
+                <div class="info-item">
+                    <label>Largura (W):</label>
+                    <value id="viewportWidth">0</value> px
+                </div>
+                <div class="info-item">
+                    <label>Altura (H):</label>
+                    <value id="viewportHeight">0</value> px
+                </div>
+                <div class="info-item">
+                    <label>Menor Dimensão (S):</label>
+                    <value id="smallestDim">0</value> px
+                </div>
+                <div class="info-item">
+                    <label>Aspect Ratio (AR):</label>
+                    <value id="aspectRatio">0</value>
+                </div>
+            </div>
+            <div class="description">
+                <strong>Como funciona:</strong> Cada elemento abaixo usa uma técnica diferente de redimensionamento. 
+                Observe como o tamanho da fonte do botão muda conforme você redimensiona a janela do navegador.
+            </div>
+        </div>
+
+        <div class="comparison-grid">
+            <!-- 1. Logarítmica (AppDimens FX) - Baseado em S -->
+            <div class="scaling-method">
+                <h3>🔵 Logarítmica (AppDimens FX)</h3>
+                <div class="formula">f(x) = x × (1 + 0.5 × log₁₀(S/W₀))</div>
+                <div class="description">
+                    Crescimento sublinear que se alinha à percepção humana. Crescimento mais suave.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="logarithmic">Logarítmico</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="logSize">16.00</div> px
+                </div>
+            </div>
+
+            <!-- 2. Linear Simples (W) - Baseado em W -->
+            <div class="scaling-method">
+                <h3>🟢 Linear Simples (W)</h3>
+                <div class="formula">f(x) = x × (W / W₀)</div>
+                <div class="description">
+                    Crescimento linear proporcional à largura da tela. Resulta em oversizing extremo.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="linear">Linear (W)</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="linearSize">16.00</div> px
+                </div>
+            </div>
+            
+            <!-- 3. Interpolação Linear (Moderate Scale) - Baseado em W -->
+            <div class="scaling-method">
+                <h3>🟡 Interpolação Linear (Mod.)</h3>
+                <div class="formula">f(x) = x + (x × (W/W₀) - x) × 0.5</div>
+                <div class="description">
+                    Modera o crescimento linear pela metade. Melhor que o linear puro, mas ainda linear.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="interp">Interpolação</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="interpSize">16.00</div> px
+                </div>
+            </div>
+
+            <!-- 4. Quadrática (Power) - Baseado em W+H -->
+            <div class="scaling-method">
+                <h3>🟠 Quadrática (Power)</h3>
+                <div class="formula">f(x) = x × (W + H) / (W₀ + H₀)</div>
+                <div class="description">
+                    Crescimento baseado na soma das dimensões. Cresce muito rápido (mais que o linear W) em telas grandes.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="quadratic">Quadrática</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="quadraticSize">16.00</div> px
+                </div>
+            </div>
+
+            <!-- 5. Raiz Quadrada (Diagonal) - Baseado em Diagonal -->
+            <div class="scaling-method">
+                <h3>🟣 Raiz Quadrada (Diagonal)</h3>
+                <div class="formula">f(x) = x × √(W² + H²) / √(W₀² + H₀²)</div>
+                <div class="description">
+                    Crescimento proporcional à diagonal da tela. Sublinear, mas não otimizado para percepção.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="sqrt">Raiz Quadrada</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="sqrtSize">16.00</div> px
+                </div>
+            </div>
+
+            <!-- 6. Min/Max (Menor Dimensão) - Baseado em S -->
+            <div class="scaling-method">
+                <h3>🟤 Min/Max (Menor Dimensão)</h3>
+                <div class="formula">f(x) = x × (S / S₀)</div>
+                <div class="description">
+                    Crescimento proporcional à menor dimensão. Linear, mas mais controlado que o Linear (W).
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="minmax">Min/Max</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="minmaxSize">16.00</div> px
+                </div>
+            </div>
+            
+            <!-- 7. Viewport Percentage (VW) - Baseado em W -->
+            <div class="scaling-method">
+                <h3>⚪ Porcentagem (VW)</h3>
+                <div class="formula">f(x) = W × (x / W₀)</div>
+                <div class="description">
+                    Simula o uso de unidades VW (Viewport Width). Crescimento linear puro e agressivo.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="vw">VW</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="vwSize">16.00</div> px
+                </div>
+            </div>
+            
+            <!-- 8. Aspect Ratio Fixo (Box-Fit) - Baseado em min(W/W0, H/H0) -->
+            <div class="scaling-method">
+                <h3>⚫ Aspect Ratio Fixo (Game)</h3>
+                <div class="formula">f(x) = x × min(W/W₀, H/H₀)</div>
+                <div class="description">
+                    Comum em jogos. Escala o elemento pelo menor fator de escala (W ou H) para caber na tela sem corte.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="boxfit">Box-Fit</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="boxfitSize">16.00</div> px
+                </div>
+            </div>
+
+            <!-- 9. Aspect Ratio Fixo (Cover) - Baseado em max(W/W0, H/H0) -->
+            <div class="scaling-method">
+                <h3>🟪 Aspect Ratio Cover (Game)</h3>
+                <div class="formula">f(x) = x × max(W/W₀, H/H₀)</div>
+                <div class="description">
+                    Comum em jogos. Escala o elemento pelo maior fator de escala (W ou H) para cobrir a tela (pode haver corte).
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="cover">Cover</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="coverSize">16.00</div> px
+                </div>
+            </div>
+
+
+            <!-- 10. Fixo (Sem Redimensionamento) -->
+            <div class="scaling-method">
+                <h3>🔴 Fixo (Sem Redimensionamento)</h3>
+                <div class="formula">f(x) = x (constante)</div>
+                <div class="description">
+                    O elemento não é redimensionado. Causa inconsistência visual em telas muito diferentes.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="fixed">Fixo</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="fixedSize">16.00</div> px
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-table">
+            <h2>Tabela Comparativa de Tamanhos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Técnica</th>
+                        <th>Fórmula</th>
+                        <th>Tamanho Atual</th>
+                        <th>Crescimento (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Logarítmica (FX)</td>
+                        <td>x × (1 + 0.5 × log₁₀(S/W₀))</td>
+                        <td id="tableLog">16.00 px</td>
+                        <td id="tableLogGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>Linear Simples (W)</td>
+                        <td>x × (W / W₀)</td>
+                        <td id="tableLinear">16.00 px</td>
+                        <td id="tableLinearGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>Interpolação Linear (Mod.)</td>
+                        <td>x + (x × (W/W₀) - x) × 0.5</td>
+                        <td id="tableInterp">16.00 px</td>
+                        <td id="tableInterpGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>Quadrática (Power)</td>
+                        <td>x × (W + H) / (W₀ + H₀)</td>
+                        <td id="tableQuadratic">16.00 px</td>
+                        <td id="tableQuadraticGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>Raiz Quadrada (Diagonal)</td>
+                        <td>x × √(W² + H²) / √(W₀² + H₀²)</td>
+                        <td id="tableSqrt">16.00 px</td>
+                        <td id="tableSqrtGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>Min/Max (Menor Dimensão)</td>
+                        <td>x × (S / S₀)</td>
+                        <td id="tableMinMax">16.00 px</td>
+                        <td id="tableMinMaxGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>Porcentagem (VW)</td>
+                        <td>x × (W / W₀)</td>
+                        <td id="tableVw">16.00 px</td>
+                        <td id="tableVwGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>Aspect Ratio Fixo (Box-Fit)</td>
+                        <td>x × min(W/W₀, H/H₀)</td>
+                        <td id="tableBoxfit">16.00 px</td>
+                        <td id="tableBoxfitGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>Aspect Ratio Cover (Game)</td>
+                        <td>x × max(W/W₀, H/H₀)</td>
+                        <td id="tableCover">16.00 px</td>
+                        <td id="tableCoverGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>Fixo</td>
+                        <td>x (constante)</td>
+                        <td id="tableFixed">16.00 px</td>
+                        <td id="tableFixedGrowth">0%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="legend">
+            <h2>Explicação das Técnicas</h2>
+            
+            <div class="legend-item">
+                <h4>🔵 Logarítmica (AppDimens FX) - RECOMENDADA</h4>
+                <p>
+                    Crescimento sublinear que se alinha à percepção humana (Lei de Weber-Fechner). Garante que os elementos cresçam o suficiente para 
+                    serem confortáveis, mas não exageradamente, preservando a usabilidade e a densidade de informação.
+                </p>
+            </div>
+
+            <div class="legend-item">
+                <h4>🟢 Linear Simples (W)</h4>
+                <p>
+                    Crescimento linear proporcional à largura da tela. Resulta em <strong>oversizing</strong> extremo em telas grandes, 
+                    quebrando layouts e prejudicando a usabilidade.
+                </p>
+            </div>
+            
+            <div class="legend-item">
+                <h4>🟡 Interpolação Linear (Moderate Scale)</h4>
+                <p>
+                    Modera o crescimento linear pela metade. É um meio-termo entre o Fixo e o Linear puro, 
+                    mas ainda é uma função linear e não tem base na percepção humana.
+                </p>
+            </div>
+            
+            <div class="legend-item">
+                <h4>🟠 Quadrática (Power)</h4>
+                <p>
+                    Fórmula que usa a soma das dimensões da tela. O crescimento é muito acelerado e se torna desproporcional 
+                    em telas grandes, mesmo mais rápido que o linear puro.
+                </p>
+            </div>
+
+            <div class="legend-item">
+                <h4>🟣 Raiz Quadrada (Diagonal)</h4>
+                <p>
+                    Crescimento proporcional à diagonal da tela. Produz um crescimento sublinear, mas não otimizado para a percepção visual.
+                </p>
+            </div>
+
+            <div class="legend-item">
+                <h4>🟤 Min/Max (Menor Dimensão)</h4>
+                <p>
+                    Crescimento proporcional à menor dimensão da tela. É linear, mas mais controlado que o Linear (W) em telas com Aspect Ratio alto.
+                </p>
+            </div>
+            
+            <div class="legend-item">
+                <h4>⚪ Porcentagem (VW)</h4>
+                <p>
+                    Simula o uso de unidades de Viewport Width (VW). O crescimento é linear e agressivo, similar ao Linear Simples, mas baseado na unidade VW.
+                </p>
+            </div>
+            
+            <div class="legend-item">
+                <h4>⚫ Aspect Ratio Fixo (Box-Fit)</h4>
+                <p>
+                    Comum em jogos (Unity Canvas Scaler - Screen Match Mode). Escala o elemento pelo menor fator de escala (W ou H) para garantir que o conteúdo caiba na tela sem ser cortado (pode gerar barras pretas).
+                </p>
+            </div>
+            
+            <div class="legend-item">
+                <h4>🟪 Aspect Ratio Cover (Game)</h4>
+                <p>
+                    Comum em jogos (Unity Canvas Scaler - Screen Match Mode). Escala o elemento pelo maior fator de escala (W ou H) para garantir que o conteúdo cubra toda a tela (pode haver corte).
+                </p>
+            </div>
+
+            <div class="legend-item">
+                <h4>🔴 Fixo (Sem Redimensionamento)</h4>
+                <p>
+                    O elemento mantém o mesmo tamanho em todas as telas. Causa inconsistência visual e usabilidade ruim em telas muito diferentes.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Constantes de Referência
+        const W0 = 360; // Largura de referência (pixels)
+        const H0 = 640; // Altura de referência (pixels)
+        const S0 = Math.min(W0, H0); // Menor dimensão de referência
+        const D0 = Math.sqrt(W0 * W0 + H0 * H0); // Diagonal de referência
+        const SUM0 = W0 + H0; // Soma das dimensões de referência
+        const BASE_VALUE = 16; // Valor base em pixels
+        const INTERP_FACTOR = 0.5; // Fator de moderação para Interpolação Linear
+
+        // Função para calcular o tamanho usando a fórmula Logarítmica (AppDimens FX)
+        function calculateLogarithmic(baseValue, S) {
+            // f(x) = x × (1 + 0.5 × log₁₀(S/W₀))
+            if (S <= W0) {
+                return baseValue;
+            }
+            return baseValue * (1 + 0.5 * Math.log10(S / W0));
+        }
+
+        // Função para calcular o tamanho usando a fórmula Linear (Proporcional à Largura)
+        function calculateLinear(baseValue, W) {
+            // f(x) = x × (W / W₀)
+            return baseValue * (W / W0);
+        }
+        
+        // Função para calcular o tamanho usando a fórmula Interpolação Linear
+        function calculateInterp(baseValue, W) {
+            // f(x) = x + (x × (W/W₀) - x) × k
+            const linearScale = baseValue * (W / W0);
+            return baseValue + (linearScale - baseValue) * INTERP_FACTOR;
+        }
+        
+        // Função para calcular o tamanho usando a fórmula Quadrática (Power)
+        function calculateQuadratic(baseValue, W, H) {
+            // f(x) = x × (W + H) / (W₀ + H₀) - Simplificação para demonstrar o crescimento rápido
+            const currentSum = W + H;
+            return baseValue * (currentSum / SUM0);
+        }
+
+        // Função para calcular o tamanho usando a fórmula Raiz Quadrada (Diagonal)
+        function calculateSqrt(baseValue, W, H) {
+            // f(x) = x × √(W² + H²) / √(W₀² + H₀²)
+            const diagonal = Math.sqrt(W * W + H * H);
+            return baseValue * (diagonal / D0);
+        }
+
+        // Função para calcular o tamanho usando a fórmula Min/Max (Proporcional à Menor Dimensão)
+        function calculateMinMax(baseValue, S) {
+            // f(x) = x × (S / S₀)
+            return baseValue * (S / S0);
+        }
+        
+        // Função para calcular o tamanho usando a fórmula Porcentagem (VW)
+        function calculateVw(baseValue, W) {
+            // f(x) = W × (x / W₀)
+            // Simula o uso de VW (Viewport Width)
+            return baseValue * (W / W0);
+        }
+        
+        // Função para calcular o tamanho usando a fórmula Aspect Ratio Fixo (Box-Fit)
+        function calculateBoxFit(baseValue, W, H) {
+            // f(x) = x × min(W/W₀, H/H₀)
+            const scaleFactor = Math.min(W / W0, H / H0);
+            return baseValue * scaleFactor;
+        }
+        
+        // Função para calcular o tamanho usando a fórmula Aspect Ratio Cover (Cover)
+        function calculateCover(baseValue, W, H) {
+            // f(x) = x × max(W/W₀, H/H₀)
+            const scaleFactor = Math.max(W / W0, H / H0);
+            return baseValue * scaleFactor;
+        }
+
+
+        // Função para calcular o tamanho Fixo
+        function calculateFixed(baseValue) {
+            // f(x) = x (constante)
+            return baseValue;
+        }
+
+        // Função para atualizar todos os tamanhos e exibições
+        function updateSizes() {
+            // Obter dimensões da viewport
+            const W = window.innerWidth;
+            const H = window.innerHeight;
+            const S = Math.min(W, H);
+            const AR = W / H;
+
+            // Atualizar informações da viewport
+            document.getElementById('viewportWidth').textContent = W;
+            document.getElementById('viewportHeight').textContent = H;
+            document.getElementById('smallestDim').textContent = S;
+            document.getElementById('aspectRatio').textContent = AR.toFixed(2);
+
+            // Calcular tamanhos
+            const logSize = calculateLogarithmic(BASE_VALUE, S);
+            const linearSize = calculateLinear(BASE_VALUE, W);
+            const interpSize = calculateInterp(BASE_VALUE, W);
+            const quadraticSize = calculateQuadratic(BASE_VALUE, W, H);
+            const sqrtSize = calculateSqrt(BASE_VALUE, W, H);
+            const minmaxSize = calculateMinMax(BASE_VALUE, S);
+            const vwSize = calculateVw(BASE_VALUE, W);
+            const boxfitSize = calculateBoxFit(BASE_VALUE, W, H);
+            const coverSize = calculateCover(BASE_VALUE, W, H);
+            const fixedSize = calculateFixed(BASE_VALUE);
+
+            // Array de resultados para facilitar a iteração
+            const results = [
+                { id: 'log', size: logSize, element: document.getElementById('logarithmic') },
+                { id: 'linear', size: linearSize, element: document.getElementById('linear') },
+                { id: 'interp', size: interpSize, element: document.getElementById('interp') },
+                { id: 'quadratic', size: quadraticSize, element: document.getElementById('quadratic') },
+                { id: 'sqrt', size: sqrtSize, element: document.getElementById('sqrt') },
+                { id: 'minmax', size: minmaxSize, element: document.getElementById('minmax') },
+                { id: 'vw', size: vwSize, element: document.getElementById('vw') },
+                { id: 'boxfit', size: boxfitSize, element: document.getElementById('boxfit') },
+                { id: 'cover', size: coverSize, element: document.getElementById('cover') },
+                { id: 'fixed', size: fixedSize, element: document.getElementById('fixed') }
+            ];
+
+            // Atualizar exibição e botões
+            results.forEach(result => {
+                const size = result.size;
+                const growth = ((size - BASE_VALUE) / BASE_VALUE * 100).toFixed(1);
+
+                // Atualizar exibição de tamanho
+                document.getElementById(result.id + 'Size').textContent = size.toFixed(2);
+
+                // Atualizar tamanho da fonte do botão
+                result.element.style.fontSize = size + 'px';
+
+                // Atualizar tabela
+                const tableId = result.id.charAt(0).toUpperCase() + result.id.slice(1);
+                document.getElementById('table' + tableId).textContent = size.toFixed(2) + ' px';
+                document.getElementById('table' + tableId + 'Growth').textContent = growth + '%';
+            });
+        }
+
+        // Atualizar tamanhos ao carregar a página
+        updateSizes();
+
+        // Atualizar tamanhos ao redimensionar a janela
+        window.addEventListener('resize', updateSizes);
+
+        // Adicionar efeito de clique aos botões
+        document.querySelectorAll('.demo-element').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('Tamanho do elemento: ' + this.style.fontSize);
+            });
+        });
+    </script>
+</body>
+</html>
+
