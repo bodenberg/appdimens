@@ -1145,19 +1145,10 @@ FINAL SCORE = 30% Performance + 40% Accuracy + 30% Flexibility
 ```
 ❌ DON'T USE AppDimens when:
 
-1. App runs ONLY on similarly sized smartphones (±50dp)
-   → Use Traditional DP (simpler)
-
-2. Layout is 100% fluid without fixed reference design
-   → Use Percentage/Flexbox
-
-3. Ultra-fast prototyping (1-2 days)
-   → Use Linear/SDP (less configuration)
-
-4. Team resistant to complex mathematics
+1. Team resistant to complex mathematics
    → Use Interpolation (simpler concept)
 
-5. Performance is EXTREMELY critical AND can't use cache
+2. Performance is EXTREMELY critical AND can't use cache
    → Use Percentage (but difference is minimal: 3µs)
 ```
 

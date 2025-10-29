@@ -1145,19 +1145,10 @@ NOTA FINAL = 30% Performance + 40% Exatidão + 30% Flexibilidade
 ```
 ❌ NÃO USE AppDimens quando:
 
-1. App roda APENAS em smartphones de tamanho similar (±50dp)
-   → Use DP Tradicional (mais simples)
-
-2. Layout é 100% fluido sem design fixo de referência
-   → Use Porcentagem/Flexbox
-
-3. Prototipagem ultra-rápida (1-2 dias)
-   → Use Linear/SDP (menos configuração)
-
-4. Equipe tem resistência a matemática complexa
+1. Equipe tem resistência a matemática complexa
    → Use Interpolação (conceito mais simples)
 
-5. Performance é EXTREMAMENTE crítica E não pode usar cache
+2. Performance é EXTREMAMENTE crítica E não pode usar cache
    → Use Porcentagem (mas diferença é mínima: 3µs)
 ```
 
