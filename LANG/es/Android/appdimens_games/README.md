@@ -7,7 +7,7 @@ layout: default
     <p><strong>Desarrollo de juegos responsivo para Android con C++/NDK</strong></p>
     <p>Módulo especializado con OpenGL ES, gestión de viewport y cálculos de dimensiones para juegos.</p>
 
-[![Versión](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Versión](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![Licencia](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![Plataforma](https://img.shields.io/badge/platform-Android%2023+-orange.svg)](https://developer.android.com/)
 [![NDK](https://img.shields.io/badge/NDK-r21+-green.svg)](https://developer.android.com/ndk)

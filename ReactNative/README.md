@@ -9,7 +9,7 @@ title: "📐 AppDimens React Native"
 
 Mathematically responsive scaling that ensures your UI design adapts perfectly to any screen size or aspect ratio — from phones to tablets, TVs, and wearables.
 
-[![Version](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Version](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-React%20Native-orange.svg)](https://reactnative.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-4.8+-blue.svg)](https://www.typescriptlang.org/)

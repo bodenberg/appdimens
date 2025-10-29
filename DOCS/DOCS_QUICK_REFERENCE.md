@@ -97,7 +97,7 @@
 ### Logarithmic Formula (Fixed)
 
 ```
-f_FX(B, S, AR) = B × [1 + ((S - 300) / 30) × (0.10 + 0.08 × ln(AR / 1.78))]
+f_FX(B, S, AR) = B × [1 + ((S - 300) / 1) × (0.10 + 0.08 × ln(AR / 1.78))]
 ```
 
 ### Priority System
@@ -284,7 +284,7 @@ AppDimens/
 ---
 
 **Last updated:** January 2025  
-**Version:** 1.0.8  
+**Version:** 1.0.9  
 **Author:** Jean Bodenberg  
 **License:** Apache 2.0
 

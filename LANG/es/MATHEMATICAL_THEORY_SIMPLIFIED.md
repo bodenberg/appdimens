@@ -6,7 +6,7 @@
 
 **Entiende el Escalado Logarítmico en 10 Minutos**
 
-[![Versión](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens)
+[![Versión](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens)
 [![Matemática](https://img.shields.io/badge/math-logarithmic-green.svg)]()
 [![Plataforma](https://img.shields.io/badge/platform-universal-orange.svg)]()
 
@@ -620,12 +620,12 @@ val titleSize = 24.fixedDp()
 │  Donde:                                                │
 │  ─────                                                 │
 │  α = 1.0           (factor neutral)                   │
-│  β(S) = (S - 300) / 30                                │
+│  β(S) = (S - 300) / 1                                 │
 │  γ(AR) = 0.10 + 0.08 × ln(AR / 1.78)                 │
 │                                                        │
 │  Expandida:                                            │
 │  ──────────                                            │
-│  Valor = Base × [1 + ((Pantalla - 300)/30) ×         │
+│  Valor = Base × [1 + ((Pantalla - 300)/1) ×          │
 │                      (0.10 + 0.08×ln(AR/1.78))]       │
 │                                                        │
 └────────────────────────────────────────────────────────┘
@@ -640,12 +640,12 @@ val titleSize = 24.fixedDp()
 
 **2. Componente β (Beta) - Lineal:**
 ```
-β(S) = (S - W₀) / δ = (S - 300) / 30
+β(S) = (S - W₀) / δ = (S - 300) / 1
 
 Ejemplos:
   S = 300dp → β = 0 (neutral)
-  S = 360dp → β = 2 (2 pasos arriba)
-  S = 720dp → β = 14 (14 pasos arriba)
+  S = 360dp → β = 60 (60dp arriba)
+  S = 720dp → β = 420 (420dp arriba)
 ```
 
 **3. Componente γ (Gamma) - Logarítmico:**
@@ -780,7 +780,7 @@ Interpretación:
 
 **AppDimens** - Dimensionamiento Matemático Universal
 
-*Por Jean Bodenberg | Enero 2025 | Versión 1.0.8*
+*Por Jean Bodenberg | Enero 2025 | Versión 1.0.9*
 
 [![GitHub](https://img.shields.io/badge/GitHub-bodenberg-blue?logo=github)](https://github.com/bodenberg/appdimens)
 [![Licencia](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../LICENSE)

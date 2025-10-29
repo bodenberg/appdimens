@@ -6,7 +6,7 @@
 
 **Understand Logarithmic Scaling in 10 Minutes**
 
-[![Version](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens)
+[![Version](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens)
 [![Math](https://img.shields.io/badge/math-logarithmic-green.svg)]()
 [![Platform](https://img.shields.io/badge/platform-universal-orange.svg)]()
 
@@ -620,12 +620,12 @@ val titleSize = 24.fixedDp()
 │  Where:                                                │
 │  ─────                                                 │
 │  α = 1.0           (neutral factor)                   │
-│  β(S) = (S - 300) / 30                                │
+│  β(S) = (S - 300) / 1                                 │
 │  γ(AR) = 0.10 + 0.08 × ln(AR / 1.78)                 │
 │                                                        │
 │  Expanded:                                             │
 │  ──────────                                            │
-│  Value = Base × [1 + ((Screen - 300)/30) ×           │
+│  Value = Base × [1 + ((Screen - 300)/1) ×            │
 │                      (0.10 + 0.08×ln(AR/1.78))]       │
 │                                                        │
 └────────────────────────────────────────────────────────┘
@@ -640,12 +640,12 @@ val titleSize = 24.fixedDp()
 
 **2. Component β (Beta) - Linear:**
 ```
-β(S) = (S - W₀) / δ = (S - 300) / 30
+β(S) = (S - W₀) / δ = (S - 300) / 1
 
 Examples:
   S = 300dp → β = 0 (neutral)
-  S = 360dp → β = 2 (2 steps above)
-  S = 720dp → β = 14 (14 steps above)
+  S = 360dp → β = 60 (60dp above)
+  S = 720dp → β = 420 (420dp above)
 ```
 
 **3. Component γ (Gamma) - Logarithmic:**
@@ -677,7 +677,7 @@ Final Value = Base × F(S, AR)
 **Derivative with respect to S (screen size):**
 ```
 ∂f_FX/∂S = B × γ(AR) / δ
-         = B × γ(AR) / 30
+         = B × γ(AR) / 1
 
 Interpretation:
   - Growth rate is CONSTANT for a given AR
@@ -780,7 +780,7 @@ Interpretation:
 
 **AppDimens** - Universal Mathematical Dimensioning
 
-*By Jean Bodenberg | January 2025 | Version 1.0.8*
+*By Jean Bodenberg | January 2025 | Version 1.0.9*
 
 [![GitHub](https://img.shields.io/badge/GitHub-bodenberg-blue?logo=github)](https://github.com/bodenberg/appdimens)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)

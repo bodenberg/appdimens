@@ -5,7 +5,7 @@
 **Documentación Técnica Detallada - Modelo Matemático Universal**  
 *Autor: Jean Bodenberg*  
 *Fecha: Enero 2025*  
-*Versión: 1.0.8*
+*Versión: 1.0.9*
 
 > **Nota:** Esta documentación presenta la teoría matemática fundamental de AppDimens, universalmente aplicable a cualquier plataforma (Android, iOS, Flutter, React Native, Web). Las implementaciones específicas son ejemplos de la aplicación práctica de estos modelos.
 
@@ -269,7 +269,7 @@ Sustituyendo los componentes:
 f_FX(B, S, AR) = B × [1.0 + ((S - W₀) / δ) × (ε₀ + K × ln(AR / AR₀))]
 
 Simplificando:
-f_FX(B, S, AR) = B × [1.0 + ((S - 300) / 30) × (0.10 + 0.08 × ln(AR / 1.78))]
+f_FX(B, S, AR) = B × [1.0 + ((S - 300) / 1) × (0.10 + 0.08 × ln(AR / 1.78))]
 ```
 
 #### 2.2.3 Variantes del Modelo
@@ -277,7 +277,7 @@ f_FX(B, S, AR) = B × [1.0 + ((S - 300) / 30) × (0.10 + 0.08 × ln(AR / 1.78))]
 **Sin Ajuste de Relación de Aspecto:**
 ```
 f_FX_simple(B, S) = B × [1.0 + ((S - W₀) / δ) × ε₀]
-                  = B × [1.0 + ((S - 300) / 30) × 0.10]
+                  = B × [1.0 + ((S - 300) / 1) × 0.10]
 ```
 
 **Con Sensibilidad Personalizada:**

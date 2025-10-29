@@ -11,7 +11,7 @@ Você é uma IA especialista em desenvolvimento Android. Sua tarefa é entender 
 
 ## 1. Instalação / Setup
 
-Consulte as dependências em Gradle (Maven Central/JitPack) usando os artefatos `io.github.bodenberg:*:1.0.8` ou `com.github.bodenberg.appdimens:*:1.0.8` conforme necessidade. Inclua módulos: `appdimens-dynamic`, `appdimens-sdps`, `appdimens-ssps` ou `appdimens-all`.
+Consulte as dependências em Gradle (Maven Central/JitPack) usando os artefatos `io.github.bodenberg:*:1.0.9` ou `com.github.bodenberg.appdimens:*:1.0.9` conforme necessidade. Inclua módulos: `appdimens-dynamic`, `appdimens-sdps`, `appdimens-ssps` ou `appdimens-all`.
 
 ## 2. Inicialização
 

@@ -9,7 +9,7 @@ title: "Podfile"
     <p><strong>Smart and Responsive Dimensioning for iOS</strong></p>
     <p>Mathematically responsive scaling that ensures your UI design adapts perfectly to any screen size or aspect ratio — from iPhones to iPads, Apple TV, and Apple Watch.</p>
 
-[![Version](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Version](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../LICENSE)
 [![Platform](https://img.shields.io/badge/platform-iOS%2013+-orange.svg)](https://developer.apple.com/ios/)
 [![Swift](https://img.shields.io/badge/Swift-5.0+-blue.svg)](https://swift.org/)
@@ -131,7 +131,7 @@ pod install
 1. **In Xcode:**
    - File → Add Package Dependencies
    - Enter: `https://github.com/bodenberg/appdimens.git`
-   - Select version: `1.0.8` or higher
+   - Select version: `1.0.9` or higher
    - Add to your target
 
 2. **Or add to Package.swift:**

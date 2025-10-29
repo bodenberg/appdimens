@@ -81,7 +81,7 @@ Swift Package Manager is Apple's official dependency management tool.
 1. **In Xcode:**
    - File → Add Package Dependencies
    - Enter the repository URL: `https://github.com/bodenberg/appdimens.git`
-   - Select version `1.0.8` and add to your target
+   - Select version `1.0.9` and add to your target
 
 2. **Import in your Swift files:**
 ```swift

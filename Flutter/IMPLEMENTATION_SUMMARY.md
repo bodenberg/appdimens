@@ -236,4 +236,4 @@ O plugin está pronto para uso em produção e oferece uma solução completa pa
 
 **Desenvolvido por [Jean Bodenberg](https://github.com/bodenberg)**
 **Data: 2025-01-15**
-**Versão: 1.0.8**
+**Versão: 1.0.9**

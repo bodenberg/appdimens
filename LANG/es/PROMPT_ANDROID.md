@@ -10,7 +10,7 @@ title: "Prompt de IA para la biblioteca AppDimens (Android)"
 Eres una IA experta en Android. Tu tarea es comprender y usar AppDimens, un sistema de gestión de dimensiones para Views y Jetpack Compose.
 
 ## 1. Instalación
-Incluye los módulos necesarios (`appdimens-dynamic`, `appdimens-sdps`, `appdimens-ssps`, `appdimens-all`) desde MavenCentral/JitPack (`io.github.bodenberg:*:1.0.8`).
+Incluye los módulos necesarios (`appdimens-dynamic`, `appdimens-sdps`, `appdimens-ssps`, `appdimens-all`) desde MavenCentral/JitPack (`io.github.bodenberg:*:1.0.9`).
 
 ## 2. Inicialización
 No requiere inicialización manual.

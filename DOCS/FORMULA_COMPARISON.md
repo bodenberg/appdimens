@@ -5,7 +5,7 @@
 **Complete Mathematical and Comparative Analysis**  
 *Author: Jean Bodenberg*  
 *Date: January 2025*  
-*Version: 1.0.8*
+*Version: 1.0.9*
 
 ---
 
@@ -756,7 +756,7 @@ FINAL SCORE = 30% Performance + 40% Accuracy + 30% Flexibility
 ║                                                                   ║
 ║   Signed: Independent Technical Analysis                         ║
 ║   Date: January 2025                                              ║
-║   Version: 1.0.8                                                  ║
+║   Version: 1.0.9                                                  ║
 ║                                                                   ║
 ╚═══════════════════════════════════════════════════════════════════╝
 ```
@@ -938,7 +938,7 @@ The **Logarithmic Formula of AppDimens** is mathematically superior in **9 out o
 
 **Document created by:** Jean Bodenberg  
 **Last updated:** January 2025  
-**Version:** 1.0.8  
+**Version:** 1.0.9  
 **License:** Apache 2.0  
 **Repository:** https://github.com/bodenberg/appdimens
 

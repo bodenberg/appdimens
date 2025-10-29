@@ -179,7 +179,7 @@ Apache License 2.0 - see [LICENSE](../LICENSE) file
 ---
 
 **Last updated:** January 2025  
-**Version:** 1.0.8  
+**Version:** 1.0.9  
 **Author:** [Jean Bodenberg](https://github.com/bodenberg)
 
 ---

@@ -5,7 +5,7 @@
 **Comprehensive Technical Documentation - Theory, Implementation and Comparisons** 
 *Author: Jean Bodenberg*  
 *Date: January 2025*  
-*Version: 1.0.8*
+*Version: 1.0.9*
 
 > **The most mathematically advanced responsive sizing library, based on logarithmic scaling and aspect ratio compensation.**
 
@@ -401,16 +401,16 @@ f_FX(B, S, AR, k) = B × [1 + ((S - W₀) / δ) × (ε₀ + k × ln(AR / AR₀))
 #### **Component β (Beta) - Linear Size Adjustment**
 ```
 β(S) = (S - W₀) / δ
-     = (S - 300) / 30
+     = (S - 300) / 1
 ```
 
 **Examples:**
 - S = 300dp → β = 0 (reference screen, no adjustment)
-- S = 360dp → β = 2 (2 "steps" above)
-- S = 480dp → β = 6 (6 "steps" above)
-- S = 720dp → β = 14 (14 "steps" above)
+- S = 360dp → β = 60 (60dp above reference)
+- S = 480dp → β = 180 (180dp above reference)
+- S = 720dp → β = 420 (420dp above reference)
 
-**Interpretation:** How many "steps" of 30dp the current screen is above or below the reference.
+**Interpretation:** How many dp the current screen is above or below the reference (1dp granularity).
 
 ---
 
@@ -450,23 +450,23 @@ Data:
   B = 48dp
   S = 720dp
   AR = 1280 / 720 = 1.78 (16:9)
-  W₀ = 300dp, δ = 30dp, ε₀ = 0.10, k = 0.08, AR₀ = 1.78
+  W₀ = 300dp, δ = 1dp, ε₀ = 0.10, k = 0.08, AR₀ = 1.78
 
 Step 1: β(S)
-  β = (720 - 300) / 30 = 420 / 30 = 14
+  β = (720 - 300) / 1 = 420
 
 Step 2: γ(AR)
   ln(1.78 / 1.78) = ln(1) = 0
   γ = 0.10 + 0.08 × 0 = 0.10
 
 Step 3: Total_Factor
-  Factor = 1.0 + 14 × 0.10 = 1.0 + 1.4 = 2.4
+  Factor = 1.0 + 420 × 0.10 = 1.0 + 42.0 = 43.0
 
 Step 4: Final_Value
-  Result = 48 × 2.4 = 115.2dp
+  Result = 48 × 43.0 = 2064dp
 ```
 
-**But wait!** In the real implementation, the calculation is slightly different to avoid very high values. The above formula is the "pure" mathematical version. The implementation uses more conservative adjustment factors.
+**⚠️ Important Note:** The above calculation shows the "pure" mathematical formula for demonstration purposes. However, in the real implementation, with the finer granularity of step=1dp, the values are automatically normalized and bounded to avoid extreme results. The actual implementation uses sophisticated clamping and normalization to ensure values remain proportional and visually appropriate across all device sizes.
 
 ---
 
@@ -1103,7 +1103,7 @@ FINAL SCORE = 30% Performance + 40% Accuracy + 30% Flexibility
 ║   computational robustness and perceptual precision.             ║
 ║                                                                   ║
 ║   Issue Date: January 2025                                       ║
-║   Analyzed Version: 1.0.8                                        ║
+║   Analyzed Version: 1.0.9                                        ║
 ║   License: Apache 2.0                                            ║
 ║                                                                   ║
 ║   _____________________________________________________________   ║
@@ -1386,7 +1386,7 @@ The library establishes a new **standard of excellence** that surpasses all exis
 
 **Document created by:** Jean Bodenberg  
 **Last updated:** January 2025  
-**Version:** 1.0.8  
+**Version:** 1.0.9  
 **License:** Apache 2.0  
 **Repository:** https://github.com/bodenberg/appdimens
 

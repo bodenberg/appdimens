@@ -5,7 +5,7 @@
 **Análise Matemática Completa e Comparativa**  
 *Autor: Jean Bodenberg*  
 *Data: Janeiro 2025*  
-*Versão: 1.0.8*
+*Versão: 1.0.9*
 
 ---
 

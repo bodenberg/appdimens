@@ -66,7 +66,7 @@ android {
 
 dependencies {
     // AppDimens All-in-One
-    implementation("io.github.bodenberg:appdimens-all:1.0.8")
+    implementation("io.github.bodenberg:appdimens-all:1.0.9")
     
     // Jetpack Compose
     implementation(platform("androidx.compose:compose-bom:2025.01.00"))

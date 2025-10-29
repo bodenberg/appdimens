@@ -2,7 +2,7 @@
 <h1>📐 AppDimens</h1>
 <p><strong>Dimensiones Responsivas Inteligentes para Cualquier Pantalla</strong></p>
 
-[![Versión](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Versión](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![Licencia](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![Plataforma](https://img.shields.io/badge/platform-Android%20%7C%20iOS%20%7C%20Flutter%20%7C%20RN%20%7C%20Web-orange.svg)](https://github.com/bodenberg/appdimens)
 

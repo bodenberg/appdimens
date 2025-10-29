@@ -23,7 +23,7 @@
 | `α` | Fator Base | 1.0 | Seção 2.3 |
 | `W₀` | Largura Referência | 300 | Seção 2.3 |
 | `AR₀` | Aspect Ratio Referência | 1.78 | Seção 2.3 |
-| `δ` | Step Dimensional | 30 | Seção 2.3 |
+| `δ` | Step Dimensional | 1 | Seção 2.3 |
 | `ε₀` | Incremento Base | 0.10 | Seção 2.3 |
 | `K` | Sensibilidade Log | 0.08 | Seção 2.3 |
 
@@ -35,7 +35,7 @@
 
 const val BASE_DP_FACTOR = 1.00f           // α = 1.0 ✅
 const val BASE_WIDTH_DP = 300f             // W₀ = 300 ✅
-const val INCREMENT_DP_STEP = 30f          // δ = 30 ✅
+const val INCREMENT_DP_STEP = 1f           // δ = 1 ✅
 const val REFERENCE_AR = 1.78f             // AR₀ = 1.78 ✅
 const val DEFAULT_SENSITIVITY_K = 0.08f    // K = 0.08 ✅
 const val BASE_INCREMENT = 0.10f           // ε₀ = 0.10 ✅
@@ -53,7 +53,7 @@ const val BASE_INCREMENT = 0.10f           // ε₀ = 0.10 ✅
 f_FX(B, S, AR) = B × [1 + ((S - W₀) / δ) × (ε₀ + K × ln(AR / AR₀))]
 
 Expandido:
-f_FX(B, S, AR) = B × [1.0 + ((S - 300) / 30) × (0.10 + 0.08 × ln(AR / 1.78))]
+f_FX(B, S, AR) = B × [1.0 + ((S - 300) / 1) × (0.10 + 0.08 × ln(AR / 1.78))]
 
 Componentes:
 β(S) = (S - W₀) / δ
@@ -69,7 +69,7 @@ F(S, AR) = α + β(S) × γ(AR)
 // 1. Cálculo de β(S) - Fator de Ajuste Base
 val differenceLowest = smallestWidthDp - BASE_WIDTH_DP
 val adjustmentFactorLowest = differenceLowest / INCREMENT_DP_STEP
-// ✅ Corresponde a: β(S) = (S - 300) / 30
+// ✅ Corresponde a: β(S) = (S - 300) / 1
 
 // 2. Cálculo do Aspect Ratio
 val currentAr = getReferenceAspectRatio(currentScreenWidthDp, currentScreenHeightDp)
@@ -268,7 +268,7 @@ val shouldIgnoreAdjustment = ignoreMultiViewAdjustment && isMultiWindow
 **Cálculo Esperado:**
 
 ```
-1. β(S) = (360 - 300) / 30 = 2.0
+1. β(S) = (360 - 300) / 1 = 60.0
 
 2. ln(AR / AR₀) = ln(2.22 / 1.78) = ln(1.247) ≈ 0.220
 
@@ -442,7 +442,7 @@ A biblioteca pode ser utilizada com **total confiança** de que:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Biblioteca: AppDimens Android (appdimens_dynamic)
-Versão Analisada: 1.0.8
+Versão Analisada: 1.0.9
 Data: Janeiro 2025
 
 VALIDAÇÃO: ✅ APROVADO

@@ -8,7 +8,7 @@ title: "CMakeLists.txt"
     <p><strong>Responsive Game Development for Android with C++/NDK Support</strong></p>
     <p>Specialized AppDimens module designed for Android game development with native performance, OpenGL ES integration, and advanced viewport management.</p>
     
-[![Version](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Version](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Android%2023+-orange.svg)](https://developer.android.com/)
 [![NDK](https://img.shields.io/badge/NDK-r21+-green.svg)](https://developer.android.com/ndk)

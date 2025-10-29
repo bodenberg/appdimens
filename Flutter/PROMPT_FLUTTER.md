@@ -19,7 +19,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  appdimens: ^1.0.8
+  appdimens: ^1.0.9
 ```
 
 ```bash

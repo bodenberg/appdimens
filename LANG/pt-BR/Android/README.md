@@ -8,7 +8,7 @@ layout: default
     <p><strong>Dimensionamento Inteligente e Responsivo para Android</strong></p>
     <p>Escala responsiva matematicamente precisa que garante que seu design de UI se adapte perfeitamente a qualquer tamanho de tela ou proporção — de telefones a TVs, carros e wearables.</p>
 
-[![Versão](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Versão](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![Licença](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../LICENSE)
 [![Plataforma](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 [![Documentação](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)

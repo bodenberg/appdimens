@@ -6,7 +6,7 @@
 
 **Entenda o Dimensionamento Logarítmico em 10 Minutos**
 
-[![Version](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens)
+[![Version](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens)
 [![Math](https://img.shields.io/badge/math-logarithmic-green.svg)]()
 [![Platform](https://img.shields.io/badge/platform-universal-orange.svg)]()
 
@@ -620,12 +620,12 @@ val titleSize = 24.fixedDp()
 │  Onde:                                                 │
 │  ─────                                                 │
 │  α = 1.0           (fator neutro)                     │
-│  β(S) = (S - 300) / 30                                │
+│  β(S) = (S - 300) / 1                                 │
 │  γ(AR) = 0.10 + 0.08 × ln(AR / 1.78)                 │
 │                                                        │
 │  Expandido:                                            │
 │  ──────────                                            │
-│  Valor = Base × [1 + ((Tela - 300)/30) ×             │
+│  Valor = Base × [1 + ((Tela - 300)/1) ×              │
 │                      (0.10 + 0.08×ln(AR/1.78))]       │
 │                                                        │
 └────────────────────────────────────────────────────────┘
@@ -780,7 +780,7 @@ Interpretação:
 
 **AppDimens** - Dimensionamento Matemático Universal
 
-*Por Jean Bodenberg | Janeiro 2025 | Versão 1.0.8*
+*Por Jean Bodenberg | Janeiro 2025 | Versão 1.0.9*
 
 [![GitHub](https://img.shields.io/badge/GitHub-bodenberg-blue?logo=github)](https://github.com/bodenberg/appdimens)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)

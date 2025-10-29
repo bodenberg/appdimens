@@ -5,7 +5,7 @@
 **Documentación Técnica Completa - Teoría, Implementación y Comparaciones**  
 *Autor: Jean Bodenberg*  
 *Fecha: Enero 2025*  
-*Versión: 1.0.8*
+*Versión: 1.0.9*
 
 > **La biblioteca de dimensionamiento responsivo matemáticamente más avanzada, basada en escalado logarítmico y compensación de relación de aspecto.**
 
@@ -401,16 +401,16 @@ f_FX(B, S, AR, k) = B × [1 + ((S - W₀) / δ) × (ε₀ + k × ln(AR / AR₀))
 #### **Componente β (Beta) - Ajuste Lineal de Tamaño**
 ```
 β(S) = (S - W₀) / δ
-     = (S - 300) / 30
+     = (S - 300) / 1
 ```
 
 **Ejemplos:**
 - S = 300dp → β = 0 (pantalla referencia, sin ajuste)
-- S = 360dp → β = 2 (2 "pasos" arriba)
-- S = 480dp → β = 6 (6 "pasos" arriba)
-- S = 720dp → β = 14 (14 "pasos" arriba)
+- S = 360dp → β = 60 (60dp arriba de referencia)
+- S = 480dp → β = 180 (180dp arriba de referencia)
+- S = 720dp → β = 420 (420dp arriba de referencia)
 
-**Interpretación:** Cuántos "pasos" de 30dp está la pantalla actual arriba o abajo de la referencia.
+**Interpretación:** Cuántos dp está la pantalla actual arriba o abajo de la referencia (granularidad de 1dp).
 
 ---
 
@@ -450,10 +450,10 @@ Datos:
   B = 48dp
   S = 720dp
   AR = 1280 / 720 = 1.78 (16:9)
-  W₀ = 300dp, δ = 30dp, ε₀ = 0.10, k = 0.08, AR₀ = 1.78
+  W₀ = 300dp, δ = 1dp, ε₀ = 0.10, k = 0.08, AR₀ = 1.78
 
 Paso 1: β(S)
-  β = (720 - 300) / 30 = 420 / 30 = 14
+  β = (720 - 300) / 1 = 420
 
 Paso 2: γ(AR)
   ln(1.78 / 1.78) = ln(1) = 0
@@ -1103,7 +1103,7 @@ PUNTUACIÓN FINAL = 30% Rendimiento + 40% Precisión + 30% Flexibilidad
 ║   matemático, robustez computacional y precisión perceptual.    ║
 ║                                                                   ║
 ║   Fecha de Emisión: Enero 2025                                   ║
-║   Versión Analizada: 1.0.8                                       ║
+║   Versión Analizada: 1.0.9                                       ║
 ║   Licencia: Apache 2.0                                           ║
 ║                                                                   ║
 ║   _____________________________________________________________   ║
@@ -1386,7 +1386,7 @@ La biblioteca establece un nuevo **estándar de excelencia** que supera todas la
 
 **Documento creado por:** Jean Bodenberg  
 **Última actualización:** Enero 2025  
-**Versión:** 1.0.8  
+**Versión:** 1.0.9  
 **Licencia:** Apache 2.0  
 **Repositorio:** https://github.com/bodenberg/appdimens
 

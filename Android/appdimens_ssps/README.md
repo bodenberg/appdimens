@@ -7,7 +7,7 @@ layout: default
     <p><strong>Dynamic Text Scaling with Conditional Logic for Android</strong></p>
     <p>Advanced SSP (Scaled Scale-independent Pixels) system with conditional rules and priority-based scaling for responsive text sizing.</p>
     
-[![Version](https://img.shields.io/badge/version-1.0.8-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Version](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
