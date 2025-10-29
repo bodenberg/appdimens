@@ -285,7 +285,7 @@ val shouldIgnoreAdjustment = ignoreMultiViewAdjustment && isMultiWindow
 // Constantes
 val BASE_DP_FACTOR = 1.00f
 val BASE_WIDTH_DP = 300f
-val INCREMENT_DP_STEP = 30f
+val INCREMENT_DP_STEP = 1f
 val REFERENCE_AR = 1.78f
 val DEFAULT_SENSITIVITY_K = 0.08f
 val BASE_INCREMENT = 0.10f
@@ -371,7 +371,7 @@ Todas as fórmulas, constantes e implementações correspondem **exatamente** ao
 | **Constantes** | | | |
 | `BASE_DP_FACTOR (α)` | 1.0 | 1.00f | ✅ |
 | `BASE_WIDTH_DP (W₀)` | 300 | 300f | ✅ |
-| `INCREMENT_DP_STEP (δ)` | 30 | 30f | ✅ |
+| `INCREMENT_DP_STEP (δ)` | 1 | 1f | ✅ |
 | `REFERENCE_AR (AR₀)` | 1.78 | 1.78f | ✅ |
 | `DEFAULT_SENSITIVITY_K (K)` | 0.08 | 0.08f | ✅ |
 | `BASE_INCREMENT (ε₀)` | 0.10 | 0.10f | ✅ |

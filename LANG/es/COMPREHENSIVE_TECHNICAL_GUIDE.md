@@ -367,7 +367,7 @@ f_FX(B, S, AR, k) = B × [1 + ((S - W₀) / δ) × (ε₀ + k × ln(AR / AR₀))
 | `S` | Tamaño Pantalla | Tiempo ejecución | Dimensión menor de pantalla (sw) |
 | `AR` | Relación Aspecto | Tiempo ejecución | Proporción actual (W/H) |
 | `W₀` | Ancho Referencia | 300dp | Ancho de referencia |
-| `δ` | Tamaño Paso | 30dp | Paso de incremento |
+| `δ` | Tamaño Paso | 1dp | Granularidad 1dp (precisión refinada) |
 | `ε₀` | Incremento Base | 0.10 | Incremento base (10%) |
 | `k` | Sensibilidad | 0.08-0.10 | Sensibilidad ajuste AR |
 | `AR₀` | AR Referencia | 1.78 | Relación aspecto referencia (16:9) |

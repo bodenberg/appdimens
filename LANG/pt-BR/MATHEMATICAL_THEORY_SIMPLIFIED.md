@@ -146,9 +146,9 @@ Se você tem uma TV de 1080dp:
 🔹 PASSO 1: Quanto a tela cresceu?
 
    Diferença = 720 - 300 = 420dp
-   Steps = 420 ÷ 30 = 14 steps
+   Ajuste = 420 ÷ 1 = 420
    
-   📝 A tela cresceu 14 "degraus" em relação à base
+   📝 A tela está 420dp acima da base de referência
 
 🔹 PASSO 2: Qual a proporção da tela?
 
@@ -640,12 +640,12 @@ val titleSize = 24.fixedDp()
 
 **2. Componente β (Beta) - Linear:**
 ```
-β(S) = (S - W₀) / δ = (S - 300) / 30
+β(S) = (S - W₀) / δ = (S - 300) / 1
 
 Exemplos:
   S = 300dp → β = 0 (neutro)
-  S = 360dp → β = 2 (2 steps acima)
-  S = 720dp → β = 14 (14 steps acima)
+  S = 360dp → β = 60 (60dp acima)
+  S = 720dp → β = 420 (420dp acima)
 ```
 
 **3. Componente γ (Gamma) - Logarítmico:**
@@ -677,7 +677,7 @@ Valor Final = Base × F(S, AR)
 **Derivada em relação a S (tamanho da tela):**
 ```
 ∂f_FX/∂S = B × γ(AR) / δ
-         = B × γ(AR) / 30
+         = B × γ(AR) / 1
 
 Interpretação:
   - Taxa de crescimento é CONSTANTE para um dado AR

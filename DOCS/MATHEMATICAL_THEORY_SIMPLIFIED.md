@@ -146,9 +146,9 @@ If you have a 1080dp TV:
 🔹 STEP 1: How much has the screen grown?
 
    Difference = 720 - 300 = 420dp
-   Steps = 420 ÷ 30 = 14 steps
+   Adjustment = 420 ÷ 1 = 420
    
-   📝 The screen grew 14 "steps" from the base
+   📝 The screen is 420dp above the reference base
 
 🔹 STEP 2: What's the screen ratio?
 

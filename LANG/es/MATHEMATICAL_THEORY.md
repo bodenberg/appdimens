@@ -239,7 +239,7 @@ F(S, AR) = α + β(S) × γ(AR)
    donde:
    S = dimensión de pantalla (ancho más pequeño o dimensión más alta)
    W₀ = 300 (ancho de referencia)
-   δ = 30 (paso, define sensibilidad de tamaño)
+   δ = 1 (paso, granularidad de 1dp para precisión refinada)
    
    Propiedades:
    - β(W₀) = 0 (neutral en referencia)
@@ -294,8 +294,8 @@ f_FX_custom(B, S, AR, K_custom) = B × [1.0 + ((S - W₀) / δ) × (ε₀ + K_cu
 | `α` | Factor Base | 1.0 | Identidad en punto de referencia |
 | `W₀` | Ancho Referencia | 300 | Promedio histórico de dispositivos (~360dp smartphones) |
 | `AR₀` | Relación Aspecto Referencia | 1.78 | Proporción 16:9 (estándar histórico) |
-| `δ` | Paso Dimensional | 30 | Incremento ~10% (300/30 = 10) |
-| `ε₀` | Incremento Base | 0.10 | Crecimiento 10% por paso |
+| `δ` | Paso Dimensional | 1 | Granularidad de 1dp (precisión refinada) |
+| `ε₀` | Incremento Base | 0.10 | Factor de ajuste base 10% |
 | `K` | Sensibilidad Log | 0.08 | Calibrado empíricamente para suavidad |
 
 ### 2.4 Análisis Matemático del Comportamiento
@@ -755,7 +755,7 @@ f_FX(B, S, AR) = B × [1 + ((S - W₀) / δ) × (ε₀ + K × ln(AR / AR₀))]
 Constantes universales:
 W₀ = 300    (referencia dimensional)
 AR₀ = 1.78  (proporción 16:9)
-δ = 30      (paso dimensional)
+δ = 1       (paso dimensional - granularidad 1dp)
 ε₀ = 0.10   (incremento base 10%)
 K = 0.08    (sensibilidad logarítmica)
 ```

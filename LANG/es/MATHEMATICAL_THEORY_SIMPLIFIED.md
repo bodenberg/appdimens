@@ -146,9 +146,9 @@ Si tienes un TV de 1080dp:
 🔹 PASO 1: ¿Cuánto ha crecido la pantalla?
 
    Diferencia = 720 - 300 = 420dp
-   Pasos = 420 ÷ 30 = 14 pasos
+   Ajuste = 420 ÷ 1 = 420
    
-   📝 La pantalla creció 14 "pasos" desde la base
+   📝 La pantalla está 420dp por encima de la base de referencia
 
 🔹 PASO 2: ¿Cuál es la relación de la pantalla?
 
@@ -677,7 +677,7 @@ Valor Final = Base × F(S, AR)
 **Derivada respecto a S (tamaño de pantalla):**
 ```
 ∂f_FX/∂S = B × γ(AR) / δ
-         = B × γ(AR) / 30
+         = B × γ(AR) / 1
 
 Interpretación:
   - Tasa de crecimiento es CONSTANTE para un AR dado

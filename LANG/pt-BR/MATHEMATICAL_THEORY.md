@@ -239,7 +239,7 @@ F(S, AR) = α + β(S) × γ(AR)
    onde:
    S = dimensão da tela (smallest width ou highest dimension)
    W₀ = 300 (largura de referência)
-   δ = 30 (step, define sensibilidade ao tamanho)
+   δ = 1 (step, granularidade de 1dp para precisão refinada)
    
    Propriedades:
    - β(W₀) = 0 (neutro na referência)
@@ -292,8 +292,8 @@ f_FX_custom(B, S, AR, K_custom) = B × [1.0 + ((S - W₀) / δ) × (ε₀ + K_cu
 | `α` | Fator Base | 1.0 | Identidade no ponto de referência |
 | `W₀` | Largura Referência | 300 | Dispositivo médio histórico (~360dp smartphones) |
 | `AR₀` | Aspect Ratio Referência | 1.78 | Proporção 16:9 (padrão histórico) |
-| `δ` | Step Dimensional | 30 | Incremento de ~10% (300/30 = 10) |
-| `ε₀` | Incremento Base | 0.10 | 10% de crescimento por step |
+| `δ` | Step Dimensional | 1 | Granularidade de 1dp (precisão refinada) |
+| `ε₀` | Incremento Base | 0.10 | Fator de ajuste base 10% |
 | `K` | Sensibilidade Log | 0.08 | Calibrado empiricamente para suavidade |
 
 ### 2.4 Análise Matemática do Comportamento
@@ -381,7 +381,7 @@ Propriedades:
 
 **Interpretação:**
 - Fator de escala: 1.2352 (aumento de 23.52%)
-- Contribuição do tamanho (β): 2.0 steps acima da referência
+- Contribuição do tamanho (β): 60.0 (60dp acima da referência)
 - Contribuição do AR (γ): Incremento de 11.76% (vs 10% base)
 - Ajuste logarítmico: +1.76% adicional devido ao AR alongado
 
@@ -1985,7 +1985,7 @@ WindowSizeClass.calculateFromSize(size)
 
 const val BASE_DP_FACTOR = 1.00f           // Fator neutro
 const val BASE_WIDTH_DP = 300f             // Referência: Nexus 5 (~360dp)
-const val INCREMENT_DP_STEP = 30f          // Passo de 10%
+const val INCREMENT_DP_STEP = 1f           // Granularidade 1dp
 const val REFERENCE_AR = 1.78f             // 16:9
 const val DEFAULT_SENSITIVITY_K = 0.08f    // Sensibilidade padrão
 const val BASE_INCREMENT = 0.10f           // Incremento base 10%
@@ -2067,7 +2067,7 @@ f_FX(B, S, AR) = B × [1 + ((S - W₀) / δ) × (ε₀ + K × ln(AR / AR₀))]
 Constantes universais:
 W₀ = 300    (referência dimensional)
 AR₀ = 1.78  (proporção 16:9)
-δ = 30      (step dimensional)
+δ = 1       (step dimensional - granularidade 1dp)
 ε₀ = 0.10   (incremento base 10%)
 K = 0.08    (sensibilidade logarítmica)
 ```

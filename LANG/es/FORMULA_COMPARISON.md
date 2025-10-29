@@ -756,7 +756,7 @@ PUNTUACIÓN FINAL = 30% Rendimiento + 40% Precisión + 30% Flexibilidad
 ║                                                                   ║
 ║   Firmado: Análisis Técnico Independiente                        ║
 ║   Fecha: Enero 2025                                              ║
-║   Versión: 1.0.8                                                 ║
+║   Versión: 1.0.9                                                 ║
 ║                                                                   ║
 ╚═══════════════════════════════════════════════════════════════════╝
 ```

@@ -755,7 +755,7 @@ NOTA FINAL = 30% Performance + 40% Exatidão + 30% Flexibilidade
 ║                                                                   ║
 ║   Assinado: Análise Técnica Independente                         ║
 ║   Data: Janeiro 2025                                              ║
-║   Versão: 1.0.8                                                   ║
+║   Versão: 1.0.9                                                   ║
 ║                                                                   ║
 ╚═══════════════════════════════════════════════════════════════════╝
 ```

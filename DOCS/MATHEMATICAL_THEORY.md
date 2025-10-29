@@ -239,7 +239,7 @@ F(S, AR) = α + β(S) × γ(AR)
    where:
    S = screen dimension (smallest width or highest dimension)
    W₀ = 300 (reference width)
-   δ = 30 (step, defines size sensitivity)
+   δ = 1 (step, 1dp granularity for fine precision)
    
    Properties:
    - β(W₀) = 0 (neutral at reference)
@@ -292,8 +292,8 @@ f_FX_custom(B, S, AR, K_custom) = B × [1.0 + ((S - W₀) / δ) × (ε₀ + K_cu
 | `α` | Base Factor | 1.0 | Identity at reference point |
 | `W₀` | Reference Width | 300 | Historical average device (~360dp smartphones) |
 | `AR₀` | Reference Aspect Ratio | 1.78 | 16:9 proportion (historical standard) |
-| `δ` | Dimensional Step | 30 | ~10% increment (300/30 = 10) |
-| `ε₀` | Base Increment | 0.10 | 10% growth per step |
+| `δ` | Dimensional Step | 1 | 1dp granularity (fine-grained precision) |
+| `ε₀` | Base Increment | 0.10 | 10% base adjustment factor |
 | `K` | Log Sensitivity | 0.08 | Empirically calibrated for smoothness |
 
 ### 2.4 Mathematical Analysis of Behavior
@@ -381,7 +381,7 @@ Properties:
 
 **Interpretation:**
 - Scale factor: 1.2352 (increase of 23.52%)
-- Size contribution (β): 2.0 steps above reference
+- Size contribution (β): 60.0 (60dp above reference)
 - AR contribution (γ): Increment of 11.76% (vs 10% base)
 - Logarithmic adjustment: +1.76% additional due to elongated AR
 
@@ -1985,7 +1985,7 @@ WindowSizeClass.calculateFromSize(size)
 
 const val BASE_DP_FACTOR = 1.00f           // Neutral factor
 const val BASE_WIDTH_DP = 300f             // Reference: Nexus 5 (~360dp)
-const val INCREMENT_DP_STEP = 30f          // 10% step
+const val INCREMENT_DP_STEP = 1f           // 1dp granularity
 const val REFERENCE_AR = 1.78f             // 16:9
 const val DEFAULT_SENSITIVITY_K = 0.08f    // Default sensitivity
 const val BASE_INCREMENT = 0.10f           // 10% base increment
@@ -2065,7 +2065,7 @@ f_FX(B, S, AR) = B × [1 + ((S - W₀) / δ) × (ε₀ + K × ln(AR / AR₀))]
 Universal constants:
 W₀ = 300    (dimensional reference)
 AR₀ = 1.78  (16:9 proportion)
-δ = 30      (dimensional step)
+δ = 1       (dimensional step - 1dp granularity)
 ε₀ = 0.10   (10% base increment)
 K = 0.08    (logarithmic sensitivity)
 ```
