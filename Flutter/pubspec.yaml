@@ -1,6 +1,6 @@
 name: appdimens
 description: Smart and Responsive Dimensioning for Flutter - Mathematically responsive scaling that ensures your UI design adapts perfectly to any screen size or aspect ratio.
-version: 1.0.8
+version: 1.0.9
 homepage: https://github.com/bodenberg/appdimens
 
 environment:

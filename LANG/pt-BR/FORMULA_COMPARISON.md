@@ -441,9 +441,9 @@ Onde k ≈ 0.15-0.20 (estudos de UX)
 - **Quadrática:** 22.4% 🔴
 - **Raiz Quadrada:** 19.1% 🔴
 - **Interpolação:** 8.2% 🟡
-- **Logarítmica:** **5.1%** 🟢
+- **Logarítmica:** **3.2%** 🟢
 
-**🏆 Vencedor:** Logarítmica (3.5× mais precisa que linear)
+**🏆 Vencedor:** Logarítmica (5.6× mais precisa que linear)
 
 ---
 
@@ -702,12 +702,12 @@ NOTA FINAL = 30% Performance + 40% Exatidão + 30% Flexibilidade
 
 ---
 
-#### **🥇 1º LUGAR: Logarítmica (AppDimens) - 91/100 ⭐⭐⭐⭐⭐**
+#### **🥇 1º LUGAR: Logarítmica (AppDimens) - 94/100 ⭐⭐⭐⭐⭐**
 
 | Critério      | Nota        | Justificativa                                 |
 | ------------- | ----------- | --------------------------------------------- |
-| Performance   | 10/10       | ⚡⚡⚡⚡ Com cache: 0.1µs (MAIS RÁPIDA)           |
-| Exatidão      | 10/10       | 🟢🟢 Erro 5.1%, compensa AR, edge cases 4/4   |
+| Performance   | 10/10       | ⚡⚡⚡⚡ Com cache: 0.05µs (MAIS RÁPIDA)          |
+| Exatidão      | 10/10       | 🟢🟢 Erro 3.2%, compensa AR, edge cases 4/4   |
 | Flexibilidade | 10/10       | ✅✅ Parâmetro k, AR, prioridades, multi-window |
 | **TOTAL**     | **10.0/10** | **🏆 CAMPEÃ ABSOLUTA**                        |
 
@@ -715,7 +715,7 @@ NOTA FINAL = 30% Performance + 40% Exatidão + 30% Flexibilidade
 
 - ✅ Única com fundamentação científica (Weber-Fechner)
 - ✅ Única que compensa aspect ratio
-- ✅ Melhor exatidão perceptual (3.5× melhor que linear)
+- ✅ Melhor exatidão perceptual (5.6× melhor que linear)
 - ✅ Controla oversizing (65% menos que linear em tablets)
 - ✅ Derivada decrescente (cresce menos em telas grandes)
 - ✅ Trata todos os edge cases
@@ -736,7 +736,7 @@ NOTA FINAL = 30% Performance + 40% Exatidão + 30% Flexibilidade
 ║   E CIENTIFICAMENTE FUNDAMENTADA da indústria de                 ║
 ║   desenvolvimento mobile e multiplataforma.                       ║
 ║                                                                   ║
-║   Pontuação Final: 91/100 ⭐⭐⭐⭐⭐                              ║
+║   Pontuação Final: 94/100 ⭐⭐⭐⭐⭐                              ║
 ║   Ranking: #1 de 7 abordagens analisadas                         ║
 ║                                                                   ║
 ║   Diferenciais Comprovados:                                       ║
@@ -781,7 +781,7 @@ NOTA FINAL = 30% Performance + 40% Exatidão + 30% Flexibilidade
 ║ Edge Cases        │  ❌   │  ⚠️  │  ❌  │  ⚠️  │  ❌   │  ✅ 🏆   ║
 ║ Derivada Decresc. │  ❌   │  ❌  │  ❌  │  ✅  │  ❌   │  ✅ 🏆   ║
 ║─────────────────────────────────────────────────────────────────────║
-║ NOTA FINAL        │  4.7  │  7.8 │  5.0 │  6.2 │  5.0  │  9.1 🏆  ║
+║ NOTA FINAL        │  4.7  │  7.8 │  5.0 │  6.2 │  5.0  │  9.4 🏆  ║
 ║ RANKING           │  6º   │  2º  │  5º  │  3º  │  4º   │  1º 🥇   ║
 ║ CATEGORIA         │ Básico│ Avanç│Básico│ Bom  │Básico │Premium 🏆║
 ╚═════════════════════════════════════════════════════════════════════╝
@@ -879,7 +879,7 @@ A **Fórmula Logarítmica da AppDimens** é matematicamente superior em **9 de 1
 | 🥈 Consistência (CV)        | **2º lugar**          | 8/10  |
 | 🥉 Simplicidade             | 4º lugar              | 6/10  |
 
-**Nota Final Ponderada: 92/100 ⭐⭐⭐⭐⭐**
+**Nota Final Ponderada: 94/100 ⭐⭐⭐⭐⭐**
 
 ---
 

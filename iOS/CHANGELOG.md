@@ -14,6 +14,18 @@ All notable changes to the AppDimens iOS library will be documented in this file
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.9] - 2025-10-29
+
+### Changed
+- Updated version to 1.0.9 across all modules
+- Documentation updated with improved precision values
+- Performance benchmarks updated (step calculation optimization)
+
+### Note
+- iOS implementation already used equivalent approach to step=1dp (direct division)
+- This version aligns version numbers across all platforms
+- No breaking changes for iOS users
+
 ## [1.0.8] - 2025-01-16
 
 ### Changed

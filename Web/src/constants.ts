@@ -22,9 +22,9 @@ export const BASE_WIDTH_DP = 300;
 export const BASE_HEIGHT_DP = 300;
 
 /**
- * Increment step size for calculating adjustment (30dp)
+ * Increment step size for calculating adjustment (1dp)
  */
-export const INCREMENT_DP_STEP = 30;
+export const INCREMENT_DP_STEP = 1;
 
 /**
  * Circumference factor (2π)

@@ -55,10 +55,10 @@ object AppDimensAdjustmentFactors {
     const val BASE_WIDTH_DP = 300f
 
     /**
-     * [EN] Dp increment step size for calculating the adjustment (e.g., every 30dp).
-     * [PT] Tamanho do passo de incremento em Dp para calcular o ajuste (ex: a cada 30dp).
+     * [EN] Dp increment step size for calculating the adjustment (e.g., every 1dp).
+     * [PT] Tamanho do passo de incremento em Dp para calcular o ajuste (ex: a cada 1dp).
      */
-    const val INCREMENT_DP_STEP = 30f
+    const val INCREMENT_DP_STEP = 1f
 
     /**
      * [EN] Factor for circumference calculation ($2\pi$). Uses kotlin.math.PI.

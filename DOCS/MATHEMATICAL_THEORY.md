@@ -77,7 +77,7 @@ AppDimens proposes a system based on **non-linear mathematical functions** that 
 **Reference Constants:**
 - `W₀ = 300` = Reference width (baseline)
 - `AR₀ = 1.78` = Reference aspect ratio (16:9)
-- `Step = 30` = Dimensional increment step
+- `Step = 1` = Dimensional increment step
 
 #### 1.2.2 Proposed Mathematical Models
 

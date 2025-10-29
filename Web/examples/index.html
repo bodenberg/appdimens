@@ -407,7 +407,7 @@ const adaptive = fixed(16)
             fixed(value) {
                 // Simulação do cálculo Fixed (logarítmico)
                 const baseWidth = 300;
-                const increment = 30;
+                const increment = 1;
                 const smallest = Math.min(this.viewport.width, this.viewport.height);
                 const difference = smallest - baseWidth;
                 const factor = difference / increment;

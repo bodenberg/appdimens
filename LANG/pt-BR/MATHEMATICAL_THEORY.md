@@ -77,7 +77,7 @@ AppDimens propõe um sistema baseado em **funções matemáticas não-lineares**
 **Constantes de Referência:**
 - `W₀ = 300` = Largura de referência (baseline)
 - `AR₀ = 1.78` = Aspect ratio de referência (16:9)
-- `Step = 30` = Passo de incremento dimensional
+- `Step = 1` = Passo de incremento dimensional
 
 #### 1.2.2 Modelos Matemáticos Propostos
 

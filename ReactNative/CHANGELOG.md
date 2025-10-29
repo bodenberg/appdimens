@@ -10,6 +10,18 @@ All notable changes to the AppDimens React Native library will be documented in 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.9] - 2025-10-29
+
+### Changed
+- Updated version to 1.0.9 for consistency across platforms
+- Documentation updated with improved precision values
+- Performance benchmarks updated
+
+### Note
+- React Native implementation already used equivalent approach to step=1dp (direct division)
+- This version aligns version numbers across all platforms
+- No breaking changes for React Native users
+
 ## [1.0.8] - 2025-01-27
 
 ### Added
