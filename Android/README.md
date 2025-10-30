@@ -75,17 +75,17 @@ val scaledPosition = appDimensGames.calculateVector2D(position, GameDimensionTyp
 ```kotlin
 dependencies {
     // Core library (Dynamic + Fixed scaling)
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.8")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.9")
     
     // Optional: SDP & SSP scaling
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.8")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.8")
+    implementation("io.github.bodenberg:appdimens-sdps:1.0.9")
+    implementation("io.github.bodenberg:appdimens-ssps:1.0.9")
     
     // All-in-one package (does not include games module)
-    implementation("io.github.bodenberg:appdimens-all:1.0.8")
+    implementation("io.github.bodenberg:appdimens-all:1.0.9")
     
     // Game development with C++/NDK support (separate dependency)
-    implementation("io.github.bodenberg:appdimens-games:1.0.8")
+    implementation("io.github.bodenberg:appdimens-games:1.0.9")
 }
 ```
 
@@ -93,11 +93,11 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'io.github.bodenberg:appdimens-dynamic:1.0.8'
-    implementation 'io.github.bodenberg:appdimens-sdps:1.0.8'
-    implementation 'io.github.bodenberg:appdimens-ssps:1.0.8'
-    implementation 'io.github.bodenberg:appdimens-all:1.0.8'
-    implementation 'io.github.bodenberg:appdimens-games:1.0.8'
+    implementation 'io.github.bodenberg:appdimens-dynamic:1.0.9'
+    implementation 'io.github.bodenberg:appdimens-sdps:1.0.9'
+    implementation 'io.github.bodenberg:appdimens-ssps:1.0.9'
+    implementation 'io.github.bodenberg:appdimens-all:1.0.9'
+    implementation 'io.github.bodenberg:appdimens-games:1.0.9'
 }
 ```
 
@@ -176,7 +176,7 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     
     // AppDimens
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.8")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.9")
 }
 ```
 

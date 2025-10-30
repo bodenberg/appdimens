@@ -77,7 +77,7 @@ android {
 
 ```kotlin
 dependencies {
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.8")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.0.9")
 }
 ```
 

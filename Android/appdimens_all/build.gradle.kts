@@ -22,7 +22,7 @@ tasks.dokkaJavadoc.configure {
 }
 
 mavenPublishing {
-    coordinates("io.github.bodenberg", "appdimens-all", "1.0.8")
+    coordinates("io.github.bodenberg", "appdimens-all", "1.0.9")
 
     configure(AndroidSingleVariantLibrary(
             publishJavadocJar = true,
