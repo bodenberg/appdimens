@@ -39,6 +39,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.appdimens.dynamic.compose.AppDimens
+import com.appdimens.dynamic.compose.AppDimens.fixedDp
+import com.appdimens.dynamic.compose.AppDimens.fxPortraitLowest
 import com.appdimens.dynamic.compose.AppDimens.fxdp
 import com.appdimens.dynamic.compose.AppDimens.fxsp
 import com.appdimens.dynamic.compose.AppDimensPhysicalUnits
@@ -46,6 +48,11 @@ import com.appdimens.library.DpQualifier
 import com.appdimens.library.ScreenType
 import com.appdimens.library.UnitType
 import com.appdimens.library.UiModeType
+import com.appdimens.sdps.compose.hdp
+import com.appdimens.sdps.compose.scaledDp
+import com.appdimens.sdps.compose.sdp
+import com.appdimens.sdps.compose.wdp
+import com.appdimens.ssps.compose.ssp
 import java.util.Locale
 
 /**
@@ -156,6 +163,42 @@ fun AppDimensDemoScreen() {
             }
 
             item {
+                UsageCard(title = "🆕 Base Orientation - Auto-adapta à rotação (v1.2.0)") {
+                    Column(verticalArrangement = Arrangement.spacedBy(12.fxdp)) {
+                        Text(
+                            "Especifique a orientação original do design e AppDimens automaticamente ajusta quando rotacionar!",
+                            style = MaterialTheme.typography.bodyMedium
+                        )
+                        
+                        // Portrait design examples
+                        val portraitCard = 280.fixedDp().fxPortraitLowest
+                        val portraitPadding = 16.fxPortraitLowest
+                        
+                        Card(
+                            modifier = Modifier
+                                .width(portraitCard)
+                                .padding(portraitPadding),
+                            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer)
+                        ) {
+                            Column(modifier = Modifier.padding(12.fxdp)) {
+                                Text("Card Portrait Design", style = MaterialTheme.typography.titleSmall)
+                                Text("Width: ${portraitCard.value.toInt()}dp", style = MaterialTheme.typography.bodySmall)
+                                Text("Se rotacionar para landscape, largura auto-ajusta!", fontSize = 12.fxsp)
+                            }
+                        }
+                        
+                        Spacer(modifier = Modifier.height(8.fxdp))
+                        
+                        // Comparison
+                        Text("Comparação:", style = MaterialTheme.typography.titleSmall)
+                        Text("• .portraitLowest() - Design portrait, usa largura", fontSize = 12.fxsp)
+                        Text("• .landscapeHighest() - Design landscape, usa largura", fontSize = 12.fxsp)
+                        Text("• .baseOrientation(AUTO) - Sem inversão (padrão)", fontSize = 12.fxsp)
+                    }
+                }
+            }
+
+            item {
                 UsageCard(title = "Propriedades de conveniência (fxdp / fxsp / dydp / dypx)") {
                     Column(verticalArrangement = Arrangement.spacedBy(8.fxdp)) {
                         val sampleDp = 24.dp
@@ -166,6 +209,17 @@ fun AppDimensDemoScreen() {
                         // [EN] dynamicPerDp calculates a percentage of the screen dimension.
                         // [PT] dynamicPerDp calcula uma porcentagem da dimensão da tela.
                         val convDyDp = with(AppDimens) { 0.10f.dynamicPerDp() }
+
+
+                        val convFxDp1 = with(AppDimens) { 16.fixed().type(ScreenType.HIGHEST).dp }
+                        val convFxSp2 = with(AppDimens) { 16.wdp }
+                        val convFxSp3 = with(AppDimens) { 16.hdp }
+                        val convFxDp3 = with(AppDimens) { 16.dynamic().type(ScreenType.HIGHEST).dp}
+
+                        Text("fx = ${convFxDp1.value}dp")
+                        Text("dy -> ${convFxDp3.value}sp")
+                        Text("dp -> ${convFxSp2.value}dp")
+                        Text("dp -> ${convFxSp3.value}dp")
 
                         Text("base da amostra = ${sampleDp.value}dp")
                         Text("fxdp -> ${convFxDp.value}dp")
@@ -432,7 +486,7 @@ private fun DemoTile(size: Dp, label: String) {
  */
 @Preview(
     showBackground = true,
-    device = "id:pixel_5", showSystemUi = true,
+    device = "spec:parent=desktop_large,orientation=portrait", showSystemUi = true,
     uiMode = Configuration.UI_MODE_NIGHT_NO
 )
 @Composable

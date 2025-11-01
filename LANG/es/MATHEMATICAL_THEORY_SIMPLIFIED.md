@@ -6,11 +6,11 @@
 
 **Entiende el Escalado Logarítmico en 10 Minutos**
 
-[![Versión](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens)
+[![Versión](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bodenberg/appdimens)
 [![Matemática](https://img.shields.io/badge/math-logarithmic-green.svg)]()
 [![Plataforma](https://img.shields.io/badge/platform-universal-orange.svg)]()
 
-*Por Jean Bodenberg | Enero 2025*
+*Por Jean Bodenberg | Octubre 2025*
 
 [📚 Ver Documentación Completa](../../DOCS/README.md) | [⚡ Referencia Rápida](DOCS_QUICK_REFERENCE.md) | [🔬 Comparación Detallada](FORMULA_COMPARISON.md) | [📖 Guía Técnica Completa](COMPREHENSIVE_TECHNICAL_GUIDE.md)
 

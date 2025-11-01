@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.app"
-        minSdk = 23
+        minSdk = 25
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -50,12 +50,12 @@ android {
 dependencies {
     api(project(":appdimens_all"))
     api(project(":appdimens_games"))
-    api(project(":appdimens_dynamic"))
-    api(project(":appdimens_sdps"))
-    api(project(":appdimens_ssps"))
-    //implementation("com.appdimens:appdimens-all:1.0.0")
+    //api(project(":appdimens_dynamic"))
+    //api(project(":appdimens_sdps"))
+    //api(project(":appdimens_ssps"))
+    //implementation("io.github.bodenberg:appdimens-all:1.0.8")
+    //implementation("io.github.bodenberg:appdimens-games:1.0.8")
     //implementation("com.github.bodenberg.appdimens:appdimens-all:1.0.0")
-    //implementation(libs.appdimens.all)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

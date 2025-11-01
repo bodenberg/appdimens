@@ -22,6 +22,12 @@
 **... comparar AppDimens com outras soluções** ⚖️
 → Leia: [FORMULA_COMPARISON.md](FORMULA_COMPARISON.md) (30min)
 
+**... aprender sobre Base Orientation (rotação automática)** 🔄
+→ Leia: [BASE_ORIENTATION_GUIDE.md](../../DOCS/BASE_ORIENTATION_GUIDE.md) (15min)
+
+**... usar o modelo Fluid para tipografia** 🌊
+→ Leia: Seção Fluid em [EXAMPLES.md](../../DOCS/EXAMPLES.md) (10min)
+
 **... ver TUDO em um só documento** 📚
 → Leia: [COMPREHENSIVE_TECHNICAL_GUIDE.md](COMPREHENSIVE_TECHNICAL_GUIDE.md) (2h)
 
@@ -283,8 +289,8 @@ AppDimens/
 
 ---
 
-**Última atualização:** Janeiro 2025  
-**Versão:** 1.0.9  
+**Última atualização:** Outubro 2025  
+**Versão:** 1.1.0  
 **Autor:** Jean Bodenberg  
 **Licença:** Apache 2.0
 

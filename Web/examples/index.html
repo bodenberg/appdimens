@@ -411,7 +411,7 @@ const adaptive = fixed(16)
                 const smallest = Math.min(this.viewport.width, this.viewport.height);
                 const difference = smallest - baseWidth;
                 const factor = difference / increment;
-                const adjustment = 1 + factor * 0.1;
+                const adjustment = 1 + factor * (0.1 / 30);  // Adjusted for 1dp step granularity
                 
                 this.cacheStats.misses++;
                 return value * adjustment;

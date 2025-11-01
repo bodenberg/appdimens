@@ -9,7 +9,7 @@ title: "📐 AppDimens React Native"
 
 Mathematically responsive scaling that ensures your UI design adapts perfectly to any screen size or aspect ratio — from phones to tablets, TVs, and wearables.
 
-[![Version](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-React%20Native-orange.svg)](https://reactnative.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-4.8+-blue.svg)](https://www.typescriptlang.org/)
@@ -113,7 +113,75 @@ function App() {
 |-------|------------|----------------|----------------|
 | **Fixed (FX)** ⭐ **RECOMMENDED** | Logarithmic scaling (refined & balanced) | **Most UI elements**: buttons, paddings, margins, icons, fonts, containers, cards | `fx(value).toPixels()` |
 | **Dynamic (DY)** | Proportional scaling (aggressive) | **Specific cases**: large containers, full-width grids, viewport-dependent elements | `dy(value).toPixels()` |
+| **Fluid (FL)** | Clamp-like smooth interpolation | **Typography & spacing**: fluid fonts, responsive spacing with min/max bounds | `useFluid(min, max)` |
 | **Percentage** | Screen-based percentage | Layout containers (use sparingly) | `percentage(0.8)` |
+
+### 🌊 Fluid Model - Smooth Bounded Scaling
+
+The **Fluid** model provides smooth interpolation between minimum and maximum values based on screen width breakpoints, similar to CSS `clamp()`. Perfect for typography and spacing that needs controlled growth.
+
+**Key Features:**
+- 📏 **Bounded Growth**: Define min and max values with smooth transitions
+- 🎯 **Custom Breakpoints**: Set custom width ranges (default: 320-768px)
+- 📱 **Device-Aware**: Different ranges for different device types
+- ⚡ **Auto-Reactive**: Updates automatically on screen size changes
+
+**Basic Usage:**
+
+```tsx
+import { useFluid, fluid } from 'appdimens-react-native';
+
+function FluidExample() {
+  // Font size from 16 to 24 between 320-768px width
+  const fontSize = useFluid(16, 24);
+  
+  // Custom breakpoints
+  const padding = useFluid(8, 16, 280, 600);
+  
+  return (
+    <View style={{ padding }}>
+      <Text style={{ fontSize }}>Fluid Typography</Text>
+    </View>
+  );
+}
+
+// With device type qualifiers
+const responsiveFontSize = fluid(16, 24)
+  .device(DeviceType.Tablet, 20, 32)
+  .device(DeviceType.TV, 24, 40)
+  .calculate();
+```
+
+**When to Use Fluid vs Fixed:**
+
+| Aspect | Fluid | Fixed |
+|--------|-------|-------|
+| **Growth** | Linear between min/max | Logarithmic (slows on large screens) |
+| **Control** | Explicit bounds (min/max) | Automatic adaptive scaling |
+| **Best for** | Typography, line heights | UI elements, buttons, icons |
+| **Predictability** | Exact min/max values | Calculated proportional growth |
+
+**Multiple Fluid Values:**
+
+```tsx
+import { useFluidMultiple } from 'appdimens-react-native';
+
+function ResponsiveCard() {
+  const [fontSize, padding, margin] = useFluidMultiple([
+    [14, 20],  // fontSize: 14-20
+    [8, 16],   // padding: 8-16
+    [12, 24],  // margin: 12-24
+  ]);
+  
+  return (
+    <View style={{ padding, margin }}>
+      <Text style={{ fontSize }}>Multi-Fluid Component</Text>
+    </View>
+  );
+}
+```
+
+See [examples/FluidExample.tsx](./examples/FluidExample.tsx) for complete usage examples.
 
 ---
 

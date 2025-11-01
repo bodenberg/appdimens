@@ -25,12 +25,16 @@
 import 'package:flutter/material.dart';
 import 'appdimens_types.dart';
 import 'appdimens_utils.dart';
+import 'models/base_orientation.dart';
+import 'utils/orientation_resolver.dart';
 
 /// [EN] Dynamic dimension builder that provides proportional scaling for containers and grids.
 /// [PT] Construtor de dimensão dinâmica que fornece escalonamento proporcional para containers e grids.
 class AppDimensDynamic {
   final double _initialValue;
   final bool _ignoreMultiWindowAdjustment;
+  BaseOrientation _baseOrientation = BaseOrientation.auto;
+  ScreenType _screenType = ScreenType.lowest;
   final Map<String, double> _uiModeValues = {};
   final Map<String, double> _dpQualifierValues = {};
   final Map<String, double> _deviceTypeValues = {};
@@ -79,7 +83,8 @@ class AppDimensDynamic {
   /// @param screenSize O tamanho mínimo de tela (em dp).
   /// @param customValue O valor de dimensão customizado.
   /// @return A instância AppDimensDynamic para encadeamento.
-  AppDimensDynamic screenWithSize(DeviceType deviceType, double screenSize, double customValue) {
+  AppDimensDynamic screenWithSize(
+      DeviceType deviceType, double screenSize, double customValue) {
     final key = '${deviceType.name}_$screenSize';
     _screenQualifierValues[key] = customValue;
     return this;
@@ -97,7 +102,8 @@ class AppDimensDynamic {
   /// @param qualifierValue O valor do qualificador (ex: 600 para sw600dp).
   /// @param customValue O valor de dimensão customizado.
   /// @return A instância AppDimensDynamic para encadeamento.
-  AppDimensDynamic screenWithQualifier(DpQualifier dpQualifier, int qualifierValue, double customValue) {
+  AppDimensDynamic screenWithQualifier(
+      DpQualifier dpQualifier, int qualifierValue, double customValue) {
     final key = '${dpQualifier.name}_$qualifierValue';
     _dpQualifierValues[key] = customValue;
     return this;
@@ -125,6 +131,42 @@ class AppDimensDynamic {
   ) {
     final key = '${uiModeType.name}_${dpQualifier.name}_$qualifierValue';
     _intersectionValues[key] = customValue;
+    return this;
+  }
+
+  // MARK: - Base Orientation Methods
+
+  AppDimensDynamic baseOrientation(BaseOrientation orientation) {
+    _baseOrientation = orientation;
+    return this;
+  }
+
+  AppDimensDynamic screenType(ScreenType type) {
+    _screenType = type;
+    return this;
+  }
+
+  AppDimensDynamic portraitLowest() {
+    _baseOrientation = BaseOrientation.portrait;
+    _screenType = ScreenType.lowest;
+    return this;
+  }
+
+  AppDimensDynamic portraitHighest() {
+    _baseOrientation = BaseOrientation.portrait;
+    _screenType = ScreenType.highest;
+    return this;
+  }
+
+  AppDimensDynamic landscapeLowest() {
+    _baseOrientation = BaseOrientation.landscape;
+    _screenType = ScreenType.lowest;
+    return this;
+  }
+
+  AppDimensDynamic landscapeHighest() {
+    _baseOrientation = BaseOrientation.landscape;
+    _screenType = ScreenType.highest;
     return this;
   }
 
@@ -169,7 +211,8 @@ class AppDimensDynamic {
   /// [EN] Sets a custom dimension value for a specific intersection of qualifiers.
   /// @deprecated Use screenWithIntersection() instead for consistency with Android/iOS.
   @deprecated
-  AppDimensDynamic intersection(UiModeType uiMode, DpQualifier dpQualifier, double value) {
+  AppDimensDynamic intersection(
+      UiModeType uiMode, DpQualifier dpQualifier, double value) {
     return screenWithIntersection(uiMode, dpQualifier, 0, value);
   }
 
@@ -208,17 +251,17 @@ class AppDimensDynamic {
   /// @return O valor da dimensão calculado.
   double calculate(BuildContext context) {
     final cacheKey = _generateCacheKey(context);
-    
+
     if (_cacheEnabled && _cache.containsKey(cacheKey)) {
       return _cache[cacheKey]!;
     }
-    
+
     final value = _calculateValue(context);
-    
+
     if (_cacheEnabled) {
       _cache[cacheKey] = value;
     }
-    
+
     return value;
   }
 
@@ -335,10 +378,10 @@ class AppDimensDynamic {
     final size = mediaQuery.size;
     final devicePixelRatio = mediaQuery.devicePixelRatio;
     final orientation = mediaQuery.orientation;
-    
+
     final deviceType = DeviceType.current(context);
     final uiModeType = UiModeType.current(context);
-    
+
     return '${size.width}_${size.height}_${devicePixelRatio}_${orientation.name}_${deviceType.name}_${uiModeType.name}_${_ignoreMultiWindowAdjustment}';
   }
 
@@ -351,34 +394,34 @@ class AppDimensDynamic {
   double _calculateValue(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final size = mediaQuery.size;
-    
+
     final deviceType = DeviceType.current(context);
     final uiModeType = UiModeType.current(context);
-    
+
     // Check for custom values in order of precedence
     final intersectionKey = '${uiModeType.name}_${_getDpQualifier(size)}';
     if (_intersectionValues.containsKey(intersectionKey)) {
       return _intersectionValues[intersectionKey]!;
     }
-    
+
     if (_uiModeValues.containsKey(uiModeType.name)) {
       return _uiModeValues[uiModeType.name]!;
     }
-    
+
     if (_deviceTypeValues.containsKey(deviceType.name)) {
       return _deviceTypeValues[deviceType.name]!;
     }
-    
+
     final dpQualifier = _getDpQualifier(size);
     if (_dpQualifierValues.containsKey(dpQualifier.name)) {
       return _dpQualifierValues[dpQualifier.name]!;
     }
-    
+
     final screenQualifier = _getScreenQualifier(size);
     if (_screenQualifierValues.containsKey(screenQualifier.name)) {
       return _screenQualifierValues[screenQualifier.name]!;
     }
-    
+
     // Apply dynamic scaling calculation
     return _applyDynamicScaling(context, _initialValue);
   }
@@ -395,40 +438,56 @@ class AppDimensDynamic {
     final mediaQuery = MediaQuery.of(context);
     final size = mediaQuery.size;
     final devicePixelRatio = mediaQuery.devicePixelRatio;
-    
+
     final deviceType = DeviceType.current(context);
     final uiModeType = UiModeType.current(context);
-    
-    // Calculate base dimension (smallest dimension for scaling)
-    final baseDimension = size.width < size.height ? size.width : size.height;
-    
+
+    // Resolve effective screen type based on base orientation
+    final effectiveScreenType = OrientationResolver.resolve(
+      requestedType: _screenType,
+      baseOrientation: _baseOrientation,
+      context: context,
+    );
+
+    // Calculate base dimension based on effective screen type
+    final baseDimension = effectiveScreenType == ScreenType.lowest
+        ? (size.width < size.height ? size.width : size.height)
+        : (size.width > size.height ? size.width : size.height);
+
     // Calculate aspect ratio factor
     final aspectRatio = size.width / size.height;
-    final aspectRatioFactor = _calculateAspectRatioFactor(aspectRatio, deviceType);
-    
+    final aspectRatioFactor =
+        _calculateAspectRatioFactor(aspectRatio, deviceType);
+
     // Calculate density factor
     final densityFactor = _calculateDensityFactor(devicePixelRatio, deviceType);
-    
+
     // Calculate device type factor
     final deviceTypeFactor = _calculateDeviceTypeFactor(deviceType, uiModeType);
-    
+
     // Apply multi-window adjustment if not ignored
     double multiWindowFactor = 1.0;
-    if (!_ignoreMultiWindowAdjustment && AppDimensUtils.isMultiWindowMode(context)) {
+    if (!_ignoreMultiWindowAdjustment &&
+        AppDimensUtils.isMultiWindowMode(context)) {
       multiWindowFactor = 0.8; // Reduce by 20% in multi-window mode
     }
-    
+
     // Test for multi-window mode
-    if (!_ignoreMultiWindowAdjustment && AppDimensUtils.isMultiWindowMode(context)) {
+    if (!_ignoreMultiWindowAdjustment &&
+        AppDimensUtils.isMultiWindowMode(context)) {
       multiWindowFactor = 0.8; // Reduce by 20% in multi-window mode
     }
-    
+
     // Apply proportional scaling for dynamic dimensions
     final scalingFactor = baseDimension / 320.0; // Direct proportional scaling
     final scaledValue = baseValue * scalingFactor;
-    
+
     // Apply all factors
-    return scaledValue * aspectRatioFactor * densityFactor * deviceTypeFactor * multiWindowFactor;
+    return scaledValue *
+        aspectRatioFactor *
+        densityFactor *
+        deviceTypeFactor *
+        multiWindowFactor;
   }
 
   /// [EN] Calculates the aspect ratio adjustment factor.
@@ -439,7 +498,8 @@ class AppDimensDynamic {
   /// @param aspectRatio A proporção atual.
   /// @param deviceType O tipo de dispositivo atual.
   /// @return O fator de proporção.
-  double _calculateAspectRatioFactor(double aspectRatio, DeviceType deviceType) {
+  double _calculateAspectRatioFactor(
+      double aspectRatio, DeviceType deviceType) {
     // Standard aspect ratios for different device types
     final standardRatios = {
       DeviceType.phone: 16.0 / 9.0,
@@ -451,10 +511,10 @@ class AppDimensDynamic {
       DeviceType.foldable: 16.0 / 10.0,
       DeviceType.unknown: 16.0 / 9.0,
     };
-    
+
     final standardRatio = standardRatios[deviceType] ?? 16.0 / 9.0;
     final ratioDifference = (aspectRatio - standardRatio).abs() / standardRatio;
-    
+
     return 1.0 - (ratioDifference * 0.1);
   }
 
@@ -466,7 +526,8 @@ class AppDimensDynamic {
   /// @param devicePixelRatio A proporção de pixels do dispositivo.
   /// @param deviceType O tipo de dispositivo atual.
   /// @return O fator de densidade.
-  double _calculateDensityFactor(double devicePixelRatio, DeviceType deviceType) {
+  double _calculateDensityFactor(
+      double devicePixelRatio, DeviceType deviceType) {
     final standardDensities = {
       DeviceType.phone: 2.0,
       DeviceType.tablet: 2.0,
@@ -477,10 +538,11 @@ class AppDimensDynamic {
       DeviceType.foldable: 2.5,
       DeviceType.unknown: 2.0,
     };
-    
+
     final standardDensity = standardDensities[deviceType] ?? 2.0;
-    final densityDifference = (devicePixelRatio - standardDensity).abs() / standardDensity;
-    
+    final densityDifference =
+        (devicePixelRatio - standardDensity).abs() / standardDensity;
+
     return 1.0 - (densityDifference * 0.05);
   }
 
@@ -492,7 +554,8 @@ class AppDimensDynamic {
   /// @param deviceType O tipo de dispositivo atual.
   /// @param uiModeType O tipo de modo de UI atual.
   /// @return O fator do tipo de dispositivo.
-  double _calculateDeviceTypeFactor(DeviceType deviceType, UiModeType uiModeType) {
+  double _calculateDeviceTypeFactor(
+      DeviceType deviceType, UiModeType uiModeType) {
     final baseFactors = {
       DeviceType.phone: 1.0,
       DeviceType.tablet: 1.2,
@@ -503,7 +566,7 @@ class AppDimensDynamic {
       DeviceType.foldable: 1.1,
       DeviceType.unknown: 1.0,
     };
-    
+
     final uiModeFactors = {
       UiModeType.normal: 1.0,
       UiModeType.carPlay: 1.2,
@@ -512,10 +575,10 @@ class AppDimensDynamic {
       UiModeType.mac: 1.1,
       UiModeType.unknown: 1.0,
     };
-    
+
     final baseFactor = baseFactors[deviceType] ?? 1.0;
     final uiModeFactor = uiModeFactors[uiModeType] ?? 1.0;
-    
+
     return baseFactor * uiModeFactor;
   }
 
@@ -527,7 +590,7 @@ class AppDimensDynamic {
   /// @return O qualificador DP.
   DpQualifier _getDpQualifier(Size size) {
     final smallestWidth = size.width < size.height ? size.width : size.height;
-    
+
     if (smallestWidth >= 960) return DpQualifier.smallestWidth960;
     if (smallestWidth >= 840) return DpQualifier.smallestWidth840;
     if (smallestWidth >= 720) return DpQualifier.smallestWidth720;
@@ -548,7 +611,7 @@ class AppDimensDynamic {
   ScreenQualifier _getScreenQualifier(Size size) {
     final width = size.width;
     final height = size.height;
-    
+
     if (width >= 1920 && height >= 1080) return ScreenQualifier.w1920h1080;
     if (width >= 1600 && height >= 900) return ScreenQualifier.w1600h900;
     if (width >= 1440 && height >= 900) return ScreenQualifier.w1440h900;

@@ -19,9 +19,11 @@ title: "AppDimens Flutter"
 
 - **Dimensionamento Fixo (FX)** ⭐ **RECOMENDADO**: Escalonamento logarítmico refinado e balanceado para a maioria dos elementos de UI - botões, paddings, margens, ícones, fontes, containers, cards
 - **Dimensionamento Dinâmico (DY)**: Escalonamento proporcional agressivo apenas para casos específicos - containers muito grandes, grids de largura completa, elementos dependentes de viewport
+- **Dimensionamento Fluido (FL)** 🌊 **NOVO v1.0.10**: Interpolação suave entre valores mín/máx baseado em breakpoints de largura - ideal para tipografia e espaçamento controlado
+- **Base Orientation** 🆕 **v1.2.0**: Auto-adaptação à rotação de tela - projete para uma orientação, mantenha proporções ao rotacionar automaticamente
 - **Unidades Físicas**: Conversão de medidas reais (mm, cm, polegadas) para pixels da tela
 - **Qualificadores Condicionais**: Valores personalizados baseados em modo de UI, tipo de dispositivo e qualificadores de tela
-- **Cache Inteligente**: Sistema de cache otimizado para performance
+- **Cache Inteligente**: Sistema de cache otimizado para performance com controle global e por instância
 - **Ajuste Multi-Window**: Opção para ignorar ajustes quando o app está em modo multi-window
 - **Extensões Convenientes**: Extensões para widgets Flutter para uso simplificado
 
@@ -51,7 +53,7 @@ Adicione ao seu `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  appdimens: ^1.0.8
+  appdimens: ^1.1.0
 ```
 
 Execute:

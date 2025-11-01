@@ -1,7 +1,7 @@
 # 🔍 Relatório de Validação: Teoria vs Implementação
 
-**Data:** Janeiro 2025  
-**Biblioteca Analisada:** AppDimens Android (`appdimens_dynamic`)  
+**Data:** Outubro 2025  
+**Biblioteca Analisada:** AppDimens Android (`appdimens_dynamic`) v1.1.0  
 **Autor da Análise:** Jean Bodenberg  
 
 ---
@@ -24,21 +24,21 @@
 | `W₀` | Largura Referência | 300 | Seção 2.3 |
 | `AR₀` | Aspect Ratio Referência | 1.78 | Seção 2.3 |
 | `δ` | Step Dimensional | 1 | Seção 2.3 |
-| `ε₀` | Incremento Base | 0.10 | Seção 2.3 |
-| `K` | Sensibilidade Log | 0.08 | Seção 2.3 |
+| `ε₀` | Incremento Base | 0.10/30 = 0.00333 | Seção 2.3 |
+| `K` | Sensibilidade Log | 0.08/30 = 0.00267 | Seção 2.3 |
 
 ### 1.2 Constantes Implementadas (AppDimensAdjustmentFactors.kt)
 
 ```kotlin
-// Arquivo: AppDimensAdjustmentFactors.kt
+// Arquivo: AppDimensAdjustmentFactors.kt (v1.1.0)
 // Linhas: 60-108
 
-const val BASE_DP_FACTOR = 1.00f           // α = 1.0 ✅
-const val BASE_WIDTH_DP = 300f             // W₀ = 300 ✅
-const val INCREMENT_DP_STEP = 1f           // δ = 1 ✅
-const val REFERENCE_AR = 1.78f             // AR₀ = 1.78 ✅
-const val DEFAULT_SENSITIVITY_K = 0.08f    // K = 0.08 ✅
-const val BASE_INCREMENT = 0.10f           // ε₀ = 0.10 ✅
+const val BASE_DP_FACTOR = 1.00f                     // α = 1.0 ✅
+const val BASE_WIDTH_DP = 300f                       // W₀ = 300 ✅
+const val INCREMENT_DP_STEP = 1f                     // δ = 1 ✅
+const val REFERENCE_AR = 1.78f                       // AR₀ = 1.78 ✅
+const val DEFAULT_SENSITIVITY_K = 0.08f / 30f        // K = 0.00267 ✅
+const val BASE_INCREMENT = 0.10f / 30f               // ε₀ = 0.00333 ✅
 ```
 
 **Resultado:** ✅ **TODAS as constantes correspondem exatamente.**
@@ -52,8 +52,8 @@ const val BASE_INCREMENT = 0.10f           // ε₀ = 0.10 ✅
 ```
 f_FX(B, S, AR) = B × [1 + ((S - W₀) / δ) × (ε₀ + K × ln(AR / AR₀))]
 
-Expandido:
-f_FX(B, S, AR) = B × [1.0 + ((S - 300) / 1) × (0.10 + 0.08 × ln(AR / 1.78))]
+Expandido (v1.1.0):
+f_FX(B, S, AR) = B × [1.0 + ((S - 300) / 1) × (0.00333 + 0.00267 × ln(AR / 1.78))]
 
 Componentes:
 β(S) = (S - W₀) / δ
@@ -75,10 +75,10 @@ val adjustmentFactorLowest = differenceLowest / INCREMENT_DP_STEP
 val currentAr = getReferenceAspectRatio(currentScreenWidthDp, currentScreenHeightDp)
 // ✅ Função: AR = max(W,H) / min(W,H)
 
-// 3. Cálculo de γ(AR) - Componente Logarítmica
+// 3. Cálculo de γ(AR) - Componente Logarítmica (v1.1.0)
 val continuousAdjustment = (DEFAULT_SENSITIVITY_K * ln(currentAr / REFERENCE_AR)).toFloat()
 val finalIncrementValueWithAr = BASE_INCREMENT + continuousAdjustment
-// ✅ Corresponde a: γ(AR) = 0.10 + 0.08 × ln(AR / 1.78)
+// ✅ Corresponde a: γ(AR) = 0.00333 + 0.00267 × ln(AR / 1.78)
 
 // 4. Fator Final F(S, AR)
 val withArFactorLowest = BASE_DP_FACTOR + adjustmentFactorLowest * finalIncrementValueWithAr

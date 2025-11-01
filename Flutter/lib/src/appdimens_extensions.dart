@@ -24,6 +24,7 @@
 import 'package:flutter/material.dart';
 import 'appdimens_fixed.dart';
 import 'appdimens_dynamic.dart';
+import 'appdimens_fluid.dart';
 
 // MARK: - Double Extensions
 
@@ -53,6 +54,26 @@ extension AppDimensDoubleExtension on double {
   /// [PT] Cria um construtor de dimensão dinâmica a partir deste valor double ignorando ajustes multi-window.
   /// @return Uma instância AppDimensDynamic para encadeamento.
   AppDimensDynamic get dyIgnoreMultiWindow => AppDimensDynamic(this, ignoreMultiWindowAdjustment: true);
+
+  /// [EN] Creates a fluid dimension builder from this double value to a maximum value.
+  /// @param maxValue The maximum value.
+  /// @return An AppDimensFluid instance for chaining.
+  /// [PT] Cria um construtor de dimensão fluida a partir deste valor double até um valor máximo.
+  /// @param maxValue O valor máximo.
+  /// @return Uma instância AppDimensFluid para encadeamento.
+  AppDimensFluid fluidTo(double maxValue, {double minWidth = 320, double maxWidth = 768}) {
+    return AppDimensFluid(this, maxValue, minWidth: minWidth, maxWidth: maxWidth);
+  }
+
+  /// [EN] Creates a fluid dimension builder with this double as maximum value from a minimum.
+  /// @param minValue The minimum value.
+  /// @return An AppDimensFluid instance for chaining.
+  /// [PT] Cria um construtor de dimensão fluida com este double como valor máximo a partir de um mínimo.
+  /// @param minValue O valor mínimo.
+  /// @return Uma instância AppDimensFluid para encadeamento.
+  AppDimensFluid fluidFrom(double minValue, {double minWidth = 320, double maxWidth = 768}) {
+    return AppDimensFluid(minValue, this, minWidth: minWidth, maxWidth: maxWidth);
+  }
 }
 
 // MARK: - Int Extensions
@@ -83,6 +104,26 @@ extension AppDimensIntExtension on int {
   /// [PT] Cria um construtor de dimensão dinâmica a partir deste valor int ignorando ajustes multi-window.
   /// @return Uma instância AppDimensDynamic para encadeamento.
   AppDimensDynamic get dyIgnoreMultiWindow => AppDimensDynamic(toDouble(), ignoreMultiWindowAdjustment: true);
+
+  /// [EN] Creates a fluid dimension builder from this int value to a maximum value.
+  /// @param maxValue The maximum value.
+  /// @return An AppDimensFluid instance for chaining.
+  /// [PT] Cria um construtor de dimensão fluida a partir deste valor int até um valor máximo.
+  /// @param maxValue O valor máximo.
+  /// @return Uma instância AppDimensFluid para encadeamento.
+  AppDimensFluid fluidTo(double maxValue, {double minWidth = 320, double maxWidth = 768}) {
+    return AppDimensFluid(toDouble(), maxValue, minWidth: minWidth, maxWidth: maxWidth);
+  }
+
+  /// [EN] Creates a fluid dimension builder with this int as maximum value from a minimum.
+  /// @param minValue The minimum value.
+  /// @return An AppDimensFluid instance for chaining.
+  /// [PT] Cria um construtor de dimensão fluida com este int como valor máximo a partir de um mínimo.
+  /// @param minValue O valor mínimo.
+  /// @return Uma instância AppDimensFluid para encadeamento.
+  AppDimensFluid fluidFrom(double minValue, {double minWidth = 320, double maxWidth = 768}) {
+    return AppDimensFluid(minValue, toDouble(), minWidth: minWidth, maxWidth: maxWidth);
+  }
 }
 
 // MARK: - Widget Extensions
@@ -179,6 +220,57 @@ extension AppDimensWidgetExtension on Widget {
       child: this,
     );
   }
+
+  /// [EN] Applies fluid padding to this widget.
+  /// @param minPadding The minimum padding value.
+  /// @param maxPadding The maximum padding value.
+  /// @param context The BuildContext.
+  /// @return A Padding widget with the calculated fluid padding.
+  /// [PT] Aplica padding fluido a este widget.
+  /// @param minPadding O valor mínimo do padding.
+  /// @param maxPadding O valor máximo do padding.
+  /// @param context O BuildContext.
+  /// @return Um widget Padding com o padding fluido calculado.
+  Widget fluidPadding(double minPadding, double maxPadding, BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(AppDimensFluid(minPadding, maxPadding).calculate(context)),
+      child: this,
+    );
+  }
+
+  /// [EN] Applies fluid margin to this widget.
+  /// @param minMargin The minimum margin value.
+  /// @param maxMargin The maximum margin value.
+  /// @param context The BuildContext.
+  /// @return A Container widget with the calculated fluid margin.
+  /// [PT] Aplica margem fluida a este widget.
+  /// @param minMargin O valor mínimo da margem.
+  /// @param maxMargin O valor máximo da margem.
+  /// @param context O BuildContext.
+  /// @return Um widget Container com a margem fluida calculada.
+  Widget fluidMargin(double minMargin, double maxMargin, BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(AppDimensFluid(minMargin, maxMargin).calculate(context)),
+      child: this,
+    );
+  }
+
+  /// [EN] Applies fluid border radius to this widget.
+  /// @param minRadius The minimum border radius value.
+  /// @param maxRadius The maximum border radius value.
+  /// @param context The BuildContext.
+  /// @return A ClipRRect widget with the calculated fluid border radius.
+  /// [PT] Aplica raio de borda fluido a este widget.
+  /// @param minRadius O valor mínimo do raio de borda.
+  /// @param maxRadius O valor máximo do raio de borda.
+  /// @param context O BuildContext.
+  /// @return Um widget ClipRRect com o raio de borda fluido calculado.
+  Widget fluidBorderRadius(double minRadius, double maxRadius, BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(AppDimensFluid(minRadius, maxRadius).calculate(context)),
+      child: this,
+    );
+  }
 }
 
 // MARK: - Text Style Extensions
@@ -211,6 +303,22 @@ extension AppDimensTextStyleExtension on TextStyle {
   TextStyle dyFontSize(double fontSize, BuildContext context) {
     return copyWith(
       fontSize: AppDimensDynamic(fontSize).calculate(context),
+    );
+  }
+
+  /// [EN] Applies fluid font size to this text style.
+  /// @param minFontSize The minimum font size value.
+  /// @param maxFontSize The maximum font size value.
+  /// @param context The BuildContext.
+  /// @return A new TextStyle with the calculated fluid font size.
+  /// [PT] Aplica tamanho de fonte fluido a este estilo de texto.
+  /// @param minFontSize O valor mínimo do tamanho da fonte.
+  /// @param maxFontSize O valor máximo do tamanho da fonte.
+  /// @param context O BuildContext.
+  /// @return Um novo TextStyle com o tamanho da fonte fluido calculado.
+  TextStyle fluidFontSize(double minFontSize, double maxFontSize, BuildContext context) {
+    return copyWith(
+      fontSize: AppDimensFluid(minFontSize, maxFontSize).calculate(context),
     );
   }
 }

@@ -35,6 +35,8 @@ New to AppDimens? Start here:
 | [Mathematical Theory](MATHEMATICAL_THEORY.md) | Formal mathematical foundation | 45 min |
 | [Formula Comparison](FORMULA_COMPARISON.md) | Scientific analysis & rankings | 30 min |
 | [Validation Report](VALIDATION_REPORT.md) | Implementation validation | 20 min |
+| [Base Orientation Guide](BASE_ORIENTATION_GUIDE.md) | Auto-rotation adaptation (v1.2.0) | 15 min |
+| [Applicability Guide](APPLICABILITY_OF_APPDIMENS.md) | When and where to use AppDimens | 20 min |
 
 ---
 

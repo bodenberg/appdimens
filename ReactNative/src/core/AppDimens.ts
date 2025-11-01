@@ -85,6 +85,26 @@ export class AppDimens {
   }
 
   /**
+   * Alias for fixed(). Concise syntax matching Web and Flutter API.
+   */
+  public fx(
+    initialValue: number,
+    ignoreMultiWindowAdjustment?: boolean,
+  ): AppDimensFixed {
+    return this.fixed(initialValue, ignoreMultiWindowAdjustment);
+  }
+
+  /**
+   * Alias for dynamic(). Concise syntax matching Web and Flutter API.
+   */
+  public dy(
+    initialValue: number,
+    ignoreMultiWindowAdjustment?: boolean,
+  ): AppDimensDynamic {
+    return this.dynamic(initialValue, ignoreMultiWindowAdjustment);
+  }
+
+  /**
    * Calculate percentage-based dimension
    */
   public percentage(

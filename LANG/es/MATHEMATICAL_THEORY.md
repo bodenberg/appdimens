@@ -4,8 +4,8 @@
 
 **Documentación Técnica Detallada - Modelo Matemático Universal**  
 *Autor: Jean Bodenberg*  
-*Fecha: Enero 2025*  
-*Versión: 1.0.9*
+*Fecha: Octubre 2025*  
+*Versión: 1.1.0*
 
 > **Nota:** Esta documentación presenta la teoría matemática fundamental de AppDimens, universalmente aplicable a cualquier plataforma (Android, iOS, Flutter, React Native, Web). Las implementaciones específicas son ejemplos de la aplicación práctica de estos modelos.
 
@@ -295,8 +295,16 @@ f_FX_custom(B, S, AR, K_custom) = B × [1.0 + ((S - W₀) / δ) × (ε₀ + K_cu
 | `W₀` | Ancho Referencia | 300 | Promedio histórico de dispositivos (~360dp smartphones) |
 | `AR₀` | Relación Aspecto Referencia | 1.78 | Proporción 16:9 (estándar histórico) |
 | `δ` | Paso Dimensional | 1 | Granularidad de 1dp (precisión refinada) |
-| `ε₀` | Incremento Base | 0.10 | Factor de ajuste base 10% |
-| `K` | Sensibilidad Log | 0.08 | Calibrado empíricamente para suavidad |
+| `ε₀` | Incremento Base | 0.00333 | Ajustado proporcionalmente (0.10/30) para paso de 1dp |
+| `K` | Sensibilidad Log | 0.00267 | Ajustado proporcionalmente (0.08/30) para paso de 1dp |
+
+> **⚠️ Nota Importante sobre Granularidad de 1dp:**
+>
+> Con δ = 1 (paso de 1dp), las constantes `ε₀` y `K` fueron **ajustadas proporcionalmente** (divididas por 30 de sus valores originales) para mantener los **MISMOS valores finales de escala** mientras proporcionan **granularidad 30× mayor**. Esto significa:
+> - **Los valores finales permanecen idénticos** a la implementación anterior
+> - **La precisión aumenta 30×** (cada incremento de 1dp tiene su propio valor único)
+> - **El rendimiento mejora** (elimina una operación de división)
+> - **Equivalencia matemática**: `(111/30) × 0.10 = (111/1) × 0.00333 ≈ 0.37`
 
 ### 2.4 Análisis Matemático del Comportamiento
 

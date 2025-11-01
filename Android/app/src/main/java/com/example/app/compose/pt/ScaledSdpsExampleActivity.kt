@@ -275,7 +275,9 @@ fun ScaledExampleCard() {
  * 
  * [PT] Uma pré-visualização para a tela de exemplo do AppDimens SDP.
  */
-@Preview(showBackground = true)
+@Preview(showBackground = true,
+    device = "id:Nexus One"
+)
 @Composable
 fun PreviewAppDimensSdpExample() {
     MaterialTheme(colorScheme = lightColorScheme()) {

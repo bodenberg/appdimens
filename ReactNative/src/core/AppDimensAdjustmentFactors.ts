@@ -31,6 +31,8 @@ import {
   BASE_HEIGHT_DP,
   BASE_DP_FACTOR,
   BASE_INCREMENT,
+  INCREMENT_DP_STEP,
+  DEFAULT_SENSITIVITY_K,
   REFERENCE_AR,
   DEVICE_TYPES,
   UI_MODE_TYPES,
@@ -135,7 +137,10 @@ export class AppDimensAdjustmentFactors {
 
     // Calculate aspect ratio factors
     const aspectRatio = this.getReferenceAspectRatio(width, height);
-    const arAdjustment = Math.log(aspectRatio / REFERENCE_AR);
+    // Normalize AR to landscape (largest/smallest)
+    const normalizedAR = aspectRatio >= 1.0 ? aspectRatio : 1.0 / aspectRatio;
+    const arAdjustment =
+      DEFAULT_SENSITIVITY_K * Math.log(normalizedAR / REFERENCE_AR);
 
     const withArFactorLowest =
       BASE_DP_FACTOR + adjustmentFactorLowest * (BASE_INCREMENT + arAdjustment);
@@ -161,6 +166,7 @@ export class AppDimensAdjustmentFactors {
 
   /**
    * Calculate base adjustment factor for a given screen dimension
+   * Unified formula: (dimension - BASE_WIDTH) / INCREMENT_DP_STEP
    */
   private static calculateBaseAdjustmentFactor(
     screenDimension: number,
@@ -169,17 +175,20 @@ export class AppDimensAdjustmentFactors {
     const screenDimensionDp = screenDimension;
 
     // Calculate adjustment based on the difference from base width
+    // Unified formula: use subtraction + step (like Android/Web)
     const difference = screenDimensionDp - BASE_WIDTH_DP;
-    const adjustmentFactor = difference / BASE_WIDTH_DP;
+    const adjustmentFactor = difference / INCREMENT_DP_STEP;
 
     return Math.max(0, adjustmentFactor);
   }
 
   /**
    * Get reference aspect ratio for given dimensions
+   * Unified: Returns largest/smallest (landscape normalization)
    */
   public static getReferenceAspectRatio(width: number, height: number): number {
-    return width / height;
+    // Unified: normalize to landscape (largest/smallest)
+    return width >= height ? width / height : height / width;
   }
 
   /**

@@ -368,9 +368,25 @@ float GameDimensions::calculateDynamicScaleFactor() const {
 }
 
 float GameDimensions::calculateFixedScaleFactor() const {
-    // Fixed scaling using logarithmic approach for better visual balance
-    float dynamicFactor = calculateDynamicScaleFactor();
-    return logScale(dynamicFactor, 2.0f);
+    // Unified formula: 1.0 + ((dimension - BASE_WIDTH) / STEP) × (BASE_INCREMENT + K × ln(AR / AR₀))
+    float smallestDimension = std::min(static_cast<float>(screenConfig.width), 
+                                      static_cast<float>(screenConfig.height));
+    
+    // Calculate difference from base width
+    float difference = smallestDimension - BASE_WIDTH_DP;
+    float adjustmentFactor = difference / INCREMENT_DP_STEP;
+    
+    // Calculate aspect ratio (normalized to landscape: largest/smallest)
+    float width = static_cast<float>(screenConfig.width);
+    float height = static_cast<float>(screenConfig.height);
+    float aspectRatio = (width >= height) ? (width / height) : (height / width);
+    
+    // Unified logarithmic adjustment
+    float arAdjustment = DEFAULT_SENSITIVITY_K * logf(aspectRatio / REFERENCE_AR);
+    float finalIncrement = BASE_INCREMENT + arAdjustment;
+    
+    // Calculate final factor using unified formula
+    return BASE_DP_FACTOR + adjustmentFactor * finalIncrement;
 }
 
 float GameDimensions::calculateGameWorldScaleFactor() const {

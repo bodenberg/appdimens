@@ -111,6 +111,64 @@ public class AppDimens {
         return dynamic(CGFloat(initialValue), ignoreMultiWindowAdjustment: ignoreMultiWindowAdjustment)
     }
     
+    // MARK: - Concise Aliases (matching Web and Flutter API)
+    
+    /**
+     * [EN] Alias for fixed(). Concise syntax matching Web and Flutter API.
+     * @param initialValue The initial base value.
+     * @param ignoreMultiWindowAdjustment Whether to ignore multi-window adjustments.
+     * @return An AppDimensFixed instance for chaining.
+     * [PT] Alias para fixed(). Sintaxe concisa compatível com API Web e Flutter.
+     * @param initialValue O valor base inicial.
+     * @param ignoreMultiWindowAdjustment Se deve ignorar ajustes multi-window.
+     * @return Uma instância AppDimensFixed para encadeamento.
+     */
+    public func fx(_ initialValue: CGFloat, ignoreMultiWindowAdjustment: Bool? = nil) -> AppDimensFixed {
+        return fixed(initialValue, ignoreMultiWindowAdjustment: ignoreMultiWindowAdjustment)
+    }
+    
+    /**
+     * [EN] Alias for fixed(). Concise syntax matching Web and Flutter API.
+     * @param initialValue The initial base value.
+     * @param ignoreMultiWindowAdjustment Whether to ignore multi-window adjustments.
+     * @return An AppDimensFixed instance for chaining.
+     * [PT] Alias para fixed(). Sintaxe concisa compatível com API Web e Flutter.
+     * @param initialValue O valor base inicial.
+     * @param ignoreMultiWindowAdjustment Se deve ignorar ajustes multi-window.
+     * @return Uma instância AppDimensFixed para encadeamento.
+     */
+    public func fx(_ initialValue: Int, ignoreMultiWindowAdjustment: Bool? = nil) -> AppDimensFixed {
+        return fixed(initialValue, ignoreMultiWindowAdjustment: ignoreMultiWindowAdjustment)
+    }
+    
+    /**
+     * [EN] Alias for dynamic(). Concise syntax matching Web and Flutter API.
+     * @param initialValue The initial base value.
+     * @param ignoreMultiWindowAdjustment Whether to ignore multi-window adjustments.
+     * @return An AppDimensDynamic instance for chaining.
+     * [PT] Alias para dynamic(). Sintaxe concisa compatível com API Web e Flutter.
+     * @param initialValue O valor base inicial.
+     * @param ignoreMultiWindowAdjustment Se deve ignorar ajustes multi-window.
+     * @return Uma instância AppDimensDynamic para encadeamento.
+     */
+    public func dy(_ initialValue: CGFloat, ignoreMultiWindowAdjustment: Bool? = nil) -> AppDimensDynamic {
+        return dynamic(initialValue, ignoreMultiWindowAdjustment: ignoreMultiWindowAdjustment)
+    }
+    
+    /**
+     * [EN] Alias for dynamic(). Concise syntax matching Web and Flutter API.
+     * @param initialValue The initial base value.
+     * @param ignoreMultiWindowAdjustment Whether to ignore multi-window adjustments.
+     * @return An AppDimensDynamic instance for chaining.
+     * [PT] Alias para dynamic(). Sintaxe concisa compatível com API Web e Flutter.
+     * @param initialValue O valor base inicial.
+     * @param ignoreMultiWindowAdjustment Se deve ignorar ajustes multi-window.
+     * @return Uma instância AppDimensDynamic para encadeamento.
+     */
+    public func dy(_ initialValue: Int, ignoreMultiWindowAdjustment: Bool? = nil) -> AppDimensDynamic {
+        return dynamic(initialValue, ignoreMultiWindowAdjustment: ignoreMultiWindowAdjustment)
+    }
+    
     // MARK: - Percentage-Based Dimensions
     
     /**
@@ -267,7 +325,7 @@ public class AppDimensGlobal {
  * [PT] Informações sobre a biblioteca AppDimens.
  */
 public struct AppDimensInfo {
-    public static let version = "1.0.5"
+    public static let version = "1.1.0"
     public static let libraryName = "AppDimens"
     public static let description = "A responsive dimension management system for iOS"
     

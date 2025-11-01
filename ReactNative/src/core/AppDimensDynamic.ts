@@ -33,6 +33,8 @@ import {
   BASE_WIDTH_DP,
 } from '../types';
 import {AppDimensAdjustmentFactors} from './AppDimensAdjustmentFactors';
+import {resolveScreenType} from '../utils/orientationResolver';
+import type {BaseOrientation} from '../types/BaseOrientation';
 
 /**
  * Dynamic dimension builder with proportional adjustment
@@ -49,6 +51,7 @@ export class AppDimensDynamic implements AppDimensBuilder {
     this.config = {
       initialValue,
       screenType: 'lowest',
+      baseOrientation: 'auto',
       applyAspectRatioAdjustment: false, // Dynamic doesn't use aspect ratio
       ignoreMultiWindowAdjustment,
       customScreenQualifierMap: new Map(),
@@ -64,7 +67,7 @@ export class AppDimensDynamic implements AppDimensBuilder {
    * Compatível com API Android/iOS.
    */
   screen(uiModeType: UiModeType, customValue: number): this;
-  
+
   /**
    * [EN] Set custom value for device type and screen size.
    * Compatible with Android/iOS API.
@@ -72,7 +75,7 @@ export class AppDimensDynamic implements AppDimensBuilder {
    * Compatível com API Android/iOS.
    */
   screen(deviceType: DeviceType, screenSize: number, customValue: number): this;
-  
+
   /**
    * [EN] Set custom value for screen qualifier with specific value.
    * Compatible with Android/iOS API.
@@ -82,9 +85,9 @@ export class AppDimensDynamic implements AppDimensBuilder {
   screen(
     qualifierType: ScreenQualifier,
     qualifierValue: number,
-    customValue: number
+    customValue: number,
   ): this;
-  
+
   /**
    * [EN] Set custom value for intersection of UI mode and screen qualifier.
    * Compatible with Android/iOS API.
@@ -95,16 +98,29 @@ export class AppDimensDynamic implements AppDimensBuilder {
     uiModeType: UiModeType,
     qualifierType: ScreenQualifier,
     qualifierValue: number,
-    customValue: number
+    customValue: number,
   ): this;
+
+  /**
+   * Set screen dimension type
+   * Primary method - matches Android, iOS, Flutter API
+   */
+  screen(type: 'lowest' | 'highest'): this;
 
   // Implementation
   screen(
-    arg1: UiModeType | DeviceType | ScreenQualifier,
-    arg2: number | ScreenQualifier,
+    arg1: UiModeType | DeviceType | ScreenQualifier | 'lowest' | 'highest',
+    arg2?: number | ScreenQualifier,
     arg3?: number,
-    arg4?: number
+    arg4?: number,
   ): this {
+    // Check if it's screen(type: 'lowest' | 'highest')
+    if (arg1 === 'lowest' || arg1 === 'highest') {
+      this.config.screenType = arg1;
+      this.invalidateCache();
+      return this;
+    }
+
     if (arg3 === undefined && arg4 === undefined) {
       // screen(uiModeType, customValue)
       const uiModeType = arg1 as UiModeType;
@@ -113,8 +129,15 @@ export class AppDimensDynamic implements AppDimensBuilder {
     } else if (arg4 === undefined && arg3 !== undefined) {
       // Could be: screen(deviceType, screenSize, customValue) or
       //           screen(qualifierType, qualifierValue, customValue)
-      const isDeviceType = ['phone', 'tablet', 'desktop', 'watch', 'tv', 'car'].includes(arg1);
-      
+      const isDeviceType = [
+        'phone',
+        'tablet',
+        'desktop',
+        'watch',
+        'tv',
+        'car',
+      ].includes(arg1);
+
       if (isDeviceType) {
         // screen(deviceType, screenSize, customValue)
         const deviceType = arg1 as DeviceType;
@@ -159,11 +182,39 @@ export class AppDimensDynamic implements AppDimensBuilder {
   }
 
   /**
-   * Set screen dimension type
+   * Alias for screen() - kept for backward compatibility
+   * @deprecated Use screen() instead for consistency with other platforms
    */
   type(type: 'lowest' | 'highest'): this {
-    this.config.screenType = type;
-    this.invalidateCache();
+    return this.screen(type);
+  }
+
+  baseOrientation(orientation: 'portrait' | 'landscape' | 'auto'): this {
+    this.config.baseOrientation = orientation;
+    return this;
+  }
+
+  portraitLowest(): this {
+    this.config.baseOrientation = 'portrait';
+    this.config.screenType = 'lowest';
+    return this;
+  }
+
+  portraitHighest(): this {
+    this.config.baseOrientation = 'portrait';
+    this.config.screenType = 'highest';
+    return this;
+  }
+
+  landscapeLowest(): this {
+    this.config.baseOrientation = 'landscape';
+    this.config.screenType = 'lowest';
+    return this;
+  }
+
+  landscapeHighest(): this {
+    this.config.baseOrientation = 'landscape';
+    this.config.screenType = 'highest';
     return this;
   }
 
@@ -370,9 +421,16 @@ export class AppDimensDynamic implements AppDimensBuilder {
       // Dynamic scaling: percentage of screen dimension
       const percentage = valueToAdjust / BASE_WIDTH_DP;
 
+      // Resolve effective screen type based on base orientation
+      const effectiveScreenType = resolveScreenType(
+        this.config.screenType,
+        this.config.baseOrientation || 'auto',
+        {width, height},
+      );
+
       // Screen dimension to use (LOWEST or HIGHEST)
       const dimensionToUse =
-        this.config.screenType === 'highest'
+        effectiveScreenType === 'highest'
           ? Math.max(width, height)
           : Math.min(width, height);
 

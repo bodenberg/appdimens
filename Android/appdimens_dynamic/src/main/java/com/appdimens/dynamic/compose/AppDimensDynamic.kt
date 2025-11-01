@@ -77,6 +77,7 @@ class AppDimensDynamic(
     private var customIntersectionMap: MutableMap<UiModeQualifierEntry, Dp> = mutableMapOf()
 
     private var screenType: ScreenType = ScreenType.LOWEST
+    private var baseOrientation: com.appdimens.library.BaseOrientation = com.appdimens.library.BaseOrientation.AUTO
     
     /**
      * [EN] Individual remember control for this instance.
@@ -210,6 +211,35 @@ class AppDimensDynamic(
      */
     fun type(type: ScreenType): AppDimensDynamic {
         screenType = type
+        return this
+    }
+
+    fun baseOrientation(orientation: com.appdimens.library.BaseOrientation): AppDimensDynamic {
+        baseOrientation = orientation
+        return this
+    }
+
+    fun portraitLowest(): AppDimensDynamic {
+        baseOrientation = com.appdimens.library.BaseOrientation.PORTRAIT
+        screenType = ScreenType.LOWEST
+        return this
+    }
+
+    fun portraitHighest(): AppDimensDynamic {
+        baseOrientation = com.appdimens.library.BaseOrientation.PORTRAIT
+        screenType = ScreenType.HIGHEST
+        return this
+    }
+
+    fun landscapeLowest(): AppDimensDynamic {
+        baseOrientation = com.appdimens.library.BaseOrientation.LANDSCAPE
+        screenType = ScreenType.LOWEST
+        return this
+    }
+
+    fun landscapeHighest(): AppDimensDynamic {
+        baseOrientation = com.appdimens.library.BaseOrientation.LANDSCAPE
+        screenType = ScreenType.HIGHEST
         return this
     }
 
@@ -359,11 +389,22 @@ class AppDimensDynamic(
         val percentage = dpToAdjust.value / BASE_WIDTH_DP
 
         /**
+         * [EN] Resolve effective screen type based on base orientation.
+         *
+         * [PT] Resolve o tipo de tela efetivo baseado na orientação base.
+         */
+        val effectiveScreenType = AppDimensAdjustmentFactors.resolveScreenType(
+            requestedType = screenType,
+            baseOrientation = baseOrientation,
+            configuration = configuration
+        )
+
+        /**
          * [EN] Screen dimension to use (LOWEST or HIGHEST).
          *
          * [PT] Dimensão da tela a ser usada (LOWEST ou HIGHEST).
          */
-        val dimensionToUse = when (screenType) {
+        val dimensionToUse = when (effectiveScreenType) {
             ScreenType.HIGHEST -> maxOf(configuration.screenWidthDp.toFloat(), configuration.screenHeightDp.toFloat())
             ScreenType.LOWEST -> minOf(configuration.screenWidthDp.toFloat(), configuration.screenHeightDp.toFloat())
         }

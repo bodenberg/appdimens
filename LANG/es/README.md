@@ -2,7 +2,7 @@
 <h1>📐 AppDimens</h1>
 <p><strong>Dimensiones Responsivas Inteligentes para Cualquier Pantalla</strong></p>
 
-[![Versión](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Versión](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![Licencia](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![Plataforma](https://img.shields.io/badge/platform-Android%20%7C%20iOS%20%7C%20Flutter%20%7C%20RN%20%7C%20Web-orange.svg)](https://github.com/bodenberg/appdimens)
 
@@ -39,6 +39,10 @@ En lugar de tamaños fijos que se ven diminutos en tabletas o enormes en relojes
 - ✅ **API simple**: Solo agrega `.fxdp` o `.fxsp` a tus dimensiones
 - ✅ **Matemáticamente probado**: Basado en investigación psicofísica (Ley de Weber-Fechner)
 - ✅ **Mejor rendimiento**: Caché inteligente lo hace más rápido que las alternativas
+- ✅ **NUEVO v1.2.0:** Auto-adaptación a rotación de pantalla con Base Orientation
+- ✅ **Tres modelos de escalado**: Fixed (logarítmico - RECOMENDADO), Dynamic (proporcional), Fluid (crecimiento suave acotado)
+- ✅ **Unidades físicas**: Medidas del mundo real (mm, cm, pulgadas) en todas las plataformas
+- ✅ **Desarrollo de juegos**: Módulos especializados para Android (C++/NDK) e iOS (Metal)
 
 ---
 
@@ -50,23 +54,23 @@ En lugar de tamaños fijos que se ven diminutos en tabletas o enormes en relojes
 dependencies {
     // Biblioteca principal (Escalado Fixed + Dynamic + Unidades Físicas)
     // Incluye: .fxdp, .dydp, Unidades Físicas (mm/cm/inch), Cálculos de grid
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.8")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.1.0")
     
     // Escalado SDP (DP escalable para XML)
     // Incluye: @dimen/_16sdp, etc.
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.8")
+    implementation("io.github.bodenberg:appdimens-sdps:1.1.0")
     
     // Escalado SSP (SP escalable para texto en XML)
     // Incluye: @dimen/_18ssp, etc.
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.8")
+    implementation("io.github.bodenberg:appdimens-ssps:1.1.0")
     
     // Todo en uno (incluye dynamic, sdps, ssps)
     // ⚠️ Nota: NO incluye el módulo de juegos
-    implementation("io.github.bodenberg:appdimens-all:1.0.8")
+    implementation("io.github.bodenberg:appdimens-all:1.1.0")
     
     // Desarrollo de juegos (C++/NDK + OpenGL)
     // 🎮 Dependencia separada - no incluida en "all"
-    implementation("io.github.bodenberg:appdimens-games:1.0.8")
+    implementation("io.github.bodenberg:appdimens-games:1.1.0")
 }
 ```
 
@@ -75,7 +79,7 @@ dependencies {
 **CocoaPods:**
 ```ruby
 # Paquete completo (Main + UI)
-pod 'AppDimens', '~> 1.0.8'
+pod 'AppDimens', '~> 1.1.0'
 
 # Solo módulo Main
 pod 'AppDimens/Main', '~> 1.0.8'
@@ -87,7 +91,7 @@ pod 'AppDimens/Games', '~> 1.0.8'
 **Swift Package Manager:**
 ```swift
 dependencies: [
-    .package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.8")
+    .package(url: "https://github.com/bodenberg/appdimens.git", from: "1.1.0")
 ]
 ```
 
@@ -95,17 +99,17 @@ dependencies: [
 
 ```yaml
 dependencies:
-  appdimens: ^1.0.8
+  appdimens: ^1.1.0
 ```
 
 ### React Native
 
 ```bash
 # npm
-npm install appdimens-react-native@1.0.8
+npm install appdimens-react-native@1.1.0
 
 # yarn
-yarn add appdimens-react-native@1.0.8
+yarn add appdimens-react-native@1.1.0
 ```
 
 ### Web

@@ -24,10 +24,11 @@ import {
 } from '../constants';
 
 /**
- * WebDimens Main Class
+ * AppDimens Main Class
  * Entry point for the dimension system
+ * (Renamed from WebDimens for consistency with other platforms)
  */
-export class WebDimens {
+export class AppDimens {
   private config: Required<WebDimensConfig>;
   private cssVarsEnabled: boolean = false;
   private cssVarsUpdateInterval: number | null = null;
@@ -325,7 +326,10 @@ export class WebDimens {
 /**
  * Create default instance
  */
-export const webdimens = new WebDimens();
+export const webdimens = new AppDimens();
+
+// Backward compatibility alias
+export { AppDimens as WebDimens };
 
 // Convenience exports
 export const fixed = (value: number) => webdimens.fixed(value);

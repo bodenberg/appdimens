@@ -26,10 +26,12 @@
 export {AppDimens, appDimens} from './core/AppDimens';
 export {AppDimensFixed} from './core/AppDimensFixed';
 export {AppDimensDynamic} from './core/AppDimensDynamic';
+export {AppDimensFluid, fluid} from './core/AppDimensFluid';
 export {AppDimensAdjustmentFactors} from './core/AppDimensAdjustmentFactors';
 
 // React hooks
 export {useAppDimens} from './hooks/useAppDimens';
+export {useFluid, useFluidBuilder, useFluidMultiple} from './hooks/useFluid';
 
 // Context providers
 export {
@@ -49,4 +51,4 @@ export {
 export * from './types';
 
 // Version
-export const VERSION = '1.0.7';
+export const VERSION = '1.1.0';

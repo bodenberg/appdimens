@@ -91,6 +91,16 @@ class AppDimensFixed(
      */
     private var screenType: ScreenType = ScreenType.LOWEST
 
+    /**
+     * [EN] Defines the base orientation for which the design was originally created.
+     * When set to PORTRAIT or LANDSCAPE, the system automatically inverts LOWEST/HIGHEST
+     * when the current orientation differs from the design orientation.
+     * [PT] Define a orientação base para a qual o design foi originalmente criado.
+     * Quando configurado para PORTRAIT ou LANDSCAPE, o sistema automaticamente inverte LOWEST/HIGHEST
+     * quando a orientação atual difere da orientação do design.
+     */
+    private var baseOrientation: com.appdimens.library.BaseOrientation = com.appdimens.library.BaseOrientation.AUTO
+
     // MARK: - Cache Properties
 
     /**
@@ -235,6 +245,102 @@ class AppDimensFixed(
      */
     fun type(type: ScreenType): AppDimensFixed {
         screenType = type
+        return this
+    }
+
+    /**
+     * [EN] Sets the base orientation for which the design was originally created.
+     * When set, LOWEST/HIGHEST will be automatically inverted when the current
+     * orientation differs from the design orientation.
+     * 
+     * @param orientation The base orientation (PORTRAIT, LANDSCAPE, or AUTO)
+     * @return The `AppDimensFixed` instance for chaining.
+     *
+     * [PT] Define a orientação base para a qual o design foi originalmente criado.
+     * Quando configurado, LOWEST/HIGHEST será automaticamente invertido quando a
+     * orientação atual difere da orientação do design.
+     * 
+     * @param orientation A orientação base (PORTRAIT, LANDSCAPE ou AUTO)
+     * @return A instância `AppDimensFixed` para encadeamento.
+     */
+    fun baseOrientation(orientation: com.appdimens.library.BaseOrientation): AppDimensFixed {
+        baseOrientation = orientation
+        return this
+    }
+
+    /**
+     * [EN] Shorthand for setting base orientation to PORTRAIT and screen type to LOWEST.
+     * Design created for portrait, uses width (lowest dimension in portrait).
+     * Auto-inverts to HIGHEST when device is in landscape.
+     * 
+     * @return The `AppDimensFixed` instance for chaining.
+     *
+     * [PT] Atalho para configurar orientação base como PORTRAIT e tipo de tela como LOWEST.
+     * Design criado para portrait, usa largura (menor dimensão em portrait).
+     * Auto-inverte para HIGHEST quando dispositivo está em landscape.
+     * 
+     * @return A instância `AppDimensFixed` para encadeamento.
+     */
+    fun portraitLowest(): AppDimensFixed {
+        baseOrientation = com.appdimens.library.BaseOrientation.PORTRAIT
+        screenType = ScreenType.LOWEST
+        return this
+    }
+
+    /**
+     * [EN] Shorthand for setting base orientation to PORTRAIT and screen type to HIGHEST.
+     * Design created for portrait, uses height (highest dimension in portrait).
+     * Auto-inverts to LOWEST when device is in landscape.
+     * 
+     * @return The `AppDimensFixed` instance for chaining.
+     *
+     * [PT] Atalho para configurar orientação base como PORTRAIT e tipo de tela como HIGHEST.
+     * Design criado para portrait, usa altura (maior dimensão em portrait).
+     * Auto-inverte para LOWEST quando dispositivo está em landscape.
+     * 
+     * @return A instância `AppDimensFixed` para encadeamento.
+     */
+    fun portraitHighest(): AppDimensFixed {
+        baseOrientation = com.appdimens.library.BaseOrientation.PORTRAIT
+        screenType = ScreenType.HIGHEST
+        return this
+    }
+
+    /**
+     * [EN] Shorthand for setting base orientation to LANDSCAPE and screen type to LOWEST.
+     * Design created for landscape, uses height (lowest dimension in landscape).
+     * Auto-inverts to HIGHEST when device is in portrait.
+     * 
+     * @return The `AppDimensFixed` instance for chaining.
+     *
+     * [PT] Atalho para configurar orientação base como LANDSCAPE e tipo de tela como LOWEST.
+     * Design criado para landscape, usa altura (menor dimensão em landscape).
+     * Auto-inverte para HIGHEST quando dispositivo está em portrait.
+     * 
+     * @return A instância `AppDimensFixed` para encadeamento.
+     */
+    fun landscapeLowest(): AppDimensFixed {
+        baseOrientation = com.appdimens.library.BaseOrientation.LANDSCAPE
+        screenType = ScreenType.LOWEST
+        return this
+    }
+
+    /**
+     * [EN] Shorthand for setting base orientation to LANDSCAPE and screen type to HIGHEST.
+     * Design created for landscape, uses width (highest dimension in landscape).
+     * Auto-inverts to LOWEST when device is in portrait.
+     * 
+     * @return The `AppDimensFixed` instance for chaining.
+     *
+     * [PT] Atalho para configurar orientação base como LANDSCAPE e tipo de tela como HIGHEST.
+     * Design criado para landscape, usa largura (maior dimensão em landscape).
+     * Auto-inverte para LOWEST quando dispositivo está em portrait.
+     * 
+     * @return A instância `AppDimensFixed` para encadeamento.
+     */
+    fun landscapeHighest(): AppDimensFixed {
+        baseOrientation = com.appdimens.library.BaseOrientation.LANDSCAPE
+        screenType = ScreenType.HIGHEST
         return this
     }
 
@@ -416,13 +522,20 @@ class AppDimensFixed(
             dpToAdjust * AppDimensAdjustmentFactors.BASE_DP_FACTOR
         } else if (applyAspectRatioAdjustment) {
 
-            val selectedFactor = when (screenType) {
+            // Resolve effective screen type based on base orientation
+            val effectiveScreenType = AppDimensAdjustmentFactors.resolveScreenType(
+                requestedType = screenType,
+                baseOrientation = baseOrientation,
+                configuration = configuration
+            )
+
+            val selectedFactor = when (effectiveScreenType) {
                 ScreenType.HIGHEST -> adjustmentFactors.withArFactorHighest
                 ScreenType.LOWEST -> adjustmentFactors.withArFactorLowest
             }
 
             if (customSensitivityK != null) {
-                val adjustmentFactorBase = when (screenType) {
+                val adjustmentFactorBase = when (effectiveScreenType) {
                     ScreenType.HIGHEST -> adjustmentFactors.adjustmentFactorHighest
                     ScreenType.LOWEST -> adjustmentFactors.adjustmentFactorLowest
                 }

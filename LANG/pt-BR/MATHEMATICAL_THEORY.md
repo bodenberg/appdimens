@@ -4,8 +4,8 @@
 
 **Documentação Técnica Detalhada - Modelo Matemático Universal**  
 *Autor: Jean Bodenberg*  
-*Data: Janeiro 2025*  
-*Versão: 1.0.9*
+*Data: Outubro 2025*  
+*Versão: 1.1.0*
 
 > **Nota:** Esta documentação apresenta a teoria matemática fundamental do AppDimens, aplicável universalmente a qualquer plataforma (Android, iOS, Flutter, React Native, Web). As implementações específicas são exemplos da aplicação prática destes modelos.
 
@@ -251,8 +251,8 @@ F(S, AR) = α + β(S) × γ(AR)
    onde:
    AR = aspect ratio atual
    AR₀ = 1.78 (referência 16:9)
-   ε₀ = 0.10 (incremento base, ~10%)
-   K = 0.08 (sensibilidade logarítmica)
+   ε₀ = 0.10/30 = 0.00333 (incremento base, ajustado para step de 1dp)
+   K = 0.08/30 = 0.00267 (sensibilidade logarítmica, ajustado para step de 1dp)
    
    Propriedades:
    - γ(AR₀) = ε₀ (base quando AR = AR₀)
@@ -293,8 +293,16 @@ f_FX_custom(B, S, AR, K_custom) = B × [1.0 + ((S - W₀) / δ) × (ε₀ + K_cu
 | `W₀` | Largura Referência | 300 | Dispositivo médio histórico (~360dp smartphones) |
 | `AR₀` | Aspect Ratio Referência | 1.78 | Proporção 16:9 (padrão histórico) |
 | `δ` | Step Dimensional | 1 | Granularidade de 1dp (precisão refinada) |
-| `ε₀` | Incremento Base | 0.10 | Fator de ajuste base 10% |
-| `K` | Sensibilidade Log | 0.08 | Calibrado empiricamente para suavidade |
+| `ε₀` | Incremento Base | 0.00333 | Ajustado proporcionalmente (0.10/30) para step de 1dp |
+| `K` | Sensibilidade Log | 0.00267 | Ajustado proporcionalmente (0.08/30) para step de 1dp |
+
+> **⚠️ Nota Importante sobre Granularidade de 1dp:**
+>
+> Com δ = 1 (step de 1dp), as constantes `ε₀` e `K` foram **ajustadas proporcionalmente** (divididas por 30 dos valores originais) para manter os **MESMOS valores finais de escala** enquanto fornecem **granularidade 30× maior**. Isso significa:
+> - **Valores finais permanecem idênticos** à implementação anterior
+> - **Precisão aumenta 30×** (cada incremento de 1dp tem seu próprio valor único)
+> - **Performance melhora** (elimina uma operação de divisão)
+> - **Equivalência matemática**: `(111/30) × 0.10 = (111/1) × 0.00333 ≈ 0.37`
 
 ### 2.4 Análise Matemática do Comportamento
 

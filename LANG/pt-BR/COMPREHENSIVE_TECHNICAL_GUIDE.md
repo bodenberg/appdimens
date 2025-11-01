@@ -4,8 +4,8 @@
 
 **Documentação Técnica Abrangente - Teoria, Implementação e Comparações**  
 *Autor: Jean Bodenberg*  
-*Data: Janeiro 2025*  
-*Versão: 1.0.9*
+*Data: Outubro 2025*  
+*Versão: 1.1.0*
 
 > **A biblioteca de dimensionamento responsivo mais avançada matematicamente, baseada em escalonamento logarítmico e compensação de aspect ratio.**
 
@@ -450,45 +450,46 @@ Dados:
   B = 48dp
   S = 720dp
   AR = 1280 / 720 = 1.78 (16:9)
-  W₀ = 300dp, δ = 1dp, ε₀ = 0.10, k = 0.08, AR₀ = 1.78
+  W₀ = 300dp, δ = 1dp, ε₀ = 0.10/30 = 0.00333, k = 0.08/30 = 0.00267, AR₀ = 1.78
 
-Passo 1: β(S)
+Passo 1: β(S) - Ajuste Linear de Tamanho
   β = (720 - 300) / 1 = 420
 
-Passo 2: γ(AR)
+Passo 2: γ(AR) - Ajuste Logarítmico de AR
   ln(1.78 / 1.78) = ln(1) = 0
-  γ = 0.10 + 0.08 × 0 = 0.10
+  γ = 0.00333 + 0.00267 × 0 = 0.00333
 
 Passo 3: Fator_Total
-  Fator = 1.0 + 14 × 0.10 = 1.0 + 1.4 = 2.4
+  Fator = 1.0 + 420 × 0.00333 = 1.0 + 1.4 = 2.4
 
 Passo 4: Valor_Final
   Resultado = 48 × 2.4 = 115.2dp
 ```
 
-**Mas espera!** Na implementação real, o cálculo é um pouco diferente para evitar valores muito altos. A fórmula acima é a versão "pura" matemática. A implementação usa fatores de ajuste mais conservadores.
+**✨ Nota v1.1.0:** Com o novo ajuste de granularidade (0.10/30 e 0.08/30), cada incremento de 1dp agora tem um valor único. A fórmula mantém a consistência visual enquanto fornece 30× mais precisão. As constantes são ajustadas proporcionalmente para manter o mesmo comportamento de escalonamento das versões anteriores, mas com controle mais fino em cada nível de dp.
 
 ---
 
 ### 5.4 Implementação Real (Código)
 
 ```kotlin
-// Código simplificado baseado em AppDimensFixed.kt
+// Código simplificado baseado em AppDimensFixed.kt (v1.1.0)
 
 val BASE_DP_FACTOR = 1.0f
-val BASE_INCREMENT = 0.10f  // 10%
-val REFERENCE_AR = 1.778f   // 16:9
-val REFERENCE_WIDTH = 300f
-val STEP = 30f
+val BASE_INCREMENT = 0.10f / 30f  // Ajustado para granularidade de step 1dp
+val DEFAULT_SENSITIVITY_K = 0.08f / 30f  // Ajustado para granularidade de step 1dp
+val REFERENCE_AR = 1.78f   // 16:9
+val BASE_WIDTH_DP = 300f
+val INCREMENT_DP_STEP = 1f  // Granularidade de 1dp
 
 fun calculate(
     baseDp: Float,
     screenSize: Float,
     aspectRatio: Float,
-    sensitivityK: Float = 0.08f
+    sensitivityK: Float = DEFAULT_SENSITIVITY_K
 ): Float {
     // Beta: ajuste linear de tamanho
-    val adjustmentFactorBase = (screenSize - REFERENCE_WIDTH) / STEP
+    val adjustmentFactorBase = (screenSize - BASE_WIDTH_DP) / INCREMENT_DP_STEP
     
     // Gamma: ajuste logarítmico de AR
     val continuousAdjustment = sensitivityK * ln(aspectRatio / REFERENCE_AR)

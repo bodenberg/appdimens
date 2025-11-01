@@ -25,14 +25,17 @@
 package com.appdimens.dynamic.compose
 
 import android.annotation.SuppressLint
+import android.content.res.Configuration
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.Dp
+import androidx.wear.compose.materialcore.screenHeightDp
 import com.appdimens.library.DpQualifier
 import com.appdimens.library.DpQualifierEntry
 import com.appdimens.library.ScreenAdjustmentFactors
+import com.appdimens.library.ScreenType
 import kotlin.math.PI
 import kotlin.math.ln
 
@@ -98,14 +101,14 @@ object AppDimensAdjustmentFactors {
      *
      * [PT] Coeficiente de sensibilidade PADRÃO: Ajusta o quão agressivo é o escalonamento em telas extremas.
      */
-    const val DEFAULT_SENSITIVITY_K = 0.08f
+    const val DEFAULT_SENSITIVITY_K = 0.08f / 30f  // Adjusted for 1dp step granularity
 
     /**
      * [EN] Default increment factor (used in calculation WITHOUT Aspect Ratio).
      *
      * [PT] Fator de incremento padrão (usado no cálculo SEM Aspect Ratio).
      */
-    const val BASE_INCREMENT = 0.10f
+    const val BASE_INCREMENT = 0.10f / 30f  // Adjusted for 1dp step granularity
 
     /**
      * [EN] Helper function that isolates the logic for fetching and selecting the custom Dp value
@@ -299,6 +302,55 @@ object AppDimensAdjustmentFactors {
                 adjustmentFactorLowest = adjustmentFactorLowest,
                 adjustmentFactorHighest = adjustmentFactorHighest
             )
+        }
+    }
+
+    /**
+     * [EN] Resolves the effective ScreenType based on the base orientation and current device orientation.
+     * If the base orientation differs from the current orientation, LOWEST and HIGHEST are inverted.
+     *
+     * @param requestedType The originally requested screen type (LOWEST or HIGHEST)
+     * @param baseOrientation The orientation for which the design was created (PORTRAIT, LANDSCAPE, or AUTO)
+     * @param configuration The current screen configuration
+     * @return The resolved ScreenType (may be inverted from requestedType)
+     *
+     * [PT] Resolve o ScreenType efetivo baseado na orientação base e na orientação atual do dispositivo.
+     * Se a orientação base difere da orientação atual, LOWEST e HIGHEST são invertidos.
+     *
+     * @param requestedType O tipo de tela originalmente requisitado (LOWEST ou HIGHEST)
+     * @param baseOrientation A orientação para a qual o design foi criado (PORTRAIT, LANDSCAPE ou AUTO)
+     * @param configuration A Configuration da tela atual
+     * @return O ScreenType resolvido (pode ser invertido do requestedType)
+     */
+    fun resolveScreenType(
+        requestedType: ScreenType,
+        baseOrientation: com.appdimens.library.BaseOrientation,
+        configuration: Configuration
+    ): ScreenType {
+        // If AUTO, no inversion - return as requested
+        if (baseOrientation == com.appdimens.library.BaseOrientation.AUTO) {
+            return requestedType
+        }
+
+        // Detect current orientation
+        val currentIsPortrait = configuration.screenHeightDp > configuration.screenWidthDp
+        val currentIsLandscape = !currentIsPortrait
+
+        // Determine if inversion is needed
+        val shouldInvert = when (baseOrientation) {
+            com.appdimens.library.BaseOrientation.PORTRAIT -> currentIsLandscape
+            com.appdimens.library.BaseOrientation.LANDSCAPE -> currentIsPortrait
+            com.appdimens.library.BaseOrientation.AUTO -> false
+        }
+
+        // Invert if needed
+        return if (shouldInvert) {
+            when (requestedType) {
+                ScreenType.LOWEST -> ScreenType.HIGHEST
+                ScreenType.HIGHEST -> ScreenType.LOWEST
+            }
+        } else {
+            requestedType
         }
     }
 }

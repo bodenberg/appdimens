@@ -9,7 +9,7 @@ title: "Podfile"
     <p><strong>Smart and Responsive Dimensioning for iOS</strong></p>
     <p>Mathematically responsive scaling that ensures your UI design adapts perfectly to any screen size or aspect ratio — from iPhones to iPads, Apple TV, and Apple Watch.</p>
 
-[![Version](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../LICENSE)
 [![Platform](https://img.shields.io/badge/platform-iOS%2013+-orange.svg)](https://developer.apple.com/ios/)
 [![Swift](https://img.shields.io/badge/Swift-5.0+-blue.svg)](https://swift.org/)
@@ -131,13 +131,13 @@ pod install
 1. **In Xcode:**
    - File → Add Package Dependencies
    - Enter: `https://github.com/bodenberg/appdimens.git`
-   - Select version: `1.0.9` or higher
+   - Select version: `1.1.0` or higher
    - Add to your target
 
 2. **Or add to Package.swift:**
 ```swift
 dependencies: [
-    .package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.8")
+    .package(url: "https://github.com/bodenberg/appdimens.git", from: "1.1.0")
 ]
 ```
 
@@ -499,6 +499,62 @@ Final Value = (Base Points / Reference Width) × Current Screen Dimension
 - Spacer dimensions for full-screen layouts
 - Viewport-dependent elements that need to scale aggressively
 
+### 🌊 Fluid (FL) Model (SwiftUI Only) 
+
+**Philosophy**: Clamp-like smooth interpolation with bounded growth
+
+**Formula**:
+```
+Value = clamp(min, lerp(min, max, progress), max)
+where progress = (screenWidth - minWidth) / (maxWidth - minWidth)
+```
+
+**Characteristics**:
+- Linear interpolation between min/max
+- Explicit value bounds
+- Smooth transitions across breakpoints
+- Ideal for typography and fluid spacing
+
+**Use Cases** (SwiftUI only):
+- Fluid typography with min/max constraints
+- Line heights and letter spacing
+- Responsive font sizes with explicit bounds
+- Padding and margins that grow smoothly
+
+**SwiftUI Usage**:
+
+```swift
+// Basic fluid scaling
+let fontSize = fluid(min: 16, max: 24)
+    .calculate(screenWidth: geometry.size.width)
+
+// With device type qualifiers
+let fontSize = AppDimensFluid(minValue: 16, maxValue: 24)
+    .device(.tablet, minValue: 20, maxValue: 32)
+    .device(.tv, minValue: 24, maxValue: 40)
+    .calculate(screenWidth: width)
+
+// Using extensions
+let fluid = CGFloat(16).fluidTo(24)
+let fontSize = fluid.calculate(screenWidth: width)
+
+// With view extensions (SwiftUI)
+Text("Hello World")
+    .fluidPadding(min: 12, max: 20)
+```
+
+**When to Use Fluid vs Fixed:**
+
+| Aspect | Fluid | Fixed |
+|--------|-------|-------|
+| **Growth** | Linear between min/max | Logarithmic (slows on large screens) |
+| **Control** | Explicit bounds (min/max) | Automatic adaptive scaling |
+| **Best for** | Typography, line heights | UI elements, buttons, icons |
+| **Platform** | SwiftUI only | UIKit + SwiftUI |
+| **Predictability** | Exact min/max values | Calculated proportional growth |
+
+See [FluidExample.swift](./Examples/FluidExample.swift) for complete examples.
+
 ---
 
 ## 📱 Device Support
@@ -543,6 +599,74 @@ Final Value = (Base Points / Reference Width) × Current Screen Dimension
 2. **Use Dynamic (DY) Sparingly**: Only for specific large containers, full-width grids, viewport-dependent elements
 3. **Cache Dimensions**: Store frequently used dimensions in properties
 4. **Avoid Excessive Nesting**: Keep dimension chains simple
+
+### ⚡ Global Cache Control
+
+Control caching behavior globally across all AppDimens instances:
+
+```swift
+// Global cache control
+AppDimensGlobal.globalCacheEnabled = true       // Enable (default)
+AppDimensGlobal.globalCacheEnabled = false      // Disable and clear all caches
+AppDimensGlobal.clearAllCaches()                // Clear all cached values
+
+// Per-instance cache control
+let dimension = AppDimens.fixed(100)
+    .cache(true)                                // Enable cache for this instance
+    .toPoints()
+
+let dynamicDim = AppDimens.dynamic(200)
+    .cache(false)                               // Disable cache for this instance
+    .toPoints()
+```
+
+**Cache Features:**
+- **Global Control**: Affects all AppDimensDynamic instances
+- **Per-Instance**: Override global settings for specific instances
+- **Automatic Registry**: Dynamic instances are automatically registered
+- **Weak References**: Registry uses NSHashTable with weak objects
+- **Smart Invalidation**: Automatic invalidation on configuration changes
+- **Memory Efficient**: Automatic cleanup of deallocated instances
+
+### 🆕 Base Orientation Support (v1.2.0)
+
+Auto-adapt to screen rotation - design for one orientation, automatically maintain proportions when rotated:
+
+```swift
+// Explicit API
+let cardWidth = AppDimens.fixed(300)
+    .baseOrientation(.portrait)
+    .screen(type: .lowest)
+    .toPoints()
+
+// Shorthand methods
+let width1 = AppDimens.fixed(300).portraitLowest().pt      // Portrait design, uses width
+let height1 = AppDimens.fixed(200).portraitHighest().pt    // Portrait design, uses height
+let width2 = AppDimens.fixed(300).landscapeLowest().pt     // Landscape design, uses height
+let height2 = AppDimens.fixed(200).landscapeHighest().pt   // Landscape design, uses width
+
+// SwiftUI integration
+struct ResponsiveCard: View {
+    var body: some View {
+        VStack {
+            Text("Responsive Card")
+        }
+        .fxFrame(width: 300, baseOrientation: .portrait, type: .lowest)
+        .fxFrame(height: 200, baseOrientation: .portrait, type: .highest)
+    }
+}
+
+// Dynamic also supports Base Orientation
+let dynamicWidth = AppDimens.dynamic(0.8)
+    .portraitLowest()
+    .toPoints()
+```
+
+**How it works:**
+- **PORTRAIT Design**: When device is in landscape → LOWEST↔HIGHEST inverts
+- **LANDSCAPE Design**: When device is in portrait → LOWEST↔HIGHEST inverts
+- **AUTO** (default): No auto-inversion, uses types as-is
+- **Zero overhead**: When baseOrientation = AUTO (default)
 
 ---
 

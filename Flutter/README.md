@@ -48,7 +48,7 @@ Adicione ao seu `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  appdimens: ^1.0.8
+  appdimens: ^1.1.0
 ```
 
 Execute:
@@ -124,6 +124,66 @@ Container(
 )
 ```
 
+### 3.5. Dimensionamento Fluido (FL) 🌊 NOVO
+
+**Escalonamento suave com limites definidos** - Similar ao `clamp()` do CSS, ideal para tipografia e espaçamentos que precisam crescer de forma controlada.
+
+```dart
+// Uso básico - tamanho de fonte de 16 a 24 entre 320-768 de largura
+final fontSize = AppDimensFluid(16, 24).calculate(context);
+
+Text(
+  'Tipografia Fluida',
+  style: TextStyle(fontSize: fontSize),
+)
+
+// Usando extensões (forma mais conveniente)
+final fontSize = 16.0.fluidTo(24).calculate(context);
+final padding = 8.0.fluidTo(16).calculate(context);
+
+Container(
+  padding: EdgeInsets.all(padding),
+  child: Text(
+    'Texto Responsivo',
+    style: TextStyle(fontSize: fontSize),
+  ),
+)
+
+// Com breakpoints personalizados
+final fontSize = AppDimensFluid(
+  12, 
+  20,
+  minWidth: 280,
+  maxWidth: 600,
+).calculate(context);
+
+// Com qualificadores de dispositivo
+final fontSize = AppDimensFluid(16, 24)
+  ..device(DeviceType.tablet, 20, 32)
+  ..device(DeviceType.desktop, 24, 40);
+
+// Usando extensões de widget
+Text('Olá Mundo')
+  .fluidPadding(12, 20, context)
+  .fluidMargin(8, 16, context);
+
+// TextStyle com fonte fluida
+Text(
+  'Título Responsivo',
+  style: TextStyle()
+    .fluidFontSize(18, 28, context),
+)
+```
+
+**Quando usar Fluid vs Fixed:**
+
+| Aspecto | Fluid | Fixed |
+|---------|-------|-------|
+| **Crescimento** | Linear entre min/max | Logarítmico (desacelera em telas grandes) |
+| **Controle** | Limites explícitos (min/max) | Escalonamento adaptativo automático |
+| **Melhor para** | Tipografia, line heights | Elementos de UI, botões, ícones |
+| **Previsibilidade** | Valores min/max exatos | Crescimento proporcional calculado |
+
 ### 4. Unidades Físicas
 
 ```dart
@@ -149,16 +209,23 @@ Text(
 ```dart
 // Padding responsivo
 Text('Hello')
-  .fxPadding(16, context)
-  .dyMargin(8, context)
-  .fxBorderRadius(12, context);
+  .fxPadding(16, context)          // Fixed padding
+  .dyMargin(8, context)            // Dynamic margin
+  .fxBorderRadius(12, context);    // Fixed border radius
+
+// Padding e margens fluidas
+Text('Hello')
+  .fluidPadding(12, 20, context)   // Fluid padding (12-20)
+  .fluidMargin(8, 16, context)     // Fluid margin (8-16)
+  .fluidBorderRadius(8, 16, context); // Fluid border radius (8-16)
 
 // Estilo de texto responsivo
 Text(
   'Hello World',
   style: TextStyle()
-    .fxFontSize(16, context)
-    .dyFontSize(18, context),
+    .fxFontSize(16, context)           // Fixed font size
+    .dyFontSize(18, context)           // Dynamic font size
+    .fluidFontSize(14, 20, context),   // Fluid font size (14-20)
 );
 ```
 
@@ -248,25 +315,42 @@ Card(
 
 ## 🔧 Configuração Avançada
 
+### ⚡ Controle Global de Cache (v1.1.0)
+
+Controle o comportamento de cache globalmente ou por instância:
+
+```dart
+// Controle global de cache
+AppDimens.setGlobalCache(true);         // Ativar (padrão)
+AppDimens.setGlobalCache(false);        // Desativar e limpar todos os caches
+AppDimens.clearAllCaches();             // Limpar todos os valores em cache
+final isEnabled = AppDimens.isGlobalCacheEnabled();
+
+// Controle de cache por instância
+final dimension = AppDimens.fixed(100)
+    .cache(true)                        // Ativar cache para esta instância
+    .calculate(context);
+
+final dynamicDim = AppDimens.dynamic(200)
+    .cache(false)                       // Desativar cache para esta instância
+    .calculate(context);
+
+// Limpar cache de instância específica
+AppDimens.fixed(100).clearCache();
+```
+
+**Recursos de Cache:**
+- **Controle Global**: Afeta todas as instâncias AppDimensDynamic
+- **Por Instância**: Sobrescreve configurações globais para instâncias específicas
+- **Invalidação Automática**: Cache invalidado automaticamente em mudanças de configuração
+- **Eficiência de Memória**: Limpeza automática de instâncias desalocadas
+
 ### Configuração Global
 
 ```dart
-// Configuração global
+// Outras configurações globais
 AppDimens.setGlobalAspectRatio(true);
-AppDimens.setGlobalCache(true);
 AppDimens.setGlobalIgnoreMultiWindowAdjustment(false);
-```
-
-### Cache Personalizado
-
-```dart
-// Controle de cache por instância
-final dimension = AppDimens.fixed(100)
-    .cache(true)  // Ativar cache
-    .calculate(context);
-
-// Limpar cache
-AppDimens.fixed(100).clearCache();
 ```
 
 ### Qualificadores Personalizados

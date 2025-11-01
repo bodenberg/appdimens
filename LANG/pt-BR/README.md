@@ -9,7 +9,7 @@ title: "Podfile"
     <p><strong>Dimensionamento Inteligente e Responsivo para Android & iOS</strong></p>
     <p>Escala responsiva matematicamente precisa que garante que seu design de UI se adapte perfeitamente a qualquer tamanho de tela ou proporção — de telefones a TVs, carros e wearables.</p>
 
-[![Versão](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Versão](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![Licença](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![Plataforma](https://img.shields.io/badge/platform-Android%20%7C%20iOS-orange.svg)](https://github.com/bodenberg/appdimens)
 [![Documentação](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)
@@ -29,9 +29,13 @@ title: "Podfile"
 - **📱 Compatibilidade Universal**: Funciona perfeitamente em telefones, tablets, TVs, carros e wearables
 - **⚡ Otimizado para Performance**: Sobrecarga mínima em tempo de execução com cálculos em cache
 - **🔧 Integração Fácil**: API simples que funciona com Jetpack Compose, XML Views, SwiftUI e UIKit
-- **📐 Precisão Matemática**: Dois modelos de escala (Fixed & Dynamic) para diferentes necessidades de design
-- **🎮 Desenvolvimento de Jogos**: Módulo especializado C++/NDK para desenvolvimento de jogos de alta performance
-- **🚀 Performance Nativa**: Implementação C++ para cálculos específicos de jogos e integração OpenGL
+- **📐 Precisão Matemática**: Três modelos de escala (Fixed, Dynamic, Fluid) para diferentes necessidades
+- **🎮 Desenvolvimento de Jogos**: Módulos especializados para Android (C++/NDK) e iOS (Metal)
+- **🚀 Performance Nativa**: Implementação nativa para cálculos específicos de jogos
+- **🆕 v1.2.0**: Auto-adaptação à rotação de tela com Base Orientation
+- **🌊 v1.0.10**: Modelo Fluid para escalonamento suave com limites definidos
+- **📏 Unidades Físicas**: Medidas reais (mm, cm, polegadas) em todas as plataformas
+- **⚡ Controle de Cache Global**: Gerenciamento de cache global e por instância
 
 ---
 
@@ -60,17 +64,17 @@ title: "Podfile"
 ```kotlin
 dependencies {
     // Biblioteca principal (Dynamic + Fixed scaling)
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.8")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.1.0")
     
     // Opcional: SDP & SSP scaling
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.8")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.8")
+    implementation("io.github.bodenberg:appdimens-sdps:1.1.0")
+    implementation("io.github.bodenberg:appdimens-ssps:1.1.0")
     
     // Pacote completo (não inclui módulo de games)
-    implementation("io.github.bodenberg:appdimens-all:1.0.8")
+    implementation("io.github.bodenberg:appdimens-all:1.1.0")
     
     // Desenvolvimento de jogos com suporte C++/NDK (dependência separada)
-    implementation("io.github.bodenberg:appdimens-games:1.0.8")
+    implementation("io.github.bodenberg:appdimens-games:1.1.0")
 }
 ```
 

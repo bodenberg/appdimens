@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.bodenberg</groupId>
   <artifactId>appdimens-dynamic</artifactId>
-  <version>1.0.9</version>
+  <version>1.1.0</version>
   <packaging>aar</packaging>
   <name>AppDimens Core: Dynamic (DY) and Fixed (FX) Dimensioning</name>
   <description>The essential AppDimens module for responsive scaling via code. It includes the Dynamic (DY) model for proportional dimensioning (ideal for containers and fluid layouts) and the refined Fixed (FX) model for logarithmic scaling (ideal for paddings, margins, and buttons). Supports Jetpack Compose, XML Views (via Data Binding), and direct calls in Kotlin/Java. (android, kotlin, java, jetpack-compose, xml, swift, swiftui, ios, dp, sp, sdp, ssp, dimensions, responsive, layout, design-system, adaptive, dynamic, fixed, view-system)</description>
@@ -49,7 +49,7 @@
     <dependency>
       <groupId>io.github.bodenberg</groupId>
       <artifactId>appdimens-library</artifactId>
-      <version>1.0.2</version>
+      <version>1.1.0</version>
       <scope>compile</scope>
     </dependency>
     <dependency>

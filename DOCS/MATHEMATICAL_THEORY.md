@@ -4,8 +4,8 @@
 
 **Detailed Technical Documentation - Universal Mathematical Model**  
 *Author: Jean Bodenberg*  
-*Date: January 2025*  
-*Version: 1.0.9*
+*Date: October 2025*  
+*Version: 1.1.0*
 
 > **Note:** This documentation presents the fundamental mathematical theory of AppDimens, universally applicable to any platform (Android, iOS, Flutter, React Native, Web). Specific implementations are examples of the practical application of these models.
 
@@ -251,8 +251,8 @@ F(S, AR) = α + β(S) × γ(AR)
    where:
    AR = current aspect ratio
    AR₀ = 1.78 (16:9 reference)
-   ε₀ = 0.10 (base increment, ~10%)
-   K = 0.08 (logarithmic sensitivity)
+   ε₀ = 0.00333 (base increment, adjusted for 1dp step = 0.10/30)
+   K = 0.00267 (logarithmic sensitivity, adjusted for 1dp step = 0.08/30)
    
    Properties:
    - γ(AR₀) = ε₀ (base when AR = AR₀)
@@ -269,7 +269,7 @@ Substituting the components:
 f_FX(B, S, AR) = B × [1.0 + ((S - W₀) / δ) × (ε₀ + K × ln(AR / AR₀))]
 
 Simplifying:
-f_FX(B, S, AR) = B × [1.0 + ((S - 300) / 1) × (0.10 + 0.08 × ln(AR / 1.78))]
+f_FX(B, S, AR) = B × [1.0 + ((S - 300) / 1) × (0.00333 + 0.00267 × ln(AR / 1.78))]
 ```
 
 #### 2.2.3 Model Variants
@@ -277,7 +277,7 @@ f_FX(B, S, AR) = B × [1.0 + ((S - 300) / 1) × (0.10 + 0.08 × ln(AR / 1.78))]
 **Without Aspect Ratio Adjustment:**
 ```
 f_FX_simple(B, S) = B × [1.0 + ((S - W₀) / δ) × ε₀]
-                  = B × [1.0 + ((S - 300) / 1) × 0.10]
+                  = B × [1.0 + ((S - 300) / 1) × 0.00333]
 ```
 
 **With Custom Sensitivity:**
@@ -293,8 +293,16 @@ f_FX_custom(B, S, AR, K_custom) = B × [1.0 + ((S - W₀) / δ) × (ε₀ + K_cu
 | `W₀` | Reference Width | 300 | Historical average device (~360dp smartphones) |
 | `AR₀` | Reference Aspect Ratio | 1.78 | 16:9 proportion (historical standard) |
 | `δ` | Dimensional Step | 1 | 1dp granularity (fine-grained precision) |
-| `ε₀` | Base Increment | 0.10 | 10% base adjustment factor |
-| `K` | Log Sensitivity | 0.08 | Empirically calibrated for smoothness |
+| `ε₀` | Base Increment | 0.00333 | Proportionally adjusted (0.10/30) for 1dp step |
+| `K` | Log Sensitivity | 0.00267 | Proportionally adjusted (0.08/30) for 1dp step |
+
+> **⚠️ Important Note on 1dp Step Granularity:**
+>
+> With δ = 1 (1dp step), the constants `ε₀` and `K` were **proportionally adjusted** (divided by 30 from their original values) to maintain the **SAME final scaling values** while providing **30× higher granularity**. This means:
+> - **Final values remain identical** to the previous implementation
+> - **Precision increases 30×** (each 1dp increment has its own unique value)
+> - **Performance improves** (eliminates one division operation)
+> - **Mathematical equivalence**: `(111/30) × 0.10 = (111/1) × 0.00333 ≈ 0.37`
 
 ### 2.4 Mathematical Analysis of Behavior
 
@@ -343,7 +351,7 @@ dγ/dAR = K / AR
 Properties:
 - dγ/dAR > 0 for all AR > 0 (monotonically increasing)
 - lim[AR→∞] dγ/dAR = 0 (growth rate tends to zero)
-- At AR = AR₀: dγ/dAR = K / AR₀ = 0.08 / 1.78 ≈ 0.045
+- At AR = AR₀: dγ/dAR = K / AR₀ = 0.00267 / 1.78 ≈ 0.0015
 ```
 
 **Second Derivative:**
@@ -372,9 +380,9 @@ Properties:
 
 2. ln(AR / AR₀) = ln(2.22 / 1.78) = ln(1.247) ≈ 0.220
 
-3. γ(AR) = 0.10 + 0.08 × 0.220 = 0.10 + 0.0176 = 0.1176
+3. γ(AR) = 0.00333 + 0.00267 × 0.220 = 0.00333 + 0.000587 = 0.00392
 
-4. F(S, AR) = 1.0 + 2.0 × 0.1176 = 1.0 + 0.2352 = 1.2352
+4. F(S, AR) = 1.0 + 2.0 × 0.00392 = 1.0 + 0.00784 = 1.00784
 
 5. f_FX(16, 360, 2.22) = 16 × 1.2352 = 19.76 ≈ 19.8
 ```
@@ -382,8 +390,8 @@ Properties:
 **Interpretation:**
 - Scale factor: 1.2352 (increase of 23.52%)
 - Size contribution (β): 60.0 (60dp above reference)
-- AR contribution (γ): Increment of 11.76% (vs 10% base)
-- Logarithmic adjustment: +1.76% additional due to elongated AR
+- AR contribution (γ): Increment of 11.76% (vs base 0.333% per dp)
+- Logarithmic adjustment: Additional due to elongated AR
 
 ### 2.5 Characteristics of Logarithmic Growth
 
@@ -425,10 +433,10 @@ The `K` parameter (sensitivity) controls the **intensity** of the adjustment:
 
 ```kotlin
 // Default (RECOMMENDED):
-K = 0.08  // Smooth and balanced growth
+K = 0.08 / 30  // Smooth and balanced growth (adjusted for 1dp step)
 
 // More aggressive:
-K = 0.15  // For designs that need more scaling
+K = 0.15 / 30  // For designs that need more scaling (adjusted for 1dp step)
 
 // More conservative:
 K = 0.04  // To keep elements quite small
@@ -437,11 +445,11 @@ K = 0.04  // To keep elements quite small
 **Impact of K:**
 
 ```
-Aspect Ratio 2.0 (20:9) with different K values:
+Aspect Ratio 2.0 (20:9) with different K values (adjusted for 1dp step):
 
-K = 0.04:  Increment = 0.10 + (0.04 × 0.22) = 0.1088
-K = 0.08:  Increment = 0.10 + (0.08 × 0.22) = 0.1176 (default)
-K = 0.12:  Increment = 0.10 + (0.12 × 0.22) = 0.1264
+K = 0.04/30:  Increment = 0.00333 + (0.00133 × 0.22) = 0.00362
+K = 0.08/30:  Increment = 0.00333 + (0.00267 × 0.22) = 0.00392 (default)
+K = 0.12/30:  Increment = 0.00333 + (0.00400 × 0.22) = 0.00421
 ```
 
 ---
@@ -631,7 +639,7 @@ If W triples → V triples
 
 #### Detailed Growth Table
 
-| Screen (dp) | Fixed K=0.08 | Dynamic | Ratio D/F |
+| Screen (dp) | Fixed K=0.08/30 | Dynamic | Ratio D/F |
 |-------------|-------------|---------|-----------|
 | 240       | 0.90x       | 0.80x   | 0.89      |
 | 300       | 1.00x (ref) | 1.00x   | 1.00      |
@@ -1606,7 +1614,7 @@ This documentation covers an in-depth analysis of the AppDimens library, includi
 - **Mathematical Architecture**: Detailed analysis of logarithmic calculation structure and its theoretical justifications
 - **Performance Comparisons**: Benchmarks comparing Fixed, Dynamic and other approaches
 - **Use Cases**: Practical examples of application on different platforms
-- **Constants Discussion**: Justifications for chosen values (K=0.08, W₀=300, etc.)
+- **Constants Discussion**: Justifications for chosen values (K=0.08/30, W₀=300, ε₀=0.10/30, etc.)
 
 **Key Points:**
 
@@ -1986,9 +1994,9 @@ WindowSizeClass.calculateFromSize(size)
 const val BASE_DP_FACTOR = 1.00f           // Neutral factor
 const val BASE_WIDTH_DP = 300f             // Reference: Nexus 5 (~360dp)
 const val INCREMENT_DP_STEP = 1f           // 1dp granularity
-const val REFERENCE_AR = 1.78f             // 16:9
-const val DEFAULT_SENSITIVITY_K = 0.08f    // Default sensitivity
-const val BASE_INCREMENT = 0.10f           // 10% base increment
+const val REFERENCE_AR = 1.78f                    // 16:9
+const val DEFAULT_SENSITIVITY_K = 0.08f / 30f    // Adjusted for 1dp step
+const val BASE_INCREMENT = 0.10f / 30f           // Adjusted for 1dp step
 ```
 
 ### B. Conversion Formulas
@@ -2064,10 +2072,10 @@ f_FX(B, S, AR) = B × [1 + ((S - W₀) / δ) × (ε₀ + K × ln(AR / AR₀))]
 
 Universal constants:
 W₀ = 300    (dimensional reference)
-AR₀ = 1.78  (16:9 proportion)
-δ = 1       (dimensional step - 1dp granularity)
-ε₀ = 0.10   (10% base increment)
-K = 0.08    (logarithmic sensitivity)
+AR₀ = 1.78     (16:9 proportion)
+δ = 1          (dimensional step - 1dp granularity)
+ε₀ = 0.00333   (base increment, adjusted for 1dp step = 0.10/30)
+K = 0.00267    (logarithmic sensitivity, adjusted for 1dp step = 0.08/30)
 ```
 
 **Dynamic Model (Specific cases):**

@@ -33,6 +33,7 @@ public struct AppDimensFixedCalculator: DimensionCalculator {
     private var applyAspectRatio: Bool = true
     private var ignoreMultiWindowAdjustment: Bool = false
     private var screenType: ScreenType = .lowest
+    private var baseOrientation: BaseOrientation = .auto
     private var customMap: [ScreenQualifierEntry: CGFloat] = [:]
     private var customDeviceTypeMap: [DeviceType: CGFloat] = [:]
     private var customSensitivityK: CGFloat? = nil
@@ -43,10 +44,24 @@ public struct AppDimensFixedCalculator: DimensionCalculator {
 
     // MARK: - Configuration Methods
 
-    public func withAspectRatio(_ apply: Bool) -> AppDimensFixedCalculator {
+    /**
+     * Primary method - matches Android, Web, React Native, Flutter API
+     */
+    public func aspectRatio(_ apply: Bool, sensitivity: CGFloat? = nil) -> AppDimensFixedCalculator {
         var copy = self
         copy.applyAspectRatio = apply
+        if let sens = sensitivity {
+            copy.customSensitivity = sens
+        }
         return copy
+    }
+    
+    /**
+     * Deprecated - kept for backward compatibility
+     * @deprecated Use aspectRatio() instead for consistency with other platforms
+     */
+    public func withAspectRatio(_ apply: Bool) -> AppDimensFixedCalculator {
+        return aspectRatio(apply, sensitivity: nil)
     }
 
     public func ignoreMultiWindowAdjustment(_ ignore: Bool) -> AppDimensFixedCalculator {
@@ -58,6 +73,40 @@ public struct AppDimensFixedCalculator: DimensionCalculator {
     public func screen(type: ScreenType) -> AppDimensFixedCalculator {
         var copy = self
         copy.screenType = type
+        return copy
+    }
+    
+    public func baseOrientation(_ orientation: BaseOrientation) -> AppDimensFixedCalculator {
+        var copy = self
+        copy.baseOrientation = orientation
+        return copy
+    }
+    
+    public func portraitLowest() -> AppDimensFixedCalculator {
+        var copy = self
+        copy.baseOrientation = .portrait
+        copy.screenType = .lowest
+        return copy
+    }
+    
+    public func portraitHighest() -> AppDimensFixedCalculator {
+        var copy = self
+        copy.baseOrientation = .portrait
+        copy.screenType = .highest
+        return copy
+    }
+    
+    public func landscapeLowest() -> AppDimensFixedCalculator {
+        var copy = self
+        copy.baseOrientation = .landscape
+        copy.screenType = .lowest
+        return copy
+    }
+    
+    public func landscapeHighest() -> AppDimensFixedCalculator {
+        var copy = self
+        copy.baseOrientation = .landscape
+        copy.screenType = .highest
         return copy
     }
     
@@ -114,12 +163,19 @@ public struct AppDimensFixedCalculator: DimensionCalculator {
         let finalAdjustmentFactor: CGFloat
         
         if applyAspectRatio {
+            // Resolve effective screen type based on base orientation
+            let effectiveScreenType = AppDimensAdjustmentFactors.resolveScreenType(
+                requestedType: screenType,
+                baseOrientation: baseOrientation,
+                bounds: bounds
+            )
+            
             // 1. Select pre-calculated AR factor
-            var selectedFactor: CGFloat = (screenType == .highest) ? factors.withArFactorHighest : factors.withArFactorLowest
+            var selectedFactor: CGFloat = (effectiveScreenType == .highest) ? factors.withArFactorHighest : factors.withArFactorLowest
             
             if let customSensitivityK = customSensitivityK {
                 // 2. If custom sensitivity, recalculate AR factor
-                let adjustmentFactorBase = (screenType == .highest) ? factors.adjustmentFactorHighest : factors.adjustmentFactorLowest
+                let adjustmentFactorBase = (effectiveScreenType == .highest) ? factors.adjustmentFactorHighest : factors.adjustmentFactorLowest
                 let currentAr = AppDimensAdjustmentFactors.getReferenceAspectRatio(screenWidth, screenHeight)
                 
                 // Logarithmic calculation for sensitivity recalculation

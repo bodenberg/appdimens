@@ -18,15 +18,15 @@ It provides refined scaling to ensure that UI elements maintain the correct **pr
 ### Required Versions
 
 | Component | Minimum Version | Recommended |
-|-----------|----------------|-------------|
-| **Kotlin** | 2.2.20 | 2.2.20 |
-| **Android Gradle Plugin** | 8.13.0 | 8.13.0 |
-| **Gradle** | 8.5 | 8.5 |
-| **compileSdk** | 36 | 36 |
-| **minSdk** | 21 (Android 5.0) | 23 (Android 6.0) |
-| **targetSdk** | 36 | 36 |
-| **Java** | 17 | 17 |
-| **Jetpack Compose BOM** | 2025.01.00 | 2025.01.00 |
+|-----------|-----------------|-------------|
+| **Kotlin** | 2.2.20          | 2.2.20      |
+| **Android Gradle Plugin** | 8.13.0          | 8.13.0      |
+| **Gradle** | 8.5             | 8.5         |
+| **compileSdk** | 36              | 36          |
+| **minSdk** | 25              | 25          |
+| **targetSdk** | 36              | 36          |
+| **Java** | 17              | 17          |
+| **Jetpack Compose BOM** | 2025.01.00      | 2025.01.00  |
 
 ### Build Configuration Example
 
@@ -45,7 +45,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        minSdk = 23
+        minSdk = 25
         targetSdk = 36
     }
 
@@ -66,7 +66,7 @@ android {
 
 dependencies {
     // AppDimens All-in-One
-    implementation("io.github.bodenberg:appdimens-all:1.0.9")
+    implementation("io.github.bodenberg:appdimens-all:1.1.0")
     
     // Jetpack Compose
     implementation(platform("androidx.compose:compose-bom:2025.01.00"))

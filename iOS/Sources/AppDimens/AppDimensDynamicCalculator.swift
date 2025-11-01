@@ -32,6 +32,7 @@ public struct AppDimensDynamicCalculator: DimensionCalculator {
     private let initialBaseValue: CGFloat
     private var ignoreMultiWindowAdjustment: Bool = false
     private var screenType: ScreenType = .lowest
+    private var baseOrientation: BaseOrientation = .auto
     private var customMap: [ScreenQualifierEntry: CGFloat] = [:]
     private var customDeviceTypeMap: [DeviceType: CGFloat] = [:]
 
@@ -42,8 +43,14 @@ public struct AppDimensDynamicCalculator: DimensionCalculator {
     // MARK: - Configuration Methods
 
     /// Dynamic ignores aspect ratio adjustment, but implements the protocol
-    public func withAspectRatio(_ apply: Bool) -> AppDimensDynamicCalculator { 
+    public func aspectRatio(_ apply: Bool, sensitivity: CGFloat? = nil) -> AppDimensDynamicCalculator { 
         return self 
+    }
+    
+    /// Deprecated - kept for backward compatibility
+    /// @deprecated Use aspectRatio() instead for consistency with other platforms
+    public func withAspectRatio(_ apply: Bool) -> AppDimensDynamicCalculator { 
+        return aspectRatio(apply, sensitivity: nil)
     }
 
     public func ignoreMultiWindowAdjustment(_ ignore: Bool) -> AppDimensDynamicCalculator {
@@ -55,6 +62,40 @@ public struct AppDimensDynamicCalculator: DimensionCalculator {
     public func screen(type: ScreenType) -> AppDimensDynamicCalculator {
         var copy = self
         copy.screenType = type
+        return copy
+    }
+    
+    public func baseOrientation(_ orientation: BaseOrientation) -> AppDimensDynamicCalculator {
+        var copy = self
+        copy.baseOrientation = orientation
+        return copy
+    }
+    
+    public func portraitLowest() -> AppDimensDynamicCalculator {
+        var copy = self
+        copy.baseOrientation = .portrait
+        copy.screenType = .lowest
+        return copy
+    }
+    
+    public func portraitHighest() -> AppDimensDynamicCalculator {
+        var copy = self
+        copy.baseOrientation = .portrait
+        copy.screenType = .highest
+        return copy
+    }
+    
+    public func landscapeLowest() -> AppDimensDynamicCalculator {
+        var copy = self
+        copy.baseOrientation = .landscape
+        copy.screenType = .lowest
+        return copy
+    }
+    
+    public func landscapeHighest() -> AppDimensDynamicCalculator {
+        var copy = self
+        copy.baseOrientation = .landscape
+        copy.screenType = .highest
         return copy
     }
 
@@ -102,8 +143,15 @@ public struct AppDimensDynamicCalculator: DimensionCalculator {
         // Percentage: (Adjusted Base Value / Reference Value)
         let percentage = valueToAdjust / BASE_WIDTH_PT
 
+        // Resolve effective screen type based on base orientation
+        let effectiveScreenType = AppDimensAdjustmentFactors.resolveScreenType(
+            requestedType: screenType,
+            baseOrientation: baseOrientation,
+            bounds: bounds
+        )
+
         // Screen dimension to use (LOWEST or HIGHEST)
-        let dimensionToUse = (screenType == .highest) ? highestDimension : smallestWidth
+        let dimensionToUse = (effectiveScreenType == .highest) ? highestDimension : smallestWidth
 
         // Final value is percentage applied to screen dimension
         return dimensionToUse * percentage

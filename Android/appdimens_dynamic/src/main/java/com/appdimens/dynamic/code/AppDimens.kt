@@ -259,6 +259,76 @@ object AppDimens {
         registerDynamicInstance(instance)
         return instance
     }
+    
+    // MARK: - Concise Aliases (matching Web and Flutter API)
+    
+    /**
+     * [EN] Alias for [fixed]. Concise syntax matching Web and Flutter API.
+     *
+     * @param initialValueDp The initial value in Dp (Float).
+     * @param ignoreMultiViewAdjustment If true, ignores multi-view adjustments (overrides global setting).
+     * @return A new [AppDimensFixed] instance.
+     *
+     * [PT] Alias para [fixed]. Sintaxe concisa compatível com API Web e Flutter.
+     *
+     * @param initialValueDp O valor inicial em Dp (Float).
+     * @param ignoreMultiViewAdjustment Se verdadeiro, ignora os ajustes de multi-view (sobrescreve configuração global).
+     * @return Uma nova instância de [AppDimensFixed].
+     */
+    @JvmStatic
+    fun fx(initialValueDp: Float, ignoreMultiViewAdjustment: Boolean? = null): AppDimensFixed =
+        fixed(initialValueDp, ignoreMultiViewAdjustment)
+    
+    /**
+     * [EN] Alias for [fixed]. Concise syntax matching Web and Flutter API.
+     *
+     * @param initialValueInt The initial value in Dp (Int).
+     * @param ignoreMultiViewAdjustment If true, ignores multi-view adjustments (overrides global setting).
+     * @return A new [AppDimensFixed] instance.
+     *
+     * [PT] Alias para [fixed]. Sintaxe concisa compatível com API Web e Flutter.
+     *
+     * @param initialValueInt O valor inicial em Dp (Int).
+     * @param ignoreMultiViewAdjustment Se verdadeiro, ignora os ajustes de multi-view (sobrescreve configuração global).
+     * @return Uma nova instância de [AppDimensFixed].
+     */
+    @JvmStatic
+    fun fx(initialValueInt: Int, ignoreMultiViewAdjustment: Boolean? = null): AppDimensFixed =
+        fixed(initialValueInt, ignoreMultiViewAdjustment)
+    
+    /**
+     * [EN] Alias for [dynamic]. Concise syntax matching Web and Flutter API.
+     *
+     * @param initialValueDp The initial value in Dp (Float).
+     * @param ignoreMultiViewAdjustment If true, ignores multi-view adjustments (overrides global setting).
+     * @return A new [AppDimensDynamic] instance.
+     *
+     * [PT] Alias para [dynamic]. Sintaxe concisa compatível com API Web e Flutter.
+     *
+     * @param initialValueDp O valor inicial em Dp (Float).
+     * @param ignoreMultiViewAdjustment Se verdadeiro, ignora os ajustes de multi-view (sobrescreve configuração global).
+     * @return Uma nova instância de [AppDimensDynamic].
+     */
+    @JvmStatic
+    fun dy(initialValueDp: Float, ignoreMultiViewAdjustment: Boolean? = null): AppDimensDynamic =
+        dynamic(initialValueDp, ignoreMultiViewAdjustment)
+    
+    /**
+     * [EN] Alias for [dynamic]. Concise syntax matching Web and Flutter API.
+     *
+     * @param initialValueInt The initial value in Dp (Int).
+     * @param ignoreMultiViewAdjustment If true, ignores multi-view adjustments (overrides global setting).
+     * @return A new [AppDimensDynamic] instance.
+     *
+     * [PT] Alias para [dynamic]. Sintaxe concisa compatível com API Web e Flutter.
+     *
+     * @param initialValueInt O valor inicial em Dp (Int).
+     * @param ignoreMultiViewAdjustment Se verdadeiro, ignora os ajustes de multi-view (sobrescreve configuração global).
+     * @return Uma nova instância de [AppDimensDynamic].
+     */
+    @JvmStatic
+    fun dy(initialValueInt: Int, ignoreMultiViewAdjustment: Boolean? = null): AppDimensDynamic =
+        dynamic(initialValueInt, ignoreMultiViewAdjustment)
 
     /**
      * [EN] Dynamic Dimension Functions (Percentage-Based).

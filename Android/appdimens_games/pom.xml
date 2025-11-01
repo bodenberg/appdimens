@@ -6,7 +6,7 @@
 
     <groupId>io.github.bodenberg</groupId>
     <artifactId>appdimens-games</artifactId>
-    <version>1.0.5</version>
+    <version>1.1.0</version>
     <packaging>aar</packaging>
 
     <name>AppDimens Games</name>

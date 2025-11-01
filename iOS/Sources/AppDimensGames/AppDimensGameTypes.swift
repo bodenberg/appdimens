@@ -25,6 +25,67 @@ import Foundation
 import Metal
 import simd
 
+// MARK: - Base Orientation
+
+/**
+ * [EN] Defines the base orientation for which the design was originally created.
+ * When set, LOWEST/HIGHEST will be auto-inverted based on current orientation.
+ * [PT] Define a orientação base para a qual o design foi originalmente criado.
+ * Quando configurado, LOWEST/HIGHEST será auto-invertido baseado na orientação atual.
+ */
+public enum GameBaseOrientation {
+    case portrait   // Design created for portrait
+    case landscape  // Design created for landscape
+    case auto       // No specific orientation (default)
+}
+
+/**
+ * [EN] Screen type for dimension calculations in games.
+ * [PT] Tipo de tela para cálculos de dimensões em jogos.
+ */
+public enum GameScreenType {
+    case lowest     // Use smallest dimension
+    case highest    // Use largest dimension
+}
+
+/**
+ * [EN] Resolves the effective ScreenType based on base orientation and current dimensions.
+ * [PT] Resolve o ScreenType efetivo baseado na orientação base e dimensões atuais.
+ */
+public func resolveGameScreenType(
+    requestedType: GameScreenType,
+    baseOrientation: GameBaseOrientation,
+    width: Float,
+    height: Float
+) -> GameScreenType {
+    // If AUTO, no inversion - return as requested
+    if baseOrientation == .auto {
+        return requestedType
+    }
+    
+    // Detect current orientation
+    let currentIsPortrait = height > width
+    let currentIsLandscape = !currentIsPortrait
+    
+    // Determine if inversion is needed
+    let shouldInvert: Bool
+    switch baseOrientation {
+    case .portrait:
+        shouldInvert = currentIsLandscape
+    case .landscape:
+        shouldInvert = currentIsPortrait
+    case .auto:
+        shouldInvert = false
+    }
+    
+    // Invert if needed
+    if shouldInvert {
+        return requestedType == .lowest ? .highest : .lowest
+    } else {
+        return requestedType
+    }
+}
+
 // MARK: - Game Device Types
 
 /**

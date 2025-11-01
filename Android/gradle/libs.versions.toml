@@ -16,6 +16,7 @@ appcompat = "1.7.1"
 material = "1.13.0"
 annotationJvm = "1.9.1"
 dokka = "2.0.0"
+composeMaterialCore = "1.5.4"
 
 [libraries]
 android-documentation-plugin = { module = "org.jetbrains.dokka:android-documentation-plugin", version.ref = "androidDocumentationPlugin" }
@@ -41,6 +42,7 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-annotation-jvm = { group = "androidx.annotation", name = "annotation-jvm", version.ref = "annotationJvm" }
 androidx-graphics-core = { group = "androidx.graphics", name = "graphics-core", version = "1.0.0-alpha02" }
+androidx-compose-material-core = { group = "androidx.wear.compose", name = "compose-material-core", version.ref = "composeMaterialCore" }
 
 
 [plugins]

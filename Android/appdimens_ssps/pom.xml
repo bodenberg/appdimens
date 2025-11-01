@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.bodenberg</groupId>
   <artifactId>appdimens-ssps</artifactId>
-  <version>1.0.2</version>
+  <version>1.1.0</version>
   <packaging>aar</packaging>
   <name>AppDimens SSP, HSP, WSP, SEM, WEM, HEM: Scalable Text Sizes (Fonts)</name>
   <description>An extension of AppDimens that implements the SSP (Scaled Density Pixels) standard for text sizes (Sp). It provides pre-calculated @dimen resources, ensuring font size scales consistently across different densities and screen sizes. Essential for responsive and legible text in Compose and XML Views. (android, kotlin, java, jetpack-compose, xml, swift, swiftui, ios, dp, sp, sdp, ssp, dimensions, responsive, layout, design-system, adaptive, dynamic, fixed, view-system)</description>
@@ -49,7 +49,7 @@
     <dependency>
       <groupId>io.github.bodenberg</groupId>
       <artifactId>appdimens-library</artifactId>
-      <version>1.0.2</version>
+      <version>1.1.0</version>
       <scope>compile</scope>
     </dependency>
     <dependency>

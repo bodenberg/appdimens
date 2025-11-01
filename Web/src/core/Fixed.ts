@@ -7,7 +7,9 @@
  * Ideal for: buttons, paddings, margins, icons, fonts
  */
 
-import type { ScreenType, DeviceMode, SizeQualifier, ScreenAdjustmentFactors } from '../types';
+import { ScreenType } from '../types';
+import type { DeviceMode, SizeQualifier, ScreenAdjustmentFactors } from '../types';
+import type { BaseOrientation } from '../types/BaseOrientation';
 import { 
   BASE_DP_FACTOR, 
   BASE_WIDTH_DP, 
@@ -18,6 +20,7 @@ import {
 } from '../constants';
 import { globalCache } from '../cache/Cache';
 import { globalViewportObserver } from '../observers/ViewportObserver';
+import { resolveScreenType } from '../utils/orientationResolver';
 
 interface QualifierEntry {
   qualifier: SizeQualifier;
@@ -43,7 +46,8 @@ interface IntersectionEntry {
  */
 export class Fixed {
   private baseValue: number;
-  private screenType: ScreenType = 'lowest' as ScreenType;
+  private screenType: ScreenType = ScreenType.LOWEST;
+  private baseOrientation: BaseOrientation = 'auto';
   private applyAspectRatio: boolean = true;
   private customSensitivity: number | null = null;
   private _ignoreMultiView: boolean = true;
@@ -60,23 +64,10 @@ export class Fixed {
 
   /**
    * Set screen type (lowest/highest/width/height)
+   * Primary method - matches Android, iOS, Flutter API
    */
-  type(type: ScreenType): this {
-    this.screenType = type;
-    return this;
-  }
-
-  /**
-   * Enable/disable aspect ratio adjustment
-   */
-  aspectRatio(enable: boolean = true, sensitivity?: number): this {
-    this.applyAspectRatio = enable;
-    if (sensitivity !== undefined) {
-      this.customSensitivity = sensitivity;
-    }
-    return this;
-  }
-
+  screen(type: ScreenType): this;
+  
   /**
    * Set custom value for device mode (Priority 2)
    */
@@ -88,7 +79,15 @@ export class Fixed {
     value: number,
     customValue: number
   ): this;
+  
   screen(...args: any[]): this {
+    // Check if it's screen(type: ScreenType)
+    if (args.length === 1 && typeof args[0] === 'string' && 
+        ['lowest', 'highest', 'width', 'height'].includes(args[0])) {
+      this.screenType = args[0] as ScreenType;
+      return this;
+    }
+    
     if (args.length === 2) {
       // Device mode only
       this.deviceModeEntries.push({
@@ -111,6 +110,58 @@ export class Fixed {
         customValue: args[3]
       });
     }
+    return this;
+  }
+  
+  /**
+   * Alias for screen() - kept for backward compatibility
+   * @deprecated Use screen() instead for consistency with other platforms
+   */
+  type(type: ScreenType): this {
+    return this.screen(type);
+  }
+
+  /**
+   * Set base orientation for design
+   */
+  baseOrientation(orientation: BaseOrientation): this {
+    this.baseOrientation = orientation;
+    return this;
+  }
+
+  /**
+   * Shorthand for portrait design using lowest dimension
+   */
+  portraitLowest(): this {
+    this.baseOrientation = 'portrait';
+    this.screenType = ScreenType.LOWEST;
+    return this;
+  }
+
+  /**
+   * Shorthand for portrait design using highest dimension
+   */
+  portraitHighest(): this {
+    this.baseOrientation = 'portrait';
+    this.screenType = ScreenType.HIGHEST;
+    return this;
+  }
+
+  /**
+   * Shorthand for landscape design using lowest dimension
+   */
+  landscapeLowest(): this {
+    this.baseOrientation = 'landscape';
+    this.screenType = ScreenType.LOWEST;
+    return this;
+  }
+
+  /**
+   * Shorthand for landscape design using highest dimension
+   */
+  landscapeHighest(): this {
+    this.baseOrientation = 'landscape';
+    this.screenType = ScreenType.HIGHEST;
     return this;
   }
 
@@ -280,7 +331,14 @@ export class Fixed {
     let factor: number;
 
     if (this.applyAspectRatio) {
-      factor = this.screenType === 'highest' 
+      // Resolve effective screen type based on base orientation
+      const effectiveScreenType = resolveScreenType(
+        this.screenType,
+        this.baseOrientation,
+        {width: window.innerWidth, height: window.innerHeight}
+      );
+      
+      factor = effectiveScreenType === 'highest' 
         ? factors.withArFactorHighest 
         : factors.withArFactorLowest;
     } else {

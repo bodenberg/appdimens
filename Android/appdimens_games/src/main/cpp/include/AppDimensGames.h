@@ -56,6 +56,19 @@ enum class ScreenOrientation {
     AUTO
 };
 
+// Base orientation types (for design adaptation)
+enum class BaseOrientation {
+    PORTRAIT,   // Design was created for portrait orientation
+    LANDSCAPE,  // Design was created for landscape orientation
+    AUTO        // No specific orientation (default)
+};
+
+// Screen type for dimension calculations
+enum class ScreenType {
+    LOWEST,     // Use smallest dimension
+    HIGHEST     // Use largest dimension
+};
+
 // Viewport scaling modes
 enum class ViewportMode {
     FIT_WIDTH,      // Fit to screen width
@@ -166,6 +179,44 @@ class GameMath;
 class PerformanceMonitor;
 
 // Main AppDimens Games class
+// Helper function to resolve effective screen type based on base orientation
+inline ScreenType resolveScreenType(
+    ScreenType requestedType,
+    BaseOrientation baseOrientation,
+    float screenWidth,
+    float screenHeight
+) {
+    // If AUTO, no inversion - return as requested
+    if (baseOrientation == BaseOrientation::AUTO) {
+        return requestedType;
+    }
+
+    // Detect current orientation
+    bool currentIsPortrait = screenHeight > screenWidth;
+    bool currentIsLandscape = !currentIsPortrait;
+
+    // Determine if inversion is needed
+    bool shouldInvert = false;
+    switch (baseOrientation) {
+        case BaseOrientation::PORTRAIT:
+            shouldInvert = currentIsLandscape;
+            break;
+        case BaseOrientation::LANDSCAPE:
+            shouldInvert = currentIsPortrait;
+            break;
+        case BaseOrientation::AUTO:
+            shouldInvert = false;
+            break;
+    }
+
+    // Invert if needed
+    if (shouldInvert) {
+        return (requestedType == ScreenType::LOWEST) ? ScreenType::HIGHEST : ScreenType::LOWEST;
+    } else {
+        return requestedType;
+    }
+}
+
 class AppDimensGames {
 public:
     static AppDimensGames& getInstance();

@@ -267,6 +267,24 @@ object AppDimens {
     @Composable
     fun TextUnit.fixedPx(type: ScreenType = ScreenType.LOWEST, ignoreMultiWindows: Boolean = true): Float =
         this.fixed().type(type).multiViewAdjustment(ignoreMultiWindows).px
+    
+    // MARK: - Concise Aliases (matching Web and Flutter API)
+    
+    /**
+     * [EN] Alias for [Dp.fixed]. Concise syntax matching Web and Flutter API.
+     * [PT] Alias para [Dp.fixed]. Sintaxe concisa compatível com API Web e Flutter.
+     */
+    @Composable
+    fun Dp.fx(ignoreMultiViewAdjustment: Boolean? = null): AppDimensFixed =
+        fixed(ignoreMultiViewAdjustment)
+    
+    /**
+     * [EN] Alias for [Dp.dynamic]. Concise syntax matching Web and Flutter API.
+     * [PT] Alias para [Dp.dynamic]. Sintaxe concisa compatível com API Web e Flutter.
+     */
+    @Composable
+    fun Dp.dy(ignoreMultiViewAdjustment: Boolean? = null): AppDimensDynamic =
+        dynamic(ignoreMultiViewAdjustment)
 
     /**
      * [EN] Applies dimension adjustment directly to the TextUnit (Sp).
@@ -1338,4 +1356,149 @@ object AppDimens {
                 }
         )
     }
+
+    // MARK: - Base Orientation Shorthand Extensions
+    // [EN] Convenient extensions for orientation-aware dimensions
+    // [PT] Extensões convenientes para dimensões com orientação
+
+    /**
+     * [EN] Creates a fixed dimension for portrait design using lowest dimension (width).
+     * [PT] Cria uma dimensão fixa para design portrait usando menor dimensão (largura).
+     */
+    @get:Composable
+    @get:JvmName("fxPortraitLowestDp")
+    val Dp.fxPortraitLowest: Dp
+        get() = this.fixed().portraitLowest().dp
+
+    @get:Composable
+    @get:JvmName("fxPortraitLowestFloat")
+    val Float.fxPortraitLowest: Dp
+        get() = this.fixed().portraitLowest().dp
+
+    @get:Composable
+    @get:JvmName("fxPortraitLowestInt")
+    val Int.fxPortraitLowest: Dp
+        get() = this.fixed().portraitLowest().dp
+
+    /**
+     * [EN] Creates a fixed dimension for portrait design using highest dimension (height).
+     * [PT] Cria uma dimensão fixa para design portrait usando maior dimensão (altura).
+     */
+    @get:Composable
+    @get:JvmName("fxPortraitHighestDp")
+    val Dp.fxPortraitHighest: Dp
+        get() = this.fixed().portraitHighest().dp
+
+    @get:Composable
+    @get:JvmName("fxPortraitHighestFloat")
+    val Float.fxPortraitHighest: Dp
+        get() = this.fixed().portraitHighest().dp
+
+    @get:Composable
+    @get:JvmName("fxPortraitHighestInt")
+    val Int.fxPortraitHighest: Dp
+        get() = this.fixed().portraitHighest().dp
+
+    /**
+     * [EN] Creates a fixed dimension for landscape design using lowest dimension (height).
+     * [PT] Cria uma dimensão fixa para design landscape usando menor dimensão (altura).
+     */
+    @get:Composable
+    @get:JvmName("fxLandscapeLowestDp")
+    val Dp.fxLandscapeLowest: Dp
+        get() = this.fixed().landscapeLowest().dp
+
+    @get:Composable
+    @get:JvmName("fxLandscapeLowestFloat")
+    val Float.fxLandscapeLowest: Dp
+        get() = this.fixed().landscapeLowest().dp
+
+    @get:Composable
+    @get:JvmName("fxLandscapeLowestInt")
+    val Int.fxLandscapeLowest: Dp
+        get() = this.fixed().landscapeLowest().dp
+
+    /**
+     * [EN] Creates a dynamic dimension for landscape design using highest dimension (width).
+     * [PT] Cria uma dimensão dinamica para design landscape usando maior dimensão (largura).
+     */
+    @get:Composable
+    @get:JvmName("fxLandscapeHighestDp")
+    val Dp.fxLandscapeHighest: Dp
+        get() = this.fixed().landscapeHighest().dp
+
+    @get:Composable
+    @get:JvmName("fxLandscapeHighestFloat")
+    val Float.fxLandscapeHighest: Dp
+        get() = this.fixed().landscapeHighest().dp
+
+    @get:Composable
+    @get:JvmName("fxLandscapeHighestInt")
+    val Int.fxLandscapeHighest: Dp
+        get() = this.fixed().landscapeHighest().dp
+
+    // Dynamic orientation shortcuts
+    @get:Composable
+    @get:JvmName("dyPortraitLowestDp")
+    val Dp.dyPortraitLowest: Dp
+        get() = this.dynamic().portraitLowest().dp
+
+    @get:Composable
+    @get:JvmName("dyPortraitLowestFloat")
+    val Float.dyPortraitLowest: Dp
+        get() = this.dynamic().portraitLowest().dp
+
+    @get:Composable
+    @get:JvmName("dyPortraitLowestInt")
+    val Int.dyPortraitLowest: Dp
+        get() = this.dynamic().portraitLowest().dp
+
+    @get:Composable
+    @get:JvmName("dyPortraitHighestDp")
+    val Dp.dyPortraitHighest: Dp
+        get() = this.dynamic().portraitHighest().dp
+
+    @get:Composable
+    @get:JvmName("dyPortraitHighestFloat")
+    val Float.dyPortraitHighest: Dp
+        get() = this.dynamic().portraitHighest().dp
+
+    @get:Composable
+    @get:JvmName("dyPortraitHighestInt")
+    val Int.dyPortraitHighest: Dp
+        get() = this.dynamic().portraitHighest().dp
+
+    @get:Composable
+    @get:JvmName("dyLandscapeLowestDp")
+    val Dp.dyLandscapeLowest: Dp
+        get() = this.dynamic().landscapeLowest().dp
+
+    @get:Composable
+    @get:JvmName("dyLandscapeLowestFloat")
+    val Float.dyLandscapeLowest: Dp
+        get() = this.dynamic().landscapeLowest().dp
+
+    @get:Composable
+    @get:JvmName("dyLandscapeLowestInt")
+    val Int.dyLandscapeLowest: Dp
+        get() = this.dynamic().landscapeLowest().dp
+
+    /**
+     * [EN] Creates a dynamic dimension for landscape design using highest dimension (width).
+     * [PT] Cria uma dimensão dinamica para design landscape usando maior dimensão (largura).
+     */
+    @get:Composable
+    @get:JvmName("dyLandscapeHighestDp")
+    val Dp.dyLandscapeHighest: Dp
+        get() = this.dynamic().landscapeHighest().dp
+
+    @get:Composable
+    @get:JvmName("dyLandscapeHighestFloat")
+    val Float.dyLandscapeHighest: Dp
+        get() = this.dynamic().landscapeHighest().dp
+
+    @get:Composable
+    @get:JvmName("dyLandscapeHighestInt")
+    val Int.dyLandscapeHighest: Dp
+        get() = this.dynamic().landscapeHighest().dp
 }

@@ -4,8 +4,8 @@
 
 **Complete Mathematical and Comparative Analysis**  
 *Author: Jean Bodenberg*  
-*Date: January 2025*  
-*Version: 1.0.9*
+*Date: October 2025*  
+*Version: 1.1.0*
 
 ---
 
@@ -156,13 +156,16 @@ f(x) = x × max(W, H) / max(W₀, H₀)
 ### 1.7 Composite Logarithmic (AppDimens) ⭐
 
 ```
-f(x) = x × [1 + ((W/W₀ - 1) × (α + k × ln(AR / AR₀)))]
+f(x) = x × [1 + ((S - W₀) / δ) × (ε₀ + k × ln(AR / AR₀))]
 
 Where:
-AR = W / H                    (current aspect ratio)
-AR₀ = W₀ / H₀ = 1.78         (reference aspect ratio 16:9)
-k = sensitivity (adjustable, typical: 0.08-0.10)
-α = base increment (typical: 0.10)
+S = smallest screen dimension  (current)
+W₀ = 300                       (reference width)
+δ = 1                          (step size - 1dp granularity)
+AR = max(W,H) / min(W,H)       (current aspect ratio)
+AR₀ = 1.78                     (reference aspect ratio 16:9)
+k = 0.08/30 = 0.00267         (sensitivity, adjusted for 1dp step)
+ε₀ = 0.10/30 = 0.00333        (base increment, adjusted for 1dp step)
 ln = natural logarithm
 ```
 
@@ -423,6 +426,7 @@ Based on Weber-Fechner Law, the ideal perceived size follows:
 S_ideal = S₀ × [1 + k × ln(W / W₀)]
 
 Where k ≈ 0.15-0.20 (UX studies)
+AppDimens uses k = 0.08/30 = 0.00267 (adjusted for 1dp step granularity)
 ```
 
 **Calculating error for each formula:**
@@ -532,9 +536,10 @@ f(x) = x × √(W² + H²) / c
 f'(W) = x × W / (c × √(W² + H²))        [decreasing]
 → Rate DECREASES with W increase ✅
 
-LOGARITHMIC:
-f(x) = x × [1 + (W/W₀ - 1) × g(AR)]
-Where g(AR) = α + k × ln(AR / AR₀)
+LOGARITHMIC (v1.1.0):
+f(x) = x × [1 + ((S - W₀) / δ) × g(AR)]
+Where g(AR) = ε₀ + k × ln(AR / AR₀)
+      ε₀ = 0.00333, k = 0.00267, δ = 1
 
 f'(W) = x × [1/W₀ × g(AR) + (W/W₀ - 1) × g'(AR) × ∂AR/∂W]
       = linear_term + nonlinear_term
@@ -580,7 +585,7 @@ PERCENTAGE:      f(x) → ∞  rate: W           [grows without limits]
 INTERPOLATION:   f(x) → ∞  rate: k×W         [grows without limits, slower]
 QUADRATIC:       f(x) → ∞  rate: W           [grows without limits]
 SQUARE ROOT:     f(x) → ∞  rate: √W          [grows without limits, sublinear]
-LOGARITHMIC:     f(x) → ∞  rate: W×ln(W)     [grows, but ln(W) VERY slow]
+LOGARITHMIC:     f(x) → ∞  rate: (S-300)×0.00333     [grows linearly but with tiny increment]
 ```
 
 **Relative growth for W = 10000dp (cinema):**

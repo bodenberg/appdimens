@@ -29,7 +29,8 @@ import SwiftUI
 
 /// Protocol that defines the capability to calculate a final dimension.
 public protocol DimensionCalculator {
-    func withAspectRatio(_ apply: Bool) -> Self
+    func aspectRatio(_ apply: Bool, sensitivity: CGFloat?) -> Self
+    func withAspectRatio(_ apply: Bool) -> Self  // Deprecated, kept for compatibility
     func ignoreMultiWindowAdjustment(_ ignore: Bool) -> Self
     func screen(type: ScreenType) -> Self
     func calculate(screenWidth: CGFloat, screenHeight: CGFloat, factors: ScreenAdjustmentFactors, deviceType: DeviceType) -> CGFloat

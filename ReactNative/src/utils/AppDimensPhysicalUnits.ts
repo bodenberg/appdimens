@@ -56,13 +56,15 @@ export class AppDimensPhysicalUnits {
    * [EN] Points per centimeter.
    * [PT] Pontos por centímetro.
    */
-  private static readonly POINTS_PER_CM = AppDimensPhysicalUnits.POINTS_PER_INCH / 2.54;
+  private static readonly POINTS_PER_CM =
+    AppDimensPhysicalUnits.POINTS_PER_INCH / 2.54;
 
   /**
    * [EN] Points per millimeter.
    * [PT] Pontos por milímetro.
    */
-  private static readonly POINTS_PER_MM = AppDimensPhysicalUnits.POINTS_PER_CM / 10.0;
+  private static readonly POINTS_PER_MM =
+    AppDimensPhysicalUnits.POINTS_PER_CM / 10.0;
 
   /**
    * [EN] Millimeters per inch.
@@ -95,7 +97,7 @@ export class AppDimensPhysicalUnits {
   public static toDpFromMm(mm: number): number {
     const pixelRatio = PixelRatio.get();
     const ppi = pixelRatio * AppDimensPhysicalUnits.DEFAULT_PPI;
-    return (mm / AppDimensPhysicalUnits.MM_PER_INCH) * ppi / pixelRatio;
+    return ((mm / AppDimensPhysicalUnits.MM_PER_INCH) * ppi) / pixelRatio;
   }
 
   /**
@@ -175,7 +177,9 @@ export class AppDimensPhysicalUnits {
    * @return O valor em dp.
    */
   public static toDpFromInch(inch: number): number {
-    return AppDimensPhysicalUnits.toDpFromMm(inch * AppDimensPhysicalUnits.MM_PER_INCH);
+    return AppDimensPhysicalUnits.toDpFromMm(
+      inch * AppDimensPhysicalUnits.MM_PER_INCH,
+    );
   }
 
   /**
@@ -187,7 +191,9 @@ export class AppDimensPhysicalUnits {
    * @return O valor em pixels.
    */
   public static toPxFromInch(inch: number): number {
-    return AppDimensPhysicalUnits.toPxFromMm(inch * AppDimensPhysicalUnits.MM_PER_INCH);
+    return AppDimensPhysicalUnits.toPxFromMm(
+      inch * AppDimensPhysicalUnits.MM_PER_INCH,
+    );
   }
 
   /**
@@ -199,7 +205,9 @@ export class AppDimensPhysicalUnits {
    * @return O valor em sp.
    */
   public static toSpFromInch(inch: number): number {
-    return AppDimensPhysicalUnits.toSpFromMm(inch * AppDimensPhysicalUnits.MM_PER_INCH);
+    return AppDimensPhysicalUnits.toSpFromMm(
+      inch * AppDimensPhysicalUnits.MM_PER_INCH,
+    );
   }
 
   // MARK: - Utility Methods
@@ -214,7 +222,10 @@ export class AppDimensPhysicalUnits {
    * @param unitType O tipo de unidade (mm, cm, inch).
    * @return O raio em dp.
    */
-  public static radiusFromDiameter(diameter: number, unitType: UnitType): number {
+  public static radiusFromDiameter(
+    diameter: number,
+    unitType: UnitType,
+  ): number {
     let diameterInDp: number;
 
     switch (unitType) {
@@ -246,7 +257,10 @@ export class AppDimensPhysicalUnits {
    * @param unitType O tipo de unidade (mm, cm, inch).
    * @return O raio em dp.
    */
-  public static radiusFromCircumference(circumference: number, unitType: UnitType): number {
+  public static radiusFromCircumference(
+    circumference: number,
+    unitType: UnitType,
+  ): number {
     let circumferenceInDp: number;
 
     switch (unitType) {
@@ -418,4 +432,3 @@ export const PhysicalUnitConversions = {
    */
   inchToSp: (inch: number) => AppDimensPhysicalUnits.toSpFromInch(inch),
 };
-

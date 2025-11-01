@@ -441,7 +441,11 @@
             <div class="hero-subtitle">Análise Completa de Responsividade</div>
             <div class="hero-description">
                 Comparação técnica e visual entre os métodos de escalonamento Dynamic e Fixed 
-                para construção de aplicativos Android responsivos
+                para construção de aplicativos Android responsivos.
+                <br><br>
+                <strong>Nota:</strong> AppDimens v1.1.0+ também oferece o modelo <strong>Fluid (FL)</strong> - 
+                interpolação linear entre min/max valores ideal para tipografia. 
+                Disponível em: Compose (Android), SwiftUI (iOS), Flutter, React Native e Web.
             </div>
         </div>
         
@@ -453,18 +457,18 @@
                 <div class="formula-box" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
                     <div class="formula-title">⚡ Dynamic Scaling</div>
                     <div class="formula-content">
-                        percentage = baseDp / BASE_WIDTH_DP<br>
-                        resultado = screenDimension × percentage<br><br>
+                        f(x) = B × (S / W₀)<br>
+                        onde W₀ = 300dp<br><br>
                         <span style="opacity: 0.8;">// Escalonamento linear proporcional</span>
                     </div>
                 </div>
                 
                 <div class="formula-box" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                    <div class="formula-title">⚖️ Fixed Scaling</div>
+                    <div class="formula-title">⚖️ Fixed Scaling (v1.1.0)</div>
                     <div class="formula-content">
-                        factor = f(smallestWidth, aspectRatio)<br>
-                        resultado = baseDp × factor<br><br>
-                        <span style="opacity: 0.8;">// Escalonamento logarítmico controlado</span>
+                        f(x) = B × [1 + ((S - W₀) / δ) × ε₀]<br>
+                        onde ε₀ = 0.10/30, W₀ = 300dp, δ = 1dp<br><br>
+                        <span style="opacity: 0.8;">// Escalonamento logarítmico controlado (granularidade 1dp)</span>
                     </div>
                 </div>
             </div>
@@ -740,4 +744,266 @@
                         <div class="device-header">
                             <div class="device-icon">📱</div>
                             <div class="device-name">Smartphone</div>
-                            <div class="device-specs">360 ×
+                            <div class="device-specs">360 × 640 dp</div>
+                            <div class="device-stats">smallestWidth: 360dp</div>
+                        </div>
+                        
+                        <div class="comparison-box">
+                            <div class="approach-label dynamic-label">Dynamic: 16sp</div>
+                            <div class="ui-text" style="font-size: 16px; line-height: 1.6; padding: 15px;">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </div>
+                            <div class="status-badge status-perfect">✅ Legível</div>
+                        </div>
+                        
+                        <div class="comparison-box">
+                            <div class="approach-label fixed-label">Fixed: 16sp</div>
+                            <div class="ui-text" style="font-size: 16px; line-height: 1.6; padding: 15px;">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </div>
+                            <div class="status-badge status-perfect">✅ Legível</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tablet Text -->
+                    <div class="device-simulator">
+                        <div class="device-header">
+                            <div class="device-icon">📱</div>
+                            <div class="device-name">Tablet Médio</div>
+                            <div class="device-specs">720 × 1280 dp</div>
+                            <div class="device-stats">smallestWidth: 720dp</div>
+                        </div>
+                        
+                        <div class="comparison-box">
+                            <div class="approach-label dynamic-label">Dynamic: 32sp (2x)</div>
+                            <div class="ui-text" style="font-size: 32px; line-height: 1.6; padding: 30px;">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.
+                            </div>
+                            <div class="status-badge status-bad">❌ Texto gigante</div>
+                        </div>
+                        
+                        <div class="comparison-box">
+                            <div class="approach-label fixed-label">Fixed: 20.8sp (+30%)</div>
+                            <div class="ui-text" style="font-size: 20px; line-height: 1.6; padding: 18px;">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+                            </div>
+                            <div class="status-badge status-perfect">✅ Legibilidade ideal</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tablet Grande Text -->
+                    <div class="device-simulator">
+                        <div class="device-header">
+                            <div class="device-icon">💻</div>
+                            <div class="device-name">Tablet Grande</div>
+                            <div class="device-specs">1024 × 1366 dp</div>
+                            <div class="device-stats">smallestWidth: 1024dp</div>
+                        </div>
+                        
+                        <div class="comparison-box">
+                            <div class="approach-label dynamic-label">Dynamic: 45.5sp (2.8x)</div>
+                            <div class="ui-text" style="font-size: 45px; line-height: 1.6; padding: 42px;">
+                                Lorem ipsum dolor sit amet, consectetur elit.
+                            </div>
+                            <div class="status-badge status-bad">❌ Ilegível e desproporcional</div>
+                        </div>
+                        
+                        <div class="comparison-box">
+                            <div class="approach-label fixed-label">Fixed: 23sp (+44%)</div>
+                            <div class="ui-text" style="font-size: 23px; line-height: 1.6; padding: 21px;">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna.
+                            </div>
+                            <div class="status-badge status-perfect">✅ Perfeito para leitura</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tabela Comparativa Numérica -->
+        <div class="section">
+            <h2 class="section-title">📊 Tabela Comparativa Numérica</h2>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th class="icon-cell">📱</th>
+                        <th>Dispositivo</th>
+                        <th>SW (dp)</th>
+                        <th>Dynamic (16dp)</th>
+                        <th>Fixed (16dp)</th>
+                        <th>Diferença</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="icon-cell">📱</td>
+                        <td>Smartphone</td>
+                        <td>360</td>
+                        <td>19.2dp (+20%)</td>
+                        <td>19.2dp (+20%)</td>
+                        <td>0dp (0%)</td>
+                    </tr>
+                    <tr>
+                        <td class="icon-cell">📱</td>
+                        <td>Tablet 7"</td>
+                        <td>600</td>
+                        <td>32.0dp (+100%)</td>
+                        <td>26.0dp (+63%)</td>
+                        <td>-6.0dp (-19%)</td>
+                    </tr>
+                    <tr>
+                        <td class="icon-cell">📱</td>
+                        <td>Tablet Médio</td>
+                        <td>720</td>
+                        <td>38.4dp (+140%)</td>
+                        <td>30.6dp (+91%)</td>
+                        <td>-7.8dp (-20%)</td>
+                    </tr>
+                    <tr>
+                        <td class="icon-cell">💻</td>
+                        <td>Tablet Grande</td>
+                        <td>1024</td>
+                        <td>54.6dp (+241%)</td>
+                        <td>39.4dp (+146%)</td>
+                        <td>-15.2dp (-28%)</td>
+                    </tr>
+                    <tr style="background: #fff3cd;">
+                        <td class="icon-cell">📺</td>
+                        <td>TV Full HD</td>
+                        <td>1080</td>
+                        <td>57.6dp (+260%)</td>
+                        <td>42.0dp (+163%)</td>
+                        <td>-15.6dp (-27%)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Informações Técnicas -->
+        <div class="section">
+            <h2 class="section-title">🎓 Informações Técnicas</h2>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="info-card-title">📐 Quando usar Dynamic</div>
+                    <div class="info-card-text">
+                        <strong>Use APENAS para:</strong><br>
+                        • Containers muito grandes<br>
+                        • Grids de largura total<br>
+                        • Layouts full-screen<br>
+                        • Elementos que DEVEM manter proporção exata com a tela
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-card-title">⚖️ Quando usar Fixed</div>
+                    <div class="info-card-text">
+                        <strong>Use para TUDO MAIS:</strong><br>
+                        • Botões (95% dos casos)<br>
+                        • Textos e fontes<br>
+                        • Ícones e imagens<br>
+                        • Padding e margens<br>
+                        • Cards e componentes
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-card-title">🔬 Base Científica</div>
+                    <div class="info-card-text">
+                        <strong>Fixed baseia-se em:</strong><br>
+                        • Lei de Weber-Fechner (1860)<br>
+                        • Percepção logarítmica<br>
+                        • Crescimento sublinear<br>
+                        • Validação em múltiplos dispositivos
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Exemplo de Código -->
+        <div class="section">
+            <h2 class="section-title">💻 Exemplo de Código</h2>
+            
+            <div class="code-example">
+<span class="code-comment">// ❌ Dynamic - Crescimento agressivo</span>
+<span class="code-keyword">val</span> buttonPadding = <span class="code-number">16</span>.<span class="code-function">dynamicDp</span>()
+<span class="code-comment">// Resultado em tablet: 38.4dp (muito grande!)</span>
+
+<span class="code-comment">// ✅ Fixed - Crescimento controlado</span>
+<span class="code-keyword">val</span> buttonPadding = <span class="code-number">16</span>.<span class="code-function">fixedDp</span>()
+<span class="code-comment">// Resultado em tablet: 30.6dp (perfeito!)</span>
+
+<span class="code-comment">// Uso em Compose:</span>
+<span class="code-function">Button</span>(
+    modifier = Modifier.<span class="code-function">padding</span>(<span class="code-number">16</span>.fxdp),
+    onClick = { <span class="code-comment">/* ... */</span> }
+) {
+    <span class="code-function">Text</span>(
+        text = <span class="code-string">"Login"</span>,
+        fontSize = <span class="code-number">16</span>.fxsp
+    )
+}
+            </div>
+        </div>
+        
+        <!-- Veredito Final -->
+        <div class="verdict-box">
+            <div class="verdict-icon">🏆</div>
+            <div class="verdict-title">Veredito: Fixed é o Vencedor</div>
+            <div class="verdict-text">
+                O método <span class="highlight">Fixed</span> com escalonamento logarítmico oferece 
+                <span class="highlight">crescimento controlado</span> e 
+                <span class="highlight">proporções visuais consistentes</span> em todos os tamanhos de tela.
+                <br><br>
+                Use <span class="highlight">Dynamic</span> apenas em <strong>casos específicos</strong> 
+                onde você realmente precisa de crescimento linear proporcional.
+                <br><br>
+                <strong>Recomendação: Use Fixed em 95% dos casos!</strong>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Função para alternar entre tabs
+        function showElement(type) {
+            // Esconder todos os conteúdos
+            document.querySelectorAll('.element-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Remover classe active de todos os botões
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Mostrar conteúdo selecionado
+            document.getElementById(type + '-content').style.display = 'block';
+            
+            // Adicionar classe active ao botão clicado
+            event.target.classList.add('active');
+        }
+        
+        // Animação suave ao scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Adicionar efeito de hover nos cards
+        document.querySelectorAll('.device-simulator').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

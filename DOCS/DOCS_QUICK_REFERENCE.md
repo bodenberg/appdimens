@@ -87,6 +87,11 @@
 3. ✅ First with 4-priority hierarchical system
 4. ✅ First with Weber-Fechner Law foundation
 5. ✅ Superior performance with cache (0.002µs vs 0.005µs)
+6. ✅ **NEW v1.2.0**: Base Orientation with auto-inversion of LOWEST/HIGHEST on rotation
+7. ✅ **NEW v1.0.10**: Fluid model for smooth bounded growth (Compose/SwiftUI/Flutter/RN/Web)
+8. ✅ Global cache control system with per-instance overrides
+9. ✅ Physical units support across all platforms (mm, cm, inch)
+10. ✅ Game development modules: Android (C++/NDK), iOS (Metal/SIMD)
 
 📍 See at: [COMPREHENSIVE_TECHNICAL_GUIDE.md](COMPREHENSIVE_TECHNICAL_GUIDE.md#12-innovation-and-originality)
 
@@ -94,10 +99,20 @@
 
 ## 📐 Main Formulas
 
+### Scaling Models Overview
+
+| Model | Formula Type | When to Use | Platforms |
+|-------|--------------|-------------|-----------|
+| **Fixed (FX)** ⭐ | Logarithmic | 95% of cases - buttons, text, padding, icons | All |
+| **Dynamic (DY)** | Proportional | Large containers, grids | All |
+| **Fluid (FL)** 🌊 | Linear interpolation | Typography with bounds | Compose, SwiftUI, Flutter, RN, Web |
+| **Physical Units** 📏 | Real-world measurements | Precision layouts | All |
+
 ### Logarithmic Formula (Fixed)
 
 ```
-f_FX(B, S, AR) = B × [1 + ((S - 300) / 1) × (0.10 + 0.08 × ln(AR / 1.78))]
+f_FX(B, S, AR) = B × [1 + ((S - 300) / 1) × (0.10/30 + 0.08/30 × ln(AR / 1.78))]
+                = B × [1 + ((S - 300) / 1) × (0.00333 + 0.00267 × ln(AR / 1.78))]
 ```
 
 ### Priority System
@@ -175,6 +190,15 @@ A: With cache, it's the FASTEST (0.002µs vs 0.005µs for percentage).
 
 **Q: Does it work on iOS/Flutter/Web?**  
 A: Yes! Universal, same formula on all platforms.
+
+**Q: When should I use Fluid instead of Fixed?**  
+A: Use Fluid for typography and spacing where you want explicit min/max bounds with smooth transitions. Use Fixed (RECOMMENDED) for general UI elements like buttons, icons, and most containers.
+
+**Q: What's the difference between Fixed and Fluid?**  
+A: Fixed uses logarithmic growth (slows on large screens), Fluid uses linear interpolation between explicit min/max values. Fixed adapts automatically, Fluid requires you to define bounds.
+
+**Q: How does Base Orientation work?**  
+A: Design for one orientation (portrait/landscape), and AppDimens automatically inverts LOWEST↔HIGHEST when the device rotates. No need to handle rotation manually!
 
 **Q: Is it difficult to use?**  
 A: No! Simple API: `16.fxdp` or `16.fixedDp().dp`
@@ -283,8 +307,8 @@ AppDimens/
 
 ---
 
-**Last updated:** January 2025  
-**Version:** 1.0.9  
+**Last updated:** October 2025  
+**Version:** 1.1.0  
 **Author:** Jean Bodenberg  
 **License:** Apache 2.0
 

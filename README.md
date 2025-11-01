@@ -3,7 +3,7 @@
 <h1>📐 AppDimens</h1>
 <p><strong>Smart Responsive Dimensions for Any Screen</strong></p>
    
-[![Version](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Android%20%7C%20iOS%20%7C%20Flutter%20%7C%20RN%20%7C%20Web-orange.svg)](https://github.com/bodenberg/appdimens)
 
@@ -39,6 +39,10 @@ Instead of fixed sizes that look tiny on tablets or huge on watches, AppDimens u
 - ✅ **Simple API**: Just add `.fxdp` or `.fxsp` to your dimensions
 - ✅ **Mathematically proven**: Based on psychophysical research (Weber-Fechner Law)
 - ✅ **Best performance**: Intelligent caching makes it faster than alternatives
+- ✅ **NEW v1.2.0:** Auto-adapts to screen rotation with Base Orientation feature
+- ✅ **Three scaling models**: Fixed (logarithmic - RECOMMENDED), Dynamic (proportional), Fluid (smooth bounded growth)
+- ✅ **Physical units**: Real-world measurements (mm, cm, inch) across all platforms
+- ✅ **Game development**: Specialized modules for Android (C++/NDK) and iOS (Metal)
 
 ---
 
@@ -50,23 +54,23 @@ Instead of fixed sizes that look tiny on tablets or huge on watches, AppDimens u
 dependencies {
     // Core library (Fixed + Dynamic scaling + Physical Units)
     // Includes: .fxdp, .dydp, Physical Units (mm/cm/inch), Grid calculations
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.8")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.1.0")
     
     // SDP scaling (Scalable DP for XML)
     // Includes: @dimen/_16sdp, etc.
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.8")
+    implementation("io.github.bodenberg:appdimens-sdps:1.1.0")
     
     // SSP scaling (Scalable SP for text in XML)
     // Includes: @dimen/_18ssp, etc.
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.8")
+    implementation("io.github.bodenberg:appdimens-ssps:1.1.0")
     
     // All-in-one (includes dynamic, sdps, ssps)
     // ⚠️ Note: Does NOT include games module
-    implementation("io.github.bodenberg:appdimens-all:1.0.8")
+    implementation("io.github.bodenberg:appdimens-all:1.1.0")
     
     // Game development (C++/NDK + OpenGL)
     // 🎮 Separate dependency - not included in "all"
-    implementation("io.github.bodenberg:appdimens-games:1.0.8")
+    implementation("io.github.bodenberg:appdimens-games:1.1.0")
 }
 ```
 
@@ -75,19 +79,19 @@ dependencies {
 **CocoaPods:**
 ```ruby
 # Full package (Main + UI)
-pod 'AppDimens', '~> 1.0.8'
+pod 'AppDimens', '~> 1.1.0'
 
 # Only Main module
-pod 'AppDimens/Main', '~> 1.0.8'
+pod 'AppDimens/Main', '~> 1.1.0'
 
 # Games module (separate)
-pod 'AppDimens/Games', '~> 1.0.8'
+pod 'AppDimens/Games', '~> 1.1.0'
 ```
 
 **Swift Package Manager:**
 ```swift
 dependencies: [
-    .package(url: "https://github.com/bodenberg/appdimens.git", from: "1.0.8")
+    .package(url: "https://github.com/bodenberg/appdimens.git", from: "1.1.0")
 ]
 ```
 
@@ -95,35 +99,35 @@ dependencies: [
 
 ```yaml
 dependencies:
-  appdimens: ^1.0.8
+  appdimens: ^1.1.0
 ```
 
 ### React Native
 
 ```bash
 # npm
-npm install appdimens-react-native@1.0.8
+npm install appdimens-react-native@1.1.0
 
 # yarn
-yarn add appdimens-react-native@1.0.8
+yarn add appdimens-react-native@1.1.0
 ```
 
 ### Web
 
 ```bash
 # npm
-npm install webdimens@1.0.8
+npm install webdimens@1.1.0
 
 # yarn
-yarn add webdimens@1.0.8
+yarn add webdimens@1.1.0
 
 # pnpm
-pnpm add webdimens@1.0.8
+pnpm add webdimens@1.1.0
 ```
 
 **Vanilla JavaScript (CDN):**
 ```html
-<script src="https://cdn.jsdelivr.net/npm/webdimens@1.0.8/dist/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/webdimens@1.1.0/dist/index.js"></script>
 <script>
   const { fixed, dynamic, fluid } = WebDimens;
   
@@ -373,7 +377,7 @@ function MyCard() {
   </div>
   
   <script type="module">
-    import { webdimens } from 'https://cdn.jsdelivr.net/npm/webdimens@1.0.8/dist/index.mjs';
+    import { webdimens } from 'https://cdn.jsdelivr.net/npm/webdimens@1.1.0/dist/index.mjs';
     
     // Apply fixed dimensions
     document.getElementById('header').style.height = webdimens.fx(64);
@@ -470,12 +474,13 @@ export class CardComponent {
 
 AppDimens offers multiple scaling strategies for different needs:
 
-| Model | When to Use | Example |
-|-------|-------------|---------|
-| **Fixed (FX)** ⭐ **RECOMMENDED** | 95% of cases - buttons, text, padding, margins | `16.fxdp` |
-| **Dynamic (DY)** | Large containers, full-width grids | `100.dydp` |
-| **Fluid (FL)** | Typography with min/max bounds (Web) | `fl(16, 24)` |
-| **SDP/SSP** | Legacy XML Android projects | `@dimen/_16sdp` |
+| Model | When to Use | Example | Availability |
+|-------|-------------|---------|--------------|
+| **Fixed (FX)** ⭐ **RECOMMENDED** | 95% of cases - buttons, text, padding, margins, icons | `16.fxdp` | All platforms |
+| **Dynamic (DY)** | Large containers, full-width grids, viewport-dependent elements | `100.dydp` | All platforms |
+| **Fluid (FL)** 🌊 | Typography, spacing with smooth min/max transitions | `fl(16, 24)` | Android (Compose), iOS (SwiftUI), Flutter, React Native, Web |
+| **SDP/SSP** | Legacy XML Android projects | `@dimen/_16sdp` | Android XML only |
+| **Physical Units** 📏 | Real-world measurements (wearables, printing, precision) | `.mm`, `.cm`, `.inch` | All platforms |
 
 **📖 [Understanding Scaling Models](DOCS/MATHEMATICAL_THEORY_SIMPLIFIED.md)**
 
@@ -533,6 +538,74 @@ AppDimens was scientifically compared against 7 other scaling approaches:
 
 ## 🎮 Advanced Features
 
+### 🆕 Base Orientation (v1.2.0)
+
+Auto-adapt to screen rotation! Design for one orientation, automatically maintain proportions when rotated:
+
+```kotlin
+// Android - Design for portrait, auto-adapts to landscape
+val cardWidth = 300.fixedDp().portraitLowest().dp
+// Portrait (360x800):  Uses width (360) ✅
+// Landscape (800x360): Auto-inverts to width (800) ✅
+
+// Shorthand extensions
+val padding = 16.fxPortraitLowest    // Auto-inverts in landscape
+val height = 200.fxLandscapeHighest  // Auto-inverts in portrait
+```
+
+```swift
+// iOS - Same concept
+let cardWidth = AppDimensFixedCalculator(300).portraitLowest().pt
+```
+
+```dart
+// Flutter
+final cardWidth = AppDimensFixed(300).portraitLowest().calculate(context);
+```
+
+**📖 [Complete Base Orientation Guide](DOCS/BASE_ORIENTATION_GUIDE.md)**
+
+### 🌊 Fluid Scaling (v1.0.10)
+
+Smooth interpolation between min/max values - perfect for typography and controlled growth:
+
+```kotlin
+// Android Compose - Font size 16-24sp between 320-768dp width
+@Composable
+fun FluidTypography() {
+    val fontSize = fluidSp(16f, 24f)
+    Text("Fluid Text", fontSize = fontSize)
+    
+    // With custom breakpoints
+    val padding = fluidDp(8f, 16f, minWidth = 280f, maxWidth = 600f)
+}
+```
+
+```swift
+// iOS SwiftUI - Same concept
+struct FluidView: View {
+    var body: some View {
+        Text("Fluid Text")
+            .font(.system(size: fluid(min: 16, max: 24)))
+            .padding(fluid(min: 8, max: 16))
+    }
+}
+```
+
+```dart
+// Flutter
+final fontSize = 16.0.fluidTo(24.0).calculate(context);
+final padding = AppDimensFluid(8, 16).calculate(context);
+```
+
+**Availability:** Android (Compose only), iOS (SwiftUI only), Flutter, React Native, Web
+
+**When to use:**
+- ✅ Typography with explicit bounds
+- ✅ Line heights and letter spacing
+- ✅ Smooth transitions across breakpoints
+- ❌ Not for general UI elements (use Fixed instead)
+
 ### Custom Scaling Rules
 
 ```kotlin
@@ -544,24 +617,144 @@ val buttonSize = 56.fixedDp()
     .dp  // Others: auto-scaled from 56dp
 ```
 
-### Physical Units
+### 📏 Physical Units
+
+Real-world measurements across all platforms:
 
 ```kotlin
-// Android - Real-world measurements
-Rectangle()
-    .width(2.cm)    // 2 centimeters
-    .height(1.inch) // 1 inch
+// Android - Physical units (mm, cm, inch)
+val buttonWidth = 10.mm   // 10 millimeters
+val cardWidth = 8.cm      // 8 centimeters
+val screenSize = 5.inch   // 5 inches
+
+// AppDimens Games also supports physical units
+val playerSize = appDimensGames.mm(15f)  // 15mm player sprite
 ```
 
-### Game Development
+```swift
+// iOS - Same API
+let buttonWidth = 10.mm
+let cardWidth = 8.cm
+let screenSize = 5.inch
+```
 
-AppDimens includes specialized modules for game development:
+```dart
+// Flutter
+final buttonWidth = AppDimensPhysicalUnits.mmToPixels(10, context);
+final cardWidth = AppDimensPhysicalUnits.cmToPixels(8, context);
+```
 
-- 🎮 **Android**: C++/NDK + OpenGL ES support
-- 🎮 **iOS**: Metal + MetalKit integration
-- 🎮 High-performance native calculations
+**Available everywhere:** Android (Code + Compose), iOS (SwiftUI + UIKit), Flutter, React Native, Web
 
-**📖 [Game Development Guide](Android/appdimens_games/README.md)**
+### 🎮 Game Development
+
+Specialized high-performance modules for game development:
+
+#### Android Games Module (C++/NDK)
+```kotlin
+val appDimensGames = AppDimensGames.getInstance()
+appDimensGames.initialize(context)
+
+// Game-specific dimension types
+val buttonSize = appDimensGames.calculateButtonSize(48f)      // UI elements
+val playerSize = appDimensGames.calculatePlayerSize(64f)      // Game world
+val enemySize = appDimensGames.calculateEnemySize(32f)        // Game world
+val uiOverlay = appDimensGames.calculateUISize(24f)           // HUD/Overlay
+
+// Vector and Rectangle operations
+val position = GameVector2D(100f, 200f)
+val scaledPos = appDimensGames.calculateVector2D(position, GameDimensionType.GAME_WORLD)
+
+val bounds = GameRectangle(0f, 0f, 800f, 600f)
+val scaledBounds = appDimensGames.calculateRectangle(bounds, GameDimensionType.DYNAMIC)
+
+// Physical units in games
+val physicalSize = appDimensGames.cm(2f)  // 2cm for touch targets
+```
+
+**Features:**
+- ✅ Native C++/NDK for maximum performance
+- ✅ 4 dimension types: DYNAMIC, FIXED, GAME_WORLD, UI_OVERLAY
+- ✅ Vector2D and Rectangle utilities
+- ✅ OpenGL ES integration
+- ✅ Physical units support (mm, cm, inch)
+- ✅ Performance monitoring and optimization
+- ✅ Separate dependency - not included in appdimens-all
+
+#### iOS Games Module (Metal)
+```swift
+// Metal/MetalKit integration
+let buttonSize = gameUniform(48)           // Uniform scaling
+let playerSize = gameAspectRatio(64)       // Aspect-ratio aware
+let uiOverlay = gameViewport(24)           // Viewport-based
+
+// SwiftUI Integration
+struct GameView: View {
+    var body: some View {
+        MetalGameView()
+            .frame(width: gameAspectRatio(320), height: gameAspectRatio(240))
+            .withAppDimens()
+    }
+}
+```
+
+**Features:**
+- ✅ Native Metal/MetalKit support
+- ✅ 5 viewport modes: Uniform, Horizontal, Vertical, AspectRatio, Viewport
+- ✅ SIMD extensions for performance
+- ✅ SwiftUI and UIKit compatible
+- ✅ Coordinate transformations (Screen ↔ NDC)
+
+**📖 [Android Game Development Guide](Android/appdimens_games/README.md)**
+**📖 [iOS Game Development Guide](iOS/README.md#game-development-features)**
+
+### ⚡ Global Cache Control
+
+Control caching behavior globally across all AppDimens instances:
+
+```kotlin
+// Android - Global cache control
+AppDimens.setGlobalCache(true)   // Enable (default)
+AppDimens.setGlobalCache(false)  // Disable all caches
+AppDimens.clearAllCaches()       // Clear all cached values
+
+// Per-instance cache control
+val dimension = AppDimens.fixed(100)
+    .cache(true)  // Enable cache for this instance
+    .toDp(resources)
+
+// Check cache status
+val isEnabled = AppDimens.isGlobalCacheEnabled()
+```
+
+```swift
+// iOS - Same concept
+AppDimensGlobal.globalCacheEnabled = true
+AppDimensGlobal.clearAllCaches()
+
+// Per-instance
+let dimension = AppDimens.fixed(100)
+    .cache(true)
+    .toPoints()
+```
+
+```dart
+// Flutter
+AppDimens.setGlobalCache(true);
+AppDimens.clearAllCaches();
+
+// Per-instance
+final dimension = AppDimens.fixed(100)
+    .cache(true)
+    .calculate(context);
+```
+
+**Features:**
+- ✅ Global cache control affects all instances
+- ✅ Per-instance cache control for fine-tuning
+- ✅ Automatic cache invalidation on configuration changes
+- ✅ Zero performance overhead when disabled
+- ✅ Memory efficient with automatic cleanup
 
 ---
 

@@ -40,12 +40,12 @@ export const REFERENCE_AR = 1.78;
  * Default sensitivity coefficient
  * Controls how aggressive scaling is on extreme screens
  */
-export const DEFAULT_SENSITIVITY_K = 0.08;
+export const DEFAULT_SENSITIVITY_K = 0.08 / 30;  // Adjusted for 1dp step granularity
 
 /**
  * Default increment factor (without aspect ratio)
  */
-export const BASE_INCREMENT = 0.10;
+export const BASE_INCREMENT = 0.10 / 30;  // Adjusted for 1dp step granularity
 
 /**
  * Default breakpoints (matching common device sizes)

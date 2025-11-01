@@ -35,6 +35,8 @@ import {
   REFERENCE_AR,
 } from '../types';
 import {AppDimensAdjustmentFactors} from './AppDimensAdjustmentFactors';
+import {resolveScreenType} from '../utils/orientationResolver';
+import type {BaseOrientation} from '../types/BaseOrientation';
 
 /**
  * Fixed dimension builder with logarithmic adjustment
@@ -51,6 +53,7 @@ export class AppDimensFixed implements AppDimensBuilder {
     this.config = {
       initialValue,
       screenType: 'lowest',
+      baseOrientation: 'auto',
       applyAspectRatioAdjustment: true,
       ignoreMultiWindowAdjustment,
       customScreenQualifierMap: new Map(),
@@ -66,7 +69,7 @@ export class AppDimensFixed implements AppDimensBuilder {
    * Compatível com API Android/iOS.
    */
   screen(uiModeType: UiModeType, customValue: number): this;
-  
+
   /**
    * [EN] Set custom value for device type and screen size.
    * Compatible with Android/iOS API.
@@ -74,7 +77,7 @@ export class AppDimensFixed implements AppDimensBuilder {
    * Compatível com API Android/iOS.
    */
   screen(deviceType: DeviceType, screenSize: number, customValue: number): this;
-  
+
   /**
    * [EN] Set custom value for screen qualifier with specific value.
    * Compatible with Android/iOS API.
@@ -84,9 +87,9 @@ export class AppDimensFixed implements AppDimensBuilder {
   screen(
     qualifierType: ScreenQualifier,
     qualifierValue: number,
-    customValue: number
+    customValue: number,
   ): this;
-  
+
   /**
    * [EN] Set custom value for intersection of UI mode and screen qualifier.
    * Compatible with Android/iOS API.
@@ -97,16 +100,29 @@ export class AppDimensFixed implements AppDimensBuilder {
     uiModeType: UiModeType,
     qualifierType: ScreenQualifier,
     qualifierValue: number,
-    customValue: number
+    customValue: number,
   ): this;
+
+  /**
+   * Set screen dimension type
+   * Primary method - matches Android, iOS, Flutter API
+   */
+  screen(type: 'lowest' | 'highest'): this;
 
   // Implementation
   screen(
-    arg1: UiModeType | DeviceType | ScreenQualifier,
-    arg2: number | ScreenQualifier,
+    arg1: UiModeType | DeviceType | ScreenQualifier | 'lowest' | 'highest',
+    arg2?: number | ScreenQualifier,
     arg3?: number,
-    arg4?: number
+    arg4?: number,
   ): this {
+    // Check if it's screen(type: 'lowest' | 'highest')
+    if (arg1 === 'lowest' || arg1 === 'highest') {
+      this.config.screenType = arg1;
+      this.invalidateCache();
+      return this;
+    }
+
     if (arg3 === undefined && arg4 === undefined) {
       // screen(uiModeType, customValue)
       const uiModeType = arg1 as UiModeType;
@@ -115,8 +131,15 @@ export class AppDimensFixed implements AppDimensBuilder {
     } else if (arg4 === undefined && arg3 !== undefined) {
       // Could be: screen(deviceType, screenSize, customValue) or
       //           screen(qualifierType, qualifierValue, customValue)
-      const isDeviceType = ['phone', 'tablet', 'desktop', 'watch', 'tv', 'car'].includes(arg1);
-      
+      const isDeviceType = [
+        'phone',
+        'tablet',
+        'desktop',
+        'watch',
+        'tv',
+        'car',
+      ].includes(arg1);
+
       if (isDeviceType) {
         // screen(deviceType, screenSize, customValue)
         const deviceType = arg1 as DeviceType;
@@ -161,11 +184,59 @@ export class AppDimensFixed implements AppDimensBuilder {
   }
 
   /**
-   * Set screen dimension type
+   * Alias for screen() - kept for backward compatibility
+   * @deprecated Use screen() instead for consistency with other platforms
    */
   type(type: 'lowest' | 'highest'): this {
-    this.config.screenType = type;
-    this.invalidateCache();
+    return this.screen(type);
+  }
+
+  /**
+   * [EN] Sets the base orientation for which the design was originally created.
+   * [PT] Define a orientação base para a qual o design foi originalmente criado.
+   */
+  baseOrientation(orientation: 'portrait' | 'landscape' | 'auto'): this {
+    this.config.baseOrientation = orientation;
+    return this;
+  }
+
+  /**
+   * [EN] Shorthand for portrait design using lowest dimension.
+   * [PT] Atalho para design portrait usando menor dimensão.
+   */
+  portraitLowest(): this {
+    this.config.baseOrientation = 'portrait';
+    this.config.screenType = 'lowest';
+    return this;
+  }
+
+  /**
+   * [EN] Shorthand for portrait design using highest dimension.
+   * [PT] Atalho para design portrait usando maior dimensão.
+   */
+  portraitHighest(): this {
+    this.config.baseOrientation = 'portrait';
+    this.config.screenType = 'highest';
+    return this;
+  }
+
+  /**
+   * [EN] Shorthand for landscape design using lowest dimension.
+   * [PT] Atalho para design landscape usando menor dimensão.
+   */
+  landscapeLowest(): this {
+    this.config.baseOrientation = 'landscape';
+    this.config.screenType = 'lowest';
+    return this;
+  }
+
+  /**
+   * [EN] Shorthand for landscape design using highest dimension.
+   * [PT] Atalho para design landscape usando maior dimensão.
+   */
+  landscapeHighest(): this {
+    this.config.baseOrientation = 'landscape';
+    this.config.screenType = 'highest';
     return this;
   }
 
@@ -380,14 +451,21 @@ export class AppDimensFixed implements AppDimensBuilder {
     if (shouldIgnoreAdjustment) {
       finalAdjustmentFactor = BASE_DP_FACTOR;
     } else if (this.config.applyAspectRatioAdjustment) {
+      // Resolve effective screen type based on base orientation
+      const effectiveScreenType = resolveScreenType(
+        this.config.screenType,
+        this.config.baseOrientation || 'auto',
+        {width, height},
+      );
+
       const selectedFactor =
-        this.config.screenType === 'highest'
+        effectiveScreenType === 'highest'
           ? adjustmentFactors.withArFactorHighest
           : adjustmentFactors.withArFactorLowest;
 
       if (this.config.customSensitivityK !== undefined) {
         const adjustmentFactorBase =
-          this.config.screenType === 'highest'
+          effectiveScreenType === 'highest'
             ? adjustmentFactors.adjustmentFactorHighest
             : adjustmentFactors.adjustmentFactorLowest;
 

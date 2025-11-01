@@ -132,5 +132,5 @@ A biblioteca AppDimens iOS está funcionando corretamente após as correções r
 
 ---
 *Teste realizado em: $(date)*
-*Versão da biblioteca: 1.0.5*
+*Versão da biblioteca: 1.1.0*
 *Status: APROVADO*

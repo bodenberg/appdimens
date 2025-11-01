@@ -4,8 +4,8 @@
 
 **Comprehensive Technical Documentation - Theory, Implementation and Comparisons** 
 *Author: Jean Bodenberg*  
-*Date: January 2025*  
-*Version: 1.0.9*
+*Date: October 2025*  
+*Version: 1.1.0*
 
 > **The most mathematically advanced responsive sizing library, based on logarithmic scaling and aspect ratio compensation.**
 
@@ -368,8 +368,8 @@ f_FX(B, S, AR, k) = B × [1 + ((S - W₀) / δ) × (ε₀ + k × ln(AR / AR₀))
 | `AR` | Aspect Ratio | Runtime | Current proportion (W/H) |
 | `W₀` | Reference Width | 300dp | Reference width |
 | `δ` | Step Size | 1dp | 1dp granularity (fine precision) |
-| `ε₀` | Base Increment | 0.10 | Base increment (10%) |
-| `k` | Sensitivity | 0.08-0.10 | AR adjustment sensitivity |
+| `ε₀` | Base Increment | 0.10/30 = 0.00333 | Base increment (adjusted for 1dp step) |
+| `k` | Sensitivity | 0.08/30 = 0.00267 | AR adjustment sensitivity (adjusted for 1dp step) |
 | `AR₀` | Reference AR | 1.78 | Reference aspect ratio (16:9) |
 | `ln` | Natural Log | - | Natural logarithm |
 
@@ -450,45 +450,46 @@ Data:
   B = 48dp
   S = 720dp
   AR = 1280 / 720 = 1.78 (16:9)
-  W₀ = 300dp, δ = 1dp, ε₀ = 0.10, k = 0.08, AR₀ = 1.78
+  W₀ = 300dp, δ = 1dp, ε₀ = 0.10/30 = 0.00333, k = 0.08/30 = 0.00267, AR₀ = 1.78
 
-Step 1: β(S)
+Step 1: β(S) - Linear Size Adjustment
   β = (720 - 300) / 1 = 420
 
-Step 2: γ(AR)
+Step 2: γ(AR) - Logarithmic AR Adjustment
   ln(1.78 / 1.78) = ln(1) = 0
-  γ = 0.10 + 0.08 × 0 = 0.10
+  γ = 0.00333 + 0.00267 × 0 = 0.00333
 
 Step 3: Total_Factor
-  Factor = 1.0 + 420 × 0.10 = 1.0 + 42.0 = 43.0
+  Factor = 1.0 + 420 × 0.00333 = 1.0 + 1.4 = 2.4
 
 Step 4: Final_Value
-  Result = 48 × 43.0 = 2064dp
+  Result = 48 × 2.4 = 115.2dp
 ```
 
-**⚠️ Important Note:** The above calculation shows the "pure" mathematical formula for demonstration purposes. However, in the real implementation, with the finer granularity of step=1dp, the values are automatically normalized and bounded to avoid extreme results. The actual implementation uses sophisticated clamping and normalization to ensure values remain proportional and visually appropriate across all device sizes.
+**✨ Version 1.1.0 Note:** With the new granularity adjustment (0.10/30 and 0.08/30), each 1dp increment now has a unique value. The formula maintains visual consistency while providing 30× more precision. The constants are proportionally adjusted to maintain the same scaling behavior as previous versions, but with finer control at each dp level.
 
 ---
 
 ### 5.4 Real Implementation (Code)
 
 ```kotlin
-// Simplified code based on AppDimensFixed.kt
+// Simplified code based on AppDimensFixed.kt (v1.1.0)
 
 val BASE_DP_FACTOR = 1.0f
-val BASE_INCREMENT = 0.10f  // 10%
-val REFERENCE_AR = 1.778f   // 16:9
-val REFERENCE_WIDTH = 300f
-val STEP = 30f
+val BASE_INCREMENT = 0.10f / 30f  // Adjusted for 1dp step granularity
+val DEFAULT_SENSITIVITY_K = 0.08f / 30f  // Adjusted for 1dp step granularity
+val REFERENCE_AR = 1.78f   // 16:9
+val BASE_WIDTH_DP = 300f
+val INCREMENT_DP_STEP = 1f  // 1dp granularity
 
 fun calculate(
     baseDp: Float,
     screenSize: Float,
     aspectRatio: Float,
-    sensitivityK: Float = 0.08f
+    sensitivityK: Float = DEFAULT_SENSITIVITY_K
 ): Float {
     // Beta: linear size adjustment
-    val adjustmentFactorBase = (screenSize - REFERENCE_WIDTH) / STEP
+    val adjustmentFactorBase = (screenSize - BASE_WIDTH_DP) / INCREMENT_DP_STEP
     
     // Gamma: logarithmic AR adjustment
     val continuousAdjustment = sensitivityK * ln(aspectRatio / REFERENCE_AR)
@@ -1385,8 +1386,8 @@ The library establishes a new **standard of excellence** that surpasses all exis
 ---
 
 **Document created by:** Jean Bodenberg  
-**Last updated:** January 2025  
-**Version:** 1.0.9  
+**Last updated:** October 2025  
+**Version:** 1.1.0  
 **License:** Apache 2.0  
 **Repository:** https://github.com/bodenberg/appdimens
 

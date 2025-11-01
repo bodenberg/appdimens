@@ -30,12 +30,20 @@ library appdimens;
 export 'src/appdimens.dart';
 export 'src/appdimens_fixed.dart';
 export 'src/appdimens_dynamic.dart';
+export 'src/appdimens_fluid.dart';
 export 'src/appdimens_types.dart';
 export 'src/appdimens_extensions.dart';
 export 'src/appdimens_provider.dart';
 export 'src/appdimens_physical_units.dart';
 export 'src/appdimens_utils.dart';
 
+// Models
+export 'src/models/base_orientation.dart';
+
+// Utils
+export 'src/utils/orientation_resolver.dart';
+
 // Version information
-const String appDimensVersion = '1.0.7';
-const String appDimensDescription = 'Smart and Responsive Dimensioning for Flutter';
+const String appDimensVersion = '1.1.0';
+const String appDimensDescription =
+    'Smart and Responsive Dimensioning for Flutter';

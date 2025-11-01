@@ -22,7 +22,7 @@ tasks.dokkaJavadoc.configure {
 }
 
 mavenPublishing {
-    coordinates("io.github.bodenberg", "appdimens-all", "1.0.9")
+    coordinates("io.github.bodenberg", "appdimens-all", "1.1.0")
 
     configure(AndroidSingleVariantLibrary(
             publishJavadocJar = true,
@@ -89,7 +89,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        minSdk = 23
+        minSdk = 25
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }

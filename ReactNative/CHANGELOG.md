@@ -10,17 +10,50 @@ All notable changes to the AppDimens React Native library will be documented in 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.9] - 2025-10-29
+## [1.0.10] - 2025-01-31
+
+### Added
+- **Fluid Scaling Model (FL)**: New clamp-like scaling model for smooth bounded growth
+  - `AppDimensFluid` class for fluid dimension calculations
+  - `fluid()` shorthand function for quick fluid instances
+  - `useFluid()` hook for reactive fluid values that update on screen size changes
+  - `useFluidBuilder()` hook for access to fluid instance and calculated value
+  - `useFluidMultiple()` hook for multiple fluid values with shared breakpoints
+  - Device type qualifiers support (e.g., different ranges for tablets/TVs)
+  - Screen width qualifiers support (e.g., sw600, sw840)
+  - Custom breakpoint ranges (default: 320-768px)
+  - Linear interpolation between min and max values
+  - Methods: `getMin()`, `getMax()`, `getPreferred()`, `lerp(t)`
+
+### Features
+- **Fluid Scaling**: Ideal for typography and spacing with controlled growth
+  - Linear growth between defined min/max values
+  - Smooth transitions based on screen width
+  - Perfect for responsive fonts, line heights, and fluid spacing
+  - Complementary to existing Fixed (logarithmic) and Dynamic (proportional) models
+
+### Examples
+- Added comprehensive `examples/FluidExample.tsx` with 7 practical examples
+- Documented all fluid usage patterns in README.md
+
+### Documentation
+- Updated README with detailed Fluid model explanation
+- Added comparison table: Fluid vs Fixed model
+- Added examples for all fluid features
+- Updated exports documentation
+
+## [1.0.9] - 2025-10-31
 
 ### Changed
 - Updated version to 1.0.9 for consistency across platforms
-- Documentation updated with improved precision values
-- Performance benchmarks updated
+- Documentation updated with corrected precision values and proportional adjustment explanations
+- Mathematical theory documentation now explains 1dp step granularity in detail (EN, PT, ES)
 
 ### Note
-- React Native implementation already used equivalent approach to step=1dp (direct division)
+- React Native implementation already uses calculation based on BASE_WIDTH_DP = 375
+- Uses BASE_INCREMENT = 0.1 with different formula approach
 - This version aligns version numbers across all platforms
-- No breaking changes for React Native users
+- **NO BREAKING CHANGES** for React Native users
 
 ## [1.0.8] - 2025-01-27
 

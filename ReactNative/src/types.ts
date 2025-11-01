@@ -97,6 +97,7 @@ export interface AdjustmentFactors {
 export interface DimensionConfig {
   initialValue: number;
   screenType: 'lowest' | 'highest';
+  baseOrientation?: 'portrait' | 'landscape' | 'auto';
   applyAspectRatioAdjustment: boolean;
   customSensitivityK?: number;
   ignoreMultiWindowAdjustment: boolean;
@@ -330,11 +331,13 @@ export interface PerformanceMetrics {
 // Constants
 // ============================================================================
 
-export const BASE_WIDTH_DP = 375; // iPhone 6/7/8 width
-export const BASE_HEIGHT_DP = 667; // iPhone 6/7/8 height
+export const BASE_WIDTH_DP = 300; // Unified: 300dp for exact Android compatibility
+export const BASE_HEIGHT_DP = 667; // iPhone 6/7/8 height (kept for reference)
 export const BASE_DP_FACTOR = 1.0;
-export const BASE_INCREMENT = 0.1;
-export const REFERENCE_AR = BASE_WIDTH_DP / BASE_HEIGHT_DP; // ~0.56
+export const INCREMENT_DP_STEP = 1; // Unified step size (1dp granularity)
+export const BASE_INCREMENT = 0.1 / 30; // Adjusted for 1dp step granularity (0.003333...)
+export const DEFAULT_SENSITIVITY_K = 0.08 / 30; // Adjusted for 1dp step granularity (0.002667...)
+export const REFERENCE_AR = 1.78; // Unified reference AR (16:9 landscape)
 
 export const DEVICE_TYPES = {
   PHONE: 'phone' as DeviceType,

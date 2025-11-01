@@ -32,6 +32,14 @@
 
 class GameDimensions {
 public:
+    // Unified AppDimens constants (matching Android/iOS/Web/React Native/Flutter)
+    static constexpr float BASE_WIDTH_DP = 300.0f;
+    static constexpr float INCREMENT_DP_STEP = 1.0f;
+    static constexpr float BASE_INCREMENT = 0.10f / 30.0f;  // 0.003333...
+    static constexpr float DEFAULT_SENSITIVITY_K = 0.08f / 30.0f;  // 0.002667...
+    static constexpr float REFERENCE_AR = 1.78f;  // 16:9 landscape
+    static constexpr float BASE_DP_FACTOR = 1.0f;
+    
     GameDimensions();
     ~GameDimensions();
     

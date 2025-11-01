@@ -34,29 +34,33 @@ public class AppDimensAdjustmentFactors {
     
     // MARK: - Constants
     
-    /// [EN] Base width in points for reference calculations (iPhone 6/7/8 width).
-    /// [PT] Largura base em pontos para cálculos de referência (largura do iPhone 6/7/8).
-    public static let BASE_WIDTH_PT: CGFloat = 375.0
+    /// [EN] Base width in points for reference calculations (unified: 300pt for exact Android compatibility).
+    /// [PT] Largura base em pontos para cálculos de referência (unificado: 300pt para compatibilidade exata com Android).
+    public static let BASE_WIDTH_PT: CGFloat = 300.0
     
     /// [EN] Base height in points for reference calculations (iPhone 6/7/8 height).
     /// [PT] Altura base em pontos para cálculos de referência (altura do iPhone 6/7/8).
     public static let BASE_HEIGHT_PT: CGFloat = 667.0
     
-    /// [EN] Base increment value for logarithmic calculations.
-    /// [PT] Valor base de incremento para cálculos logarítmicos.
-    public static let BASE_INCREMENT: CGFloat = 0.1
+    /// [EN] Increment step size for calculating adjustment (unified: 1pt granularity).
+    /// [PT] Tamanho do passo de incremento para calcular o ajuste (unificado: granularidade de 1pt).
+    public static let INCREMENT_DP_STEP: CGFloat = 1.0
+    
+    /// [EN] Base increment value for logarithmic calculations (adjusted for 1dp step granularity).
+    /// [PT] Valor base de incremento para cálculos logarítmicos (ajustado para granularidade de step 1dp).
+    public static let BASE_INCREMENT: CGFloat = 0.1 / 30.0  // Adjusted for 1dp step granularity
     
     /// [EN] Base factor for DP calculations.
     /// [PT] Fator base para cálculos de DP.
     public static let BASE_DP_FACTOR: CGFloat = 1.0
     
-    /// [EN] Reference aspect ratio for calculations.
-    /// [PT] Proporção de referência para cálculos.
-    public static let REFERENCE_AR: CGFloat = BASE_WIDTH_PT / BASE_HEIGHT_PT
+    /// [EN] Reference aspect ratio for calculations (unified: 16:9 landscape).
+    /// [PT] Proporção de referência para cálculos (unificado: 16:9 landscape).
+    public static let REFERENCE_AR: CGFloat = 1.78  // Unified reference AR (16:9 landscape)
     
-    /// [EN] Default sensitivity coefficient for logarithmic adjustment.
-    /// [PT] Coeficiente de sensibilidade padrão para ajuste logarítmico.
-    public static let DEFAULT_SENSITIVITY_K: CGFloat = 0.5
+    /// [EN] Default sensitivity coefficient for logarithmic adjustment (adjusted for 1dp step granularity).
+    /// [PT] Coeficiente de sensibilidade padrão para ajuste logarítmico (ajustado para granularidade de step 1dp).
+    public static let DEFAULT_SENSITIVITY_K: CGFloat = 0.08 / 30.0  // Adjusted for 1dp step granularity
     
     // MARK: - Screen Information
     
@@ -83,10 +87,13 @@ public class AppDimensAdjustmentFactors {
     
     /**
      * [EN] Calculates the aspect ratio of the given dimensions.
+     * Unified: Returns largest/smallest (landscape normalization).
      * [PT] Calcula a proporção das dimensões dadas.
+     * Unificado: Retorna maior/menor (normalização landscape).
      */
     public static func getReferenceAspectRatio(_ width: CGFloat, _ height: CGFloat) -> CGFloat {
-        return width / height
+        // Unified: normalize to landscape (largest/smallest)
+        return width >= height ? width / height : height / width
     }
     
     // MARK: - Adjustment Factor Calculations
@@ -102,23 +109,30 @@ public class AppDimensAdjustmentFactors {
     
     /**
      * [EN] Calculates the adjustment factors for the given screen dimensions.
+     * Uses unified formula: 1.0 + ((dimension - BASE_WIDTH) / STEP) × (BASE_INCREMENT + K × ln(AR / AR₀))
      * [PT] Calcula os fatores de ajuste para as dimensões de tela dadas.
+     * Usa fórmula unificada: 1.0 + ((dimension - BASE_WIDTH) / STEP) × (BASE_INCREMENT + K × ln(AR / AR₀))
      */
     public static func calculateAdjustmentFactors(width: CGFloat, height: CGFloat) -> ScreenAdjustmentFactors {
         let smallestDimension = min(width, height)
         let largestDimension = max(width, height)
         
-        // Calculate base adjustment factors
-        let adjustmentFactorLowest = smallestDimension / BASE_WIDTH_PT
-        let adjustmentFactorHighest = largestDimension / BASE_WIDTH_PT
+        // Unified formula: subtraction + step
+        let differenceLowest = smallestDimension - BASE_WIDTH_PT
+        let differenceHighest = largestDimension - BASE_WIDTH_PT
+        let adjustmentFactorLowest = differenceLowest / INCREMENT_DP_STEP
+        let adjustmentFactorHighest = differenceHighest / INCREMENT_DP_STEP
         
-        // Calculate aspect ratio
+        // Calculate aspect ratio (normalized to landscape: largest/smallest)
         let currentAR = getReferenceAspectRatio(width, height)
-        let arAdjustment = log(currentAR / REFERENCE_AR) * DEFAULT_SENSITIVITY_K
         
-        // Calculate final factors with AR
-        let withArFactorLowest = BASE_DP_FACTOR + adjustmentFactorLowest * (BASE_INCREMENT + arAdjustment)
-        let withArFactorHighest = BASE_DP_FACTOR + adjustmentFactorHighest * (BASE_INCREMENT + arAdjustment)
+        // Unified logarithmic adjustment
+        let arAdjustment = DEFAULT_SENSITIVITY_K * log(currentAR / REFERENCE_AR)
+        let finalIncrementValueWithAr = BASE_INCREMENT + arAdjustment
+        
+        // Calculate final factors with AR using unified formula
+        let withArFactorLowest = BASE_DP_FACTOR + adjustmentFactorLowest * finalIncrementValueWithAr
+        let withArFactorHighest = BASE_DP_FACTOR + adjustmentFactorHighest * finalIncrementValueWithAr
         
         // Calculate factor without AR
         let withoutArFactor = BASE_DP_FACTOR + adjustmentFactorLowest * BASE_INCREMENT
@@ -130,6 +144,58 @@ public class AppDimensAdjustmentFactors {
             adjustmentFactorLowest: adjustmentFactorLowest,
             adjustmentFactorHighest: adjustmentFactorHighest
         )
+    }
+    
+    // MARK: - Base Orientation Resolution
+    
+    /**
+     * [EN] Resolves the effective ScreenType based on the base orientation and current device orientation.
+     * If the base orientation differs from the current orientation, LOWEST and HIGHEST are inverted.
+     *
+     * @param requestedType The originally requested screen type (.lowest or .highest)
+     * @param baseOrientation The orientation for which the design was created (.portrait, .landscape, or .auto)
+     * @param bounds The current screen bounds
+     * @return The resolved ScreenType (may be inverted from requestedType)
+     *
+     * [PT] Resolve o ScreenType efetivo baseado na orientação base e na orientação atual do dispositivo.
+     * Se a orientação base difere da orientação atual, .lowest e .highest são invertidos.
+     *
+     * @param requestedType O tipo de tela originalmente requisitado (.lowest ou .highest)
+     * @param baseOrientation A orientação para a qual o design foi criado (.portrait, .landscape ou .auto)
+     * @param bounds As dimensões atuais da tela
+     * @return O ScreenType resolvido (pode ser invertido do requestedType)
+     */
+    public static func resolveScreenType(
+        requestedType: ScreenType,
+        baseOrientation: BaseOrientation,
+        bounds: CGRect
+    ) -> ScreenType {
+        // If AUTO, no inversion - return as requested
+        if baseOrientation == .auto {
+            return requestedType
+        }
+        
+        // Detect current orientation
+        let currentIsPortrait = bounds.height > bounds.width
+        let currentIsLandscape = !currentIsPortrait
+        
+        // Determine if inversion is needed
+        let shouldInvert: Bool
+        switch baseOrientation {
+        case .portrait:
+            shouldInvert = currentIsLandscape
+        case .landscape:
+            shouldInvert = currentIsPortrait
+        case .auto:
+            shouldInvert = false
+        }
+        
+        // Invert if needed
+        if shouldInvert {
+            return requestedType == .lowest ? .highest : .lowest
+        } else {
+            return requestedType
+        }
     }
     
     // MARK: - Screen Qualifier Resolution

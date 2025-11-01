@@ -7,6 +7,7 @@
  */
 
 import { breakpointManager } from '../breakpoints/Breakpoints';
+import type { BaseOrientation } from '../types/BaseOrientation';
 
 /**
  * Fluid Dimension Builder
@@ -17,6 +18,7 @@ export class Fluid {
   private maxValue: number;
   private minBreakpoint: string;
   private maxBreakpoint: string;
+  private baseOrientation: BaseOrientation = 'auto';
 
   constructor(
     minValue: number,
@@ -36,6 +38,30 @@ export class Fluid {
   between(minBreakpoint: string, maxBreakpoint: string): this {
     this.minBreakpoint = minBreakpoint;
     this.maxBreakpoint = maxBreakpoint;
+    return this;
+  }
+
+  /**
+   * Set base orientation for design
+   */
+  baseOrientation(orientation: BaseOrientation): this {
+    this.baseOrientation = orientation;
+    return this;
+  }
+
+  /**
+   * Shorthand for portrait design
+   */
+  portrait(): this {
+    this.baseOrientation = 'portrait';
+    return this;
+  }
+
+  /**
+   * Shorthand for landscape design
+   */
+  landscape(): this {
+    this.baseOrientation = 'landscape';
     return this;
   }
 

@@ -22,31 +22,31 @@
  */
 
 // Test all imports
-import 'package:flutter/material.dart';
 import 'lib/appdimens.dart';
 
 void main() {
   print('AppDimens Flutter - Syntax Verification');
   print('=====================================');
-  
+
   // Test basic classes
-  print('✓ AppDimens class available: ${AppDimens != null}');
-  print('✓ AppDimensFixed class available: ${AppDimensFixed != null}');
-  print('✓ AppDimensDynamic class available: ${AppDimensDynamic != null}');
-  print('✓ AppDimensPhysicalUnits class available: ${AppDimensPhysicalUnits != null}');
-  
+  print('✓ AppDimens class available: ${AppDimens}');
+  print('✓ AppDimensFixed class available: ${AppDimensFixed}');
+  print('✓ AppDimensDynamic class available: ${AppDimensDynamic}');
+  print('✓ AppDimensPhysicalUnits class available: ${AppDimensPhysicalUnits}');
+
   // Test enums
   print('✓ DeviceType enum available: ${DeviceType.values.isNotEmpty}');
   print('✓ UiModeType enum available: ${UiModeType.values.isNotEmpty}');
   print('✓ DpQualifier enum available: ${DpQualifier.values.isNotEmpty}');
-  print('✓ ScreenQualifier enum available: ${ScreenQualifier.values.isNotEmpty}');
+  print(
+      '✓ ScreenQualifier enum available: ${ScreenQualifier.values.isNotEmpty}');
   print('✓ ScreenType enum available: ${ScreenType.values.isNotEmpty}');
   print('✓ UnitType enum available: ${UnitType.values.isNotEmpty}');
-  
+
   // Test extensions
-  print('✓ Double extensions available: ${100.0.fx != null}');
-  print('✓ Int extensions available: ${100.fx != null}');
-  
+  print('✓ Double extensions available: ${100.0.fx}');
+  print('✓ Int extensions available: ${100.fx}');
+
   print('\n🎉 All syntax checks passed!');
   print('The AppDimens Flutter plugin is ready to use.');
 }

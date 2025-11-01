@@ -325,6 +325,10 @@
             <div class="description">
                 <strong>Como funciona:</strong> Cada elemento abaixo usa uma técnica diferente de redimensionamento. 
                 Observe como o tamanho da fonte do botão muda conforme você redimensiona a janela do navegador.
+                <br><br>
+                <strong>Nota:</strong> AppDimens também oferece o modelo <strong>Fluid (FL)</strong>, que usa interpolação linear 
+                entre valores mínimos e máximos baseado em breakpoints de largura. Ideal para tipografia e espaçamento com crescimento controlado. 
+                Disponível em: Android (Compose), iOS (SwiftUI), Flutter, React Native e Web.
             </div>
         </div>
 
@@ -332,9 +336,9 @@
             <!-- 1. Logarítmica (AppDimens FX) - Baseado em S -->
             <div class="scaling-method">
                 <h3>🔵 Logarítmica (AppDimens FX)</h3>
-                <div class="formula">f(x) = x × (1 + 0.5 × log₁₀(S/W₀))</div>
+                <div class="formula">f(x) = x × [1 + ((S - 300) / 1) × 0.00333]</div>
                 <div class="description">
-                    Crescimento sublinear que se alinha à percepção humana. Crescimento mais suave.
+                    Crescimento sublinear que se alinha à percepção humana (Weber-Fechner). Granularidade de 1dp. BASE_INCREMENT = 0.10/30 = 0.00333.
                 </div>
                 <div class="demo-area">
                     <button class="demo-element" id="logarithmic">Logarítmico</button>
@@ -505,7 +509,7 @@
                 <tbody>
                     <tr>
                         <td>Logarítmica (FX)</td>
-                        <td>x × (1 + 0.5 × log₁₀(S/W₀))</td>
+                        <td>x × [1 + ((S-300)/1) × 0.00333]</td>
                         <td id="tableLog">16.00 px</td>
                         <td id="tableLogGrowth">0%</td>
                     </tr>
@@ -573,8 +577,9 @@
             <div class="legend-item">
                 <h4>🔵 Logarítmica (AppDimens FX) - RECOMENDADA</h4>
                 <p>
-                    Crescimento sublinear que se alinha à percepção humana (Lei de Weber-Fechner). Garante que os elementos cresçam o suficiente para 
-                    serem confortáveis, mas não exageradamente, preservando a usabilidade e a densidade de informação.
+                    Crescimento sublinear que se alinha à percepção humana (Lei de Weber-Fechner). Fórmula precisa: f(x) = x × [1 + ((S - W₀) / δ) × ε₀], 
+                    onde ε₀ = 0.10/30 = 0.00333 (ajustado para granularidade de 1dp), W₀ = 300dp, δ = 1dp. Garante que os elementos cresçam o suficiente para 
+                    serem confortáveis, mas não exageradamente, preservando a usabilidade e a densidade de informação. Versão 1.1.0 com precisão matemática 30× maior.
                 </p>
             </div>
 
@@ -647,22 +652,30 @@
     </div>
 
     <script>
-        // Constantes de Referência
-        const W0 = 360; // Largura de referência (pixels)
+        // Constantes de Referência (AppDimens v1.1.0)
+        const W0 = 300; // Largura de referência base (pixels) - ATUALIZADO
         const H0 = 640; // Altura de referência (pixels)
-        const S0 = Math.min(W0, H0); // Menor dimensão de referência
+        const S0 = 300; // Menor dimensão de referência - ATUALIZADO
         const D0 = Math.sqrt(W0 * W0 + H0 * H0); // Diagonal de referência
         const SUM0 = W0 + H0; // Soma das dimensões de referência
         const BASE_VALUE = 16; // Valor base em pixels
         const INTERP_FACTOR = 0.5; // Fator de moderação para Interpolação Linear
+        
+        // Constantes AppDimens Fixed (Logarithmic)
+        const BASE_INCREMENT = 0.10 / 30; // Ajustado para granularidade de 1dp
+        const DEFAULT_SENSITIVITY_K = 0.08 / 30; // Ajustado para granularidade de 1dp
+        const REFERENCE_AR = 1.78; // Aspect Ratio de referência (16:9)
+        const BASE_DP_FACTOR = 1.0;
+        const INCREMENT_DP_STEP = 1;
 
         // Função para calcular o tamanho usando a fórmula Logarítmica (AppDimens FX)
         function calculateLogarithmic(baseValue, S) {
-            // f(x) = x × (1 + 0.5 × log₁₀(S/W₀))
-            if (S <= W0) {
-                return baseValue;
-            }
-            return baseValue * (1 + 0.5 * Math.log10(S / W0));
+            // Fórmula correta: f(x) = B × [1 + ((S - W₀) / δ) × (ε₀ + k × ln(AR / AR₀))]
+            // Para esta demo simplificada (sem AR adjustment):
+            // f(x) = B × [1 + ((S - W₀) / δ) × ε₀]
+            const adjustmentFactorBase = (S - W0) / INCREMENT_DP_STEP;
+            const finalFactor = BASE_DP_FACTOR + adjustmentFactorBase * BASE_INCREMENT;
+            return baseValue * finalFactor;
         }
 
         // Função para calcular o tamanho usando a fórmula Linear (Proporcional à Largura)

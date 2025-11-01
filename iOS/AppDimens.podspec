@@ -1,14 +1,21 @@
 Pod::Spec.new do |spec|
   spec.name         = "AppDimens"
-  spec.version      = "1.0.9"
+  spec.version      = "1.1.0"
   spec.summary      = "A responsive dimension management system for iOS that automatically adjusts values based on screen dimensions"
   spec.description  = <<-DESC
-                      AppDimens is a dimension management system that automatically adjusts Dp, Sp, and Px values in a responsive and mathematically refined way, ensuring layout consistency across any screen size or ratio. It provides two main scaling models: Fixed (FX) for subtle logarithmic adjustment and Dynamic (DY) for proportional adjustment.
+                      AppDimens is a dimension management system that automatically adjusts Dp, Sp, and Px values in a responsive and mathematically refined way, ensuring layout consistency across any screen size or ratio. It provides three main scaling models: Fixed (FX) for subtle logarithmic adjustment (RECOMMENDED), Dynamic (DY) for proportional adjustment, and Fluid (FL) for smooth bounded growth (SwiftUI only).
+                      
+                      Key Features:
+                      - Fixed, Dynamic, and Fluid scaling models
+                      - Base Orientation support for auto-rotation adaptation
+                      - Physical units (mm, cm, inch)
+                      - Global cache control
+                      - Device-specific qualifiers
                       
                       The library is organized into three modules:
                       - Main: Unified dimension management functionality with advanced caching and qualifiers
-                      - UI: UIKit and SwiftUI extensions and integrations
-                      - Games: Metal-specific functionality for game development
+                      - UI: UIKit and SwiftUI extensions and integrations (includes Fluid model for SwiftUI)
+                      - Games: Metal-specific functionality for game development with SIMD optimizations
                       DESC
   spec.homepage     = "https://github.com/bodenberg/appdimens"
   spec.license      = { :type => "Apache License, Version 2.0", :file => "LICENSE" }

@@ -77,6 +77,12 @@ class AppDimensDynamic(
      * [PT] Define a dimensão da tela a ser usada como base (HIGHEST ou LOWEST).
      */
     private var screenType: ScreenType = ScreenType.LOWEST
+
+    /**
+     * [EN] Defines the base orientation for which the design was originally created.
+     * [PT] Define a orientação base para a qual o design foi originalmente criado.
+     */
+    private var baseOrientation: com.appdimens.library.BaseOrientation = com.appdimens.library.BaseOrientation.AUTO
     
     // MARK: - Cache System
     
@@ -215,6 +221,55 @@ class AppDimensDynamic(
      */
     fun type(type: ScreenType): AppDimensDynamic {
         screenType = type
+        return this
+    }
+
+    /**
+     * [EN] Sets the base orientation for which the design was originally created.
+     * [PT] Define a orientação base para a qual o design foi originalmente criado.
+     */
+    fun baseOrientation(orientation: com.appdimens.library.BaseOrientation): AppDimensDynamic {
+        baseOrientation = orientation
+        return this
+    }
+
+    /**
+     * [EN] Shorthand for portrait design using lowest dimension.
+     * [PT] Atalho para design portrait usando menor dimensão.
+     */
+    fun portraitLowest(): AppDimensDynamic {
+        baseOrientation = com.appdimens.library.BaseOrientation.PORTRAIT
+        screenType = ScreenType.LOWEST
+        return this
+    }
+
+    /**
+     * [EN] Shorthand for portrait design using highest dimension.
+     * [PT] Atalho para design portrait usando maior dimensão.
+     */
+    fun portraitHighest(): AppDimensDynamic {
+        baseOrientation = com.appdimens.library.BaseOrientation.PORTRAIT
+        screenType = ScreenType.HIGHEST
+        return this
+    }
+
+    /**
+     * [EN] Shorthand for landscape design using lowest dimension.
+     * [PT] Atalho para design landscape usando menor dimensão.
+     */
+    fun landscapeLowest(): AppDimensDynamic {
+        baseOrientation = com.appdimens.library.BaseOrientation.LANDSCAPE
+        screenType = ScreenType.LOWEST
+        return this
+    }
+
+    /**
+     * [EN] Shorthand for landscape design using highest dimension.
+     * [PT] Atalho para design landscape usando maior dimensão.
+     */
+    fun landscapeHighest(): AppDimensDynamic {
+        baseOrientation = com.appdimens.library.BaseOrientation.LANDSCAPE
+        screenType = ScreenType.HIGHEST
         return this
     }
 
@@ -477,8 +532,15 @@ class AppDimensDynamic(
             // The dynamic scaling percentage is: (Adjusted Base DP / Reference DP)
             val percentage = dpToAdjust / AppDimensAdjustmentFactors.BASE_WIDTH_DP
 
+            // Resolve effective screen type based on base orientation
+            val effectiveScreenType = AppDimensAdjustmentFactors.resolveScreenType(
+                requestedType = screenType,
+                baseOrientation = baseOrientation,
+                configuration = configuration
+            )
+
             // Screen dimension to use (LOWEST or HIGHEST)
-            val dimensionToUse = when (screenType) {
+            val dimensionToUse = when (effectiveScreenType) {
                 ScreenType.HIGHEST -> maxOf(
                     configuration.screenWidthDp.toFloat(),
                     configuration.screenHeightDp.toFloat()

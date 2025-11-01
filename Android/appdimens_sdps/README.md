@@ -7,7 +7,7 @@ layout: default
     <p><strong>Dynamic Scaling with Conditional Logic for Android</strong></p>
     <p>Advanced SDP (Scaled Density-independent Pixels) system with conditional rules and priority-based scaling for responsive layouts.</p>
     
-[![Version](https://img.shields.io/badge/version-1.0.6-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
@@ -32,15 +32,15 @@ layout: default
 
 ## 📋 Requisitos Mínimos
 
-| Requisito | Versão Mínima | Recomendado |
-|-----------|---------------|-------------|
-| **Kotlin** | 2.0.0 | 2.2.20 |
-| **Android Gradle Plugin** | 8.0.0 | 8.13.0 |
-| **compileSdk** | 34 | 36 |
-| **minSdk** | 21 | 23 |
-| **targetSdk** | 34 | 36 |
-| **Jetpack Compose BOM** | 2024.01.00 | 2025.10.00 |
-| **Page Size** | Compatível com 16KB | ✅ |
+| Requisito | Versão Mínima       | Recomendado |
+|-----------|---------------------|-------------|
+| **Kotlin** | 2.0.0               | 2.2.20      |
+| **Android Gradle Plugin** | 8.0.0               | 8.13.0      |
+| **compileSdk** | 34                  | 36          |
+| **minSdk** | 25                  | 25          |
+| **targetSdk** | 34                  | 36          |
+| **Jetpack Compose BOM** | 2024.01.00          | 2025.10.00  |
+| **Page Size** | Compatível com 16KB | ✅           |
 
 ### Configuração do Projeto
 
@@ -57,7 +57,7 @@ android {
     compileSdk = 36
     
     defaultConfig {
-        minSdk = 23
+        minSdk = 25
         targetSdk = 36
     }
     
@@ -78,7 +78,7 @@ android {
 
 ```kotlin
 dependencies {
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.6")
+    implementation("io.github.bodenberg:appdimens-sdps:1.1.0")
 }
 ```
 

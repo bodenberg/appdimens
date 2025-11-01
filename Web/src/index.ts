@@ -10,7 +10,8 @@
 
 // Main class
 import { webdimens as webdimensInstance } from './core/WebDimens';
-export { WebDimens, webdimens, fixed, fx, dynamic, dy, fluid, fl } from './core/WebDimens';
+export { AppDimens, webdimens, fixed, fx, dynamic, dy, fluid, fl } from './core/WebDimens';
+export { AppDimens as WebDimens } from './core/WebDimens';  // Alias for backward compatibility
 
 // Core classes
 export { Fixed } from './core/Fixed';
@@ -55,7 +56,7 @@ export type {
 /**
  * Version
  */
-export const VERSION = '1.0.8';
+export const VERSION = '1.1.0';
 
 /**
  * Default export

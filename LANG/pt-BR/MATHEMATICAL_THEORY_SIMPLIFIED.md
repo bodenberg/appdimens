@@ -6,11 +6,11 @@
 
 **Entenda o Dimensionamento Logarítmico em 10 Minutos**
 
-[![Version](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bodenberg/appdimens)
 [![Math](https://img.shields.io/badge/math-logarithmic-green.svg)]()
 [![Platform](https://img.shields.io/badge/platform-universal-orange.svg)]()
 
-*Por Jean Bodenberg | Janeiro 2025*
+*Por Jean Bodenberg | Outubro 2025*
 
 [📚 Ver Documentação Completa](../../DOCS/README.md) | [⚡ Referência Rápida](DOCS_QUICK_REFERENCE.md) | [🔬 Comparação Detalhada](FORMULA_COMPARISON.md) | [📖 Guia Técnico Completo](COMPREHENSIVE_TECHNICAL_GUIDE.md)
 

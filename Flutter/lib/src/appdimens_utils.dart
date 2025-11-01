@@ -31,10 +31,19 @@ import 'appdimens_physical_units.dart';
 class AppDimensUtils {
   AppDimensUtils._();
 
+  // Unified constants for dimension calculations
+  static const double BASE_WIDTH_DP = 300.0; // Unified: 300dp for exact Android compatibility
+  static const double INCREMENT_DP_STEP = 1.0; // Unified step size (1dp granularity)
+  static const double BASE_INCREMENT = 0.1 / 30.0; // Adjusted for 1dp step granularity (0.003333...)
+  static const double DEFAULT_SENSITIVITY_K = 0.08 / 30.0; // Adjusted for 1dp step granularity (0.002667...)
+  static const double REFERENCE_AR = 1.78; // Unified reference AR (16:9 landscape)
+
   /// [EN] Calculates adjustment factors for the current screen configuration.
+  /// Uses unified formula: 1.0 + ((dimension - BASE_WIDTH) / STEP) × (BASE_INCREMENT + K × ln(AR / AR₀))
   /// @param context The BuildContext.
   /// @return ScreenAdjustmentFactors containing calculated factors.
   /// [PT] Calcula os fatores de ajuste para a configuração atual da tela.
+  /// Usa fórmula unificada: 1.0 + ((dimension - BASE_WIDTH) / STEP) × (BASE_INCREMENT + K × ln(AR / AR₀))
   /// @param context O BuildContext.
   /// @return ScreenAdjustmentFactors contendo os fatores calculados.
   static ScreenAdjustmentFactors calculateAdjustmentFactors(BuildContext context) {
@@ -44,27 +53,30 @@ class AppDimensUtils {
     final screenWidth = size.width;
     final screenHeight = size.height;
     
-    final deviceType = DeviceType.current(context);
-    
-    // Base dimensions
-    const double baseWidthDp = 360.0; // Reference base width
     final baseDimensionLowest = screenWidth < screenHeight ? screenWidth : screenHeight;
     final baseDimensionHighest = screenWidth > screenHeight ? screenWidth : screenHeight;
     
-    // Calculate aspect ratio factor
+    // Unified formula: subtraction + step
+    final differenceLowest = baseDimensionLowest - BASE_WIDTH_DP;
+    final differenceHighest = baseDimensionHighest - BASE_WIDTH_DP;
+    final adjustmentFactorLowest = differenceLowest / INCREMENT_DP_STEP;
+    final adjustmentFactorHighest = differenceHighest / INCREMENT_DP_STEP;
+    
+    // Calculate aspect ratio (normalized to landscape: largest/smallest)
     final aspectRatio = screenWidth / screenHeight;
-    final aspectRatioFactor = _calculateAspectRatioFactor(aspectRatio, deviceType);
+    final normalizedAR = aspectRatio >= 1.0 ? aspectRatio : 1.0 / aspectRatio;
     
-    // Calculate base adjustment factors
-    final adjustmentFactorLowest = baseDimensionLowest / baseWidthDp;
-    final adjustmentFactorHighest = baseDimensionHighest / baseWidthDp;
+    // Unified logarithmic adjustment
+    final arAdjustment = DEFAULT_SENSITIVITY_K * math.log(normalizedAR / REFERENCE_AR);
+    final finalIncrement = BASE_INCREMENT + arAdjustment;
     
-    // Calculate complete factors with AR
-    final withArFactorLowest = adjustmentFactorLowest * aspectRatioFactor;
-    final withArFactorHighest = adjustmentFactorHighest * aspectRatioFactor;
+    // Calculate factors using unified formula
+    const baseFactor = 1.0;
+    final withArFactorLowest = baseFactor + adjustmentFactorLowest * finalIncrement;
+    final withArFactorHighest = baseFactor + adjustmentFactorHighest * finalIncrement;
     
     // Factor without AR (uses lowest for safety)
-    final withoutArFactor = adjustmentFactorLowest;
+    final withoutArFactor = baseFactor + adjustmentFactorLowest * BASE_INCREMENT;
     
     return ScreenAdjustmentFactors(
       withArFactorLowest: withArFactorLowest,

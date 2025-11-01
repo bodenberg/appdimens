@@ -8,7 +8,7 @@ layout: default
     <p><strong>Dimensionamento Inteligente e Responsivo para Android</strong></p>
     <p>Escala responsiva matematicamente precisa que garante que seu design de UI se adapte perfeitamente a qualquer tamanho de tela ou proporção — de telefones a TVs, carros e wearables.</p>
 
-[![Versão](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Versão](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![Licença](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../LICENSE)
 [![Plataforma](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 [![Documentação](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)
@@ -28,9 +28,13 @@ layout: default
 - **📱 Compatibilidade Universal**: Funciona perfeitamente em telefones, tablets, TVs, carros e wearables
 - **⚡ Performance Otimizada**: Overhead mínimo de runtime com cálculos em cache
 - **🔧 Integração Fácil**: API simples que funciona com Jetpack Compose, XML Views e Data Binding
-- **📐 Precisão Matemática**: Dois modelos de escala (Fixed & Dynamic) para diferentes necessidades de design
+- **📐 Precisão Matemática**: Três modelos de escala - Fixed (RECOMENDADO), Dynamic e Fluid (Compose apenas)
 - **🎮 Desenvolvimento de Jogos**: Módulo C++/NDK especializado para desenvolvimento de jogos de alta performance
 - **🚀 Performance Nativa**: Implementação C++ para cálculos específicos de jogos e integração OpenGL
+- **🆕 v1.2.0**: Suporte a Base Orientation para auto-adaptação à rotação
+- **🌊 v1.0.10**: Modelo Fluid para escalamento suave com limites definidos (Compose apenas)
+- **⚡ Cache Global**: Controle de cache global e por instância
+- **📏 Unidades Físicas**: mm, cm, polegadas em code, compose e games
 
 ---
 
@@ -75,17 +79,17 @@ val scaledPosition = appDimensGames.calculateVector2D(position, GameDimensionTyp
 ```kotlin
 dependencies {
     // Biblioteca principal (escala Dynamic + Fixed)
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.8")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.1.0")
     
     // Opcional: Escala SDP & SSP
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.8")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.8")
+    implementation("io.github.bodenberg:appdimens-sdps:1.1.0")
+    implementation("io.github.bodenberg:appdimens-ssps:1.1.0")
     
     // Pacote completo (não inclui módulo de jogos)
-    implementation("io.github.bodenberg:appdimens-all:1.0.8")
+    implementation("io.github.bodenberg:appdimens-all:1.1.0")
     
     // Desenvolvimento de jogos com suporte C++/NDK (dependência separada)
-    implementation("io.github.bodenberg:appdimens-games:1.0.8")
+    implementation("io.github.bodenberg:appdimens-games:1.1.0")
 }
 ```
 
@@ -93,11 +97,11 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'io.github.bodenberg:appdimens-dynamic:1.0.8'
-    implementation 'io.github.bodenberg:appdimens-sdps:1.0.8'
-    implementation 'io.github.bodenberg:appdimens-ssps:1.0.8'
-    implementation 'io.github.bodenberg:appdimens-all:1.0.8'
-    implementation 'io.github.bodenberg:appdimens-games:1.0.8'
+    implementation 'io.github.bodenberg:appdimens-dynamic:1.1.0'
+    implementation 'io.github.bodenberg:appdimens-sdps:1.1.0'
+    implementation 'io.github.bodenberg:appdimens-ssps:1.1.0'
+    implementation 'io.github.bodenberg:appdimens-all:1.1.0'
+    implementation 'io.github.bodenberg:appdimens-games:1.1.0'
 }
 ```
 

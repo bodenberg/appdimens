@@ -1,6 +1,6 @@
 {
   "name": "webdimens",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Sistema avançado de dimensionamento responsivo para web, baseado nos conceitos do AppDimens Android",
   "author": "Jean Bodenberg",
   "license": "Apache-2.0",
@@ -63,17 +63,18 @@
     "@typescript-eslint/eslint-plugin": "^6.13.0",
     "@typescript-eslint/parser": "^6.13.0",
     "eslint": "^8.55.0",
+    "jsdom": "^27.1.0",
     "prettier": "^3.1.0",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3",
     "vitest": "^1.0.4"
   },
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "vue": ">=3.0.0",
-    "svelte": ">=3.0.0",
     "@angular/core": ">=12.0.0",
-    "rxjs": ">=6.0.0"
+    "react": ">=16.8.0",
+    "rxjs": ">=6.0.0",
+    "svelte": ">=3.0.0",
+    "vue": ">=3.0.0"
   },
   "peerDependenciesMeta": {
     "react": {
@@ -102,4 +103,3 @@
   },
   "homepage": "https://github.com/bodenberg/appdimens#readme"
 }
-

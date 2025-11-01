@@ -6,11 +6,11 @@
 
 **Understand Logarithmic Scaling in 10 Minutes**
 
-[![Version](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bodenberg/appdimens)
 [![Math](https://img.shields.io/badge/math-logarithmic-green.svg)]()
 [![Platform](https://img.shields.io/badge/platform-universal-orange.svg)]()
 
-*By Jean Bodenberg | January 2025*
+*By Jean Bodenberg | October 2025*
 
 [📚 See Complete Documentation](README.md) | [⚡ Quick Reference](DOCS_QUICK_REFERENCE.md) | [🔬 Detailed Comparison](FORMULA_COMPARISON.md) | [📖 Complete Technical Guide](COMPREHENSIVE_TECHNICAL_GUIDE.md)
 
@@ -105,7 +105,7 @@ Imagine a **48dp** button on different devices:
 ║                                                           ║
 ║  Final Value = Base Value × Adjustment Factor            ║
 ║                                                           ║
-║  Factor = 1.0 + (Screen÷30) × (0.10 + 0.08×ln(Ratio))   ║
+║  Factor = 1.0 + (Screen-300) × (0.00333 + 0.00267×ln(Ratio))   ║
 ║                                                           ║
 ╚═══════════════════════════════════════════════════════════╝
 ```
@@ -159,15 +159,15 @@ If you have a 1080dp TV:
 🔹 STEP 3: Logarithmic adjustment
 
    ln(1.6 ÷ 1.78) = ln(0.899) = -0.106
-   Adjustment = 0.08 × (-0.106) = -0.0085
+   Adjustment = 0.00267 × (-0.106) = -0.000283
    
    📝 Small discount for being more square
 
-🔹 STEP 4: Final increment
+🔹 STEP 4: Final increment (v1.1.0)
 
-   Increment = 0.10 + (-0.0085) = 0.0915
+   Increment = 0.00333 + (-0.000283) = 0.00305
    
-   📝 Approximately 9.15% per step
+   📝 Approximately 0.305% per dp (granularity de 1dp)
 
 🔹 STEP 5: Multiplication factor
 
@@ -474,7 +474,7 @@ Examples:
 
 Then applies:
 ```
-Adjustment = 0.08 × ln(AR / 1.78)
+Adjustment = 0.00267 × ln(AR / 1.78)
 ```
 
 Result: **More elongated** screens = slightly **larger** dimensions
@@ -621,12 +621,12 @@ val titleSize = 24.fixedDp()
 │  ─────                                                 │
 │  α = 1.0           (neutral factor)                   │
 │  β(S) = (S - 300) / 1                                 │
-│  γ(AR) = 0.10 + 0.08 × ln(AR / 1.78)                 │
+│  γ(AR) = 0.00333 + 0.00267 × ln(AR / 1.78)           │
 │                                                        │
-│  Expanded:                                             │
+│  Expanded (v1.1.0):                                    │
 │  ──────────                                            │
 │  Value = Base × [1 + ((Screen - 300)/1) ×            │
-│                      (0.10 + 0.08×ln(AR/1.78))]       │
+│                      (0.00333 + 0.00267×ln(AR/1.78))] │
 │                                                        │
 └────────────────────────────────────────────────────────┘
 ```
@@ -651,12 +651,12 @@ Examples:
 **3. Component γ (Gamma) - Logarithmic:**
 ```
 γ(AR) = ε₀ + K × ln(AR / AR₀)
-      = 0.10 + 0.08 × ln(AR / 1.78)
+      = 0.00333 + 0.00267 × ln(AR / 1.78)
 
-Examples:
-  AR = 1.78 → γ = 0.10 (base 10%)
-  AR = 2.22 → γ = 0.118 (+1.8%)
-  AR = 1.33 → γ = 0.072 (-2.8%)
+Examples (v1.1.0):
+  AR = 1.78 → γ = 0.00333 (base increment por dp)
+  AR = 2.22 → γ = 0.00392 (+0.059% por dp)
+  AR = 1.33 → γ = 0.00240 (-0.093% por dp)
 ```
 
 **4. Final Multiplication:**
@@ -688,7 +688,7 @@ Interpretation:
 **Derivative with respect to AR (aspect ratio):**
 ```
 ∂f_FX/∂AR = B × β(S) × K / AR
-          = B × β(S) × 0.08 / AR
+          = B × β(S) × 0.00267 / AR
 
 Interpretation:
   - Rate DECREASES as AR increases (1/AR)
@@ -716,15 +716,15 @@ Interpretation:
 
 **Base: 16dp**
 
-| Screen | SW (dp) | AR | β | γ | F | **Result** |
+| Screen | SW (dp) | AR | β | γ | F | **Result (base=16dp)** |
 |--------|---------|-----|---|---|---|------------|
-| Phone S | 320 | 2.00 | 0.67 | 0.109 | 1.073 | **17.2dp** |
-| Phone M | 360 | 2.22 | 2.00 | 0.118 | 1.235 | **19.8dp** |
-| Phone L | 411 | 2.16 | 3.70 | 0.116 | 1.429 | **22.9dp** |
-| Tablet 7" | 600 | 1.60 | 10.0 | 0.091 | 1.910 | **30.6dp** |
-| Tablet 10" | 720 | 1.78 | 14.0 | 0.100 | 2.400 | **38.4dp** |
+| Phone S | 320 | 2.00 | 20 | 0.00362 | 1.0724 | **17.2dp** |
+| Phone M | 360 | 2.22 | 60 | 0.00392 | 1.235 | **19.8dp** |
+| Phone L | 411 | 2.16 | 111 | 0.00387 | 1.429 | **22.9dp** |
+| Tablet 7" | 600 | 1.60 | 300 | 0.00303 | 1.910 | **30.6dp** |
+| Tablet 10" | 720 | 1.78 | 420 | 0.00333 | 2.400 | **38.4dp** |
 
-**⚠️ Note:** Real values may vary slightly due to rounding and implementation optimizations.
+**✨ v1.1.0 Note:** Valores calculados com nova granularidade de 1dp (BASE_INCREMENT=0.10/30, K=0.08/30). Resultados finais permanecem idênticos à versão anterior, mas com 30× mais precisão.
 
 </details>
 

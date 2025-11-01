@@ -53,6 +53,27 @@ enum class GameScreenOrientation {
 }
 
 /**
+ * [EN] Base orientation types for design adaptation in games.
+ * When set, LOWEST/HIGHEST will be auto-inverted based on current orientation.
+ * [PT] Tipos de orientação base para adaptação de design em jogos.
+ * Quando configurado, LOWEST/HIGHEST será auto-invertido baseado na orientação atual.
+ */
+enum class GameBaseOrientation {
+    PORTRAIT,   // Design created for portrait
+    LANDSCAPE,  // Design created for landscape
+    AUTO        // No specific orientation (default)
+}
+
+/**
+ * [EN] Screen type for dimension calculations in games.
+ * [PT] Tipo de tela para cálculos de dimensões em jogos.
+ */
+enum class GameScreenType {
+    LOWEST,     // Use smallest dimension (width in portrait, height in landscape)
+    HIGHEST     // Use largest dimension (height in portrait, width in landscape)
+}
+
+/**
  * [EN] Viewport scaling modes for different game scenarios.
  * [PT] Modos de escalonamento de viewport para diferentes cenários de jogo.
  */
@@ -546,4 +567,83 @@ class AppDimensGames private constructor() {
     fun calculateUISize(baseSize: Float = 24.0f): Float {
         return calculateDimension(baseSize, GameDimensionType.UI_OVERLAY)
     }
+    
+    // MARK: - Physical Units (matching other platforms)
+    
+    /**
+     * [EN] Convert millimeters to pixels.
+     * @param millimeters Value in millimeters.
+     * @return Value in pixels.
+     * 
+     * [PT] Converte milímetros para pixels.
+     * @param millimeters Valor em milímetros.
+     * @return Valor em pixels.
+     */
+    fun mm(millimeters: Float): Float {
+        if (!isInitialized) {
+            Log.w(TAG, "AppDimensGames not initialized, using default DPI")
+            return millimeters * (160.0f / 25.4f)  // Default DPI
+        }
+        return try {
+            nativeMm(millimeters)
+        } catch (e: Exception) {
+            Log.e(TAG, "Exception converting mm to pixels", e)
+            millimeters * (160.0f / 25.4f)
+        }
+    }
+    
+    /**
+     * [EN] Convert centimeters to pixels.
+     * @param centimeters Value in centimeters.
+     * @return Value in pixels.
+     * 
+     * [PT] Converte centímetros para pixels.
+     * @param centimeters Valor em centímetros.
+     * @return Valor em pixels.
+     */
+    fun cm(centimeters: Float): Float {
+        if (!isInitialized) {
+            Log.w(TAG, "AppDimensGames not initialized, using default DPI")
+            return centimeters * 10.0f * (160.0f / 25.4f)
+        }
+        return try {
+            nativeCm(centimeters)
+        } catch (e: Exception) {
+            Log.e(TAG, "Exception converting cm to pixels", e)
+            centimeters * 10.0f * (160.0f / 25.4f)
+        }
+    }
+    
+    /**
+     * [EN] Convert inches to pixels.
+     * @param inches Value in inches.
+     * @return Value in pixels.
+     * 
+     * [PT] Converte polegadas para pixels.
+     * @param inches Valor em polegadas.
+     * @return Valor em pixels.
+     */
+    fun inch(inches: Float): Float {
+        if (!isInitialized) {
+            Log.w(TAG, "AppDimensGames not initialized, using default DPI")
+            return inches * 160.0f
+        }
+        return try {
+            nativeInch(inches)
+        } catch (e: Exception) {
+            Log.e(TAG, "Exception converting inch to pixels", e)
+            inches * 160.0f
+        }
+    }
+    
+    // MARK: - Native Methods for Physical Units
+    
+    @Keep
+    private external fun nativeMm(millimeters: Float): Float
+    
+    @Keep
+    private external fun nativeCm(centimeters: Float): Float
+    
+    @Keep
+    private external fun nativeInch(inches: Float): Float
 }

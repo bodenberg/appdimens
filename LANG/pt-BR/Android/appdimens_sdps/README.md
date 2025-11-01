@@ -7,7 +7,7 @@ layout: default
     <p><strong>Escalonamento Dinâmico com Regras Condicionais</strong></p>
     <p>SDP (Scaled DP) com regras condicionais por prioridade para layouts responsivos (Compose e XML).</p>
 
-[![Versão](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Versão](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![Licença](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![Plataforma](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
@@ -25,7 +25,7 @@ layout: default
 
 ## 🚀 Instalação
 ```kotlin
-dependencies { implementation("io.github.bodenberg:appdimens-sdps:1.0.8") }
+dependencies { implementation("io.github.bodenberg:appdimens-sdps:1.1.0") }
 ```
 
 ## 🎨 Exemplos (Compose)

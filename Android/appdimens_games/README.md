@@ -8,7 +8,7 @@ title: "CMakeLists.txt"
     <p><strong>Responsive Game Development for Android with C++/NDK Support</strong></p>
     <p>Specialized AppDimens module designed for Android game development with native performance, OpenGL ES integration, and advanced viewport management.</p>
     
-[![Version](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Android%2023+-orange.svg)](https://developer.android.com/)
 [![NDK](https://img.shields.io/badge/NDK-r21+-green.svg)](https://developer.android.com/ndk)
@@ -35,18 +35,18 @@ title: "CMakeLists.txt"
 
 ## 📋 Requisitos Mínimos
 
-| Requisito | Versão Mínima | Recomendado |
-|-----------|---------------|-------------|
-| **Kotlin** | 2.0.0 | 2.2.20 |
-| **Android Gradle Plugin** | 8.0.0 | 8.13.0 |
-| **compileSdk** | 34 | 36 |
-| **minSdk** | 23 | 23 |
-| **targetSdk** | 34 | 36 |
-| **Jetpack Compose BOM** | 2024.01.00 | 2025.10.00 |
-| **NDK** | r21+ | r27+ |
-| **CMake** | 3.18.1 | 3.22.1 |
-| **C++ Standard** | C++17 | C++17 |
-| **Page Size** | Compatível com 16KB | ✅ |
+| Requisito | Versão Mínima       | Recomendado |
+|-----------|---------------------|-------------|
+| **Kotlin** | 2.0.0               | 2.2.20      |
+| **Android Gradle Plugin** | 8.0.0               | 8.13.0      |
+| **compileSdk** | 34                  | 36          |
+| **minSdk** | 25                  | 25          |
+| **targetSdk** | 34                  | 36          |
+| **Jetpack Compose BOM** | 2024.01.00          | 2025.10.00  |
+| **NDK** | r21+                | r27+        |
+| **CMake** | 3.18.1              | 3.22.1      |
+| **C++ Standard** | C++17               | C++17       |
+| **Page Size** | Compatível com 16KB | ✅           |
 
 ### Configuração do Projeto
 
@@ -63,7 +63,7 @@ android {
     compileSdk = 36
     
     defaultConfig {
-        minSdk = 23
+        minSdk = 25
         targetSdk = 36
         
         ndk {
@@ -104,7 +104,7 @@ android {
 
 ```kotlin
 dependencies {
-    implementation("io.github.bodenberg:appdimens-games:1.0.9")
+    implementation("io.github.bodenberg:appdimens-games:1.1.0")
 }
 ```
 
@@ -112,11 +112,11 @@ dependencies {
 
 ```kotlin
 android {
-    compileSdk 34
+    compileSdk 36
     
     defaultConfig {
-        minSdk 23
-        targetSdk 34
+        minSdk 25
+        targetSdk 36
         
         ndk {
             abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86", "x86_64")

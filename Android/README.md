@@ -8,7 +8,7 @@ layout: default
     <p><strong>Smart and Responsive Dimensioning for Android</strong></p>
     <p>Mathematically responsive scaling that ensures your UI design adapts perfectly to any screen size or aspect ratio — from phones to TVs, cars, and wearables.</p>
 
-[![Version](https://img.shields.io/badge/version-1.0.9-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 [![Documentation](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)
@@ -74,18 +74,18 @@ val scaledPosition = appDimensGames.calculateVector2D(position, GameDimensionTyp
 
 ```kotlin
 dependencies {
-    // Core library (Dynamic + Fixed scaling)
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.9")
+    // Core library (Dynamic + Fixed scaling + Fluid)
+    implementation("io.github.bodenberg:appdimens-dynamic:1.1.0")
     
     // Optional: SDP & SSP scaling
-    implementation("io.github.bodenberg:appdimens-sdps:1.0.9")
-    implementation("io.github.bodenberg:appdimens-ssps:1.0.9")
+    implementation("io.github.bodenberg:appdimens-sdps:1.1.0")
+    implementation("io.github.bodenberg:appdimens-ssps:1.1.0")
     
     // All-in-one package (does not include games module)
-    implementation("io.github.bodenberg:appdimens-all:1.0.9")
+    implementation("io.github.bodenberg:appdimens-all:1.1.0")
     
     // Game development with C++/NDK support (separate dependency)
-    implementation("io.github.bodenberg:appdimens-games:1.0.9")
+    implementation("io.github.bodenberg:appdimens-games:1.1.0")
 }
 ```
 
@@ -93,11 +93,11 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'io.github.bodenberg:appdimens-dynamic:1.0.9'
-    implementation 'io.github.bodenberg:appdimens-sdps:1.0.9'
-    implementation 'io.github.bodenberg:appdimens-ssps:1.0.9'
-    implementation 'io.github.bodenberg:appdimens-all:1.0.9'
-    implementation 'io.github.bodenberg:appdimens-games:1.0.9'
+    implementation 'io.github.bodenberg:appdimens-dynamic:1.1.0'
+    implementation 'io.github.bodenberg:appdimens-sdps:1.1.0'
+    implementation 'io.github.bodenberg:appdimens-ssps:1.1.0'
+    implementation 'io.github.bodenberg:appdimens-all:1.1.0'
+    implementation 'io.github.bodenberg:appdimens-games:1.1.0'
 }
 ```
 
@@ -118,15 +118,15 @@ repositories {
 ### Required Versions
 
 | Component | Minimum Version | Recommended |
-|-----------|----------------|-------------|
-| **Kotlin** | 2.2.20 | 2.2.20 |
-| **Android Gradle Plugin** | 8.13.0 | 8.13.0 |
-| **Gradle** | 8.5 | 8.5 |
-| **compileSdk** | 36 | 36 |
-| **minSdk** | 21 (Android 5.0) | 23 (Android 6.0) |
-| **targetSdk** | 36 | 36 |
-| **Java** | 17 | 17 |
-| **Jetpack Compose BOM** | 2025.01.00 | 2025.01.00 |
+|-----------|-----------------|-------------|
+| **Kotlin** | 2.2.20          | 2.2.20      |
+| **Android Gradle Plugin** | 8.13.0          | 8.13.0      |
+| **Gradle** | 8.5             | 8.5         |
+| **compileSdk** | 36              | 36          |
+| **minSdk** | 25              | 25          |
+| **targetSdk** | 36              | 36          |
+| **Java** | 17              | 17          |
+| **Jetpack Compose BOM** | 2025.01.00      | 2025.01.00  |
 
 ### Build Configuration Example
 
@@ -147,7 +147,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.app"
-        minSdk = 23
+        minSdk = 25
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -176,7 +176,7 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     
     // AppDimens
-    implementation("io.github.bodenberg:appdimens-dynamic:1.0.9")
+    implementation("io.github.bodenberg:appdimens-dynamic:1.1.0")
 }
 ```
 
@@ -232,12 +232,142 @@ android {
 
 ## 🧠 Core Dimension Models
 
-| Model | Philosophy | Ideal Use Case | Supported In |
-|-------|------------|----------------|--------------|
-| **Fixed (FX)** | Logarithmic scaling (refined) | Buttons, paddings, margins, icons | Compose + Views + Data Binding |
-| **Dynamic (DY)** | Proportional scaling (aggressive) | Containers, grids, fluid fonts | Compose + Views + Data Binding |
-| **SDP / SSP** | Pre-calculated resources | Direct `@dimen` usage in XML | Compose + Views (XML) |
-| **Physical Units** | mm/cm/inch → Dp/Sp/Px | Wearables, printing, precision layouts | Compose + Views |
+| Model | Philosophy | Ideal Use Case | Supported In | Cache |
+|-------|------------|----------------|--------------|-------|
+| **Fixed (FX)** ⭐ | Logarithmic scaling (refined) | Buttons, paddings, margins, icons, fonts, containers | Compose + Views + Data Binding | Individual + Global |
+| **Dynamic (DY)** | Proportional scaling (aggressive) | Large containers, grids, full-width layouts | Compose + Views + Data Binding | AutoCache + Global |
+| **Fluid (FL)** 🌊 | Smooth interpolation (min/max) | Typography, line heights, fluid spacing | **Compose only** | Built-in |
+| **SDP / SSP** | Pre-calculated resources | Direct `@dimen` usage in XML | Compose + Views (XML) | Resource-based |
+| **Physical Units** | mm/cm/inch → Dp/Sp/Px | Wearables, printing, precision layouts | Compose + Views | No cache needed |
+| **Games** 🎮 | Native C++/NDK | Game development, high performance | Separate module | Native LRU cache |
+
+### 🌊 Fluid Model - Smooth Bounded Scaling (Compose Only)
+
+The **Fluid** model provides smooth interpolation between minimum and maximum values based on screen width breakpoints. Perfect for typography and spacing that needs controlled growth.
+
+**Key Features:**
+- 📏 **Bounded Growth**: Define min and max values with smooth transitions
+- 🎯 **Custom Breakpoints**: Set custom width ranges (default: 320-768dp)
+- 📱 **Device-Aware**: Different ranges for different device types
+- ⚡ **Compose Native**: Built for Jetpack Compose
+
+**Basic Usage:**
+
+```kotlin
+@Composable
+fun FluidExample() {
+    // Font size from 16 to 24 between 320-768dp width
+    val fontSize = fluidSp(16f, 24f)
+    val padding = fluidDp(8f, 16f)
+    
+    Text(
+        text = "Fluid Typography",
+        fontSize = fontSize,
+        modifier = Modifier.padding(padding)
+    )
+}
+
+// With device type qualifiers
+val fontSize = AppDimensFluid(16f, 24f)
+    .device(FluidDeviceType.TABLET, 20f, 32f)
+    .device(FluidDeviceType.TV, 24f, 40f)
+
+// Multiple fluid values with shared breakpoints
+val (fontSize, padding, margin) = fluidMultipleDp(
+    listOf(
+        14f to 20f,  // fontSize
+        8f to 16f,   // padding
+        12f to 24f   // margin
+    )
+)
+
+// Using extension methods
+val fluid = 16f.fluidTo(24f)
+val fontSize = fluid.calculate(screenWidthDp)
+```
+
+**When to Use Fluid vs Fixed:**
+
+| Aspect | Fluid | Fixed |
+|--------|-------|-------|
+| **Growth** | Linear between min/max | Logarithmic (slows on large screens) |
+| **Control** | Explicit bounds (min/max) | Automatic adaptive scaling |
+| **Best for** | Typography, line heights | UI elements, buttons, icons |
+| **Platform** | Compose only | Compose + Views + XML |
+
+See [FluidExampleActivity.kt](./app/src/main/java/com/example/app/compose/FluidExampleActivity.kt) for complete examples.
+
+### ⚡ Global Cache Control
+
+Control caching behavior globally or per-instance:
+
+```kotlin
+// Global cache control
+AppDimens.setGlobalCache(true)        // Enable (default)
+AppDimens.setGlobalCache(false)       // Disable and clear all caches
+AppDimens.clearAllCaches()            // Clear all cached values
+val isEnabled = AppDimens.isGlobalCacheEnabled()
+
+// Per-instance cache control
+val dimension = AppDimens.fixed(100)
+    .cache(true)                      // Enable cache for this instance
+    .toDp(resources)
+
+val dynamicDim = AppDimens.dynamic(200)
+    .cache(false)                     // Disable cache for this instance
+    .toDp(resources)
+```
+
+**Cache Systems:**
+- **Fixed**: Individual instance cache with configuration-based invalidation
+- **Dynamic**: Automatic AutoCache system with dependency tracking
+- **Global Control**: Affects all instances when `globalCacheEnabled = false`
+- **Per-Instance**: Override global settings for specific instances
+- **Smart Invalidation**: Automatic invalidation on configuration changes
+
+### 🆕 Base Orientation Support (v1.2.0)
+
+Auto-adapt to screen rotation - design for one orientation, automatically maintain proportions when rotated:
+
+```kotlin
+// Explicit API
+val cardWidth = 300.fixedDp()
+    .baseOrientation(BaseOrientation.PORTRAIT)
+    .type(ScreenType.LOWEST)
+    .dp
+
+// Shorthand methods
+val width1 = 300.fixedDp().portraitLowest().dp       // Portrait design, uses width
+val height1 = 200.fixedDp().portraitHighest().dp     // Portrait design, uses height
+val width2 = 300.fixedDp().landscapeLowest().dp      // Landscape design, uses height
+val height2 = 200.fixedDp().landscapeHighest().dp    // Landscape design, uses width
+
+// Compose extensions with Base Orientation
+@Composable
+fun ResponsiveCard() {
+    Card(
+        modifier = Modifier
+            .width(300.fxPortraitLowest)     // Auto-inverts in landscape
+            .height(200.fxPortraitHighest)   // Auto-inverts in landscape
+    ) {
+        // Content
+    }
+}
+
+// Dynamic also supports Base Orientation
+val dynamicWidth = 0.8f.dynamicPer(type = ScreenType.LOWEST)
+    .dynamic()
+    .portraitLowest()
+    .dp
+```
+
+**How it works:**
+- **PORTRAIT Design**: When device is in landscape → LOWEST↔HIGHEST inverts
+- **LANDSCAPE Design**: When device is in portrait → LOWEST↔HIGHEST inverts
+- **AUTO** (default): No auto-inversion, uses types as-is
+- **Zero overhead**: When baseOrientation = AUTO (default)
+
+See [FluidExampleActivity.kt](./app/src/main/java/com/example/app/compose/FluidExampleActivity.kt) for complete examples.
 
 ---
 
@@ -458,10 +588,32 @@ class GameActivity : Activity() {
         appDimensGames.initialize(this)
         
         // Calculate responsive dimensions for game elements
-        val buttonSize = appDimensGames.calculateButtonSize(48.0f)
-        val textSize = appDimensGames.calculateTextSize(16.0f)
-        val playerSize = appDimensGames.calculatePlayerSize(64.0f)
-        val enemySize = appDimensGames.calculateEnemySize(32.0f)
+        val buttonSize = appDimensGames.calculateButtonSize(48.0f)       // Fixed scaling for UI
+        val textSize = appDimensGames.calculateTextSize(16.0f)           // Fixed scaling for text
+        val playerSize = appDimensGames.calculatePlayerSize(64.0f)       // Game world scaling
+        val enemySize = appDimensGames.calculateEnemySize(32.0f)         // Game world scaling
+        val uiOverlaySize = appDimensGames.calculateUISize(24.0f)        // UI overlay scaling
+        
+        // Physical units in games (NEW)
+        val touchTargetWidth = appDimensGames.mm(10f)     // 10mm touch target
+        val cardWidth = appDimensGames.cm(8f)             // 8cm card
+        val screenSize = appDimensGames.inch(5f)          // 5 inch element
+        
+        // Vector operations
+        val position = GameVector2D(100f, 200f)
+        val scaledPosition = appDimensGames.calculateVector2D(position, GameDimensionType.GAME_WORLD)
+        
+        // Rectangle/bounds operations
+        val viewport = GameRectangle(0f, 0f, 800f, 600f)
+        val scaledViewport = appDimensGames.calculateRectangle(viewport, GameDimensionType.DYNAMIC)
+        
+        // Performance configuration
+        appDimensGames.configurePerformance(
+            GamePerformanceSettings.HIGH_PERFORMANCE  // For demanding games
+        )
+        
+        // Cache management
+        appDimensGames.clearCache()  // Clear cached calculations when needed
     }
 }
 ```

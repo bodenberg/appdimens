@@ -7,10 +7,13 @@
  * Ideal for: containers, grids, fluid layouts
  */
 
-import type { ScreenType, DeviceMode, SizeQualifier } from '../types';
+import { ScreenType } from '../types';
+import type { DeviceMode, SizeQualifier } from '../types';
+import type { BaseOrientation } from '../types/BaseOrientation';
 import { BASE_WIDTH_DP } from '../constants';
 import { globalCache } from '../cache/Cache';
 import { globalViewportObserver } from '../observers/ViewportObserver';
+import { resolveScreenType } from '../utils/orientationResolver';
 
 interface QualifierEntry {
   qualifier: SizeQualifier;
@@ -36,7 +39,8 @@ interface IntersectionEntry {
  */
 export class Dynamic {
   private baseValue: number;
-  private screenType: ScreenType = 'lowest' as ScreenType;
+  private screenType: ScreenType = ScreenType.LOWEST;
+  private baseOrientation: BaseOrientation = 'auto';
   private ignoreMultiView: boolean = true;
   private enableCache: boolean = true;
 
@@ -51,12 +55,10 @@ export class Dynamic {
 
   /**
    * Set screen type (lowest/highest/width/height)
+   * Primary method - matches Android, iOS, Flutter API
    */
-  type(type: ScreenType): this {
-    this.screenType = type;
-    return this;
-  }
-
+  screen(type: ScreenType): this;
+  
   /**
    * Set custom value for device mode or qualifier
    */
@@ -68,7 +70,15 @@ export class Dynamic {
     value: number,
     customValue: number
   ): this;
+  
   screen(...args: any[]): this {
+    // Check if it's screen(type: ScreenType)
+    if (args.length === 1 && typeof args[0] === 'string' && 
+        ['lowest', 'highest', 'width', 'height'].includes(args[0])) {
+      this.screenType = args[0] as ScreenType;
+      return this;
+    }
+    
     if (args.length === 2) {
       // Device mode only
       this.deviceModeEntries.push({
@@ -91,6 +101,43 @@ export class Dynamic {
         customValue: args[3]
       });
     }
+    return this;
+  }
+  
+  /**
+   * Alias for screen() - kept for backward compatibility
+   * @deprecated Use screen() instead for consistency with other platforms
+   */
+  type(type: ScreenType): this {
+    return this.screen(type);
+  }
+
+  baseOrientation(orientation: BaseOrientation): this {
+    this.baseOrientation = orientation;
+    return this;
+  }
+
+  portraitLowest(): this {
+    this.baseOrientation = 'portrait';
+    this.screenType = ScreenType.LOWEST;
+    return this;
+  }
+
+  portraitHighest(): this {
+    this.baseOrientation = 'portrait';
+    this.screenType = ScreenType.HIGHEST;
+    return this;
+  }
+
+  landscapeLowest(): this {
+    this.baseOrientation = 'landscape';
+    this.screenType = ScreenType.LOWEST;
+    return this;
+  }
+
+  landscapeHighest(): this {
+    this.baseOrientation = 'landscape';
+    this.screenType = ScreenType.HIGHEST;
     return this;
   }
 
@@ -183,7 +230,14 @@ export class Dynamic {
    * Get dimension based on screen type
    */
   private getDimensionByType(viewport: ReturnType<typeof globalViewportObserver.getDimensions>): number {
-    switch (this.screenType) {
+    // Resolve effective screen type based on base orientation
+    const effectiveScreenType = resolveScreenType(
+      this.screenType,
+      this.baseOrientation,
+      {width: viewport.width, height: viewport.height}
+    );
+    
+    switch (effectiveScreenType) {
       case 'highest':
         return Math.max(viewport.width, viewport.height);
       case 'width':
