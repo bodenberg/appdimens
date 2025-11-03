@@ -39,6 +39,7 @@ export 'src/appdimens_utils.dart';
 
 // Models
 export 'src/models/base_orientation.dart';
+export 'src/models/cache_stats.dart';
 
 // Utils
 export 'src/utils/orientation_resolver.dart';

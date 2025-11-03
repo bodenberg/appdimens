@@ -236,6 +236,181 @@ public class AppDimensGames {
         }
     }
     
+    // MARK: - Game-Specific Calculations (Android API Compatibility)
+    
+    /**
+     * [EN] Calculates responsive button size for game UI.
+     * Uses BALANCED strategy by default (linear on phones, logarithmic on tablets).
+     * 
+     * [PT] Calcula tamanho de botão responsivo para UI de jogo.
+     * Usa estratégia BALANCED por padrão (linear em phones, logarítmico em tablets).
+     * 
+     * @param baseSize The base button size.
+     * @return The scaled button size.
+     * 
+     * @example
+     * ```swift
+     * let buttonSize = AppDimensGames.shared.calculateButtonSize(48)
+     * // Returns appropriate size for current device (e.g., 48pt on phone, 56pt on tablet)
+     * ```
+     */
+    public func calculateButtonSize(_ baseSize: Float) -> Float {
+        // Buttons use BALANCED strategy for optimal UI consistency
+        return uniform(baseSize)
+    }
+    
+    /**
+     * [EN] Calculates responsive text size for game UI.
+     * Uses FLUID strategy for smooth text scaling across devices.
+     * 
+     * [PT] Calcula tamanho de texto responsivo para UI de jogo.
+     * Usa estratégia FLUID para escalonamento suave de texto entre dispositivos.
+     * 
+     * @param baseSize The base text size.
+     * @return The scaled text size.
+     * 
+     * @example
+     * ```swift
+     * let textSize = AppDimensGames.shared.calculateTextSize(16)
+     * // Returns appropriate text size for current device
+     * ```
+     */
+    public func calculateTextSize(_ baseSize: Float) -> Float {
+        // Text uses uniform scaling for readability
+        return uniform(baseSize)
+    }
+    
+    /**
+     * [EN] Calculates responsive player size for game world.
+     * Uses BALANCED strategy for natural player scaling.
+     * 
+     * [PT] Calcula tamanho de jogador responsivo para mundo do jogo.
+     * Usa estratégia BALANCED para escalonamento natural do jogador.
+     * 
+     * @param baseSize The base player size.
+     * @return The scaled player size.
+     * 
+     * @example
+     * ```swift
+     * let playerSize = AppDimensGames.shared.calculatePlayerSize(64)
+     * // Returns appropriate player size for current device
+     * ```
+     */
+    public func calculatePlayerSize(_ baseSize: Float) -> Float {
+        // Player uses uniform scaling for consistent game feel
+        return uniform(baseSize)
+    }
+    
+    /**
+     * [EN] Calculates responsive enemy size for game world.
+     * Uses BALANCED strategy for consistent enemy scaling.
+     * 
+     * [PT] Calcula tamanho de inimigo responsivo para mundo do jogo.
+     * Usa estratégia BALANCED para escalonamento consistente de inimigos.
+     * 
+     * @param baseSize The base enemy size.
+     * @return The scaled enemy size.
+     * 
+     * @example
+     * ```swift
+     * let enemySize = AppDimensGames.shared.calculateEnemySize(32)
+     * // Returns appropriate enemy size for current device
+     * ```
+     */
+    public func calculateEnemySize(_ baseSize: Float) -> Float {
+        // Enemies use uniform scaling for consistent game balance
+        return uniform(baseSize)
+    }
+    
+    /**
+     * [EN] Calculates responsive UI overlay size (HUD elements).
+     * Uses DEFAULT strategy for stable UI overlay elements.
+     * 
+     * [PT] Calcula tamanho de overlay de UI responsivo (elementos HUD).
+     * Usa estratégia DEFAULT para elementos de overlay de UI estáveis.
+     * 
+     * @param baseSize The base UI overlay size.
+     * @return The scaled UI overlay size.
+     * 
+     * @example
+     * ```swift
+     * let hudSize = AppDimensGames.shared.calculateUIOverlaySize(24)
+     * // Returns appropriate HUD element size for current device
+     * ```
+     */
+    public func calculateUIOverlaySize(_ baseSize: Float) -> Float {
+        // UI overlays use uniform scaling for consistent HUD
+        return uniform(baseSize)
+    }
+    
+    /**
+     * [EN] Calculates game dimension with specific scaling type.
+     * Compatible with Android API for cross-platform consistency.
+     * 
+     * [PT] Calcula dimensão de jogo com tipo de escalonamento específico.
+     * Compatível com API Android para consistência cross-platform.
+     * 
+     * @param baseValue The base value to scale.
+     * @param type The game dimension type (DYNAMIC, FIXED, GAME_WORLD, UI_OVERLAY).
+     * @return The scaled dimension.
+     * 
+     * @example
+     * ```swift
+     * // Different scaling types
+     * let dynamicSize = AppDimensGames.shared.calculateDimension(100, type: .dynamic)
+     * let fixedSize = AppDimensGames.shared.calculateDimension(100, type: .fixed)
+     * let worldSize = AppDimensGames.shared.calculateDimension(100, type: .gameWorld)
+     * let overlaySize = AppDimensGames.shared.calculateDimension(100, type: .uiOverlay)
+     * ```
+     */
+    public func calculateDimension(_ baseValue: Float, type: GameDimensionType = .balanced) -> Float {
+        switch type {
+        case .dynamic:
+            return horizontal(baseValue)  // Proportional scaling
+        case .fixed:
+            return uniform(baseValue)     // Logarithmic scaling
+        case .gameWorld:
+            return uniform(baseValue)     // Consistent game world scaling
+        case .uiOverlay:
+            return uniform(baseValue)     // Stable UI overlay scaling
+        case .balanced:
+            return uniform(baseValue)     // Balanced scaling (default)
+        }
+    }
+    
+    // MARK: - Vector and Rectangle Calculations (Android API Compatibility)
+    
+    /**
+     * [EN] Calculates a scaled 2D vector for game world coordinates.
+     * [PT] Calcula um vetor 2D escalonado para coordenadas do mundo do jogo.
+     * 
+     * @param baseVector The base vector to scale.
+     * @param type The scaling type to use.
+     * @return The scaled vector.
+     */
+    public func calculateVector2D(_ baseVector: simd_float2, type: GameDimensionType = .gameWorld) -> simd_float2 {
+        let scaledX = calculateDimension(baseVector.x, type: type)
+        let scaledY = calculateDimension(baseVector.y, type: type)
+        return simd_float2(scaledX, scaledY)
+    }
+    
+    /**
+     * [EN] Calculates a scaled rectangle for game UI or world elements.
+     * [PT] Calcula um retângulo escalonado para elementos de UI ou mundo do jogo.
+     * 
+     * @param baseRect The base rectangle to scale (x, y, width, height).
+     * @param type The scaling type to use.
+     * @return The scaled rectangle.
+     */
+    public func calculateRectangle(_ baseRect: (x: Float, y: Float, width: Float, height: Float), type: GameDimensionType = .gameWorld) -> (x: Float, y: Float, width: Float, height: Float) {
+        return (
+            x: calculateDimension(baseRect.x, type: type),
+            y: calculateDimension(baseRect.y, type: type),
+            width: calculateDimension(baseRect.width, type: type),
+            height: calculateDimension(baseRect.height, type: type)
+        )
+    }
+    
     /**
      * [EN] Calculates a game dimension with viewport scaling.
      * @param baseValue The base value to scale.

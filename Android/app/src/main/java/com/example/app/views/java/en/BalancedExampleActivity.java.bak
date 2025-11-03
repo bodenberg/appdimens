@@ -1,0 +1,23 @@
+/**
+ * @author Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
+ */
+package com.example.app.views.java.en;
+
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import com.appdimens.dynamic.code.AppDimens;
+import com.example.app.R;
+import com.example.app.databinding.ActivityBalancedExampleBinding;
+
+public class BalancedExampleActivity extends AppCompatActivity {
+    @Override protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ActivityBalancedExampleBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_balanced_example);
+        binding.setBaseValue(48f);
+        float dp = AppDimens.from(48f).balanced(null).toDp(getResources());
+        binding.getTvResult().setText("BALANCED: 48dp → " + (int)dp + "dp");
+    }
+}
+

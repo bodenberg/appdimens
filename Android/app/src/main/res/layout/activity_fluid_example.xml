@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data><variable name="minValue" type="Float" /><variable name="maxValue" type="Float" /></data>
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="FLUID Strategy" android:textSize="20sp" android:textStyle="bold" android:paddingBottom="16dp"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="CSS clamp-like interpolation" android:paddingBottom="8dp"/>
+            <View android:id="@+id/demo_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="#00BCD4" app:fluidWidthDpMin="@{minValue}" app:fluidWidthDpMax="@{maxValue}" app:fluidHeightDpMin="@{minValue}" app:fluidHeightDpMax="@{maxValue}"/>
+            <TextView android:id="@+id/tv_result" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp"/>
+        </LinearLayout>
+    </ScrollView>
+</layout>
+

@@ -1,20 +1,27 @@
 Pod::Spec.new do |spec|
   spec.name         = "AppDimens"
-  spec.version      = "1.1.0"
-  spec.summary      = "A responsive dimension management system for iOS that automatically adjusts values based on screen dimensions"
+  spec.version      = "2.0.0"
+  spec.summary      = "Smart and Responsive Dimensioning for iOS with 13 Scaling Strategies - Mathematically responsive scaling for any screen size"
   spec.description  = <<-DESC
-                      AppDimens is a dimension management system that automatically adjusts Dp, Sp, and Px values in a responsive and mathematically refined way, ensuring layout consistency across any screen size or ratio. It provides three main scaling models: Fixed (FX) for subtle logarithmic adjustment (RECOMMENDED), Dynamic (DY) for proportional adjustment, and Fluid (FL) for smooth bounded growth (SwiftUI only).
+                      AppDimens 2.0 introduces 13 scaling strategies with intelligent auto-inference for iOS. 
+                      Features: DEFAULT (fixed legacy), PERCENTAGE (proportional), BALANCED (recommended - linear on phones, log on tablets), 
+                      LOGARITHMIC (maximum control), POWER (Stevens law), FLUID (CSS clamp-like), INTERPOLATED, DIAGONAL, PERIMETER, 
+                      FIT (letterbox), FILL (cover), AUTOSIZE (container-aware), and NONE (constant).
                       
-                      Key Features:
-                      - Fixed, Dynamic, and Fluid scaling models
-                      - Base Orientation support for auto-rotation adaptation
+                      Key Features v2.0:
+                      - 13 scaling strategies with smart inference
+                      - 18 element types for automatic strategy selection
+                      - Perceptual models (Weber-Fechner, Stevens)
+                      - Lock-free cache with <0.001ms hit time
+                      - Fast ln() lookup tables (10-20x faster)
+                      - Base Orientation support for auto-rotation
                       - Physical units (mm, cm, inch)
-                      - Global cache control
+                      - AutoSize helpers for dynamic content
                       - Device-specific qualifiers
                       
                       The library is organized into three modules:
-                      - Main: Unified dimension management functionality with advanced caching and qualifiers
-                      - UI: UIKit and SwiftUI extensions and integrations (includes Fluid model for SwiftUI)
+                      - Main: Unified dimension management with 13 strategies and advanced caching
+                      - UI: UIKit and SwiftUI extensions with Fluid model and AutoSize support
                       - Games: Metal-specific functionality for game development with SIMD optimizations
                       DESC
   spec.homepage     = "https://github.com/bodenberg/appdimens"

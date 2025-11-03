@@ -1,0 +1,22 @@
+/**
+ * @author Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
+ */
+package com.example.app.views.java.pt;
+
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import com.appdimens.dynamic.code.AppDimens;
+import com.example.app.R;
+import com.example.app.databinding.ActivityDiagonalExampleBinding;
+
+public class DiagonalExampleActivity extends AppCompatActivity {
+    @Override protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ActivityDiagonalExampleBinding b = DataBindingUtil.setContentView(this, R.layout.activity_diagonal_example);
+        b.setBaseValue(48f);
+        b.getTvResult().setText("DIAGONAL: 48dp → " + (int)AppDimens.from(48f).diagonal().toDp(getResources()) + "dp");
+    }
+}
+

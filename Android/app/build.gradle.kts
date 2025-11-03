@@ -50,7 +50,7 @@ android {
 dependencies {
     api(project(":appdimens_all"))
     api(project(":appdimens_games"))
-    //api(project(":appdimens_dynamic"))
+    api(project(":appdimens_dynamic"))
     //api(project(":appdimens_sdps"))
     //api(project(":appdimens_ssps"))
     //implementation("io.github.bodenberg:appdimens-all:1.0.8")

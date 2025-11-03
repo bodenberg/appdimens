@@ -22,7 +22,7 @@ tasks.dokkaJavadoc.configure {
 }
 
 mavenPublishing {
-    coordinates("io.github.bodenberg", "appdimens-dynamic", "1.1.0")
+    coordinates("io.github.bodenberg", "appdimens-dynamic", "2.0.0")
 
     configure(
         AndroidSingleVariantLibrary(
@@ -32,10 +32,10 @@ mavenPublishing {
     )
 
     pom {
-        name.set("AppDimens Core: Dynamic (DY) and Fixed (FX) Dimensioning")
+        name.set("AppDimens 2.0: Smart Unified Dimensioning System")
         description.set(
-            "The essential AppDimens module for responsive scaling via code. It includes the Dynamic (DY) model for proportional dimensioning (ideal for containers and fluid layouts) and the refined Fixed (FX) model for logarithmic scaling (ideal for paddings, margins, and buttons). Supports Jetpack Compose, XML Views (via Data Binding), and direct calls in Kotlin/Java. " +
-                    "(android, kotlin, java, jetpack-compose, xml, swift, swiftui, ios, dp, sp, sdp, ssp, dimensions, responsive, layout, design-system, adaptive, dynamic, fixed, view-system)"
+            "AppDimens 2.0 introduces unified architecture with core calculation engine. AppDimensSmart supports 13 scaling strategies: DEFAULT (fixed legacy ~97% linear), PERCENTAGE (dynamic legacy 100% proportional), BALANCED/LOGARITHMIC/POWER (perceptual psychophysics-based), FLUID (CSS clamp-like with breakpoints), INTERPOLATED (moderated 50% linear), DIAGONAL (screen size based), PERIMETER (W+H sum based), FIT/FILL (game letterbox/cover), AUTOSIZE (container-aware like TextView autoSize), and NONE (no scaling). Intelligent strategy inference with 18 element types (BUTTON, TEXT, CARD, DIALOG, FAB, etc) and weighted context analysis. Fully unified code/compose implementations with shared core engine. Full backward compatibility. Supports Jetpack Compose, XML Views, and direct Kotlin/Java calls. " +
+                    "(android, kotlin, java, jetpack-compose, xml, dp, sp, dimensions, responsive, adaptive, smart, scaling, perceptual, fluid, game, autosize, inference, design-system, psychophysics, weber-fechner, stevens, hybrid)"
         )
         url.set("https://github.com/bodenberg/appdimens")
         inceptionYear.set("2025")
@@ -146,7 +146,10 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.core)
     dokkaPlugin(libs.android.documentation.plugin)
+    
+    // Test dependencies
     testImplementation(libs.junit)
+    testImplementation("org.jetbrains.kotlin:kotlin-test")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

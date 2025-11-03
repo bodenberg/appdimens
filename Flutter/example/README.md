@@ -1,16 +1,70 @@
-# appdimens_example
+# AppDimens Flutter - Example App
 
-A new Flutter project.
+**Version: 2.0.0**
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🎯 Features Demonstrated
 
-A few resources to get you started if this is your first Flutter project:
+- ✅ All 13 scaling strategies
+- ✅ BALANCED ⭐ primary usage
+- ✅ Smart Inference examples
+- ✅ Base Orientation support
+- ✅ Physical Units
+- ✅ Performance optimizations
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🚀 Run Example
+
+```bash
+cd example
+flutter pub get
+flutter run
+```
+
+---
+
+## 📱 What's Included
+
+### Main Demo (`lib/main.dart`)
+- Strategy comparison screen
+- Visual demonstrations
+- Interactive examples
+
+### New Strategies (`lib/new_strategies_example.dart`)
+- BALANCED, LOGARITHMIC, POWER examples
+- Smart API demonstrations
+
+### Fluid Scaling (`lib/fluid_example.dart`)
+- FLUID strategy examples
+- Typography demonstrations
+
+---
+
+## 🎨 Example Code
+
+```dart
+// See lib/main.dart for complete examples
+class ExampleApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Text(
+            'Example',
+            style: TextStyle(
+              fontSize: AppDimens.balanced(16).calculate(context),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
+
+---
+
+**Main Flutter Guide:** [../README.md](../README.md)

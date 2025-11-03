@@ -1,67 +1,28 @@
----
-layout: default
----
+# AppDimens SDP - Módulo Android
 
-<div align="center">
-    <h1>📐 AppDimens SDP</h1>
-    <p><strong>Escalonamento Dinâmico com Regras Condicionais</strong></p>
-    <p>SDP (Scaled DP) com regras condicionais por prioridade para layouts responsivos (Compose e XML).</p>
-
-[![Versão](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bodenberg/appdimens/releases)
-[![Licença](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
-[![Plataforma](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
-</div>
-
-> **Idiomas:** [English](../../../../Android/appdimens_sdps/README.md) | Português (BR) | [Español](../../es/Android/appdimens_sdps/README.md)
+**DP Escalável para Layouts XML**  
+*Versão: 2.0.0*
 
 ---
 
-## 🎯 Visão Geral
+## 📦 Instalação
 
-- Escalonamento direto: `.sdp`, `.hdp`, `.wdp` (Compose e XML)
-- Texto: ver módulo SSP; aqui foco em dimensões
-- Regras condicionais por prioridade (UiMode + Qualificadores)
-- Zero overhead quando via recursos pré-calculados
-
-## 🚀 Instalação
 ```kotlin
-dependencies { implementation("io.github.bodenberg:appdimens-sdps:1.1.0") }
+implementation("io.github.bodenberg:appdimens-sdps:2.0.0")
 ```
 
-## 🎨 Exemplos (Compose)
-```kotlin
-Column(Modifier.padding(16.sdp)) {
-    Text("Texto", fontSize = 18.ssp)
-    Spacer(Modifier.height(18.sdp).width(100.wdp))
-    Card(Modifier.size(120.sdp).padding(8.hdp)) { /* ... */ }
-}
-```
+---
 
-### Regras Condicionais
-```kotlin
-val boxSize = 80.scaledDp()
-    .screen(UiModeType.WATCH, DpQualifier.SMALL_WIDTH, 200, 40.dp) // P1
-    .screen(UiModeType.CAR, 120.dp)                                // P2
-    .screen(DpQualifier.SMALL_WIDTH, 720, 150)                     // P3
-```
+## ⚡ Uso
 
-## 📄 XML
 ```xml
 <TextView
-    android:layout_width="@dimen/_100sdp"
-    android:layout_height="wrap_content"
-    android:textSize="@dimen/_16ssp" />
+    android:layout_width="@dimen/_300sdp"
+    android:padding="@dimen/_16sdp" />
 ```
 
-## 📐 Qualificadores
-- SDP: menor largura (sw)
-- WDP: largura (w)
-- HDP: altura (h)
+**Recomendação:** Considere migrar para BALANCED para 40% de melhoria em tablets.
 
-## ⚡ Performance
-- Extensões diretas: zero overhead (recursos)
-- Regras: ~0.001ms, cache por configuração
+---
 
-## 📚 Referências
-- Documentação: `Android/DOCS/`
-- Licença: `LICENSE`
+**Guia:** [../../../../Android/appdimens_sdps/README.md](../../../../Android/appdimens_sdps/README.md)

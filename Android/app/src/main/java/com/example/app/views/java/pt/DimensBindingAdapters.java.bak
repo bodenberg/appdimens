@@ -1,0 +1,315 @@
+/**
+ * @author Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
+ * 
+ * Adaptadores DataBinding completos para todas as 13 estratégias de escalonamento do AppDimens (Java)
+ */
+package com.example.app.views.java.pt;
+
+import android.view.View;
+import android.widget.TextView;
+import androidx.databinding.BindingAdapter;
+import com.appdimens.dynamic.code.AppDimens;
+
+public class DimensBindingAdapters {
+
+    // ESTRATÉGIA DEFAULT
+    @BindingAdapter("app:defaultWidthDp")
+    public static void setDefaultWidth(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).useDefault(true, null).toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().width = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:defaultHeightDp")
+    public static void setDefaultHeight(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).useDefault(true, null).toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().height = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:defaultTextSizeSp")
+    public static void setDefaultTextSize(TextView textView, float spValue) {
+        float adjustedSp = AppDimens.from(spValue).useDefault(true, null).toSp(textView.getResources());
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp);
+    }
+
+    // ESTRATÉGIA PERCENTAGE
+    @BindingAdapter("app:percentageWidthDp")
+    public static void setPercentageWidth(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).percentage().toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().width = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:percentageHeightDp")
+    public static void setPercentageHeight(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).percentage().toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().height = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:percentageTextSizeSp")
+    public static void setPercentageTextSize(TextView textView, float spValue) {
+        float adjustedSp = AppDimens.from(spValue).percentage().toSp(textView.getResources());
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp);
+    }
+
+    // ESTRATÉGIA BALANCED
+    @BindingAdapter("app:balancedWidthDp")
+    public static void setBalancedWidth(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).balanced(null).toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().width = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:balancedHeightDp")
+    public static void setBalancedHeight(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).balanced(null).toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().height = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:balancedTextSizeSp")
+    public static void setBalancedTextSize(TextView textView, float spValue) {
+        float adjustedSp = AppDimens.from(spValue).balanced(null).toSp(textView.getResources());
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp);
+    }
+
+    // ESTRATÉGIA LOGARITHMIC
+    @BindingAdapter("app:logarithmicWidthDp")
+    public static void setLogarithmicWidth(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).logarithmic(null).toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().width = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:logarithmicHeightDp")
+    public static void setLogarithmicHeight(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).logarithmic(null).toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().height = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:logarithmicTextSizeSp")
+    public static void setLogarithmicTextSize(TextView textView, float spValue) {
+        float adjustedSp = AppDimens.from(spValue).logarithmic(null).toSp(textView.getResources());
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp);
+    }
+
+    // ESTRATÉGIA POWER
+    @BindingAdapter("app:powerWidthDp")
+    public static void setPowerWidth(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).power(null).toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().width = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:powerHeightDp")
+    public static void setPowerHeight(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).power(null).toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().height = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:powerTextSizeSp")
+    public static void setPowerTextSize(TextView textView, float spValue) {
+        float adjustedSp = AppDimens.from(spValue).power(null).toSp(textView.getResources());
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp);
+    }
+
+    // ESTRATÉGIA FLUID
+    @BindingAdapter(value = {"app:fluidWidthDpMin", "app:fluidWidthDpMax"}, requireAll = true)
+    public static void setFluidWidth(View view, float minDp, float maxDp) {
+        float pxValue = AppDimens.from((minDp + maxDp) / 2f).fluid(minDp, maxDp).toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().width = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter(value = {"app:fluidHeightDpMin", "app:fluidHeightDpMax"}, requireAll = true)
+    public static void setFluidHeight(View view, float minDp, float maxDp) {
+        float pxValue = AppDimens.from((minDp + maxDp) / 2f).fluid(minDp, maxDp).toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().height = (int) px;
+        view.requestLayout();
+    }
+
+    // ESTRATÉGIA INTERPOLATED
+    @BindingAdapter("app:interpolatedWidthDp")
+    public static void setInterpolatedWidth(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).interpolated().toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().width = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:interpolatedHeightDp")
+    public static void setInterpolatedHeight(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).interpolated().toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().height = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:interpolatedTextSizeSp")
+    public static void setInterpolatedTextSize(TextView textView, float spValue) {
+        float adjustedSp = AppDimens.from(spValue).interpolated().toSp(textView.getResources());
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp);
+    }
+
+    // ESTRATÉGIA DIAGONAL
+    @BindingAdapter("app:diagonalWidthDp")
+    public static void setDiagonalWidth(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).diagonal().toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().width = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:diagonalHeightDp")
+    public static void setDiagonalHeight(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).diagonal().toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().height = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:diagonalTextSizeSp")
+    public static void setDiagonalTextSize(TextView textView, float spValue) {
+        float adjustedSp = AppDimens.from(spValue).diagonal().toSp(textView.getResources());
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp);
+    }
+
+    // ESTRATÉGIA PERIMETER
+    @BindingAdapter("app:perimeterWidthDp")
+    public static void setPerimeterWidth(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).perimeter().toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().width = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:perimeterHeightDp")
+    public static void setPerimeterHeight(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).perimeter().toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().height = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:perimeterTextSizeSp")
+    public static void setPerimeterTextSize(TextView textView, float spValue) {
+        float adjustedSp = AppDimens.from(spValue).perimeter().toSp(textView.getResources());
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp);
+    }
+
+    // ESTRATÉGIA FIT
+    @BindingAdapter("app:fitWidthDp")
+    public static void setFitWidth(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).fit().toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().width = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:fitHeightDp")
+    public static void setFitHeight(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).fit().toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().height = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:fitTextSizeSp")
+    public static void setFitTextSize(TextView textView, float spValue) {
+        float adjustedSp = AppDimens.from(spValue).fit().toSp(textView.getResources());
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp);
+    }
+
+    // ESTRATÉGIA FILL
+    @BindingAdapter("app:fillWidthDp")
+    public static void setFillWidth(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).fill().toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().width = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:fillHeightDp")
+    public static void setFillHeight(View view, float dpValue) {
+        float pxValue = AppDimens.from(dpValue).fill().toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().height = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:fillTextSizeSp")
+    public static void setFillTextSize(TextView textView, float spValue) {
+        float adjustedSp = AppDimens.from(spValue).fill().toSp(textView.getResources());
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp);
+    }
+
+    // ESTRATÉGIA AUTOSIZE
+    @BindingAdapter(value = {"app:autosizeWidthDpMin", "app:autosizeWidthDpMax"}, requireAll = true)
+    public static void setAutosizeWidth(View view, float minDp, float maxDp) {
+        float pxValue = AppDimens.from((minDp + maxDp) / 2f).autoSize(minDp, maxDp, com.appdimens.dynamic.core.strategy.AutoSizeMode.UNIFORM).toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().width = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter(value = {"app:autosizeHeightDpMin", "app:autosizeHeightDpMax"}, requireAll = true)
+    public static void setAutosizeHeight(View view, float minDp, float maxDp) {
+        float pxValue = AppDimens.from((minDp + maxDp) / 2f).autoSize(minDp, maxDp, com.appdimens.dynamic.core.strategy.AutoSizeMode.UNIFORM).toDp(view.getResources());
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().height = (int) px;
+        view.requestLayout();
+    }
+
+    // ESTRATÉGIA NONE
+    @BindingAdapter("app:noneWidthDp")
+    public static void setNoneWidth(View view, float dpValue) {
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, dpValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().width = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:noneHeightDp")
+    public static void setNoneHeight(View view, float dpValue) {
+        float px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, dpValue, view.getResources().getDisplayMetrics());
+        view.getLayoutParams().height = (int) px;
+        view.requestLayout();
+    }
+
+    @BindingAdapter("app:noneTextSizeSp")
+    public static void setNoneTextSize(TextView textView, float spValue) {
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, spValue);
+    }
+
+    // COMPATIBILIDADE LEGADA
+    @BindingAdapter("app:dynamicWidthDp")
+    public static void setDynamicWidth(View view, float dpValue) {
+        setPercentageWidth(view, dpValue);
+    }
+
+    @BindingAdapter("app:dynamicHeightDp")
+    public static void setDynamicHeight(View view, float dpValue) {
+        setPercentageHeight(view, dpValue);
+    }
+
+    @BindingAdapter("app:dynamicTextSizeDp")
+    public static void setDynamicTextSize(TextView textView, float dpValue) {
+        setPercentageTextSize(textView, dpValue);
+    }
+}

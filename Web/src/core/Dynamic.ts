@@ -40,7 +40,7 @@ interface IntersectionEntry {
 export class Dynamic {
   private baseValue: number;
   private screenType: ScreenType = ScreenType.LOWEST;
-  private baseOrientation: BaseOrientation = 'auto';
+  private _baseOrientation: BaseOrientation = 'auto';
   private ignoreMultiView: boolean = true;
   private enableCache: boolean = true;
 
@@ -113,30 +113,30 @@ export class Dynamic {
   }
 
   baseOrientation(orientation: BaseOrientation): this {
-    this.baseOrientation = orientation;
+    this._baseOrientation = orientation;
     return this;
   }
 
   portraitLowest(): this {
-    this.baseOrientation = 'portrait';
+    this._baseOrientation = 'portrait';
     this.screenType = ScreenType.LOWEST;
     return this;
   }
 
   portraitHighest(): this {
-    this.baseOrientation = 'portrait';
+    this._baseOrientation = 'portrait';
     this.screenType = ScreenType.HIGHEST;
     return this;
   }
 
   landscapeLowest(): this {
-    this.baseOrientation = 'landscape';
+    this._baseOrientation = 'landscape';
     this.screenType = ScreenType.LOWEST;
     return this;
   }
 
   landscapeHighest(): this {
-    this.baseOrientation = 'landscape';
+    this._baseOrientation = 'landscape';
     this.screenType = ScreenType.HIGHEST;
     return this;
   }
@@ -233,7 +233,7 @@ export class Dynamic {
     // Resolve effective screen type based on base orientation
     const effectiveScreenType = resolveScreenType(
       this.screenType,
-      this.baseOrientation,
+      this._baseOrientation,
       {width: viewport.width, height: viewport.height}
     );
     

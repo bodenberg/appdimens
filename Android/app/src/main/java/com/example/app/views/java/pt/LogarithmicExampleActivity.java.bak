@@ -1,0 +1,23 @@
+/**
+ * @author Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
+ */
+package com.example.app.views.java.pt;
+
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import com.appdimens.dynamic.code.AppDimens;
+import com.example.app.R;
+import com.example.app.databinding.ActivityLogarithmicExampleBinding;
+
+public class LogarithmicExampleActivity extends AppCompatActivity {
+    @Override protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ActivityLogarithmicExampleBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_logarithmic_example);
+        binding.setBaseValue(48f);
+        float dp = AppDimens.from(48f).logarithmic(null).toDp(getResources());
+        binding.getTvResult().setText("LOGARITHMIC: 48dp → " + (int)dp + "dp");
+    }
+}
+

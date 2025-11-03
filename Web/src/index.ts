@@ -18,6 +18,31 @@ export { Fixed } from './core/Fixed';
 export { Dynamic } from './core/Dynamic';
 export { Fluid } from './core/Fluid';
 
+// v2.0 Unified Builder with 13 strategies
+export {
+  WebDimensBuilder,
+  balanced,
+  logarithmic,
+  power,
+  defaultStrategy,
+  percentage,
+  fluidStrategy,
+  smart,
+} from './core/WebDimensBuilder';
+
+// v2.0 Calculator
+export * as Calculator from './core/Calculator';
+
+// v2.0 Strategies and Types
+export {
+  ScalingStrategy,
+  PerceptualModel,
+  ElementType,
+  getStrategyDescription,
+  getStrategyRecommendation,
+  getStrategyFormula,
+} from './types/ScalingStrategy';
+
 // Cache
 export { WebDimensCache, globalCache } from './cache/Cache';
 
@@ -56,7 +81,7 @@ export type {
 /**
  * Version
  */
-export const VERSION = '1.1.0';
+export const VERSION = '2.0.0';
 
 /**
  * Default export

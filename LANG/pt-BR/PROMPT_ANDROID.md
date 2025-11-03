@@ -1,56 +1,47 @@
+# AppDimens Android - Prompt de Desenvolvimento
+
+**Referência Rápida para Assistentes de IA e Desenvolvedores**  
+*Versão: 2.0.0*
+
 ---
-layout: default
-title: "Prompt de IA para a Biblioteca AppDimens (Android)"
+
+## Princípios Fundamentais
+
+1. **Use BALANCED ⭐ para 95% dos elementos** (primária)
+2. **Use DEFAULT para apps de telefone** (secundária)
+3. **Use PERCENTAGE para containers** (específico)
+4. **13 estratégias disponíveis**
+5. **5x de performance** vs v1.x
+
 ---
 
-# Prompt de IA para a Biblioteca AppDimens (Android)
+## API Rápida
 
-> **Idiomas:** [English](../../Android/PROMPT_ANDROID.md) | Português (BR) | [Español](../es/PROMPT_ANDROID.md)
+```kotlin
+// PRIMÁRIA: BALANCED ⭐
+16.balanced().dp
+16.balanced().sp
 
-Você é uma IA especialista em desenvolvimento Android. Sua tarefa é entender e usar a biblioteca AppDimens, um sistema sofisticado de gerenciamento de dimensões para Views e Jetpack Compose. Este guia resume arquitetura, funcionalidades e usos.
+// SECUNDÁRIA: DEFAULT
+16.defaultDp
+16.defaultSp
 
-## 1. Instalação / Setup
+// Containers: PERCENTAGE
+300.percentageDp.dp
 
-Consulte as dependências em Gradle (Maven Central/JitPack) usando os artefatos `io.github.bodenberg:*:1.0.9` ou `com.github.bodenberg.appdimens:*:1.0.9` conforme necessidade. Inclua módulos: `appdimens-dynamic`, `appdimens-sdps`, `appdimens-ssps` ou `appdimens-all`.
+// Smart API
+AppDimens.from(48).smart().forElement(ElementType.BUTTON).dp
+```
 
-## 2. Inicialização
+---
 
-Não é necessária inicialização manual. Funciona out-of-the-box.
+## Seleção de Estratégia
 
-## 3. Conceitos
+- Multi-dispositivo → BALANCED ⭐
+- Apenas telefone → DEFAULT
+- Containers → PERCENTAGE
+- TV → LOGARITHMIC
 
-- Biblioteca para escalonamento responsivo de Dp/Sp/Px, mantendo consistência visual.
-- Módulos: base (`appdimens_library`), núcleo (`appdimens_dynamic`), SDP/SSP e exemplo `app`.
+---
 
-### Modelos de Escala
-- Fixed (FX): ajuste logarítmico, sutil. Ideal para botões, paddings, ícones, fontes.
-- Dynamic (DY): ajuste proporcional. Ideal para containers e larguras/alturas fluídas.
-
-## 4. Uso
-
-### Compose
-- Extensões: `.fxdp`, `.fxsp`, `.dydp`, `.dysp`, etc.
-- Percentual: `AppDimens.dynamicPercentageDp(0.5f)`.
-
-### Views/XML
-- Kotlin: `AppDimens.fixed(16f).dp`, `AppDimens.dynamic(100f).dp`.
-- Data Binding: adapters demonstrados no módulo `app`.
-
-## 5. Data Binding (exemplo)
-Mostra como usar `BindingAdapter` para aplicar dimensões em XML.
-
-## 6. Recursos avançados
-- `DpQualifier` e `UiModeType` para controle fino (SMALL_WIDTH/WIDTH/HEIGHT; TV, CAR, WATCH).
-- Unidades físicas (mm/cm/inch → px).
-- Utilitários de layout como `calculateAvailableItemCount`.
-
-## 7. Quando usar cada módulo
-- `appdimens_dynamic`: padrão recomendado.
-- `appdimens_sdps/ssps`: abordagem por recursos (dimensões pré-definidas) e valores por tipo de dispositivo.
-- `appdimens_all`: tudo em um.
-
-## 8. Performance
-Cálculos em cache, impacto mínimo.
-
-## 9. Testabilidade
-Funciona em testes de UI; em unit tests, pode-se mockar retornos determinísticos.
+**Documentação Completa:** [../../../DOCS/README.md](../../../DOCS/README.md)

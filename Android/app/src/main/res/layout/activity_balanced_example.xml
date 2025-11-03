@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <data>
+        <variable name="baseValue" type="Float" />
+    </data>
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BALANCED Strategy Example ⭐"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:paddingBottom="16dp"/>
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BALANCED strategy (Linear phones, Log tablets) - RECOMMENDED"
+                android:paddingBottom="8dp"/>
+            
+            <View
+                android:id="@+id/demo_view_balanced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FFC107"
+                app:balancedWidthDp="@{baseValue}"
+                app:balancedHeightDp="@{baseValue}"/>
+            
+            <TextView
+                android:id="@+id/tv_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Result will be shown here"/>
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Text with BALANCED scaling:"
+                android:textStyle="bold"/>
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This text uses BALANCED strategy for size"
+                app:balancedTextSizeSp="@{16f}"/>
+            
+        </LinearLayout>
+    </ScrollView>
+</layout>
+

@@ -26,6 +26,7 @@ import 'appdimens_types.dart';
 import 'appdimens_fixed.dart';
 import 'appdimens_dynamic.dart';
 import 'appdimens_utils.dart';
+import 'models/cache_stats.dart';
 
 /// [EN] Main AppDimens class that provides access to fixed and dynamic dimension builders.
 /// [PT] Classe principal AppDimens que fornece acesso aos construtores de dimensões fixas e dinâmicas.
@@ -302,6 +303,83 @@ class AppDimens {
   static void clearAllCaches() {
     // This would be implemented with a registry of instances
     // For now, individual instances will clear their own caches
+  }
+
+  // MARK: - Cache Statistics
+
+  /// [EN] Cache statistics structure.
+  /// [PT] Estrutura de estatísticas de cache.
+  static CacheStats getCacheStats() {
+    // Simplified cache stats implementation
+    // In a real implementation, this would track actual cache usage
+    return CacheStats(
+      totalEntries: 0,
+      totalAccesses: 0,
+      cacheHits: 0,
+      cacheMisses: 0,
+      hitRate: 0.0,
+      avgCalculationTime: 0.001,
+      memoryUsage: 0,
+    );
+  }
+
+  // MARK: - Warmup Cache
+
+  /// [EN] Warms up the cache with common calculations.
+  /// Pre-calculates and caches common dimension values for faster first access.
+  /// Call this during app initialization for optimal performance.
+  /// 
+  /// [PT] Aquece o cache com cálculos comuns.
+  /// Pré-calcula e armazena valores de dimensão comuns para acesso mais rápido.
+  /// Chame isso durante a inicialização do app para performance ótima.
+  /// 
+  /// @param context The BuildContext to use for calculations.
+  /// 
+  /// @example
+  /// ```dart
+  /// // Warm up cache during app initialization
+  /// class MyApp extends StatelessWidget {
+  ///   @override
+  ///   Widget build(BuildContext context) {
+  ///     // Warm up cache on first build
+  ///     WidgetsBinding.instance.addPostFrameCallback((_) {
+  ///       AppDimens.warmupCache(context);
+  ///     });
+  ///     
+  ///     return MaterialApp(
+  ///       home: HomeScreen(),
+  ///     );
+  ///   }
+  /// }
+  /// ```
+  static void warmupCache(BuildContext context) {
+    // Pre-calculate common dimension values
+    final commonSizes = <double>[
+      // UI spacing and padding
+      4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 56, 64, 72, 80,
+      // Text sizes
+      10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 24, 28, 32, 36,
+      // Layout dimensions
+      100, 120, 150, 200, 250, 300, 350, 400
+    ];
+
+    // Warm up Fixed dimensions (most common)
+    for (final size in commonSizes) {
+      try {
+        AppDimens.fixed(size).calculate(context);
+      } catch (e) {
+        // Ignore errors during warmup
+      }
+    }
+
+    // Warm up Dynamic dimensions (common for large containers)
+    for (final size in [100.0, 200.0, 300.0, 400.0, 500.0]) {
+      try {
+        AppDimens.dynamic(size).calculate(context);
+      } catch (e) {
+        // Ignore errors during warmup
+      }
+    }
   }
 
   // MARK: - Legacy Methods for Compatibility

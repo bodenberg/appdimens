@@ -18,7 +18,7 @@ export class Fluid {
   private maxValue: number;
   private minBreakpoint: string;
   private maxBreakpoint: string;
-  private baseOrientation: BaseOrientation = 'auto';
+  private _baseOrientation: BaseOrientation = 'auto';
 
   constructor(
     minValue: number,
@@ -45,7 +45,7 @@ export class Fluid {
    * Set base orientation for design
    */
   baseOrientation(orientation: BaseOrientation): this {
-    this.baseOrientation = orientation;
+    this._baseOrientation = orientation;
     return this;
   }
 
@@ -53,7 +53,7 @@ export class Fluid {
    * Shorthand for portrait design
    */
   portrait(): this {
-    this.baseOrientation = 'portrait';
+    this._baseOrientation = 'portrait';
     return this;
   }
 
@@ -61,7 +61,7 @@ export class Fluid {
    * Shorthand for landscape design
    */
   landscape(): this {
-    this.baseOrientation = 'landscape';
+    this._baseOrientation = 'landscape';
     return this;
   }
 

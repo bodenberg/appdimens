@@ -29,6 +29,33 @@ export {AppDimensDynamic} from './core/AppDimensDynamic';
 export {AppDimensFluid, fluid} from './core/AppDimensFluid';
 export {AppDimensAdjustmentFactors} from './core/AppDimensAdjustmentFactors';
 
+// v2.0 Unified Builder with 13 strategies
+export {
+  AppDimensBuilder,
+  balanced,
+  logarithmic,
+  power,
+  defaultStrategy,
+  percentage,
+  fluidStrategy,
+  smart,
+  fx,
+  dy,
+} from './core/AppDimensBuilder';
+
+// v2.0 Calculator
+export * as Calculator from './core/Calculator';
+
+// v2.0 Strategies and Types
+export {
+  ScalingStrategy,
+  PerceptualModel,
+  ElementType,
+  getStrategyDescription,
+  getStrategyRecommendation,
+  getStrategyFormula,
+} from './types/ScalingStrategy';
+
 // React hooks
 export {useAppDimens} from './hooks/useAppDimens';
 export {useFluid, useFluidBuilder, useFluidMultiple} from './hooks/useFluid';
@@ -51,4 +78,4 @@ export {
 export * from './types';
 
 // Version
-export const VERSION = '1.1.0';
+export const VERSION = '2.0.0';

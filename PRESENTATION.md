@@ -17,19 +17,26 @@ It goes beyond the limitations of standard density-independent pixels (**Dp/Pt**
 
 ```kotlin
 dependencies {
-    // Core (Dynamic + Fixed)
-    implementation("io.github.bodenberg:appdimens-dynamic:1.1.0")
+    // Core (Dynamic + 13 Strategies)
+    implementation("io.github.bodenberg:appdimens-dynamic:2.0.0")
 
     // SDP & SSP scaling (optional)
     implementation("io.github.bodenberg:appdimens-sdps:1.1.0")
     implementation("io.github.bodenberg:appdimens-ssps:1.1.0")
 
     // All in one
-    implementation("io.github.bodenberg:appdimens-all:1.1.0")
+    implementation("io.github.bodenberg:appdimens-all:2.0.0")
     
     // Game development (separate dependency)
     implementation("io.github.bodenberg:appdimens-games:1.1.0")
 }
+```
+
+**🆕 Version 2.0 Features:**
+- **13 Scaling Strategies**: BALANCED⭐, DEFAULT, PERCENTAGE, LOGARITHMIC, POWER, FLUID, INTERPOLATED, DIAGONAL, PERIMETER, FIT, FILL, AUTOSIZE🆕, NONE
+- **Smart Inference**: Auto-selects best strategy for 18 element types
+- **5x Performance**: Unified lock-free cache, ln() lookup table, optimizations
+- **Backward Compatible**: Old `.fxdp`/`.dydp` still work
 ```
 
 ### 🌐 Unified Principle and Cross-Platform Compatibility
@@ -46,37 +53,61 @@ dependencies {
 
 ---
 
-### 🧠 The Core of the Library: Three Main Scaling Models
+### 🧠 The Core of the Library: 13 Scaling Strategies (v2.0)
 
-The power of AppDimens lies in its multiple mathematical scaling models. Developers can choose the best fit for each component, achieving responsiveness that goes far beyond simple "screen size" rules.
+The power of AppDimens 2.0 lies in its **13 mathematical scaling strategies** based on psychophysics research. Developers can choose the best fit for each component, or use Smart Inference for automatic selection.
 
-#### 1. Fixed (FX): Subtle and Logarithmic Scaling
+#### ⭐ Recommended Strategies (Cover 95% of Use Cases)
 
-* **Philosophy:** **Smooth** and **controlled** growth. The adjustment is based on the screen's **Smallest Width DP** and modulated by a **logarithmic function** that factors in the **Aspect Ratio**.
-* **Highlight:** Prevents excessive growth of paddings and margins on wide tablets or 4K monitors. Ideal for preserving information density.
-* **Best Use:** Paddings, margins, touch target heights (buttons, text fields), small icons, consistent typography.
+**1. BALANCED ⭐ (New Recommended Default)**
+* **Philosophy:** **Hybrid** linear-logarithmic. Linear on phones (<480dp), logarithmic on tablets/TVs (≥480dp).
+* **Highlight:** Best of both worlds - familiar on phones, controlled on large screens. 40% less oversizing on tablets vs linear.
+* **Best Use:** Multi-device apps, buttons, spacing, most UI elements
+* **Formula:** `f(x) = x×(W/W₀)` if W<480dp, else `x×(T/W₀ + k×ln(1+(W-T)/W₀))`
 * **Platforms:** Android, iOS, Flutter, React Native, Web
 
-#### 2. Dynamic (DY): Proportional and Aggressive Scaling
-
-* **Philosophy:** **Aggressive**, **proportional** growth. The adjusted value maintains the **same percentage of the reference screen**. If an element takes up 25% of a phone screen's width, it will also take up 25% on a tablet.
-* **Highlight:** Includes logic to mitigate issues in **Multi-Window (Split Screen)** mode, disabling aggressive scaling when the UI is squeezed, avoiding layout breakage.
-* **Best Use:** Container widths, large elements (e.g., hero images), grids, when text size should scale with viewport size.
+**2. DEFAULT (formerly Fixed/FX)**
+* **Philosophy:** **Logarithmic** with aspect ratio compensation. Smooth controlled growth.
+* **Highlight:** ~97% linear with logarithmic AR adjustment. Backward compatible with v1.x.
+* **Best Use:** Phone-focused apps, icons, backward compatibility
+* **Formula:** `f(x) = x × [1 + ((S-W₀)/δ) × (ε₀ + K×ln(AR/AR₀))]`
 * **Platforms:** Android, iOS, Flutter, React Native, Web
 
-#### 3. Fluid (FL): Clamp-Based Smooth Transitions
+**3. PERCENTAGE (formerly Dynamic/DY)**
+* **Philosophy:** **Proportional** linear scaling. Maintains constant screen percentage.
+* **Highlight:** Simple, aggressive growth. Use sparingly for large containers.
+* **Best Use:** Large containers, full-width grids, layouts
+* **Formula:** `f(x) = x × (W / W₀)`
+* **Platforms:** Android, iOS, Flutter, React Native, Web
 
-* **Philosophy:** **Smooth interpolation** between minimum and maximum values. Uses CSS `clamp()` on Web and min-max calculations on other platforms.
-* **Highlight:** Perfect for responsive typography and elements that need smooth, viewport-based transitions without breakpoints.
-* **Best Use:** Typography scaling, hero text, adaptive layouts that transition smoothly across all screen sizes.
-* **Platforms:** Web (primary), React Native
+#### Perceptual Models (Psychophysics-Based)
 
-#### 4. SDP/SSP: Pre-Calculated Resource Scaling (Android)
+**4. LOGARITHMIC**: Pure Weber-Fechner Law (maximum control on TVs)
+**5. POWER**: Stevens' Power Law (configurable exponent 0.60-0.90)
 
-* **Philosophy:** Pre-generated dimension resources for direct use in XML layouts and Data Binding.
-* **Highlight:** 426+ dimension files covering all common screen configurations. Includes code package for programmatic access.
-* **Best Use:** XML-based Android apps, legacy projects, when compile-time resource generation is preferred.
-* **Platforms:** Android only
+#### Utility Strategies
+
+**6. FLUID**: CSS clamp-like with breakpoints (typography)
+**7. INTERPOLATED**: 50% moderated linear (balanced growth)
+**8. DIAGONAL**: Screen diagonal-based (true physical size)
+**9. PERIMETER**: Width + height-based (balanced W+H)
+
+#### Game Strategies
+
+**10. FIT**: Letterbox scaling (content must fit)
+**11. FILL**: Cover scaling (backgrounds, full-screen)
+
+#### Special Strategies
+
+**12. AUTOSIZE** 🆕: Container-aware auto-sizing (like TextView autoSizeText)
+**13. NONE**: No scaling (constant size for dividers, 1dp elements)
+
+#### Legacy Support
+
+**SDP/SSP**: Pre-calculated resource scaling for Android XML
+* Pre-generated 536+ dimension files
+* Direct XML usage: `@dimen/_16sdp`
+* Platforms: Android only
 
 ---
 

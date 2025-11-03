@@ -22,7 +22,7 @@ tasks.dokkaJavadoc.configure {
 }
 
 mavenPublishing {
-    coordinates("io.github.bodenberg", "appdimens-games", "1.1.0")
+    coordinates("io.github.bodenberg", "appdimens-games", "2.0.0")
 
     configure(
         AndroidSingleVariantLibrary(
@@ -32,14 +32,17 @@ mavenPublishing {
     )
 
     pom {
-        name.set("AppDimens Games: C++ Native Game Development Support")
+        name.set("AppDimens Games 2.0: Advanced Game Scaling with 13 Strategies")
         description.set(
-            "A specialized AppDimens module designed for Android game development with C++/NDK support. " +
-                    "Provides responsive dimensioning, game-specific utilities, and native performance optimizations " +
-                    "for game engines like Cocos2d-x, OpenGL ES, and Vulkan. Includes game UI scaling, " +
-                    "viewport management, and cross-platform dimension consistency. " +
+            "AppDimens Games 2.0 introduces 13 scaling strategies optimized for 60+ FPS game development. " +
+                    "Features: BALANCED (linear phones, log tablets), FIT (letterbox), FILL (cover), " +
+                    "FLUID (responsive text), LOGARITHMIC (TV), POWER (configurable), and more. " +
+                    "Includes 70+ game-specific element types (HUD, characters, world objects, effects), " +
+                    "intelligent strategy inference, lock-free cache (<0.001µs hit), fast ln() lookup tables (10-20x faster), " +
+                    "C++/NDK support for native performance, OpenGL ES/Vulkan utilities, and viewport management. " +
+                    "Pure Kotlin core with optional JNI for maximum performance. " +
                     "(android, kotlin, java, c++, ndk, games, opengl, vulkan, cocos2d-x, responsive, dimensions, " +
-                    "game-development, native-performance)"
+                    "game-development, native-performance, perceptual-scaling, 60fps, game-ui)"
         )
         url.set("https://github.com/bodenberg/appdimens")
         inceptionYear.set("2025")

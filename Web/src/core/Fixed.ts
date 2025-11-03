@@ -47,7 +47,7 @@ interface IntersectionEntry {
 export class Fixed {
   private baseValue: number;
   private screenType: ScreenType = ScreenType.LOWEST;
-  private baseOrientation: BaseOrientation = 'auto';
+  private _baseOrientation: BaseOrientation = 'auto';
   private applyAspectRatio: boolean = true;
   private customSensitivity: number | null = null;
   private _ignoreMultiView: boolean = true;
@@ -125,7 +125,7 @@ export class Fixed {
    * Set base orientation for design
    */
   baseOrientation(orientation: BaseOrientation): this {
-    this.baseOrientation = orientation;
+    this._baseOrientation = orientation;
     return this;
   }
 
@@ -133,7 +133,7 @@ export class Fixed {
    * Shorthand for portrait design using lowest dimension
    */
   portraitLowest(): this {
-    this.baseOrientation = 'portrait';
+    this._baseOrientation = 'portrait';
     this.screenType = ScreenType.LOWEST;
     return this;
   }
@@ -142,7 +142,7 @@ export class Fixed {
    * Shorthand for portrait design using highest dimension
    */
   portraitHighest(): this {
-    this.baseOrientation = 'portrait';
+    this._baseOrientation = 'portrait';
     this.screenType = ScreenType.HIGHEST;
     return this;
   }
@@ -151,7 +151,7 @@ export class Fixed {
    * Shorthand for landscape design using lowest dimension
    */
   landscapeLowest(): this {
-    this.baseOrientation = 'landscape';
+    this._baseOrientation = 'landscape';
     this.screenType = ScreenType.LOWEST;
     return this;
   }
@@ -160,7 +160,7 @@ export class Fixed {
    * Shorthand for landscape design using highest dimension
    */
   landscapeHighest(): this {
-    this.baseOrientation = 'landscape';
+    this._baseOrientation = 'landscape';
     this.screenType = ScreenType.HIGHEST;
     return this;
   }
@@ -170,6 +170,14 @@ export class Fixed {
    */
   multiView(ignore: boolean = true): this {
     this._ignoreMultiView = ignore;
+    return this;
+  }
+
+  /**
+   * Enable/disable aspect ratio adjustment
+   */
+  aspectRatio(enable: boolean = true): this {
+    this.applyAspectRatio = enable;
     return this;
   }
 
@@ -334,7 +342,7 @@ export class Fixed {
       // Resolve effective screen type based on base orientation
       const effectiveScreenType = resolveScreenType(
         this.screenType,
-        this.baseOrientation,
+        this._baseOrientation,
         {width: window.innerWidth, height: window.innerHeight}
       );
       

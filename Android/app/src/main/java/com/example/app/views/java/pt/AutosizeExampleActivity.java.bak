@@ -1,0 +1,23 @@
+/**
+ * @author Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
+ */
+package com.example.app.views.java.pt;
+
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import com.appdimens.dynamic.code.AppDimens;
+import com.example.app.R;
+import com.example.app.databinding.ActivityAutosizeExampleBinding;
+
+public class AutosizeExampleActivity extends AppCompatActivity {
+    @Override protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ActivityAutosizeExampleBinding b = DataBindingUtil.setContentView(this, R.layout.activity_autosize_example);
+        b.setMinValue(32f);
+        b.setMaxValue(72f);
+        b.getTvResult().setText("AUTOSIZE: 48dp → " + (int)AppDimens.from(48f).autoSize(32f, 72f, com.appdimens.dynamic.core.strategy.AutoSizeMode.UNIFORM).toDp(getResources()) + "dp");
+    }
+}
+

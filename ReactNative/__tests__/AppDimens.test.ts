@@ -22,7 +22,7 @@
  */
 
 import {
-  AppDimens,
+  appDimens,
   AppDimensFixed,
   AppDimensDynamic,
   AppDimensAdjustmentFactors,
@@ -31,25 +31,25 @@ import {
 describe('AppDimens', () => {
   describe('AppDimensFixed', () => {
     it('should create fixed dimension builder', () => {
-      const fx = AppDimens.fx(16);
+      const fx = appDimens.fx(16);
       expect(fx).toBeInstanceOf(AppDimensFixed);
     });
 
     it('should calculate fixed dimension value', () => {
-      const fx = AppDimens.fx(16);
+      const fx = appDimens.fx(16);
       const result = fx.toPixels();
       expect(typeof result).toBe('number');
       expect(result).toBeGreaterThan(0);
     });
 
     it('should support chaining methods', () => {
-      const fx = AppDimens.fx(16).type('highest').aspectRatio(true).cache(true);
+      const fx = appDimens.fx(16).type('highest').aspectRatio(true).cache(true);
 
       expect(fx).toBeInstanceOf(AppDimensFixed);
     });
 
     it('should support screen qualifiers', () => {
-      const fx = AppDimens.fx(16).screen('tablet', 24).screen('phone', 14);
+      const fx = appDimens.fx(16).screen('tablet', 24).screen('phone', 14);
 
       expect(fx).toBeInstanceOf(AppDimensFixed);
     });
@@ -57,25 +57,25 @@ describe('AppDimens', () => {
 
   describe('AppDimensDynamic', () => {
     it('should create dynamic dimension builder', () => {
-      const dy = AppDimens.dy(50);
+      const dy = appDimens.dy(50);
       expect(dy).toBeInstanceOf(AppDimensDynamic);
     });
 
     it('should calculate dynamic dimension value', () => {
-      const dy = AppDimens.dy(50);
+      const dy = appDimens.dy(50);
       const result = dy.toPixels();
       expect(typeof result).toBe('number');
       expect(result).toBeGreaterThan(0);
     });
 
     it('should support chaining methods', () => {
-      const dy = AppDimens.dy(50).type('lowest').cache(true);
+      const dy = appDimens.dy(50).type('lowest').cache(true);
 
       expect(dy).toBeInstanceOf(AppDimensDynamic);
     });
 
     it('should support screen qualifiers', () => {
-      const dy = AppDimens.dy(50).screen('tablet', 75).screen('phone', 40);
+      const dy = appDimens.dy(50).screen('tablet', 75).screen('phone', 40);
 
       expect(dy).toBeInstanceOf(AppDimensDynamic);
     });
@@ -118,26 +118,26 @@ describe('AppDimens', () => {
 
   describe('Global AppDimens', () => {
     it('should provide global configuration', () => {
-      expect(AppDimens).toHaveProperty('fx');
-      expect(AppDimens).toHaveProperty('dy');
-      expect(typeof AppDimens.fx).toBe('function');
-      expect(typeof AppDimens.dy).toBe('function');
+      expect(appDimens).toHaveProperty('fx');
+      expect(appDimens).toHaveProperty('dy');
+      expect(typeof appDimens.fx).toBe('function');
+      expect(typeof appDimens.dy).toBe('function');
     });
 
     it('should support cache control', () => {
-      AppDimens.setGlobalCacheEnabled(true);
-      expect(AppDimens.isGlobalCacheEnabled()).toBe(true);
+      appDimens.setGlobalCache(true);
+      expect(appDimens.isGlobalCacheEnabled()).toBe(true);
 
-      AppDimens.setGlobalCacheEnabled(false);
-      expect(AppDimens.isGlobalCacheEnabled()).toBe(false);
+      appDimens.setGlobalCache(false);
+      expect(appDimens.isGlobalCacheEnabled()).toBe(false);
     });
 
     it('should support multi-window adjustment', () => {
-      AppDimens.setGlobalMultiWindowAdjustment(true);
-      expect(AppDimens.isGlobalMultiWindowAdjustmentEnabled()).toBe(true);
+      appDimens.setGlobalIgnoreMultiWindowAdjustment(true);
+      expect(appDimens.isGlobalIgnoreMultiWindowAdjustment()).toBe(true);
 
-      AppDimens.setGlobalMultiWindowAdjustment(false);
-      expect(AppDimens.isGlobalMultiWindowAdjustmentEnabled()).toBe(false);
+      appDimens.setGlobalIgnoreMultiWindowAdjustment(false);
+      expect(appDimens.isGlobalIgnoreMultiWindowAdjustment()).toBe(false);
     });
   });
 });

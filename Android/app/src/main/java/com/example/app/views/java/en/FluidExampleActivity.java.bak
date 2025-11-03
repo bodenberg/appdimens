@@ -1,0 +1,24 @@
+/**
+ * @author Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
+ */
+package com.example.app.views.java.en;
+
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import com.appdimens.dynamic.code.AppDimens;
+import com.example.app.R;
+import com.example.app.databinding.ActivityFluidExampleBinding;
+
+public class FluidExampleActivity extends AppCompatActivity {
+    @Override protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ActivityFluidExampleBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_fluid_example);
+        binding.setMinValue(40f);
+        binding.setMaxValue(72f);
+        float dp = AppDimens.from(48f).fluid(40f, 72f).toDp(getResources());
+        binding.getTvResult().setText("FLUID: 48dp → " + (int)dp + "dp");
+    }
+}
+

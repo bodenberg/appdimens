@@ -1,9 +1,7 @@
 // Mock React Native modules
 jest.mock('react-native', () => {
-  const RN = jest.requireActual('react-native');
-  
   // Mock Dimensions
-  RN.Dimensions = {
+  const mockDimensions = {
     get: jest.fn(() => ({
       width: 375,
       height: 667,
@@ -15,7 +13,7 @@ jest.mock('react-native', () => {
   };
   
   // Mock PixelRatio
-  RN.PixelRatio = {
+  const mockPixelRatio = {
     get: jest.fn(() => 2),
     getFontScale: jest.fn(() => 1),
     getPixelSizeForLayoutSize: jest.fn((size) => size * 2),
@@ -23,12 +21,20 @@ jest.mock('react-native', () => {
   };
   
   // Mock Platform
-  RN.Platform = {
+  const mockPlatform = {
     OS: 'ios',
     select: jest.fn((obj) => obj.ios || obj.default),
   };
   
-  return RN;
+  return {
+    Dimensions: mockDimensions,
+    PixelRatio: mockPixelRatio,
+    Platform: mockPlatform,
+    StyleSheet: {
+      create: jest.fn((styles) => styles),
+      flatten: jest.fn((styles) => styles),
+    },
+  };
 });
 
 // Mock console methods to reduce noise in tests

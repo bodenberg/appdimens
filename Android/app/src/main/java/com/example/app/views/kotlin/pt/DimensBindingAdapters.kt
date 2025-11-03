@@ -1,6 +1,8 @@
 /**
  * @author Bodenberg
  * GIT: https://github.com/bodenberg/appdimens.git
+ * 
+ * Adaptadores DataBinding completos para todas as 13 estratégias de escalonamento do AppDimens
  */
 package com.example.app.views.kotlin.pt
 
@@ -9,73 +11,387 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.appdimens.dynamic.code.AppDimens
 
-/**
- * [EN] Custom Data Binding Adapters to apply dynamic dimensions from the AppDimens library.
- *
- * [PT] Adaptadores de Data Binding personalizados para aplicar dimensões dinâmicas da biblioteca AppDimens.
- */
 object DimensBindingAdapters {
 
-    // [EN] --- Adapters for Layout Dimensions (Dp -> Px) ---
-    // [PT] --- Adaptadores para Dimensões de Layout (Dp -> Px) ---
+    // ============================================
+    // ESTRATÉGIA DEFAULT (anteriormente Fixed)
+    // ============================================
+    
+    @JvmStatic
+    @BindingAdapter("app:defaultWidthDp")
+    fun setDefaultWidth(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).default().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.width = px.toInt()
+        view.requestLayout()
+    }
 
-    /**
-     * [EN] Sets the width of a View, converting the Dp Float value (e.g., 48f) to PX
-     * using the dynamic adjustment from AppDimensDynamic.
-     * XML usage: app:dynamicWidthDp="@{48f}" or app:dynamicWidthDp="@{myFloatVariable}"
-     *
-     * [PT] Define a largura de uma View, convertendo o valor Dp Float (ex: 48f) para PX
-     * usando o ajuste dinâmico do AppDimensDynamic.
-     * Uso no XML: app:dynamicWidthDp="@{48f}" ou app:dynamicWidthDp="@{minhaVariavelFloat}"
-     */
+    @JvmStatic
+    @BindingAdapter("app:defaultHeightDp")
+    fun setDefaultHeight(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).default().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.height = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:defaultTextSizeSp")
+    fun setDefaultTextSize(textView: TextView, spValue: Float) {
+        val adjustedSp = AppDimens.from(spValue).default().toSp(textView.resources)
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp)
+    }
+
+    // ============================================
+    // ESTRATÉGIA PERCENTAGE (anteriormente Dynamic)
+    // ============================================
+    
+    @JvmStatic
+    @BindingAdapter("app:percentageWidthDp")
+    fun setPercentageWidth(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).percentage().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.width = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:percentageHeightDp")
+    fun setPercentageHeight(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).percentage().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.height = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:percentageTextSizeSp")
+    fun setPercentageTextSize(textView: TextView, spValue: Float) {
+        val adjustedSp = AppDimens.from(spValue).percentage().toSp(textView.resources)
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp)
+    }
+
+    // ============================================
+    // ESTRATÉGIA BALANCED ⭐ (Recomendada)
+    // ============================================
+    
+    @JvmStatic
+    @BindingAdapter("app:balancedWidthDp")
+    fun setBalancedWidth(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).balanced().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.width = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:balancedHeightDp")
+    fun setBalancedHeight(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).balanced().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.height = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:balancedTextSizeSp")
+    fun setBalancedTextSize(textView: TextView, spValue: Float) {
+        val adjustedSp = AppDimens.from(spValue).balanced().toSp(textView.resources)
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp)
+    }
+
+    // ============================================
+    // ESTRATÉGIA LOGARITHMIC
+    // ============================================
+    
+    @JvmStatic
+    @BindingAdapter("app:logarithmicWidthDp")
+    fun setLogarithmicWidth(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).logarithmic().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.width = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:logarithmicHeightDp")
+    fun setLogarithmicHeight(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).logarithmic().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.height = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:logarithmicTextSizeSp")
+    fun setLogarithmicTextSize(textView: TextView, spValue: Float) {
+        val adjustedSp = AppDimens.from(spValue).logarithmic().toSp(textView.resources)
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp)
+    }
+
+    // ============================================
+    // ESTRATÉGIA POWER
+    // ============================================
+    
+    @JvmStatic
+    @BindingAdapter("app:powerWidthDp")
+    fun setPowerWidth(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).power().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.width = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:powerHeightDp")
+    fun setPowerHeight(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).power().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.height = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:powerTextSizeSp")
+    fun setPowerTextSize(textView: TextView, spValue: Float) {
+        val adjustedSp = AppDimens.from(spValue).power().toSp(textView.resources)
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp)
+    }
+
+    // ============================================
+    // ESTRATÉGIA FLUID
+    // ============================================
+    
+    @JvmStatic
+    @BindingAdapter("app:fluidWidthDpMin", "app:fluidWidthDpMax")
+    fun setFluidWidth(view: View, minDp: Float, maxDp: Float) {
+        val pxValue = AppDimens.from((minDp + maxDp) / 2f).fluid(minDp, maxDp).toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.width = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:fluidHeightDpMin", "app:fluidHeightDpMax")
+    fun setFluidHeight(view: View, minDp: Float, maxDp: Float) {
+        val pxValue = AppDimens.from((minDp + maxDp) / 2f).fluid(minDp, maxDp).toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.height = px.toInt()
+        view.requestLayout()
+    }
+
+    // ============================================
+    // ESTRATÉGIA INTERPOLATED
+    // ============================================
+    
+    @JvmStatic
+    @BindingAdapter("app:interpolatedWidthDp")
+    fun setInterpolatedWidth(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).interpolated().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.width = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:interpolatedHeightDp")
+    fun setInterpolatedHeight(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).interpolated().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.height = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:interpolatedTextSizeSp")
+    fun setInterpolatedTextSize(textView: TextView, spValue: Float) {
+        val adjustedSp = AppDimens.from(spValue).interpolated().toSp(textView.resources)
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp)
+    }
+
+    // ============================================
+    // ESTRATÉGIA DIAGONAL
+    // ============================================
+    
+    @JvmStatic
+    @BindingAdapter("app:diagonalWidthDp")
+    fun setDiagonalWidth(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).diagonal().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.width = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:diagonalHeightDp")
+    fun setDiagonalHeight(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).diagonal().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.height = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:diagonalTextSizeSp")
+    fun setDiagonalTextSize(textView: TextView, spValue: Float) {
+        val adjustedSp = AppDimens.from(spValue).diagonal().toSp(textView.resources)
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp)
+    }
+
+    // ============================================
+    // ESTRATÉGIA PERIMETER
+    // ============================================
+    
+    @JvmStatic
+    @BindingAdapter("app:perimeterWidthDp")
+    fun setPerimeterWidth(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).perimeter().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.width = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:perimeterHeightDp")
+    fun setPerimeterHeight(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).perimeter().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.height = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:perimeterTextSizeSp")
+    fun setPerimeterTextSize(textView: TextView, spValue: Float) {
+        val adjustedSp = AppDimens.from(spValue).perimeter().toSp(textView.resources)
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp)
+    }
+
+    // ============================================
+    // ESTRATÉGIA FIT (Letterbox)
+    // ============================================
+    
+    @JvmStatic
+    @BindingAdapter("app:fitWidthDp")
+    fun setFitWidth(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).fit().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.width = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:fitHeightDp")
+    fun setFitHeight(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).fit().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.height = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:fitTextSizeSp")
+    fun setFitTextSize(textView: TextView, spValue: Float) {
+        val adjustedSp = AppDimens.from(spValue).fit().toSp(textView.resources)
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp)
+    }
+
+    // ============================================
+    // ESTRATÉGIA FILL (Cover)
+    // ============================================
+    
+    @JvmStatic
+    @BindingAdapter("app:fillWidthDp")
+    fun setFillWidth(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).fill().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.width = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:fillHeightDp")
+    fun setFillHeight(view: View, dpValue: Float) {
+        val pxValue = AppDimens.from(dpValue).fill().toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.height = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:fillTextSizeSp")
+    fun setFillTextSize(textView: TextView, spValue: Float) {
+        val adjustedSp = AppDimens.from(spValue).fill().toSp(textView.resources)
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, adjustedSp)
+    }
+
+    // ============================================
+    // ESTRATÉGIA AUTOSIZE
+    // ============================================
+    
+    @JvmStatic
+    @BindingAdapter("app:autosizeWidthDpMin", "app:autosizeWidthDpMax")
+    fun setAutosizeWidth(view: View, minDp: Float, maxDp: Float) {
+        val pxValue = AppDimens.from((minDp + maxDp) / 2f).autoSize(minDp, maxDp).toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.width = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:autosizeHeightDpMin", "app:autosizeHeightDpMax")
+    fun setAutosizeHeight(view: View, minDp: Float, maxDp: Float) {
+        val pxValue = AppDimens.from((minDp + maxDp) / 2f).autoSize(minDp, maxDp).toDp(view.resources)
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, pxValue, view.resources.displayMetrics)
+        view.layoutParams.height = px.toInt()
+        view.requestLayout()
+    }
+
+    // ============================================
+    // ESTRATÉGIA NONE
+    // ============================================
+    
+    @JvmStatic
+    @BindingAdapter("app:noneWidthDp")
+    fun setNoneWidth(view: View, dpValue: Float) {
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, dpValue, view.resources.displayMetrics)
+        view.layoutParams.width = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:noneHeightDp")
+    fun setNoneHeight(view: View, dpValue: Float) {
+        val px = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, dpValue, view.resources.displayMetrics)
+        view.layoutParams.height = px.toInt()
+        view.requestLayout()
+    }
+
+    @JvmStatic
+    @BindingAdapter("app:noneTextSizeSp")
+    fun setNoneTextSize(textView: TextView, spValue: Float) {
+        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, spValue)
+    }
+
+    // ============================================
+    // COMPATIBILIDADE LEGADA (mantém código existente funcionando)
+    // ============================================
+    
     @JvmStatic
     @BindingAdapter("app:dynamicWidthDp")
     fun setDynamicWidth(view: View, dpValue: Float) {
-        // [EN] 1. Creates the adjustable Dp object (48.dp)
-        //      2. Calls toPx(resources) to get the dynamically adjusted value in Pixels
-        // [PT] 1. Cria o objeto Dp ajustável (48.dp)
-        //      2. Chama toPx(resources) para obter o valor dinamicamente ajustado em Pixels
-        val pxValue = AppDimens.dynamic(dpValue).toPx(view.resources)
-
-        view.layoutParams.width = pxValue.toInt()
-        view.requestLayout()
+        setPercentageWidth(view, dpValue)
     }
 
-    /**
-     * [EN] Sets the height of a View, converting Dp Float to dynamic PX.
-     *
-     * [PT] Define a altura de uma View, convertendo Dp Float para PX dinâmico.
-     */
     @JvmStatic
     @BindingAdapter("app:dynamicHeightDp")
     fun setDynamicHeight(view: View, dpValue: Float) {
-        val pxValue = AppDimens.dynamic(dpValue).toPx(view.resources)
-
-        view.layoutParams.height = pxValue.toInt()
-        view.requestLayout()
+        setPercentageHeight(view, dpValue)
     }
 
-    // [EN] --- Adapter for Text Size (Dp -> Sp/Px) ---
-    // [PT] --- Adaptador para Tamanho de Texto (Dp -> Sp/Px) ---
-
-    /**
-     * [EN] Sets the text size (TextView), converting Dp Float to dynamic SP/PX.
-     * AppDimensDynamic.toSp() ensures that the scaling adjustment is applied to the text.
-     * XML usage: app:dynamicTextSizeDp="@{20f}"
-     *
-     * [PT] Define o tamanho do texto (TextView), convertendo Dp Float para SP/PX dinâmico.
-     * O AppDimensDynamic.toSp() garante que o ajuste de escala seja aplicado ao texto.
-     * Uso no XML: app:dynamicTextSizeDp="@{20f}"
-     */
     @JvmStatic
     @BindingAdapter("app:dynamicTextSizeDp")
     fun setDynamicTextSize(textView: TextView, dpValue: Float) {
-        // [EN] Converts Dynamic Dp to Scaleable Pixels (SP) in Pixels (Float)
-        // [PT] Converte o Dp Dinâmico para Scaleable Pixels (SP) em Pixels (Float)
-        val spValueInPx = AppDimens.dynamic(dpValue).toSp(textView.resources)
-
-        // [EN] Sets the text size using TypedValue.COMPLEX_UNIT_PX (raw pixels)
-        // [PT] Define o texto usando TypedValue.COMPLEX_UNIT_PX (pixels brutos)
-        textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, spValueInPx)
+        setPercentageTextSize(textView, dpValue)
     }
 }

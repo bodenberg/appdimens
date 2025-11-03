@@ -1,7 +1,7 @@
 {
   "name": "webdimens",
-  "version": "1.1.0",
-  "description": "Sistema avançado de dimensionamento responsivo para web, baseado nos conceitos do AppDimens Android",
+  "version": "2.0.0",
+  "description": "AppDimens 2.0 - Sistema avançado de dimensionamento responsivo para web com 13 estratégias de escala e inferência inteligente",
   "author": "Jean Bodenberg",
   "license": "Apache-2.0",
   "keywords": [

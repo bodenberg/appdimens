@@ -1,317 +1,257 @@
-# ⚡ AppDimens: Documentation Quick Reference
-
-**Quick Navigation Guide - Find What You Need in Seconds**
+# ⚡ AppDimens Quick Reference
 
 > **Languages:** English | [Português (BR)](../LANG/pt-BR/DOCS_QUICK_REFERENCE.md) | [Español](../LANG/es/DOCS_QUICK_REFERENCE.md)
 
----
+**Fast Lookup for AppDimens 2.0**  
+*Version: 2.0.0 | Last Updated: February 2025*
 
-## 🎯 Choose Your Path
-
-### I want to...
-
-**... learn AppDimens from scratch** 🌱
-→ Read: [MATHEMATICAL_THEORY_SIMPLIFIED.md](MATHEMATICAL_THEORY_SIMPLIFIED.md) (15min)
-
-**... see code examples** 💻
-→ Read: [EXAMPLES.md](EXAMPLES.md) (20min)
-
-**... understand the complete mathematical theory** 🧮
-→ Read: [MATHEMATICAL_THEORY.md](MATHEMATICAL_THEORY.md) (45min)
-
-**... compare AppDimens with other solutions** ⚖️
-→ Read: [FORMULA_COMPARISON.md](FORMULA_COMPARISON.md) (30min)
-
-**... see EVERYTHING in one document** 📚
-→ Read: [COMPREHENSIVE_TECHNICAL_GUIDE.md](COMPREHENSIVE_TECHNICAL_GUIDE.md) (2h)
-
-**... validate if the implementation is correct** ✅
-→ Read: [VALIDATION_REPORT.md](VALIDATION_REPORT.md) (20min)
-
-**... navigate all documentation** 🗺️
-→ Read: [DOCS/README.md](README.md) (5min to browse)
+> **Find anything in seconds!** This is your go-to reference for quick lookups.
 
 ---
 
-## 📊 Documents by Objective
-
-### To Decide if You Use AppDimens
-
-1. [README.md](../README.md) - Overview
-2. [MATHEMATICAL_THEORY_SIMPLIFIED.md](MATHEMATICAL_THEORY_SIMPLIFIED.md) - Simple theory
-3. [FORMULA_COMPARISON.md](FORMULA_COMPARISON.md) - See #1 ranking with 91/100
-
-**Decision in: 50 minutes**
-
----
-
-### To Implement in Your Project
-
-1. [EXAMPLES.md](EXAMPLES.md) - Ready-to-use code
-2. [Android/README.md](../Android/README.md) - Platform-specific
-3. [MATHEMATICAL_THEORY_SIMPLIFIED.md](MATHEMATICAL_THEORY_SIMPLIFIED.md) - FAQ
-
-**Ready to code in: 30 minutes**
-
----
-
-### For Research/Academic Paper
-
-1. [MATHEMATICAL_THEORY.md](MATHEMATICAL_THEORY.md) - Formal theory
-2. [FORMULA_COMPARISON.md](FORMULA_COMPARISON.md) - Scientific comparisons
-3. [VALIDATION_REPORT.md](VALIDATION_REPORT.md) - Validation
-4. [COMPREHENSIVE_TECHNICAL_GUIDE.md](COMPREHENSIVE_TECHNICAL_GUIDE.md) - Everything
-
-**Complete material for publication**
-
----
-
-## 🏆 Main Documented Achievements
-
-### Rankings and Certifications
-
-- **#1 out of 7 formulas** with **91/100 points** 🥇
-- **3.5× more accurate** than linear
-- **65% less oversizing** than competitors
-- **Only one with AR compensation**
-- **Only one with psychophysical foundation**
-
-📍 See at: [FORMULA_COMPARISON.md](FORMULA_COMPARISON.md#63-certificate-of-excellence)
-
----
-
-### Technical Innovations
-
-1. ✅ First library with logarithmic scaling
-2. ✅ First with automatic aspect ratio compensation
-3. ✅ First with 4-priority hierarchical system
-4. ✅ First with Weber-Fechner Law foundation
-5. ✅ Superior performance with cache (0.002µs vs 0.005µs)
-6. ✅ **NEW v1.2.0**: Base Orientation with auto-inversion of LOWEST/HIGHEST on rotation
-7. ✅ **NEW v1.0.10**: Fluid model for smooth bounded growth (Compose/SwiftUI/Flutter/RN/Web)
-8. ✅ Global cache control system with per-instance overrides
-9. ✅ Physical units support across all platforms (mm, cm, inch)
-10. ✅ Game development modules: Android (C++/NDK), iOS (Metal/SIMD)
-
-📍 See at: [COMPREHENSIVE_TECHNICAL_GUIDE.md](COMPREHENSIVE_TECHNICAL_GUIDE.md#12-innovation-and-originality)
-
----
-
-## 📐 Main Formulas
-
-### Scaling Models Overview
-
-| Model | Formula Type | When to Use | Platforms |
-|-------|--------------|-------------|-----------|
-| **Fixed (FX)** ⭐ | Logarithmic | 95% of cases - buttons, text, padding, icons | All |
-| **Dynamic (DY)** | Proportional | Large containers, grids | All |
-| **Fluid (FL)** 🌊 | Linear interpolation | Typography with bounds | Compose, SwiftUI, Flutter, RN, Web |
-| **Physical Units** 📏 | Real-world measurements | Precision layouts | All |
-
-### Logarithmic Formula (Fixed)
+## 🎯 Quick Decision (30 Seconds)
 
 ```
-f_FX(B, S, AR) = B × [1 + ((S - 300) / 1) × (0.10/30 + 0.08/30 × ln(AR / 1.78))]
-                = B × [1 + ((S - 300) / 1) × (0.00333 + 0.00267 × ln(AR / 1.78))]
+What's your app type?
+├─ Multi-device (phones + tablets + TVs) → BALANCED ⭐
+├─ Phone-only → DEFAULT
+├─ Large containers/images → PERCENTAGE  
+├─ TV app → LOGARITHMIC
+├─ Typography → FLUID
+└─ Games → FIT or FILL
 ```
-
-### Priority System
-
-```
-1. Intersection (UiMode + DpQualifier) ← Most specific
-2. UiMode (device type only)
-3. DpQualifier (size only)
-4. Logarithmic (automatic scaling) ← Fallback
-```
-
-📍 Details at: [COMPREHENSIVE_TECHNICAL_GUIDE.md](COMPREHENSIVE_TECHNICAL_GUIDE.md#4-priority-system-hierarchy-system)
 
 ---
 
-## 🔬 Important Comparisons
+## 📊 13 Strategies at a Glance
 
-### vs. SDP/SSP (Linear)
-
-| Aspect | SDP/SSP | AppDimens |
-|---------|---------|-----------|
-| Formula | Linear | Logarithmic |
-| AR | ❌ Ignores | ✅ Compensates |
-| Tablet 800dp | 107dp (🔴 +123%) | 68dp (✅ +42%) |
-
-### vs. CSS clamp()
-
-| Aspect | CSS clamp() | AppDimens |
-|---------|-------------|-----------|
-| Scaling | Linear | Logarithmic |
-| AR | ❌ Ignores | ✅ Compensates |
-| Platform | Web Only | Universal |
-
-### vs. Flutter ScreenUtil
-
-| Aspect | ScreenUtil | AppDimens |
-|---------|-----------|-----------|
-| Formula | Quadratic | Logarithmic |
-| Theoretical basis | ❌ None | ✅ Weber-Fechner |
-| Tablet 800dp | 89dp (🟡 +86%) | 68dp (✅ +42%) |
-
-📍 Complete comparison: [FORMULA_COMPARISON.md](FORMULA_COMPARISON.md#7-comparison-with-7-fundamental-formulas)
+| # | Strategy | Formula | Use Case | Score |
+|---|----------|---------|----------|-------|
+| 1 | **BALANCED** ⭐ | Hybrid linear-log | Multi-device (PRIMARY) | 93/100 |
+| 2 | LOGARITHMIC | `1 + k×ln(W/300)` | TV, max control | 88/100 |
+| 3 | POWER | `(W/300)^0.75` | General, configurable | 86/100 |
+| 4 | **DEFAULT** | `~97% linear + AR` | Phone-focused (SECONDARY) | 82/100 |
+| 5 | FLUID | `clamp(min, max)` | Typography | 78/100 |
+| 6 | AUTOSIZE 🆕 | Container-aware | Dynamic text | 78/100 |
+| 7 | FIT | `min(W/300, H/533)` | Games (letterbox) | 75/100 |
+| 8 | FILL | `max(W/300, H/533)` | Games (cover) | 73/100 |
+| 9 | DIAGONAL | `√(W²+H²)/611.63` | Physical size | 72/100 |
+| 10 | INTERPOLATED | `50% linear` | Moderate | 70/100 |
+| 11 | PERIMETER | `(W+H)/833` | W+H balance | 70/100 |
+| 12 | PERCENTAGE | `W/300` | Containers ONLY | 62/100 |
+| 13 | NONE | `x` | No scaling | 55/100 |
 
 ---
 
-## 🎓 Scientific Foundation
+## 💻 API Quick Reference
 
-### Weber-Fechner Law (1860)
-
-```
-S = k × ln(I / I₀)
-```
-
-**Application:** Human perception of size is logarithmic, not linear.
-
-### Stevens' Power Law (1957)
-
-```
-ψ = k × φⁿ  (where n < 1 for spatial perception)
-```
-
-**Application:** Sublinear growth is more natural for UI.
-
-📍 Details at: [MATHEMATICAL_THEORY.md](MATHEMATICAL_THEORY.md#6-scientific-foundation)
-
----
-
-## 💡 Quick FAQ
-
-**Q: Why logarithm?**  
-A: Because human perception is logarithmic (Weber-Fechner Law). Prevents natural oversizing.
-
-**Q: Is it slow?**  
-A: With cache, it's the FASTEST (0.002µs vs 0.005µs for percentage).
-
-**Q: Does it work on iOS/Flutter/Web?**  
-A: Yes! Universal, same formula on all platforms.
-
-**Q: When should I use Fluid instead of Fixed?**  
-A: Use Fluid for typography and spacing where you want explicit min/max bounds with smooth transitions. Use Fixed (RECOMMENDED) for general UI elements like buttons, icons, and most containers.
-
-**Q: What's the difference between Fixed and Fluid?**  
-A: Fixed uses logarithmic growth (slows on large screens), Fluid uses linear interpolation between explicit min/max values. Fixed adapts automatically, Fluid requires you to define bounds.
-
-**Q: How does Base Orientation work?**  
-A: Design for one orientation (portrait/landscape), and AppDimens automatically inverts LOWEST↔HIGHEST when the device rotates. No need to handle rotation manually!
-
-**Q: Is it difficult to use?**  
-A: No! Simple API: `16.fxdp` or `16.fixedDp().dp`
-
-📍 Complete FAQ: [MATHEMATICAL_THEORY_SIMPLIFIED.md](MATHEMATICAL_THEORY_SIMPLIFIED.md#-frequently-asked-questions-faq)
-
----
-
-## 📱 Quick Examples
-
-### Android Compose
+### Android (Kotlin)
 
 ```kotlin
-Text(
-    text = "Hello",
-    fontSize = 16.fxsp,
-    modifier = Modifier.padding(12.fxdp)
-)
+// BALANCED ⭐ (Primary)
+16.balanced().dp
+16.balanced().sp
+
+// DEFAULT (Secondary)
+16.defaultDp
+16.defaultSp
+
+// PERCENTAGE (Containers)
+300.percentageDp.dp
+
+// Others
+16.logarithmic().sp
+16.power(0.75f).sp
+fluidSp(14f, 20f)
+16.smart().forElement(ElementType.BUTTON).dp
 ```
 
-### iOS SwiftUI
+### iOS (Swift)
 
 ```swift
-Text("Hello")
-    .font(.system(size: AppDimens.fixed(16).sp))
-    .padding(AppDimens.fixed(12).dp)
+// BALANCED ⭐
+AppDimens.shared.balanced(16).toPoints()
+
+// DEFAULT
+AppDimens.shared.defaultScaling(16).toPoints()
+
+// PERCENTAGE
+AppDimens.shared.percentage(300).toPoints()
+
+// Others
+AppDimens.shared.logarithmic(16).toPoints()
+AppDimens.shared.power(16, exponent: 0.75).toPoints()
+AppDimens.shared.fluid(min: 14, max: 20).toPoints()
+AppDimens.shared.smart(48).forElement(.button).toPoints()
 ```
 
-### Flutter
+### Flutter (Dart)
 
 ```dart
-Text(
-  'Hello',
-  style: TextStyle(fontSize: 16.fxsp.calculate(context)),
+// BALANCED ⭐
+AppDimens.balanced(16).calculate(context)
+16.0.balanced()
+
+// DEFAULT
+AppDimens.defaultScaling(16).calculate(context)
+
+// PERCENTAGE
+AppDimens.percentage(300).calculate(context)
+
+// Others
+AppDimens.logarithmic(16).calculate(context)
+AppDimens.power(16, exponent: 0.75).calculate(context)
+AppDimens.fluid(14, maxValue: 20).calculate(context)
+AppDimens.smart(48).forElement(ElementType.button).calculate(context)
+```
+
+### React Native (TypeScript)
+
+```typescript
+const {balanced, defaultScaling, percentage, smart} = useAppDimens();
+
+balanced(16)
+defaultScaling(16)
+percentage(300)
+smart(48).forElement('button')
+```
+
+### Web (TypeScript)
+
+```typescript
+const {balanced, defaultScaling, percentage, fluid, smart} = useWebDimens();
+
+balanced(16)
+defaultScaling(16)
+percentage(300)
+fluid(14, 20)
+smart(48).forElement('button')
+```
+
+---
+
+## 📐 Formula Quick Reference
+
+```
+BALANCED:    x × (W/300) if W<480, else x × (1.6 + 0.4×ln(1+(W-480)/300))
+DEFAULT:     x × [1 + (W-300) × (0.00333 + 0.00267×ln(AR/1.78))]
+PERCENTAGE:  x × (W/300)
+LOGARITHMIC: x × (1 + 0.40×ln(W/300))
+POWER:       x × (W/300)^0.75
+FLUID:       clamp(min, interpolate(W), max)
+```
+
+---
+
+## 🎯 Results Table (48dp base)
+
+| Screen | BALANCED | DEFAULT | PERCENTAGE | Use |
+|--------|----------|---------|------------|-----|
+| 360dp  | 58dp     | 54dp    | 58dp       | Phone |
+| 480dp  | 77dp     | 65dp    | 77dp       | Phablet |
+| 720dp  | 70dp ⭐  | 79dp    | 115dp ❌   | Tablet |
+| 1080dp | 101dp    | 94dp    | 173dp ❌   | TV |
+
+---
+
+## 🚀 Common Patterns
+
+### Button (All Platforms)
+
+**Android:**
+```kotlin
+Button(
+    modifier = Modifier.height(48.balanced().dp)
+) {
+    Text("Click", fontSize = 16.balanced().sp)
+}
+```
+
+**iOS:**
+```swift
+Button("Click") {}
+    .frame(height: AppDimens.shared.balanced(48).toPoints())
+```
+
+**Flutter:**
+```dart
+ElevatedButton(
+  style: ElevatedButton.styleFrom(
+    minimumSize: Size(double.infinity, AppDimens.balanced(48).calculate(context))
+  ),
 )
 ```
 
-### React Native
+### Card Padding
 
-{% raw %}
-```javascript
-<Text style={{ fontSize: fixedSp(16) }}>
-  Hello
-</Text>
+**Android:**
+```kotlin
+Card(modifier = Modifier.padding(16.balanced().dp))
 ```
-{% endraw %}
 
-📍 More examples: [EXAMPLES.md](EXAMPLES.md)
-
----
-
-## 🗺️ Documentation Map
-
+**iOS:**
+```swift
+VStack {}.padding(AppDimens.shared.balanced(16).toPoints())
 ```
-AppDimens/
-│
-├─ README.md ← START HERE
-│
-├─ Simplified Documentation (Beginner)
-│  ├─ MATHEMATICAL_THEORY_SIMPLIFIED.md ⭐
-│  ├─ EXAMPLES.md
-│  └─ Platform READMEs
-│
-├─ Technical Documentation (Intermediate)
-│  ├─ MATHEMATICAL_THEORY.md
-│  ├─ FORMULA_COMPARISON.md ⭐
-│  └─ VALIDATION_REPORT.md
-│
-├─ Advanced Documentation (Experts)
-│  └─ COMPREHENSIVE_TECHNICAL_GUIDE.md ⭐⭐⭐
-│
-└─ Navigation
-   ├─ DOCS/README.md (complete index)
-   └─ DOCS/DOCS_QUICK_REFERENCE.md (you are here!)
+
+**Flutter:**
+```dart
+Container(padding: EdgeInsets.all(AppDimens.balanced(16).calculate(context)))
+```
+
+### Icon Size
+
+**Android:**
+```kotlin
+Icon(modifier = Modifier.size(24.defaultDp))  // DEFAULT for icons
+```
+
+**iOS:**
+```swift
+Image(systemName: "heart")
+    .frame(width: AppDimens.shared.defaultScaling(24).toPoints())
+```
+
+**Flutter:**
+```dart
+Icon(Icons.favorite, size: AppDimens.defaultScaling(24).calculate(context))
 ```
 
 ---
 
-## ⚡ Direct Links
+## 📚 Documentation Links
 
-### Most Accessed
-
-- [Simplified Guide](MATHEMATICAL_THEORY_SIMPLIFIED.md) ← 80% of users start here
-- [Code Examples](EXAMPLES.md)
-- [Comparison with Other Libraries](FORMULA_COMPARISON.md)
-
-### Complete Documentation
-
-- [Formal Mathematical Theory](MATHEMATICAL_THEORY.md)
-- [Complete Technical Guide](COMPREHENSIVE_TECHNICAL_GUIDE.md) ← Everything in one place
-- [Full Documentation Index](README.md)
-
-### Validation and Certifications
-
-- [Validation Report](VALIDATION_REPORT.md)
-- [Certificate of Excellence](FORMULA_COMPARISON.md#63-certificate-of-excellence)
+| Need | Document | Time |
+|------|----------|------|
+| **Quick start** | [Simplified Guide](MATHEMATICAL_THEORY_SIMPLIFIED.md) | 15min |
+| **Examples** | [Examples](EXAMPLES.md) | 20min |
+| **Math details** | [Mathematical Theory](MATHEMATICAL_THEORY.md) | 45min |
+| **Comparisons** | [Formula Comparison](FORMULA_COMPARISON.md) | 30min |
+| **Everything** | [Technical Guide](COMPREHENSIVE_TECHNICAL_GUIDE.md) | 2h |
 
 ---
 
-## 📞 Need Help?
+## 🔧 Common Tasks
 
-1. **Documentation** ← You are here!
-2. [GitHub Issues](https://github.com/bodenberg/appdimens/issues)
-3. [GitHub Discussions](https://github.com/bodenberg/appdimens/discussions)
-4. [Official Website](https://appdimens-project.web.app/)
+### Install AppDimens
+
+**Android:** `implementation("io.github.bodenberg:appdimens-dynamic:2.0.0")`  
+**iOS:** `pod 'AppDimens', '~> 2.0.0'`  
+**Flutter:** `appdimens: ^2.0.0`  
+**RN:** `npm install appdimens-react-native@2.0.0`  
+**Web:** `npm install webdimens@2.0.0`
+
+### Choose Strategy
+
+95% of apps → **BALANCED** ⭐  
+Phone-only → **DEFAULT**  
+Containers → **PERCENTAGE**
+
+### Migrate from v1.x
+
+`.fxdp` → `.balanced().dp` (or `.defaultDp`)  
+`.dydp` → `.percentageDp.dp`
 
 ---
 
-**Last updated:** October 2025  
-**Version:** 1.1.0  
-**Author:** Jean Bodenberg  
-**License:** Apache 2.0
-
----
-
-*"The right information, at the right time, in the right way."*
+**[⬆ Back to Top](#-appdimens-quick-reference)**

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebDimens v2.0.0 - Vanilla JS Example</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f5f5f5;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+    }
+    
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-align: center;
+      border-bottom: 3px solid #5568d3;
+    }
+    
+    .subtitle {
+      opacity: 0.9;
+      margin-top: 8px;
+    }
+    
+    main {
+      padding: 20px;
+    }
+    
+    section {
+      margin: 32px 0;
+      border-radius: 12px;
+    }
+    
+    section h2 {
+      margin-bottom: 16px;
+    }
+    
+    .info-section {
+      background: #e3f2fd;
+      padding: 20px;
+    }
+    
+    .strategies-section {
+      background: #fff3e0;
+      padding: 20px;
+    }
+    
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      margin-top: 16px;
+    }
+    
+    .strategy-card {
+      border: 2px solid;
+      border-radius: 12px;
+      text-align: center;
+      padding: 16px;
+      transition: transform 0.2s;
+    }
+    
+    .strategy-card:hover {
+      transform: translateY(-4px);
+    }
+    
+    .strategy-card.balanced {
+      background: #e8f5e9;
+      border-color: #4caf50;
+    }
+    
+    .strategy-card.logarithmic {
+      background: #e3f2fd;
+      border-color: #2196f3;
+    }
+    
+    .strategy-card.power {
+      background: #f3e5f5;
+      border-color: #9c27b0;
+    }
+    
+    .strategy-card.percentage {
+      background: #fff9c4;
+      border-color: #fbc02d;
+    }
+    
+    .strategy-card h3 {
+      margin: 0 0 8px 0;
+    }
+    
+    .strategy-card p {
+      font-size: 14px;
+      color: #666;
+      margin: 0 0 12px 0;
+    }
+    
+    .strategy-card code {
+      font-size: 11px;
+      background: rgba(0,0,0,0.1);
+      padding: 4px 8px;
+      border-radius: 4px;
+      display: block;
+      margin-top: 8px;
+      font-family: monospace;
+    }
+    
+    .demo-box {
+      background: rgba(0,0,0,0.2);
+      margin: 12px auto;
+      border-radius: 8px;
+    }
+    
+    .smart-api-section {
+      background: #fce4ec;
+      padding: 20px;
+    }
+    
+    .smart-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      margin-top: 16px;
+    }
+    
+    .smart-card {
+      background: white;
+      border: 2px solid #e91e63;
+      border-radius: 8px;
+      text-align: center;
+      padding: 16px;
+    }
+    
+    .smart-card strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 16px;
+    }
+    
+    .smart-card .arrow {
+      color: #e91e63;
+      font-weight: bold;
+      margin: 8px 0;
+    }
+    
+    .comparison-section {
+      background: #f5f5f5;
+      padding: 20px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      background: white;
+    }
+    
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    th {
+      background: #e0e0e0;
+      font-weight: bold;
+    }
+    
+    tr:hover {
+      background: #f9f9f9;
+    }
+    
+    .migration-section {
+      background: #e8f5e9;
+      padding: 20px;
+    }
+    
+    .migration-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    
+    .migration-card {
+      background: white;
+      padding: 16px;
+      border-radius: 8px;
+      border: 2px solid #4caf50;
+    }
+    
+    .migration-card h4 {
+      color: #4caf50;
+      margin-bottom: 8px;
+    }
+    
+    .migration-card code {
+      display: block;
+      background: #f5f5f5;
+      padding: 8px;
+      border-radius: 4px;
+      margin: 4px 0;
+      font-family: monospace;
+      font-size: 12px;
+    }
+    
+    .badge {
+      display: inline-block;
+      background: #4caf50;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-left: 8px;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f5f5f5;
+      border-top: 2px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="container">
+    <header id="header">
+      <h1 id="title">WebDimens v2.0.0</h1>
+      <p class="subtitle" id="subtitle">13 Scaling Strategies + Smart API</p>
+    </header>
+    
+    <main>
+      <!-- Viewport Info -->
+      <section class="info-section">
+        <h2 id="info-title">📱 Viewport Information</h2>
+        <p id="viewport-info">Loading...</p>
+        <p id="breakpoint-info">Loading...</p>
+        <p id="orientation-info">Loading...</p>
+      </section>
+      
+      <!-- New Strategies -->
+      <section class="strategies-section">
+        <h2 id="strategies-title">🎯 New Strategies (v2.0.0)</h2>
+        <p>Compare different scaling strategies with the same base value (48px)</p>
+        <div class="strategy-grid" id="strategy-grid">
+          
+          <div class="strategy-card balanced">
+            <h3>BALANCED <span class="badge">⭐ NEW</span></h3>
+            <p>Linear on phones, log on tablets</p>
+            <div class="demo-box" id="balanced-box"></div>
+            <code>balanced(48)</code>
+            <div id="balanced-value"></div>
+          </div>
+          
+          <div class="strategy-card logarithmic">
+            <h3>LOGARITHMIC <span class="badge">NEW</span></h3>
+            <p>Pure logarithmic scaling</p>
+            <div class="demo-box" id="logarithmic-box"></div>
+            <code>logarithmic(48)</code>
+            <div id="logarithmic-value"></div>
+          </div>
+          
+          <div class="strategy-card power">
+            <h3>POWER <span class="badge">NEW</span></h3>
+            <p>Stevens' Power Law</p>
+            <div class="demo-box" id="power-box"></div>
+            <code>power(48, 0.75)</code>
+            <div id="power-value"></div>
+          </div>
+          
+          <div class="strategy-card percentage">
+            <h3>PERCENTAGE</h3>
+            <p>100% proportional</p>
+            <div class="demo-box" id="percentage-box"></div>
+            <code>percentage(48)</code>
+            <div id="percentage-value"></div>
+          </div>
+          
+        </div>
+      </section>
+      
+      <!-- Smart API -->
+      <section class="smart-api-section">
+        <h2 id="smart-title">🧠 Smart API (Auto-Inference)</h2>
+        <p>Automatically selects the best strategy based on element type</p>
+        <div class="smart-grid" id="smart-grid">
+          
+          <div class="smart-card" id="smart-button">
+            <strong>Button</strong>
+            <div class="arrow">↓</div>
+            <div>BALANCED</div>
+          </div>
+          
+          <div class="smart-card" id="smart-container">
+            <strong>Container</strong>
+            <div class="arrow">↓</div>
+            <div>PERCENTAGE</div>
+          </div>
+          
+          <div class="smart-card" id="smart-text">
+            <strong>Text</strong>
+            <div class="arrow">↓</div>
+            <div>BALANCED</div>
+          </div>
+          
+          <div class="smart-card" id="smart-icon">
+            <strong>Icon</strong>
+            <div class="arrow">↓</div>
+            <div>DEFAULT</div>
+          </div>
+          
+        </div>
+      </section>
+      
+      <!-- Comparison Table -->
+      <section class="comparison-section">
+        <h2 id="comparison-title">📊 Strategy Comparison</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Strategy</th>
+              <th>Result</th>
+              <th>Use Case</th>
+              <th>Scaling Type</th>
+            </tr>
+          </thead>
+          <tbody id="comparison-table">
+            <!-- Will be populated by JavaScript -->
+          </tbody>
+        </table>
+      </section>
+      
+      <!-- Migration Guide -->
+      <section class="migration-section">
+        <h2 id="migration-title">🔄 Migration Guide</h2>
+        <p>How to upgrade from v1.x to v2.0.0</p>
+        <div class="migration-grid">
+          <div class="migration-card">
+            <h4>❌ Old API (Deprecated)</h4>
+            <code>.fx(16)</code>
+            <code>.dy(100)</code>
+          </div>
+          <div class="migration-card">
+            <h4>✅ New API (v2.0.0)</h4>
+            <code>.default(16) // or better:</code>
+            <code>.balanced(16) ⭐ RECOMMENDED</code>
+            <code>.percentage(100)</code>
+          </div>
+        </div>
+        <p style="margin-top: 16px;">
+          <strong>💡 Tip:</strong> For most new projects, use <code>.balanced()</code> as your default strategy.
+        </p>
+      </section>
+    </main>
+    
+    <footer>
+      <p><strong>WebDimens v2.0.0</strong> - Advanced Responsive Dimensions for Web</p>
+      <p>GitHub: <a href="https://github.com/bodenberg/appdimens">bodenberg/appdimens</a></p>
+    </footer>
+  </div>
+
+  <script type="module">
+    // Import WebDimens (adjust path as needed)
+    // import { webdimens } from '../dist/index.mjs';
+    
+    // For demo purposes, assuming webdimens is available
+    // In production, you would import it properly
+    
+    console.log('WebDimens v2.0.0 Example');
+    console.log('This is a demonstration of the new scaling strategies');
+    
+    // Note: This is a visual demonstration
+    // In a real app, you would import and use the actual webdimens library
+    
+    // Mock implementation for demonstration
+    const mockDimens = {
+      balanced: (val) => ({ toPx: () => `${val * 1.1}px` }),
+      logarithmic: (val) => ({ toPx: () => `${val * 0.9}px` }),
+      power: (val) => ({ toPx: () => `${val * 1.0}px` }),
+      percentage: (val) => ({ toPx: () => `${val * 1.2}px` }),
+    };
+    
+    // Apply dimensions
+    document.getElementById('balanced-box').style.width = mockDimens.balanced(48).toPx();
+    document.getElementById('balanced-box').style.height = mockDimens.balanced(48).toPx();
+    document.getElementById('balanced-value').textContent = mockDimens.balanced(48).toPx();
+    
+    document.getElementById('logarithmic-box').style.width = mockDimens.logarithmic(48).toPx();
+    document.getElementById('logarithmic-box').style.height = mockDimens.logarithmic(48).toPx();
+    document.getElementById('logarithmic-value').textContent = mockDimens.logarithmic(48).toPx();
+    
+    document.getElementById('power-box').style.width = mockDimens.power(48).toPx();
+    document.getElementById('power-box').style.height = mockDimens.power(48).toPx();
+    document.getElementById('power-value').textContent = mockDimens.power(48).toPx();
+    
+    document.getElementById('percentage-box').style.width = mockDimens.percentage(48).toPx();
+    document.getElementById('percentage-box').style.height = mockDimens.percentage(48).toPx();
+    document.getElementById('percentage-value').textContent = mockDimens.percentage(48).toPx();
+    
+    // Viewport info
+    document.getElementById('viewport-info').textContent = `Viewport: ${window.innerWidth}x${window.innerHeight}px`;
+    document.getElementById('breakpoint-info').textContent = `Breakpoint: ${window.innerWidth < 640 ? 'mobile' : window.innerWidth < 1024 ? 'tablet' : 'desktop'}`;
+    document.getElementById('orientation-info').textContent = `Orientation: ${window.innerWidth > window.innerHeight ? 'landscape' : 'portrait'}`;
+    
+    // Comparison table
+    const strategies = [
+      { name: 'BALANCED ⭐', result: mockDimens.balanced(48).toPx(), useCase: 'Multi-device apps', type: 'Hybrid' },
+      { name: 'LOGARITHMIC', result: mockDimens.logarithmic(48).toPx(), useCase: 'TVs, large tablets', type: 'Logarithmic' },
+      { name: 'POWER', result: mockDimens.power(48).toPx(), useCase: 'General purpose', type: 'Power Law' },
+      { name: 'PERCENTAGE', result: mockDimens.percentage(48).toPx(), useCase: 'Containers, layouts', type: 'Linear' },
+    ];
+    
+    const tableBody = document.getElementById('comparison-table');
+    strategies.forEach(strategy => {
+      const row = tableBody.insertRow();
+      row.insertCell(0).textContent = strategy.name;
+      row.insertCell(1).textContent = strategy.result;
+      row.insertCell(2).textContent = strategy.useCase;
+      row.insertCell(3).textContent = strategy.type;
+    });
+    
+    // Update on resize
+    window.addEventListener('resize', () => {
+      document.getElementById('viewport-info').textContent = `Viewport: ${window.innerWidth}x${window.innerHeight}px`;
+      document.getElementById('breakpoint-info').textContent = `Breakpoint: ${window.innerWidth < 640 ? 'mobile' : window.innerWidth < 1024 ? 'tablet' : 'desktop'}`;
+      document.getElementById('orientation-info').textContent = `Orientation: ${window.innerWidth > window.innerHeight ? 'landscape' : 'portrait'}`;
+    });
+  </script>
+</body>
+</html>
+

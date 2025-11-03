@@ -1,1598 +1,340 @@
----
-layout: default
-title: "🎨 AppDimens - Practical Examples"
----
-
 # 🎨 AppDimens - Practical Examples
 
-This document provides comprehensive, real-world examples of how to use AppDimens across different platforms and scenarios.
+> **Languages:** English | [Português (BR)](../LANG/pt-BR/EXAMPLES.md) | [Español](../LANG/es/EXAMPLES.md)
 
-> Languages: [Português (BR)](LANG/pt-BR/EXAMPLES.md) | [Español](LANG/es/EXAMPLES.md) | [हिन्दी](LANG/hi/EXAMPLES.md) | [Русский](LANG/ru/EXAMPLES.md) | [中文](LANG/zh/EXAMPLES.md) | [日本語](LANG/ja/EXAMPLES.md)
+**Real-World Code Samples for All Platforms**  
+*Author: Jean Bodenberg*  
+*Date: February 2025*  
+*Version: 2.0.0*
+
+> **🆕 Version 2.0:** Now featuring **13 scaling strategies** with **BALANCED** as primary recommendation and **DEFAULT** as secondary. All examples updated to showcase the new Smart API.
+
+---
 
 ## 📋 Table of Contents
 
-1. [Android Examples](#android-examples)
-2. [iOS Examples](#ios-examples)
-3. [Flutter Examples](#flutter-examples)
-4. [React Native Examples](#react-native-examples)
-5. [Web Examples](#web-examples)
-6. [Game Development Examples](#game-development-examples)
-7. [Cross-Platform Patterns](#cross-platform-patterns)
-8. [Advanced Use Cases](#advanced-use-cases)
-9. [Performance Examples](#performance-examples)
-10. [Architecture Examples](#architecture-examples)
+1. [Version 2.0 Quick Start](#1-version-20-quick-start)
+2. [Android Examples](#2-android-examples)
+3. [iOS Examples](#3-ios-examples)
+4. [Flutter Examples](#4-flutter-examples)
+5. [React Native Examples](#5-react-native-examples)
+6. [Web Examples](#6-web-examples)
+7. [Cross-Platform Patterns](#7-cross-platform-patterns)
+8. [Advanced Use Cases](#8-advanced-use-cases)
+9. [Game Development](#9-game-development)
+10. [Migration Examples](#10-migration-examples)
 
 ---
 
-## 🤖 Android Examples
+## 1. Version 2.0 Quick Start
 
-### 🧩 Jetpack Compose Examples
+### 1.1 Strategy Selection Guide
 
-#### Basic Responsive Card
+**Use BALANCED ⭐ (Primary) for:**
+- 95% of applications
+- Multi-device apps (phones, tablets, TVs)
+- Buttons, spacing, padding, text
+
+**Use DEFAULT (Secondary) for:**
+- Phone-focused apps
+- Icons and small elements
+- Backward compatibility with v1.x
+
+**Use PERCENTAGE for:**
+- Very large containers
+- Proportional images
+- Full-width grids
+
+**Use Other Strategies for:**
+- FLUID → Typography with bounds
+- LOGARITHMIC → TV apps
+- FIT/FILL → Games
+
+### 1.2 Quick Examples (All Platforms)
+
+**Android:**
+```kotlin
+Text("Hello", fontSize = 16.balanced().sp)  // ⭐ Primary
+Icon(modifier = Modifier.size(24.defaultDp))  // Secondary
+```
+
+**iOS:**
+```swift
+Text("Hello").font(.system(size: AppDimens.shared.balanced(16).toPoints()))
+```
+
+**Flutter:**
+```dart
+Text('Hello', style: TextStyle(fontSize: AppDimens.balanced(16).calculate(context)))
+```
+
+**React Native:**
+```typescript
+<Text style={{fontSize: balanced(16)}}>Hello</Text>
+```
+
+**Web:**
+```typescript
+<h2 style={{fontSize: balanced(16)}}>Hello</h2>
+```
+
+---
+
+## 2. Android Examples
+
+### 2.1 Jetpack Compose - Complete App Example
+
+#### Social Media Feed (Multi-Device App)
 
 ```kotlin
 @Composable
-fun ResponsiveCard(
-    title: String,
-    content: String,
-    onActionClick: () -> Unit
-) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.fxdp)
-            .height(200.fxdp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.fxdp)
-    ) {
-        Column(
+fun SocialFeedScreen() {
+    Scaffold(
+        topBar = { FeedTopBar() },
+        floatingActionButton = { NewPostFAB() }
+    ) { paddingValues ->
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.fxdp)
+                .padding(paddingValues)
+                .padding(horizontal = 16.balanced().dp)  // ⭐ BALANCED
         ) {
+            items(posts) { post ->
+                PostCard(post)
+                Spacer(modifier = Modifier.height(12.balanced().dp))
+            }
+        }
+    }
+}
+
+@Composable
+fun FeedTopBar() {
+    TopAppBar(
+        title = {
             Text(
-                text = title,
-                fontSize = 18.fxsp,                    // Fixed font (RECOMMENDED)
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 8.fxdp)
+                text = "Social Feed",
+                fontSize = 20.balanced().sp  // ⭐ BALANCED
             )
-            
-            Text(
-                text = content,
-                fontSize = 14.fxsp,                    // Fixed font (RECOMMENDED)
-                color = Color.Gray,
-                modifier = Modifier.weight(1f)
-            )
-            
+        },
+        navigationIcon = {
+            IconButton(onClick = { }) {
+                Icon(
+                    imageVector = Icons.Default.Menu,
+                    contentDescription = "Menu",
+                    modifier = Modifier.size(24.balanced().dp)
+                )
+            }
+        },
+        actions = {
+            IconButton(onClick = { }) {
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    modifier = Modifier.size(24.balanced().dp)
+                )
+            }
+        },
+        modifier = Modifier.height(56.balanced().dp)
+    )
+}
+
+@Composable
+fun PostCard(post: Post) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.balanced().dp)
+    ) {
+        Column(modifier = Modifier.padding(16.balanced().dp)) {
+            // Header: Avatar + Username
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.End
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
             ) {
-                Button(
-                    onClick = onActionClick,
+                AsyncImage(
+                    model = post.userAvatar,
+                    contentDescription = "Avatar",
                     modifier = Modifier
-                        .width(100.fxdp)               // Fixed width (RECOMMENDED)
-                        .height(36.fxdp)
-                ) {
+                        .size(40.balanced().dp)
+                        .clip(CircleShape)
+                )
+                
+                Spacer(modifier = Modifier.width(12.balanced().dp))
+                
+                Column {
                     Text(
-                        text = "Action",
-                        fontSize = 14.fxsp
+                        text = post.username,
+                        fontSize = 14.balanced().sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        text = post.timestamp,
+                        fontSize = 12.balanced().sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            }
+            
+            Spacer(modifier = Modifier.height(12.balanced().dp))
+            
+            // Post content
+            Text(
+                text = post.content,
+                fontSize = 14.balanced().sp,
+                lineHeight = 20.balanced().sp
+            )
+            
+            // Post image (if exists)
+            post.imageUrl?.let { imageUrl ->
+                Spacer(modifier = Modifier.height(12.balanced().dp))
+                AsyncImage(
+                    model = imageUrl,
+                    contentDescription = "Post image",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(200.percentageDp.dp)  // Proportional image
+                        .clip(RoundedCornerShape(8.balanced().dp))
+                )
+            }
+            
+            Spacer(modifier = Modifier.height(12.balanced().dp))
+            
+            // Action buttons
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Row {
+                    IconButton(
+                        onClick = { },
+                        modifier = Modifier.size(40.balanced().dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Favorite,
+                            contentDescription = "Like",
+                            modifier = Modifier.size(20.balanced().dp)
+                        )
+                    }
+                    
+                    Text(
+                        text = "${post.likes}",
+                        fontSize = 14.balanced().sp,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                    
+                    Spacer(modifier = Modifier.width(16.balanced().dp))
+                    
+                    IconButton(
+                        onClick = { },
+                        modifier = Modifier.size(40.balanced().dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Comment,
+                            contentDescription = "Comment",
+                            modifier = Modifier.size(20.balanced().dp)
+                        )
+                    }
+                    
+                    Text(
+                        text = "${post.comments}",
+                        fontSize = 14.balanced().sp,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                }
+                
+                IconButton(
+                    onClick = { },
+                    modifier = Modifier.size(40.balanced().dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Share,
+                        modifier = Modifier.size(20.balanced().dp)
                     )
                 }
             }
         }
     }
 }
+
+@Composable
+fun NewPostFAB() {
+    FloatingActionButton(
+        onClick = { },
+        modifier = Modifier.size(56.balanced().dp)
+    ) {
+        Icon(
+            imageVector = Icons.Default.Add,
+            contentDescription = "New Post",
+            modifier = Modifier.size(24.balanced().dp)
+        )
+    }
+}
 ```
 
-#### Responsive Grid Layout
+#### E-Commerce Product List
 
 ```kotlin
 @Composable
-fun ResponsiveGrid(
-    items: List<GridItem>,
-    onItemClick: (GridItem) -> Unit
-) {
-    var spanCount by remember { mutableStateOf(2) }
-    
-    // Calculate optimal number of columns
-    AppDimens.CalculateAvailableItemCount(
-        itemSize = 120.dp,
-        itemPadding = 8.dp,
-        direction = DpQualifier.WIDTH,
+fun ProductListScreen() {
+    LazyVerticalGrid(
+        columns = GridCells.Adaptive(minSize = 160.percentageDp.dp),  // Proportional grid
+        horizontalArrangement = Arrangement.spacedBy(12.balanced().dp),
+        verticalArrangement = Arrangement.spacedBy(12.balanced().dp),
+        contentPadding = PaddingValues(16.balanced().dp)
+    ) {
+        items(products) { product ->
+            ProductCard(product)
+        }
+    }
+}
+
+@Composable
+fun ProductCard(product: Product) {
+    Card(
         modifier = Modifier.fillMaxWidth(),
-        onResult = { count ->
-            if (count > 0) spanCount = count
-        }
-    )
-    
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(spanCount),
-        contentPadding = PaddingValues(16.fxdp),
-        horizontalArrangement = Arrangement.spacedBy(8.fxdp),
-        verticalArrangement = Arrangement.spacedBy(8.fxdp)
-    ) {
-        items(items) { item ->
-            GridItemCard(
-                item = item,
-                onClick = { onItemClick(item) }
-            )
-        }
-    }
-}
-
-@Composable
-fun GridItemCard(
-    item: GridItem,
-    onClick: () -> Unit
-) {
-    Card(
-        modifier = Modifier
-            .aspectRatio(1f)
-            .clickable { onClick() },
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.fxdp)
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(12.fxdp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Icon(
-                imageVector = item.icon,
-                contentDescription = null,
-                modifier = Modifier.size(32.fxdp),
-                tint = item.color
-            )
-            
-            Spacer(modifier = Modifier.height(8.fxdp))
-            
-            Text(
-                text = item.title,
-                fontSize = 12.fxsp,
-                textAlign = TextAlign.Center,
-                maxLines = 2,
-                overflow = TextOverflow.Ellipsis
-            )
-        }
-    }
-}
-```
-
-#### Conditional Scaling Example
-
-```kotlin
-@Composable
-fun AdaptiveButton(
-    text: String,
-    onClick: () -> Unit
-) {
-    val buttonSize = 80.fixedDp()  // Fixed scaling (RECOMMENDED)
-        // Priority 1: Watch with specific width
-        .screen(
-            uiModeType = UiModeType.WATCH,
-            qualifierType = DpQualifier.SMALL_WIDTH,
-            qualifierValue = 200,
-            customValue = 40.dp
-        )
-        // Priority 2: Car mode
-        .screen(
-            type = UiModeType.CAR,
-            customValue = 120.dp
-        )
-        // Priority 3: Large tablets
-        .screen(
-            type = DpQualifier.SMALL_WIDTH,
-            value = 720,
-            customValue = 150
-        )
-    
-    Button(
-        onClick = onClick,
-        modifier = Modifier
-            .size(buttonSize.sdp)
-            .fxCornerRadius(8)
-    ) {
-        Text(
-            text = text,
-            fontSize = 14.fxsp
-        )
-    }
-}
-```
-
-### 📄 XML Views Examples
-
-#### Responsive Layout with Data Binding
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    
-    <data>
-        <variable
-            name="viewModel"
-            type="com.example.ViewModel" />
-    </data>
-    
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/_16sdp">
-        
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/_8sdp">
-            
-            <!-- Header with SDP dimensions -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_48sdp"
-                android:text="@{viewModel.title}"
-                android:textSize="@dimen/_20ssp"
-                android:gravity="center"
-                android:background="@color/primary"
-                android:textColor="@android:color/white" />
-            
-            <!-- Content cards with mixed scaling -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_120hdp"
-                android:layout_margin="@dimen/_8sdp"
-                app:cardCornerRadius="@dimen/_8sdp"
-                app:cardElevation="@dimen/_4sdp">
-                
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_12sdp">
-                    
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@{viewModel.cardTitle}"
-                        android:textSize="@dimen/_16ssp"
-                        android:textStyle="bold" />
-                    
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="@{viewModel.cardContent}"
-                        android:textSize="@dimen/_14ssp" />
-                    
-                    <Button
-                        android:layout_width="@dimen/_100sdp"
-                        android:layout_height="@dimen/_36sdp"
-                        android:text="Action"
-                        android:textSize="@dimen/_12ssp"
-                        android:onClick="@{() -> viewModel.onActionClick()}" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-    </ScrollView>
-</layout>
-```
-
-### 🎮 Games Module Example
-
-```kotlin
-class GameActivity : Activity() {
-    private lateinit var appDimensGames: AppDimensGames
-    private lateinit var gameRenderer: GameRenderer
-    
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        
-        // Initialize AppDimens Games
-        appDimensGames = AppDimensGames.getInstance()
-        appDimensGames.initialize(this)
-        
-        // Set up game renderer
-        gameRenderer = GameRenderer(this, appDimensGames)
-        setContentView(gameRenderer)
-    }
-    
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        appDimensGames.updateScreenConfiguration(newConfig)
-    }
-}
-
-class GameRenderer : GLSurfaceView.Renderer {
-    private lateinit var appDimensGames: AppDimensGames
-    
-    override fun onDrawFrame(gl: GL10?) {
-        // Calculate responsive dimensions for game elements
-        val buttonSize = appDimensGames.calculateButtonSize(48.0f)
-        val textSize = appDimensGames.calculateTextSize(16.0f)
-        val playerSize = appDimensGames.calculatePlayerSize(64.0f)
-        val enemySize = appDimensGames.calculateEnemySize(32.0f)
-        
-        // Use different scaling types
-        val dynamicDimension = appDimensGames.calculateDimension(100.0f, GameDimensionType.DYNAMIC)
-        val fixedDimension = appDimensGames.calculateDimension(100.0f, GameDimensionType.FIXED)
-        val gameWorldDimension = appDimensGames.calculateDimension(100.0f, GameDimensionType.GAME_WORLD)
-        val uiOverlayDimension = appDimensGames.calculateDimension(100.0f, GameDimensionType.UI_OVERLAY)
-        
-        // Render game elements with calculated dimensions
-        renderGameElements(buttonSize, textSize, playerSize, enemySize)
-    }
-}
-```
-
----
-
-## 🎮 Game Development Examples
-
-### 🤖 Android Game Development
-
-#### Basic Game Setup
-
-```kotlin
-class GameActivity : AppCompatActivity() {
-    private lateinit var gamesManager: AppDimensGames
-    
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        
-        // Initialize games manager
-        gamesManager = AppDimensGames.getInstance()
-        gamesManager.initialize(this)
-        
-        // Configure performance settings
-        gamesManager.configurePerformance(
-            GamePerformanceSettings.HIGH_PERFORMANCE
-        )
-    }
-    
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        gamesManager.updateScreenConfiguration()
-    }
-}
-```
-
-#### Game UI Elements
-
-```kotlin
-class GameUI {
-    private val gamesManager = AppDimensGames.getInstance()
-    
-    fun createGameButton(context: Context): Button {
-        val buttonSize = gamesManager.calculateButtonSize(48f)
-        val button = Button(context)
-        button.layoutParams = ViewGroup.LayoutParams(
-            buttonSize.toInt(), 
-            buttonSize.toInt()
-        )
-        return button
-    }
-    
-    fun createGameText(context: Context): TextView {
-        val textSize = gamesManager.calculateTextSize(16f)
-        val textView = TextView(context)
-        textView.textSize = textSize
-        return textView
-    }
-}
-```
-
-#### Vector Operations
-
-```kotlin
-class GamePhysics {
-    private val gamesManager = AppDimensGames.getInstance()
-    
-    fun calculateMovement(
-        position: GameVector2D, 
-        velocity: GameVector2D
-    ): GameVector2D {
-        val scaledPosition = gamesManager.calculateVector2D(
-            position, 
-            GameDimensionType.GAME_WORLD
-        )
-        val scaledVelocity = gamesManager.calculateVector2D(
-            velocity, 
-            GameDimensionType.GAME_WORLD
-        )
-        
-        return scaledPosition + scaledVelocity
-    }
-}
-```
-
-### 🍎 iOS Game Development
-
-#### Metal Integration
-
-```swift
-import Metal
-import AppDimensGames
-
-class GameRenderer {
-    private let gamesManager = AppDimensGames.shared
-    
-    func setupMetal(device: MTLDevice, viewport: MTLViewport) {
-        gamesManager.initialize(device: device, viewport: viewport)
-        gamesManager.configurePerformance(.highPerformance)
-    }
-    
-    func calculateGameDimensions() {
-        let buttonSize = gamesManager.uniform(48)      // Uniform scaling
-        let playerSize = gamesManager.aspectRatio(64)  // Aspect ratio scaling
-        let uiSize = gamesManager.viewport(24)         // Viewport scaling
-    }
-}
-```
-
-#### SwiftUI Game UI
-
-```swift
-struct GameView: View {
-    @State private var gamesManager = AppDimensGames.shared
-    
-    var body: some View {
-        VStack {
-            // Game-specific dimensions
-            Text("Score: 1000")
-                .font(.system(size: gameUniform(24)))  // Uniform scaling
-            
-            // Metal viewport dimensions
-            MetalGameView()
-                .frame(
-                    width: gameAspectRatio(320),
-                    height: gameAspectRatio(240)
-                )
-        }
-        .withAppDimens()  // Enable AppDimens environment
-    }
-}
-```
-
----
-
-## 🍎 iOS Examples
-
-### 🧩 SwiftUI Examples
-
-#### Responsive Card with Environment
-
-```swift
-struct ResponsiveCard: View {
-    let title: String
-    let content: String
-    let onAction: () -> Void
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12.fxpt) {
-            Text(title)
-                .font(.fxSystem(size: 18, weight: .semibold))
-            
-            Text(content)
-                .font(.fxSystem(size: 14))
-                .foregroundColor(.secondary)
-                .lineLimit(3)
-            
-            HStack {
-                Spacer()
-                Button("Action", action: onAction)
-                    .fxFrame(width: 80, height: 32)
-                    .fxCornerRadius(6)
-            }
-        }
-        .fxPadding(16)
-        .dyFrame(width: 300)           // Dynamic width
-        .fxFrame(height: 200)          // Fixed height
-        .background(Color(.systemGray6))
-        .fxCornerRadius(12)
-        .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 1)
-    }
-}
-```
-
-#### Responsive Grid with LazyVGrid
-
-```swift
-struct ResponsiveGrid: View {
-    let items: [GridItem]
-    let onItemTap: (GridItem) -> Void
-    
-    var body: some View {
-        LazyVGrid(columns: [
-            GridItem(.flexible(), spacing: 16.fxpt),
-            GridItem(.flexible(), spacing: 16.fxpt)
-        ], spacing: 16.fxpt) {
-            ForEach(items, id: \.id) { item in
-                GridItemView(item: item, onTap: { onItemTap(item) })
-            }
-        }
-        .fxPadding(16)
-    }
-}
-
-struct GridItemView: View {
-    let item: GridItem
-    let onTap: () -> Void
-    
-    var body: some View {
-        VStack(spacing: 8.fxpt) {
-            Image(systemName: item.iconName)
-                .font(.fxSystem(size: 24))
-                .foregroundColor(item.color)
-            
-            Text(item.title)
-                .font(.fxSystem(size: 12))
-                .multilineTextAlignment(.center)
-                .lineLimit(2)
-        }
-        .fxFrame(width: 80, height: 80)
-        .background(Color(.systemGray5))
-        .fxCornerRadius(8)
-        .onTapGesture(perform: onTap)
-    }
-}
-```
-
-#### Advanced Conditional Scaling
-
-```swift
-struct AdaptiveButton: View {
-    let text: String
-    let action: () -> Void
-    
-    var body: some View {
-        let buttonSize = AppDimens.fixed(80)
-            .screen(.watch, 40)           // 40pt for Apple Watch
-            .screen(.tablet, 120)         // 120pt for iPad
-            .aspectRatio(enable: true)    // Enable aspect ratio adjustment
-            .toPoints()
-        
-        Button(text, action: action)
-            .fxFrame(width: buttonSize, height: buttonSize)
-            .fxCornerRadius(8)
-            .font(.fxSystem(size: 14, weight: .medium))
-    }
-}
-```
-
-### 📱 UIKit Examples
-
-#### Responsive View Controller
-
-```swift
-class ResponsiveViewController: UIViewController {
-    private let containerView = UIView()
-    private let titleLabel = UILabel()
-    private let contentLabel = UILabel()
-    private let actionButton = UIButton(type: .system)
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
-        setupConstraints()
-    }
-    
-    private func setupUI() {
-        // Container
-        containerView.backgroundColor = .systemBlue
-        containerView.fxCornerRadius(16)
-        view.addSubview(containerView)
-        
-        // Title
-        titleLabel.text = "Responsive Title"
-        titleLabel.textAlignment = .center
-        titleLabel.fxFontSize(20)
-        titleLabel.textColor = .white
-        containerView.addSubview(titleLabel)
-        
-        // Content
-        contentLabel.text = "This content adapts to different screen sizes"
-        contentLabel.textAlignment = .center
-        contentLabel.fxFontSize(16)
-        contentLabel.textColor = .white
-        contentLabel.numberOfLines = 0
-        containerView.addSubview(contentLabel)
-        
-        // Button
-        actionButton.setTitle("Action", for: .normal)
-        actionButton.fxTitleFontSize(16)
-        actionButton.fxCornerRadius(8)
-        actionButton.backgroundColor = .white
-        actionButton.setTitleColor(.systemBlue, for: .normal)
-        containerView.addSubview(actionButton)
-    }
-    
-    private func setupConstraints() {
-        [containerView, titleLabel, contentLabel, actionButton].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
-        
-        NSLayoutConstraint.activate([
-            // Container - fixed width (RECOMMENDED), fixed height
-            containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            containerView.widthAnchor.constraint(equalToConstant: 300.fxpt),
-            containerView.heightAnchor.constraint(equalToConstant: 200.fxpt),
-            
-            // Title
-            titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20.fxpt),
-            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16.fxpt),
-            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16.fxpt),
-            
-            // Content
-            contentLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12.fxpt),
-            contentLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16.fxpt),
-            contentLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16.fxpt),
-            
-            // Button
-            actionButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            actionButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20.fxpt),
-            actionButton.widthAnchor.constraint(equalToConstant: 120.dypt),
-            actionButton.heightAnchor.constraint(equalToConstant: 44.fxpt)
-        ])
-    }
-}
-```
-
-#### Advanced UIKit Configuration
-
-```swift
-class AdvancedViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupAdvancedUI()
-    }
-    
-    private func setupAdvancedUI() {
-        // Custom dimensions with device-specific values
-        let customDimension = AppDimens.fixed(16)
-            .screen(.phone, 14)           // 14pt for phones
-            .screen(.tablet, 18)          // 18pt for tablets
-            .aspectRatio(enable: true)    // Enable aspect ratio adjustment
-            .toPoints()
-        
-        // Dynamic with custom screen type
-        let dynamicDimension = AppDimens.dynamic(100)
-            .type(.highest)               // Use highest screen dimension
-            .toPoints()
-        
-        // Apply to UI elements
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: customDimension)
-        label.text = "Custom scaled text"
-        
-        let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: dynamicDimension, height: 50.fxpt)
-        view.backgroundColor = .systemBlue
-        view.fxCornerRadius(8)
-        
-        view.addSubview(label)
-        self.view.addSubview(view)
-        
-        // Center the view
-        view.center = self.view.center
-        label.center = view.center
-    }
-}
-```
-
----
-
-## 🎯 Flutter Examples
-
-### 📱 Basic Responsive Widget
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:appdimens/appdimens.dart';
-
-class ResponsiveCard extends StatelessWidget {
-  final String title;
-  final String content;
-  final VoidCallback onAction;
-
-  const ResponsiveCard({
-    required this.title,
-    required this.content,
-    required this.onAction,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 300.fxdp(),          // Fixed width (RECOMMENDED)
-      height: 200.fxdp(),         // Fixed height
-      padding: EdgeInsets.all(16.fxdp()),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12.fxdp()),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 8.fxdp(),
-            offset: Offset(0, 2.fxdp()),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 18.fxsp(),          // Fixed font (RECOMMENDED)
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(height: 8.fxdp()),
-          Expanded(
-            child: Text(
-              content,
-              style: TextStyle(
-                fontSize: 14.fxsp(),        // Fixed font (RECOMMENDED)
-                color: Colors.grey[600],
-              ),
-            ),
-          ),
-          SizedBox(height: 12.fxdp()),
-          Align(
-            alignment: Alignment.centerRight,
-            child: ElevatedButton(
-              onPressed: onAction,
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(100.fxdp(), 36.fxdp()),  // Fixed sizes (RECOMMENDED)
-                padding: EdgeInsets.symmetric(
-                  horizontal: 20.fxdp(),
-                  vertical: 8.fxdp(),
-                ),
-              ),
-              child: Text(
-                'Action',
-                style: TextStyle(fontSize: 14.fxsp()),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-```
-
-### 🌐 Responsive Grid Layout
-
-```dart
-class ResponsiveGrid extends StatelessWidget {
-  final List<GridItem> items;
-  final Function(GridItem) onItemTap;
-
-  const ResponsiveGrid({
-    required this.items,
-    required this.onItemTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    // Calculate columns based on screen size
-    final screenWidth = MediaQuery.of(context).size.width;
-    final itemWidth = 120.fxdp();  // Fixed width (RECOMMENDED)
-    final columns = (screenWidth / itemWidth).floor().clamp(2, 6);
-
-    return GridView.builder(
-      padding: EdgeInsets.all(16.fxdp()),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: columns,
-        crossAxisSpacing: 12.fxdp(),
-        mainAxisSpacing: 12.fxdp(),
-        childAspectRatio: 1.0,
-      ),
-      itemCount: items.length,
-      itemBuilder: (context, index) {
-        return GridItemCard(
-          item: items[index],
-          onTap: () => onItemTap(items[index]),
-        );
-      },
-    );
-  }
-}
-
-class GridItemCard extends StatelessWidget {
-  final GridItem item;
-  final VoidCallback onTap;
-
-  const GridItemCard({required this.item, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.all(12.fxdp()),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8.fxdp()),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.05),
-              blurRadius: 4.fxdp(),
-            ),
-          ],
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              item.icon,
-              size: 32.fxdp(),
-              color: item.color,
-            ),
-            SizedBox(height: 8.fxdp()),
-            Text(
-              item.title,
-              style: TextStyle(fontSize: 12.fxsp()),  // Fixed font (RECOMMENDED)
-              textAlign: TextAlign.center,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-```
-
-### 📱 Platform-Adaptive Layout
-
-```dart
-class PlatformAdaptiveLayout extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final screenType = AppDimens.getScreenType(context);
-    
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Adaptive Layout',
-          style: TextStyle(fontSize: 20.fxsp()),
-        ),
-        toolbarHeight: 56.fxdp(),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(16.fxdp()),
-        child: screenType == ScreenType.phone
-            ? _buildPhoneLayout()
-            : screenType == ScreenType.tablet
-                ? _buildTabletLayout()
-                : _buildDesktopLayout(),
-      ),
-    );
-  }
-
-  Widget _buildPhoneLayout() {
-    return ListView(
-      children: [
-        _buildCard('Card 1'),
-        SizedBox(height: 12.fxdp()),
-        _buildCard('Card 2'),
-        SizedBox(height: 12.fxdp()),
-        _buildCard('Card 3'),
-      ],
-    );
-  }
-
-  Widget _buildTabletLayout() {
-    return GridView.count(
-      crossAxisCount: 2,
-      crossAxisSpacing: 16.fxdp(),
-      mainAxisSpacing: 16.fxdp(),
-      children: [
-        _buildCard('Card 1'),
-        _buildCard('Card 2'),
-        _buildCard('Card 3'),
-        _buildCard('Card 4'),
-      ],
-    );
-  }
-
-  Widget _buildDesktopLayout() {
-    return Row(
-      children: [
-        Expanded(child: _buildCard('Card 1')),
-        SizedBox(width: 16.fxdp()),
-        Expanded(child: _buildCard('Card 2')),
-        SizedBox(width: 16.fxdp()),
-        Expanded(child: _buildCard('Card 3')),
-      ],
-    );
-  }
-
-  Widget _buildCard(String title) {
-    return Container(
-      padding: EdgeInsets.all(16.fxdp()),
-      decoration: BoxDecoration(
-        color: Colors.blue,
-        borderRadius: BorderRadius.circular(12.fxdp()),
-      ),
-      child: Center(
-        child: Text(
-          title,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 18.fxsp(),
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-    );
-  }
-}
-```
-
----
-
-## ⚛️ React Native Examples
-
-### 📱 Basic Responsive Component
-
-```typescript
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useAppDimens } from 'react-native-appdimens';
-
-interface ResponsiveCardProps {
-  title: string;
-  content: string;
-  onAction: () => void;
-}
-
-function ResponsiveCard({ title, content, onAction }: ResponsiveCardProps) {
-  const { fixed, dynamic, fluid } = useAppDimens();
-  
-  const styles = StyleSheet.create({
-    card: {
-      width: dynamic(300),
-      height: fixed(200),
-      padding: fixed(16),
-      backgroundColor: '#fff',
-      borderRadius: fixed(12),
-      shadowColor: '#000',
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.1,
-      shadowRadius: fixed(8),
-      elevation: 3,
-    },
-    title: {
-      fontSize: fixed(18),
-      fontWeight: 'bold',
-      marginBottom: fixed(8),
-    },
-    content: {
-      fontSize: dynamic(14),
-      color: '#666',
-      flex: 1,
-    },
-    buttonContainer: {
-      alignItems: 'flex-end',
-      marginTop: fixed(12),
-    },
-    button: {
-      backgroundColor: '#007AFF',
-      paddingHorizontal: fixed(20),
-      paddingVertical: fixed(10),
-      borderRadius: fixed(6),
-      minWidth: dynamic(100),
-      minHeight: fixed(36),
-    },
-    buttonText: {
-      color: '#fff',
-      fontSize: fixed(14),
-      fontWeight: '600',
-    },
-  });
-  
-  return (
-    <View style={styles.card}>
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.content}>{content}</Text>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={onAction}>
-          <Text style={styles.buttonText}>Action</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
-}
-
-export default ResponsiveCard;
-```
-
-### 🌐 Responsive Grid with Hooks
-
-```typescript
-import React from 'react';
-import { View, FlatList, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useAppDimens, useBreakpoint, useOrientation } from 'react-native-appdimens';
-
-interface GridItem {
-  id: string;
-  title: string;
-  color: string;
-}
-
-interface ResponsiveGridProps {
-  items: GridItem[];
-  onItemPress: (item: GridItem) => void;
-}
-
-function ResponsiveGrid({ items, onItemPress }: ResponsiveGridProps) {
-  const { fixed, dynamic } = useAppDimens();
-  const breakpoint = useBreakpoint();
-  const orientation = useOrientation();
-  
-  // Determine number of columns based on breakpoint
-  const numColumns = breakpoint === 'sm' ? 2 : breakpoint === 'md' ? 3 : 4;
-  
-  const styles = StyleSheet.create({
-    container: {
-      padding: fixed(16),
-    },
-    item: {
-      flex: 1,
-      margin: fixed(8),
-      height: dynamic(120),
-      borderRadius: fixed(12),
-      justifyContent: 'center',
-      alignItems: 'center',
-      padding: fixed(16),
-    },
-    title: {
-      fontSize: fixed(14),
-      fontWeight: '600',
-      textAlign: 'center',
-      color: '#fff',
-    },
-  });
-  
-  const renderItem = ({ item }: { item: GridItem }) => (
-    <TouchableOpacity
-      style={[styles.item, { backgroundColor: item.color }]}
-      onPress={() => onItemPress(item)}
-    >
-      <Text style={styles.title}>{item.title}</Text>
-    </TouchableOpacity>
-  );
-  
-  return (
-    <FlatList
-      data={items}
-      renderItem={renderItem}
-      keyExtractor={(item) => item.id}
-      numColumns={numColumns}
-      contentContainerStyle={styles.container}
-      key={numColumns + '-' + orientation}
-    />
-  );
-}
-
-export default ResponsiveGrid;
-```
-
-### 🎨 Fluid Typography Example
-
-```typescript
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { useAppDimens } from 'react-native-appdimens';
-
-function FluidTypography() {
-  const { fluid, fixed } = useAppDimens();
-  
-  const styles = StyleSheet.create({
-    container: {
-      padding: fixed(24),
-      backgroundColor: '#f5f5f5',
-    },
-    hero: {
-      fontSize: fluid(32, 64),  // Scales smoothly from 32 to 64
-      fontWeight: 'bold',
-      marginBottom: fixed(16),
-    },
-    subtitle: {
-      fontSize: fluid(18, 24),  // Scales smoothly from 18 to 24
-      color: '#666',
-      marginBottom: fixed(24),
-    },
-    body: {
-      fontSize: fluid(14, 18),  // Scales smoothly from 14 to 18
-      lineHeight: fluid(20, 28),
-      color: '#333',
-    },
-  });
-  
-  return (
-    <View style={styles.container}>
-      <Text style={styles.hero}>Fluid Typography</Text>
-      <Text style={styles.subtitle}>
-        Responsive text that scales smoothly
-      </Text>
-      <Text style={styles.body}>
-        This text uses fluid scaling to adapt seamlessly across different screen
-        sizes, providing optimal readability on all devices from small phones to
-        large tablets.
-      </Text>
-    </View>
-  );
-}
-
-export default FluidTypography;
-```
-
----
-
-## 🌐 Web Examples
-
-### ⚛️ React with Hooks
-
-{% raw %}
-```tsx
-import React from 'react';
-import { useWebDimens, useBreakpoint, useViewport } from 'webdimens/react';
-
-function ResponsiveCard() {
-  const { fx, dy, fl } = useWebDimens();
-  const breakpoint = useBreakpoint();
-  const viewport = useViewport();
-  
-  // Responsive styles using AppDimens
-  const cardStyle = {
-    width: dy(300),
-    height: fx(200),
-    padding: fx(16),
-    borderRadius: fx(12),
-    backgroundColor: '#fff',
-    boxShadow: '0 ' + fx(2) + ' ' + fx(8) + ' rgba(0,0,0,0.1)',
-  };
-  
-  const titleStyle = {
-    fontSize: fx(18),
-    marginBottom: fx(8)
-  };
-  
-  return (
-    <div style={cardStyle}>
-      <h2 style={titleStyle}>
-        Responsive Card
-      </h2>
-      <p style={{ fontSize: fl(14, 18), color: '#666' }}>
-        Current breakpoint: {breakpoint.current}
-      </p>
-      <p style={{ fontSize: fl(12, 16) }}>
-        Viewport: {viewport.width}x{viewport.height}
-      </p>
-      <button style={{
-        marginTop: fx(12),
-        padding: fx(10) + ' ' + fx(20),
-        borderRadius: fx(6),
-        border: 'none',
-        backgroundColor: '#007AFF',
-        color: '#fff',
-        fontSize: fx(14),
-        cursor: 'pointer',
-      }}>
-        Action
-      </button>
-    </div>
-  );
-}
-
-export default ResponsiveCard;
-```
-{% endraw %}
-
-### 🟢 Vue Composition API
-
-{% raw %}
-```vue
-<template>
-  <div class="responsive-card" :style="cardStyles">
-    <h2 :style="titleStyles">{{ title }}</h2>
-    <p :style="contentStyles">{{ content }}</p>
-    <p :style="infoStyles">
-      Current breakpoint: {{ breakpoint.current }}
-    </p>
-    <button :style="buttonStyles" @click="handleAction">
-      Action
-    </button>
-  </div>
-</template>
-
-<script setup lang="ts">
-import { computed } from 'vue';
-import { useWebDimens, useBreakpoint, useViewport } from 'webdimens/vue';
-
-interface Props {
-  title: string;
-  content: string;
-}
-
-const props = defineProps<Props>();
-const emit = defineEmits<{
-  (e: 'action'): void;
-}>();
-
-const { fx, dy, fl } = useWebDimens();
-const breakpoint = useBreakpoint();
-const viewport = useViewport();
-
-const cardStyles = computed(() => ({
-  width: dy(300),
-  height: fx(200),
-  padding: fx(16),
-  borderRadius: fx(12),
-  backgroundColor: '#fff',
-  boxShadow: '0 ' + fx(2) + ' ' + fx(8) + ' rgba(0,0,0,0.1)',
-}));
-
-const titleStyles = computed(() => ({
-  fontSize: fx(18),
-  marginBottom: fx(8),
-  fontWeight: 'bold',
-}));
-
-const contentStyles = computed(() => ({
-  fontSize: fl(14, 18),
-  color: '#666',
-  marginBottom: fx(12),
-}));
-
-const infoStyles = computed(() => ({
-  fontSize: fl(12, 16),
-  color: '#999',
-}));
-
-const buttonStyles = computed(() => ({
-  marginTop: fx(12),
-  padding: fx(10) + ' ' + fx(20),
-  borderRadius: fx(6),
-  border: 'none',
-  backgroundColor: '#007AFF',
-  color: '#fff',
-  fontSize: fx(14),
-  cursor: 'pointer',
-}));
-
-const handleAction = () => {
-  emit('action');
-};
-</script>
-```
-{% endraw %}
-
-### 🔶 Angular Component
-
-{% raw %}
-```typescript
-import { Component } from '@angular/core';
-import { WebDimensService } from 'webdimens/angular';
-
-@Component({
-  selector: 'app-responsive-card',
-  template: `
-    <div class="card" [ngStyle]="cardStyles">
-      <h2 [ngStyle]="titleStyles">{{ title }}</h2>
-      <p [ngStyle]="contentStyles">{{ content }}</p>
-      <p [ngStyle]="infoStyles">
-        Current breakpoint: {{ breakpoint }}
-      </p>
-      <button [ngStyle]="buttonStyles" (click)="onAction()">
-        Action
-      </button>
-    </div>
-  `,
-})
-export class ResponsiveCardComponent {
-  title = 'Responsive Card';
-  content = 'This card adapts to all screen sizes';
-  breakpoint = '';
-  
-  cardStyles = {};
-  titleStyles = {};
-  contentStyles = {};
-  infoStyles = {};
-  buttonStyles = {};
-  
-  constructor(private webDimens: WebDimensService) {
-    this.webDimens.breakpoint$.subscribe(bp => {
-      this.breakpoint = bp.current;
-      this.updateStyles();
-    });
-  }
-  
-  private updateStyles() {
-    const wd = this.webDimens.instance;
-    
-    this.cardStyles = {
-      width: wd.dy(300),
-      height: wd.fx(200),
-      padding: wd.fx(16),
-      borderRadius: wd.fx(12),
-      backgroundColor: '#fff',
-      boxShadow: '0 ' + wd.fx(2) + ' ' + wd.fx(8) + ' rgba(0,0,0,0.1)',
-    };
-    
-    this.titleStyles = {
-      fontSize: wd.fx(18),
-      marginBottom: wd.fx(8),
-      fontWeight: 'bold',
-    };
-    
-    this.contentStyles = {
-      fontSize: wd.fl(14, 18),
-      color: '#666',
-    };
-    
-    this.infoStyles = {
-      fontSize: wd.fl(12, 16),
-      color: '#999',
-    };
-    
-    this.buttonStyles = {
-      marginTop: wd.fx(12),
-      padding: wd.fx(10) + ' ' + wd.fx(20),
-      borderRadius: wd.fx(6),
-      border: 'none',
-      backgroundColor: '#007AFF',
-      color: '#fff',
-      fontSize: wd.fx(14),
-      cursor: 'pointer',
-    };
-  }
-  
-  onAction() {
-    console.log('Action clicked!');
-  }
-}
-```
-{% endraw %}
-
-### 🎨 Svelte with Stores
-
-```svelte
-<script lang="ts">
-  import { webDimensStore, breakpointStore, viewportStore } from 'webdimens/svelte';
-  
-  export let title: string;
-  export let content: string;
-  
-  $: wd = $webDimensStore;
-  $: breakpoint = $breakpointStore;
-  $: viewport = $viewportStore;
-  
-  function handleAction() {
-    console.log('Action clicked!');
-  }
-</script>
-
-<div class="card" style="
-  width: {wd.dy(300)};
-  height: {wd.fx(200)};
-  padding: {wd.fx(16)};
-  border-radius: {wd.fx(12)};
-">
-  <h2 style="font-size: {wd.fx(18)}; margin-bottom: {wd.fx(8)};">
-    {title}
-  </h2>
-  <p style="font-size: {wd.fl(14, 18)}; color: #666;">
-    {content}
-  </p>
-  <p style="font-size: {wd.fl(12, 16)}; color: #999;">
-    Current breakpoint: {breakpoint.current}
-  </p>
-  <button 
-    style="
-      margin-top: {wd.fx(12)};
-      padding: {wd.fx(10)} {wd.fx(20)};
-      border-radius: {wd.fx(6)};
-      font-size: {wd.fx(14)};
-    "
-    on:click={handleAction}
-  >
-    Action
-  </button>
-</div>
-
-<style>
-  .card {
-    background-color: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  
-  button {
-    border: none;
-    background-color: #007AFF;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-</style>
-```
-
----
-
-## 🔄 Cross-Platform Patterns
-
-### Common UI Patterns
-
-#### Card Component Pattern
-
-**Android (Compose):**
-```kotlin
-@Composable
-fun Card(
-    title: String,
-    content: String,
-    onAction: () -> Unit
-) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.fxdp)
-            .height(200.fxdp)
-    ) {
-        Column(
-            modifier = Modifier.padding(16.fxdp)
-        ) {
-            Text(title, fontSize = 18.fxsp, fontWeight = FontWeight.Bold)
-            Text(content, fontSize = 14.dysp, color = Color.Gray)
-            Button(onClick = onAction) {
-                Text("Action", fontSize = 14.fxsp)
-            }
-        }
-    }
-}
-```
-
-**iOS (SwiftUI):**
-```swift
-struct Card: View {
-    let title: String
-    let content: String
-    let onAction: () -> Void
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12.fxpt) {
-            Text(title)
-                .font(.fxSystem(size: 18, weight: .bold))
-            
-            Text(content)
-                .font(.fxSystem(size: 14))
-                .foregroundColor(.secondary)
-            
-            Button("Action", action: onAction)
-                .fxFrame(width: 80, height: 32)
-        }
-        .fxPadding(16)
-        .fxFrame(height: 200)
-        .background(Color(.systemGray6))
-        .fxCornerRadius(12)
-    }
-}
-```
-
-#### Grid Layout Pattern
-
-**Android (Compose):**
-```kotlin
-@Composable
-fun Grid(
-    items: List<Item>,
-    onItemClick: (Item) -> Unit
-) {
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
-        contentPadding = PaddingValues(16.fxdp),
-        horizontalArrangement = Arrangement.spacedBy(8.fxdp)
-    ) {
-        items(items) { item ->
-            GridItem(item = item, onClick = { onItemClick(item) })
-        }
-    }
-}
-```
-
-**iOS (SwiftUI):**
-```swift
-struct Grid: View {
-    let items: [Item]
-    let onItemTap: (Item) -> Void
-    
-    var body: some View {
-        LazyVGrid(columns: [
-            GridItem(.flexible(), spacing: 16.fxpt),
-            GridItem(.flexible(), spacing: 16.fxpt)
-        ], spacing: 16.fxpt) {
-            ForEach(items, id: \.id) { item in
-                GridItemView(item: item, onTap: { onItemTap(item) })
-            }
-        }
-        .fxPadding(16)
-    }
-}
-```
-
----
-
-## 🚀 Advanced Use Cases
-
-### E-commerce App Layout
-
-```kotlin
-// Android
-@Composable
-fun ProductCard(
-    product: Product,
-    onAddToCart: () -> Unit
-) {
-    Card(
-        modifier = Modifier
-            .width(160.dydp)
-            .height(240.fxdp)
-            .padding(8.fxdp)
+        elevation = CardDefaults.cardElevation(2.balanced().dp)
     ) {
         Column {
             // Product image
             AsyncImage(
                 model = product.imageUrl,
-                contentDescription = null,
+                contentDescription = product.name,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(120.dydp)
+                    .height(180.percentageDp.dp)  // Proportional
+                    .clip(RoundedCornerShape(topStart = 8.balanced().dp, topEnd = 8.balanced().dp))
             )
             
-            // Product info
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(12.fxdp)
-            ) {
+            Column(modifier = Modifier.padding(12.balanced().dp)) {
+                // Product name
                 Text(
                     text = product.name,
-                    fontSize = 14.fxsp,
-                    fontWeight = FontWeight.Medium,
+                    fontSize = 14.balanced().sp,
+                    fontWeight = FontWeight.Bold,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
                 
-                Spacer(modifier = Modifier.height(4.fxdp))
+                Spacer(modifier = Modifier.height(4.balanced().dp))
                 
+                // Product price
                 Text(
-                    text = product.price,
-                    fontSize = 16.fxsp,
+                    text = "$${product.price}",
+                    fontSize = 16.balanced().sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.Red
+                    color = MaterialTheme.colorScheme.primary
                 )
                 
-                Spacer(modifier = Modifier.height(8.fxdp))
+                Spacer(modifier = Modifier.height(8.balanced().dp))
                 
+                // Add to cart button
                 Button(
-                    onClick = onAddToCart,
+                    onClick = { },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(32.fxdp)
+                        .height(40.balanced().dp)
                 ) {
                     Text(
                         text = "Add to Cart",
-                        fontSize = 12.fxsp
+                        fontSize = 14.balanced().sp
                     )
                 }
             }
@@ -1601,323 +343,984 @@ fun ProductCard(
 }
 ```
 
-```swift
-// iOS
-struct ProductCard: View {
-    let product: Product
-    let onAddToCart: () -> Void
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8.fxpt) {
-            // Product image
-            AsyncImage(url: URL(string: product.imageUrl)) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-            } placeholder: {
-                Rectangle()
-                    .fill(Color.gray.opacity(0.3))
-            }
-            .frame(height: 120.dypt)
-            .clipped()
-            
-            // Product info
-            VStack(alignment: .leading, spacing: 4.fxpt) {
-                Text(product.name)
-                    .font(.fxSystem(size: 14, weight: .medium))
-                    .lineLimit(2)
-                
-                Text(product.price)
-                    .font(.fxSystem(size: 16, weight: .bold))
-                    .foregroundColor(.red)
-                
-                Button("Add to Cart", action: onAddToCart)
-                    .fxFrame(width: .infinity, height: 32)
-                    .fxCornerRadius(6)
-            }
-            .fxPadding(12)
-        }
-        .dyFrame(width: 160)
-        .fxFrame(height: 240)
-        .background(Color(.systemBackground))
-        .fxCornerRadius(12)
-        .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 1)
-    }
-}
-```
-
-### News App Layout
+#### Using Smart API
 
 ```kotlin
-// Android
 @Composable
-fun NewsArticle(
-    article: Article,
-    onReadMore: () -> Unit
-) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.fxdp, vertical = 8.fxdp)
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.fxdp)
-        ) {
-            // Article image
-            AsyncImage(
-                model = article.imageUrl,
-                contentDescription = null,
-                modifier = Modifier
-                    .width(100.dydp)
-                    .height(80.fxdp)
-                    .clip(RoundedCornerShape(8.fxdp))
+fun SmartAPIExample() {
+    Column(modifier = Modifier.padding(16.balanced().dp)) {
+        // Smart API automatically selects best strategy
+        Button(
+            onClick = { },
+            modifier = Modifier.height(
+                AppDimens.from(48).smart().forElement(ElementType.BUTTON).dp
             )
-            
-            Spacer(modifier = Modifier.width(12.fxdp))
-            
-            // Article content
-            Column(
-                modifier = Modifier.weight(1f)
-            ) {
-                Text(
-                    text = article.title,
-                    fontSize = 16.fxsp,
-                    fontWeight = FontWeight.Bold,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis
-                )
-                
-                Spacer(modifier = Modifier.height(4.fxdp))
-                
-                Text(
-                    text = article.summary,
-                    fontSize = 14.dysp,
-                    color = Color.Gray,
-                    maxLines = 3,
-                    overflow = TextOverflow.Ellipsis
-                )
-                
-                Spacer(modifier = Modifier.height(8.fxdp))
-                
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = article.publishDate,
-                        fontSize = 12.fxsp,
-                        color = Color.Gray
-                    )
-                    
-                    TextButton(onClick = onReadMore) {
-                        Text(
-                            text = "Read More",
-                            fontSize = 12.fxsp
-                        )
-                    }
-                }
-            }
+            // → Automatically selects BALANCED for buttons on tablets
+        ) {
+            Text("Smart Button")
         }
+        
+        // For containers
+        Box(
+            modifier = Modifier.width(
+                AppDimens.from(300).smart().forElement(ElementType.CONTAINER).dp
+            )
+            // → Automatically selects PERCENTAGE for containers
+        )
+        
+        // For text
+        Text(
+            text = "Smart Text",
+            fontSize = AppDimens.from(16).smart().forElement(ElementType.TEXT).sp
+            // → Automatically selects FLUID for text (if configured)
+        )
     }
 }
 ```
 
-```swift
-// iOS
-struct NewsArticle: View {
-    let article: Article
-    let onReadMore: () -> Void
-    
-    var body: some View {
-        HStack(spacing: 12.fxpt) {
-            // Article image
-            AsyncImage(url: URL(string: article.imageUrl)) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-            } placeholder: {
-                Rectangle()
-                    .fill(Color.gray.opacity(0.3))
-            }
-            .dyFrame(width: 100)
-            .fxFrame(height: 80)
-            .fxCornerRadius(8)
-            
-            // Article content
-            VStack(alignment: .leading, spacing: 4.fxpt) {
-                Text(article.title)
-                    .font(.fxSystem(size: 16, weight: .bold))
-                    .lineLimit(2)
-                
-                Text(article.summary)
-                    .font(.fxSystem(size: 14))
-                    .foregroundColor(.secondary)
-                    .lineLimit(3)
-                
-                HStack {
-                    Text(article.publishDate)
-                        .font(.fxSystem(size: 12))
-                        .foregroundColor(.secondary)
-                    
-                    Spacer()
-                    
-                    Button("Read More", action: onReadMore)
-                        .font(.fxSystem(size: 12))
-                }
-            }
-        }
-        .fxPadding(16)
-        .background(Color(.systemBackground))
-        .fxCornerRadius(12)
-        .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 1)
+### 2.2 Using Different Strategies
+
+```kotlin
+@Composable
+fun AllStrategiesDemo() {
+    Column(modifier = Modifier.padding(16.balanced().dp)) {
+        // BALANCED ⭐ (Primary)
+        Text("Balanced", fontSize = 16.balanced().sp)
+        
+        // DEFAULT (Secondary - phone-focused)
+        Text("Default", fontSize = 16.defaultDp.sp)
+        
+        // PERCENTAGE (Large containers)
+        Box(modifier = Modifier.width(300.percentageDp.dp))
+        
+        // LOGARITHMIC (TV apps)
+        Text("Logarithmic", fontSize = 16.logarithmic().sp)
+        
+        // POWER (Configurable)
+        Text("Power", fontSize = 16.power(exponent = 0.75f).sp)
+        
+        // FLUID (Typography with bounds)
+        Text("Fluid", fontSize = fluidSp(14f, 20f))
+        
+        // INTERPOLATED (Moderate)
+        Text("Interpolated", fontSize = 16.interpolated().sp)
+        
+        // DIAGONAL (Physical size)
+        Box(modifier = Modifier.size(48.diagonal().dp))
+        
+        // PERIMETER (W+H)
+        Box(modifier = Modifier.size(48.perimeter().dp))
+        
+        // FIT/FILL (Games)
+        Box(modifier = Modifier.size(48.fit().dp))
+        Box(modifier = Modifier.size(48.fill().dp))
+        
+        // NONE (No scaling)
+        Divider(thickness = 1.none().dp)  // Always 1dp
     }
 }
 ```
 
 ---
 
-## ⚡ Performance Examples
+## 3. iOS Examples
 
-### Caching Dimensions
+### 3.1 SwiftUI - Complete App Example
 
-```kotlin
-// Android
-class OptimizedActivity : AppCompatActivity() {
-    // Cache frequently used dimensions
-    private val buttonHeight = AppDimens.fixed(44).toPx(resources).toInt()
-    private val cardWidth = AppDimens.dynamic(300).toPx(resources).toInt()
-    private val padding = 16.fxdp
+#### News Reader App
+
+```swift
+struct NewsReaderView: View {
+    @State private var articles: [Article] = []
     
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // Use cached dimensions
+    var body: some View {
+        NavigationView {
+            ScrollView {
+                VStack(spacing: AppDimens.shared.balanced(16).toPoints()) {
+                    ForEach(articles) { article in
+                        ArticleCard(article: article)
+                    }
+                }
+                .padding(AppDimens.shared.balanced(16).toPoints())
+            }
+            .navigationTitle("News")
+            .navigationBarTitleDisplayMode(.large)
+        }
+    }
+}
+
+struct ArticleCard: View {
+    let article: Article
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: AppDimens.shared.balanced(12).toPoints()) {
+            // Article image
+            AsyncImage(url: article.imageURL) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            } placeholder: {
+                Rectangle().fill(Color.gray.opacity(0.2))
+            }
+            .frame(
+                height: AppDimens.shared.percentage(200).toPoints()  // Proportional
+            )
+            .clipped()
+            .cornerRadius(AppDimens.shared.balanced(8).toPoints())
+            
+            // Category badge
+            Text(article.category.uppercased())
+                .font(.system(
+                    size: AppDimens.shared.balanced(10).toPoints(),
+                    weight: .semibold
+                ))
+                .foregroundColor(.white)
+                .padding(.horizontal, AppDimens.shared.balanced(8).toPoints())
+                .padding(.vertical, AppDimens.shared.balanced(4).toPoints())
+                .background(Color.blue)
+                .cornerRadius(AppDimens.shared.balanced(4).toPoints())
+            
+            // Article title
+            Text(article.title)
+                .font(.system(
+                    size: AppDimens.shared.balanced(16).toPoints(),
+                    weight: .bold
+                ))
+                .lineLimit(2)
+            
+            // Article excerpt
+            Text(article.excerpt)
+                .font(.system(size: AppDimens.shared.balanced(14).toPoints()))
+                .foregroundColor(.secondary)
+                .lineLimit(3)
+            
+            // Metadata row
+            HStack(spacing: AppDimens.shared.balanced(12).toPoints()) {
+                Label(
+                    article.author,
+                    systemImage: "person.circle"
+                )
+                .font(.system(size: AppDimens.shared.balanced(12).toPoints()))
+                
+                Label(
+                    article.readTime,
+                    systemImage: "clock"
+                )
+                .font(.system(size: AppDimens.shared.balanced(12).toPoints()))
+            }
+            .foregroundColor(.secondary)
+        }
+        .padding(AppDimens.shared.balanced(12).toPoints())
+        .background(Color.white)
+        .cornerRadius(AppDimens.shared.balanced(12).toPoints())
+        .shadow(radius: AppDimens.shared.balanced(2).toPoints())
     }
 }
 ```
 
+### 3.2 UIKit - Settings Screen
+
 ```swift
-// iOS
-class OptimizedViewController: UIViewController {
-    // Cache frequently used dimensions
-    private let buttonHeight = AppDimens.fixed(44).toPoints()
-    private let cardWidth = AppDimens.dynamic(300).toPoints()
-    private let padding = 16.fxpt
+class SettingsViewController: UIViewController {
+    
+    private lazy var tableView: UITableView = {
+        let table = UITableView(frame: .zero, style: .insetGrouped)
+        table.delegate = self
+        table.dataSource = self
+        table.rowHeight = AppDimens.shared.balanced(56).toPoints()
+        return table
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Use cached dimensions
+        
+        title = "Settings"
+        view.backgroundColor = .systemBackground
+        
+        // Setup table view
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+}
+
+extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return settings.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
+        let setting = settings[indexPath.row]
+        
+        cell.textLabel?.text = setting.title
+        cell.textLabel?.font = .systemFont(
+            ofSize: AppDimens.shared.balanced(16).toPoints()
+        )
+        
+        cell.detailTextLabel?.text = setting.value
+        cell.detailTextLabel?.font = .systemFont(
+            ofSize: AppDimens.shared.balanced(14).toPoints()
+        )
+        
+        cell.imageView?.image = UIImage(systemName: setting.icon)
+        cell.imageView?.tintColor = .systemBlue
+        
+        return cell
     }
 }
 ```
 
-### Lazy Loading with Dimensions
-
-```kotlin
-// Android
-@Composable
-fun LazyListWithDimensions(
-    items: List<Item>
-) {
-    LazyColumn(
-        contentPadding = PaddingValues(16.fxdp),
-        verticalArrangement = Arrangement.spacedBy(8.fxdp)
-    ) {
-        items(items) { item ->
-            ItemCard(
-                item = item,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(120.fxdp)
-            )
-        }
-    }
-}
-```
+### 3.3 Using Smart API (iOS)
 
 ```swift
-// iOS
-struct LazyListWithDimensions: View {
-    let items: [Item]
-    
+struct SmartAPIView: View {
     var body: some View {
-        LazyVStack(spacing: 8.fxpt) {
-            ForEach(items, id: \.id) { item in
-                ItemCard(item: item)
-                    .fxFrame(height: 120)
-            }
+        VStack(spacing: AppDimens.shared.balanced(16).toPoints()) {
+            // Smart button (automatically selects BALANCED on tablets)
+            Button("Smart Button") { }
+                .frame(height: AppDimens.shared.smart(48).forElement(.button).toPoints())
+            
+            // Smart container (automatically selects PERCENTAGE)
+            Rectangle()
+                .fill(Color.blue.opacity(0.1))
+                .frame(width: AppDimens.shared.smart(300).forElement(.container).toPoints())
+            
+            // Smart text (automatically selects FLUID if configured)
+            Text("Smart Text")
+                .font(.system(size: AppDimens.shared.smart(16).forElement(.text).toPoints()))
         }
-        .fxPadding(16)
     }
 }
 ```
 
 ---
 
-## 📚 Best Practices
+## 4. Flutter Examples
 
-### 1. Use Appropriate Scaling Types
+### 4.1 Complete App - Task Manager
 
-- **Fixed (FX)** ⭐ **RECOMMENDED**: For most UI elements - buttons, paddings, margins, icons, fonts, containers, cards
-- **Dynamic (DY)**: Only for specific cases - large containers, full-width grids, viewport-dependent elements
-- **SDP/SSP**: For XML-based layouts with pre-calculated resources
+```dart
+class TaskManagerApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Task Manager',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: TaskListScreen(),
+    );
+  }
+}
 
-### 2. Cache Frequently Used Dimensions
+class TaskListScreen extends StatefulWidget {
+  @override
+  _TaskListScreenState createState() => _TaskListScreenState();
+}
 
+class _TaskListScreenState extends State<TaskListScreen> {
+  final List<Task> tasks = [];
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'My Tasks',
+          style: TextStyle(
+            fontSize: AppDimens.balanced(20).calculate(context),
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search),
+            iconSize: AppDimens.balanced(24).calculate(context),
+            onPressed: () {},
+          ),
+        ],
+        toolbarHeight: AppDimens.balanced(56).calculate(context),
+      ),
+      body: ListView.separated(
+        padding: EdgeInsets.all(AppDimens.balanced(16).calculate(context)),
+        itemCount: tasks.length,
+        separatorBuilder: (context, index) => SizedBox(
+          height: AppDimens.balanced(12).calculate(context),
+        ),
+        itemBuilder: (context, index) {
+          return TaskCard(task: tasks[index]);
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(
+          Icons.add,
+          size: AppDimens.balanced(24).calculate(context),
+        ),
+      ),
+    );
+  }
+}
+
+class TaskCard extends StatelessWidget {
+  final Task task;
+  
+  const TaskCard({required this.task});
+  
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: AppDimens.balanced(2).calculate(context),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(
+          AppDimens.balanced(8).calculate(context),
+        ),
+      ),
+      child: Padding(
+        padding: EdgeInsets.all(AppDimens.balanced(16).calculate(context)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Task header
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Priority indicator
+                Container(
+                  width: AppDimens.balanced(8).calculate(context),
+                  height: AppDimens.balanced(8).calculate(context),
+                  decoration: BoxDecoration(
+                    color: task.priorityColor,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+                
+                SizedBox(width: AppDimens.balanced(12).calculate(context)),
+                
+                // Task title
+                Expanded(
+                  child: Text(
+                    task.title,
+                    style: TextStyle(
+                      fontSize: AppDimens.balanced(16).calculate(context),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                
+                // Checkbox
+                SizedBox(
+                  width: AppDimens.balanced(24).calculate(context),
+                  height: AppDimens.balanced(24).calculate(context),
+                  child: Checkbox(
+                    value: task.completed,
+                    onChanged: (value) {},
+                  ),
+                ),
+              ],
+            ),
+            
+            SizedBox(height: AppDimens.balanced(8).calculate(context)),
+            
+            // Task description
+            Text(
+              task.description,
+              style: TextStyle(
+                fontSize: AppDimens.balanced(14).calculate(context),
+                color: Colors.grey[600],
+              ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+            
+            SizedBox(height: AppDimens.balanced(12).calculate(context)),
+            
+            // Task metadata
+            Row(
+              children: [
+                Icon(
+                  Icons.calendar_today,
+                  size: AppDimens.balanced(16).calculate(context),
+                  color: Colors.grey,
+                ),
+                SizedBox(width: AppDimens.balanced(4).calculate(context)),
+                Text(
+                  task.dueDate,
+                  style: TextStyle(
+                    fontSize: AppDimens.balanced(12).calculate(context),
+                    color: Colors.grey,
+                  ),
+                ),
+                
+                SizedBox(width: AppDimens.balanced(16).calculate(context)),
+                
+                Icon(
+                  Icons.label,
+                  size: AppDimens.balanced(16).calculate(context),
+                  color: Colors.grey,
+                ),
+                SizedBox(width: AppDimens.balanced(4).calculate(context)),
+                Text(
+                  task.category,
+                  style: TextStyle(
+                    fontSize: AppDimens.balanced(12).calculate(context),
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+### 4.2 Using Extensions
+
+```dart
+// Flutter supports extensions for cleaner syntax
+Container(
+  width: 300.0.balanced(),
+  height: 200.0.defaultScaling(),
+  padding: EdgeInsets.all(16.0.balanced()),
+  child: Text(
+    'With Extensions',
+    style: TextStyle(fontSize: 14.0.balanced()),
+  ),
+)
+```
+
+---
+
+## 5. React Native Examples
+
+### 5.1 Complete App - Weather App
+
+```typescript
+import React from 'react';
+import {View, Text, StyleSheet, ScrollView, Image} from 'react-native';
+import {useAppDimens} from 'appdimens-react-native';
+
+interface WeatherData {
+  city: string;
+  temperature: number;
+  condition: string;
+  icon: string;
+  forecast: DayForecast[];
+}
+
+export default function WeatherScreen() {
+  const {balanced, smart} = useAppDimens();
+  const weather: WeatherData = useWeatherData();
+  
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#F5F5F5',
+    },
+    header: {
+      padding: balanced(16),
+      backgroundColor: '#2196F3',
+    },
+    cityName: {
+      fontSize: balanced(24),
+      fontWeight: 'bold',
+      color: 'white',
+      marginBottom: balanced(8),
+    },
+    currentTemp: {
+      fontSize: balanced(64),
+      fontWeight: '200',
+      color: 'white',
+    },
+    condition: {
+      fontSize: balanced(18),
+      color: 'white',
+      opacity: 0.9,
+    },
+    forecastContainer: {
+      padding: balanced(16),
+    },
+    forecastCard: {
+      backgroundColor: 'white',
+      borderRadius: balanced(12),
+      padding: balanced(16),
+      marginBottom: balanced(12),
+      shadowColor: '#000',
+      shadowOffset: {width: 0, height: 2},
+      shadowOpacity: 0.1,
+      shadowRadius: balanced(4),
+      elevation: 2,
+    },
+    dayRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginBottom: balanced(8),
+    },
+    dayName: {
+      fontSize: balanced(16),
+      fontWeight: '600',
+    },
+    dayTemp: {
+      fontSize: balanced(18),
+      fontWeight: 'bold',
+      color: '#2196F3',
+    },
+    icon: {
+      width: smart(48).forElement('icon'),
+      height: smart(48).forElement('icon'),
+    },
+  });
+  
+  return (
+    <View style={styles.container}>
+      {/* Current weather */}
+      <View style={styles.header}>
+        <Text style={styles.cityName}>{weather.city}</Text>
+        <Text style={styles.currentTemp}>{weather.temperature}°</Text>
+        <Text style={styles.condition}>{weather.condition}</Text>
+      </View>
+      
+      {/* Forecast */}
+      <ScrollView style={styles.forecastContainer}>
+        {weather.forecast.map((day, index) => (
+          <View key={index} style={styles.forecastCard}>
+            <View style={styles.dayRow}>
+              <Text style={styles.dayName}>{day.name}</Text>
+              <Image source={{uri: day.icon}} style={styles.icon} />
+              <Text style={styles.dayTemp}>{day.temp}°</Text>
+            </View>
+          </View>
+        ))}
+      </ScrollView>
+    </View>
+  );
+}
+```
+
+### 5.2 Using Different Strategies
+
+```typescript
+import {useAppDimens} from 'appdimens-react-native';
+
+function AllStrategiesExample() {
+  const {
+    balanced,        // Primary ⭐
+    defaultScaling,  // Secondary
+    percentage,      // Containers
+    logarithmic,     // TV
+    power,           // Configurable
+    fluid,           // Typography
+  } = useAppDimens();
+  
+  return (
+    <View style={{padding: balanced(16)}}>
+      {/* BALANCED (Primary) */}
+      <Text style={{fontSize: balanced(16)}}>Balanced Text</Text>
+      
+      {/* DEFAULT (Secondary) */}
+      <View style={{width: defaultScaling(24), height: defaultScaling(24)}} />
+      
+      {/* PERCENTAGE (Large containers) */}
+      <View style={{width: percentage(300)}} />
+      
+      {/* FLUID (Typography) */}
+      <Text style={{fontSize: fluid(16, 24)}}>Fluid Typography</Text>
+      
+      {/* POWER (Configurable) */}
+      <Text style={{fontSize: power(16, {exponent: 0.75})}}>Power Law</Text>
+    </View>
+  );
+}
+```
+
+---
+
+## 6. Web Examples
+
+### 6.1 React - Dashboard Example
+
+```typescript
+import React from 'react';
+import {useWebDimens} from 'webdimens/react';
+
+interface DashboardProps {
+  stats: StatCard[];
+}
+
+export function Dashboard({stats}: DashboardProps) {
+  const {balanced, percentage, fluid} = useWebDimens();
+  
+  return (
+    <div style={{
+      padding: balanced(24),
+      maxWidth: '1200px',
+      margin: '0 auto',
+    }}>
+      {/* Page title */}
+      <h1 style={{
+        fontSize: fluid(28, 40),  // Bounded typography
+        fontWeight: 'bold',
+        marginBottom: balanced(24),
+      }}>
+        Dashboard
+      </h1>
+      
+      {/* Stats grid */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: `repeat(auto-fit, minmax(${percentage(280)}, 1fr))`,
+        gap: balanced(16),
+        marginBottom: balanced(32),
+      }}>
+        {stats.map((stat, index) => (
+          <StatCard key={index} stat={stat} />
+        ))}
+      </div>
+      
+      {/* Charts section */}
+      <div style={{
+        backgroundColor: 'white',
+        borderRadius: balanced(12),
+        padding: balanced(24),
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+      }}>
+        <h2 style={{
+          fontSize: balanced(20),
+          marginBottom: balanced(16),
+        }}>
+          Analytics
+        </h2>
+        <ChartComponent />
+      </div>
+    </div>
+  );
+}
+
+function StatCard({stat}: {stat: StatCard}) {
+  const {balanced} = useWebDimens();
+  
+  return (
+    <div style={{
+      backgroundColor: 'white',
+      borderRadius: balanced(12),
+      padding: balanced(20),
+      boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+    }}>
+      <div style={{
+        fontSize: balanced(14),
+        color: '#666',
+        marginBottom: balanced(8),
+      }}>
+        {stat.title}
+      </div>
+      <div style={{
+        fontSize: balanced(32),
+        fontWeight: 'bold',
+        color: '#333',
+        marginBottom: balanced(4),
+      }}>
+        {stat.value}
+      </div>
+      <div style={{
+        fontSize: balanced(12),
+        color: stat.changePositive ? '#4CAF50' : '#F44336',
+      }}>
+        {stat.change}
+      </div>
+    </div>
+  );
+}
+```
+
+### 6.2 Vanilla JavaScript
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/webdimens@2.0.0/dist/index.js"></script>
+  <style>
+    body {
+      font-family: -apple-system, system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  
+  <script type="module">
+    import {balanced, fluid} from 'https://cdn.jsdelivr.net/npm/webdimens@2.0.0/dist/index.mjs';
+    
+    // Apply dimensions
+    const app = document.getElementById('app');
+    app.style.padding = balanced(24);
+    app.style.maxWidth = '1200px';
+    app.style.margin = '0 auto';
+    
+    // Create header
+    const header = document.createElement('header');
+    header.style.marginBottom = balanced(24);
+    
+    const title = document.createElement('h1');
+    title.textContent = 'Welcome';
+    title.style.fontSize = fluid(28, 40);
+    title.style.fontWeight = 'bold';
+    header.appendChild(title);
+    
+    app.appendChild(header);
+    
+    // Create cards
+    const cardsContainer = document.createElement('div');
+    cardsContainer.style.display = 'grid';
+    cardsContainer.style.gridTemplateColumns = 'repeat(auto-fit, minmax(280px, 1fr))';
+    cardsContainer.style.gap = balanced(16);
+    
+    for (let i = 0; i < 3; i++) {
+      const card = document.createElement('div');
+      card.style.backgroundColor = 'white';
+      card.style.borderRadius = balanced(12);
+      card.style.padding = balanced(20);
+      card.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+      
+      const cardTitle = document.createElement('h3');
+      cardTitle.textContent = `Card ${i + 1}`;
+      cardTitle.style.fontSize = balanced(18);
+      cardTitle.style.marginBottom = balanced(12);
+      
+      const cardText = document.createElement('p');
+      cardText.textContent = 'Sample content with balanced sizing.';
+      cardText.style.fontSize = balanced(14);
+      cardText.style.color = '#666';
+      
+      card.appendChild(cardTitle);
+      card.appendChild(cardText);
+      cardsContainer.appendChild(card);
+    }
+    
+    app.appendChild(cardsContainer);
+  </script>
+</body>
+</html>
+```
+
+---
+
+## 7. Cross-Platform Patterns
+
+### 7.1 Design System (Same across all platforms)
+
+**Define once, use everywhere:**
+
+```
+Design System Values:
+- spacing_xs: 4
+- spacing_sm: 8
+- spacing_md: 16
+- spacing_lg: 24
+- spacing_xl: 32
+
+- font_caption: 12
+- font_body: 14
+- font_subtitle: 16
+- font_title: 20
+- font_headline: 24
+
+- icon_sm: 16
+- icon_md: 24
+- icon_lg: 32
+
+- button_height: 48
+- card_radius: 12
+```
+
+**Android:**
 ```kotlin
-// Android
 object AppDimensions {
-    val buttonHeight = 44.fxdp       // Fixed (RECOMMENDED)
-    val cardWidth = 300.fxdp          // Fixed (RECOMMENDED)
-    val padding = 16.fxdp
-    val cornerRadius = 8.fxdp
+    val spacingXS = 4.balanced().dp
+    val spacingMD = 16.balanced().dp
+    val fontBody = 14.balanced().sp
+    val buttonHeight = 48.balanced().dp
 }
 ```
 
+**iOS:**
 ```swift
-// iOS
-struct AppDimensions {
-    static let buttonHeight = 44.fxpt     // Fixed (RECOMMENDED)
-    static let cardWidth = 300.fxpt       // Fixed (RECOMMENDED)
-    static let padding = 16.fxpt
-    static let cornerRadius = 8.fxpt
+enum AppDimensions {
+    static let spacingXS = AppDimens.shared.balanced(4).toPoints()
+    static let spacingMD = AppDimens.shared.balanced(16).toPoints()
+    static let fontBody = AppDimens.shared.balanced(14).toPoints()
+    static let buttonHeight = AppDimens.shared.balanced(48).toPoints()
 }
 ```
 
-### 3. Use Conditional Scaling for Different Devices
+**Flutter:**
+```dart
+class AppDimensions {
+  static double spacingXS(BuildContext context) => 
+      AppDimens.balanced(4).calculate(context);
+  static double spacingMD(BuildContext context) => 
+      AppDimens.balanced(16).calculate(context);
+  static double fontBody(BuildContext context) => 
+      AppDimens.balanced(14).calculate(context);
+  static double buttonHeight(BuildContext context) => 
+      AppDimens.balanced(48).calculate(context);
+}
+```
 
+**React Native:**
+```typescript
+export const AppDimensions = {
+  spacingXS: () => balanced(4),
+  spacingMD: () => balanced(16),
+  fontBody: () => balanced(14),
+  buttonHeight: () => balanced(48),
+};
+```
+
+**Web:**
+```typescript
+export const AppDimensions = {
+  spacingXS: () => balanced(4),
+  spacingMD: () => balanced(16),
+  fontBody: () => balanced(14),
+  buttonHeight: () => balanced(48),
+};
+```
+
+---
+
+## 8. Advanced Use Cases
+
+### 8.1 Conditional Sizing (All Platforms)
+
+**Android:**
 ```kotlin
-// Android
-val buttonSize = 80.fixedDp()  // Fixed (RECOMMENDED)
+val buttonSize = 48.balanced()
+    .screen(UiModeType.TV, 96.dp)
     .screen(UiModeType.WATCH, 40.dp)
-    .screen(UiModeType.CAR, 120.dp)
-    .screen(DpQualifier.SMALL_WIDTH, 720, 150)
+    .screen(DpQualifier.SMALL_WIDTH, 600, 72.dp)
+    .dp
 ```
 
+**iOS:**
 ```swift
-// iOS
-let buttonSize = AppDimens.fixed(80)  // Fixed (RECOMMENDED)
-    .screen(.watch, 40)
-    .screen(.tablet, 120)
+let buttonSize = AppDimens.shared.balanced(48)
+    .screen(.tv, customValue: 96)
+    .screen(.watch, customValue: 40)
     .toPoints()
 ```
 
-### 4. Test on Multiple Devices
+### 8.2 Physical Units
 
-- Use device simulators/emulators
-- Test on different screen sizes and densities
-- Verify accessibility compliance
-- Check performance on older devices
+**Android:**
+```kotlin
+val cardWidth = 8.cm
+val buttonHeight = AppDimensPhysicalUnits.toInch(0.5f, resources)
+```
+
+**iOS:**
+```swift
+let cardWidth = AppDimensPhysicalUnits.cm(8)
+```
+
+**Flutter:**
+```dart
+final cardWidth = AppDimensPhysicalUnits.cmToPixels(8, context);
+```
 
 ---
 
-## 🎯 Conclusion
+## 9. Game Development
 
-These examples demonstrate the power and flexibility of AppDimens across different platforms and use cases. By following these patterns and best practices, you can create responsive, consistent, and performant user interfaces that work seamlessly across all device types.
+### 9.1 Android (C++/NDK)
 
-For more examples and detailed documentation, visit:
-- [Android Documentation](../Android/README.md)
-- [iOS Documentation](../iOS/README.md)
-- [Complete API Reference](https://appdimens-project.web.app/)
+```kotlin
+val games = AppDimensGames.getInstance()
+games.initialize(context)
+
+// UI elements
+val buttonSize = games.calculateButtonSize(48f)
+
+// Game world
+val playerSize = games.calculatePlayerSize(64f)
+val enemySize = games.calculateEnemySize(32f)
+
+// Vectors
+val position = GameVector2D(100f, 200f)
+val scaled = games.calculateVector2D(position, GameDimensionType.GAME_WORLD)
+```
+
+### 9.2 iOS (Metal)
+
+```swift
+// Metal integration
+let buttonSize = gameUniform(48)
+let playerSize = gameAspectRatio(64)
+```
+
+---
+
+## 10. Migration Examples
+
+### 10.1 From v1.x to v2.0
+
+**Before (v1.x):**
+```kotlin
+Text("Hello", fontSize = 16.fxsp)  // Deprecated
+Container(modifier = Modifier.width(300.dydp))  // Deprecated
+```
+
+**After (v2.0) - Recommended:**
+```kotlin
+Text("Hello", fontSize = 16.balanced().sp)  // ⭐ Primary
+Container(modifier = Modifier.width(300.percentageDp.dp))  // For containers
+```
+
+### 10.2 From SDP to AppDimens
+
+**Before (SDP):**
+```xml
+<TextView android:textSize="@dimen/_16ssp" />
+```
+
+**After (AppDimens):**
+```kotlin
+Text(text = "Hello", fontSize = 16.balanced().sp)
+```
+
+---
+
+## Conclusion
+
+**Key Takeaways:**
+- ✅ Use **BALANCED** for 95% of apps (primary)
+- ✅ Use **DEFAULT** for phone-focused apps (secondary)
+- ✅ 13 strategies cover all use cases
+- ✅ Works consistently across all 5 platforms
+
+**📖 More Resources:**
+- [Complete Technical Guide](COMPREHENSIVE_TECHNICAL_GUIDE.md)
+- [Mathematical Theory](MATHEMATICAL_THEORY.md)
+- [Platform Guides](README.md#platform-specific-guides)
+
+---
+
+**Document created by:** Jean Bodenberg  
+**Last updated:** February 2025  
+**Version:** 2.0.0  
+**Repository:** https://github.com/bodenberg/appdimens
+
+---
+
+**[⬆ Back to Top](#-appdimens---practical-examples)**

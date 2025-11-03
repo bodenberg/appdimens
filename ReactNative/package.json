@@ -1,7 +1,7 @@
 {
   "name": "appdimens-react-native",
-  "version": "1.1.0",
-  "description": "Smart and Responsive Dimensioning for React Native - Mathematically responsive scaling that ensures your UI design adapts perfectly to any screen size or aspect ratio",
+  "version": "2.0.0",
+  "description": "AppDimens 2.0 - Smart and Responsive Dimensioning for React Native with 13 Scaling Strategies - Mathematically responsive scaling with intelligent auto-inference for any screen size or aspect ratio",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
   "types": "lib/typescript/index.d.ts",
@@ -61,9 +61,13 @@
     "@react-native/eslint-config": "^0.73.0",
     "@react-native/metro-config": "^0.73.0",
     "@react-native/typescript-config": "^0.73.0",
+    "@testing-library/jest-native": "^5.4.3",
+    "@testing-library/react-native": "^13.3.3",
     "@types/jest": "^29.2.1",
     "@types/react": "~18.0.24",
     "@types/react-native": "^0.73.0",
+    "@types/react-test-renderer": "^19.1.0",
+    "babel-jest": "^30.2.0",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -73,8 +77,9 @@
     "react": "^18.2.0",
     "react-native": "^0.73.0",
     "react-native-builder-bob": "^0.20.0",
-    "typescript": "4.8.4",
-    "ts-jest": "^29.0.5"
+    "react-test-renderer": "^18.2.0",
+    "ts-jest": "^29.0.5",
+    "typescript": "4.8.4"
   },
   "peerDependencies": {
     "react": "*",

@@ -19,23 +19,31 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 # Source files
 set(SOURCES
+    src/AppDimensGames.cpp
     src/GameDimensions.cpp
     src/ViewportManager.cpp
     src/GameScaling.cpp
     src/OpenGLUtils.cpp
     src/GameMath.cpp
     src/PerformanceMonitor.cpp
+    src/GameCalculator.cpp
+    src/GameCacheFast.cpp
+    src/GameLookupTables.cpp
 )
 
 # Header files
 set(HEADERS
+    include/AppDimensGames.h
     include/GameDimensions.h
     include/ViewportManager.h
     include/GameScaling.h
     include/OpenGLUtils.h
     include/GameMath.h
     include/PerformanceMonitor.h
-    include/AppDimensGames.h
+    include/GameCalculator.h
+    include/GameCacheFast.h
+    include/GameLookupTables.h
+    include/GameScalingStrategy.h
 )
 
 # Create shared library

@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppDimens 2.0 - Comparação Completa das 13 Estratégias de Escalamento</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header .version-badge {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-top: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        .info-panel {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-panel h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .viewport-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-item label {
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .info-item value {
+            font-size: 1.3em;
+            color: #333;
+            font-family: 'Courier New', monospace;
+        }
+
+        .description {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .scaling-method {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .scaling-method:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .scaling-method.recommended {
+            border: 3px solid #4CAF50;
+            background: linear-gradient(to bottom, #f0fff4 0%, white 100%);
+        }
+
+        .scaling-method h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .recommended-badge {
+            background: #4CAF50;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.6em;
+            vertical-align: middle;
+        }
+
+        .scaling-method .formula {
+            background: #f5f5f5;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            margin-bottom: 15px;
+            overflow-x: auto;
+            color: #666;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .scaling-method .description {
+            font-size: 0.95em;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .scaling-method .use-case {
+            background: #e3f2fd;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            color: #1976d2;
+        }
+
+        .use-case strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .demo-area {
+            background: #f9f9f9;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .demo-element {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .demo-element:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.6);
+        }
+
+        .demo-element:active {
+            transform: scale(0.98);
+        }
+
+        .size-display {
+            text-align: center;
+            margin-top: 15px;
+            font-family: 'Courier New', monospace;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .size-display .label {
+            font-size: 0.9em;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .size-display .value {
+            font-size: 1.5em;
+            color: #667eea;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+            margin-bottom: 30px;
+        }
+
+        .comparison-table h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table thead {
+            background: #f5f5f5;
+        }
+
+        table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #333;
+            border-bottom: 2px solid #667eea;
+        }
+
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        table tbody tr:hover {
+            background: #f9f9f9;
+        }
+
+        .legend {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .legend h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .legend-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .legend-item:last-child {
+            border-bottom: none;
+        }
+
+        .legend-item h4 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .legend-item p {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .viewport-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📐 AppDimens 2.0 - Comparação Completa das 13 Estratégias</h1>
+            <div class="version-badge">Versão 2.1.0</div>
+            <p>Redimensione a janela do navegador para ver como cada estratégia se comporta</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">🎯 Unified Smart Dimensioning System</p>
+        </div>
+
+        <div class="info-panel">
+            <h2>Informações da Viewport</h2>
+            <div class="viewport-info">
+                <div class="info-item">
+                    <label>Largura (W):</label>
+                    <value id="viewportWidth">0</value> px
+                </div>
+                <div class="info-item">
+                    <label>Altura (H):</label>
+                    <value id="viewportHeight">0</value> px
+                </div>
+                <div class="info-item">
+                    <label>Menor Dimensão (S):</label>
+                    <value id="smallestDim">0</value> px
+                </div>
+                <div class="info-item">
+                    <label>Aspect Ratio (AR):</label>
+                    <value id="aspectRatio">0</value>
+                </div>
+            </div>
+            <div class="description">
+                <strong>Como funciona:</strong> Cada elemento abaixo usa uma das 13 estratégias de escalonamento disponíveis no AppDimens 2.0. 
+                Observe como o tamanho da fonte do botão muda conforme você redimensiona a janela do navegador.
+                <br><br>
+                <strong>⭐ BALANCED é a estratégia RECOMENDADA</strong> para a maioria dos casos de uso (botões, spacing, multi-device apps).
+            </div>
+        </div>
+
+        <div class="comparison-grid">
+            <!-- 1. DEFAULT - Fixed legacy -->
+            <div class="scaling-method">
+                <h3>🔵 DEFAULT (Fixed Legacy)</h3>
+                <div class="formula">f(x) = x × [1 + ((S-W₀)/1) × 0.00333] × arAdj</div>
+                <div class="use-case">
+                    <strong>Melhor para:</strong> Apps phone-only, ícones, backward compatibility
+                </div>
+                <div class="description">
+                    ~97% linear com ajuste de aspect ratio. Comportamento familiar da v1.x.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="default">DEFAULT</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="defaultSize">16.00</div> px
+                </div>
+            </div>
+
+            <!-- 2. PERCENTAGE - Dynamic legacy -->
+            <div class="scaling-method">
+                <h3>🟢 PERCENTAGE (Dynamic)</h3>
+                <div class="formula">f(x) = x × (W / W₀)</div>
+                <div class="use-case">
+                    <strong>Melhor para:</strong> Containers, layouts fluidos, imagens proporcionais
+                </div>
+                <div class="description">
+                    100% linear. Escalamento proporcional puro sem ajuste de aspect ratio.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="percentage">PERCENTAGE</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="percentageSize">16.00</div> px
+                </div>
+            </div>
+
+            <!-- 3. BALANCED - Perceptual Hybrid (RECOMENDADO) -->
+            <div class="scaling-method recommended">
+                <h3>⭐ BALANCED (Hybrid) <span class="recommended-badge">RECOMENDADO</span></h3>
+                <div class="formula">f(x) = x × (W/W₀) se W<480
+else x × (1.6 + k×ln(...))</div>
+                <div class="use-case">
+                    <strong>Melhor para:</strong> Apps multi-device, botões, spacing (RECOMENDADO!)
+                </div>
+                <div class="description">
+                    Linear em phones (<480dp), logarítmico em tablets/TVs. Previne oversizing em telas grandes.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="balanced">BALANCED</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="balancedSize">16.00</div> px
+                </div>
+            </div>
+
+            <!-- 4. LOGARITHMIC - Pure log -->
+            <div class="scaling-method">
+                <h3>🟣 LOGARITHMIC (Weber-Fechner)</h3>
+                <div class="formula">f(x) = x × (1 + k × ln(W / W₀))</div>
+                <div class="use-case">
+                    <strong>Melhor para:</strong> TVs, tablets muito grandes, controle máximo
+                </div>
+                <div class="description">
+                    Crescimento logarítmico puro (Lei de Weber-Fechner). Máximo controle em telas grandes.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="logarithmic">LOGARITHMIC</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="logarithmicSize">16.00</div> px
+                </div>
+            </div>
+
+            <!-- 5. POWER - Stevens -->
+            <div class="scaling-method">
+                <h3>🟠 POWER (Stevens)</h3>
+                <div class="formula">f(x) = x × (W / W₀)^n
+onde n=0.75 (padrão)</div>
+                <div class="use-case">
+                    <strong>Melhor para:</strong> Propósito geral, apps configuráveis
+                </div>
+                <div class="description">
+                    Lei de Potência de Stevens. Base científica com expoente configurável (0.6-0.9).
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="power">POWER</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="powerSize">16.00</div> px
+                </div>
+            </div>
+
+            <!-- 6. FLUID - CSS clamp-like -->
+            <div class="scaling-method">
+                <h3>💧 FLUID (CSS Clamp)</h3>
+                <div class="formula">f(x) = interpolate(min, max, W, minW, maxW)</div>
+                <div class="use-case">
+                    <strong>Melhor para:</strong> Tipografia, spacing com limites, transições suaves
+                </div>
+                <div class="description">
+                    Interpolação linear entre min/max com breakpoints. Crescimento limitado e controlado.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="fluid">FLUID</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="fluidSize">16.00</div> px
+                </div>
+            </div>
+
+            <!-- 7. INTERPOLATED - Moderated linear -->
+            <div class="scaling-method">
+                <h3>🟡 INTERPOLATED (Moderado)</h3>
+                <div class="formula">f(x) = x + ((x × W/W₀) - x) × 0.5</div>
+                <div class="use-case">
+                    <strong>Melhor para:</strong> Necessidades de scaling moderadas
+                </div>
+                <div class="description">
+                    50% do crescimento linear. Meio-termo entre fixo e dinâmico.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="interpolated">INTERPOLATED</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="interpolatedSize">16.00</div> px
+                </div>
+            </div>
+
+            <!-- 8. DIAGONAL - Screen size -->
+            <div class="scaling-method">
+                <h3>📐 DIAGONAL (Screen Size)</h3>
+                <div class="formula">f(x) = x × √(W² + H²) / √(W₀² + H₀²)</div>
+                <div class="use-case">
+                    <strong>Melhor para:</strong> Elementos que devem corresponder ao tamanho físico da tela
+                </div>
+                <div class="description">
+                    Baseado na diagonal da tela (Teorema de Pitágoras). Verdadeiro "tamanho de tela". Independente de orientação.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="diagonal">DIAGONAL</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="diagonalSize">16.00</div> px
+                </div>
+            </div>
+
+            <!-- 9. PERIMETER - W+H -->
+            <div class="scaling-method">
+                <h3>🔶 PERIMETER (Perímetro)</h3>
+                <div class="formula">f(x) = x × (W + H) / (W₀ + H₀)</div>
+                <div class="use-case">
+                    <strong>Melhor para:</strong> Propósito geral, scaling balanceado
+                </div>
+                <div class="description">
+                    Combinação linear de largura e altura. Balanceado entre W e H. Similar ao diagonal mas cálculo mais simples.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="perimeter">PERIMETER</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="perimeterSize">16.00</div> px
+                </div>
+            </div>
+
+            <!-- 10. FIT - Letterbox (Game) -->
+            <div class="scaling-method">
+                <h3>⚫ FIT (Letterbox)</h3>
+                <div class="formula">f(x) = x × min(W/W₀, H/H₀)</div>
+                <div class="use-case">
+                    <strong>Melhor para:</strong> Jogos, conteúdo full-screen que deve caber
+                </div>
+                <div class="description">
+                    Usa menor ratio (largura ou altura). Garante que elemento caiba inteiro. Comportamento letterbox de jogos.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="fit">FIT</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="fitSize">16.00</div> px
+                </div>
+            </div>
+
+            <!-- 11. FILL - Cover (Game) -->
+            <div class="scaling-method">
+                <h3>🟪 FILL (Cover)</h3>
+                <div class="formula">f(x) = x × max(W/W₀, H/H₀)</div>
+                <div class="use-case">
+                    <strong>Melhor para:</strong> Jogos, backgrounds, conteúdo full-screen
+                </div>
+                <div class="description">
+                    Usa maior ratio (largura ou altura). Garante que elemento cubra tela. Comportamento cover de jogos.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="fill">FILL</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="fillSize">16.00</div> px
+                </div>
+            </div>
+
+            <!-- 12. AUTOSIZE - Container-aware -->
+            <div class="scaling-method">
+                <h3>🎯 AUTOSIZE (Container-Aware)</h3>
+                <div class="formula">f(x) = fitToSize(x, min, max, containerSize)</div>
+                <div class="use-case">
+                    <strong>Melhor para:</strong> Texto dinâmico, tipografia auto-sizing, containers variáveis
+                </div>
+                <div class="description">
+                    Similar ao TextView autoSizeText. Ajusta ao tamanho do container em runtime. Requer medição do componente.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="autosize">AUTOSIZE</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="autosizeSize">16.00</div> px
+                </div>
+            </div>
+
+            <!-- 13. NONE - No scaling -->
+            <div class="scaling-method">
+                <h3>🔴 NONE (Sem Escalamento)</h3>
+                <div class="formula">f(x) = x (constante)</div>
+                <div class="use-case">
+                    <strong>Melhor para:</strong> Elementos de tamanho fixo, dimensões absolutas
+                </div>
+                <div class="description">
+                    Sem escalamento. Tamanho constante em todas as telas. Útil para elementos de UI fixos.
+                </div>
+                <div class="demo-area">
+                    <button class="demo-element" id="none">NONE</button>
+                </div>
+                <div class="size-display">
+                    <div class="label">Tamanho Calculado:</div>
+                    <div class="value" id="noneSize">16.00</div> px
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-table">
+            <h2>📊 Tabela Comparativa de Tamanhos - Todas as 13 Estratégias</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Estratégia</th>
+                        <th>Fórmula</th>
+                        <th>Tamanho Atual</th>
+                        <th>Crescimento (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: #f0fff4;">
+                        <td><strong>⭐ BALANCED</strong></td>
+                        <td>Híbrido linear/log</td>
+                        <td id="tableBalanced">16.00 px</td>
+                        <td id="tableBalancedGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>DEFAULT</td>
+                        <td>~97% linear + AR</td>
+                        <td id="tableDefault">16.00 px</td>
+                        <td id="tableDefaultGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>PERCENTAGE</td>
+                        <td>100% linear</td>
+                        <td id="tablePercentage">16.00 px</td>
+                        <td id="tablePercentageGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>LOGARITHMIC</td>
+                        <td>log puro</td>
+                        <td id="tableLogarithmic">16.00 px</td>
+                        <td id="tableLogarithmicGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>POWER</td>
+                        <td>x^n (Stevens)</td>
+                        <td id="tablePower">16.00 px</td>
+                        <td id="tablePowerGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>FLUID</td>
+                        <td>CSS clamp-like</td>
+                        <td id="tableFluid">16.00 px</td>
+                        <td id="tableFluidGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>INTERPOLATED</td>
+                        <td>50% moderado</td>
+                        <td id="tableInterpolated">16.00 px</td>
+                        <td id="tableInterpolatedGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>DIAGONAL</td>
+                        <td>√(W² + H²)</td>
+                        <td id="tableDiagonal">16.00 px</td>
+                        <td id="tableDiagonalGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>PERIMETER</td>
+                        <td>(W + H)</td>
+                        <td id="tablePerimeter">16.00 px</td>
+                        <td id="tablePerimeterGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>FIT</td>
+                        <td>min(W/W₀, H/H₀)</td>
+                        <td id="tableFit">16.00 px</td>
+                        <td id="tableFitGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>FILL</td>
+                        <td>max(W/W₀, H/H₀)</td>
+                        <td id="tableFill">16.00 px</td>
+                        <td id="tableFillGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>AUTOSIZE</td>
+                        <td>fit to container</td>
+                        <td id="tableAutosize">16.00 px</td>
+                        <td id="tableAutosizeGrowth">0%</td>
+                    </tr>
+                    <tr>
+                        <td>NONE</td>
+                        <td>constante</td>
+                        <td id="tableNone">16.00 px</td>
+                        <td id="tableNoneGrowth">0%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="legend">
+            <h2>📖 Guia de Referência das Estratégias</h2>
+            
+            <div class="legend-item">
+                <h4>⭐ BALANCED (Perceptual Hybrid) - RECOMENDADA</h4>
+                <p>
+                    <strong>Fórmula:</strong> Linear em phones (<480dp): f(x) = x × (W/W₀), Logarítmico em tablets/TVs: f(x) = x × (1.6 + k×ln(...))<br>
+                    <strong>Melhor para:</strong> Apps multi-device, botões, spacing. Previne oversizing em telas grandes mantendo proporções em phones.
+                    Esta é a estratégia mais equilibrada e recomendada para a maioria dos casos de uso.
+                </p>
+            </div>
+
+            <div class="legend-item">
+                <h4>🔵 DEFAULT (Fixed Legacy)</h4>
+                <p>
+                    <strong>Fórmula:</strong> f(x) = x × [1 + ((S-300)/1) × 0.00333] × arAdj<br>
+                    <strong>Melhor para:</strong> Apps phone-only, ícones, backward compatibility. Comportamento familiar da v1.x com ajuste de aspect ratio.
+                </p>
+            </div>
+
+            <div class="legend-item">
+                <h4>🟢 PERCENTAGE (Dynamic Legacy)</h4>
+                <p>
+                    <strong>Fórmula:</strong> f(x) = x × (W / W₀)<br>
+                    <strong>Melhor para:</strong> Containers, layouts fluidos, imagens proporcionais. 100% linear, escalamento proporcional puro.
+                </p>
+            </div>
+
+            <div class="legend-item">
+                <h4>🟣 LOGARITHMIC (Weber-Fechner)</h4>
+                <p>
+                    <strong>Fórmula:</strong> f(x) = x × (1 + k × ln(W / W₀))<br>
+                    <strong>Melhor para:</strong> TVs, tablets muito grandes. Crescimento logarítmico puro baseado na Lei de Weber-Fechner da percepção humana.
+                </p>
+            </div>
+
+            <div class="legend-item">
+                <h4>🟠 POWER (Stevens)</h4>
+                <p>
+                    <strong>Fórmula:</strong> f(x) = x × (W / W₀)^n (n=0.75 padrão)<br>
+                    <strong>Melhor para:</strong> Propósito geral, apps configuráveis. Lei de Potência de Stevens com expoente configurável (0.6-0.9).
+                </p>
+            </div>
+
+            <div class="legend-item">
+                <h4>💧 FLUID (CSS Clamp)</h4>
+                <p>
+                    <strong>Fórmula:</strong> f(x) = interpolate(min, max, W, minW, maxW)<br>
+                    <strong>Melhor para:</strong> Tipografia, spacing com limites. Interpolação linear entre min/max com breakpoints. Comportamento similar ao CSS clamp().
+                </p>
+            </div>
+
+            <div class="legend-item">
+                <h4>🟡 INTERPOLATED (Moderado)</h4>
+                <p>
+                    <strong>Fórmula:</strong> f(x) = x + ((x × W/W₀) - x) × 0.5<br>
+                    <strong>Melhor para:</strong> Necessidades de scaling moderadas. 50% do crescimento linear, meio-termo entre fixo e dinâmico.
+                </p>
+            </div>
+
+            <div class="legend-item">
+                <h4>📐 DIAGONAL (Screen Size)</h4>
+                <p>
+                    <strong>Fórmula:</strong> f(x) = x × √(W² + H²) / √(W₀² + H₀²)<br>
+                    <strong>Melhor para:</strong> Elementos que devem corresponder ao tamanho físico da tela. Baseado na diagonal (Teorema de Pitágoras).
+                </p>
+            </div>
+
+            <div class="legend-item">
+                <h4>🔶 PERIMETER (Perímetro)</h4>
+                <p>
+                    <strong>Fórmula:</strong> f(x) = x × (W + H) / (W₀ + H₀)<br>
+                    <strong>Melhor para:</strong> Propósito geral, scaling balanceado. Combinação linear de largura e altura.
+                </p>
+            </div>
+
+            <div class="legend-item">
+                <h4>⚫ FIT (Letterbox - Game)</h4>
+                <p>
+                    <strong>Fórmula:</strong> f(x) = x × min(W/W₀, H/H₀)<br>
+                    <strong>Melhor para:</strong> Jogos, conteúdo que deve caber na tela. Usa menor ratio para garantir que elemento caiba sem corte (letterbox).
+                </p>
+            </div>
+
+            <div class="legend-item">
+                <h4>🟪 FILL (Cover - Game)</h4>
+                <p>
+                    <strong>Fórmula:</strong> f(x) = x × max(W/W₀, H/H₀)<br>
+                    <strong>Melhor para:</strong> Jogos, backgrounds, conteúdo full-screen. Usa maior ratio para cobrir tela completamente (pode haver corte).
+                </p>
+            </div>
+
+            <div class="legend-item">
+                <h4>🎯 AUTOSIZE (Container-Aware)</h4>
+                <p>
+                    <strong>Fórmula:</strong> f(x) = fitToSize(x, min, max, containerSize)<br>
+                    <strong>Melhor para:</strong> Texto dinâmico, auto-sizing typography. Similar ao TextView autoSizeText, ajusta-se ao tamanho do container em runtime.
+                </p>
+            </div>
+
+            <div class="legend-item">
+                <h4>🔴 NONE (Sem Escalamento)</h4>
+                <p>
+                    <strong>Fórmula:</strong> f(x) = x (constante)<br>
+                    <strong>Melhor para:</strong> Elementos de tamanho fixo, dimensões absolutas. Sem escalamento, tamanho constante em todas as telas.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Constantes de Referência (AppDimens 2.0)
+        const W0 = 300; // Largura de referência base
+        const H0 = 533; // Altura de referência (16:9 @ 300dp width)
+        const S0 = 300; // Menor dimensão de referência
+        const D0 = Math.sqrt(W0 * W0 + H0 * H0); // Diagonal de referência
+        const SUM0 = W0 + H0; // Perímetro de referência
+        const BASE_VALUE = 16; // Valor base em pixels
+        const REFERENCE_AR = 1.78; // Aspect Ratio de referência (16:9)
+        
+        // Constantes para estratégias
+        const BASE_INCREMENT = 0.10 / 30;
+        const DEFAULT_SENSITIVITY = 0.40;
+        const DEFAULT_POWER_EXPONENT = 0.75;
+        const DEFAULT_TRANSITION_POINT = 480;
+        const INV_BASE_WIDTH = 1.0 / W0;
+
+        // Função para calcular DEFAULT
+        function calculateDefault(baseValue, S) {
+            const difference = S - W0;
+            const adjustmentFactor = difference;
+            const factor = 1.0 + adjustmentFactor * 0.00333;
+            return baseValue * factor;
+        }
+
+        // Função para calcular PERCENTAGE
+        function calculatePercentage(baseValue, W) {
+            return baseValue * (W / W0);
+        }
+
+        // Função para calcular BALANCED
+        function calculateBalanced(baseValue, W) {
+            if (W <= DEFAULT_TRANSITION_POINT) {
+                return baseValue * (W * INV_BASE_WIDTH);
+            } else {
+                const excess = W - DEFAULT_TRANSITION_POINT;
+                const scale = (DEFAULT_TRANSITION_POINT * INV_BASE_WIDTH) + 
+                             DEFAULT_SENSITIVITY * Math.log(1 + excess * INV_BASE_WIDTH);
+                return baseValue * scale;
+            }
+        }
+
+        // Função para calcular LOGARITHMIC
+        function calculateLogarithmic(baseValue, W) {
+            if (W > W0) {
+                const scale = 1.0 + DEFAULT_SENSITIVITY * Math.log(W * INV_BASE_WIDTH);
+                return baseValue * scale;
+            } else {
+                const scale = 1.0 - DEFAULT_SENSITIVITY * Math.log(W0 / W);
+                return baseValue * scale;
+            }
+        }
+
+        // Função para calcular POWER
+        function calculatePower(baseValue, W) {
+            const ratio = W / W0;
+            const scale = Math.pow(ratio, DEFAULT_POWER_EXPONENT);
+            return baseValue * scale;
+        }
+
+        // Função para calcular FLUID
+        function calculateFluid(baseValue, W) {
+            const minValue = baseValue * 0.8;
+            const maxValue = baseValue * 1.2;
+            const minWidth = 320;
+            const maxWidth = 768;
+            
+            if (W <= minWidth) return minValue;
+            if (W >= maxWidth) return maxValue;
+            
+            const progress = (W - minWidth) / (maxWidth - minWidth);
+            return minValue + (maxValue - minValue) * progress;
+        }
+
+        // Função para calcular INTERPOLATED
+        function calculateInterpolated(baseValue, W) {
+            const linear = baseValue * (W / W0);
+            return baseValue + (linear - baseValue) * 0.5;
+        }
+
+        // Função para calcular DIAGONAL
+        function calculateDiagonal(baseValue, W, H) {
+            const currentDiag = Math.sqrt(W * W + H * H);
+            return baseValue * (currentDiag / D0);
+        }
+
+        // Função para calcular PERIMETER
+        function calculatePerimeter(baseValue, W, H) {
+            return baseValue * ((W + H) / SUM0);
+        }
+
+        // Função para calcular FIT
+        function calculateFit(baseValue, W, H) {
+            const ratioW = W / W0;
+            const ratioH = H / H0;
+            return baseValue * Math.min(ratioW, ratioH);
+        }
+
+        // Função para calcular FILL
+        function calculateFill(baseValue, W, H) {
+            const ratioW = W / W0;
+            const ratioH = H / H0;
+            return baseValue * Math.max(ratioW, ratioH);
+        }
+
+        // Função para calcular AUTOSIZE (simplificado para demo)
+        function calculateAutosize(baseValue, W) {
+            // Simplificação: usa FLUID como base
+            return calculateFluid(baseValue, W);
+        }
+
+        // Função para calcular NONE
+        function calculateNone(baseValue) {
+            return baseValue;
+        }
+
+        // Função para atualizar todos os tamanhos
+        function updateSizes() {
+            const W = window.innerWidth;
+            const H = window.innerHeight;
+            const S = Math.min(W, H);
+            const AR = W / H;
+
+            // Atualizar informações da viewport
+            document.getElementById('viewportWidth').textContent = W;
+            document.getElementById('viewportHeight').textContent = H;
+            document.getElementById('smallestDim').textContent = S;
+            document.getElementById('aspectRatio').textContent = AR.toFixed(2);
+
+            // Calcular todos os tamanhos
+            const sizes = {
+                default: calculateDefault(BASE_VALUE, S),
+                percentage: calculatePercentage(BASE_VALUE, W),
+                balanced: calculateBalanced(BASE_VALUE, S),
+                logarithmic: calculateLogarithmic(BASE_VALUE, S),
+                power: calculatePower(BASE_VALUE, S),
+                fluid: calculateFluid(BASE_VALUE, S),
+                interpolated: calculateInterpolated(BASE_VALUE, W),
+                diagonal: calculateDiagonal(BASE_VALUE, W, H),
+                perimeter: calculatePerimeter(BASE_VALUE, W, H),
+                fit: calculateFit(BASE_VALUE, W, H),
+                fill: calculateFill(BASE_VALUE, W, H),
+                autosize: calculateAutosize(BASE_VALUE, W),
+                none: calculateNone(BASE_VALUE)
+            };
+
+            // Atualizar cada elemento
+            for (const [name, size] of Object.entries(sizes)) {
+                const growth = ((size - BASE_VALUE) / BASE_VALUE * 100).toFixed(1);
+                
+                // Atualizar display de tamanho
+                document.getElementById(name + 'Size').textContent = size.toFixed(2);
+                
+                // Atualizar botão
+                const button = document.getElementById(name);
+                if (button) {
+                    button.style.fontSize = size + 'px';
+                }
+                
+                // Atualizar tabela
+                const tableName = name.charAt(0).toUpperCase() + name.slice(1);
+                const tableCell = document.getElementById('table' + tableName);
+                const tableGrowth = document.getElementById('table' + tableName + 'Growth');
+                if (tableCell) tableCell.textContent = size.toFixed(2) + ' px';
+                if (tableGrowth) tableGrowth.textContent = growth + '%';
+            }
+        }
+
+        // Atualizar ao carregar
+        updateSizes();
+
+        // Atualizar ao redimensionar
+        window.addEventListener('resize', updateSizes);
+
+        // Adicionar efeito de clique
+        document.querySelectorAll('.demo-element').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('Estratégia: ' + this.textContent + '\nTamanho: ' + this.style.fontSize);
+            });
+        });
+    </script>
+</body>
+</html>
+

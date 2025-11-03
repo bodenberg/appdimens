@@ -27,9 +27,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme">
-        <!-- Main comprehensive demo activity -->
+        <!-- AppDimens Example Activities -->
         <activity
-            android:name="com.example.app.compose.en.ComprehensiveExampleActivity"
+            android:name="com.example.app.compose.en.ScaledSdpsExampleActivity"
             android:exported="true"
             android:theme="@style/Theme">
             <intent-filter>
@@ -37,42 +37,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <!-- Individual feature demo activities -->
-        <activity
-            android:name="com.example.app.compose.en.FixedExampleActivity"
-            android:exported="false"
-            android:theme="@style/Theme" />
-            
-        <activity
-            android:name="com.example.app.compose.en.DynamicExampleActivity"
-            android:exported="false"
-            android:theme="@style/Theme" />
-            
-        <activity
-            android:name="com.example.app.compose.en.ScaledSdpsExampleActivity"
-            android:exported="false"
-            android:theme="@style/Theme" />
             
         <activity
             android:name="com.example.app.compose.en.ScaledSspsExampleActivity"
             android:exported="false"
             android:theme="@style/Theme" />
-            
-            
-        <activity
-            android:name="com.example.app.compose.en.PhysicalUnitsExampleActivity"
-            android:exported="false"
-            android:theme="@style/Theme" />
-            
-        <activity
-            android:name="com.example.app.compose.en.AdvancedFeaturesExampleActivity"
-            android:exported="false"
-            android:theme="@style/Theme" />
         
-        <!-- Traditional View-based MainActivity -->
         <activity
-            android:name="com.example.app.views.kotlin.en.MainActivity"
+            android:name="com.example.app.compose.en.DefaultExampleActivity"
             android:exported="false"
             android:theme="@style/Theme" />
             

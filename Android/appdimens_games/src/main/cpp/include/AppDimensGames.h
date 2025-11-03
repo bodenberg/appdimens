@@ -35,6 +35,9 @@
 #include <vector>
 #include <memory>
 
+// Include v2.0 types
+#include "GameScalingStrategy.h"
+
 // Logging macros
 #define LOG_TAG "AppDimensGames"
 #define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
@@ -56,18 +59,8 @@ enum class ScreenOrientation {
     AUTO
 };
 
-// Base orientation types (for design adaptation)
-enum class BaseOrientation {
-    PORTRAIT,   // Design was created for portrait orientation
-    LANDSCAPE,  // Design was created for landscape orientation
-    AUTO        // No specific orientation (default)
-};
-
-// Screen type for dimension calculations
-enum class ScreenType {
-    LOWEST,     // Use smallest dimension
-    HIGHEST     // Use largest dimension
-};
+// Note: BaseOrientation and ScreenType are now defined in GameScalingStrategy.h
+// to avoid duplication and maintain consistency with Kotlin code
 
 // Viewport scaling modes
 enum class ViewportMode {
@@ -283,6 +276,23 @@ extern "C" {
     JNIEXPORT jfloatArray JNICALL
     Java_com_appdimens_games_AppDimensGames_nativeCalculateRectangle(JNIEnv *env, jobject thiz,
         jfloat x, jfloat y, jfloat width, jfloat height, jint type);
+    
+    // New v2.0 methods
+    JNIEXPORT jfloat JNICALL
+    Java_com_appdimens_games_AppDimensGames_nativeCalculateWithStrategy(JNIEnv *env, jobject thiz,
+        jfloat baseValue, jint strategyOrdinal, jint elementTypeOrdinal,
+        jfloat screenWidthDp, jfloat screenHeightDp, jfloat smallestWidthDp, jint densityDpi);
+    
+    JNIEXPORT jint JNICALL
+    Java_com_appdimens_games_AppDimensGames_nativeInferStrategy(JNIEnv *env, jobject thiz,
+        jint elementTypeOrdinal, jfloat screenWidthDp, jfloat screenHeightDp,
+        jfloat smallestWidthDp, jint densityDpi);
+    
+    JNIEXPORT void JNICALL
+    Java_com_appdimens_games_AppDimensGames_nativeClearFastCache(JNIEnv *env, jobject thiz);
+    
+    JNIEXPORT jfloatArray JNICALL
+    Java_com_appdimens_games_AppDimensGames_nativeGetCacheStats(JNIEnv *env, jobject thiz);
 }
 
 #endif // APPDIMENS_GAMES_H

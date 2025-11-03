@@ -218,6 +218,18 @@ public class AppDimensAutoCache {
     }
     
     /**
+     * [EN] Gets the current cache size (number of entries).
+     * [PT] Obtém o tamanho atual do cache (número de entradas).
+     * 
+     * @return Number of cached entries.
+     */
+    public func getCacheSize() -> Int {
+        return cacheQueue.sync {
+            return cache.count
+        }
+    }
+    
+    /**
      * [EN] Clears cache entries that match a specific pattern.
      * Useful for clearing instance-specific cache entries.
      * [PT] Limpa entradas do cache que correspondem a um padrão específico.

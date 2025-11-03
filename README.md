@@ -3,9 +3,10 @@
 <h1>📐 AppDimens</h1>
 <p><strong>Smart Responsive Dimensions for Any Screen</strong></p>
    
-[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bodenberg/appdimens/releases)
+[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/bodenberg/appdimens/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Android%20%7C%20iOS%20%7C%20Flutter%20%7C%20RN%20%7C%20Web-orange.svg)](https://github.com/bodenberg/appdimens)
+[![Strategies](https://img.shields.io/badge/strategies-13-orange.svg)]()
 
 [📚 Documentation](DOCS/README.md) | [⚡ Quick Reference](DOCS/DOCS_QUICK_REFERENCE.md) | [🔬 Technical Details](DOCS/COMPREHENSIVE_TECHNICAL_GUIDE.md)
 
@@ -14,35 +15,69 @@
 
 ---
 
+## 🆕 What's New in Version 2.0
+
+**🎯 13 Scaling Strategies** (up from 2!)
+- **BALANCED** ⭐ New recommended primary strategy - hybrid linear-logarithmic
+- **DEFAULT** (formerly Fixed) - logarithmic with aspect ratio (secondary recommendation)
+- **PERCENTAGE** (formerly Dynamic) - proportional scaling
+- **LOGARITHMIC** - pure Weber-Fechner psychophysics
+- **POWER** - Stevens' Power Law (configurable)
+- **FLUID** - CSS clamp-like with breakpoints
+- Plus 7 more: INTERPOLATED, DIAGONAL, PERIMETER, FIT, FILL, AUTOSIZE 🆕, NONE
+
+**🧠 Smart Inference System**
+- Automatic strategy selection based on element type
+- 18 element types (BUTTON, TEXT, ICON, CONTAINER, etc.)
+- 8 device categories (PHONE_SMALL to TV)
+- Weight-based decision system
+
+**⚡ 5x Performance Improvement**
+- Unified lock-free cache (0.001µs)
+- Ln() lookup table (10-20x faster)
+- Pre-calculated constants
+- Binary search algorithms (O(log n))
+
+**♻️ Full Backward Compatibility**
+- Old `.fxdp`/`.dydp` extensions still work
+- Smooth migration path to `.balanced()`, `.defaultDp`, `.percentageDp`
+
+---
+
 ## ⚡ Quick Overview
 
 **AppDimens** makes your UI elements scale perfectly across all devices - from phones to tablets, TVs, watches, and web browsers.
 
-Instead of fixed sizes that look tiny on tablets or huge on watches, AppDimens uses **mathematical scaling** that adapts intelligently to screen size and aspect ratio.
+Instead of fixed sizes that look tiny on tablets or huge on watches, AppDimens uses **perceptual scaling** based on psychophysics research (Weber-Fechner, Stevens) that adapts intelligently to screen size, aspect ratio, and device type.
 
-### Why AppDimens?
+### Why AppDimens 2.0?
 
 ```
 ❌ Without AppDimens:
    Phone (360dp): Button = 48dp (13% of screen) ✅ Good
-   Tablet (800dp): Button = 48dp (6% of screen)  ❌ Too small!
+   Tablet (720dp): Button = 48dp (7% of screen)  ❌ Too small!
 
-✅ With AppDimens:
-   Phone (360dp): Button = 48dp (13% of screen) ✅ Good
-   Tablet (800dp): Button = 68dp (8.5% of screen) ✅ Perfect!
+❌ With Linear Scaling (SDP):
+   Phone (360dp): Button = 58dp (16% of screen) ✅ OK
+   Tablet (720dp): Button = 115dp (16% of screen) ❌ Too big!
+
+✅ With AppDimens BALANCED ⭐:
+   Phone (360dp): Button = 58dp (16% of screen) ✅ Perfect
+   Tablet (720dp): Button = 70dp (10% of screen) ✅ Perfect!
 ```
 
 ### Key Benefits
 
 - ✅ **Perfect proportions** on any screen size
 - ✅ **Works everywhere**: Android, iOS, Flutter, React Native, Web
-- ✅ **Simple API**: Just add `.fxdp` or `.fxsp` to your dimensions
-- ✅ **Mathematically proven**: Based on psychophysical research (Weber-Fechner Law)
-- ✅ **Best performance**: Intelligent caching makes it faster than alternatives
-- ✅ **NEW v1.2.0:** Auto-adapts to screen rotation with Base Orientation feature
-- ✅ **Three scaling models**: Fixed (logarithmic - RECOMMENDED), Dynamic (proportional), Fluid (smooth bounded growth)
+- ✅ **Simple API**: `.balanced()`, `.defaultDp`, `.percentageDp`
+- ✅ **Scientifically proven**: Based on psychophysics research (Weber-Fechner, Stevens)
+- ✅ **Best performance**: 5x faster with lock-free cache and optimizations
+- ✅ **13 scaling strategies**: From simple to advanced, covering all use cases
+- ✅ **Smart Inference**: Automatic strategy selection for 18 element types
 - ✅ **Physical units**: Real-world measurements (mm, cm, inch) across all platforms
 - ✅ **Game development**: Specialized modules for Android (C++/NDK) and iOS (Metal)
+- ✅ **AutoSize** 🆕: Container-aware auto-sizing like TextView autoSizeText
 
 ---
 
@@ -54,23 +89,23 @@ Instead of fixed sizes that look tiny on tablets or huge on watches, AppDimens u
 dependencies {
     // Core library (Fixed + Dynamic scaling + Physical Units)
     // Includes: .fxdp, .dydp, Physical Units (mm/cm/inch), Grid calculations
-    implementation("io.github.bodenberg:appdimens-dynamic:1.1.0")
+    implementation("io.github.bodenberg:appdimens-dynamic:2.0.0")
     
     // SDP scaling (Scalable DP for XML)
     // Includes: @dimen/_16sdp, etc.
-    implementation("io.github.bodenberg:appdimens-sdps:1.1.0")
+    implementation("io.github.bodenberg:appdimens-sdps:2.0.0")
     
     // SSP scaling (Scalable SP for text in XML)
     // Includes: @dimen/_18ssp, etc.
-    implementation("io.github.bodenberg:appdimens-ssps:1.1.0")
+    implementation("io.github.bodenberg:appdimens-ssps:2.0.0")
     
     // All-in-one (includes dynamic, sdps, ssps)
     // ⚠️ Note: Does NOT include games module
-    implementation("io.github.bodenberg:appdimens-all:1.1.0")
+    implementation("io.github.bodenberg:appdimens-all:2.0.0")
     
     // Game development (C++/NDK + OpenGL)
     // 🎮 Separate dependency - not included in "all"
-    implementation("io.github.bodenberg:appdimens-games:1.1.0")
+    implementation("io.github.bodenberg:appdimens-games:2.0.0")
 }
 ```
 
@@ -79,19 +114,19 @@ dependencies {
 **CocoaPods:**
 ```ruby
 # Full package (Main + UI)
-pod 'AppDimens', '~> 1.1.0'
+pod 'AppDimens', '~> 2.0.0'
 
 # Only Main module
-pod 'AppDimens/Main', '~> 1.1.0'
+pod 'AppDimens/Main', '~> 2.0.0'
 
 # Games module (separate)
-pod 'AppDimens/Games', '~> 1.1.0'
+pod 'AppDimens/Games', '~> 2.0.0'
 ```
 
 **Swift Package Manager:**
 ```swift
 dependencies: [
-    .package(url: "https://github.com/bodenberg/appdimens.git", from: "1.1.0")
+    .package(url: "https://github.com/bodenberg/appdimens.git", from: "2.0.0")
 ]
 ```
 
@@ -99,39 +134,39 @@ dependencies: [
 
 ```yaml
 dependencies:
-  appdimens: ^1.1.0
+  appdimens: ^2.0.0
 ```
 
 ### React Native
 
 ```bash
 # npm
-npm install appdimens-react-native@1.1.0
+npm install appdimens-react-native@2.0.0
 
 # yarn
-yarn add appdimens-react-native@1.1.0
+yarn add appdimens-react-native@2.0.0
 ```
 
 ### Web
 
 ```bash
 # npm
-npm install webdimens@1.1.0
+npm install webdimens@2.0.0
 
 # yarn
-yarn add webdimens@1.1.0
+yarn add webdimens@2.0.0
 
 # pnpm
-pnpm add webdimens@1.1.0
+pnpm add webdimens@2.0.0
 ```
 
 **Vanilla JavaScript (CDN):**
 ```html
-<script src="https://cdn.jsdelivr.net/npm/webdimens@1.1.0/dist/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/webdimens@2.0.0/dist/index.js"></script>
 <script>
-  const { fixed, dynamic, fluid } = WebDimens;
+  const { balanced, defaultScaling, fluid } = WebDimens;
   
-  document.getElementById('myElement').style.width = fixed(300).toPx();
+  document.getElementById('myElement').style.width = balanced(300);
 </script>
 ```
 
@@ -148,12 +183,12 @@ pnpm add webdimens@1.1.0
 fun MyCard() {
     Card(
         modifier = Modifier
-            .width(300.fxdp)      // ✨ Fixed scaling (RECOMMENDED)
-            .padding(16.fxdp)     // ✨ Adapts to screen
+            .width(300.balanced().dp)      // ✨ BALANCED (RECOMMENDED) ⭐
+            .padding(16.balanced().dp)     // ✨ Adapts intelligently
     ) {
         Text(
             text = "Hello World",
-            fontSize = 18.fxsp    // ✨ Readable everywhere
+            fontSize = 18.balanced().sp    // ✨ Readable everywhere
         )
     }
 }
@@ -186,8 +221,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         
-        // Dynamic scaling
-        val width = 300.fixedDp().toPx(resources)
+        // BALANCED scaling (recommended) ⭐
+        val width = 300.balanced().toPx(resources)
         binding.card.layoutParams.width = width.toInt()
         
         // Physical units
@@ -223,7 +258,7 @@ class MainActivity : AppCompatActivity() {
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
-            android:layout_height="@{AppDimensExtKt.fixedDp(48).dp}"
+            android:layout_height="@{AppDimensExtKt.balanced(48).dp}"
             android:text="Click Me" />
     </LinearLayout>
 </layout>
@@ -239,8 +274,8 @@ class MainActivity : AppCompatActivity() {
         
         // Set dimensions programmatically
         binding.button.apply {
-            layoutParams.width = 200.fixedDp().toPx(resources).toInt()
-            layoutParams.height = 56.fixedDp().toPx(resources).toInt()
+            layoutParams.width = 200.balanced().toPx(resources).toInt()
+            layoutParams.height = 56.balanced().toPx(resources).toInt()
         }
     }
 }
@@ -300,10 +335,10 @@ struct MyCard: View {
     var body: some View {
         VStack {
             Text("Hello World")
-                .font(.fxSystem(size: 18))
+                .font(.system(size: AppDimens.shared.balanced(18).toPoints()))
         }
-        .fxPadding(16)
-        .fxFrame(width: 300)
+        .padding(AppDimens.shared.balanced(16).toPoints())
+        .frame(width: AppDimens.shared.balanced(300).toPoints())
     }
 }
 ```
@@ -317,12 +352,12 @@ class MyViewController: UIViewController {
         
         let containerView = UIView()
         containerView.backgroundColor = .systemBlue
-        containerView.layer.cornerRadius = 16.fxpt
+        containerView.layer.cornerRadius = AppDimens.shared.balanced(16).toPoints()
         view.addSubview(containerView)
         
         let titleLabel = UILabel()
         titleLabel.text = "Hello World"
-        titleLabel.fxFontSize(18)
+        titleLabel.font = .systemFont(ofSize: AppDimens.shared.balanced(18).toPoints())
         containerView.addSubview(titleLabel)
     }
 }
@@ -333,11 +368,11 @@ class MyViewController: UIViewController {
 ```dart
 Widget build(BuildContext context) {
   return Container(
-    width: 300.fxdp(),
-    padding: EdgeInsets.all(16.fxdp()),
+    width: AppDimens.balanced(300).calculate(context),
+    padding: EdgeInsets.all(AppDimens.balanced(16).calculate(context)),
     child: Text(
       'Hello World',
-      style: TextStyle(fontSize: 18.fxsp()),
+      style: TextStyle(fontSize: AppDimens.balanced(18).calculate(context)),
     ),
   );
 }
@@ -348,11 +383,11 @@ Widget build(BuildContext context) {
 {% raw %}
 ```jsx
 function MyCard() {
-  const { fx } = useAppDimens();
+  const { balanced } = useAppDimens();
   
   return (
-    <View style={{ width: fx(300), padding: fx(16) }}>
-      <Text style={{ fontSize: fx(18) }}>
+    <View style={{ width: balanced(300), padding: balanced(16) }}>
+      <Text style={{ fontSize: balanced(18) }}>
         Hello World
       </Text>
     </View>
@@ -367,7 +402,7 @@ function MyCard() {
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/webdimens@1.0.8/dist/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/webdimens@2.0.0/dist/index.js"></script>
 </head>
 <body>
   <div id="container">
@@ -377,12 +412,12 @@ function MyCard() {
   </div>
   
   <script type="module">
-    import { webdimens } from 'https://cdn.jsdelivr.net/npm/webdimens@1.1.0/dist/index.mjs';
+    import { webdimens } from 'https://cdn.jsdelivr.net/npm/webdimens@2.0.0/dist/index.mjs';
     
-    // Apply fixed dimensions
-    document.getElementById('header').style.height = webdimens.fx(64);
-    document.getElementById('title').style.fontSize = webdimens.fl(24, 48);
-    document.getElementById('container').style.padding = webdimens.dy(24);
+    // Apply balanced dimensions (recommended) ⭐
+    document.getElementById('header').style.height = webdimens.balanced(64);
+    document.getElementById('title').style.fontSize = webdimens.balanced(24);
+    document.getElementById('container').style.padding = webdimens.balanced(24);
   </script>
 </body>
 </html>
@@ -395,11 +430,11 @@ function MyCard() {
 import { useWebDimens } from 'webdimens/react';
 
 function MyCard() {
-  const { fx, dy, fl } = useWebDimens();
+  const { balanced, fluid } = useWebDimens();
   
   return (
-    <div style={{ width: dy(300), padding: fx(16) }}>
-      <h2 style={{ fontSize: fl(18, 24) }}>Hello World</h2>
+    <div style={{ width: balanced(300), padding: balanced(16) }}>
+      <h2 style={{ fontSize: fluid(18, 24) }}>Hello World</h2>
     </div>
   );
 }
@@ -410,15 +445,15 @@ function MyCard() {
 
 ```vue
 <template>
-  <div :style="{ width: dy(300), padding: fx(16) }">
-    <h2 :style="{ fontSize: fl(18, 24) }">Hello World</h2>
+  <div :style="{ width: balanced(300), padding: balanced(16) }">
+    <h2 :style="{ fontSize: balanced(18) }">Hello World</h2>
   </div>
 </template>
 
 <script setup>
 import { useWebDimens } from 'webdimens/vue';
 
-const { fx, dy, fl } = useWebDimens();
+const { balanced } = useWebDimens();
 </script>
 ```
 
@@ -429,9 +464,9 @@ const { fx, dy, fl } = useWebDimens();
   import { webDimensStore } from 'webdimens/svelte';
   
   $: wd = $webDimensStore;
-  $: width = wd.dy(300);
-  $: padding = wd.fx(16);
-  $: fontSize = wd.fl(18, 24);
+  $: width = wd.balanced(300);
+  $: padding = wd.balanced(16);
+  $: fontSize = wd.balanced(18);
 </script>
 
 <div style="width: {width}; padding: {padding};">
@@ -459,9 +494,9 @@ export class CardComponent {
   fontSize = '';
 
   constructor(private wd: WebDimensService) {
-    this.width = wd.dy(300);
-    this.padding = wd.fx(16);
-    this.fontSize = wd.fl(18, 24);
+    this.width = wd.balanced(300);
+    this.padding = wd.balanced(16);
+    this.fontSize = wd.balanced(18);
   }
 }
 ```
@@ -470,19 +505,26 @@ export class CardComponent {
 
 ---
 
-## 🎯 Scaling Models
+## 🎯 Scaling Strategies
 
-AppDimens offers multiple scaling strategies for different needs:
+AppDimens 2.0 offers 13 scaling strategies for different needs:
 
-| Model | When to Use | Example | Availability |
-|-------|-------------|---------|--------------|
-| **Fixed (FX)** ⭐ **RECOMMENDED** | 95% of cases - buttons, text, padding, margins, icons | `16.fxdp` | All platforms |
-| **Dynamic (DY)** | Large containers, full-width grids, viewport-dependent elements | `100.dydp` | All platforms |
-| **Fluid (FL)** 🌊 | Typography, spacing with smooth min/max transitions | `fl(16, 24)` | Android (Compose), iOS (SwiftUI), Flutter, React Native, Web |
-| **SDP/SSP** | Legacy XML Android projects | `@dimen/_16sdp` | Android XML only |
-| **Physical Units** 📏 | Real-world measurements (wearables, printing, precision) | `.mm`, `.cm`, `.inch` | All platforms |
+| Strategy | When to Use | Example | Availability |
+|----------|-------------|---------|--------------|
+| **BALANCED** ⭐ **RECOMMENDED** | 95% of cases - multi-device apps (phones, tablets, TVs) | `48.balanced().dp` | All platforms |
+| **DEFAULT** (Secondary) | Phone-focused apps, icons, backward compatibility | `48.defaultDp` | All platforms |
+| **PERCENTAGE** | Large containers, full-width grids, proportional elements | `100.percentageDp` | All platforms |
+| **LOGARITHMIC** | TV apps, maximum control on large screens | `48.logarithmic()` | All platforms |
+| **POWER** | General purpose, configurable with exponent | `48.power(0.75)` | All platforms |
+| **FLUID** 🌊 | Typography, spacing with smooth min/max transitions | `fluid(16, 24)` | All platforms |
+| **FIT / FILL** | Game UI (letterbox/cover) | `48.fit()` / `48.fill()` | All platforms |
+| **AUTOSIZE** 🆕 | Container-aware auto-sizing (like TextView autoSizeText) | `smart().autosize()` | All platforms |
+| **INTERPOLATED** | Moderate scaling (50% linear) | `48.interpolated()` | All platforms |
+| **DIAGONAL** | Scale based on screen diagonal (true physical size) | `48.diagonal()` | All platforms |
+| **PERIMETER** | Scale based on W+H perimeter | `48.perimeter()` | All platforms |
+| **NONE** | No scaling (constant size) | `48.none()` | All platforms |
 
-**📖 [Understanding Scaling Models](DOCS/MATHEMATICAL_THEORY_SIMPLIFIED.md)**
+**📖 [Understanding Scaling Strategies](DOCS/MATHEMATICAL_THEORY_SIMPLIFIED.md)**
 
 ---
 
@@ -491,20 +533,22 @@ AppDimens offers multiple scaling strategies for different needs:
 AppDimens was scientifically compared against 7 other scaling approaches:
 
 ```
-🥇 #1 AppDimens:        91/100 ⭐⭐⭐⭐⭐
-🥈 #2 RN Moderate:      78/100
-🥉 #3 Flutter ScreenUtil: 72/100
-   #4 SDP/SSP:          65/100
-   #5 CSS vw/vh:        58/100
+🥇 #1 AppDimens BALANCED: 93/100 ⭐⭐⭐⭐⭐ (Primary recommendation)
+🥈 #2 AppDimens LOGARITHMIC: 88/100 ⭐⭐⭐⭐⭐ (TV/Large tablets)
+🥉 #3 AppDimens POWER: 86/100 ⭐⭐⭐⭐
+   #4 AppDimens DEFAULT: 82/100 ⭐⭐⭐⭐ (Phone-focused)
+   #5 SDP/SSP: 65/100
+   #6 CSS vw/vh: 58/100
 ```
 
 ### What Makes It Better?
 
-- ✅ **Only library** with logarithmic scaling (controls oversizing)
-- ✅ **Only library** with automatic aspect ratio compensation
-- ✅ **3.5× more accurate** than linear scaling
-- ✅ **65% less oversizing** on tablets vs competitors
-- ✅ **Faster with cache** (0.002µs vs 0.005µs)
+- ✅ **BALANCED strategy**: Hybrid linear-logarithmic (40% oversizing reduction)
+- ✅ **Perceptual models**: Based on psychophysics (Weber-Fechner, Stevens)
+- ✅ **13 strategies**: Most comprehensive library
+- ✅ **Smart Inference**: Automatic strategy selection
+- ✅ **5x faster**: Lock-free cache and optimizations
+- ✅ **Aspect ratio compensation**: Only library with AR adjustment (DEFAULT strategy)
 
 **📊 [See Full Comparison](DOCS/FORMULA_COMPARISON.md)**
 
@@ -538,34 +582,34 @@ AppDimens was scientifically compared against 7 other scaling approaches:
 
 ## 🎮 Advanced Features
 
-### 🆕 Base Orientation (v1.2.0)
+### 🆕 Base Orientation (v1.2.0+)
 
 Auto-adapt to screen rotation! Design for one orientation, automatically maintain proportions when rotated:
 
 ```kotlin
 // Android - Design for portrait, auto-adapts to landscape
-val cardWidth = 300.fixedDp().portraitLowest().dp
+val cardWidth = 300.balanced().portraitLowest().dp
 // Portrait (360x800):  Uses width (360) ✅
 // Landscape (800x360): Auto-inverts to width (800) ✅
 
 // Shorthand extensions
-val padding = 16.fxPortraitLowest    // Auto-inverts in landscape
-val height = 200.fxLandscapeHighest  // Auto-inverts in portrait
+val padding = 16.balancedPortraitLowest    // Auto-inverts in landscape
+val height = 200.balancedLandscapeHighest  // Auto-inverts in portrait
 ```
 
 ```swift
 // iOS - Same concept
-let cardWidth = AppDimensFixedCalculator(300).portraitLowest().pt
+let cardWidth = AppDimens.shared.balanced(300).portraitLowest().toPoints()
 ```
 
 ```dart
 // Flutter
-final cardWidth = AppDimensFixed(300).portraitLowest().calculate(context);
+final cardWidth = AppDimens.balanced(300).portraitLowest().calculate(context);
 ```
 
 **📖 [Complete Base Orientation Guide](DOCS/BASE_ORIENTATION_GUIDE.md)**
 
-### 🌊 Fluid Scaling (v1.0.10)
+### 🌊 Fluid Scaling
 
 Smooth interpolation between min/max values - perfect for typography and controlled growth:
 
@@ -586,31 +630,54 @@ fun FluidTypography() {
 struct FluidView: View {
     var body: some View {
         Text("Fluid Text")
-            .font(.system(size: fluid(min: 16, max: 24)))
-            .padding(fluid(min: 8, max: 16))
+            .font(.system(size: AppDimens.shared.fluid(min: 16, max: 24).toPoints()))
+            .padding(AppDimens.shared.fluid(min: 8, max: 16).toPoints())
     }
 }
 ```
 
 ```dart
 // Flutter
-final fontSize = 16.0.fluidTo(24.0).calculate(context);
-final padding = AppDimensFluid(8, 16).calculate(context);
+final fontSize = AppDimens.fluid(16, maxValue: 24).calculate(context);
+final padding = AppDimens.fluid(8, maxValue: 16).calculate(context);
 ```
 
-**Availability:** Android (Compose only), iOS (SwiftUI only), Flutter, React Native, Web
+**Availability:** All platforms
 
 **When to use:**
 - ✅ Typography with explicit bounds
 - ✅ Line heights and letter spacing
 - ✅ Smooth transitions across breakpoints
-- ❌ Not for general UI elements (use Fixed instead)
+- ❌ Not for general UI elements (use BALANCED instead)
+
+### Smart API with Auto-Inference 🧠
+
+Automatic strategy selection based on element type:
+
+```kotlin
+// Android - Automatic strategy selection
+val buttonSize = 48.smart().forElement(ElementType.BUTTON).dp
+// → Automatically selects BALANCED for buttons on tablets
+
+val containerWidth = 300.smart().forElement(ElementType.CONTAINER).dp
+// → Automatically selects PERCENTAGE for containers
+```
+
+```swift
+// iOS
+let buttonSize = AppDimens.shared.smart(48).forElement(.button).toPoints()
+```
+
+```dart
+// Flutter
+final buttonSize = AppDimens.smart(48).forElement(ElementType.button).calculate(context);
+```
 
 ### Custom Scaling Rules
 
 ```kotlin
 // Android - Different sizes for different devices
-val buttonSize = 56.fixedDp()
+val buttonSize = 56.balanced()
     .screen(UiModeType.TV, 96.dp)           // TVs: 96dp
     .screen(UiModeType.WATCH, 40.dp)        // Watches: 40dp
     .screen(DpQualifier.SMALL_WIDTH, 600, 72.dp)  // Tablets: 72dp
@@ -633,9 +700,9 @@ val playerSize = appDimensGames.mm(15f)  // 15mm player sprite
 
 ```swift
 // iOS - Same API
-let buttonWidth = 10.mm
-let cardWidth = 8.cm
-let screenSize = 5.inch
+let buttonWidth = AppDimensPhysicalUnits.mm(10)
+let cardWidth = AppDimensPhysicalUnits.cm(8)
+let screenSize = AppDimensPhysicalUnits.inch(5)
 ```
 
 ```dart
@@ -692,7 +759,10 @@ let uiOverlay = gameViewport(24)           // Viewport-based
 struct GameView: View {
     var body: some View {
         MetalGameView()
-            .frame(width: gameAspectRatio(320), height: gameAspectRatio(240))
+            .frame(
+                width: gameAspectRatio(320),
+                height: gameAspectRatio(240)
+            )
             .withAppDimens()
     }
 }
@@ -719,7 +789,7 @@ AppDimens.setGlobalCache(false)  // Disable all caches
 AppDimens.clearAllCaches()       // Clear all cached values
 
 // Per-instance cache control
-val dimension = AppDimens.fixed(100)
+val dimension = AppDimens.balanced(100)
     .cache(true)  // Enable cache for this instance
     .toDp(resources)
 
@@ -733,7 +803,7 @@ AppDimensGlobal.globalCacheEnabled = true
 AppDimensGlobal.clearAllCaches()
 
 // Per-instance
-let dimension = AppDimens.fixed(100)
+let dimension = AppDimens.shared.balanced(100)
     .cache(true)
     .toPoints()
 ```
@@ -744,7 +814,7 @@ AppDimens.setGlobalCache(true);
 AppDimens.clearAllCaches();
 
 // Per-instance
-final dimension = AppDimens.fixed(100)
+final dimension = AppDimens.balanced(100)
     .cache(true)
     .calculate(context);
 ```

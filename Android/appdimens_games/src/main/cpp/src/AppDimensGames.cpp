@@ -28,6 +28,9 @@
 #include "OpenGLUtils.h"
 #include "GameMath.h"
 #include "PerformanceMonitor.h"
+#include "GameCalculator.h"
+#include "GameCacheFast.h"
+#include "GameLookupTables.h"
 
 // Static instance
 AppDimensGames* AppDimensGames::instance = nullptr;
@@ -294,36 +297,109 @@ JNIEXPORT void JNICALL
 Java_com_appdimens_games_AppDimensGames_nativeSetCacheMaxSize(JNIEnv *env, jobject thiz, jint maxSize) {
     LOGI("JNI: nativeSetCacheMaxSize called - maxSize: %d", maxSize);
     
-    AppDimensGames& instance = AppDimensGames::getInstance();
-    GameDimensions* dimensions = instance.getGameDimensions();
-    if (dimensions) {
-        dimensions->setCacheMaxSize(static_cast<size_t>(maxSize));
-    }
+    // TODO v2.0: Refactor to use new GamesCore cache system
+    // AppDimensGames& instance = AppDimensGames::getInstance();
+    // GameDimensions* dimensions = instance.getGameDimensions();
+    // if (dimensions) {
+    //     dimensions->setCacheMaxSize(static_cast<size_t>(maxSize));
+    // }
 }
 
 JNIEXPORT void JNICALL
 Java_com_appdimens_games_AppDimensGames_nativeSetCachingEnabled(JNIEnv *env, jobject thiz, jboolean enabled) {
     LOGI("JNI: nativeSetCachingEnabled called - enabled: %s", enabled ? "true" : "false");
     
-    AppDimensGames& instance = AppDimensGames::getInstance();
-    GameDimensions* dimensions = instance.getGameDimensions();
-    if (dimensions) {
-        if (!enabled) {
-            dimensions->clearCache();
-        }
-        // Note: We could add a caching enabled flag to GameDimensions if needed
-    }
+    // TODO v2.0: Refactor to use new GamesCore cache system
+    // AppDimensGames& instance = AppDimensGames::getInstance();
+    // GameDimensions* dimensions = instance.getGameDimensions();
+    // if (dimensions) {
+    //     if (!enabled) {
+    //         dimensions->clearCache();
+    //     }
+    // }
 }
 
 JNIEXPORT void JNICALL
 Java_com_appdimens_games_AppDimensGames_nativeClearCache(JNIEnv *env, jobject thiz) {
     LOGI("JNI: nativeClearCache called");
     
-    AppDimensGames& instance = AppDimensGames::getInstance();
-    GameDimensions* dimensions = instance.getGameDimensions();
-    if (dimensions) {
-        dimensions->clearCache();
-    }
+    // TODO v2.0: Refactor to use new GamesCore cache system
+    // AppDimensGames& instance = AppDimensGames::getInstance();
+    // GameDimensions* dimensions = instance.getGameDimensions();
+    // if (dimensions) {
+    //     dimensions->clearCache();
+    // }
+}
+
+// ============================================
+// NEW V2.0 JNI METHODS
+// ============================================
+
+JNIEXPORT jfloat JNICALL
+Java_com_appdimens_games_AppDimensGames_nativeCalculateWithStrategy(
+    JNIEnv *env, jobject thiz,
+    jfloat baseValue, jint strategyOrdinal, jint elementTypeOrdinal,
+    jfloat screenWidthDp, jfloat screenHeightDp, jfloat smallestWidthDp, jint densityDpi
+) {
+    GameScreenConfigNative config(
+        screenWidthDp,
+        screenHeightDp,
+        smallestWidthDp,
+        densityDpi,
+        0 // uiMode
+    );
+    
+    GameScalingStrategy strategy = static_cast<GameScalingStrategy>(strategyOrdinal);
+    
+    return GameCalculator::calculate(
+        baseValue,
+        strategy,
+        config,
+        ScreenType::LOWEST,
+        BaseOrientation::AUTO
+    );
+}
+
+JNIEXPORT jint JNICALL
+Java_com_appdimens_games_AppDimensGames_nativeInferStrategy(
+    JNIEnv *env, jobject thiz,
+    jint elementTypeOrdinal,
+    jfloat screenWidthDp, jfloat screenHeightDp,
+    jfloat smallestWidthDp, jint densityDpi
+) {
+    GameScreenConfigNative config(
+        screenWidthDp,
+        screenHeightDp,
+        smallestWidthDp,
+        densityDpi,
+        0
+    );
+    
+    GameElementType elementType = static_cast<GameElementType>(elementTypeOrdinal);
+    GameScalingStrategy strategy = GameCalculator::inferStrategy(elementType, config);
+    
+    return static_cast<jint>(strategy);
+}
+
+JNIEXPORT void JNICALL
+Java_com_appdimens_games_AppDimensGames_nativeClearFastCache(JNIEnv *env, jobject thiz) {
+    GameCacheFast::clearAll();
+}
+
+JNIEXPORT jfloatArray JNICALL
+Java_com_appdimens_games_AppDimensGames_nativeGetCacheStats(JNIEnv *env, jobject thiz) {
+    GameCacheFast::CacheStats stats = GameCacheFast::getStats();
+    
+    jfloatArray array = env->NewFloatArray(4);
+    jfloat values[4] = {
+        static_cast<jfloat>(stats.totalEntries),
+        static_cast<jfloat>(stats.totalHits),
+        stats.hitRate,
+        static_cast<jfloat>(stats.oldestEntryAgeMs)
+    };
+    env->SetFloatArrayRegion(array, 0, 4, values);
+    
+    return array;
 }
 
 } // extern "C"

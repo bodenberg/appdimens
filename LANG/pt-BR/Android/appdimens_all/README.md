@@ -1,25 +1,24 @@
+# AppDimens All - Módulo Tudo-em-Um Android
+
+**Pacote Completo (Dynamic + SDP + SSP)**  
+*Versão: 2.0.0*
+
 ---
-layout: default
-title: "🚀 AppDimens: Guia Rápido e Visão Geral da Biblioteca"
----
 
-# 🚀 AppDimens: Guia Rápido e Visão Geral da Biblioteca
-
-> **Idiomas:** [English](../../../../Android/appdimens_all/README.md) | Português (BR) | [Español](../../es/Android/appdimens_all/README.md)
-
-**AppDimens** é um sistema de gerenciamento de dimensões para Android (Views e Compose) com foco em responsividade matemática.
-
-- **Modelos**: Fixed (FX) para ajustes sutis e Dynamic (DY) para ajustes proporcionais.
-- **Compose**: extensões `.fxdp`, `.dydp`, `.fxsp`, `.dysp`.
-- **Views/XML**: `AppDimens.fixedPx`, `AppDimens.dynamicPx`, `AppDimens.dynamicPercentagePx`.
-- **Unidades físicas**: conversões mm/cm/pol para Dp/Sp/Px.
-- **Utilitário de layout**: `calculateAvailableItemCount`.
+## 📦 Instalação
 
 ```kotlin
-// Exemplos (Compose)
-val fixedButton = 56.fxdp
-val dynamicWidth = 100.dydp
+implementation("io.github.bodenberg:appdimens-all:2.0.0")
 ```
 
-- Documentação: `Android/DOCS/`
-- Licença: `LICENSE`
+**Inclui:**
+- ✅ appdimens-dynamic
+- ✅ appdimens-sdps
+- ✅ appdimens-ssps
+
+**Exclui:**
+- ❌ appdimens-games (instale separadamente se necessário)
+
+---
+
+**Guia:** [../../../../Android/appdimens_all/README.md](../../../../Android/appdimens_all/README.md)

@@ -1,0 +1,30 @@
+/**
+ * @author Bodenberg
+ * GIT: https://github.com/bodenberg/appdimens.git
+ */
+package com.example.app.views.java.en;
+
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import com.appdimens.dynamic.code.AppDimens;
+import com.example.app.R;
+import com.example.app.databinding.ActivityDefaultExampleBinding;
+
+/** DEFAULT Strategy Example (Java) */
+public class DefaultExampleActivity extends AppCompatActivity {
+    private ActivityDefaultExampleBinding binding;
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_default_example);
+        
+        float baseValue = 48f;
+        binding.setBaseValue(baseValue);
+        
+        float defaultDp = AppDimens.from(baseValue).useDefault(true, null).toDp(getResources());
+        binding.getTvResult().setText("DEFAULT: " + baseValue + "dp → " + (int)defaultDp + "dp");
+    }
+}
+

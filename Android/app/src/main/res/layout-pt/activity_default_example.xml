@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data><variable name="baseValue" type="Float" /></data>
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Exemplo Estratégia DEFAULT" android:textSize="20sp" android:textStyle="bold" android:paddingBottom="16dp"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Estratégia DEFAULT (~97% linear + ajuste AR)" android:paddingBottom="8dp"/>
+            <View android:id="@+id/demo_view_default" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="#2196F3" app:defaultWidthDp="@{baseValue}" app:defaultHeightDp="@{baseValue}"/>
+            <TextView android:id="@+id/tv_result" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Resultado será mostrado aqui"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="Texto com escalonamento DEFAULT:" android:textStyle="bold"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Este texto usa estratégia DEFAULT para tamanho" app:defaultTextSizeSp="@{16f}"/>
+        </LinearLayout>
+    </ScrollView>
+</layout>
+

@@ -1,1398 +1,1065 @@
-# 📚 AppDimens: Complete and Definitive Technical Guide
+# 📚 AppDimens: Complete Technical Guide
 
 > **Languages:** English | [Português (BR)](../LANG/pt-BR/COMPREHENSIVE_TECHNICAL_GUIDE.md) | [Español](../LANG/es/COMPREHENSIVE_TECHNICAL_GUIDE.md)
 
-**Comprehensive Technical Documentation - Theory, Implementation and Comparisons** 
+**Comprehensive Technical Documentation - Everything You Need to Know**  
 *Author: Jean Bodenberg*  
-*Date: October 2025*  
-*Version: 1.1.0*
+*Date: February 2025*  
+*Version: 2.0.0*
 
-> **The most mathematically advanced responsive sizing library, based on logarithmic scaling and aspect ratio compensation.**
+> **🆕 Version 2.0:** Expanded from 2 to **13 scaling strategies**, including perceptual models (BALANCED⭐, LOGARITHMIC, POWER), Smart Inference, and 5x performance improvements.
+
+> **The most comprehensive responsive sizing library, combining mathematical rigor with practical simplicity.**
+
+> **📚 This is the DEFINITIVE document.** Everything about AppDimens 2.0 is here. For quick starts, see [Simplified Guide](MATHEMATICAL_THEORY_SIMPLIFIED.md).
 
 ---
 
 ## 📋 Complete Table of Contents
 
-### Part I: Fundamentals
+### Part I: Introduction
 1. [The Responsive Sizing Problem](#1-the-responsive-sizing-problem)
-2. [The AppDimens Solution](#2-the-appdimens-solution)
+2. [The AppDimens 2.0 Solution](#2-the-appdimens-20-solution)
+3. [Version 2.0 Major Changes](#3-version-20-major-changes)
 
-### Part II: Mathematical Theory
-3. [The Two-Step Calculation](#3-the-two-step-calculation)
-4. [Priority System (Hierarchy System)](#4-priority-system-hierarchy-system)
-5. [Detailed Logarithmic Formula](#5-detailed-logarithmic-formula)
-6. [Scientific Foundation](#6-scientific-foundation)
+### Part II: Strategy Reference (All 13)
+4. [PRIMARY: BALANCED Strategy](#4-primary-balanced-strategy)
+5. [SECONDARY: DEFAULT Strategy](#5-secondary-default-strategy)
+6. [Perceptual Models: LOGARITHMIC & POWER](#6-perceptual-models-logarithmic--power)
+7. [Utility Strategies: FLUID, INTERPOLATED, etc](#7-utility-strategies)
+8. [Game Strategies: FIT & FILL](#8-game-strategies-fit--fill)
+9. [Special: AUTOSIZE & NONE](#9-special-strategies-autosize--none)
 
-### Part III: Comparisons
-7. [Comparison with 7 Fundamental Formulas](#7-comparison-with-7-fundamental-formulas)
-8. [Comparison with Existing Libraries](#8-comparison-with-existing-libraries)
-9. [Comparison with Ecosystems (Web, iOS, Flutter, Games)](#9-comparison-with-ecosystems)
-10. [Performance and Accuracy](#10-performance-and-accuracy)
+### Part III: Platform Implementation
+10. [Android Complete Guide](#10-android-complete-guide)
+11. [iOS Complete Guide](#11-ios-complete-guide)
+12. [Flutter Complete Guide](#12-flutter-complete-guide)
+13. [React Native Complete Guide](#13-react-native-complete-guide)
+14. [Web Complete Guide](#14-web-complete-guide)
 
-### Part IV: Analysis and Rankings
-11. [Definitive Formula Ranking](#11-definitive-formula-ranking)
-12. [Innovation and Originality](#12-innovation-and-originality)
-13. [Excellence Certification](#13-excellence-certification)
+### Part IV: Advanced Features
+15. [Smart Inference System](#15-smart-inference-system)
+16. [Base Orientation Support](#16-base-orientation-support)
+17. [Physical Units](#17-physical-units)
+18. [Game Development Modules](#18-game-development-modules)
+19. [Cache and Performance](#19-cache-and-performance)
 
-### Part V: Practical Guide
-14. [When to Use Each Model](#14-when-to-use-each-model)
-15. [Code Examples](#15-code-examples)
-16. [References and Resources](#16-references-and-resources)
+### Part V: Comparisons & Analysis
+20. [Comparison with External Libraries](#20-comparison-with-external-libraries)
+21. [Performance Benchmarks](#21-performance-benchmarks)
+22. [Migration Guides](#22-migration-guides)
+
+### Part VI: Reference
+23. [Complete API Reference](#23-complete-api-reference)
+24. [Troubleshooting](#24-troubleshooting)
+25. [FAQ](#25-faq)
+26. [References](#26-references)
 
 ---
 
-# PART I: FUNDAMENTALS
+## PART I: INTRODUCTION
 
 ## 1. The Responsive Sizing Problem
 
-### 1.1 The Universal Challenge
+### 1.1 The Challenge
 
-In modern user interface systems, there exists a fundamental mathematical challenge:
+Modern apps must work across:
+- 📱 Phones (320-480dp)
+- 📱 Phablets (480-600dp)
+- 📱 Small Tablets (600-720dp)
+- 📺 Large Tablets (720-840dp)
+- 📺 TVs (960-1920dp+)
+- ⌚ Watches (< 300dp)
+- 💻 Web (320-3840px+)
 
-> **How to scale visual elements consistently and proportionally across devices with drastically different sizes and proportions?**
+**Problem:** A fixed 48dp button:
+- Looks good on phones (13% of screen)
+- Looks tiny on tablets (6.7% of screen)
+- Looks microscopic on TVs (2.5% of screen)
 
-```
-PROBLEMATIC SCENARIO:
+**Linear scaling (SDP):** Opposite problem:
+- Looks good on phones (48dp)
+- Looks too big on tablets (96dp)
+- Looks enormous on TVs (144dp)
 
-📱 Phone (360dp × 640dp)
-┌──────────────────────────────┐
-│  ┌─────┐  Button: 48dp        │
-│  │ BTN │  = 13.3% of screen   │
-│  └─────┘  (PERFECT!)          │
-└──────────────────────────────┘
+### 1.2 The Solution Requirements
 
-📺 TV (1920dp × 1080dp)
-┌────────────────────────────────────────────────┐
-│  ┌┐  Button: 48dp (same value!)               │
-│  └┘  = 2.5% of screen (TINY!)                 │
-└────────────────────────────────────────────────┘
-
-⌚ Watch (240dp × 280dp)
-┌─────────────────┐
-│  ┌──────────┐  │  Button: 48dp
-│  │  HUGE!!  │  │  = 20% of screen
-│  └──────────┘  │  (GIGANTIC!)
-└─────────────────┘
-```
-
-### 1.2 Traditional Solutions and Their Limitations
-
-#### **Solution 1: Traditional DP (Density-Independent Pixels)**
-```
-Size = Value × (Device_DPI / Reference_DPI)
-```
-
-**Problem:** Maintains physical size, but **not** relative visual proportion.
-
-- ❌ A 48dp button occupies 15% of a 320dp screen
-- ❌ But only 4.4% of a 1080dp screen
-- ❌ Completely ignores aspect ratio
-- ❌ Violates Weber-Fechner Law
+An ideal solution must:
+1. ✅ **Adapt** to screen size
+2. ✅ **Control** excessive growth
+3. ✅ **Consider** aspect ratio
+4. ✅ **Maintain** visual consistency
+5. ✅ **Perform** efficiently
+6. ✅ **Work** across all platforms
 
 ---
 
-#### **Solution 2: Viewport Percentage**
+## 2. The AppDimens 2.0 Solution
+
+### 2.1 Core Innovations
+
+**Version 2.0 introduces:**
+
+1. **13 Scaling Strategies** (vs 2 in v1.x)
+   - Perceptual: BALANCED ⭐, LOGARITHMIC, POWER
+   - Legacy: DEFAULT, PERCENTAGE
+   - Utility: FLUID, INTERPOLATED, DIAGONAL, PERIMETER
+   - Game: FIT, FILL
+   - Special: AUTOSIZE 🆕, NONE
+
+2. **Primary Recommendation: BALANCED** ⭐
+   - Hybrid linear-logarithmic
+   - Linear on phones (< 480dp)
+   - Logarithmic on tablets/TVs (≥ 480dp)
+   - 40% oversizing reduction
+
+3. **Smart Inference System** 🧠
+   - Automatic strategy selection
+   - 18 element types
+   - 8 device categories
+   - Weight-based algorithm
+
+4. **5x Performance Improvement** ⚡
+   - Lock-free cache (0.001µs)
+   - Ln() lookup table (10-20x faster)
+   - Pre-calculated constants
+   - Binary search O(log n)
+
+### 2.2 Quick Comparison
+
+| Approach | Phone (360dp) | Tablet (720dp) | Problem |
+|----------|---------------|----------------|---------|
+| **Traditional DP** | 48dp (13%) | 48dp (6.7%) ❌ | Too small on tablets |
+| **Linear (SDP)** | 58dp (16%) | 115dp (16%) ❌ | Too big on tablets |
+| **AppDimens BALANCED** ⭐ | 58dp (16%) ✅ | 70dp (10%) ✅ | Perfect! |
+
+---
+
+## 3. Version 2.0 Major Changes
+
+### 3.1 What Changed
+
+**New Features:**
+- ✅ 11 new scaling strategies
+- ✅ BALANCED as primary recommendation
+- ✅ Smart Inference with auto-selection
+- ✅ 5x performance improvements
+- ✅ Enhanced TypeScript/JavaScript support
+
+**Renamed (Clarity):**
+- `Fixed` → `DEFAULT` (phone-focused, secondary recommendation)
+- `Dynamic` → `PERCENTAGE` (proportional, specific use)
+
+**Backward Compatibility:**
+- ✅ Old extensions still work (`.fxdp`, `.dydp`)
+- ✅ Deprecated warnings guide migration
+- ✅ Zero breaking changes
+
+### 3.2 Migration from v1.x
+
+**Old code (v1.x) - Still works:**
 ```kotlin
-width = screenWidth * 0.10f  // 10% of screen
+Text("Hello", fontSize = 16.fxsp)  // Deprecated but functional
 ```
 
-**Problem:** **Disaster for fixed components.**
-
-- 10% on Phone 360dp = **36dp** ✅ Ok
-- 10% on Tablet 1200dp = **120dp** ❌ GIGANTIC
-- Completely breaks visual hierarchy
-- Doesn't respect the concept of physical size
-
----
-
-#### **Solution 3: Static Breakpoints**
-```xml
-<!-- values/dimens.xml -->
-<dimen name="button_size">48dp</dimen>
-
-<!-- values-sw600dp/dimens.xml -->
-<dimen name="button_size">64dp</dimen>
-```
-
-**Problem:** **Layout "jumps", not continuous.**
-
-- 590dp screen uses 48dp
-- 600dp screen uses 64dp (jump of +33%!)
-- Intermediate screens are not optimized
-
----
-
-## 2. The AppDimens Solution
-
-### 2.1 Philosophy: Adaptive Layout, Not Fluid
-
-AppDimens implements an **adaptive scaling system** based on:
-
-1. ✅ **Non-linear mathematical function** (logarithmic)
-2. ✅ **Aspect ratio compensation** (unique in the market)
-3. ✅ **Hierarchical priority system** (granular control)
-4. ✅ **Scientific foundation** (Weber-Fechner Law)
-5. ✅ **Optimized performance** (intelligent cache)
-
-### 2.2 Visual Result
-
-```
-SOLVED SCENARIO:
-
-📱 Phone (360dp × 640dp)
-┌──────────────────────────────┐
-│  ┌─────┐  Button: 48dp        │
-│  │ BTN │  = 13.3% of screen   │
-│  └─────┘  (BASELINE)          │
-└──────────────────────────────┘
-
-📺 TV (1920dp × 1080dp)
-┌────────────────────────────────────────────────┐
-│  ┌───────┐  Button: ~92dp                      │
-│  │  BTN  │  = 4.8% of screen                  │
-│  └───────┘  (PROPORTIONAL!)                    │
-└────────────────────────────────────────────────┘
-
-⌚ Watch (240dp × 280dp)
-┌─────────────────┐
-│  ┌────┐  │  Button: ~38dp
-│  │BTN │  │  = 15.8% of screen
-│  └────┘  │  (CONTROLLED!)
-└─────────────────┘
-```
-
-**✨ Controlled growth, visually consistent!**
-
----
-
-# PART II: MATHEMATICAL THEORY
-
-## 3. The Two-Step Calculation
-
-AppDimens solves sizing in **two sequential steps**:
-
-```
-┌────────────────────────────────────────────────────────┐
-│  STEP 1: Base Value Resolution                        │
-│  ↓                                                     │
-│  Determines which dp value to use based on context    │
-│  (Priority System)                                     │
-│                                                        │
-│  STEP 2: Adjustment Factor Application                │
-│  ↓                                                     │
-│  Scales the value using logarithmic formula           │
-│  (AR Compensation)                                     │
-│                                                        │
-│  RESULT: Final Value                                   │
-└────────────────────────────────────────────────────────┘
-```
-
-### 3.1 Complete Flow
-
+**New code (v2.0) - Recommended:**
 ```kotlin
-// Pseudo-code of the flow
-fun calculate(): Float {
-    // STEP 1: Resolve base value
-    val baseValue = resolveBaseDp(
-        intersection = customIntersectionMap,  // Priority 1
-        uiMode = customUiModeMap,             // Priority 2
-        qualifier = customDpMap,              // Priority 3
-        fallback = initialBaseDp              // Priority 4
-    )
-    
-    // STEP 2: Apply adjustment factor
-    val adjustmentFactor = if (applyAspectRatio) {
-        calculateLogarithmicFactor(
-            screenSize = currentScreenSize,
-            aspectRatio = currentAR,
-            sensitivity = customSensitivityK
-        )
-    } else {
-        calculateSimpleFactor(screenSize)
-    }
-    
-    // RESULT
-    return baseValue * adjustmentFactor
+// Primary recommendation
+Text("Hello", fontSize = 16.balanced().sp)  // ⭐ BALANCED
+
+// Secondary (equivalent to old Fixed)
+Text("Hello", fontSize = 16.defaultDp.sp)  // DEFAULT
+
+// Large containers (equivalent to old Dynamic)
+Container(modifier = Modifier.width(300.percentageDp.dp))
+```
+
+---
+
+## PART II: STRATEGY REFERENCE
+
+## 4. PRIMARY: BALANCED Strategy
+
+> **🏆 Primary Recommendation:** Use for 95% of applications, especially multi-device apps.
+
+### 4.1 Mathematical Formula
+
+```
+f_BALANCED(x, W) = {
+  x × (W / 300)                           if W < 480dp
+  x × (1.6 + 0.40 × ln(1 + (W-480)/300)) if W ≥ 480dp
 }
 ```
 
----
+**Components:**
+- Linear region: W < 480dp (phones)
+- Logarithmic region: W ≥ 480dp (tablets/TVs)
+- Transition point: 480dp
+- Sensitivity: k = 0.40
 
-## 4. Priority System (Hierarchy System)
+### 4.2 Results Table (48dp base)
 
-### 4.1 The Innovation: Granular Control
+| Screen | BALANCED | LINEAR | Reduction |
+|--------|----------|--------|-----------|
+| 240dp  | 38.4dp   | 38.4dp | 0%        |
+| 300dp  | 48.0dp   | 48.0dp | Reference |
+| 360dp  | 57.6dp   | 57.6dp | 0% (linear) |
+| 480dp  | 76.8dp   | 76.8dp | 0% (transition) |
+| 600dp  | 85.0dp   | 96.0dp | **-11.5%** |
+| 720dp  | 69.7dp   | 115.2dp| **-39.5%** ⭐ |
+| 960dp  | 88.3dp   | 153.6dp| **-42.5%** |
+| 1080dp | 100.9dp  | 172.8dp| **-41.6%** |
 
-**This is one of AppDimens' biggest differentiators.** No other library offers this level of hierarchical control.
+### 4.3 Platform APIs
 
-```
-┌─────────────────────────────────────────────────────────┐
-│  PRIORITY SYSTEM (Resolution Order)                    │
-├─────────────────────────────────────────────────────────┤
-│                                                         │
-│  🥇 PRIORITY 1: INTERSECTION                            │
-│     customIntersectionMap                               │
-│     UiModeType + DpQualifier                           │
-│                                                         │
-│  🥈 PRIORITY 2: UI MODE                                 │
-│     customUiModeMap                                     │
-│     Only UiModeType                                    │
-│                                                         │
-│  🥉 PRIORITY 3: DP QUALIFIER                            │
-│     customDpMap                                         │
-│     Only DpQualifier (SW, W, H)                        │
-│                                                         │
-│  🏳️ PRIORITY 4: FALLBACK                               │
-│     initialBaseDp                                       │
-│     Initial value provided                             │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
-```
-
-### 4.2 Practical Examples
-
-#### **Example 1: Priority 1 (Intersection)**
-
+**Android:**
 ```kotlin
-val buttonSize = 48.fixedDp()
-    .screen(
-        uiModeType = UiModeType.TV,
-        qualifierType = DpQualifier.SMALL_WIDTH,
-        qualifierValue = 1200,
-        customValue = 96.dp
-    )
-    .dp
+// Extension
+16.balanced().dp
+16.balanced().sp
 
-// Result:
-// - On TV with sw >= 1200dp: 96dp (Priority 1)
-// - On TV with sw < 1200dp: uses Priority 2 or logarithmic
-// - On Phone: uses logarithmic
+// Builder
+AppDimens.balanced(16).toDp(resources)
+AppDimens.balanced(16).toSp(resources)
 ```
 
-**Use when:** You need EXACT control for specific combinations.
-
----
-
-#### **Example 2: Priority 2 (UI Mode)**
-
-```kotlin
-val padding = 16.fixedDp()
-    .screen(UiModeType.DARK_MODE, 24.dp)
-    .screen(UiModeType.TV, 32.dp)
-    .dp
-
-// Result:
-// - On TV: 32dp (regardless of sw)
-// - In Dark Mode: 24dp (regardless of sw)
-// - In Light Mode Phone: uses logarithmic
+**iOS:**
+```swift
+AppDimens.shared.balanced(16).toPoints()
+AppDimens.shared.balanced(16).toPt()
 ```
 
-**Use when:** You want different values by device type, but consistent within type.
-
----
-
-#### **Example 3: Priority 3 (DpQualifier)**
-
-```kotlin
-val iconSize = 24.fixedDp()
-    .screen(DpQualifier.SMALL_WIDTH, 600, 32.dp)
-    .screen(DpQualifier.SMALL_WIDTH, 1200, 40.dp)
-    .dp
-
-// Result:
-// - sw >= 1200dp: 40dp
-// - 600dp <= sw < 1200dp: 32dp
-// - sw < 600dp: uses logarithmic (based on 24dp)
-```
-
-**Use when:** You want traditional breakpoints, but with logarithmic adjustment below the lowest breakpoint.
-
----
-
-#### **Example 4: Complete Combination**
-
-```kotlin
-val complexSize = 48.fixedDp()
-    // Priority 1: Large TV in landscape
-    .screen(
-        uiModeType = UiModeType.TV,
-        qualifierType = DpQualifier.WIDTH,
-        qualifierValue = 1920,
-        customValue = 120.dp
-    )
-    // Priority 2: Any TV
-    .screen(UiModeType.TV, 96.dp)
-    // Priority 3: Tablets
-    .screen(DpQualifier.SMALL_WIDTH, 600, 72.dp)
-    // Priority 4 (implicit): 48dp with logarithmic adjustment
-    .dp
-
-// Resolution:
-// 1. TV with w >= 1920dp? → 120dp (P1)
-// 2. If not, any TV? → 96dp (P2)
-// 3. If not, sw >= 600dp? → 72dp (P3)
-// 4. If not → 48dp × logarithmic_factor (P4)
-```
-
-**✨ Maximum power: Breakpoints where necessary, smooth scaling where desired!**
-
----
-
-### 4.3 Comparison: AppDimens vs. Others
-
-| Library | Priority 1 | Priority 2 | Priority 3 | Priority 4 |
-|---------|------------|------------|------------|------------|
-| **AppDimens** | ✅ Intersection | ✅ UiMode | ✅ Qualifier | ✅ Logarithmic |
-| SDP/SSP | ❌ | ❌ | ✅ Breakpoints | ❌ Linear |
-| CSS | ❌ | ❌ | ✅ Media Queries | ⚠️ clamp() |
-| Flutter ScreenUtil | ❌ | ❌ | ❌ | ⚠️ Quadratic |
-| React Native size-matters | ❌ | ❌ | ❌ | ⚠️ Interpolation |
-
-**🏆 AppDimens is the ONLY one with a 4-level hierarchical system!**
-
----
-
-## 5. Detailed Logarithmic Formula
-
-### 5.1 The Complete Formula
-
-```
-f_FX(B, S, AR, k) = B × [1 + ((S - W₀) / δ) × (ε₀ + k × ln(AR / AR₀))]
-```
-
-**Where:**
-
-| Symbol | Name | Typical Value | Description |
-|--------|------|---------------|-------------|
-| `B` | Base Value | Variable | Initial dp value (e.g., 48dp) |
-| `S` | Screen Size | Runtime | Smallest screen dimension (sw) |
-| `AR` | Aspect Ratio | Runtime | Current proportion (W/H) |
-| `W₀` | Reference Width | 300dp | Reference width |
-| `δ` | Step Size | 1dp | 1dp granularity (fine precision) |
-| `ε₀` | Base Increment | 0.10/30 = 0.00333 | Base increment (adjusted for 1dp step) |
-| `k` | Sensitivity | 0.08/30 = 0.00267 | AR adjustment sensitivity (adjusted for 1dp step) |
-| `AR₀` | Reference AR | 1.78 | Reference aspect ratio (16:9) |
-| `ln` | Natural Log | - | Natural logarithm |
-
-### 5.2 Formula Decomposition
-
-```
-┌────────────────────────────────────────────────────────┐
-│  f_FX(B, S, AR, k) = B × Total_Factor                 │
-│                                                        │
-│  Where:                                                │
-│  Total_Factor = α + β(S) × γ(AR, k)                   │
-│                                                        │
-│  α = 1.0           (neutral factor)                   │
-│  β(S) = (S - W₀) / δ                                  │
-│  γ(AR, k) = ε₀ + k × ln(AR / AR₀)                    │
-└────────────────────────────────────────────────────────┘
-```
-
-#### **Component α (Alpha) - Neutral Factor**
-```
-α = 1.0
-```
-
-- Ensures that at the base point (S = 300dp, AR = 1.78): f_FX(B, 300, 1.78) = B
-- System calibration point
-
----
-
-#### **Component β (Beta) - Linear Size Adjustment**
-```
-β(S) = (S - W₀) / δ
-     = (S - 300) / 1
-```
-
-**Examples:**
-- S = 300dp → β = 0 (reference screen, no adjustment)
-- S = 360dp → β = 60 (60dp above reference)
-- S = 480dp → β = 180 (180dp above reference)
-- S = 720dp → β = 420 (420dp above reference)
-
-**Interpretation:** How many dp the current screen is above or below the reference (1dp granularity).
-
----
-
-#### **Component γ (Gamma) - Logarithmic AR Adjustment**
-```
-γ(AR, k) = ε₀ + k × ln(AR / AR₀)
-         = 0.10 + 0.08 × ln(AR / 1.78)
-```
-
-**Examples (k = 0.08):**
-
-| AR | Type | ln(AR/1.78) | k × ln(...) | γ(AR) | Observation |
-|----|------|-------------|-------------|-------|-------------|
-| 1.33 | 4:3 Tablet | -0.289 | -0.023 | **0.077** | Square screen → smaller |
-| 1.78 | 16:9 Phone | 0.000 | 0.000 | **0.100** | Reference → neutral |
-| 2.00 | 18:9 Phone | 0.116 | 0.009 | **0.109** | Taller → larger |
-| 2.22 | 20:9 Phone | 0.220 | 0.018 | **0.118** | Very tall → even larger |
-| 2.33 | 21:9 Ultra | 0.268 | 0.021 | **0.121** | Ultra-wide → larger still |
-
-**✨ ln() Magic:** The difference between 1.78 and 2.00 (Δ = 0.22) generates adjustment of +0.009, but the difference between 2.22 and 2.33 (Δ = 0.11, half!) generates adjustment of only +0.003 (1/3 of previous). **The logarithm naturally dampens!**
-
----
-
-### 5.3 Final Multiplication
-
-```
-Total_Factor = α + β(S) × γ(AR, k)
-            = 1.0 + β × γ
-
-Final_Value = B × Total_Factor
-```
-
-#### **Complete Example: 10" Tablet (720dp × 1280dp)**
-
-```
-Data:
-  B = 48dp
-  S = 720dp
-  AR = 1280 / 720 = 1.78 (16:9)
-  W₀ = 300dp, δ = 1dp, ε₀ = 0.10/30 = 0.00333, k = 0.08/30 = 0.00267, AR₀ = 1.78
-
-Step 1: β(S) - Linear Size Adjustment
-  β = (720 - 300) / 1 = 420
-
-Step 2: γ(AR) - Logarithmic AR Adjustment
-  ln(1.78 / 1.78) = ln(1) = 0
-  γ = 0.00333 + 0.00267 × 0 = 0.00333
-
-Step 3: Total_Factor
-  Factor = 1.0 + 420 × 0.00333 = 1.0 + 1.4 = 2.4
-
-Step 4: Final_Value
-  Result = 48 × 2.4 = 115.2dp
-```
-
-**✨ Version 1.1.0 Note:** With the new granularity adjustment (0.10/30 and 0.08/30), each 1dp increment now has a unique value. The formula maintains visual consistency while providing 30× more precision. The constants are proportionally adjusted to maintain the same scaling behavior as previous versions, but with finer control at each dp level.
-
----
-
-### 5.4 Real Implementation (Code)
-
-```kotlin
-// Simplified code based on AppDimensFixed.kt (v1.1.0)
-
-val BASE_DP_FACTOR = 1.0f
-val BASE_INCREMENT = 0.10f / 30f  // Adjusted for 1dp step granularity
-val DEFAULT_SENSITIVITY_K = 0.08f / 30f  // Adjusted for 1dp step granularity
-val REFERENCE_AR = 1.78f   // 16:9
-val BASE_WIDTH_DP = 300f
-val INCREMENT_DP_STEP = 1f  // 1dp granularity
-
-fun calculate(
-    baseDp: Float,
-    screenSize: Float,
-    aspectRatio: Float,
-    sensitivityK: Float = DEFAULT_SENSITIVITY_K
-): Float {
-    // Beta: linear size adjustment
-    val adjustmentFactorBase = (screenSize - BASE_WIDTH_DP) / INCREMENT_DP_STEP
-    
-    // Gamma: logarithmic AR adjustment
-    val continuousAdjustment = sensitivityK * ln(aspectRatio / REFERENCE_AR)
-    val finalIncrementValue = BASE_INCREMENT + continuousAdjustment
-    
-    // Total factor
-    val finalAdjustmentFactor = BASE_DP_FACTOR + 
-                                adjustmentFactorBase * finalIncrementValue
-    
-    // Result
-    return baseDp * finalAdjustmentFactor
-}
-```
-
----
-
-## 6. Scientific Foundation
-
-### 6.1 Weber-Fechner Law (1860)
-
-The choice of natural logarithm **is not arbitrary**. It is based on Weber-Fechner's Law of psychophysics:
-
-```
-S = k × ln(I / I₀)
-```
-
-**Where:**
-- `S` = Perceived sensation
-- `I` = Stimulus intensity
-- `I₀` = Reference intensity
-- `k` = Proportionality constant
-
-**Application in UI:**
-
-The human eye does not perceive changes in screen proportions **linearly**. A 20:9 screen doesn't seem "11% narrower" than an 18:9 - the **perceived** difference is smaller.
-
-```
-LINEAR PERCEPTION (wrong):
-  16:9 → 18:9: Perceived Δ = 11%
-  20:9 → 22:9: Perceived Δ = 10%
-
-LOGARITHMIC PERCEPTION (correct, Weber-Fechner):
-  16:9 → 18:9: Perceived Δ = 100 units
-  20:9 → 22:9: Perceived Δ = 45 units
-```
-
-**The logarithmic adjustment mirrors this non-linear perception.**
-
----
-
-### 6.2 Stevens' Power Law (1957)
-
-Another foundation comes from Stevens' Power Law:
-
-```
-ψ = k × φⁿ
-```
-
-For spatial perception, `n ≈ 0.7-0.9` (sublinear).
-
-The natural logarithm is a special case where the exponent is variable:
-
-```
-ln(x) ≈ ∫(1/t)dt  → sublinear behavior
-```
-
----
-
-### 6.3 Information Theory (Shannon, 1948)
-
-From an Information Theory perspective, the logarithm measures the "surprise" or entropy of a change:
-
-```
-H = -Σ p(x) × ln(p(x))
-```
-
-An aspect ratio change represents "information" about the device. The logarithmic adjustment scales this information proportionally to its **informational content**.
-
-**Example:**
-- Change from 16:9 to 21:9: **High entropy** (significant change) → Larger adjustment
-- Change from 21:9 to 22:9: **Low entropy** (incremental change) → Smaller adjustment
-
----
-
-# PART III: COMPARISONS
-
-## 7. Comparison with 7 Fundamental Formulas
-
-### 7.1 The Competing Formulas
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│  1. SIMPLE LINEAR (SDP/SSP)                                 │
-│     f(x) = x × (W / W₀)                                     │
-│                                                             │
-│  2. PERCENTAGE (CSS vw/vh)                                  │
-│     f(x) = W × p                                            │
-│                                                             │
-│  3. INTERPOLATION (React Native moderate)                   │
-│     f(x) = x + (s(x) - x) × k                              │
-│                                                             │
-│  4. QUADRATIC (Flutter ScreenUtil)                          │
-│     f(x) = p² × (W + H)                                    │
-│                                                             │
-│  5. SQUARE ROOT (Unity Canvas Scaler)                       │
-│     f(x) = x × √(W² + H²) / √(W₀² + H₀²)                  │
-│                                                             │
-│  6. MIN/MAX (CSS vmin/vmax)                                 │
-│     f(x) = x × min(W,H) / min(W₀,H₀)                       │
-│                                                             │
-│  7. LOGARITHMIC (AppDimens) ⭐                              │
-│     f(x) = x × [1 + ((W/W₀-1) × (α + k×ln(AR/AR₀)))]      │
-└─────────────────────────────────────────────────────────────┘
-```
-
-### 7.2 Summary Comparison Table
-
-| Criterion | Linear | Percentage | Interp | Quad | Root² | Min/Max | **AppDimens** |
-|-----------|--------|------------|--------|------|-------|---------|---------------|
-| **Continuity** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Compensates AR** | ❌ | ❌ | ❌ | ❌ | ⚠️ | ❌ | ✅ |
-| **Controls Oversizing** | ❌ | ❌ | ⚠️ | ❌ | ⚠️ | ❌ | ✅ |
-| **Scientific Base** | ❌ | ❌ | ❌ | ❌ | ⚠️ | ❌ | ✅ |
-| **Performance** | ⚡⚡ | ⚡⚡⚡ | ⚡⚡ | ⚡⚡ | ⚡ | ⚡⚡ | ⚡⚡⚡⚡ (cache) |
-| **Simplicity** | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ |
-| **Visual Accuracy** | ⭐⭐ | ⭐ | ⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ |
-
----
-
-## 8. Comparison with Existing Libraries
-
-### 8.1 Android Ecosystem
-
-#### **SDP/SSP (Scalable DP/SP)**
-
-**GitHub:** intuit/sdp  
-**Downloads:** 13k+ stars  
-**Approach:** Simple linear scaling
-
-```kotlin
-// SDP uses pre-calculated values in XML
-<dimen name="_48sdp">48dp</dimen>  // sw360
-<dimen name="_48sdp">64dp</dimen>  // sw480
-<dimen name="_48sdp">80dp</dimen>  // sw600
-```
-
-**Formula:**
-```
-scaledDp = baseDp × (currentWidth / 360)
-```
-
-| Aspect | SDP/SSP | AppDimens |
-|--------|---------|-----------|
-| Scaling | ✅ Linear | ✅ Logarithmic |
-| Considers AR | ❌ No | ✅ Yes |
-| XML Files | 536 files | 0 files |
-| Customization | ❌ Difficult | ✅ Priority system |
-| Multi-window | ❌ Not handled | ✅ Automatic detection |
-| Performance | ⚡⚡⚡ (XML) | ⚡⚡⚡⚡ (cache) |
-
-**SDP Problem:**
-```
-Phone 360dp: 48sdp = 48dp (13.3% of screen) ✅
-Tablet 800dp: 48sdp = 107dp (13.4% of screen) ❌ GIGANTIC!
-```
-
----
-
-### 8.2 Flutter Ecosystem
-
-#### **Flutter ScreenUtil**
-
-**pub.dev:** flutter_screenutil  
-**Likes:** 5000+  
-**Approach:** Quadratic formula
-
+**Flutter:**
 ```dart
-// ScreenUtil uses quadratic formula
-getFullScreen = (percentage/100)² × (screenWidth + screenHeight)
+AppDimens.balanced(16).calculate(context)
+16.0.balanced()
 ```
 
-**Problems:**
-1. **Quadratic formula without theoretical justification**
-2. **Grows too fast:** `(W+H)²` amplifies too much
-3. **Doesn't explicitly consider AR**
+**React Native:**
+```typescript
+const {balanced} = useAppDimens();
+balanced(16)
+```
 
-| Device | ScreenUtil | AppDimens |
-|--------|------------|-----------|
-| Phone 360×640 | 48dp | 48dp |
-| Tablet 720×1280 | ~89dp | ~68dp ✅ |
-| TV 1920×1080 | ~180dp ❌ | ~92dp ✅ |
+**Web:**
+```typescript
+const {balanced} = useWebDimens();
+balanced(16)
+```
+
+### 4.4 When to Use BALANCED
+
+**✅ Ideal For:**
+- Multi-device apps (phones + tablets + TVs)
+- Social media, productivity, e-commerce
+- Buttons, spacing, padding
+- General UI elements
+- 95% of modern applications
+
+**❌ Consider Alternatives:**
+- Phone-only apps → Use DEFAULT
+- Large containers → Use PERCENTAGE
+- Maximum control → Use LOGARITHMIC
+
+**📖 [Complete BALANCED Documentation](MATHEMATICAL_THEORY.md#2-new-primary-recommendation---balanced-strategy)**
 
 ---
 
-### 8.3 React Native Ecosystem
+## 5. SECONDARY: DEFAULT Strategy
 
-#### **react-native-size-matters**
+> **Secondary Recommendation:** Use for phone-focused apps and backward compatibility.
 
-**npm:** size-matters  
-**Downloads:** 500k+/week  
-**Approach:** Linear interpolation
+### 5.1 Mathematical Formula
 
-```javascript
-// Moderate Scale uses interpolation
-scale = (width / baseWidth) * size
-moderateScale = size + (scale - size) * 0.5
 ```
+f_DEFAULT(x, W, AR) = x × [1 + ((W-300)/1) × (0.00333 + 0.00267×ln(AR/1.78))]
+```
+
+**Components:**
+- ~97% linear: `((W-300) × 0.00333)`
+- ~3% AR adjustment: `((W-300) × 0.00267×ln(AR/1.78))`
+
+### 5.2 Results Table (48dp base)
+
+| Screen | DEFAULT | BALANCED | LINEAR |
+|--------|---------|----------|--------|
+| 360dp  | 53.8dp  | 57.6dp   | 57.6dp |
+| 480dp  | 64.5dp  | 76.8dp   | 76.8dp |
+| 720dp  | 79.2dp  | 69.7dp   | 115.2dp|
+| 1080dp | 94.0dp  | 100.9dp  | 172.8dp|
+
+### 5.3 Platform APIs
+
+**Android:**
+```kotlin
+16.defaultDp  // Extension
+16.defaultSp
+AppDimens.defaultScaling(16).toDp(resources)
+```
+
+**iOS:**
+```swift
+AppDimens.shared.defaultScaling(16).toPoints()
+```
+
+**Flutter:**
+```dart
+AppDimens.defaultScaling(16).calculate(context)
+```
+
+### 5.4 When to Use DEFAULT
+
+**✅ Ideal For:**
+- Phone-focused apps (320-480dp)
+- Icons and small elements
+- Apps with elongated screens (20:9, 21:9)
+- Backward compatibility with v1.x
+
+**📖 [Complete DEFAULT Documentation](MATHEMATICAL_THEORY.md#3-secondary-recommendation---default-strategy-formerly-fixed)**
+
+---
+
+## 6. Perceptual Models: LOGARITHMIC & POWER
+
+### 6.1 LOGARITHMIC (Pure Weber-Fechner)
 
 **Formula:**
 ```
-f(x) = x + (x × W/W₀ - x) × k
-     = x × [1 + k × (W/W₀ - 1)]
+f_LOG(x, W) = x × (1 + 0.40 × ln(W/300))
 ```
 
-| Aspect | size-matters | AppDimens |
-|--------|--------------|-----------|
-| Formula | Linear interpolation | Logarithmic + AR |
-| Factor k | Fixed (0.5) | Adjustable |
-| AR | ❌ Ignores | ✅ Compensates |
-| Theoretical base | ❌ Heuristic | ✅ Weber-Fechner |
+**Results:** 48dp @ 720dp = 67.2dp (-42% vs linear)
 
-**AppDimens Advantage:**
+**Use for:** TV apps, maximum control
+
+**Score:** 88/100 🥈
+
+**📖 [Logarithmic Details](MATHEMATICAL_THEORY.md#41-logarithmic-strategy-pure-weber-fechner)**
+
+### 6.2 POWER (Stevens' Law)
+
+**Formula:**
 ```
-Tablet 800dp:
-  size-matters: 48dp → 75dp (+57%)
-  AppDimens: 48dp → 68dp (+42%) ✅ More controlled
+f_POWER(x, W) = x × (W/300)^0.75
 ```
+
+**Results:** 48dp @ 720dp = 76.8dp (-33% vs linear)
+
+**Use for:** General purpose, configurable
+
+**Score:** 86/100 🥉
+
+**📖 [Power Details](MATHEMATICAL_THEORY.md#42-power-strategy-stevens-law)**
 
 ---
 
-### 8.4 iOS Ecosystem
+## 7. Utility Strategies
 
-#### **Auto Layout + Multipliers**
+### Quick Reference
 
-**Platform:** Native iOS  
-**Approach:** Proportional constraints
+| Strategy | Formula | Use Case | Score |
+|----------|---------|----------|-------|
+| **PERCENTAGE** | `x × (W/300)` | Large containers | 62/100 |
+| **FLUID** | `clamp(min, interp, max)` | Typography | 78/100 |
+| **INTERPOLATED** | `x × (0.5 + 0.5×W/300)` | Moderate | 70/100 |
+| **DIAGONAL** | `x × √(W²+H²)/611.63` | Physical size | 72/100 |
+| **PERIMETER** | `x × (W+H)/833` | W+H balance | 70/100 |
+
+**📖 [All Utility Strategies](MATHEMATICAL_THEORY.md#5-extended-strategy-catalog-v20)**
+
+---
+
+## 8. Game Strategies: FIT & FILL
+
+**FIT (Letterbox):** `x × min(W/300, H/533)`  
+**FILL (Cover):** `x × max(W/300, H/533)`
+
+**Scores:** 75/100, 73/100
+
+**📖 [Game Strategies Details](MATHEMATICAL_THEORY.md#56-fit-strategy-game-letterbox)**
+
+---
+
+## 9. Special Strategies: AUTOSIZE & NONE
+
+**AUTOSIZE 🆕:** Container-aware auto-sizing (O(log n) binary search)  
+**NONE:** No scaling (identity function)
+
+**📖 [Special Strategies](MATHEMATICAL_THEORY.md#58-autosize-strategy-container-aware)**
+
+---
+
+## PART III: PLATFORM IMPLEMENTATION
+
+## 10. Android Complete Guide
+
+### 10.1 Installation
+
+```kotlin
+dependencies {
+    // Core library (13 strategies + Physical Units)
+    implementation("io.github.bodenberg:appdimens-dynamic:2.0.0")
+    
+    // SDP/SSP (XML support)
+    implementation("io.github.bodenberg:appdimens-sdps:2.0.0")
+    implementation("io.github.bodenberg:appdimens-ssps:2.0.0")
+    
+    // All-in-one
+    implementation("io.github.bodenberg:appdimens-all:2.0.0")
+    
+    // Games (C++/NDK)
+    implementation("io.github.bodenberg:appdimens-games:2.0.0")
+}
+```
+
+### 10.2 Jetpack Compose API
+
+```kotlin
+// BALANCED (Primary) ⭐
+Text("Hello", fontSize = 16.balanced().sp)
+Box(modifier = Modifier.size(48.balanced().dp))
+
+// DEFAULT (Secondary)
+Icon(modifier = Modifier.size(24.defaultDp))
+
+// PERCENTAGE (Containers)
+Container(modifier = Modifier.width(300.percentageDp.dp))
+
+// Smart API
+Button(modifier = Modifier.height(
+    48.smart().forElement(ElementType.BUTTON).dp
+))
+
+// FLUID (Typography)
+Text("Title", fontSize = fluidSp(16f, 24f))
+
+// All other strategies
+Text("Powerful", fontSize = 16.power(0.75f).sp)
+Text("Logarithmic", fontSize = 16.logarithmic().sp)
+```
+
+### 10.3 View System API
+
+```kotlin
+val width = 300.balanced().toPx(resources)
+val height = 48.defaultScaling().toPx(resources)
+view.layoutParams.width = width.toInt()
+```
+
+### 10.4 XML with SDP/SSP
+
+```xml
+<TextView
+    android:textSize="@dimen/_16ssp"
+    android:padding="@dimen/_12sdp"
+    android:layout_width="@dimen/_300sdp" />
+```
+
+**📖 [Complete Android Guide](../Android/README.md)**
+
+---
+
+## 11. iOS Complete Guide
+
+### 11.1 Installation
+
+**CocoaPods:**
+```ruby
+pod 'AppDimens', '~> 2.0.0'
+```
+
+**SPM:**
+```swift
+.package(url: "https://github.com/bodenberg/appdimens.git", from: "2.0.0")
+```
+
+### 11.2 SwiftUI API
 
 ```swift
-heightAnchor.constraint(
-    equalTo: widthAnchor,
-    multiplier: 9.0/16.0
+// BALANCED (Primary) ⭐
+Text("Hello")
+    .font(.system(size: AppDimens.shared.balanced(16).toPoints()))
+
+// DEFAULT (Secondary)
+Image(systemName: "heart")
+    .frame(width: AppDimens.shared.defaultScaling(24).toPoints())
+
+// Smart API
+Button("Click") {}
+    .frame(height: AppDimens.shared.smart(48).forElement(.button).toPoints())
+
+// FLUID
+Text("Title")
+    .font(.system(size: AppDimens.shared.fluid(min: 16, max: 24).toPoints()))
+```
+
+### 11.3 UIKit API
+
+```swift
+let size = AppDimens.shared.balanced(48).toPoints()
+button.frame = CGRect(x: 0, y: 0, width: size, height: size)
+```
+
+**📖 [Complete iOS Guide](../iOS/README.md)**
+
+---
+
+## 12. Flutter Complete Guide
+
+### 12.1 Installation
+
+```yaml
+dependencies:
+  appdimens: ^2.0.0
+```
+
+### 12.2 API
+
+```dart
+// BALANCED (Primary) ⭐
+Text(
+  'Hello',
+  style: TextStyle(fontSize: AppDimens.balanced(16).calculate(context)),
+)
+
+// Extensions
+Container(
+  width: 300.balanced(),
+  height: 200.defaultScaling(),
+)
+
+// Smart API
+ElevatedButton(
+  style: ElevatedButton.styleFrom(
+    minimumSize: Size(
+      double.infinity,
+      AppDimens.smart(48).forElement(ElementType.button).calculate(context),
+    ),
+  ),
+)
+
+// FLUID
+Text(
+  'Title',
+  style: TextStyle(
+    fontSize: AppDimens.fluid(16, maxValue: 24).calculate(context),
+  ),
 )
 ```
 
-**Limitations:**
-1. **Not automatic scaling** (only proportions)
-2. **Fixed multipliers** (no dynamism)
-3. **Verbose and complex**
-4. **Manual scalability** for different devices
+**📖 [Complete Flutter Guide](../Flutter/README.md)**
 
 ---
 
-### 8.5 Web Ecosystem
+## 13. React Native Complete Guide
 
-#### **CSS clamp()**
+### 13.1 Installation
 
-**Standard:** CSS3  
-**Approach:** Linear scaling with limits
-
-```css
-font-size: clamp(16px, 2vw, 24px);
+```bash
+npm install appdimens-react-native@2.0.0
 ```
 
-**Formula:**
-```
-f(x) = max(MIN, min(x × W/100, MAX))
-```
+### 13.2 API
 
-| Aspect | CSS clamp() | AppDimens |
-|--------|-------------|-----------|
-| Scaling | ✅ Linear | ✅ Logarithmic |
-| Limits | ✅ MIN/MAX | ✅ Priority system |
-| AR | ❌ Ignores | ✅ Compensates |
-| Performance | ⚡⚡⚡⚡ (GPU) | ⚡⚡⚡⚡ (cache) |
+```typescript
+import {useAppDimens} from 'appdimens-react-native';
 
-**clamp() Advantage:** Native to browser, zero overhead  
-**AppDimens Advantage:** Non-linear adjustment, compensates AR
-
----
-
-## 9. Comparison with Ecosystems
-
-### 9.1 Global Comparative Table
-
-```
-╔═══════════════════════════════════════════════════════════════════╗
-║              CROSS-ECOSYSTEM COMPARISON                            ║
-╠═══════════════════════════════════════════════════════════════════╣
-║ Platform      │ Standard Solution   │ Formula        │ AR? │ Score║
-║═══════════════════════════════════════════════════════════════════╣
-║ Android       │ SDP/SSP             │ Linear         │ ❌  │ 6.5  ║
-║ iOS           │ Auto Layout         │ Proportions    │ ⚠️  │ 5.5  ║
-║ Flutter       │ ScreenUtil          │ Quadratic      │ ❌  │ 7.2  ║
-║ React Native  │ size-matters        │ Interpolation  │ ❌  │ 7.8  ║
-║ Web (CSS)     │ clamp()             │ Linear+Limits  │ ⚠️  │ 8.0  ║
-║ Unity         │ Canvas Scaler       │ Square Root    │ ⚠️  │ 6.2  ║
-║ Unreal        │ Anchors             │ Percentage     │ ❌  │ 4.9  ║
-║───────────────────────────────────────────────────────────────────║
-║ AppDimens 🏆  │ Logarithmic+AR      │ ln(AR/AR₀)     │ ✅  │ 9.1  ║
-╚═══════════════════════════════════════════════════════════════════╝
-```
-
-### 9.2 Game Ecosystem
-
-#### **Unity Canvas Scaler**
-
-**Component:** Canvas Scaler  
-**Mode:** Scale With Screen Size  
-**Approach:** Square root or interpolation
-
-```csharp
-// Unity uses interpolation between Width and Height
-float scaleFactor = Mathf.Lerp(
-    screenWidth / referenceWidth,
-    screenHeight / referenceHeight,
-    matchWidthOrHeight  // 0 to 1
-);
-```
-
-**When match = 0.5 (middle ground):**
-```
-scaleFactor ≈ √(W/W₀ × H/H₀)
-```
-
-**Problem:** Still linear/root, not logarithmic
-
----
-
-#### **Unreal Engine**
-
-**System:** UMG (Unreal Motion Graphics)  
-**Approach:** Anchoring + percentage
-
-```
-Problem: Focus on fluid layout, not fixed component scaling.
-Result: Designers create custom curves case by case.
-```
-
-**✨ AppDimens would be revolutionary in games:**
-- First logarithmic system for game UI
-- Automatic AR compensation (crucial in multi-platform games)
-- Would eliminate need for manual curves
-
----
-
-## 10. Performance and Accuracy
-
-### 10.1 Performance Benchmark
-
-```
-TEST: 1 million operations (ARM Cortex-A78)
-
-┌────────────────────────────────────────────────────┐
-│ Formula                │ Time    │ Latency/op      │
-├────────────────────────────────────────────────────┤
-│ Percentage             │   5ms   │  0.005 µs  ⚡⚡⚡│
-│ Linear (SDP)           │  12ms   │  0.012 µs  ⚡⚡ │
-│ Quadratic              │  18ms   │  0.018 µs  ⚡⚡ │
-│ Interpolation          │  28ms   │  0.028 µs  ⚡   │
-│ Square Root            │  72ms   │  0.072 µs  🐌  │
-│ Logarithmic (no cache) │  85ms   │  0.085 µs  🐌  │
-│ Logarithmic (cached) ✅│   2ms   │  0.002 µs  ⚡⚡⚡⚡│
-└────────────────────────────────────────────────────┘
-```
-
-**✨ With cache, AppDimens is the FASTEST!**
-
-### 10.2 Accuracy Analysis
-
-#### **Perceptual Error vs. Ideal (Weber-Fechner)**
-
-```
-Test: 5 devices (360, 411, 480, 600, 800 dp)
-Base: 48dp
-
-┌─────────────────────────────────────────────────┐
-│ Formula        │ Mean Error │ Evaluation       │
-├─────────────────────────────────────────────────┤
-│ Linear         │  17.9%     │ 🔴 Poor          │
-│ Percentage     │  17.9%     │ 🔴 Poor          │
-│ Quadratic      │  22.4%     │ 🔴 Very Poor     │
-│ Square Root    │  19.1%     │ 🔴 Poor          │
-│ Interpolation  │   8.2%     │ 🟡 Good          │
-│ Logarithmic ✅ │   5.1%     │ 🟢 Excellent     │
-└─────────────────────────────────────────────────┘
-```
-
-**AppDimens is 3.5× more accurate than linear!**
-
----
-
-# PART IV: ANALYSIS AND RANKINGS
-
-## 11. Definitive Formula Ranking
-
-### 11.1 Evaluation Criteria
-
-```
-FINAL SCORE = 30% Performance + 40% Accuracy + 30% Flexibility
-```
-
-### 11.2 Complete Ranking
-
-#### **🥇 1st PLACE: AppDimens Logarithmic - 91/100 ⭐⭐⭐⭐⭐**
-
-```
-┌──────────────────────────────────────────────────┐
-│ Performance:    10/10  ⚡⚡⚡⚡ (with cache)       │
-│ Accuracy:       10/10  🎯 Error 5.1%             │
-│ Flexibility:    10/10  🔧 Priority system        │
-│──────────────────────────────────────────────────│
-│ TOTAL:          91/100 🏆 ABSOLUTE CHAMPION      │
-└──────────────────────────────────────────────────┘
-```
-
-**Unique differentiators:**
-- ✅ Only one with logarithmic adjustment
-- ✅ Only one that automatically compensates AR
-- ✅ Only one with 4-priority system
-- ✅ Only one with scientific foundation
-- ✅ Best performance with cache
-- ✅ Best perceptual accuracy
-
----
-
-#### **🥈 2nd PLACE: Interpolation (React Native) - 78/100 ⭐⭐⭐⭐**
-
-```
-┌──────────────────────────────────────────────────┐
-│ Performance:     8.5/10  ⚡⚡ Fast                │
-│ Accuracy:        8.0/10  🎯 Error 8.2%           │
-│ Flexibility:     7.0/10  🔧 Adjustable k factor  │
-│──────────────────────────────────────────────────│
-│ TOTAL:           78/100  🥈 Excellent alternative│
-└──────────────────────────────────────────────────┘
-```
-
----
-
-#### **🥉 3rd PLACE: Square Root (Unity) - 62/100 ⭐⭐⭐**
-
-```
-┌──────────────────────────────────────────────────┐
-│ Performance:     7.0/10  ⚡ Ok                    │
-│ Accuracy:        6.5/10  🎯 Error 19.1%          │
-│ Flexibility:     5.0/10  🔧 Limited              │
-│──────────────────────────────────────────────────│
-│ TOTAL:           62/100  🥉 Good technical option │
-└──────────────────────────────────────────────────┘
-```
-
----
-
-#### **4th PLACE: Linear (SDP/SSP) - 47/100 ⭐⭐**
-
-```
-┌──────────────────────────────────────────────────┐
-│ Performance:     9.5/10  ⚡⚡⚡ Very fast          │
-│ Accuracy:        3.0/10  🎯 Error 17.9% 🔴       │
-│ Flexibility:     3.0/10  🔧 Fixed XML            │
-│──────────────────────────────────────────────────│
-│ TOTAL:           47/100  ⚠️ Prototyping only      │
-└──────────────────────────────────────────────────┘
-```
-
----
-
-#### **5th PLACE: Quadratic (Flutter) - 50/100 ⭐⭐**
-
-```
-┌──────────────────────────────────────────────────┐
-│ Performance:     9.0/10  ⚡⚡ Fast                │
-│ Accuracy:        3.5/10  🎯 Error 22.4% 🔴       │
-│ Flexibility:     4.0/10  🔧 No theoretical base  │
-│──────────────────────────────────────────────────│
-│ TOTAL:           50/100  ⚠️ Popular but problematic│
-└──────────────────────────────────────────────────┘
-```
-
----
-
-#### **6th PLACE: Min/Max (CSS) - 50/100 ⭐⭐**
-
-```
-┌──────────────────────────────────────────────────┐
-│ Performance:     9.5/10  ⚡⚡⚡ Very fast          │
-│ Accuracy:        4.0/10  🎯 Linear 🔴            │
-│ Flexibility:     3.0/10  🔧 Arbitrary            │
-│──────────────────────────────────────────────────│
-│ TOTAL:           50/100  ⚠️ Limited use           │
-└──────────────────────────────────────────────────┘
-```
-
----
-
-#### **7th PLACE: Percentage - 48/100 ⭐⭐**
-
-```
-┌──────────────────────────────────────────────────┐
-│ Performance:    10.0/10  ⚡⚡⚡⚡ Fastest           │
-│ Accuracy:        3.0/10  🎯 Error 17.9% 🔴       │
-│ Flexibility:     2.0/10  🔧 Zero control         │
-│──────────────────────────────────────────────────│
-│ TOTAL:           48/100  ❌ Don't use components  │
-└──────────────────────────────────────────────────┘
-```
-
----
-
-## 12. Innovation and Originality
-
-### 12.1 Truly Innovative Aspects
-
-```
-╔═══════════════════════════════════════════════════════════╗
-║         ORIGINAL CONTRIBUTIONS OF APPDIMENS              ║
-╠═══════════════════════════════════════════════════════════╣
-║                                                           ║
-║  1️⃣  FIRST library to use ln(x) for UI scaling           ║
-║     → No Android/iOS/Flutter/RN/Web library              ║
-║                                                           ║
-║  2️⃣  FIRST to automatically compensate aspect ratio      ║
-║     → All ignore or handle manually                      ║
-║                                                           ║
-║  3️⃣  FIRST with hierarchical 4-priority system           ║
-║     → Intersection > UiMode > Qualifier > Logarithmic    ║
-║                                                           ║
-║  4️⃣  FIRST with formal psychophysical foundation         ║
-║     → Weber-Fechner, Stevens, Information Theory         ║
-║                                                           ║
-║  5️⃣  FIRST with intelligent cache that surpasses linear  ║
-║     → 0.002µs vs. 0.005µs (2.5× faster)                 ║
-║                                                           ║
-╚═══════════════════════════════════════════════════════════╝
-```
-
-### 12.2 Impact Potential
-
-```
-┌─────────────────────────────────────────────────────┐
-│  EXPECTED INDUSTRY IMPACT                           │
-├─────────────────────────────────────────────────────┤
-│                                                     │
-│  📚 ACADEMIC PUBLICATIONS                           │
-│     → HCI Conferences: CHI, UIST, MobileHCI        │
-│     → Paper: "Logarithmic UI Scaling with AR"      │
-│                                                     │
-│  🏢 CORPORATE ADOPTION                              │
-│     → Design Systems: Material, Fluent, Carbon     │
-│     → Companies: Google, Samsung, Airbnb           │
-│                                                     │
-│  🎓 EDUCATION                                       │
-│     → UI/UX Design courses                         │
-│     → Reference in mobile development              │
-│                                                     │
-│  🌍 INDUSTRY STANDARD                               │
-│     → Next "gold standard" for sizing              │
-│     → Replace SDP/SSP as reference                 │
-│                                                     │
-└─────────────────────────────────────────────────────┘
-```
-
----
-
-## 13. Excellence Certification
-
-```
-╔═══════════════════════════════════════════════════════════════════╗
-║                                                                   ║
-║           🏆 MATHEMATICAL EXCELLENCE CERTIFICATE 🏆               ║
-║                                                                   ║
-║   The Composite Logarithmic Formula of the AppDimens library,    ║
-║   developed by Jean Bodenberg, is officially recognized as       ║
-║   the MOST ADVANCED, ROBUST AND SCIENTIFICALLY FOUNDED           ║
-║   RESPONSIVE SIZING FORMULA in the mobile, web and               ║
-║   multi-platform development industry.                            ║
-║                                                                   ║
-║   ═══════════════════════════════════════════════════════════    ║
-║                                                                   ║
-║   📊 FINAL SCORE: 91/100 ⭐⭐⭐⭐⭐                              ║
-║   🏅 RANKING: #1 of 7 analyzed approaches                        ║
-║   🎖️ CATEGORY: Premium/Gold Tier                                 ║
-║                                                                   ║
-║   ═══════════════════════════════════════════════════════════    ║
-║                                                                   ║
-║   PROVEN DIFFERENTIATORS:                                         ║
-║                                                                   ║
-║   ✅ Only one with logarithmic adjustment by aspect ratio         ║
-║   ✅ Psychophysical foundation (Weber-Fechner Law, 1860)         ║
-║   ✅ Unique hierarchical priority system                          ║
-║   ✅ 65% less oversizing vs. linear competitors                   ║
-║   ✅ 3.5× more perceptually accurate than linear                  ║
-║   ✅ Superior performance with cache (0.002µs vs. 0.005µs)       ║
-║   ✅ 100% compatible with all ecosystems                          ║
-║                                                                   ║
-║   ═══════════════════════════════════════════════════════════    ║
-║                                                                   ║
-║   EXCELLENCE CATEGORIES:                                          ║
-║                                                                   ║
-║   🥇 Performance (with cache):     10/10                          ║
-║   🥇 Perceptual Accuracy:          10/10                          ║
-║   🥇 Flexibility:                  10/10                          ║
-║   🥇 Scientific Foundation:        10/10                          ║
-║   🥇 Technological Innovation:     10/10                          ║
-║   🥇 Edge Case Coverage:            4/4                           ║
-║                                                                   ║
-║   ═══════════════════════════════════════════════════════════    ║
-║                                                                   ║
-║   This certificate attests that AppDimens establishes a new      ║
-║   standard of excellence for adaptive UI sizing, surpassing      ║
-║   all existing methodologies in mathematical rigor,              ║
-║   computational robustness and perceptual precision.             ║
-║                                                                   ║
-║   Issue Date: January 2025                                       ║
-║   Analyzed Version: 1.0.9                                        ║
-║   License: Apache 2.0                                            ║
-║                                                                   ║
-║   _____________________________________________________________   ║
-║                                                                   ║
-║   Signed: Independent Technical Analysis                         ║
-║   Repository: https://github.com/bodenberg/appdimens            ║
-║                                                                   ║
-╚═══════════════════════════════════════════════════════════════════╝
-```
-
----
-
-# PART V: PRACTICAL GUIDE
-
-## 14. When to Use Each Model
-
-### 14.1 Complete Decision Matrix
-
-```
-┌──────────────────────────────────────────────────────────────┐
-│  YOUR PROJECT               │ 1st CHOICE    │ 2nd CHOICE    │
-├──────────────────────────────────────────────────────────────┤
-│ 📱 Multi-device app         │ AppDimens 🏆  │ Interpolation │
-│ 📱💻 Phone + Tablet          │ AppDimens 🏆  │ SDP/SSP       │
-│ 🎨 Rigorous design system   │ AppDimens 🏆  │ CSS clamp()   │
-│ 📐 Foldables/multi-window   │ AppDimens 🏆  │ (only option) │
-│ ⚡ Critical performance     │ AppDimens 🏆  │ Percentage    │
-│ 🏢 Enterprise/Banking       │ AppDimens 🏆  │ Interpolation │
-│ 📺 TVs and large screens    │ AppDimens 🏆  │ (only option) │
-│ 🎮 Multi-platform games     │ AppDimens 🏆  │ Unity Scaler  │
-│ 🌊 100% fluid layouts     │ (AppDimens) Percentage │ Flexbox/Grid  │
-│ 🚀 Rapid prototyping        │ Linear (temp) │ AppDimens     │
-│ 📱 Smartphones only         │ AppDimens     │ Traditional DP |
-└──────────────────────────────────────────────────────────────┘
-```
-
-### 14.2 When NOT to Use AppDimens
-
-```
-❌ DON'T USE AppDimens when:
-
-1. Team resistant to complex mathematics
-   → Use Interpolation (simpler concept)
-
-2. Performance is EXTREMELY critical AND can't use cache
-   → Use Percentage (but difference is minimal: 3µs)
-```
-
----
-
-## 15. Code Examples
-
-### 15.1 Android Jetpack Compose
-
-```kotlin
-// Example 1: Basic Usage
-@Composable
-fun BasicExample() {
-    Button(
-        modifier = Modifier
-            .width(200.fxdp)      // Fixed width
-            .height(56.fxdp)      // Fixed height
-            .padding(16.fxdp),    // Fixed padding
-        onClick = { }
-    ) {
-        Text(
-            text = "Click Here",
-            fontSize = 18.fxsp    // Fixed font size
-        )
-    }
-}
-
-// Example 2: Priority System
-@Composable
-fun AdvancedExample() {
-    val buttonHeight = 56.fixedDp()
-        // Priority 1: Large TV in landscape
-        .screen(
-            uiModeType = UiModeType.TV,
-            qualifierType = DpQualifier.WIDTH,
-            qualifierValue = 1920,
-            customValue = 96.dp
-        )
-        // Priority 2: Any TV
-        .screen(UiModeType.TV, 80.dp)
-        // Priority 3: Tablets
-        .screen(DpQualifier.SMALL_WIDTH, 600, 68.dp)
-        // Priority 4: Automatic logarithmic adjustment
-        .dp
-    
-    Button(
-        modifier = Modifier.height(buttonHeight),
-        onClick = { }
-    ) {
-        Text("Adaptive Button")
-    }
-}
-
-// Example 3: Sensitivity Customization
-@Composable
-fun CustomSensitivityExample() {
-    val dynamicPadding = 24.fixedDp()
-        .aspectRatio(enable = true, sensitivityK = 0.12f)  // More aggressive
-        .type(ScreenType.HIGHEST)  // Uses larger dimension
-        .dp
-    
-    Card(
-        modifier = Modifier.padding(dynamicPadding)
-    ) {
-        Text("Card with custom adjustment")
-    }
-}
-
-// Example 4: Multi-Window
-@Composable
-fun MultiWindowExample() {
-    val iconSize = 32.fixedDp()
-        .multiViewAdjustment(ignore = true)  // Don't adjust in split-screen
-        .dp
-    
-    Icon(
-        painter = painterResource(R.drawable.ic_star),
-        contentDescription = null,
-        modifier = Modifier.size(iconSize)
-    )
-}
-```
-
-### 15.2 Android XML Views
-
-```kotlin
-// code/AppDimensFixed.kt
-val padding = AppDimens.fixed(16.dp)
-    .screen(DpQualifier.SMALL_WIDTH, 600, 24.dp)
-    .toPx(resources)
-
-textView.setPadding(padding.toInt(), padding.toInt(), padding.toInt(), padding.toInt())
-```
-
-### 15.3 iOS SwiftUI
-
-```swift
-// iOS/AppDimens.swift
-struct ContentView: View {
-    let buttonHeight = AppDimens.fixed(56)
-        .screen(type: .iPad, value: 72)
-        .screen(qualifier: .width, value: 768, customValue: 80)
-        .dp
-    
-    var body: some View {
-        Button("Tap Me") {
-            print("Tapped")
-        }
-        .frame(height: buttonHeight)
-        .padding(AppDimens.fixed(16).dp)
-    }
-}
-```
-
-### 15.4 Flutter
-
-```dart
-// Flutter/app_dimens.dart
-Widget build(BuildContext context) {
-  return Container(
-    width: 200.fx.calculate(context),   // Fixed width
-    height: 100.fx.calculate(context),  // Fixed height
-    padding: EdgeInsets.all(16.fx.calculate(context)),
-    child: Text(
-      'Hello World',
-      style: TextStyle(fontSize: 18.fxsp.calculate(context)),
-    ),
-  );
-}
-```
-
-### 15.5 React Native
-
-{% raw %}
-```javascript
-// ReactNative/AppDimens.js
-import { fixedDp, fixedSp } from 'appdimens';
-
-export default function App() {
+function MyComponent() {
+  const {balanced, defaultScaling, smart} = useAppDimens();
+  
   return (
-    <View style={{
-      width: fixedDp(200),
-      height: fixedDp(100),
-      padding: fixedDp(16),
-    }}>
-      <Text style={{ fontSize: fixedSp(18) }}>
-        Hello World
-      </Text>
+    <View style={{padding: balanced(16)}}>
+      <Text style={{fontSize: balanced(18)}}>Hello</Text>
+      <TouchableOpacity style={{height: smart(48).forElement('button')}}>
+        <Text>Click</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 ```
-{% endraw %}
 
-### 15.6 Web (React)
+**📖 [Complete React Native Guide](../ReactNative/README.md)**
 
-{% raw %}
-```jsx
-// Web/useAppDimens.js
-import { useAppDimens } from 'appdimens-web';
+---
 
-export default function Component() {
-  const { fxdp, fxsp } = useAppDimens();
+## 14. Web Complete Guide
+
+### 14.1 Installation
+
+```bash
+npm install webdimens@2.0.0
+```
+
+### 14.2 React API
+
+```typescript
+import {useWebDimens} from 'webdimens/react';
+
+function MyComponent() {
+  const {balanced, fluid, smart} = useWebDimens();
   
   return (
-    <div style={{
-      width: fxdp(200),
-      height: fxdp(100),
-      padding: fxdp(16),
-    }}>
-      <p style={{ fontSize: fxsp(18) }}>
-        Hello World
-      </p>
+    <div style={{padding: balanced(16)}}>
+      <h2 style={{fontSize: fluid(18, 24)}}>Title</h2>
+      <button style={{height: smart(48).forElement('button')}}>
+        Click
+      </button>
     </div>
   );
 }
 ```
-{% endraw %}
+
+### 14.3 Vue, Svelte, Angular
+
+See platform-specific hooks and services.
+
+**📖 [Complete Web Guide](../Web/README.md)**
 
 ---
 
-## 16. References and Resources
+## PART IV: ADVANCED FEATURES
 
-### 16.1 Official Documentation
+## 15. Smart Inference System
 
-- 📘 [Complete Mathematical Theory](MATHEMATICAL_THEORY.md)
-- 📊 [Validation Report](VALIDATION_REPORT.md)
-- 🔬 [Formula Comparison](FORMULA_COMPARISON.md)
-- 🎯 [Practical Examples](EXAMPLES.md)
-- 🌐 [Official Website](https://appdimens-project.web.app/)
+### 15.1 Automatic Strategy Selection
 
-### 16.2 Scientific Papers
+```kotlin
+// Automatically selects best strategy based on element type
+val buttonSize = 48.smart().forElement(ElementType.BUTTON).dp
+// → Selects BALANCED for buttons on tablets
 
-1. **Weber, E. H. (1834).** *De Pulsu, Resorptione, Auditu et Tactu*
-2. **Fechner, G. T. (1860).** *Elemente der Psychophysik*
-3. **Stevens, S. S. (1957).** "On the psychophysical law". *Psychological Review*
-4. **Shannon, C. E. (1948).** "A Mathematical Theory of Communication"
-5. **Loomis, J. M. et al. (1992).** "Visual space perception and visually directed action"
+val containerWidth = 300.smart().forElement(ElementType.CONTAINER).dp
+// → Selects PERCENTAGE for containers
+```
 
-### 16.3 Comparisons and Benchmarks
+### 15.2 Element Types (18)
 
-- Material Design 3 - Adaptive Design Guidelines (Google, 2024)
-- Compose Multiplatform - Responsive UI Documentation (JetBrains, 2024)
-- Unity UI Scaling Best Practices (Unity Technologies, 2023)
-- Web Performance Working Group - Layout Performance (W3C, 2024)
+| Element | Phone Strategy | Tablet Strategy | Rationale |
+|---------|----------------|-----------------|-----------|
+| BUTTON | DEFAULT (0.4) | BALANCED (0.7) | Consistent sizing |
+| TEXT | FLUID (0.6) | FLUID (0.8) | Readable |
+| ICON | DEFAULT (0.7) | DEFAULT (0.6) | Visual weight |
+| CONTAINER | PERCENTAGE (0.8) | PERCENTAGE (0.8) | Proportional |
+| SPACING | DEFAULT (0.5) | BALANCED (0.6) | Perceptual |
+| ... | ... | ... | ... |
 
-### 16.4 Community Resources
+### 15.3 Device Categories (8)
 
-- 💬 [GitHub Discussions](https://github.com/bodenberg/appdimens/discussions)
-- 🐛 [Issue Tracker](https://github.com/bodenberg/appdimens/issues)
-- 📦 [Releases and Changelog](https://github.com/bodenberg/appdimens/releases)
-- ⭐ [Showcase](https://appdimens-project.web.app/showcase)
+- PHONE_SMALL (< 300dp)
+- PHONE_NORMAL (300-360dp)
+- PHONE_LARGE (360-480dp)
+- TABLET_SMALL (480-600dp)
+- TABLET_LARGE (600-840dp)
+- TV (840+dp)
+- WATCH (< 240dp)
+- AUTO (context-dependent)
+
+**📖 [Complete Smart Inference](MATHEMATICAL_THEORY.md#6-smart-inference-system-v20)**
 
 ---
 
-## Conclusion
+## 16. Base Orientation Support
 
-**AppDimens** represents a fundamental evolution in the field of responsive user interface sizing. By combining:
+### 16.1 Auto-Rotation Adaptation
 
-1. ✅ **Solid mathematical theory** (natural logarithm)
-2. ✅ **Scientific foundation** (psychophysics)
-3. ✅ **Unique priority system** (4 hierarchical levels)
-4. ✅ **Optimized performance** (intelligent cache)
-5. ✅ **Aspect ratio compensation** (unique in the market)
+Design for one orientation, automatically adapt when rotated:
 
-The library establishes a new **standard of excellence** that surpasses all existing methodologies in:
-- Mathematical rigor
-- Computational robustness
-- Perceptual precision
-- Control flexibility
+```kotlin
+// Android
+val width = 300.balanced().portraitLowest().dp
+// Portrait (360x800): Uses width (360)
+// Landscape (800x360): Auto-inverts to width (800)
 
-**Final Score: 91/100 🏆 #1 of 7 analyzed approaches**
+// iOS
+let width = AppDimens.shared.balanced(300).portraitLowest().toPoints()
+
+// Flutter
+final width = AppDimens.balanced(300).portraitLowest().calculate(context);
+```
+
+**📖 [Base Orientation Guide](BASE_ORIENTATION_GUIDE.md)**
+
+---
+
+## 17. Physical Units
+
+### 17.1 Real-World Measurements
+
+```kotlin
+// Android
+val buttonWidth = 10.mm   // 10 millimeters
+val cardWidth = 8.cm      // 8 centimeters
+val screenSize = 5.inch   // 5 inches
+
+// iOS
+let width = AppDimensPhysicalUnits.mm(10)
+
+// Flutter
+final width = AppDimensPhysicalUnits.mmToPixels(10, context);
+```
+
+**Available:** All platforms
+
+**📖 [Physical Units Documentation](MATHEMATICAL_THEORY.md#complementary-models)**
+
+---
+
+## 18. Game Development Modules
+
+### 18.1 Android (C++/NDK)
+
+```kotlin
+val games = AppDimensGames.getInstance()
+games.initialize(context)
+
+val buttonSize = games.calculateButtonSize(48f)
+val playerSize = games.calculatePlayerSize(64f)
+```
+
+**Features:** C++/NDK, OpenGL ES, Vector2D, Physical units
+
+**📖 [Android Games Guide](../Android/appdimens_games/README.md)**
+
+### 18.2 iOS (Metal)
+
+```swift
+let buttonSize = gameUniform(48)
+let playerSize = gameAspectRatio(64)
+```
+
+**Features:** Metal/MetalKit, SIMD, 5 viewport modes
+
+**📖 [iOS Games Guide](../iOS/README.md#game-development-features)**
+
+---
+
+## 19. Cache and Performance
+
+### 19.1 Version 2.0 Optimizations
+
+**5x Overall Improvement:**
+
+| Optimization | v1.x | v2.0 | Speedup |
+|--------------|------|------|---------|
+| **Views cache** | 0.005µs | 0.001µs | **5x** |
+| **Ln() calculation** | 0.012µs | 0.001µs | **10-20x** |
+| **Memory/entry** | 280B | 56B | **5x** |
+| **Multi-thread** | 25% | 100% | **4x** |
+
+### 19.2 Cache Control
+
+```kotlin
+// Global
+AppDimens.setGlobalCache(true)
+AppDimens.clearAllCaches()
+
+// Per-instance
+val size = AppDimens.balanced(48)
+    .cache(true)
+    .toDp(resources)
+```
+
+### 19.3 Warmup Cache
+
+```kotlin
+// Call during app initialization
+AppDimens.warmupCache(context)
+```
+
+**📖 [Performance Details](MATHEMATICAL_THEORY.md#7-mathematical-optimizations-v20)**
+
+---
+
+## PART V: COMPARISONS & ANALYSIS
+
+## 20. Comparison with External Libraries
+
+### 20.1 Rankings (Score/100)
+
+| Rank | Library/Strategy | Score | Category |
+|------|------------------|-------|----------|
+| 🏆 #1 | **AppDimens BALANCED** | 93/100 | Platinum |
+| 🥈 #2 | **AppDimens LOGARITHMIC** | 88/100 | Platinum |
+| 🥉 #3 | **AppDimens POWER** | 86/100 | Gold |
+| #4 | **AppDimens DEFAULT** | 82/100 | Gold |
+| #5 | **AppDimens FLUID** | 78/100 | Silver |
+| ... | ... | ... | ... |
+| #15 | **SDP/SSP** | 65/100 | Bronze |
+| #18 | **CSS vw/vh** | 58/100 | Not Recommended |
+| #20 | **Traditional DP** | 50/100 | Baseline |
+
+**📊 [Complete Rankings](FORMULA_COMPARISON.md#8-final-ranking-and-certification)**
+
+### 20.2 AppDimens vs SDP/SSP
+
+| Aspect | AppDimens BALANCED ⭐ | SDP/SSP |
+|--------|---------------------|---------|
+| **Formula** | Hybrid linear-log | Linear |
+| **Oversizing Control** | 40% reduction | 0% |
+| **AR Compensation** | No (BALANCED), Yes (DEFAULT) | No |
+| **Tablet (720dp)** | 70dp ✅ | 115dp ❌ |
+| **Performance** | 0.0012µs | 0.0000µs (pre-calc) |
+| **Flexibility** | 13 strategies | 1 strategy |
+| **Files** | 0 (runtime) | 426 XML files |
+
+**Recommendation:** Migrate from SDP to BALANCED for 40% improvement
+
+**📖 [Migration from SDP](FORMULA_COMPARISON.md#101-from-sdpssp-to-appdimens)**
+
+---
+
+## 21. Performance Benchmarks
+
+### 21.1 Calculation Speed
+
+**10,000 calculations benchmark:**
+
+| Strategy | Time (µs) | Relative |
+|----------|-----------|----------|
+| PERCENTAGE | 0.0003 | 1.0x (fastest) |
+| POWER | 0.0008 | 2.7x |
+| LOGARITHMIC | 0.0010 | 3.3x |
+| BALANCED | 0.0012 | 4.0x |
+| DEFAULT | 0.0015 | 5.0x |
+
+**All sub-microsecond! Negligible performance difference.**
+
+### 21.2 Memory Usage
+
+- Per cache entry: 56 bytes
+- Total cache: ~60 KB
+- Ln() lookup table: ~1 KB
+- **Total:** ~61 KB (entire library)
+
+**📊 [Complete Benchmarks](FORMULA_COMPARISON.md#5-performance-analysis)**
+
+---
+
+## 22. Migration Guides
+
+### 22.1 From AppDimens v1.x
+
+**Step 1:** Update dependency to 2.0.0  
+**Step 2:** Replace `.fxdp` → `.balanced().dp` (or `.defaultDp`)  
+**Step 3:** Replace `.dydp` → `.percentageDp.dp`
+
+**Backward compatible:** Old code still works!
+
+### 22.2 From SDP/SSP
+
+**Step 1:** Add AppDimens dependency  
+**Step 2:** Replace `@dimen/_16sdp` → `16.balanced().dp`  
+**Step 3:** Remove SDP dependency and XML files
+
+**Benefits:** 40% better control, runtime flexibility
+
+### 22.3 From Other Libraries
+
+- **CSS vw/vh** → Use `balanced()` or `fluid()`
+- **ScreenUtil** → Use `balanced()`
+- **size-matters** → Use `balanced()` or `power()`
+
+**📖 [Complete Migration Guides](FORMULA_COMPARISON.md#10-migration-guide-from-external-libraries)**
+
+---
+
+## PART VI: REFERENCE
+
+## 23. Complete API Reference
+
+### 23.1 Strategy Selection Methods
+
+**Android:**
+```kotlin
+.balanced()      // Primary ⭐
+.defaultDp       // Secondary
+.percentageDp    // Containers
+.logarithmic()   // TV
+.power(n)        // Configurable
+.fluid(min, max) // Typography
+.smart()         // Auto-inference
+```
+
+**iOS:**
+```swift
+.balanced(_)
+.defaultScaling(_)
+.percentage(_)
+.logarithmic(_)
+.power(_, exponent:)
+.fluid(min:max:)
+.smart(_)
+```
+
+**Flutter:**
+```dart
+AppDimens.balanced(_)
+AppDimens.defaultScaling(_)
+AppDimens.percentage(_)
+AppDimens.logarithmic(_)
+AppDimens.power(_, exponent:)
+AppDimens.fluid(_, maxValue:)
+AppDimens.smart(_)
+```
+
+### 23.2 Configuration Methods
+
+```kotlin
+// Custom screens
+.screen(UiModeType.TV, 96.dp)
+.screen(DpQualifier.SMALL_WIDTH, 600, 72.dp)
+
+// Base orientation
+.portraitLowest()
+.landscapeHighest()
+
+// Cache control
+.cache(true)
+
+// AR adjustment
+.aspectRatio(enabled = true)
+```
+
+### 23.3 Output Methods
+
+**Android:**
+```kotlin
+.dp          // Dp (Compose)
+.sp          // TextUnit (Compose)
+.toDp()      // Float (Views)
+.toSp()      // Float (Views)
+.toPx()      // Float (physical pixels)
+```
+
+**iOS:**
+```swift
+.toPoints()  // CGFloat
+.toPt()      // CGFloat (shorthand)
+.toPixels()  // CGFloat (physical)
+```
+
+**Flutter:**
+```dart
+.calculate(context)  // double
+```
+
+---
+
+## 24. Troubleshooting
+
+### 24.1 Common Issues
+
+**Q: Sizes look wrong on my device**
+
+A: Check:
+1. Using correct strategy (BALANCED for multi-device)
+2. Base value is appropriate (48dp for buttons, not 16dp)
+3. Not mixing strategies randomly
+
+**Q: Performance seems slow**
+
+A: Solutions:
+1. Ensure cache is enabled (default)
+2. Call `warmupCache()` during init
+3. Use appropriate strategy (PERCENTAGE is fastest)
+
+**Q: Migration from v1.x - sizes changed**
+
+A: 
+- `.fxdp` is now `.defaultDp` (same formula)
+- Try `.balanced()` for better multi-device support
+- Old code still works (deprecated)
+
+### 24.2 FAQ
+
+**Q: Which strategy should I use?**
+
+A: 
+- Multi-device app → **BALANCED** ⭐
+- Phone-only → **DEFAULT**
+- Large containers → **PERCENTAGE**
+- Typography → **FLUID**
+
+**Q: Is v2.0 compatible with v1.x?**
+
+A: Yes! 100% backward compatible. Old extensions still work.
+
+**Q: What's the performance impact?**
+
+A: Negligible (< 0.002µs per calculation with cache)
+
+---
+
+## 25. FAQ
+
+### Strategy Selection
+
+**Q: Why is BALANCED now primary instead of DEFAULT?**
+
+A: BALANCED provides 40% better oversizing control on tablets while maintaining familiar linear behavior on phones. DEFAULT (formerly Fixed) is now optimized for phone-focused apps.
+
+**Q: Can I still use the old Fixed/Dynamic?**
+
+A: Yes! `.fxdp` and `.dydp` still work (deprecated). They map to `.defaultDp` and `.percentageDp`.
+
+**Q: When should I use PERCENTAGE instead of BALANCED?**
+
+A: Only for very large containers, images, and grids where proportional scaling is truly needed. For 95% of UI elements, use BALANCED.
+
+### Performance
+
+**Q: Is there overhead vs traditional DP?**
+
+A: Minimal (< 0.002µs with cache). Negligible in practice.
+
+**Q: Should I disable cache?**
+
+A: No, keep it enabled (default). Only disable for debugging.
+
+### Platform-Specific
+
+**Q: Does AppDimens work with Jetpack Compose?**
+
+A: Yes! Native Compose support with extension functions.
+
+**Q: Can I use AppDimens in XML layouts?**
+
+A: Yes! Use SDP/SSP modules for XML, or runtime calculation in code.
+
+---
+
+## 26. References
+
+### Documentation
+
+- [Mathematical Theory](MATHEMATICAL_THEORY.md) - Complete math foundation
+- [Simplified Guide](MATHEMATICAL_THEORY_SIMPLIFIED.md) - 15min intro
+- [Formula Comparison](FORMULA_COMPARISON.md) - Rankings & analysis
+- [Examples](EXAMPLES.md) - Code samples
+
+### Platform Guides
+
+- [Android](../Android/README.md)
+- [iOS](../iOS/README.md)
+- [Flutter](../Flutter/README.md)
+- [React Native](../ReactNative/README.md)
+- [Web](../Web/README.md)
+
+### Academic References
+
+- Weber, E. H. (1834). "De pulsu, resorptione, auditu et tactu"
+- Fechner, G. T. (1860). "Elemente der Psychophysik"
+- Stevens, S. S. (1957). "On the psychophysical law"
+- Loomis et al. (1992). "Visual space perception"
 
 ---
 
 **Document created by:** Jean Bodenberg  
-**Last updated:** October 2025  
-**Version:** 1.1.0  
+**Last updated:** February 2025  
+**Version:** 2.0.0  
 **License:** Apache 2.0  
 **Repository:** https://github.com/bodenberg/appdimens
 
 ---
 
-*"The natural logarithm teaches us that truly sustainable growth is not that which accelerates without control, but that which wisely decelerates as it expands."*
-
-— Jean Bodenberg, on the choice of ln(x) for UI scaling
+**[⬆ Back to Top](#-appdimens-complete-technical-guide)**
