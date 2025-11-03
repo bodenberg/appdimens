@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.bodenberg</groupId>
   <artifactId>appdimens-library</artifactId>
-  <version>1.1.0</version>
+  <version>2.0.0</version>
   <packaging>aar</packaging>
   <name>AppDimens: Cross-Platform UI Responsiveness (SDP/SSP, Dynamic/Fixed)</name>
   <description>The complete dynamic and responsive dimensioning library for Android (Jetpack Compose, XML Views, Kotlin, Java) and iOS (Swift, SwiftUI). It uses mathematical models (SDP, SSP, Dynamic, and Fixed) to ensure your UI adapts perfectly to any screen (phones, tablets, foldables, TVs, cars, and wearables), solving the problem of adaptive layout precisely and efficiently. (android, kotlin, java, jetpack-compose, xml, swift, swiftui, ios, dp, sp, sdp, ssp, dimensions, responsive, layout, design-system, adaptive, dynamic, fixed, view-system)</description>
