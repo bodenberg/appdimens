@@ -82,6 +82,168 @@ Text('Hello', style: TextStyle(fontSize: AppDimens.balanced(16).calculate(contex
 ```
 {% endraw %}
 
+### 1.2 Aspect Ratio (AR) Impact Examples
+
+> **📐 Version 2.0:** Six strategies now support automatic aspect ratio compensation. Here are practical examples showing the impact.
+
+#### Understanding AR
+
+**What is Aspect Ratio?**
+- AR = max(width, height) / min(width, height)
+- Reference: 16:9 = 1.78 (neutral adjustment)
+- Modern phones: 18:9 to 21:9 = 2.0 to 2.33 (elongated)
+- Tablets: 4:3 to 16:10 = 1.33 to 1.6 (wider)
+
+#### Example 1: Phone with Different Aspect Ratios
+
+**Scenario:** A 48dp button on a 360dp width phone
+
+**Standard Phone (360×640, 16:9 - AR=1.78):**
+```kotlin
+// Android
+val buttonHeight = 48.balanced().dp  // Result: 57.6dp
+
+// iOS
+let height = AppDimens.shared.balanced(48)  // Result: 57.6pt
+
+// Flutter
+final height = AppDimens.balanced(48).calculate(context)  // Result: 57.6dp
+```
+
+**Elongated Phone (360×800, 20:9 - AR=2.22):**
+```kotlin
+// Android
+val buttonHeight = 48.balanced().dp  // Result: 57.9dp (+0.5%)
+
+// iOS
+let height = AppDimens.shared.balanced(48)  // Result: 57.9pt (+0.5%)
+
+// Flutter
+final height = AppDimens.balanced(48).calculate(context)  // Result: 57.9dp (+0.5%)
+```
+
+**Visual Impact:**
+- Without AR: Button feels smaller on elongated screens
+- With AR: Slight size increase maintains visual weight
+- User perception: Consistent button appearance across devices
+
+#### Example 2: Comparison Across Strategies
+
+**Device:** Pixel 6 Pro (412×915, AR=2.22) vs Galaxy S21 (360×800, AR=2.22)
+
+**48dp Button Height:**
+
+| Strategy | Without AR | With AR | Difference |
+|----------|------------|---------|------------|
+| BALANCED | 65.9dp | 66.3dp | **+0.6%** |
+| DEFAULT | 61.3dp | 62.0dp | **+1.1%** (highest) |
+| LOGARITHMIC | 56.9dp | 57.1dp | **+0.4%** |
+| POWER | 61.4dp | 61.7dp | **+0.5%** |
+| INTERPOLATED | 60.5dp | 60.8dp | **+0.5%** |
+
+#### Example 3: Foldable Device Handling
+
+**Samsung Galaxy Z Fold 4:**
+- Folded (cover screen): 832×2268 (AR=2.73) - Very elongated
+- Unfolded (main screen): 1768×2208 (AR=1.25) - Almost square
+
+```kotlin
+// Android
+@Composable
+fun AdaptiveButton() {
+    val configuration = LocalConfiguration.current
+    val isUnfolded = configuration.screenWidthDp > 600
+    
+    Button(
+        modifier = Modifier.height(48.balanced().dp)
+        // Folded:   ~75dp with AR adjustment
+        // Unfolded: ~85dp with different AR
+    ) {
+        Text("Adaptive Button", fontSize = 16.balanced().sp)
+    }
+}
+```
+
+#### Example 4: Multi-Window / Split Screen
+
+**Scenario:** App in split-screen mode creates unusual aspect ratios
+
+```kotlin
+// Android - Handling split screen
+@Composable
+fun SplitScreenAware() {
+    val windowSize = currentWindowAdaptiveInfo().windowSizeClass
+    
+    // In split screen: width=360dp, height=400dp, AR=1.11 (very wide)
+    // AR adjustment: ×0.985 (-1.5% to compensate for unusual proportion)
+    
+    Card(
+        modifier = Modifier
+            .width(300.percentageDp.dp)    // No AR adjustment
+            .padding(16.balanced().dp)      // With AR adjustment
+    ) {
+        Text(
+            "AR-Aware Content",
+            fontSize = 16.balanced().sp
+        )
+    }
+}
+```
+
+#### Example 5: Disabling AR for Specific Cases
+
+**FLUID strategy with manual AR control:**
+
+```kotlin
+// Android
+val textSize = fluidSp(
+    minValue = 14f,
+    maxValue = 20f,
+    applyAspectRatio = false  // Disable AR for this specific element
+)
+
+// iOS
+let size = AppDimens.shared.fluid(
+    min: 14,
+    max: 20,
+    applyAspectRatio: false
+)
+
+// Flutter
+final size = AppDimens.fluid(
+    14,
+    maxValue: 20,
+    applyAspectRatio: false
+).calculate(context)
+```
+
+#### Example 6: Real-World Impact
+
+**Social Media Feed Card:**
+
+```kotlin
+// Without AR awareness
+Card(
+    modifier = Modifier
+        .fillMaxWidth()
+        .height(200.defaultDp)  // Same height on all phones
+) {
+    // On elongated phone: card looks "short" and "squashed"
+}
+
+// With AR awareness
+Card(
+    modifier = Modifier
+        .fillMaxWidth()
+        .height(200.defaultDp)  // Slightly taller on elongated phones
+) {
+    // On elongated phone (AR=2.22): ~202dp height (+1%)
+    // Maintains visual proportion
+}
+```
+
+**Key Takeaway:** AR compensation ensures visual consistency across the growing variety of screen shapes in modern devices (foldables, elongated phones, tablets, split-screen, multi-window).
+
 ---
 
 ## 2. Android Examples

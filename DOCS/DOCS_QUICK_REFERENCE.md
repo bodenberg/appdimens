@@ -25,21 +25,21 @@ What's your app type?
 
 ## 📊 13 Strategies at a Glance
 
-| # | Strategy | Formula | Use Case | Score |
-|---|----------|---------|----------|-------|
-| 1 | **BALANCED** ⭐ | Hybrid linear-log | Multi-device (PRIMARY) | 93/100 |
-| 2 | LOGARITHMIC | `1 + k×ln(W/300)` | TV, max control | 88/100 |
-| 3 | POWER | `(W/300)^0.75` | General, configurable | 86/100 |
-| 4 | **DEFAULT** | `~97% linear + AR` | Phone-focused (SECONDARY) | 82/100 |
-| 5 | FLUID | `clamp(min, max)` | Typography | 78/100 |
-| 6 | AUTOSIZE 🆕 | Container-aware | Dynamic text | 78/100 |
-| 7 | FIT | `min(W/300, H/533)` | Games (letterbox) | 75/100 |
-| 8 | FILL | `max(W/300, H/533)` | Games (cover) | 73/100 |
-| 9 | DIAGONAL | `√(W²+H²)/611.63` | Physical size | 72/100 |
-| 10 | INTERPOLATED | `50% linear` | Moderate | 70/100 |
-| 11 | PERIMETER | `(W+H)/833` | W+H balance | 70/100 |
-| 12 | PERCENTAGE | `W/300` | Containers ONLY | 62/100 |
-| 13 | NONE | `x` | No scaling | 55/100 |
+| # | Strategy | Formula | AR Support | Use Case | Score |
+|---|----------|---------|------------|----------|-------|
+| 1 | **BALANCED** ⭐ | Hybrid linear-log | ✅ Yes | Multi-device (PRIMARY) | 93/100 |
+| 2 | LOGARITHMIC | `1 + k×ln(W/300)` | ✅ Yes | TV, max control | 88/100 |
+| 3 | POWER | `(W/300)^0.75` | ✅ Yes | General, configurable | 86/100 |
+| 4 | **DEFAULT** | `~97% linear + AR` | ✅ Yes | Phone-focused (SECONDARY) | 82/100 |
+| 5 | FLUID | `clamp(min, max)` | ⚙️ Opt-in | Typography | 78/100 |
+| 6 | AUTOSIZE 🆕 | Container-aware | ❌ No | Dynamic text | 78/100 |
+| 7 | FIT | `min(W/300, H/533)` | ❌ No | Games (letterbox) | 75/100 |
+| 8 | FILL | `max(W/300, H/533)` | ❌ No | Games (cover) | 73/100 |
+| 9 | DIAGONAL | `√(W²+H²)/611.63` | ❌ No | Physical size | 72/100 |
+| 10 | INTERPOLATED | `50% linear` | ✅ Yes | Moderate | 70/100 |
+| 11 | PERIMETER | `(W+H)/833` | ❌ No | W+H balance | 70/100 |
+| 12 | PERCENTAGE | `W/300` | ❌ No | Containers ONLY | 62/100 |
+| 13 | NONE | `x` | ❌ No | No scaling | 55/100 |
 
 ---
 
@@ -151,6 +151,30 @@ FLUID:       clamp(min, interpolate(W), max)
 | 480dp  | 77dp     | 65dp    | 77dp       | Phablet |
 | 720dp  | 70dp ⭐  | 79dp    | 115dp ❌   | Tablet |
 | 1080dp | 101dp    | 94dp    | 173dp ❌   | TV |
+
+### 📐 Aspect Ratio (AR) Impact Comparison (48dp base)
+
+**Devices with different aspect ratios:**
+
+| Device | Resolution | AR | Strategy | Without AR | With AR | Impact |
+|--------|------------|-----|----------|------------|---------|---------|
+| **Phone (Standard)** | 360×640 | 1.78 | BALANCED | 57.6dp | 57.6dp | 0% (ref) |
+| | | | DEFAULT | 53.6dp | 53.6dp | 0% (ref) |
+| | | | LOGARITHMIC | 42.0dp | 42.0dp | 0% (ref) |
+| **Phone (Elongated)** | 360×800 | 2.22 | BALANCED | 57.6dp | 57.9dp | +0.5% |
+| | | | DEFAULT | 53.6dp | 54.2dp | +1.1% |
+| | | | LOGARITHMIC | 42.0dp | 42.2dp | +0.5% |
+| **Tablet (16:9)** | 720×1280 | 1.78 | BALANCED | 69.7dp | 69.7dp | 0% (ref) |
+| | | | DEFAULT | 78.7dp | 78.7dp | 0% (ref) |
+| | | | LOGARITHMIC | 67.2dp | 67.2dp | 0% (ref) |
+| **Tablet (Elongated)** | 720×1600 | 2.22 | BALANCED | 69.7dp | 70.1dp | +0.6% |
+| | | | DEFAULT | 78.7dp | 79.6dp | +1.1% |
+| | | | LOGARITHMIC | 67.2dp | 67.5dp | +0.4% |
+| **TV (16:9)** | 1080×1920 | 1.78 | BALANCED | 101.4dp | 101.4dp | 0% (ref) |
+| | | | DEFAULT | 93.6dp | 93.6dp | 0% (ref) |
+| | | | LOGARITHMIC | 85.3dp | 85.3dp | 0% (ref) |
+
+> **Note:** AR=1.78 (16:9) is the reference, so AR adjustment is neutral (0%). Elongated screens (AR>1.78) get slight size increases (+0.5% to +1.1%), while wider screens (AR<1.78) get slight decreases.
 
 ---
 

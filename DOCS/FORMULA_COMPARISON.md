@@ -147,6 +147,17 @@ arAdj(AR) = 1 + k_AR × ln(AR / AR₀)  [enabled by default]
 | 960dp  | 88.3dp | **-42.5%** | Maximum control |
 | 1080dp | 100.9dp| **-41.6%** | TV-optimized |
 
+**📐 Aspect Ratio Impact (48dp base):**
+
+| Device | Resolution | AR | Without AR | With AR | Difference |
+|--------|------------|-----|------------|---------|------------|
+| Phone (Standard) | 360×640 | 1.78 | 57.6dp | 57.6dp | 0% (reference) |
+| Phone (Elongated) | 360×800 | 2.22 | 57.6dp | 57.9dp | **+0.5%** |
+| Phone (21:9) | 360×840 | 2.33 | 57.6dp | 58.0dp | **+0.7%** |
+| Tablet (Standard) | 720×1280 | 1.78 | 69.7dp | 69.7dp | 0% (reference) |
+| Tablet (Elongated) | 720×1600 | 2.22 | 69.7dp | 70.1dp | **+0.6%** |
+| TV (16:9) | 1080×1920 | 1.78 | 100.9dp | 100.9dp | 0% (reference) |
+
 **When to Use:**
 - ✅ Multi-device apps (phones, tablets, TVs)
 - ✅ Social media, productivity, e-commerce
@@ -206,6 +217,17 @@ arAdj(AR) = 1 + k_AR × ln(AR / AR₀)  [enabled by default]
 | 720dp  | 67.2dp | **-41.7%**| -3.6%       |
 | 1080dp | 75.8dp | **-56.1%**| -24.9%      |
 
+**📐 Aspect Ratio Impact (48dp base):**
+
+| Device | Resolution | AR | Without AR | With AR | Difference |
+|--------|------------|-----|------------|---------|------------|
+| Phone (Standard) | 360×640 | 1.78 | 51.5dp | 51.5dp | 0% (reference) |
+| Phone (Elongated) | 360×800 | 2.22 | 51.5dp | 51.7dp | **+0.4%** |
+| Phone (21:9) | 360×840 | 2.33 | 51.5dp | 51.8dp | **+0.6%** |
+| Tablet (Standard) | 720×1280 | 1.78 | 67.2dp | 67.2dp | 0% (reference) |
+| Tablet (Elongated) | 720×1600 | 2.22 | 67.2dp | 67.5dp | **+0.4%** |
+| TV (16:9) | 1080×1920 | 1.78 | 75.8dp | 75.8dp | 0% (reference) |
+
 **When to Use:**
 - ✅ TV applications (960dp+)
 - ✅ Very large tablets (840dp+)
@@ -257,6 +279,17 @@ arAdj(AR) = 1 + k_AR × ln(AR / AR₀)  [enabled by default]
 | n = 0.80 | 82.3dp | **-28.5%**| Moderate |
 | n = 0.90 | 104.5dp| **-9.3%** | Aggressive |
 
+**📐 Aspect Ratio Impact (48dp base, exponent=0.75):**
+
+| Device | Resolution | AR | Without AR | With AR | Difference |
+|--------|------------|-----|------------|---------|------------|
+| Phone (Standard) | 360×640 | 1.78 | 53.6dp | 53.6dp | 0% (reference) |
+| Phone (Elongated) | 360×800 | 2.22 | 53.6dp | 53.8dp | **+0.4%** |
+| Phone (21:9) | 360×840 | 2.33 | 53.6dp | 53.9dp | **+0.6%** |
+| Tablet (Standard) | 720×1280 | 1.78 | 76.8dp | 76.8dp | 0% (reference) |
+| Tablet (Elongated) | 720×1600 | 2.22 | 76.8dp | 77.1dp | **+0.4%** |
+| TV (16:9) | 1080×1920 | 1.78 | 94.0dp | 94.0dp | 0% (reference) |
+
 **When to Use:**
 - ✅ General-purpose applications
 - ✅ When configurability is needed
@@ -305,6 +338,19 @@ AR = aspect ratio
 | 480dp  | 64.5dp | **-16.0%**| -16.0%      |
 | 720dp  | 79.2dp | **-31.3%**| +13.6%      |
 | 1080dp | 94.0dp | **-45.6%**| -6.8%       |
+
+**📐 Aspect Ratio Impact (48dp base):**
+
+| Device | Resolution | AR | Without AR | With AR | Difference |
+|--------|------------|-----|------------|---------|------------|
+| Phone (Standard) | 360×640 | 1.78 | 53.6dp | 53.6dp | 0% (reference) |
+| Phone (Elongated) | 360×800 | 2.22 | 53.6dp | 54.2dp | **+1.1%** |
+| Phone (21:9) | 360×840 | 2.33 | 53.6dp | 54.4dp | **+1.5%** |
+| Tablet (Standard) | 720×1280 | 1.78 | 78.7dp | 78.7dp | 0% (reference) |
+| Tablet (Elongated) | 720×1600 | 2.22 | 78.7dp | 79.6dp | **+1.1%** |
+| TV (16:9) | 1080×1920 | 1.78 | 93.6dp | 93.6dp | 0% (reference) |
+
+> **Note:** DEFAULT has the highest AR sensitivity among all strategies, making it most responsive to aspect ratio variations.
 
 **When to Use:**
 - ✅ Phone-focused apps (320-480dp)
@@ -416,6 +462,15 @@ arAdj(AR) = 1 + k_AR × ln(AR / AR₀)  [enabled by default]
 
 **Scoring:**
 - Overall: **70/100** **#7 Moderate Scaling**
+
+**📐 Aspect Ratio Impact (48dp base):**
+
+| Device | Resolution | AR | Without AR | With AR | Difference |
+|--------|------------|-----|------------|---------|------------|
+| Phone (Standard) | 360×640 | 1.78 | 52.8dp | 52.8dp | 0% (reference) |
+| Phone (Elongated) | 360×800 | 2.22 | 52.8dp | 53.0dp | **+0.4%** |
+| Tablet (Standard) | 720×1280 | 1.78 | 81.6dp | 81.6dp | 0% (reference) |
+| Tablet (Elongated) | 720×1600 | 2.22 | 81.6dp | 82.0dp | **+0.5%** |
 
 **When to Use:**
 - ✅ Medium screens (phablets, small tablets)

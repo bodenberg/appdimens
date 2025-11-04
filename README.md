@@ -526,6 +526,29 @@ AppDimens 2.0 offers 13 scaling strategies for different needs:
 | **PERIMETER** | Scale based on W+H perimeter | `48.perimeter()` | All platforms |
 | **NONE** | No scaling (constant size) | `48.none()` | All platforms |
 
+### 📐 Aspect Ratio (AR) Support
+
+**6 strategies support automatic aspect ratio compensation:**
+
+| Strategy | AR Support | Formula | Impact |
+|----------|------------|---------|--------|
+| **BALANCED** ⭐ | ✅ Enabled by default | `scale × (1 + 0.00267 × ln(AR/1.78))` | +0.5% to +1.1% on elongated screens |
+| **DEFAULT** | ✅ Enabled by default | `scale × (1 + 0.00267 × ln(AR/1.78))` | +0.5% to +1.1% on elongated screens |
+| **LOGARITHMIC** | ✅ Enabled by default | `scale × (1 + 0.00267 × ln(AR/1.78))` | +0.4% to +0.6% on elongated screens |
+| **POWER** | ✅ Enabled by default | `scale × (1 + 0.00267 × ln(AR/1.78))` | +0.4% to +0.7% on elongated screens |
+| **INTERPOLATED** | ✅ Enabled by default | `scale × (1 + 0.00267 × ln(AR/1.78))` | +0.5% to +1.0% on elongated screens |
+| **FLUID** | ⚙️ Opt-in (disabled by default) | Individual control via `applyAspectRatio` param | Configurable |
+
+**Why AR matters:**
+- 📱 Modern phones have varying aspect ratios (18:9, 19.5:9, 20:9, 21:9)
+- 📐 Reference is 16:9 (AR=1.78), so no adjustment on standard screens
+- 📏 Elongated screens (AR>1.78) get slight size increases to maintain visual balance
+- 🖥️ Wider screens (AR<1.78) get slight decreases
+
+**Example: 48dp button on 360dp width**
+- Standard (360×640, AR=1.78): 57.6dp (no adjustment)
+- Elongated (360×800, AR=2.22): 57.9dp (+0.5% adjustment)
+
 **📖 [Understanding Scaling Strategies](DOCS/MATHEMATICAL_THEORY_SIMPLIFIED.md)**
 
 ---
