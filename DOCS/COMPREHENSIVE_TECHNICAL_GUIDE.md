@@ -398,17 +398,17 @@ f_POWER(x, W) = x × (W/300)^0.75
 ```kotlin
 dependencies {
     // Core library (13 strategies + Physical Units)
-    implementation("io.github.bodenberg:appdimens-dynamic:2.0.0")
+    implementation("io.github.bodenberg:appdimens-dynamic:2.0.1")
     
     // SDP/SSP (XML support)
-    implementation("io.github.bodenberg:appdimens-sdps:2.0.0")
-    implementation("io.github.bodenberg:appdimens-ssps:2.0.0")
+    implementation("io.github.bodenberg:appdimens-sdps:2.0.1")
+    implementation("io.github.bodenberg:appdimens-ssps:2.0.1")
     
     // All-in-one
-    implementation("io.github.bodenberg:appdimens-all:2.0.0")
+    implementation("io.github.bodenberg:appdimens-all:2.0.1")
     
     // Games (C++/NDK)
-    implementation("io.github.bodenberg:appdimens-games:2.0.0")
+    implementation("io.github.bodenberg:appdimens-games:2.0.1")
 }
 ```
 
@@ -561,6 +561,7 @@ npm install appdimens-react-native@2.0.0
 
 ### 13.2 API
 
+{% raw %}
 ```typescript
 import {useAppDimens} from 'appdimens-react-native';
 
@@ -577,6 +578,7 @@ function MyComponent() {
   );
 }
 ```
+{% endraw %}
 
 **📖 [Complete React Native Guide](../ReactNative/README.md)**
 
@@ -592,6 +594,7 @@ npm install webdimens@2.0.0
 
 ### 14.2 React API
 
+{% raw %}
 ```typescript
 import {useWebDimens} from 'webdimens/react';
 
@@ -608,6 +611,7 @@ function MyComponent() {
   );
 }
 ```
+{% endraw %}
 
 ### 14.3 Vue, Svelte, Angular
 

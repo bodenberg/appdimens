@@ -19,6 +19,7 @@
 
 ### React
 
+{% raw %}
 ```typescript
 import {useWebDimens} from 'webdimens/react';
 
@@ -29,6 +30,7 @@ const {balanced, fluid, smart} = useWebDimens();
   <button style={{height: smart(48).forElement('button')}}>Click</button>
 </div>
 ```
+{% endraw %}
 
 ### Vue
 

@@ -86,8 +86,8 @@ enum class GameScalingStrategy {
      * BALANCED - Perceptual Hybrid (RECOMMENDED for games)
      * 
      * Formula: 
-     * - if W < 480: f(x) = x × (W / W₀)
-     * - if W ≥ 480: f(x) = x × (1.6 + sensitivity × ln(1 + (W-480)/W₀))
+     * - if W < 480: f(x) = x × (W / W₀) × arAdjustment
+     * - if W ≥ 480: f(x) = x × (1.6 + sensitivity × ln(1 + (W-480)/W₀)) × arAdjustment
      * 
      * Characteristics:
      * - Linear on phones (< 480dp)
@@ -95,6 +95,7 @@ enum class GameScalingStrategy {
      * - Smooth transition at breakpoint
      * - Prevents oversizing on large screens
      * - Best balance between familiarity and control
+     * - Supports aspect ratio adjustment (enabled by default)
      * 
      * Best for: Multi-device games, player characters, enemies, most game elements
      * 
@@ -112,13 +113,14 @@ enum class GameScalingStrategy {
     /**
      * LOGARITHMIC - Perceptual Weber-Fechner (maximum control)
      * 
-     * Formula: f(x) = x × (1 + sensitivity × ln(W / W₀))
+     * Formula: f(x) = x × (1 + sensitivity × ln(W / W₀)) × arAdjustment
      * 
      * Characteristics:
      * - Pure logarithmic growth on all screens
      * - Maximum control on large screens
      * - May reduce sizes noticeably on phones
      * - Based on human perception research
+     * - Supports aspect ratio adjustment (enabled by default)
      * 
      * Best for: TV games, very large tablets, elements that should not dominate
      * 
@@ -135,13 +137,14 @@ enum class GameScalingStrategy {
     /**
      * POWER - Perceptual Stevens (scientific, configurable)
      * 
-     * Formula: f(x) = x × (W / W₀)^exponent
+     * Formula: f(x) = x × (W / W₀)^exponent × arAdjustment
      * 
      * Characteristics:
      * - Power law scaling (exponent < 1)
      * - Scientifically grounded (Stevens' Law)
      * - Configurable exponent (0.6-0.9)
      * - Predictable behavior
+     * - Supports aspect ratio adjustment (enabled by default)
      * 
      * Best for: Configurable games, custom scaling needs
      * 
@@ -162,12 +165,14 @@ enum class GameScalingStrategy {
      * - if W ≤ minW: return minValue
      * - if W ≥ maxW: return maxValue
      * - else: linear interpolation between min/max
+     * - Optional: × arAdjustment (disabled by default, individual control only)
      * 
      * Characteristics:
      * - Bounded growth (min/max limits)
      * - Smooth interpolation between breakpoints
      * - Device/screen-specific configs
      * - Excellent control over size ranges
+     * - Aspect ratio adjustment (disabled by default, ignores global settings)
      * 
      * Best for: Typography, text elements, bounded UI components
      * 
@@ -184,13 +189,14 @@ enum class GameScalingStrategy {
     /**
      * INTERPOLATED - Moderated linear interpolation
      * 
-     * Formula: f(x) = x + ((x × W/W₀) - x) × 0.5
+     * Formula: f(x) = x + ((x × W/W₀) - x) × 0.5 × arAdjustment
      * 
      * Characteristics:
      * - 50% of linear growth
      * - Softer than linear, stronger than log
      * - Good balance for medium screens
      * - Simple and predictable
+     * - Supports aspect ratio adjustment (enabled by default)
      * 
      * Best for: Moderate scaling needs, balanced growth
      * 
@@ -358,11 +364,11 @@ enum class GameScalingStrategy {
     fun getDescription(): String = when (this) {
         DEFAULT -> "DEFAULT: Fixed legacy (~97% linear + AR)"
         PERCENTAGE -> "PERCENTAGE: Dynamic legacy (100% linear)"
-        BALANCED -> "BALANCED: Linear phones, log tablets (Recommended for Games)"
-        LOGARITHMIC -> "LOGARITHMIC: Pure log (Maximum control)"
-        POWER -> "POWER: Stevens power law (Scientific)"
-        FLUID -> "FLUID: CSS clamp-like with breakpoints"
-        INTERPOLATED -> "INTERPOLATED: 50% moderated linear"
+        BALANCED -> "BALANCED: Linear phones, log tablets + AR (Recommended for Games)"
+        LOGARITHMIC -> "LOGARITHMIC: Pure log + AR (Maximum control)"
+        POWER -> "POWER: Stevens power law + AR (Scientific)"
+        FLUID -> "FLUID: CSS clamp-like with breakpoints (AR opt-in)"
+        INTERPOLATED -> "INTERPOLATED: 50% moderated linear + AR"
         DIAGONAL -> "DIAGONAL: Scale by screen diagonal"
         PERIMETER -> "PERIMETER: Scale by width + height"
         FIT -> "FIT: Letterbox (game fit)"
@@ -398,11 +404,11 @@ enum class GameScalingStrategy {
     fun getFormula(): String = when (this) {
         DEFAULT -> "f(x) = x × (1 + (W-W₀)/1 × 0.00333) × arAdj"
         PERCENTAGE -> "f(x) = x × (W / W₀)"
-        BALANCED -> "f(x) = x × (W/W₀) if W<480, else x × (1.6 + k×ln(...))"
-        LOGARITHMIC -> "f(x) = x × (1 + k × ln(W / W₀))"
-        POWER -> "f(x) = x × (W / W₀)^n"
-        FLUID -> "f(x) = interpolate(min, max, W, minW, maxW)"
-        INTERPOLATED -> "f(x) = x + ((x × W/W₀) - x) × 0.5"
+        BALANCED -> "f(x) = x × (W/W₀) × arAdj if W<480, else x × (1.6 + k×ln(...)) × arAdj"
+        LOGARITHMIC -> "f(x) = x × (1 + k × ln(W / W₀)) × arAdj"
+        POWER -> "f(x) = x × (W / W₀)^n × arAdj"
+        FLUID -> "f(x) = interpolate(min, max, W, minW, maxW) × arAdj?"
+        INTERPOLATED -> "f(x) = x + ((x × W/W₀) - x) × 0.5 × arAdj"
         DIAGONAL -> "f(x) = x × √(W² + H²) / √(W₀² + H₀²)"
         PERIMETER -> "f(x) = x × (W + H) / (W₀ + H₀)"
         FIT -> "f(x) = x × min(W/W₀, H/H₀)"

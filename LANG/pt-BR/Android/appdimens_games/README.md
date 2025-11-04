@@ -1,14 +1,14 @@
 # AppDimens Games - Módulo Android
 
 **Desenvolvimento de Jogos de Alta Performance com C++/NDK**  
-*Versão: 2.0.0*
+*Versão: 2.0.1*
 
 ---
 
 ## 📦 Instalação
 
 ```kotlin
-implementation("io.github.bodenberg:appdimens-games:2.0.0")
+implementation("io.github.bodenberg:appdimens-games:2.0.1")
 ```
 
 ---

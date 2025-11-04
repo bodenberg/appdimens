@@ -18,14 +18,14 @@ It goes beyond the limitations of standard density-independent pixels (**Dp/Pt**
 ```kotlin
 dependencies {
     // Core (Dynamic + 13 Strategies)
-    implementation("io.github.bodenberg:appdimens-dynamic:2.0.0")
+    implementation("io.github.bodenberg:appdimens-dynamic:2.0.1")
 
     // SDP & SSP scaling (optional)
     implementation("io.github.bodenberg:appdimens-sdps:1.1.0")
     implementation("io.github.bodenberg:appdimens-ssps:1.1.0")
 
     // All in one
-    implementation("io.github.bodenberg:appdimens-all:2.0.0")
+    implementation("io.github.bodenberg:appdimens-all:2.0.1")
     
     // Game development (separate dependency)
     implementation("io.github.bodenberg:appdimens-games:1.1.0")

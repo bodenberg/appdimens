@@ -168,14 +168,18 @@ Text('Olá', style: TextStyle(fontSize: AppDimens.balanced(16).calculate(context
 ```
 
 **React Native:**
+{% raw %}
 ```typescript
 <Text style={{fontSize: balanced(16)}}>Olá</Text>
 ```
+{% endraw %}
 
 **Web:**
+{% raw %}
 ```typescript
 <h2 style={{fontSize: balanced(16)}}>Olá</h2>
 ```
+{% endraw %}
 
 ---
 

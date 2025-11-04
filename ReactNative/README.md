@@ -15,6 +15,7 @@
 - 🎯 **13 Scaling Strategies** (up from 2)
 - ⭐ **BALANCED** - Primary recommendation (hybrid linear-logarithmic)
 - 🔬 **Perceptual Models** (Weber-Fechner, Stevens' Power Law)
+- 📐 **Aspect Ratio Adjustment** (5 strategies with AR support)
 - 🧠 **Smart Inference** - Automatic strategy selection
 - ⚡ **5x Performance** - Optimized TypeScript implementation
 - 📘 **Full TypeScript** support
@@ -35,6 +36,7 @@ yarn add appdimens-react-native@2.0.0
 
 ## ⚡ Quick Start
 
+{% raw %}
 ```typescript
 import React from 'react';
 import {View, Text} from 'react-native';
@@ -50,6 +52,7 @@ function MyComponent() {
   );
 }
 ```
+{% endraw %}
 
 ---
 
@@ -57,24 +60,29 @@ function MyComponent() {
 
 ### Primary: BALANCED ⭐
 
+{% raw %}
 ```typescript
 const {balanced} = useAppDimens();
 <Text style={{fontSize: balanced(16)}}>Text</Text>
 ```
+{% endraw %}
 
 **Use for:** 95% of apps (phones, tablets)
 
 ### Secondary: DEFAULT
 
+{% raw %}
 ```typescript
 const {defaultScaling} = useAppDimens();
 <Image style={{width: defaultScaling(24), height: defaultScaling(24)}} />
 ```
+{% endraw %}
 
 **Use for:** Phone-focused apps, icons
 
 ### Others
 
+{% raw %}
 ```typescript
 const {
   percentage,      // Containers
@@ -88,6 +96,7 @@ const {
 <Text style={{fontSize: fluid(16, 24)}}>Title</Text>
 <TouchableOpacity style={{height: smart(48).forElement('button')}}>
 ```
+{% endraw %}
 
 ---
 
@@ -102,6 +111,7 @@ const {
 
 ## 🎯 Complete Example
 
+{% raw %}
 ```typescript
 import React from 'react';
 import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
@@ -161,6 +171,7 @@ function FeedScreen() {
   );
 }
 ```
+{% endraw %}
 
 ---
 

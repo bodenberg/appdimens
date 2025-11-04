@@ -1,7 +1,7 @@
 # AppDimens SSP Module - Scalable SP for Text
 
 **Pre-Calculated Responsive SP Values for XML Text**  
-*Version: 2.0.0*
+*Version: 2.0.1*
 
 ---
 
@@ -9,7 +9,7 @@
 
 ```kotlin
 dependencies {
-    implementation("io.github.bodenberg:appdimens-ssps:2.0.0")
+    implementation("io.github.bodenberg:appdimens-ssps:2.0.1")
 }
 ```
 

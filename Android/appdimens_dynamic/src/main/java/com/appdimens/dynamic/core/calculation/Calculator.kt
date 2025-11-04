@@ -398,6 +398,12 @@ object Calculator {
      * @param screenQualifiers Screen width-specific qualifiers for different screen sizes.
      *                        Allows different min/max values for specific width breakpoints.
      *                        Keyed by minimum width in dp.
+     * @param applyAspectRatio Whether to apply aspect ratio adjustment to fluid scaling.
+     *                        Note: FLUID ignores global AR settings, only this individual control applies.
+     *                        Defaults to false (AR disabled for FLUID by default).
+     * @param arSensitivity Aspect ratio sensitivity factor. Higher values increase
+     *                      the impact of aspect ratio deviation. If null, uses
+     *                      [DEFAULT_AR_SENSITIVITY].
      * 
      * @example
      * ```kotlin
@@ -409,7 +415,8 @@ object Calculator {
      *     deviceQualifiers = mapOf(
      *         FluidDeviceType.PHONE to FluidConfig(minValue = 40f, maxValue = 80f),
      *         FluidDeviceType.TABLET to FluidConfig(minValue = 80f, maxValue = 120f)
-     *     )
+     *     ),
+     *     applyAspectRatio = true // Enable AR adjustment for FLUID (optional)
      * )
      * ```
      */
@@ -419,7 +426,30 @@ object Calculator {
         val minWidth: Float = 320f,
         val maxWidth: Float = 768f,
         val deviceQualifiers: Map<FluidDeviceType, FluidConfig> = emptyMap(),
-        val screenQualifiers: Map<Int, FluidConfig> = emptyMap()
+        val screenQualifiers: Map<Int, FluidConfig> = emptyMap(),
+        val applyAspectRatio: Boolean = false,
+        val arSensitivity: Float? = null
+    )
+    
+    /**
+     * Parameters for INTERPOLATED strategy calculation.
+     * 
+     * INTERPOLATED strategy provides 50% of linear scaling, offering a middle ground
+     * between fixed (0%) and full dynamic (100%) scaling.
+     * 
+     * Formula: f(x) = x + ((x × W/W₀) - x) × 0.5
+     * 
+     * @param applyAspectRatio Whether to apply aspect ratio adjustment.
+     *                        When true, applies logarithmic aspect ratio correction
+     *                        based on deviation from reference aspect ratio (16:9).
+     *                        Defaults to true.
+     * @param arSensitivity Aspect ratio sensitivity factor. Higher values increase
+     *                      the impact of aspect ratio deviation. If null, uses
+     *                      [DEFAULT_AR_SENSITIVITY].
+     */
+    data class InterpolatedParams(
+        val applyAspectRatio: Boolean = true,
+        val arSensitivity: Float? = null
     )
     
     /**
@@ -496,6 +526,7 @@ object Calculator {
      *                         Includes model type, sensitivity, power exponent, transition point.
      * @param fluidParams Parameters for FLUID strategy (min/max values, breakpoints, qualifiers).
      *                    If null and FLUID strategy is selected, defaults are calculated.
+     * @param interpolatedParams Parameters for INTERPOLATED strategy (aspect ratio adjustment).
      * @param constraints Universal constraints to apply after calculation (min/max bounds, physical size).
      * @param customQualifiers Custom qualifier overrides using priority system:
      *                        Priority 1: Intersection (UiMode + DpQualifier)
@@ -535,6 +566,7 @@ object Calculator {
         defaultParams: DefaultParams = DefaultParams(),
         perceptualParams: PerceptualParams = PerceptualParams(),
         fluidParams: FluidParams? = null,
+        interpolatedParams: InterpolatedParams = InterpolatedParams(),
         constraints: Constraints = Constraints(),
         customQualifiers: CustomQualifiers = CustomQualifiers()
     ): Float {
@@ -663,6 +695,7 @@ object Calculator {
                 config = config,
                 screenType = screenType,
                 baseOrientation = baseOrientation,
+                params = interpolatedParams,
                 cache = cache
             )
             ScalingStrategy.DIAGONAL -> calculateDiagonal(
@@ -1113,8 +1146,8 @@ object Calculator {
      * Calculates BALANCED strategy (Perceptual Hybrid) - OPTIMIZED.
      * 
      * Formula: 
-     * - if W < transitionPoint: f(x) = x × (W / W₀)
-     * - if W ≥ transitionPoint: f(x) = x × (transitionPoint/W₀ + sensitivity × ln(1 + (W-transitionPoint)/W₀))
+     * - if W < transitionPoint: f(x) = x × (W / W₀) × arAdjustment
+     * - if W ≥ transitionPoint: f(x) = x × (transitionPoint/W₀ + sensitivity × ln(1 + (W-transitionPoint)/W₀)) × arAdjustment
      * 
      * Optimizations applied:
      * - Uses INV_BASE_WIDTH_DP for multiplication instead of division
@@ -1135,27 +1168,40 @@ object Calculator {
         // BALANCED strategy uses hybrid linear-logarithmic scaling:
         // - Linear scaling for screens smaller than transition point (simple, predictable)
         // - Logarithmic scaling for screens larger than transition point (matches human perception)
-        return if (screenDp <= params.transitionPoint) {
+        var scale = if (screenDp <= params.transitionPoint) {
             // Linear region: Simple proportional scaling
             // Formula: f(x) = x × (W / W₀)
             // OPTIMIZATION: Use multiplication instead of division
-            baseValue * (screenDp * INV_BASE_WIDTH_DP)
+            screenDp * INV_BASE_WIDTH_DP
         } else {
             // Logarithmic region: Perceptual scaling
             // Formula: f(x) = x × (transitionPoint/W₀ + sensitivity × ln(1 + (W-transitionPoint)/W₀))
             // The transition point contribution ensures continuity at the boundary
             val excess = screenDp - params.transitionPoint
             // OPTIMIZATION: Use fastLn() and multiplication instead of division
-            val scale = (params.transitionPoint * INV_BASE_WIDTH_DP) + 
+            (params.transitionPoint * INV_BASE_WIDTH_DP) + 
                        params.sensitivity * fastLn(1f + excess * INV_BASE_WIDTH_DP)
-            baseValue * scale
         }
+        
+        // Apply aspect ratio adjustment if enabled
+        // Applies logarithmic correction based on aspect ratio deviation from reference (16:9)
+        // This compensates for devices with different aspect ratios (e.g., 21:9, 18:9)
+        if (params.applyAspectRatio) {
+            val ar = getAspectRatio(config, cache)
+            val arSensitivity = params.arSensitivity
+            // OPTIMIZATION: Use fastLn() + multiplication instead of division
+            // ln(ar / REFERENCE_AR) = ln(ar * INV_REFERENCE_AR)
+            val arAdjustment = 1.0f + arSensitivity * fastLn(ar * INV_REFERENCE_AR)
+            scale *= arAdjustment
+        }
+        
+        return baseValue * scale
     }
     
     /**
      * Calculates LOGARITHMIC strategy (Perceptual Weber-Fechner) - OPTIMIZED.
      * 
-     * Formula: f(x) = x × (1 + sensitivity × ln(W / W₀))
+     * Formula: f(x) = x × (1 + sensitivity × ln(W / W₀)) × arAdjustment
      * 
      * Optimizations applied:
      * - Uses fastLn() for ~10-20x faster logarithm
@@ -1176,7 +1222,7 @@ object Calculator {
         // LOGARITHMIC strategy uses Weber-Fechner law: perception is logarithmic
         // Handles both positive and negative scaling correctly
         // OPTIMIZATION: Use fastLn() and multiplication instead of division
-        val scale = if (screenDp > BASE_WIDTH_DP) {
+        var scale = if (screenDp > BASE_WIDTH_DP) {
             // Screen larger than base: positive logarithmic scaling
             // Formula: f(x) = x × (1 + sensitivity × ln(W / W₀))
             1.0f + params.sensitivity * fastLn(screenDp * INV_BASE_WIDTH_DP)
@@ -1187,13 +1233,25 @@ object Calculator {
             1.0f - params.sensitivity * fastLn(BASE_WIDTH_DP / screenDp)
         }
         
+        // Apply aspect ratio adjustment if enabled
+        // Applies logarithmic correction based on aspect ratio deviation from reference (16:9)
+        // This compensates for devices with different aspect ratios (e.g., 21:9, 18:9)
+        if (params.applyAspectRatio) {
+            val ar = getAspectRatio(config, cache)
+            val arSensitivity = params.arSensitivity
+            // OPTIMIZATION: Use fastLn() + multiplication instead of division
+            // ln(ar / REFERENCE_AR) = ln(ar * INV_REFERENCE_AR)
+            val arAdjustment = 1.0f + arSensitivity * fastLn(ar * INV_REFERENCE_AR)
+            scale *= arAdjustment
+        }
+        
         return baseValue * scale
     }
     
     /**
      * Calculates POWER strategy (Perceptual Stevens).
      * 
-     * Formula: f(x) = x × (W / W₀)^exponent
+     * Formula: f(x) = x × (W / W₀)^exponent × arAdjustment
      */
     private fun calculatePower(
         baseValue: Float,
@@ -1213,7 +1271,19 @@ object Calculator {
         // - exponent < 1.0: Conservative scaling (recommended: 0.5-0.7)
         // - exponent → 0: Approaches constant scaling
         val ratio = screenDp / BASE_WIDTH_DP
-        val scale = ratio.pow(params.powerExponent)
+        var scale = ratio.pow(params.powerExponent)
+        
+        // Apply aspect ratio adjustment if enabled
+        // Applies logarithmic correction based on aspect ratio deviation from reference (16:9)
+        // This compensates for devices with different aspect ratios (e.g., 21:9, 18:9)
+        if (params.applyAspectRatio) {
+            val ar = getAspectRatio(config, cache)
+            val arSensitivity = params.arSensitivity
+            // OPTIMIZATION: Use fastLn() + multiplication instead of division
+            // ln(ar / REFERENCE_AR) = ln(ar * INV_REFERENCE_AR)
+            val arAdjustment = 1.0f + arSensitivity * fastLn(ar * INV_REFERENCE_AR)
+            scale *= arAdjustment
+        }
         
         return baseValue * scale
     }
@@ -1225,6 +1295,8 @@ object Calculator {
      * - if W ≤ minW: return minValue
      * - if W ≥ maxW: return maxValue
      * - else: linear interpolation between min/max
+     * 
+     * Note: FLUID ignores global AR settings, only individual control applies.
      */
     private fun calculateFluid(
         baseValue: Float,
@@ -1253,25 +1325,40 @@ object Calculator {
         
         // Interpolate between min and max based on screen width
         // Provides CSS clamp-like behavior with smooth transitions
-        return interpolateFluid(
+        var result = interpolateFluid(
             width = width,
             min = fluidConfig.minValue,
             max = fluidConfig.maxValue,
             minWidth = fluidConfig.minWidth,
             maxWidth = fluidConfig.maxWidth
         )
+        
+        // Apply aspect ratio adjustment if enabled (FLUID-specific, ignores global)
+        // Note: FLUID ignores global AR settings from PerceptualParams
+        // Only the individual control in FluidParams applies
+        if (params.applyAspectRatio) {
+            val ar = getAspectRatio(config, cache)
+            val arSensitivity = params.arSensitivity ?: DEFAULT_AR_SENSITIVITY
+            // OPTIMIZATION: Use fastLn() + multiplication instead of division
+            // ln(ar / REFERENCE_AR) = ln(ar * INV_REFERENCE_AR)
+            val arAdjustment = 1.0f + arSensitivity * fastLn(ar * INV_REFERENCE_AR)
+            result *= arAdjustment
+        }
+        
+        return result
     }
     
     /**
      * Calculates INTERPOLATED strategy.
      * 
-     * Formula: f(x) = x + ((x × W/W₀) - x) × 0.5
+     * Formula: f(x) = x + ((x × W/W₀) - x) × 0.5 × arAdjustment
      */
     private fun calculateInterpolated(
         baseValue: Float,
         config: CalculationConfig,
         screenType: ScreenType,
         baseOrientation: BaseOrientation,
+        params: InterpolatedParams,
         cache: CalculationCache
     ): Float {
         val effectiveScreenType = resolveScreenType(screenType, baseOrientation, config, cache)
@@ -1283,7 +1370,21 @@ object Calculator {
         //         = x + 0.5 × (x × W/W₀ - x)
         //         = x × (1 + 0.5 × (W/W₀ - 1))
         val linear = baseValue * (W / BASE_WIDTH_DP)
-        return baseValue + (linear - baseValue) * 0.5f
+        var result = baseValue + (linear - baseValue) * 0.5f
+        
+        // Apply aspect ratio adjustment if enabled
+        // Applies logarithmic correction based on aspect ratio deviation from reference (16:9)
+        // This compensates for devices with different aspect ratios (e.g., 21:9, 18:9)
+        if (params.applyAspectRatio) {
+            val ar = getAspectRatio(config, cache)
+            val arSensitivity = params.arSensitivity ?: DEFAULT_AR_SENSITIVITY
+            // OPTIMIZATION: Use fastLn() + multiplication instead of division
+            // ln(ar / REFERENCE_AR) = ln(ar * INV_REFERENCE_AR)
+            val arAdjustment = 1.0f + arSensitivity * fastLn(ar * INV_REFERENCE_AR)
+            result *= arAdjustment
+        }
+        
+        return result
     }
     
     /**

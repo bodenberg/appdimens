@@ -17,6 +17,7 @@ npm install appdimens-react-native@2.0.0
 
 ## ⚡ Início Rápido
 
+{% raw %}
 ```typescript
 import {useAppDimens} from 'appdimens-react-native';
 
@@ -30,6 +31,7 @@ function MeuComponente() {
   );
 }
 ```
+{% endraw %}
 
 ---
 

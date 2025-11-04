@@ -235,7 +235,7 @@ Icon(Icons.favorite, size: AppDimens.defaultScaling(24).calculate(context))
 
 ### Install AppDimens
 
-**Android:** `implementation("io.github.bodenberg:appdimens-dynamic:2.0.0")`  
+**Android:** `implementation("io.github.bodenberg:appdimens-dynamic:2.0.1")`  
 **iOS:** `pod 'AppDimens', '~> 2.0.0'`  
 **Flutter:** `appdimens: ^2.0.0`  
 **RN:** `npm install appdimens-react-native@2.0.0`  

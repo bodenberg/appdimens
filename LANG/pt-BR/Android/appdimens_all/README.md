@@ -1,14 +1,14 @@
 # AppDimens All - Módulo Tudo-em-Um Android
 
 **Pacote Completo (Dynamic + SDP + SSP)**  
-*Versão: 2.0.0*
+*Versão: 2.0.1*
 
 ---
 
 ## 📦 Instalação
 
 ```kotlin
-implementation("io.github.bodenberg:appdimens-all:2.0.0")
+implementation("io.github.bodenberg:appdimens-all:2.0.1")
 ```
 
 **Inclui:**

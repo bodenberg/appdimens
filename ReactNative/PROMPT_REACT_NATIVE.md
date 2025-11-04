@@ -17,6 +17,7 @@
 
 ## API Quick Reference
 
+{% raw %}
 ```typescript
 import {useAppDimens} from 'appdimens-react-native';
 
@@ -35,6 +36,7 @@ const {
 <View style={{width: percentage(300)}} />
 <TouchableOpacity style={{height: smart(48).forElement('button')}}>
 ```
+{% endraw %}
 
 ---
 

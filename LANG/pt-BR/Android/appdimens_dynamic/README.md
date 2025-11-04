@@ -1,14 +1,14 @@
 # AppDimens Dynamic - Módulo Core Android
 
 **13 Estratégias + Unidades Físicas + Cálculos de Grid**  
-*Versão: 2.0.0*
+*Versão: 2.0.1*
 
 ---
 
 ## 📦 Instalação
 
 ```kotlin
-implementation("io.github.bodenberg:appdimens-dynamic:2.0.0")
+implementation("io.github.bodenberg:appdimens-dynamic:2.0.1")
 ```
 
 ---

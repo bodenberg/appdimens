@@ -224,6 +224,7 @@ ElevatedButton(
 
 #### React Native (TypeScript)
 
+{% raw %}
 ```typescript
 const {balanced} = useAppDimens();
 
@@ -231,9 +232,11 @@ const {balanced} = useAppDimens();
   <Text style={{fontSize: balanced(16)}}>Click Me</Text>
 </TouchableOpacity>
 ```
+{% endraw %}
 
 #### Web (TypeScript)
 
+{% raw %}
 ```typescript
 const {balanced} = useWebDimens();
 
@@ -241,6 +244,7 @@ const {balanced} = useWebDimens();
   Click Me
 </button>
 ```
+{% endraw %}
 
 ---
 

@@ -1,7 +1,7 @@
 # AppDimens Dynamic Module - Core Library
 
 **13 Scaling Strategies + Physical Units + Grid Calculations**  
-*Version: 2.0.0*
+*Version: 2.0.1*
 
 ---
 
@@ -9,7 +9,7 @@
 
 ```kotlin
 dependencies {
-    implementation("io.github.bodenberg:appdimens-dynamic:2.0.0")
+    implementation("io.github.bodenberg:appdimens-dynamic:2.0.1")
 }
 ```
 
@@ -18,6 +18,7 @@ dependencies {
 ## 🎯 Features
 
 - ✅ **13 Scaling Strategies** (BALANCED⭐, DEFAULT, PERCENTAGE, LOGARITHMIC, POWER, FLUID, and 7 more)
+- ✅ **Aspect Ratio Adjustment** (5 strategies with AR support: BALANCED, LOGARITHMIC, POWER, INTERPOLATED, FLUID)
 - ✅ **Physical Units** (mm, cm, inch)
 - ✅ **Grid Calculations** (item count, spacing)
 - ✅ **Jetpack Compose** support

@@ -196,6 +196,13 @@ export interface FluidParams {
   maxValue: number;
   minWidth?: number;
   maxWidth?: number;
+  applyAspectRatio?: boolean;
+  arSensitivity?: number;
+}
+
+export interface InterpolatedParams {
+  applyAspectRatio?: boolean;
+  arSensitivity?: number;
 }
 
 export interface Constraints {
@@ -228,6 +235,7 @@ export function calculate(
   defaultParams?: DefaultParams,
   perceptualParams?: PerceptualParams,
   fluidParams?: FluidParams,
+  interpolatedParams?: InterpolatedParams,
   constraints?: Constraints,
 ): number {
   const cache: CalculationCache = {};
@@ -309,6 +317,7 @@ export function calculate(
         config,
         screenType,
         baseOrientation,
+        interpolatedParams || {},
         cache,
       );
       break;
@@ -445,17 +454,27 @@ function calculateBalanced(
   const transitionPoint = params.transitionPoint || DEFAULT_TRANSITION_POINT;
   const sensitivity = params.sensitivity || DEFAULT_SENSITIVITY;
 
+  let scale: number;
   if (screenDp < transitionPoint) {
     // Linear scaling on smaller screens (phones)
-    return baseValue * (screenDp / BASE_WIDTH_DP);
+    scale = screenDp / BASE_WIDTH_DP;
   } else {
     // Logarithmic scaling on larger screens (tablets, TVs)
     const excess = screenDp - transitionPoint;
-    const scale =
+    scale =
       transitionPoint * INV_BASE_WIDTH_DP +
       sensitivity * fastLn(1 + excess * INV_BASE_WIDTH_DP);
-    return baseValue * scale;
   }
+
+  // Apply aspect ratio adjustment if enabled
+  if (params.applyAspectRatio !== false) {
+    const ar = getAspectRatio(config, cache);
+    const arSensitivity = params.arSensitivity || DEFAULT_AR_SENSITIVITY;
+    const arAdjustment = 1.0 + arSensitivity * fastLn(ar * INV_REFERENCE_AR);
+    scale *= arAdjustment;
+  }
+
+  return baseValue * scale;
 }
 
 /**
@@ -480,10 +499,18 @@ function calculateLogarithmic(
 
   const sensitivity = params.sensitivity || DEFAULT_SENSITIVITY;
 
-  const scale =
+  let scale =
     screenDp > BASE_WIDTH_DP
       ? 1.0 + sensitivity * fastLn(screenDp * INV_BASE_WIDTH_DP)
       : 1.0 - sensitivity * fastLn(BASE_WIDTH_DP / screenDp);
+
+  // Apply aspect ratio adjustment if enabled
+  if (params.applyAspectRatio !== false) {
+    const ar = getAspectRatio(config, cache);
+    const arSensitivity = params.arSensitivity || DEFAULT_AR_SENSITIVITY;
+    const arAdjustment = 1.0 + arSensitivity * fastLn(ar * INV_REFERENCE_AR);
+    scale *= arAdjustment;
+  }
 
   return baseValue * scale;
 }
@@ -510,7 +537,15 @@ function calculatePower(
 
   const exponent = params.powerExponent || DEFAULT_POWER_EXPONENT;
   const ratio = screenDp / BASE_WIDTH_DP;
-  const scale = Math.pow(ratio, exponent);
+  let scale = Math.pow(ratio, exponent);
+
+  // Apply aspect ratio adjustment if enabled
+  if (params.applyAspectRatio !== false) {
+    const ar = getAspectRatio(config, cache);
+    const arSensitivity = params.arSensitivity || DEFAULT_AR_SENSITIVITY;
+    const arAdjustment = 1.0 + arSensitivity * fastLn(ar * INV_REFERENCE_AR);
+    scale *= arAdjustment;
+  }
 
   return baseValue * scale;
 }
@@ -538,15 +573,26 @@ function calculateFluid(
   const minWidth = params.minWidth || 320;
   const maxWidth = params.maxWidth || 768;
 
+  let result: number;
   if (width <= minWidth) {
-    return params.minValue;
+    result = params.minValue;
   } else if (width >= maxWidth) {
-    return params.maxValue;
+    result = params.maxValue;
   } else {
     // Linear interpolation
     const progress = (width - minWidth) / (maxWidth - minWidth);
-    return params.minValue + (params.maxValue - params.minValue) * progress;
+    result = params.minValue + (params.maxValue - params.minValue) * progress;
   }
+
+  // Apply aspect ratio adjustment if enabled (FLUID-specific, ignores global)
+  if (params.applyAspectRatio === true) {
+    const ar = getAspectRatio(config, cache);
+    const arSensitivity = params.arSensitivity || DEFAULT_AR_SENSITIVITY;
+    const arAdjustment = 1.0 + arSensitivity * fastLn(ar * INV_REFERENCE_AR);
+    result *= arAdjustment;
+  }
+
+  return result;
 }
 
 /**
@@ -558,6 +604,7 @@ function calculateInterpolated(
   config: CalculationConfig,
   screenType: 'lowest' | 'highest',
   baseOrientation: BaseOrientation,
+  params: InterpolatedParams,
   cache: CalculationCache,
 ): number {
   const effectiveScreenType = resolveScreenType(
@@ -569,7 +616,17 @@ function calculateInterpolated(
   const W = getDimensionForType(config, effectiveScreenType, cache);
 
   const linear = baseValue * (W / BASE_WIDTH_DP);
-  return baseValue + (linear - baseValue) * 0.5;
+  let result = baseValue + (linear - baseValue) * 0.5;
+
+  // Apply aspect ratio adjustment if enabled
+  if (params.applyAspectRatio !== false) {
+    const ar = getAspectRatio(config, cache);
+    const arSensitivity = params.arSensitivity || DEFAULT_AR_SENSITIVITY;
+    const arAdjustment = 1.0 + arSensitivity * fastLn(ar * INV_REFERENCE_AR);
+    result *= arAdjustment;
+  }
+
+  return result;
 }
 
 /**

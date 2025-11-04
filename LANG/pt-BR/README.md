@@ -87,11 +87,11 @@ Em vez de tamanhos fixos que parecem minúsculos em tablets ou enormes em relóg
 
 ```kotlin
 dependencies {
-    implementation("io.github.bodenberg:appdimens-dynamic:2.0.0")
-    implementation("io.github.bodenberg:appdimens-sdps:2.0.0")
-    implementation("io.github.bodenberg:appdimens-ssps:2.0.0")
-    implementation("io.github.bodenberg:appdimens-all:2.0.0")
-    implementation("io.github.bodenberg:appdimens-games:2.0.0")
+    implementation("io.github.bodenberg:appdimens-dynamic:2.0.1")
+    implementation("io.github.bodenberg:appdimens-sdps:2.0.1")
+    implementation("io.github.bodenberg:appdimens-ssps:2.0.1")
+    implementation("io.github.bodenberg:appdimens-all:2.0.1")
+    implementation("io.github.bodenberg:appdimens-games:2.0.1")
 }
 ```
 
@@ -176,6 +176,7 @@ Widget build(BuildContext context) {
 
 ### React Native
 
+{% raw %}
 ```jsx
 function MeuCard() {
   const { balanced } = useAppDimens();
@@ -189,9 +190,11 @@ function MeuCard() {
   );
 }
 ```
+{% endraw %}
 
 ### Web (React)
 
+{% raw %}
 ```jsx
 import { useWebDimens } from 'webdimens/react';
 
@@ -205,6 +208,7 @@ function MeuCard() {
   );
 }
 ```
+{% endraw %}
 
 ---
 

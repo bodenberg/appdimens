@@ -1,7 +1,7 @@
 # 📐 AppDimens for Android
 
 **Smart Responsive Dimensions for Android**  
-*Version: 2.0.0 | Last Updated: February 2025*
+*Version: 2.0.1 | Last Updated: February 2025*
 
 > **Languages:** English | [Português (BR)](../LANG/pt-BR/Android/README.md) | [Español](../LANG/es/Android/README.md)
 
@@ -26,19 +26,19 @@
 ```kotlin
 dependencies {
     // Core library (13 strategies + Physical Units)
-    implementation("io.github.bodenberg:appdimens-dynamic:2.0.0")
+    implementation("io.github.bodenberg:appdimens-dynamic:2.0.1")
     
     // SDP (Scalable DP for XML)
-    implementation("io.github.bodenberg:appdimens-sdps:2.0.0")
+    implementation("io.github.bodenberg:appdimens-sdps:2.0.1")
     
     // SSP (Scalable SP for text)
-    implementation("io.github.bodenberg:appdimens-ssps:2.0.0")
+    implementation("io.github.bodenberg:appdimens-ssps:2.0.1")
     
     // All-in-one (dynamic + sdps + ssps)
-    implementation("io.github.bodenberg:appdimens-all:2.0.0")
+    implementation("io.github.bodenberg:appdimens-all:2.0.1")
     
     // Games module (C++/NDK)
-    implementation("io.github.bodenberg:appdimens-games:2.0.0")
+    implementation("io.github.bodenberg:appdimens-games:2.0.1")
 }
 ```
 

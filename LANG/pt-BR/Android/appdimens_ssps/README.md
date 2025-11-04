@@ -1,14 +1,14 @@
 # AppDimens SSP - Módulo Android
 
 **SP Escalável para Texto em XML**  
-*Versão: 2.0.0*
+*Versão: 2.0.1*
 
 ---
 
 ## 📦 Instalação
 
 ```kotlin
-implementation("io.github.bodenberg:appdimens-ssps:2.0.0")
+implementation("io.github.bodenberg:appdimens-ssps:2.0.1")
 ```
 
 ---

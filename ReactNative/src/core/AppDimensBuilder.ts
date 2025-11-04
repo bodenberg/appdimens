@@ -25,6 +25,7 @@ import type {
   DefaultParams,
   PerceptualParams,
   FluidParams,
+  InterpolatedParams,
   Constraints,
 } from './Calculator';
 
@@ -56,6 +57,7 @@ export class AppDimensBuilder {
   private defaultParams: DefaultParams = {};
   private perceptualParams: PerceptualParams = {};
   private fluidParams?: FluidParams;
+  private interpolatedParams: InterpolatedParams = {};
   private constraints: Constraints = {};
 
   constructor(value: number) {
@@ -347,6 +349,7 @@ export class AppDimensBuilder {
       this.defaultParams,
       this.perceptualParams,
       this.fluidParams,
+      this.interpolatedParams,
       this.constraints,
     );
     return result;

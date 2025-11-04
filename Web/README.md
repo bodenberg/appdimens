@@ -15,6 +15,7 @@
 - 🎯 **13 Scaling Strategies** (up from 2)
 - ⭐ **BALANCED** - Primary recommendation (hybrid linear-logarithmic)
 - 🔬 **Perceptual Models** (Weber-Fechner, Stevens' Power Law)
+- 📐 **Aspect Ratio Adjustment** (5 strategies with AR support)
 - 🧠 **Smart Inference** - Automatic strategy selection
 - ⚡ **5x Performance** - Optimized calculations
 - 🌐 **Framework Adapters** - React, Vue, Svelte, Angular
@@ -46,6 +47,7 @@ pnpm add webdimens@2.0.0
 
 ### React
 
+{% raw %}
 ```typescript
 import {useWebDimens} from 'webdimens/react';
 
@@ -60,6 +62,7 @@ function MyComponent() {
   );
 }
 ```
+{% endraw %}
 
 ### Vue
 

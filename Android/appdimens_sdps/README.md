@@ -1,7 +1,7 @@
 # AppDimens SDP Module - Scalable DP for XML
 
 **Pre-Calculated Responsive DP Values for XML Layouts**  
-*Version: 2.0.0*
+*Version: 2.0.1*
 
 ---
 
@@ -9,7 +9,7 @@
 
 ```kotlin
 dependencies {
-    implementation("io.github.bodenberg:appdimens-sdps:2.0.0")
+    implementation("io.github.bodenberg:appdimens-sdps:2.0.1")
 }
 ```
 

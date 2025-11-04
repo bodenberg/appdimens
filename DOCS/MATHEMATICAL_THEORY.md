@@ -138,19 +138,23 @@ This hybrid approach is based on the observation that:
 **BALANCED Transformation Function:**
 
 ```
-f_BALANCED: ℝ⁺ × ℝ⁺ → ℝ⁺
+f_BALANCED: ℝ⁺ × ℝ⁺ × ℝ⁺ → ℝ⁺
 
-f_BALANCED(B, W) = {
-  B × (W / W₀)                              if W < T
-  B × (T/W₀ + k × ln(1 + (W-T)/W₀))        if W ≥ T
+f_BALANCED(B, W, AR) = {
+  B × (W / W₀) × arAdj(AR)                              if W < T
+  B × (T/W₀ + k × ln(1 + (W-T)/W₀)) × arAdj(AR)        if W ≥ T
 }
 
 where:
 B = base value to scale
 W = current screen width (in dp)
+AR = aspect ratio (largest / smallest dimension)
 W₀ = 300 (reference width)
+AR₀ = 1.78 (reference aspect ratio, 16:9)
 T = 480 (transition point)
 k = 0.40 (sensitivity parameter, default)
+k_AR = 0.00267 (aspect ratio sensitivity, default)
+arAdj(AR) = 1 + k_AR × ln(AR / AR₀)  [enabled by default]
 ```
 
 **Components:**
@@ -470,6 +474,7 @@ class BalancedWidget extends StatelessWidget {
 
 #### React Native (TypeScript)
 
+{% raw %}
 ```typescript
 import {useAppDimens} from 'appdimens-react-native';
 
@@ -512,9 +517,11 @@ function BalancedComponent() {
   );
 }
 ```
+{% endraw %}
 
 #### Web (TypeScript - React)
 
+{% raw %}
 ```typescript
 import {useWebDimens} from 'webdimens/react';
 
@@ -558,6 +565,7 @@ function BalancedComponent() {
   );
 }
 ```
+{% endraw %}
 
 ---
 
@@ -722,13 +730,17 @@ k = sensitivity constant
 **Applied to UI Scaling:**
 
 ```
-f_LOG(B, W) = B × (1 + k × ln(W / W₀))
+f_LOG(B, W, AR) = B × (1 + k × ln(W / W₀)) × arAdj(AR)
 
 where:
 B = base value
 W = current screen width
+AR = aspect ratio (largest / smallest dimension)
 W₀ = 300 (reference)
+AR₀ = 1.78 (reference aspect ratio, 16:9)
 k = 0.40 (default sensitivity)
+k_AR = 0.00267 (aspect ratio sensitivity, default)
+arAdj(AR) = 1 + k_AR × ln(AR / AR₀)  [enabled by default]
 ```
 
 #### 4.1.2 Mathematical Properties
@@ -772,11 +784,15 @@ Based on **Stevens' Power Law** for spatial perception:
 P = k × I^n  where n < 1
 
 Applied to UI:
-f_POWER(B, W) = B × (W / W₀)^n
+f_POWER(B, W, AR) = B × (W / W₀)^n × arAdj(AR)
 
 where:
 n = 0.75 (default, perceptual exponent for spatial size)
 Range: 0.60-0.90 (configurable)
+AR = aspect ratio
+AR₀ = 1.78 (reference aspect ratio, 16:9)
+k_AR = 0.00267 (aspect ratio sensitivity, default)
+arAdj(AR) = 1 + k_AR × ln(AR / AR₀)  [enabled by default]
 ```
 
 #### 4.2.2 Exponent Analysis
@@ -832,13 +848,16 @@ f_PERCENTAGE(B, W) = B × (W / W₀) = B × (W / 300)
 
 **Formula:**
 ```
-f_FLUID(W) = {
+f_FLUID(W, AR) = {
   minValue                              if W ≤ minWidth
   minValue + (maxValue-minValue) × t    if minWidth < W < maxWidth
   maxValue                              if W ≥ maxWidth
-}
+} × arAdj(AR)  [optional, disabled by default]
 
-where t = (W - minWidth) / (maxWidth - minWidth)
+where:
+t = (W - minWidth) / (maxWidth - minWidth)
+arAdj(AR) = 1 + k_AR × ln(AR / AR₀)  [FLUID-specific, ignores global]
+k_AR = 0.00267 (aspect ratio sensitivity, if enabled)
 ```
 
 **Characteristics:**
@@ -846,6 +865,8 @@ where t = (W - minWidth) / (maxWidth - minWidth)
 - ✅ Smooth interpolation
 - ✅ Similar to CSS clamp()
 - ✅ Perfect for typography
+- ⚙️ AR adjustment disabled by default (opt-in only)
+- ⚠️ FLUID ignores global AR settings, uses individual control
 
 **When to Use:**
 - Typography with explicit size bounds
@@ -857,15 +878,22 @@ where t = (W - minWidth) / (maxWidth - minWidth)
 
 **Formula:**
 ```
-f_INTERP(B, W) = B + 0.5 × (B × W/W₀ - B)
-               = B × (1 + 0.5 × (W/W₀ - 1))
-               = B × (0.5 + 0.5 × W/W₀)
+f_INTERP(B, W, AR) = [B + 0.5 × (B × W/W₀ - B)] × arAdj(AR)
+                   = B × (1 + 0.5 × (W/W₀ - 1)) × arAdj(AR)
+                   = B × (0.5 + 0.5 × W/W₀) × arAdj(AR)
+
+where:
+AR = aspect ratio
+AR₀ = 1.78 (reference aspect ratio, 16:9)
+k_AR = 0.00267 (aspect ratio sensitivity, default)
+arAdj(AR) = 1 + k_AR × ln(AR / AR₀)  [enabled by default]
 ```
 
 **Characteristics:**
 - 50% of linear growth
 - Moderate, balanced behavior
 - Simple to understand
+- ✅ Supports aspect ratio adjustment (enabled by default)
 
 **When to Use:**
 - Medium screens (phablets, small tablets)

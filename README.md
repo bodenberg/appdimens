@@ -18,13 +18,14 @@
 ## 🆕 What's New in Version 2.0
 
 **🎯 13 Scaling Strategies** (up from 2!)
-- **BALANCED** ⭐ New recommended primary strategy - hybrid linear-logarithmic
+- **BALANCED** ⭐ New recommended primary strategy - hybrid linear-logarithmic + AR
 - **DEFAULT** (formerly Fixed) - logarithmic with aspect ratio (secondary recommendation)
 - **PERCENTAGE** (formerly Dynamic) - proportional scaling
-- **LOGARITHMIC** - pure Weber-Fechner psychophysics
-- **POWER** - Stevens' Power Law (configurable)
-- **FLUID** - CSS clamp-like with breakpoints
-- Plus 7 more: INTERPOLATED, DIAGONAL, PERIMETER, FIT, FILL, AUTOSIZE 🆕, NONE
+- **LOGARITHMIC** - pure Weber-Fechner psychophysics + AR
+- **POWER** - Stevens' Power Law (configurable) + AR
+- **FLUID** - CSS clamp-like with breakpoints (AR opt-in)
+- **INTERPOLATED** - moderate linear interpolation + AR
+- Plus 6 more: DIAGONAL, PERIMETER, FIT, FILL, AUTOSIZE 🆕, NONE
 
 **🧠 Smart Inference System**
 - Automatic strategy selection based on element type
@@ -72,6 +73,7 @@ Instead of fixed sizes that look tiny on tablets or huge on watches, AppDimens u
 - ✅ **Works everywhere**: Android, iOS, Flutter, React Native, Web
 - ✅ **Simple API**: `.balanced()`, `.defaultDp`, `.percentageDp`
 - ✅ **Scientifically proven**: Based on psychophysics research (Weber-Fechner, Stevens)
+- ✅ **Aspect ratio aware**: Compensates for ultra-wide, foldables, and non-standard aspect ratios
 - ✅ **Best performance**: 5x faster with lock-free cache and optimizations
 - ✅ **13 scaling strategies**: From simple to advanced, covering all use cases
 - ✅ **Smart Inference**: Automatic strategy selection for 18 element types
@@ -89,23 +91,23 @@ Instead of fixed sizes that look tiny on tablets or huge on watches, AppDimens u
 dependencies {
     // Core library (Fixed + Dynamic scaling + Physical Units)
     // Includes: .fxdp, .dydp, Physical Units (mm/cm/inch), Grid calculations
-    implementation("io.github.bodenberg:appdimens-dynamic:2.0.0")
+    implementation("io.github.bodenberg:appdimens-dynamic:2.0.1")
     
     // SDP scaling (Scalable DP for XML)
     // Includes: @dimen/_16sdp, etc.
-    implementation("io.github.bodenberg:appdimens-sdps:2.0.0")
+    implementation("io.github.bodenberg:appdimens-sdps:2.0.1")
     
     // SSP scaling (Scalable SP for text in XML)
     // Includes: @dimen/_18ssp, etc.
-    implementation("io.github.bodenberg:appdimens-ssps:2.0.0")
+    implementation("io.github.bodenberg:appdimens-ssps:2.0.1")
     
     // All-in-one (includes dynamic, sdps, ssps)
     // ⚠️ Note: Does NOT include games module
-    implementation("io.github.bodenberg:appdimens-all:2.0.0")
+    implementation("io.github.bodenberg:appdimens-all:2.0.1")
     
     // Game development (C++/NDK + OpenGL)
     // 🎮 Separate dependency - not included in "all"
-    implementation("io.github.bodenberg:appdimens-games:2.0.0")
+    implementation("io.github.bodenberg:appdimens-games:2.0.1")
 }
 ```
 

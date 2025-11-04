@@ -183,6 +183,7 @@ object GamesCalculator {
      * @param defaultParams Parameters for DEFAULT strategy
      * @param perceptualParams Parameters for perceptual strategies
      * @param fluidParams Parameters for FLUID strategy
+     * @param interpolatedParams Parameters for INTERPOLATED strategy
      * @param constraints Universal constraints
      * @param customQualifiers Custom qualifier overrides
      * @return The calculated scaled value in dp
@@ -197,6 +198,7 @@ object GamesCalculator {
         defaultParams: DefaultParams = DefaultParams(),
         perceptualParams: PerceptualParams = PerceptualParams(),
         fluidParams: FluidParams? = null,
+        interpolatedParams: InterpolatedParams = InterpolatedParams(),
         constraints: Constraints = Constraints(),
         customQualifiers: CustomQualifiers = CustomQualifiers()
     ): Float {
@@ -220,7 +222,7 @@ object GamesCalculator {
             calculateUncached(
                 baseValue, strategy, elementType, config, screenType,
                 baseOrientation, defaultParams, perceptualParams, fluidParams,
-                constraints, customQualifiers
+                interpolatedParams, constraints, customQualifiers
             )
         }
     }
@@ -238,6 +240,7 @@ object GamesCalculator {
         defaultParams: DefaultParams,
         perceptualParams: PerceptualParams,
         fluidParams: FluidParams?,
+        interpolatedParams: InterpolatedParams,
         constraints: Constraints,
         customQualifiers: CustomQualifiers
     ): Float {
@@ -277,7 +280,7 @@ object GamesCalculator {
                 fluidParams ?: FluidParams(baseValue * 0.8f, baseValue * 1.2f)
             )
             GameScalingStrategy.INTERPOLATED -> calculateInterpolated(
-                baseValue, config, screenType, baseOrientation
+                baseValue, config, screenType, baseOrientation, interpolatedParams
             )
             GameScalingStrategy.DIAGONAL -> calculateDiagonal(baseValue, config)
             GameScalingStrategy.PERIMETER -> calculatePerimeter(baseValue, config)
@@ -340,7 +343,7 @@ object GamesCalculator {
     
     /**
      * Calculates BALANCED strategy (Perceptual Hybrid) - OPTIMIZED.
-     * Formula: Linear if W < 480, log if W >= 480
+     * Formula: Linear if W < 480, log if W >= 480, with AR adjustment
      */
     @Suppress("NOTHING_TO_INLINE")
     private inline fun calculateBalanced(
@@ -352,19 +355,28 @@ object GamesCalculator {
     ): Float {
         val screenDp = getDimensionForType(config, screenType, baseOrientation)
         
-        return if (screenDp <= params.transitionPoint) {
-            baseValue * (screenDp * INV_BASE_WIDTH_DP)
+        var scale = if (screenDp <= params.transitionPoint) {
+            screenDp * INV_BASE_WIDTH_DP
         } else {
             val excess = screenDp - params.transitionPoint
-            val scale = (params.transitionPoint * INV_BASE_WIDTH_DP) + 
+            (params.transitionPoint * INV_BASE_WIDTH_DP) + 
                        params.sensitivity * fastLn(1f + excess * INV_BASE_WIDTH_DP)
-            baseValue * scale
         }
+        
+        // Apply aspect ratio adjustment if enabled
+        if (params.applyAspectRatio) {
+            val ar = config.aspectRatio
+            val arSensitivity = params.arSensitivity
+            val arAdjustment = 1.0f + arSensitivity * fastLn(ar * INV_REFERENCE_AR)
+            scale *= arAdjustment
+        }
+        
+        return baseValue * scale
     }
     
     /**
      * Calculates LOGARITHMIC strategy (Weber-Fechner) - OPTIMIZED.
-     * Formula: f(x) = x × (1 + sensitivity × ln(W / W₀))
+     * Formula: f(x) = x × (1 + sensitivity × ln(W / W₀)) × arAdjustment
      */
     @Suppress("NOTHING_TO_INLINE")
     private inline fun calculateLogarithmic(
@@ -376,10 +388,18 @@ object GamesCalculator {
     ): Float {
         val screenDp = getDimensionForType(config, screenType, baseOrientation)
         
-        val scale = if (screenDp > BASE_WIDTH_DP) {
+        var scale = if (screenDp > BASE_WIDTH_DP) {
             1.0f + params.sensitivity * fastLn(screenDp * INV_BASE_WIDTH_DP)
         } else {
             1.0f - params.sensitivity * fastLn(BASE_WIDTH_DP / screenDp)
+        }
+        
+        // Apply aspect ratio adjustment if enabled
+        if (params.applyAspectRatio) {
+            val ar = config.aspectRatio
+            val arSensitivity = params.arSensitivity
+            val arAdjustment = 1.0f + arSensitivity * fastLn(ar * INV_REFERENCE_AR)
+            scale *= arAdjustment
         }
         
         return baseValue * scale
@@ -387,7 +407,7 @@ object GamesCalculator {
     
     /**
      * Calculates POWER strategy (Stevens).
-     * Formula: f(x) = x × (W / W₀)^exponent
+     * Formula: f(x) = x × (W / W₀)^exponent × arAdjustment
      */
     private fun calculatePower(
         baseValue: Float,
@@ -398,12 +418,22 @@ object GamesCalculator {
     ): Float {
         val screenDp = getDimensionForType(config, screenType, baseOrientation)
         val ratio = screenDp / BASE_WIDTH_DP
-        val scale = ratio.pow(params.powerExponent)
+        var scale = ratio.pow(params.powerExponent)
+        
+        // Apply aspect ratio adjustment if enabled
+        if (params.applyAspectRatio) {
+            val ar = config.aspectRatio
+            val arSensitivity = params.arSensitivity
+            val arAdjustment = 1.0f + arSensitivity * fastLn(ar * INV_REFERENCE_AR)
+            scale *= arAdjustment
+        }
+        
         return baseValue * scale
     }
     
     /**
      * Calculates FLUID strategy (CSS clamp-like).
+     * Note: FLUID ignores global AR settings, only individual control applies.
      */
     private fun calculateFluid(
         baseValue: Float,
@@ -414,7 +444,7 @@ object GamesCalculator {
     ): Float {
         val width = getDimensionForType(config, screenType, baseOrientation)
         
-        return when {
+        var result = when {
             width <= params.minWidth -> params.minValue
             width >= params.maxWidth -> params.maxValue
             else -> {
@@ -422,21 +452,42 @@ object GamesCalculator {
                 params.minValue + (params.maxValue - params.minValue) * progress
             }
         }
+        
+        // Apply aspect ratio adjustment if enabled (FLUID-specific, ignores global)
+        if (params.applyAspectRatio) {
+            val ar = config.aspectRatio
+            val arSensitivity = params.arSensitivity ?: DEFAULT_AR_SENSITIVITY
+            val arAdjustment = 1.0f + arSensitivity * fastLn(ar * INV_REFERENCE_AR)
+            result *= arAdjustment
+        }
+        
+        return result
     }
     
     /**
      * Calculates INTERPOLATED strategy.
-     * Formula: f(x) = x + ((x × W/W₀) - x) × 0.5
+     * Formula: f(x) = x + ((x × W/W₀) - x) × 0.5 × arAdjustment
      */
     private fun calculateInterpolated(
         baseValue: Float,
         config: GameScreenConfig,
         screenType: GameScreenType,
-        baseOrientation: GameBaseOrientation
+        baseOrientation: GameBaseOrientation,
+        params: InterpolatedParams
     ): Float {
         val W = getDimensionForType(config, screenType, baseOrientation)
         val linear = baseValue * (W / BASE_WIDTH_DP)
-        return baseValue + (linear - baseValue) * 0.5f
+        var result = baseValue + (linear - baseValue) * 0.5f
+        
+        // Apply aspect ratio adjustment if enabled
+        if (params.applyAspectRatio) {
+            val ar = config.aspectRatio
+            val arSensitivity = params.arSensitivity ?: DEFAULT_AR_SENSITIVITY
+            val arAdjustment = 1.0f + arSensitivity * fastLn(ar * INV_REFERENCE_AR)
+            result *= arAdjustment
+        }
+        
+        return result
     }
     
     /**

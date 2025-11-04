@@ -1,7 +1,7 @@
 # 📐 AppDimens para Android
 
 **Dimensões Responsivas Inteligentes para Android**  
-*Versão: 2.0.0*
+*Versão: 2.0.1*
 
 > **Idiomas:** [English](../../../Android/README.md) | Português (BR) | [Español](../../es/Android/README.md)
 
@@ -11,8 +11,8 @@
 
 ```kotlin
 dependencies {
-    implementation("io.github.bodenberg:appdimens-dynamic:2.0.0")
-    implementation("io.github.bodenberg:appdimens-all:2.0.0")
+    implementation("io.github.bodenberg:appdimens-dynamic:2.0.1")
+    implementation("io.github.bodenberg:appdimens-all:2.0.1")
 }
 ```
 

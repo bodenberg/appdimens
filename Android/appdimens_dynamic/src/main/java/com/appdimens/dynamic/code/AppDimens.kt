@@ -109,6 +109,10 @@ class AppDimens private constructor(
     private val fluidDeviceQualifiers = mutableMapOf<FluidDeviceType, FluidConfig>()
     private val fluidScreenQualifiers = mutableMapOf<Int, FluidConfig>()
     
+    // Interpolated-specific
+    private var interpolatedApplyAR: Boolean = true
+    private var interpolatedArSensitivity: Float? = null
+    
     // AutoSize-specific (v2.1)
     private var autoSizeEnabled: Boolean = false
     private var autoSizeMinValue: Float? = null
@@ -1497,11 +1501,18 @@ class AppDimens private constructor(
                 minWidth = fluidMinWidth,
                 maxWidth = fluidMaxWidth,
                 deviceQualifiers = fluidDeviceQualifiers,
-                screenQualifiers = fluidScreenQualifiers
+                screenQualifiers = fluidScreenQualifiers,
+                applyAspectRatio = false, // FLUID ignores global, uses individual control only
+                arSensitivity = null
             )
         } else {
             null
         }
+        
+        val interpolatedParams = Calculator.InterpolatedParams(
+            applyAspectRatio = interpolatedApplyAR,
+            arSensitivity = interpolatedArSensitivity
+        )
         
         val constraints = Calculator.Constraints(
             minValue = minValue,
@@ -1549,6 +1560,7 @@ class AppDimens private constructor(
                     defaultParams = defaultParams,
                     perceptualParams = perceptualParams,
                     fluidParams = fluidParams,
+                    interpolatedParams = interpolatedParams,
                     constraints = constraints,
                     customQualifiers = customQualifiers
                 )
@@ -1565,6 +1577,7 @@ class AppDimens private constructor(
                 defaultParams = defaultParams,
                 perceptualParams = perceptualParams,
                 fluidParams = fluidParams,
+                interpolatedParams = interpolatedParams,
                 constraints = constraints,
                 customQualifiers = customQualifiers
             )

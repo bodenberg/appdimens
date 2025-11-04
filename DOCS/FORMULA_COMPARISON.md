@@ -100,16 +100,20 @@ All strategies tested with:
 
 **Formula:**
 ```
-f_BALANCED(x, W) = {
-  x × (W / W₀)                              if W < T
-  x × (T/W₀ + k × ln(1 + (W-T)/W₀))        if W ≥ T
+f_BALANCED(x, W, AR) = {
+  x × (W / W₀) × arAdj(AR)                              if W < T
+  x × (T/W₀ + k × ln(1 + (W-T)/W₀)) × arAdj(AR)        if W ≥ T
 }
 
 where:
 W = screen width (dp)
+AR = aspect ratio
 W₀ = 300 (reference)
+AR₀ = 1.78 (reference AR, 16:9)
 T = 480 (transition point)
 k = 0.40 (sensitivity)
+k_AR = 0.00267 (AR sensitivity)
+arAdj(AR) = 1 + k_AR × ln(AR / AR₀)  [enabled by default]
 ```
 
 **Mathematical Classification:**
@@ -162,11 +166,15 @@ k = 0.40 (sensitivity)
 
 **Formula:**
 ```
-f_LOG(x, W) = x × (1 + k × ln(W / W₀))
+f_LOG(x, W, AR) = x × (1 + k × ln(W / W₀)) × arAdj(AR)
 
 where:
 k = 0.40 (default sensitivity)
 W₀ = 300 (reference)
+AR = aspect ratio
+AR₀ = 1.78 (reference AR, 16:9)
+k_AR = 0.00267 (AR sensitivity)
+arAdj(AR) = 1 + k_AR × ln(AR / AR₀)  [enabled by default]
 ```
 
 **Mathematical Classification:**
@@ -210,11 +218,15 @@ W₀ = 300 (reference)
 
 **Formula:**
 ```
-f_POWER(x, W) = x × (W / W₀)^n
+f_POWER(x, W, AR) = x × (W / W₀)^n × arAdj(AR)
 
 where:
 n = 0.75 (default exponent)
 Range: 0.60-0.90 (configurable)
+AR = aspect ratio
+AR₀ = 1.78 (reference AR, 16:9)
+k_AR = 0.00267 (AR sensitivity)
+arAdj(AR) = 1 + k_AR × ln(AR / AR₀)  [enabled by default]
 ```
 
 **Mathematical Classification:**
@@ -350,13 +362,16 @@ where W₀ = 300
 
 **Formula:**
 ```
-f_FLUID(W) = {
+f_FLUID(W, AR) = {
   minValue                              if W ≤ minWidth
   minValue + (maxValue-minValue) × t    if minWidth < W < maxWidth
   maxValue                              if W ≥ maxWidth
-}
+} × arAdj(AR)  [optional, disabled by default]
 
-where t = (W - minWidth) / (maxWidth - minWidth)
+where:
+t = (W - minWidth) / (maxWidth - minWidth)
+arAdj(AR) = 1 + k_AR × ln(AR / AR₀)  [FLUID-specific, ignores global]
+k_AR = 0.00267 (AR sensitivity, if enabled)
 ```
 
 **Characteristics:**
@@ -364,6 +379,7 @@ where t = (W - minWidth) / (maxWidth - minWidth)
 - ✅ **Typography:** Perfect for font sizes
 - ✅ **Smooth:** Linear interpolation between bounds
 - ✅ **CSS-like:** Similar to CSS clamp()
+- ⚙️ **AR opt-in:** Disabled by default, individual control only
 
 **Scoring:**
 - Perceptual Accuracy: 70/100 ⭐⭐⭐⭐
@@ -382,14 +398,21 @@ where t = (W - minWidth) / (maxWidth - minWidth)
 
 **Formula:**
 ```
-f_INTERP(x, W) = x + 0.5 × (x × W/W₀ - x)
-               = x × (0.5 + 0.5 × W/W₀)
+f_INTERP(x, W, AR) = [x + 0.5 × (x × W/W₀ - x)] × arAdj(AR)
+                   = x × (0.5 + 0.5 × W/W₀) × arAdj(AR)
+
+where:
+AR = aspect ratio
+AR₀ = 1.78 (reference AR, 16:9)
+k_AR = 0.00267 (AR sensitivity)
+arAdj(AR) = 1 + k_AR × ln(AR / AR₀)  [enabled by default]
 ```
 
 **Characteristics:**
 - ✅ **Moderate:** 50% of linear growth
 - ✅ **Simple:** Easy to understand
 - ✅ **Middle ground:** Between static and linear
+- ✅ **AR support:** Aspect ratio adjustment enabled by default
 
 **Scoring:**
 - Overall: **70/100** **#7 Moderate Scaling**
@@ -1149,7 +1172,7 @@ dependencies {
     // implementation("com.intuit.sdp:sdp-android:1.1.0")
     
     // Add AppDimens
-    implementation("io.github.bodenberg:appdimens-dynamic:2.0.0")
+    implementation("io.github.bodenberg:appdimens-dynamic:2.0.1")
 }
 ```
 
@@ -1212,6 +1235,7 @@ Text(
 ```
 
 **After (WebDimens):**
+{% raw %}
 ```typescript
 import {useWebDimens} from 'webdimens/react';
 
@@ -1228,6 +1252,7 @@ function MyButton() {
     );
 }
 ```
+{% endraw %}
 
 ---
 

@@ -19,6 +19,7 @@ npm install webdimens@2.0.0
 
 ### React
 
+{% raw %}
 ```typescript
 import {useWebDimens} from 'webdimens/react';
 
@@ -32,6 +33,7 @@ function MeuComponente() {
   );
 }
 ```
+{% endraw %}
 
 ### Vue
 

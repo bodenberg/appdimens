@@ -60,6 +60,8 @@ data class PerceptualParams(
  * @param maxWidth Maximum width breakpoint in dp
  * @param deviceQualifiers Device-specific qualifiers
  * @param screenQualifiers Screen width-specific qualifiers
+ * @param applyAspectRatio Whether to apply aspect ratio adjustment (FLUID-specific, ignores global)
+ * @param arSensitivity Aspect ratio sensitivity factor (null = use default)
  */
 data class FluidParams(
     val minValue: Float,
@@ -67,7 +69,23 @@ data class FluidParams(
     val minWidth: Float = 320f,
     val maxWidth: Float = 768f,
     val deviceQualifiers: Map<FluidDeviceType, FluidConfig> = emptyMap(),
-    val screenQualifiers: Map<Int, FluidConfig> = emptyMap()
+    val screenQualifiers: Map<Int, FluidConfig> = emptyMap(),
+    val applyAspectRatio: Boolean = false,
+    val arSensitivity: Float? = null
+)
+
+/**
+ * Parameters for INTERPOLATED strategy calculation.
+ * 
+ * INTERPOLATED strategy provides 50% of linear scaling.
+ * Formula: f(x) = x + ((x × W/W₀) - x) × 0.5
+ * 
+ * @param applyAspectRatio Whether to apply aspect ratio adjustment
+ * @param arSensitivity Aspect ratio sensitivity factor (null = use default)
+ */
+data class InterpolatedParams(
+    val applyAspectRatio: Boolean = true,
+    val arSensitivity: Float? = null
 )
 
 /**

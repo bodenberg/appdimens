@@ -1,14 +1,14 @@
 # AppDimens SDP - Módulo Android
 
 **DP Escalável para Layouts XML**  
-*Versão: 2.0.0*
+*Versão: 2.0.1*
 
 ---
 
 ## 📦 Instalação
 
 ```kotlin
-implementation("io.github.bodenberg:appdimens-sdps:2.0.0")
+implementation("io.github.bodenberg:appdimens-sdps:2.0.1")
 ```
 
 ---

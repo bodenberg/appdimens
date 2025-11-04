@@ -54,11 +54,11 @@ AppDimens.from(48).smart().forElement(ElementType.BUTTON).dp
 ## Dependencies
 
 ```kotlin
-implementation("io.github.bodenberg:appdimens-dynamic:2.0.0")  // Core (13 strategies)
-implementation("io.github.bodenberg:appdimens-sdps:2.0.0")     // SDP (XML)
-implementation("io.github.bodenberg:appdimens-ssps:2.0.0")     // SSP (XML)
-implementation("io.github.bodenberg:appdimens-all:2.0.0")      // All-in-one
-implementation("io.github.bodenberg:appdimens-games:2.0.0")    // Games (C++/NDK)
+implementation("io.github.bodenberg:appdimens-dynamic:2.0.1")  // Core (13 strategies)
+implementation("io.github.bodenberg:appdimens-sdps:2.0.1")     // SDP (XML)
+implementation("io.github.bodenberg:appdimens-ssps:2.0.1")     // SSP (XML)
+implementation("io.github.bodenberg:appdimens-all:2.0.1")      // All-in-one
+implementation("io.github.bodenberg:appdimens-games:2.0.1")    // Games (C++/NDK)
 ```
 
 ---

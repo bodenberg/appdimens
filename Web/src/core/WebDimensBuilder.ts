@@ -24,6 +24,7 @@ import type {
   DefaultParams,
   PerceptualParams,
   FluidParams,
+  InterpolatedParams,
   Constraints,
 } from './Calculator';
 import { globalViewportObserver } from '../observers/ViewportObserver';
@@ -56,6 +57,7 @@ export class WebDimensBuilder {
   private defaultParams: DefaultParams = {};
   private perceptualParams: PerceptualParams = {};
   private fluidParams?: FluidParams;
+  private interpolatedParams: InterpolatedParams = {};
   private constraints: Constraints = {};
 
   constructor(value: number) {
@@ -324,6 +326,7 @@ export class WebDimensBuilder {
       this.defaultParams,
       this.perceptualParams,
       this.fluidParams,
+      this.interpolatedParams,
       this.constraints,
     );
     return result;

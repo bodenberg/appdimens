@@ -104,15 +104,15 @@ enum ScalingStrategy {
       case ScalingStrategy.percentage:
         return 'PERCENTAGE: Dynamic legacy (100% linear)';
       case ScalingStrategy.balanced:
-        return 'BALANCED: Linear phones, log tablets (Recommended)';
+        return 'BALANCED: Linear phones, log tablets + AR (Recommended)';
       case ScalingStrategy.logarithmic:
-        return 'LOGARITHMIC: Pure log (Maximum control)';
+        return 'LOGARITHMIC: Pure log + AR (Maximum control)';
       case ScalingStrategy.power:
-        return 'POWER: Stevens power law (Scientific)';
+        return 'POWER: Stevens power law + AR (Scientific)';
       case ScalingStrategy.fluid:
-        return 'FLUID: CSS clamp-like with breakpoints';
+        return 'FLUID: CSS clamp-like with breakpoints (AR opt-in)';
       case ScalingStrategy.interpolated:
-        return 'INTERPOLATED: 50% moderated linear';
+        return 'INTERPOLATED: 50% moderated linear + AR';
       case ScalingStrategy.diagonal:
         return 'DIAGONAL: Scale by screen diagonal';
       case ScalingStrategy.perimeter:
@@ -168,15 +168,15 @@ enum ScalingStrategy {
       case ScalingStrategy.percentage:
         return 'f(x) = x × (W / W₀)';
       case ScalingStrategy.balanced:
-        return 'f(x) = x × (W/W₀) if W<480, else x × (1.6 + k×ln(...))';
+        return 'f(x) = x × (W/W₀) × arAdj if W<480, else x × (1.6 + k×ln(...)) × arAdj';
       case ScalingStrategy.logarithmic:
-        return 'f(x) = x × (1 + k × ln(W / W₀))';
+        return 'f(x) = x × (1 + k × ln(W / W₀)) × arAdj';
       case ScalingStrategy.power:
-        return 'f(x) = x × (W / W₀)^n';
+        return 'f(x) = x × (W / W₀)^n × arAdj';
       case ScalingStrategy.fluid:
-        return 'f(x) = interpolate(min, max, W, minW, maxW)';
+        return 'f(x) = interpolate(min, max, W, minW, maxW) × arAdj?';
       case ScalingStrategy.interpolated:
-        return 'f(x) = x + ((x × W/W₀) - x) × 0.5';
+        return 'f(x) = x + ((x × W/W₀) - x) × 0.5 × arAdj';
       case ScalingStrategy.diagonal:
         return 'f(x) = x × √(W² + H²) / √(W₀² + H₀²)';
       case ScalingStrategy.perimeter:

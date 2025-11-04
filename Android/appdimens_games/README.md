@@ -1,7 +1,7 @@
 # AppDimens Games Module - C++/NDK Game Development
 
 **High-Performance Scaling for Android Games**  
-*Version: 2.0.0*
+*Version: 2.0.1*
 
 ---
 
@@ -9,7 +9,7 @@
 
 ```kotlin
 dependencies {
-    implementation("io.github.bodenberg:appdimens-games:2.0.0")
+    implementation("io.github.bodenberg:appdimens-games:2.0.1")
 }
 ```
 
@@ -20,11 +20,13 @@ dependencies {
 ## 🎮 Features
 
 - ✅ **Native C++/NDK** for maximum performance
+- ✅ **13 Scaling Strategies** with aspect ratio support
+- ✅ **Aspect Ratio Adjustment** (5 strategies: BALANCED, LOGARITHMIC, POWER, INTERPOLATED, FLUID)
 - ✅ **4 Dimension Types** (DYNAMIC, FIXED, GAME_WORLD, UI_OVERLAY)
 - ✅ **Vector2D & Rectangle** utilities
 - ✅ **OpenGL ES** integration
 - ✅ **Physical Units** (mm, cm, inch)
-- ✅ **Performance Monitoring**
+- ✅ **Performance Monitoring** (60+ FPS optimized)
 
 ---
 
