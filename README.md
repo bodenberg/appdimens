@@ -2,7 +2,7 @@
 
 As bibliotecas **AppDimens** para Android receberam novas versões com diversas melhorias, otimizações e novos recursos para tornar a criação de interfaces **responsivas e adaptativas** ainda mais simples.
 
-Essas atualizações fazem parte do ecossistema **AppDimens**, que oferece soluções para dimensionamento responsivo de layouts e textos em diferentes tamanhos de tela e densidades. :contentReference[oaicite:0]{index=0}
+Essas atualizações fazem parte do ecossistema **AppDimens**, que oferece soluções para dimensionamento responsivo de layouts e textos em diferentes tamanhos de tela e densidades.
 
 > Em breve as mesmas atualizações serão disponibilizadas também para as demais plataformas suportadas.
 
