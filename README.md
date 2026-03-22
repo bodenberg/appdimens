@@ -1,43 +1,22 @@
-# 🚀 Novas versões das bibliotecas AppDimens para Android
+🚀 AppDimens (Android) – Update
 
-As bibliotecas **AppDimens** para Android receberam novas versões com diversas melhorias, otimizações e novos recursos para tornar a criação de interfaces **responsivas e adaptativas** ainda mais simples.
+New versions released with improvements for easier responsive UI.
 
-Essas atualizações fazem parte do ecossistema **AppDimens**, que oferece soluções para dimensionamento responsivo de layouts e textos em diferentes tamanhos de tela e densidades.
+📦 Libraries
 
-> Em breve as mesmas atualizações serão disponibilizadas também para as demais plataformas suportadas.
-
----
-
-# 📦 Bibliotecas atualizadas
-
-## 📐 SDPS – Dimensões escaláveis para layouts
-Biblioteca baseada no modelo **SDP (Scaled Density Pixels)** para dimensionamento responsivo de larguras e alturas.
-
-👉 Repositório:  
+SDPS – Responsive layout dimensions (SDP)
 https://github.com/bodenberg/appdimens-sdps
 
----
-
-## 🔤 SSPS – Dimensões escaláveis para textos
-Biblioteca baseada no modelo **SSP (Scaled Scale Pixels)** para dimensionamento responsivo de fontes.
-
-👉 Repositório:  
+SSPS – Responsive text scaling (SSP)
 https://github.com/bodenberg/appdimens-ssps
 
----
-
-## ⚙️ DYNAMIC – Engine de dimensionamento dinâmico
-Biblioteca com **motor de cálculo dinâmico** para dimensionamento responsivo diretamente via código.
-
-👉 Repositório:  
+DYNAMIC – Dynamic sizing engine via code
 https://github.com/bodenberg/appdimens-dynamic
 
----
 
-# 📢 Próximos passos
-As atualizações para **outras plataformas** serão disponibilizadas em breve.
+📢 Next
 
-Fique atento às próximas releases 🚀
+Support for other platforms coming soon 🚀
 
 ---
 
