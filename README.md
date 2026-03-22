@@ -4,14 +4,14 @@ New versions released with improvements for easier responsive UI.
 
 📦 Libraries
 
+DYNAMIC – Dynamic sizing engine via code
+https://github.com/bodenberg/appdimens-dynamic
+
 SDPS – Responsive layout dimensions (SDP)
 https://github.com/bodenberg/appdimens-sdps
 
 SSPS – Responsive text scaling (SSP)
 https://github.com/bodenberg/appdimens-ssps
-
-DYNAMIC – Dynamic sizing engine via code
-https://github.com/bodenberg/appdimens-dynamic
 
 
 📢 Next
