@@ -1,18 +1,18 @@
 [submodule "appdimens-dynamic"]
-    path = appdimens-dynamic
-    url = https://github.com/bodenberg/appdimens-dynamic
+	path = appdimens-dynamic
+	url = https://github.com/bodenberg/appdimens-dynamic
 
 [submodule "appdimens-dynamic-kmp"]
     path = appdimens-dynamic-kmp
     url = https://github.com/bodenberg/appdimens-dynamic-kmp
 
 [submodule "appdimens-sdps"]
-    path = appdimens-sdps
-    url = https://github.com/bodenberg/appdimens-sdps
+	path = appdimens-sdps
+	url = https://github.com/bodenberg/appdimens-sdps
 
 [submodule "appdimens-ssps"]
-    path = appdimens-ssps
-    url = https://github.com/bodenberg/appdimens-ssps
+	path = appdimens-ssps
+	url = https://github.com/bodenberg/appdimens-ssps
 
 [submodule "appdimens-games"]
     path = appdimens-games
