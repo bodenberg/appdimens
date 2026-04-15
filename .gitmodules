@@ -1,35 +1,44 @@
 [submodule "appdimens-dynamic"]
 	path = appdimens-dynamic
 	url = https://github.com/bodenberg/appdimens-dynamic
+	branch = main
 
 [submodule "appdimens-dynamic-kmp"]
 	path = appdimens-dynamic-kmp
 	url = https://github.com/bodenberg/appdimens-dynamic-kmp
+	branch = main
 
 [submodule "appdimens-sdps"]
 	path = appdimens-sdps
 	url = https://github.com/bodenberg/appdimens-sdps
+	branch = main
 
 [submodule "appdimens-ssps"]
 	path = appdimens-ssps
 	url = https://github.com/bodenberg/appdimens-ssps
+	branch = main
 
 [submodule "appdimens-games"]
 	path = appdimens-games
 	url = https://github.com/bodenberg/appdimens-games
+	branch = main
 
 [submodule "appdimens-flutter"]
 	path = appdimens-flutter
 	url = https://github.com/bodenberg/appdimens-flutter
+	branch = main
 
 [submodule "appdimens-ios"]
 	path = appdimens-ios
 	url = https://github.com/bodenberg/appdimens-ios
+	branch = main
 
 [submodule "appdimens-react-native"]
 	path = appdimens-react-native
 	url = https://github.com/bodenberg/appdimens-react-native
+	branch = main
 
 [submodule "appdimens-web"]
 	path = appdimens-web
 	url = https://github.com/bodenberg/appdimens-web
+	branch = main
