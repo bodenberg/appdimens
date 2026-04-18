@@ -127,8 +127,8 @@ The family documents **13 strategies** (names may vary slightly by platform). Fo
 
 | Strategy | Typical use |
 |----------|-------------|
-| **BALANCED** | Default recommendation for most UI |
-| **DEFAULT** | Phone-first / legacy “fixed” style curve |
+| **BALANCED (auto)** | Default recommendation for most UI |
+| **DEFAULT (scaled)** | Phone-first / legacy “fixed” style curve |
 | **PERCENTAGE** | Proportional / “dynamic” style growth |
 | **LOGARITHMIC**, **POWER** | Perceptual / TV / fine control |
 | **FLUID** | Bounded min–max (typography, spacing) |
