@@ -3,7 +3,7 @@
 **Dimensões Responsivas Inteligentes para Android**  
 *Versão: 2.0.1*
 
-> **Idiomas:** [English](../../../Android/README.md) | Português (BR) | [Español](../../es/Android/README.md)
+> **Idiomas:** [English](../../../appdimens-dynamic/README.md) | Português (BR) | [Español](../../es/Android/README.md)
 
 ---
 
@@ -25,10 +25,10 @@ dependencies {
 fun MeuCard() {
     Card(
         modifier = Modifier
-            .width(300.balanced().dp)      // ⭐ BALANCED (RECOMENDADO)
-            .padding(16.balanced().dp)
+            .width(300.wdp)      // ⭐ BALANCED (RECOMENDADO)
+            .padding(16.sdp)
     ) {
-        Text("Olá Mundo", fontSize = 18.balanced().sp)
+        Text("Olá Mundo", fontSize = 18.ssp)
     }
 }
 ```
@@ -46,7 +46,7 @@ fun MeuCard() {
 
 ## 📚 Documentação
 
-- [Guia Principal](../../../Android/README.md)
+- [Guia Principal](../../../appdimens-dynamic/README.md)
 - [Documentação Completa](../../../DOCS/README.md)
 - [Teoria Matemática](../MATHEMATICAL_THEORY.md)
 

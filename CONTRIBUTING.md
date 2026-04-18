@@ -1,15 +1,8 @@
----
-layout: default
-title: "🤝 Contributing to AppDimens"
----
-
 # 🤝 Contributing to AppDimens
 
 Thank you for your interest in contributing to AppDimens! This document provides guidelines and information for contributors.
 
-> **Languages:** English | [Português (BR)](LANG/pt-BR/CONTRIBUTING.md) | Español
-
-> **Note:** Spanish translation is not yet available.
+> **Languages:** English | [Português (BR)](LANG/pt-BR/CONTRIBUTING.md) | [Español](LANG/es/README.md) (community docs under `LANG/es/`)
 
 ## 📋 Table of Contents
 
@@ -38,11 +31,12 @@ This project adheres to a code of conduct. By participating, you are expected to
 ### Fork and Clone
 
 1. Fork the repository on GitHub
-2. Clone your fork locally:
+2. Clone your fork locally **with submodules** (needed for platform code and accurate docs):
    ```bash
-   git clone https://github.com/your-username/appdimens.git
+   git clone --recurse-submodules https://github.com/your-username/appdimens.git
    cd appdimens
    ```
+   If you already cloned without submodules: `git submodule update --init --recursive`
 3. Add the upstream repository:
    ```bash
    git remote add upstream https://github.com/bodenberg/appdimens.git
@@ -50,11 +44,11 @@ This project adheres to a code of conduct. By participating, you are expected to
 
 ## 🛠 Development Setup
 
-### Android Setup
+### Android Setup (submodule: `appdimens-dynamic`, `appdimens-sdps`, `appdimens-ssps`, `appdimens-games`, …)
 
 1. **Open in Android Studio**:
    ```bash
-   cd Android
+   cd appdimens-dynamic   # or appdimens-sdps, appdimens-ssps, appdimens-games, appdimens-dynamic-kmp
    # Open Android Studio and import the project
    ```
 
@@ -68,11 +62,11 @@ This project adheres to a code of conduct. By participating, you are expected to
    ./gradlew test
    ```
 
-### iOS Setup
+### iOS Setup (submodule: `appdimens-ios`)
 
 1. **Open in Xcode**:
    ```bash
-   cd iOS
+   cd appdimens-ios
    open AppDimens.xcodeproj
    ```
 
@@ -82,6 +76,10 @@ This project adheres to a code of conduct. By participating, you are expected to
 
 3. **Run Tests**:
    - In Xcode: Product → Test (⌘+U)
+
+### Flutter / React Native / Web
+
+Work in the corresponding submodule directory (`appdimens-flutter`, `appdimens-react-native`, `appdimens-web`). Follow each project’s `README`, `package.json`, or `pubspec.yaml` for install, test, and lint commands.
 
 ## 📝 Contributing Guidelines
 
@@ -234,7 +232,7 @@ Brief description of changes
 
 ### Review Process
 
-1. **Automated Checks**: CI/CD pipeline runs automatically
+1. **Automated Checks**: Run tests and linters in the **relevant submodule**; this meta-repo may not define a global CI pipeline
 2. **Code Review**: Maintainers review the code
 3. **Testing**: Changes are tested on multiple devices
 4. **Approval**: At least one maintainer approval required

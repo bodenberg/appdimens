@@ -153,8 +153,8 @@ Redução: 45.5dp economizados (39% de redução em oversizing)
 
 **Android (Kotlin):**
 ```kotlin
-Text("Olá", fontSize = 16.balanced().sp)
-Button(modifier = Modifier.height(48.balanced().dp))
+Text("Olá", fontSize = 16.ssp)
+Button(modifier = Modifier.height(48.sdp))
 ```
 
 **iOS (Swift):**
@@ -164,7 +164,7 @@ Text("Olá").font(.system(size: AppDimens.shared.balanced(16).toPoints()))
 
 **Flutter (Dart):**
 ```dart
-Text('Olá', style: TextStyle(fontSize: AppDimens.balanced(16).calculate(context)))
+Text('Olá', style: TextStyle(fontSize: AppDimens.fixed(16).calculate(context)))
 ```
 
 **React Native:**
@@ -267,7 +267,7 @@ onde n = 0.75 (padrão)
 - Sistema de pesos
 
 ```kotlin
-val tamanho = 48.smart().forElement(ElementType.BUTTON).dp
+val tamanho = 48.sdp
 // → Seleciona automaticamente BALANCED para botões em tablets
 ```
 

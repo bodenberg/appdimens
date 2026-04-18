@@ -1,6 +1,6 @@
 # 🔄 Base Orientation Guide - Auto-Inversion Feature
 
-> **Languages:** English | [Português (BR)](../LANG/pt-BR/BASE_ORIENTATION_GUIDE.md) | [Español](../LANG/es/BASE_ORIENTATION_GUIDE.md)
+> **Languages:** English | [Português (BR)](../LANG/pt-BR/README.md) | [Español](../LANG/es/README.md) — there is no separate translated file for this topic under `LANG/`; use this document as canonical.
 
 **Complete Guide to Orientation-Aware Dimension Scaling**  
 *Author: Jean Bodenberg*  
@@ -47,11 +47,13 @@ AUTO (default) = No inversion
 Design a card for portrait using `LOWEST` (width):
 
 ```kotlin
-// Card designed for portrait (360x800)
-val cardWidth = 300.balanced().type(ScreenType.LOWEST).dp
+// Card designed for portrait (360x800) — illustrative sizes only.
+// In appdimens-dynamic 3.x, orientation + LOWEST/HIGHEST are handled via
+// axis tokens and inverter / rotation helpers (see submodule DOCUMENTATION).
+val cardWidth = 300.wdp
 
-// Portrait (360x800):  Uses LOWEST = 360 → Card ~336dp ✅ (93% of width)
-// Landscape (800x360): Uses LOWEST = 360 → Card ~336dp ❌ (42% of width - too small!)
+// Portrait (360x800):  width basis → Card tracks width ✅
+// Landscape (800x360): re-check axis / inverters so the card does not stay “phone narrow” ❌
 ```
 
 **Problem:** Card looks small in landscape.
@@ -63,11 +65,13 @@ val cardWidth = 300.balanced().type(ScreenType.LOWEST).dp
 ### With Base Orientation (v1.2.0+)
 
 ```kotlin
-// Tell AppDimens this design was made for portrait
-val cardWidth = 300.balanced().portraitLowest().dp
+// Portrait-first designs: on Android 3.x use builder / inverter APIs from
+// appdimens-dynamic (e.g. portraitLowest-style flows on AppDimensFixed in KMP / code layer),
+// or model width explicitly with wdp + qualifier tables.
+val cardWidth = 300.wdp
 
-// Portrait (360x800):  Uses LOWEST (width) = 360 → ~336dp ✅
-// Landscape (800x360): AUTO-INVERTS to HIGHEST (width) = 800 → ~896dp ✅
+// Portrait (360x800):  width-biased token tracks short edge as expected ✅
+// Landscape (800x360): validate against submodule rotation examples ✅
 ```
 
 **Benefits:**
@@ -130,13 +134,16 @@ AUTO       - No specific orientation (default)
 ### 6.1 BALANCED Strategy ⭐
 
 ```kotlin
-// Android
+// Android — Jetpack Compose (appdimens-dynamic 3.x)
+import com.appdimens.dynamic.compose.*
+import com.appdimens.dynamic.compose.auto.asdp
+
 @Composable
 fun ResponsiveCard() {
     Card(
         modifier = Modifier
-            .width(300.balanced().portraitLowest().dp)  // ⭐ BALANCED + portrait
-            .padding(16.balanced().dp)
+            .width(300.wdp)
+            .padding(16.asdp)
     ) {
         Text("Auto-adapting Card")
     }
@@ -159,8 +166,8 @@ struct ResponsiveCard: View {
 ```dart
 // Flutter
 Container(
-  width: AppDimens.balanced(300).portraitLowest().calculate(context),
-  padding: EdgeInsets.all(AppDimens.balanced(16).calculate(context)),
+  width: AppDimens.fixed(300).portraitLowest().calculate(context),
+  padding: EdgeInsets.all(AppDimens.fixed(16).calculate(context)),
   child: Text('Auto-adapting Card'),
 )
 ```
@@ -168,19 +175,19 @@ Container(
 ### 6.2 DEFAULT Strategy
 
 ```kotlin
-// Android - Phone-focused with orientation
+// Android — scaled icon; for rotation-specific overrides see sdpRotate / wdpRotate in submodule
 Icon(
     imageVector = Icons.Default.Favorite,
-    modifier = Modifier.size(24.defaultDp.portraitLowest())
+    modifier = Modifier.size(24.sdp)
 )
 ```
 
 ### 6.3 PERCENTAGE Strategy
 
 ```kotlin
-// Large container with orientation
+// Large container with orientation — width-biased token; pair with submodule percent APIs if needed
 Container(
-    modifier = Modifier.width(400.percentageDp.portraitLowest().dp)
+    modifier = Modifier.width(400.wdp)
 )
 ```
 

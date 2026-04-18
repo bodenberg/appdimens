@@ -3,7 +3,7 @@ layout: default
 title: "📐 Web"
 ---
 
-> **Idiomas:** [English](../../Web/README.md) | [Português (BR)](../pt-BR/Web/README.md) | Español
+> **Idiomas:** [English](../../../appdimens-web/README.md) | [Português (BR)](../../pt-BR/Web/README.md) | Español
 
 # 📐 Web
 
@@ -12,10 +12,10 @@ title: "📐 Web"
 **Sistema Avanzado de Dimensionamiento Responsivo para Web**
 
 [![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bodenberg/appdimens/releases)
-[![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../LICENSE)
+[![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue.svg)](https://www.typescriptlang.org/)
 
-Basado en la biblioteca [AppDimens Android](../../Android/), trae los mismos conceptos poderosos de responsividad a la web.
+Basado en la familia de bibliotecas [AppDimens Android](../../../appdimens-dynamic/README.md), trae los mismos conceptos poderosos de responsividad a la web.
 
 </div>
 
@@ -309,11 +309,11 @@ webdimens.config({
 
 ## 🤝 Contribución
 
-¡Las contribuciones son bienvenidas! Por favor, lea el [CONTRIBUTING.md](../../CONTRIBUTING.md) para detalles.
+¡Las contribuciones son bienvenidas! Por favor, lea el [CONTRIBUTING.md](../../../CONTRIBUTING.md) para detalles.
 
 ## 📄 Licencia
 
-Apache 2.0 - vea [LICENSE](../../LICENSE) para detalles.
+Apache 2.0 - vea [LICENSE](../../../LICENSE) para detalles.
 
 ## 📞 Soporte
 

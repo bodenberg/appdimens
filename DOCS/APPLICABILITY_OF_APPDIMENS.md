@@ -1,6 +1,6 @@
 # 🎯 When to Use AppDimens - Applicability Guide
 
-> **Languages:** English | [Português (BR)](../LANG/pt-BR/APPLICABILITY_OF_APPDIMENS.md) | [Español](../LANG/es/APPLICABILITY_OF_APPDIMENS.md)
+> **Languages:** English | [Português (BR)](../LANG/pt-BR/README.md) | [Español](../LANG/es/README.md) — there is no separate translated file for this topic under `LANG/`; use this document as canonical.
 
 **Complete Guide on When and Where to Use AppDimens**  
 *Author: Jean Bodenberg*  
@@ -38,8 +38,8 @@
 **Example:**
 ```kotlin
 // Same code works perfectly on phone, tablet, and TV
-Text("Hello", fontSize = 16.balanced().sp)
-Button(modifier = Modifier.height(48.balanced().dp))
+Text("Hello", fontSize = 16.ssp)
+Button(modifier = Modifier.height(48.sdp))
 ```
 
 ---
@@ -57,7 +57,7 @@ Button(modifier = Modifier.height(48.balanced().dp))
 **Example:**
 ```kotlin
 // Automatically adjusts for different aspect ratios
-Icon(modifier = Modifier.size(24.defaultDp))
+Icon(modifier = Modifier.size(24.sdp))
 ```
 
 ---
@@ -95,7 +95,7 @@ Text("TV App").font(.system(size: AppDimens.shared.logarithmic(20).toPoints()))
 // Flutter
 Text(
   'Article',
-  style: TextStyle(fontSize: AppDimens.fluid(16, maxValue: 24).calculate(context)),
+  style: TextStyle(fontSize: 16.0.fluidTo(24).calculate(context)),
 )
 ```
 

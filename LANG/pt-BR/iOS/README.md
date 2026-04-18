@@ -3,7 +3,7 @@
 **Dimensões Responsivas Inteligentes para iOS, iPadOS, tvOS, watchOS**  
 *Versão: 2.0.0*
 
-> **Idiomas:** [English](../../../iOS/README.md) | Português (BR) | [Español](../../es/iOS/README.md)
+> **Idiomas:** [English](../../../appdimens-ios/README.md) | Português (BR) | [Español](../../es/iOS/README.md)
 
 ---
 

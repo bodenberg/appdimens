@@ -21,4 +21,4 @@ implementation("io.github.bodenberg:appdimens-all:2.0.1")
 
 ---
 
-**Guia:** [../../../../Android/appdimens_all/README.md](../../../../Android/appdimens_all/README.md)
+**Guia:** [../../../../appdimens-dynamic/README.md](../../../../appdimens-dynamic/README.md)

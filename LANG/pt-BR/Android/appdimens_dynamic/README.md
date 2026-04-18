@@ -22,4 +22,4 @@ implementation("io.github.bodenberg:appdimens-dynamic:2.0.1")
 
 ---
 
-**Guia:** [../../../../Android/appdimens_dynamic/README.md](../../../../Android/appdimens_dynamic/README.md)
+**Guia:** [../../../../appdimens-dynamic/README.md](../../../../appdimens-dynamic/README.md)

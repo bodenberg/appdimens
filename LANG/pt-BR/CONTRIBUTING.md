@@ -1,6 +1,6 @@
 # 🤝 Guia de Contribuição - AppDimens
 
-> **Idiomas:** [English](../../CONTRIBUTING.md) | Português (BR) | [Español](../es/CONTRIBUTING.md)
+> **Idiomas:** [English](../../CONTRIBUTING.md) | Português (BR) | [Español](../es/README.md)
 
 **Bem-vindo! Contribuições são bem-vindas!**  
 *Versão: 2.0.0*

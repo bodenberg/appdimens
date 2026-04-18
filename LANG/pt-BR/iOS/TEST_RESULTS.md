@@ -5,7 +5,7 @@ title: "Resultados dos Testes da Biblioteca AppDimens iOS"
 
 # Resultados dos Testes da Biblioteca AppDimens iOS
 
-> **Idiomas:** [English](../../../iOS/TEST_RESULTS.md) | Português (BR) | [Español](../../es/iOS/TEST_RESULTS.md)
+> **Idiomas:** [Repositório iOS (EN)](../../../appdimens-ios/README.md) | Português (BR) | [Índice ES](../../es/README.md)
 
 ## Resumo dos Testes Realizados
 

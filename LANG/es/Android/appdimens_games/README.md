@@ -13,7 +13,7 @@ layout: default
 [![NDK](https://img.shields.io/badge/NDK-r21+-green.svg)](https://developer.android.com/ndk)
 </div>
 
-> **Idiomas:** [English](../../../../Android/appdimens_games/README.md) | [Português (BR)](../../pt-BR/Android/appdimens_games/README.md) | Español
+> **Idiomas:** [English](../../../../appdimens-games/appdimens_games/README.md) | [Português (BR)](../../../pt-BR/Android/appdimens_games/README.md) | Español
 
 ---
 

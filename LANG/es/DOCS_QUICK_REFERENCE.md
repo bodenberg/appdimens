@@ -32,9 +32,9 @@
 
 ## 💻 API
 
-**Android:** `16.balanced().dp`  
+**Android:** `16.sdp`  
 **iOS:** `AppDimens.shared.balanced(16).toPoints()`  
-**Flutter:** `AppDimens.balanced(16).calculate(context)`
+**Flutter:** `AppDimens.fixed(16).calculate(context)`
 
 ---
 

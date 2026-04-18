@@ -25,4 +25,4 @@ val playerSize = games.calculatePlayerSize(64f)
 
 ---
 
-**Guia:** [../../../../Android/appdimens_games/README.md](../../../../Android/appdimens_games/README.md)
+**Guia:** [../../../../appdimens-games/appdimens_games/README.md](../../../../appdimens-games/appdimens_games/README.md)

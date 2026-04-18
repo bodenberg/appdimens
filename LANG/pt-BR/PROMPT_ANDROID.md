@@ -18,19 +18,20 @@
 ## API Rápida
 
 ```kotlin
-// PRIMÁRIA: BALANCED ⭐
-16.balanced().dp
-16.balanced().sp
+import com.appdimens.dynamic.compose.*
+import com.appdimens.dynamic.compose.auto.asdp
+import com.appdimens.dynamic.compose.auto.assp
 
-// SECUNDÁRIA: DEFAULT
-16.defaultDp
-16.defaultSp
+// PRIMÁRIA (curva híbrida no eixo) ≈ conceito BALANCED
+Modifier.padding(16.asdp)
+Text("", fontSize = 16.assp)
 
-// Containers: PERCENTAGE
-300.percentageDp.dp
+// SECUNDÁRIA (telefone primeiro) — tokens escalados
+16.sdp
+16.ssp
 
-// Smart API
-AppDimens.from(48).smart().forElement(ElementType.BUTTON).dp
+// Containers largos — eixo de largura
+300.wdp
 ```
 
 ---
@@ -44,4 +45,4 @@ AppDimens.from(48).smart().forElement(ElementType.BUTTON).dp
 
 ---
 
-**Documentação Completa:** [../../../DOCS/README.md](../../../DOCS/README.md)
+**Documentação Completa:** [../../DOCS/README.md](../../DOCS/README.md)

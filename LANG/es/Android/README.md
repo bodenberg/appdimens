@@ -9,12 +9,12 @@ layout: default
     <p>Escalado responsivo matemáticamente preciso que garantiza que su diseño de UI se adapte perfectamente a cualquier tamaño de pantalla o relación de aspecto — desde teléfonos hasta TVs, autos y wearables.</p>
 
 [![Versión](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bodenberg/appdimens/releases)
-[![Licencia](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../LICENSE)
+[![Licencia](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![Plataforma](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 [![Documentación](https://img.shields.io/badge/docs-complete-brightgreen.svg)](https://appdimens-project.web.app/)
 </div>
 
-> **Idiomas:** [English](../../../Android/README.md) | [Português (BR)](../../pt-BR/Android/README.md) | Español
+> **Idiomas:** [English](../../../appdimens-dynamic/README.md) | [Português (BR)](../../pt-BR/Android/README.md) | Español
 
 ---
 
@@ -135,20 +135,20 @@ repositories {
 fun ResponsiveCard() {
     Card(
         modifier = Modifier
-            .width(300.dydp)           // Ancho dinámico - proporcional a la pantalla
-            .height(200.fxdp)          // Alto fijo - escalado refinado
-            .padding(16.fxdp)          // Padding fijo - sensación consistente
+            .width(300.wdp)           // Ancho dinámico - proporcional a la pantalla
+            .height(200.sdp)          // Alto fijo - escalado refinado
+            .padding(16.sdp)          // Padding fijo - sensación consistente
     ) {
         Column(
-            modifier = Modifier.padding(16.fxdp)
+            modifier = Modifier.padding(16.sdp)
         ) {
             Text(
                 text = "Título Responsivo",
-                fontSize = 18.fxsp     // Tamaño de fuente fijo - lectura cómoda
+                fontSize = 18.ssp     // Tamaño de fuente fijo - lectura cómoda
             )
             Text(
                 text = "Esta tarjeta se adapta a cualquier tamaño de pantalla",
-                fontSize = 14.dysp     // Tamaño de fuente dinámico - proporcional
+                fontSize = 14.ssp     // Tamaño de fuente dinámico - proporcional
             )
         }
     }
@@ -382,7 +382,7 @@ public:
 - **GAME_WORLD**: Mantiene coordenadas consistentes del mundo para objetos del juego
 - **UI_OVERLAY**: Para elementos HUD y superposición
 
-Para documentación completa, vea [Módulo AppDimens Games](../../../Android/appdimens_games/README.md).
+Para documentación completa, vea [Módulo AppDimens Games](../../../appdimens-games/appdimens_games/README.md).
 
 ---
 
@@ -463,15 +463,15 @@ println("Factores: ${factors}")
 ### 📖 Documentación Completa
 
 - **[📘 Documentación Completa](https://appdimens-project.web.app/)** - Guías comprensivas y referencia de API
-- **[🎯 Documentación Core](../../../Android/DOCS/)** - Documentación técnica detallada
-- **[🎮 Módulo Games](../../../Android/appdimens_games/README.md)** - Guía de desarrollo de juegos
-- **[📱 Ejemplos](../../../Android/app/src/main/kotlin/)** - Ejemplos de uso del mundo real
+- **[🎯 Documentación Core](../../../DOCS/)** - Documentación técnica detallada
+- **[🎮 Módulo Games](../../../appdimens-games/appdimens_games/README.md)** - Guía de desarrollo de juegos
+- **[📱 Ejemplos](../../../appdimens-dynamic/app/src/main/java/)** - Ejemplos de uso del mundo real
 
 ### 🔗 Enlaces Rápidos
 
 - **[🚀 Guía de Instalación](#instalación)** - Comience en minutos
 - **[📱 Ejemplos](#ejemplos-de-uso)** - Ejemplos de uso del mundo real
-- **[🔧 Referencia de API](../../../Android/DOCS/)** - Documentación completa de API
+- **[🔧 Referencia de API](../../../DOCS/)** - Documentación completa de API
 - **[❓ FAQ](https://appdimens-project.web.app/faq)** - Preguntas y respuestas comunes
 
 ---
@@ -502,7 +502,7 @@ println("Factores: ${factors}")
 
 ## 🤝 Contribuyendo
 
-¡Aceptamos contribuciones! Vea nuestras [Pautas de Contribución](../../CONTRIBUTING.md) para detalles.
+¡Aceptamos contribuciones! Vea nuestras [Pautas de Contribución](../../../CONTRIBUTING.md) para detalles.
 
 ### 🐛 ¿Encontró un Bug?
 - [Crear un issue](https://github.com/bodenberg/appdimens/issues)
@@ -518,7 +518,7 @@ println("Factores: ${factors}")
 
 ## 📄 Licencia
 
-Este proyecto está licenciado bajo la Licencia Apache 2.0 - vea el archivo [LICENSE](../../LICENSE) para detalles.
+Este proyecto está licenciado bajo la Licencia Apache 2.0 - vea el archivo [LICENSE](../../../LICENSE) para detalles.
 
 ---
 

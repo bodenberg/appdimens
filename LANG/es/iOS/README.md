@@ -10,12 +10,12 @@ title: "Podfile"
     <p>Escalado responsivo matemáticamente preciso que garantiza que su diseño de UI se adapte perfectamente a cualquier tamaño de pantalla o relación de aspecto — desde iPhones hasta iPads, Apple TV y Apple Watch.</p>
 
 [![Versión](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/bodenberg/appdimens/releases)
-[![Licencia](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../LICENSE)
+[![Licencia](https://img.shields.io/badge/license-Apache%202.0-green.svg)](../../../LICENSE)
 [![Plataforma](https://img.shields.io/badge/platform-iOS%2013+-orange.svg)](https://developer.apple.com/ios/)
 [![Swift](https://img.shields.io/badge/Swift-5.0+-blue.svg)](https://swift.org/)
 </div>
 
-> **Idiomas:** [English](../../../iOS/README.md) | [Português (BR)](../../pt-BR/iOS/README.md) | Español
+> **Idiomas:** [English](../../../appdimens-ios/README.md) | [Português (BR)](../../pt-BR/iOS/README.md) | Español
 
 ---
 
@@ -601,8 +601,8 @@ Si está familiarizado con la versión Android de AppDimens, aquí está el mape
 |---------|-----|
 | `AppDimens.fixed(16).toPx()` | `AppDimens.fixed(16).toPixels()` |
 | `AppDimens.dynamic(100).toDp()` | `AppDimens.dynamic(100).toPoints()` |
-| `16.fxdp` | `16.fxpt` |
-| `100.dydp` | `100.dypt` |
+| `16.sdp` | `16.fxpt` |
+| `100.wdp` | `100.dypt` |
 | `ScreenType.LOWEST` | `ScreenType.lowest` |
 | `UiModeType.PHONE` | `DeviceType.phone` |
 
@@ -613,10 +613,10 @@ Si está familiarizado con la versión Android de AppDimens, aquí está el mape
 ### 📖 Documentación Completa
 
 - **[📘 Documentación Completa](https://appdimens-project.web.app/)** - Guías comprensivas y referencia de API
-- **[🎯 Documentación Técnica](../../../iOS/DOCUMENTATION.md)** - Documentación técnica detallada
-- **[📱 Guía de Uso](../../../iOS/USAGE_GUIDE.md)** - Guía práctica de uso
-- **[🔧 Guía de Instalación](../../../iOS/INSTALLATION.md)** - Instrucciones de instalación
-- **[📱 Ejemplos](../../../iOS/Examples/)** - Ejemplos de uso del mundo real
+- **[🎯 Documentación Técnica](../../../appdimens-ios/DOCUMENTATION.md)** - Documentación técnica detallada
+- **[📱 Guía de Uso](../../../appdimens-ios/USAGE_GUIDE.md)** - Guía práctica de uso
+- **[🔧 Guía de Instalación](../../../appdimens-ios/INSTALLATION.md)** - Instrucciones de instalación
+- **[📱 Ejemplos](../../../appdimens-ios/Examples/)** - Ejemplos de uso del mundo real
 
 ### 🔗 Enlaces Rápidos
 
@@ -659,7 +659,7 @@ Si está familiarizado con la versión Android de AppDimens, aquí está el mape
 
 ## 🤝 Contribuyendo
 
-¡Aceptamos contribuciones! Vea nuestras [Pautas de Contribución](../../CONTRIBUTING.md) para detalles.
+¡Aceptamos contribuciones! Vea nuestras [Pautas de Contribución](../../../CONTRIBUTING.md) para detalles.
 
 ### 🐛 ¿Encontró un Bug?
 - [Crear un issue](https://github.com/bodenberg/appdimens/issues)
@@ -675,7 +675,7 @@ Si está familiarizado con la versión Android de AppDimens, aquí está el mape
 
 ## 📄 Licencia
 
-Este proyecto está licenciado bajo la Licencia Apache 2.0 - vea el archivo [LICENSE](../../LICENSE) para detalles.
+Este proyecto está licenciado bajo la Licencia Apache 2.0 - vea el archivo [LICENSE](../../../LICENSE) para detalles.
 
 ---
 

@@ -3,7 +3,7 @@
 **Dimensões Responsivas Inteligentes para Aplicações Web**  
 *Versão: 2.0.0*
 
-> **Idiomas:** [English](../../../Web/README.md) | Português (BR) | [Español](../../es/Web/README.md)
+> **Idiomas:** [English](../../../appdimens-web/README.md) | Português (BR) | [Español](../../es/Web/README.md)
 
 ---
 

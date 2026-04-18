@@ -12,7 +12,7 @@ layout: default
 [![Plataforma](https://img.shields.io/badge/platform-Android%2021+-orange.svg)](https://developer.android.com/)
 </div>
 
-> **Idiomas:** [English](../../../../Android/appdimens_dynamic/README.md) | [Português (BR)](../../pt-BR/Android/appdimens_dynamic/README.md) | Español
+> **Idiomas:** [English](../../../../appdimens-dynamic/README.md) | [Português (BR)](../../../pt-BR/Android/appdimens_dynamic/README.md) | Español
 
 ---
 
@@ -29,9 +29,9 @@ dependencies { implementation("io.github.bodenberg:appdimens-dynamic:1.1.0") }
 
 ## 🎨 Ejemplos (Compose)
 ```kotlin
-Text("Título", fontSize = 24.fxsp)
-Button(modifier = Modifier.height(48.fxdp).width(120.fxdp)) { Text("Acción") }
-Card(modifier = Modifier.fillMaxWidth().height(100.dydp).padding(8.fxdp)) { /* ... */ }
+Text("Título", fontSize = 24.ssp)
+Button(modifier = Modifier.height(48.sdp).width(120.sdp)) { Text("Acción") }
+Card(modifier = Modifier.fillMaxWidth().height(100.wdp).padding(8.sdp)) { /* ... */ }
 ```
 
 ## 📄 XML/Data Binding

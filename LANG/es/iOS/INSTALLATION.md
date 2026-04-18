@@ -5,7 +5,7 @@ title: "📦 AppDimens iOS - Guía de Instalación"
 
 # 📦 AppDimens iOS - Guía de Instalación
 
-> **Idiomas:** [English](../../../iOS/INSTALLATION.md) | [Português (BR)](../../pt-BR/iOS/INSTALLATION.md) | Español
+> **Idiomas:** [English](../../../appdimens-ios/INSTALLATION.md) | [Português (BR)](../../pt-BR/iOS/INSTALLATION.md) | Español
 
 Esta guía completa le ayudará a instalar e integrar AppDimens iOS en su proyecto con instrucciones paso a paso.
 
@@ -308,14 +308,14 @@ Si aún tiene problemas, pruebe estos pasos:
 
 ## 🔄 Migración desde Android
 
-Si migra desde la versión de Android de AppDimens, vea la [Guía de Migración](MIGRATION.md) para instrucciones detalladas.
+Si migra desde la versión de Android de AppDimens, vea la sección de migración en [Teoría simplificada (EN)](../../../DOCS/MATHEMATICAL_THEORY_SIMPLIFIED.md#9-migration-from-v1x) y el [README del submódulo iOS](../../../appdimens-ios/README.md).
 
 ### Referencia Rápida de Migración
 
 | Android | iOS |
 |---------|-----|
-| `16.fxdp` | `16.fxpt` |
-| `100.dydp` | `100.dypt` |
+| `16.sdp` | `16.fxpt` |
+| `100.wdp` | `100.dypt` |
 | `AppDimens.fixed(16).toPx()` | `AppDimens.fixed(16).toPixels()` |
 | `ScreenType.LOWEST` | `ScreenType.lowest` |
 
@@ -324,8 +324,8 @@ Si migra desde la versión de Android de AppDimens, vea la [Guía de Migración]
 Después de una instalación exitosa:
 
 1. Lea la documentación: [README.md](README.md)
-2. Pruebe los ejemplos: [Examples/](Examples/)
-3. Explore la API: [DOCUMENTATION.md](DOCUMENTATION.md)
+2. Pruebe los ejemplos: [Examples/ en el submódulo](../../../appdimens-ios/Examples/)
+3. Explore la API: [DOCUMENTATION.md en el submódulo](../../../appdimens-ios/DOCUMENTATION.md)
 4. Únase a la comunidad: [GitHub Discussions](https://github.com/bodenberg/appdimens/discussions)
 
 ## 🆘 Ayuda
@@ -333,12 +333,12 @@ Después de una instalación exitosa:
 Si encuentra problemas que no estén cubiertos aquí:
 
 1. Revise la documentación: [README.md](README.md)
-2. Revise los ejemplos: [Examples/](Examples/)
+2. Revise los ejemplos: [Examples/ en el submódulo](../../../appdimens-ios/Examples/)
 3. Cree un issue: [GitHub Issues](https://github.com/bodenberg/appdimens/issues)
 
 ## 📄 Licencia
 
-Este proyecto está licenciado bajo la Licencia Apache 2.0 - vea el archivo [LICENSE](LICENSE) para más detalles.
+Este proyecto está licenciado bajo la Licencia Apache 2.0 — vea el archivo [LICENSE](../../../LICENSE) en la raíz del repositorio central.
 
 ---
 

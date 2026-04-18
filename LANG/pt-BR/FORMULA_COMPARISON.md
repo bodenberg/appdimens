@@ -112,7 +112,7 @@
 
 **Depois (AppDimens):**
 ```kotlin
-Text(text = "Olá", fontSize = 16.balanced().sp)
+Text(text = "Olá", fontSize = 16.ssp)
 ```
 
 **Economia:** 30-44% de redução em oversizing!

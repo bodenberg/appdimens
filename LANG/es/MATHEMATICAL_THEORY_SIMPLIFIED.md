@@ -58,7 +58,7 @@
 **Uso:** Apps enfocados en teléfonos, compatibilidad con v1.x
 
 ```kotlin
-Icon(modifier = Modifier.size(24.defaultDp))
+Icon(modifier = Modifier.size(24.sdp))
 ```
 
 ---
@@ -81,7 +81,7 @@ Icon(modifier = Modifier.size(24.defaultDp))
 
 **Android:**
 ```kotlin
-Text("Hola", fontSize = 16.balanced().sp)
+Text("Hola", fontSize = 16.ssp)
 ```
 
 **iOS:**
@@ -91,7 +91,7 @@ Text("Hola").font(.system(size: AppDimens.shared.balanced(16).toPoints()))
 
 **Flutter:**
 ```dart
-Text('Hola', style: TextStyle(fontSize: AppDimens.balanced(16).calculate(context)))
+Text('Hola', style: TextStyle(fontSize: AppDimens.fixed(16).calculate(context)))
 ```
 
 ---

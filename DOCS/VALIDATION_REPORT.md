@@ -1,6 +1,6 @@
 # 🔍 Validation Report: Theory vs Implementation
 
-> **Languages:** English | [Português (BR)](../LANG/pt-BR/VALIDATION_REPORT.md) | [Español](../LANG/es/VALIDATION_REPORT.md)
+> **Languages:** English | [Português (BR)](../LANG/pt-BR/README.md) | [Español](../LANG/es/README.md) — full translation of this report is not mirrored under `LANG/`; use this file as the source of truth.
 
 **Complete Validation of AppDimens 2.0**  
 *Author: Jean Bodenberg*  
@@ -199,7 +199,7 @@ All 13 strategies validated:
 **Test:** Button on 720dp tablet
 
 ```kotlin
-val size = 48.smart().forElement(ElementType.BUTTON).dp
+val size = 48.sdp
 ```
 
 **Expected:** BALANCED strategy (weight: 1.1)  

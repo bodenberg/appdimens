@@ -5,7 +5,7 @@ title: "📱 AppDimens iOS - Resumo do Projeto"
 
 # 📱 AppDimens iOS - Resumo do Projeto
 
-> **Idiomas:** [English](../../../iOS/PROJECT_SUMMARY.md) | Português (BR) | [Español](../../es/iOS/PROJECT_SUMMARY.md)
+> **Idiomas:** [English](../../../appdimens-ios/PROJECT_SUMMARY.md) | Português (BR) | [Español](../../es/iOS/README.md)
 
 ## 🎯 Visão Geral
 
@@ -129,7 +129,7 @@ PROJETO_IOS/
 | **Detecção de Dispositivo** | `Configuration.uiMode` | `UIDevice.current.userInterfaceIdiom` |
 | **Métricas de Tela** | `DisplayMetrics` | `UIScreen.main.bounds` |
 | **Multi-Window** | `Configuration.screenLayout` | Detecção customizada |
-| **API** | `16.fxdp` | `16.fxpt` |
+| **API** | `16.sdp` | `16.fxpt` |
 | **Conversão** | `.toPx()` | `.toPixels()` |
 
 ## 🎨 Exemplos de Uso
@@ -237,7 +237,7 @@ pod 'AppDimens', '~> 1.0'
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a Licença Apache 2.0 - veja o arquivo [LICENSE](LICENSE) para detalhes.
+Este projeto está licenciado sob a Licença Apache 2.0 — veja o arquivo [LICENSE](../../../LICENSE) na raiz do repositório central.
 
 ## 👨‍💻 Autor
 

@@ -3,7 +3,7 @@
 **Dimensões Responsivas Inteligentes para Flutter**  
 *Versão: 2.0.0*
 
-> **Idiomas:** [English](../../../Flutter/README.md) | Português (BR) | [Español](../../es/Flutter/README.md)
+> **Idiomas:** [English](../../../appdimens-flutter/README.md) | Português (BR) | [Español](../../es/Flutter/README.md)
 
 ---
 
@@ -20,11 +20,11 @@ dependencies:
 
 ```dart
 Container(
-  width: AppDimens.balanced(300).calculate(context),
-  padding: EdgeInsets.all(AppDimens.balanced(16).calculate(context)),
+  width: AppDimens.fixed(300).calculate(context),
+  padding: EdgeInsets.all(AppDimens.fixed(16).calculate(context)),
   child: Text(
     'Olá Mundo',
-    style: TextStyle(fontSize: AppDimens.balanced(18).calculate(context)),
+    style: TextStyle(fontSize: AppDimens.fixed(18).calculate(context)),
   ),
 )
 ```
@@ -33,8 +33,8 @@ Container(
 
 ```dart
 Container(
-  width: 300.0.balanced(),
-  child: Text('Olá', style: TextStyle(fontSize: 18.0.balanced())),
+  width: AppDimens.fixed(300).calculate(context),
+  child: Text('Olá', style: TextStyle(fontSize: AppDimens.fixed(18).calculate(context))),
 )
 ```
 

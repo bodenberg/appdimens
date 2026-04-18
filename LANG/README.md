@@ -82,27 +82,27 @@ LANG/
 ## Navegação Rápida
 
 ### 📱 Android
-- **English:** [Android/README.md](../Android/README.md)
+- **English (submodule):** [appdimens-dynamic/README.md](../appdimens-dynamic/README.md) · [appdimens-sdps](../appdimens-sdps/README.md) · [appdimens-ssps](../appdimens-ssps/README.md)
 - **Português (BR):** [pt-BR/Android/README.md](pt-BR/Android/README.md)
 - **Español:** [es/Android/README.md](es/Android/README.md)
 
 ### 🍎 iOS
-- **English:** [iOS/README.md](../iOS/README.md)
+- **English (submodule):** [appdimens-ios/README.md](../appdimens-ios/README.md)
 - **Português (BR):** [pt-BR/iOS/README.md](pt-BR/iOS/README.md)
 - **Español:** [es/iOS/README.md](es/iOS/README.md)
 
 ### 🎯 Flutter
-- **English:** [Flutter/README.md](../Flutter/README.md)
+- **English (submodule):** [appdimens-flutter/README.md](../appdimens-flutter/README.md)
 - **Português (BR):** [pt-BR/Flutter/README.md](pt-BR/Flutter/README.md)
 - **Español:** [es/Flutter/README.md](es/Flutter/README.md)
 
 ### ⚛️ React Native
-- **English:** [ReactNative/README.md](../ReactNative/README.md)
+- **English (submodule):** [appdimens-react-native/README.md](../appdimens-react-native/README.md)
 - **Português (BR):** [pt-BR/ReactNative/README.md](pt-BR/ReactNative/README.md)
 - **Español:** [es/ReactNative/README.md](es/ReactNative/README.md)
 
 ### 🌐 Web
-- **English:** [Web/README.md](../Web/README.md)
+- **English (submodule):** [appdimens-web/README.md](../appdimens-web/README.md)
 - **Português (BR):** [pt-BR/Web/README.md](pt-BR/Web/README.md)
 - **Español:** [es/Web/README.md](es/Web/README.md)
 
@@ -156,4 +156,4 @@ Toda a documentação está licenciada sob [Apache 2.0](../LICENSE), assim como 
 
 **Autor:** Jean Bodenberg  
 **Repositório:** https://github.com/bodenberg/appdimens  
-**Versão:** 1.0.8
+**Meta-repositório:** documentação central + submódulos (versões por pacote nos READMEs de cada submódulo).

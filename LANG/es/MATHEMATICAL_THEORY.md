@@ -41,7 +41,7 @@
 
 **Android:**
 ```kotlin
-Text("Hola", fontSize = 16.balanced().sp)
+Text("Hola", fontSize = 16.ssp)
 ```
 
 **iOS:**
@@ -51,7 +51,7 @@ Text("Hola").font(.system(size: AppDimens.shared.balanced(16).toPoints()))
 
 **Flutter:**
 ```dart
-Text('Hola', style: TextStyle(fontSize: AppDimens.balanced(16).calculate(context)))
+Text('Hola', style: TextStyle(fontSize: AppDimens.fixed(16).calculate(context)))
 ```
 
 ---

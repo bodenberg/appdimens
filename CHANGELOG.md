@@ -1,20 +1,19 @@
----
-layout: default
-title: "📝 Changelog"
----
-
 # 📝 Changelog
 
-> **Languages:** English | Português (BR) | Español
+> **Languages:** English | [Português (BR)](LANG/pt-BR/README.md) | [Español](LANG/es/README.md)
 
-> **Note:** Translation files for CHANGELOG are not yet available in other languages.
+**Scope:** High-level history for the **appdimens** documentation hub and coordinated releases. **Each Git submodule** (e.g. `appdimens-dynamic`, `appdimens-ios`) may maintain its own detailed changelog — check that repository for library-specific fixes.
 
-All notable changes to AppDimens will be documented in this file.
+All notable changes tracked in this file are described below.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+### Nota sobre documentación y Android
+
+Las entradas históricas de versiones anteriores (p. ej. nombres **`.fxdp` / `.dydp`**, cadenas unificadas estilo **`.balanced().dp`**) describen **artefactos o guías unificadas** de su época. El módulo publicado actual de UI en Android es **[`appdimens-dynamic` 3.x](appdimens-dynamic/README.md)** con tokens **Compose** (`sdp`, `wdp`, `hdp`, `ssp`, `asdp`, …). El mapa conceptual frente a cada plataforma está en **[DOCS/PLATFORM_API_MAP.md](DOCS/PLATFORM_API_MAP.md)**.
 
 ## [2.0.0] - 2025-11-02
 
@@ -31,9 +30,9 @@ All platforms updated to version 2.0.0 with unified architecture:
 - **Web**: v2.0.0 ✅ (tested and built)
 
 ### 🔄 Previous Updates
-- 📊 **SCALING_COMPARISON.html**: Updated to include all 13 scaling strategies (added BALANCED, POWER, FLUID)
-- 📊 **SCALING_COMPARISON_COMPLETE.html**: New comprehensive comparison page showing all 13 strategies with visual demos
-- 📊 **SCALING_COMPARISON_2.html**: Clarified as Dynamic vs Fixed comparison, added reference to complete comparison
+- 📊 **DOCS/html/SCALING_COMPARISON.html** (if present): Updated to include all 13 scaling strategies (added BALANCED, POWER, FLUID)
+- 📊 **DOCS/html/SCALING_COMPARISON_COMPLETE.html**: Comprehensive comparison page showing all 13 strategies with visual demos
+- 📊 **DOCS/html/SCALING_COMPARISON_2.html**: Dynamic vs Fixed comparison, references the complete comparison
 
 ## [2.0.0-dynamic] - 2025-02-01
 
@@ -298,7 +297,7 @@ const cardWidth = fixed(300).portraitLowest().toPx();
 ### Documentation
 
 - **CRITICAL:** Todos os exemplos matemáticos recalculados com nova precisão
-- **HTML Demos:** `SCALING_COMPARISON.html` e `SCALING_COMPARISON_2.html` atualizados
+- **HTML Demos:** `DOCS/html/SCALING_COMPARISON*.html` atualizados (quando presentes no repositório)
 - **MATHEMATICAL_THEORY.md:** Fórmulas e exemplos atualizados
 - **COMPREHENSIVE_TECHNICAL_GUIDE.md:** Seção de constantes revisada
 - **FORMULA_COMPARISON.md:** Comparações recalculadas
@@ -718,9 +717,7 @@ We use [Semantic Versioning](https://semver.org/) for version numbers:
 
 ## Migration Guide
 
-For migration between major versions, see:
-- [Android Migration Guide](Android/MIGRATION.md)
-- [iOS Migration Guide](iOS/MIGRATION.md)
+For migration between major versions, see the **README and documentation** inside each submodule (e.g. [appdimens-dynamic](appdimens-dynamic/README.md), [appdimens-ios](appdimens-ios/README.md)) and the theory docs under [DOCS/](DOCS/README.md) (e.g. migration section in [MATHEMATICAL_THEORY_SIMPLIFIED.md](DOCS/MATHEMATICAL_THEORY_SIMPLIFIED.md#9-migration-from-v1x)).
 
 ## Contributing
 

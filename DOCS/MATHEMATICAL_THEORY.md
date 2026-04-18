@@ -358,31 +358,31 @@ fun BalancedExample() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.balanced().dp)  // ⭐ BALANCED - Primary recommendation
+            .padding(16.sdp)  // ⭐ BALANCED - Primary recommendation
     ) {
         // Button with balanced sizing
         Button(
             onClick = { },
             modifier = Modifier
-                .height(48.balanced().dp)
+                .height(48.sdp)
                 .fillMaxWidth()
         ) {
             Text(
                 text = "Click Me",
-                fontSize = 16.balanced().sp
+                fontSize = 16.ssp
             )
         }
         
         // Card with balanced dimensions
         Card(
             modifier = Modifier
-                .width(300.balanced().dp)
-                .padding(vertical = 12.balanced().dp)
+                .width(300.wdp)
+                .padding(vertical = 12.sdp)
         ) {
             Text(
                 text = "Balanced Card",
-                fontSize = 14.balanced().sp,
-                modifier = Modifier.padding(16.balanced().dp)
+                fontSize = 14.ssp,
+                modifier = Modifier.padding(16.sdp)
             )
         }
     }
@@ -426,7 +426,7 @@ class BalancedWidget extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.all(AppDimens.balanced(16).calculate(context)),
+          padding: EdgeInsets.all(AppDimens.fixed(16).calculate(context)),
           child: Column(
             children: [
               // Button with balanced sizing
@@ -435,23 +435,23 @@ class BalancedWidget extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(
                     double.infinity,
-                    AppDimens.balanced(48).calculate(context),
+                    AppDimens.fixed(48).calculate(context),
                   ),
                 ),
                 child: Text(
                   'Click Me',
                   style: TextStyle(
-                    fontSize: AppDimens.balanced(16).calculate(context),
+                    fontSize: AppDimens.fixed(16).calculate(context),
                   ),
                 ),
               ),
               
-              SizedBox(height: AppDimens.balanced(12).calculate(context)),
+              SizedBox(height: AppDimens.fixed(12).calculate(context)),
               
               // Card with balanced dimensions
               Container(
-                width: AppDimens.balanced(300).calculate(context),
-                padding: EdgeInsets.all(AppDimens.balanced(16).calculate(context)),
+                width: AppDimens.fixed(300).calculate(context),
+                padding: EdgeInsets.all(AppDimens.fixed(16).calculate(context)),
                 decoration: BoxDecoration(
                   color: Colors.grey[100],
                   borderRadius: BorderRadius.circular(8),
@@ -459,7 +459,7 @@ class BalancedWidget extends StatelessWidget {
                 child: Text(
                   'Balanced Card',
                   style: TextStyle(
-                    fontSize: AppDimens.balanced(14).calculate(context),
+                    fontSize: AppDimens.fixed(14).calculate(context),
                   ),
                 ),
               ),
@@ -1228,7 +1228,7 @@ function inferStrategy(
 
 ```kotlin
 // Android
-val size = 48.smart().forElement(ElementType.BUTTON).dp
+val size = 48.sdp
 
 Inference Process:
 1. Element: BUTTON
@@ -1266,10 +1266,8 @@ Result: interpolate between 14-20 based on screen width
 #### Example 3: Container on Phone
 
 ```dart
-// Flutter
-final width = AppDimens.smart(300)
-    .forElement(ElementType.container)
-    .calculate(context);
+// Flutter — mirror “container prefers growth” with the dynamic builder (tune via submodule API).
+final width = AppDimens.dynamic(300).calculate(context);
 
 Inference Process:
 1. Element: CONTAINER
@@ -1287,11 +1285,9 @@ Result: 300 × (360/300) = 360dp (100% linear)
 Users can always override smart inference:
 
 ```kotlin
-// Android - Override smart inference
-val size = 48.smart()
-    .forElement(ElementType.BUTTON)
-    .overrideStrategy(ScalingStrategy.LOGARITHMIC)  // Force LOGARITHMIC
-    .dp
+// Android (appdimens-dynamic 3.x) — pick the strategy package explicitly instead of a unified smart() chain.
+import com.appdimens.dynamic.compose.logarithmic.*
+Text("Forced logarithmic", fontSize = 16.logarithmicSp().logssp)
 
 // iOS
 let size = AppDimens.shared.smart(48)
@@ -1299,11 +1295,8 @@ let size = AppDimens.shared.smart(48)
     .forceStrategy(.logarithmic)  // Force LOGARITHMIC
     .toPoints()
 
-// Flutter
-final size = AppDimens.smart(48)
-    .forElement(ElementType.button)
-    .withStrategy(ScalingStrategy.logarithmic)  // Force LOGARITHMIC
-    .calculate(context);
+// Flutter — configure AppDimensFixed / AppDimensDynamic per submodule docs (no AppDimens.smart entry point).
+final size = AppDimens.fixed(48).calculate(context);
 ```
 
 ---
@@ -1823,7 +1816,7 @@ START: What type of app are you building?
 @Composable
 fun SocialFeed() {
     LazyColumn(
-        modifier = Modifier.padding(16.balanced().dp)
+        modifier = Modifier.padding(16.sdp)
     ) {
         items(posts) { post ->
             PostCard(post)
@@ -1836,45 +1829,45 @@ fun PostCard(post: Post) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.balanced().dp)
+            .padding(vertical = 8.sdp)
     ) {
-        Column(modifier = Modifier.padding(16.balanced().dp)) {
+        Column(modifier = Modifier.padding(16.sdp)) {
             // Profile
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(
                     painter = rememberImagePainter(post.avatar),
-                    modifier = Modifier.size(40.balanced().dp)
+                    modifier = Modifier.size(40.sdp)
                 )
-                Spacer(modifier = Modifier.width(12.balanced().dp))
+                Spacer(modifier = Modifier.width(12.sdp))
                 Text(
                     text = post.username,
-                    fontSize = 14.balanced().sp,
+                    fontSize = 14.ssp,
                     fontWeight = FontWeight.Bold
                 )
             }
             
-            Spacer(modifier = Modifier.height(12.balanced().dp))
+            Spacer(modifier = Modifier.height(12.sdp))
             
             // Content
             Text(
                 text = post.content,
-                fontSize = 14.balanced().sp,
-                lineHeight = 20.balanced().sp
+                fontSize = 14.ssp,
+                lineHeight = 20.ssp
             )
             
-            Spacer(modifier = Modifier.height(12.balanced().dp))
+            Spacer(modifier = Modifier.height(12.sdp))
             
             // Actions
             Row {
                 IconButton(
                     onClick = { },
-                    modifier = Modifier.size(40.balanced().dp)
+                    modifier = Modifier.size(40.sdp)
                 ) {
                     Icon(Icons.Default.Favorite, contentDescription = "Like")
                 }
                 IconButton(
                     onClick = { },
-                    modifier = Modifier.size(40.balanced().dp)
+                    modifier = Modifier.size(40.sdp)
                 ) {
                     Icon(Icons.Default.Comment, contentDescription = "Comment")
                 }
@@ -1957,17 +1950,17 @@ class PhotoGallery extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      padding: EdgeInsets.all(AppDimens.percentage(16).calculate(context)),
+      padding: EdgeInsets.all(AppDimens.fixed(16).calculate(context)),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        crossAxisSpacing: AppDimens.percentage(8).calculate(context),
-        mainAxisSpacing: AppDimens.percentage(8).calculate(context),
+        crossAxisSpacing: AppDimens.dynamic(8).calculate(context),
+        mainAxisSpacing: AppDimens.dynamic(8).calculate(context),
       ),
       itemBuilder: (context, index) {
         return Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(
-              AppDimens.balanced(8).calculate(context)
+              AppDimens.fixed(8).calculate(context)
             ),
           ),
           child: Image.network(

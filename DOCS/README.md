@@ -4,6 +4,8 @@ Welcome to the complete AppDimens v2.0 documentation. This page serves as a cent
 
 > **Languages:** English | [Português (BR)](../LANG/pt-BR/DOCS_QUICK_REFERENCE.md) | [Español](../LANG/es/DOCS_QUICK_REFERENCE.md)
 
+**Android (`appdimens-dynamic` 3.x):** Jetpack Compose snippets in this folder use **`sdp` / `hdp` / `wdp` / `ssp`** and, for the hybrid “BALANCED-like” curve on an axis, **`asdp` / `ahdp` / `awdp`** from the `compose.auto` package. Names such as **`balanced()`** still appear in **iOS, Web, React Native**, and in **conceptual strategy** sections; they are not the public Kotlin API of `appdimens-dynamic` 3.x. See **[Platform API map](PLATFORM_API_MAP.md)** for a concise concept → binding table.
+
 ---
 
 ## 🆕 What's New in Version 2.0
@@ -51,6 +53,7 @@ New to AppDimens? Start here:
 | [Validation Report](VALIDATION_REPORT.md) | Implementation validation | 20 min |
 | [Base Orientation Guide](BASE_ORIENTATION_GUIDE.md) | Auto-rotation adaptation | 15 min |
 | [Applicability Guide](APPLICABILITY_OF_APPDIMENS.md) | When and where to use AppDimens | 20 min |
+| [Platform API map](PLATFORM_API_MAP.md) | Concept names → real APIs per submodule | 10 min |
 
 **Recommended Path:** Mathematical Theory → Formula Comparison → Technical Guide
 
@@ -58,62 +61,46 @@ New to AppDimens? Start here:
 
 ## 🎯 Platform-Specific Guides
 
-### Android
+Repositories in this meta-repo live under **Git submodule folders** (same names as on GitHub). Open the linked README inside each submodule for install coordinates and APIs.
 
-- **[Android README](../Android/README.md)** - Complete Android guide
-  - Jetpack Compose, View System, Data Binding
-  - 13 scaling strategies with Kotlin extensions
-  - Physical Units (mm, cm, inch)
-  
-**Modules:**
-- **[Dynamic Module](../Android/appdimens_dynamic/README.md)** - Core library (Fixed + Dynamic + Physical Units)
-- **[Games Module](../Android/appdimens_games/README.md)** - C++/NDK game development
-- **[SDP Module](../Android/appdimens_sdps/README.md)** - Scalable DP for XML
-- **[SSP Module](../Android/appdimens_ssps/README.md)** - Scalable SP for text in XML
-- **[All Module](../Android/appdimens_all/README.md)** - All-in-one (dynamic + sdps + ssps)
+### Android (code / Compose) — `appdimens-dynamic`
 
-### iOS
+- **[appdimens-dynamic README](../appdimens-dynamic/README.md)** — Jetpack Compose, Kotlin/Java, physical units, scaling modes  
+- **KDoc / extra docs:** see `DOCUMENTATION/` inside that submodule
 
-- **[iOS README](../iOS/README.md)** - Complete iOS guide
-  - SwiftUI and UIKit support
-  - 13 scaling strategies
-  - Metal game development
-  
-**Additional Docs:**
-- [Installation Guide](../iOS/INSTALLATION.md) - iOS installation
-- [Usage Guide](../iOS/USAGE_GUIDE.md) - iOS usage examples
-- [Documentation](../iOS/DOCUMENTATION.md) - Detailed iOS documentation
-- [Modular Guide](../iOS/README_MODULAR.md) - Modular architecture
+### Android (XML SDP / SSP)
 
-### Flutter
+- **[appdimens-sdps](../appdimens-sdps/README.md)** — Scalable DP for XML (`@dimen/_*sdp`)  
+- **[appdimens-ssps](../appdimens-ssps/README.md)** — Scalable SP for XML (`@dimen/_*ssp`)
 
-- **[Flutter README](../Flutter/README.md)** - Complete Flutter guide
-  - 13 scaling strategies with extensions
-  - Base orientation support
-  - Smart API with auto-inference
-  
-**Additional Docs:**
-- [Implementation Summary](../Flutter/IMPLEMENTATION_SUMMARY.md) - Technical implementation details
-- [Example App](../Flutter/example/README.md) - Example application
+### Android (games)
 
-### React Native
+- **[appdimens-games module](../appdimens-games/appdimens_games/README.md)** — C++/NDK, OpenGL-oriented APIs (root README may be a stub)
 
-- **[React Native README](../ReactNative/README.md)** - Complete React Native guide
-  - TypeScript support
-  - Custom hooks (useAppDimens)
-  - 13 scaling strategies
-  - Smart API
+### Kotlin Multiplatform
 
-### Web
+- **[appdimens-dynamic-kmp](../appdimens-dynamic-kmp/README.md)** — Shared codepath (check submodule for maturity / version)
 
-- **[Web README](../Web/README.md)** - Complete Web guide
-  - Vanilla JS, React, Vue, Svelte, Angular
-  - TypeScript typings
-  - CDN and NPM support
-  
-**Additional Docs:**
-- [Quick Start](../Web/QUICK_START.md) - Web quick start
-- [Testing Guide](../Web/HOWTO_TEST.md) - How to test WebDimens
+### iOS — `appdimens-ios`
+
+- **[appdimens-ios README](../appdimens-ios/README.md)** — entry point (may be minimal; see additional files below)  
+- [Installation](../appdimens-ios/INSTALLATION.md) · [Usage](../appdimens-ios/USAGE_GUIDE.md) · [Documentation](../appdimens-ios/DOCUMENTATION.md) · [Modular guide](../appdimens-ios/README_MODULAR.md)
+
+### Flutter — `appdimens-flutter`
+
+- **[appdimens-flutter README](../appdimens-flutter/README.md)**  
+- [Implementation summary](../appdimens-flutter/IMPLEMENTATION_SUMMARY.md) · [Example app](../appdimens-flutter/example/README.md)
+
+### React Native — `appdimens-react-native`
+
+- **[appdimens-react-native README](../appdimens-react-native/README.md)** · `CHANGELOG.md`, prompts in submodule root
+
+### Web — `appdimens-web` (`webdimens`)
+
+- **[appdimens-web README](../appdimens-web/README.md)**  
+- [Quick start](../appdimens-web/QUICK_START.md) · [Testing](../appdimens-web/HOWTO_TEST.md)
+
+**Note:** Some older docs referred to an **“all-in-one”** Android artifact (`appdimens-all`). Maven coordinates and packaging change over time — always confirm in **appdimens-dynamic** and **appdimens-sdps/ssps** READMEs.
 
 ---
 
@@ -136,6 +123,7 @@ New to AppDimens? Start here:
 | [Examples](EXAMPLES.md) | Code examples for all 5 platforms |
 | [Quick Reference](DOCS_QUICK_REFERENCE.md) | Fast navigation and lookup |
 | [Applicability Guide](APPLICABILITY_OF_APPDIMENS.md) | When and where to use AppDimens |
+| [Interactive HTML demos](html/README.md) | Scaling comparison pages in the browser |
 
 ---
 
@@ -164,14 +152,19 @@ New to AppDimens? Start here:
 **Goal:** Get AppDimens working in your app ASAP
 
 1. [Main README](../README.md) - Overview (5 min)
-2. [Platform Guide](../Android/README.md) - Choose your platform (10 min)
+2. [Submodule map](../README.md#submodule-map) — pick your platform repo (5 min)
 3. [Examples](EXAMPLES.md) - Copy and adapt (15 min)
 
 **Quick Start Code:**
 ```kotlin
-// Android - Just use .balanced() everywhere! ⭐
-Text("Hello", fontSize = 16.balanced().sp)
-Button(modifier = Modifier.height(48.balanced().dp))
+import com.appdimens.dynamic.compose.*
+import com.appdimens.dynamic.compose.auto.asdp
+import com.appdimens.dynamic.compose.auto.ahdp
+
+// Scaled (default in appdimens-dynamic README) + auto on axis (BALANCED-like hybrid)
+Text("Hello", fontSize = 16.ssp)
+Button(modifier = Modifier.height(48.hdp))
+Card(modifier = Modifier.padding(16.asdp))
 ```
 
 ---
@@ -256,7 +249,7 @@ Button(modifier = Modifier.height(48.balanced().dp))
 - [Smart Inference](MATHEMATICAL_THEORY.md#6-smart-inference-system-v20)
 - [Base Orientation](BASE_ORIENTATION_GUIDE.md) - Auto-rotation support
 - [Physical Units](COMPREHENSIVE_TECHNICAL_GUIDE.md#physical-units)
-- [Game Development](../Android/appdimens_games/README.md) - C++/NDK and Metal
+- [Game Development (Android)](../appdimens-games/appdimens_games/README.md) — C++/NDK; iOS/Metal notes in [appdimens-ios](../appdimens-ios/README.md)
 
 ---
 
@@ -283,9 +276,13 @@ Button(modifier = Modifier.height(48.balanced().dp))
 **Use for:** 95% of applications, especially multi-device apps
 
 ```kotlin
-// Android
-Text("Hello", fontSize = 16.balanced().sp)
-Button(modifier = Modifier.height(48.balanced().dp))
+import com.appdimens.dynamic.compose.*
+import com.appdimens.dynamic.compose.auto.asdp
+import com.appdimens.dynamic.compose.auto.assp
+
+// Android — auto strategy mirrors the BALANCED hybrid on each axis (see submodule DOCUMENTATION/auto.md)
+Text("Hello", fontSize = 16.assp)
+Button(modifier = Modifier.height(48.hdp).padding(16.asdp))
 ```
 
 **Why BALANCED?**
@@ -302,8 +299,10 @@ Button(modifier = Modifier.height(48.balanced().dp))
 **Use for:** Phone-focused apps, backward compatibility with v1.x
 
 ```kotlin
-// Android
-Icon(modifier = Modifier.size(24.defaultDp))
+import com.appdimens.dynamic.compose.*
+
+// Android — scaled tokens (phone-first layouts); tune axis with sdp / wdp / hdp as needed
+Icon(modifier = Modifier.size(24.sdp))
 ```
 
 **Why DEFAULT?**
@@ -408,60 +407,27 @@ Icon(modifier = Modifier.size(24.defaultDp))
 
 ---
 
-## 📱 Platform Documentation Structure
+## 📱 Submodule documentation layout (this repository)
 
-### Android Documentation Tree
+Each top-level folder below is a **Git submodule** (separate repository).
 
-```
-Android/
-├── README.md (Main guide)
-├── appdimens_dynamic/
-│   └── README.md (Core library: Fixed, Dynamic, Physical Units)
-├── appdimens_games/
-│   └── README.md (C++/NDK game development)
-├── appdimens_sdps/
-│   └── README.md (Scalable DP for XML)
-├── appdimens_ssps/
-│   └── README.md (Scalable SP for XML)
-├── appdimens_all/
-│   └── README.md (All-in-one package)
-└── DOCS/ (Auto-generated API docs)
-```
-
-### iOS Documentation Tree
+### Android family
 
 ```
-iOS/
-├── README.md (Main guide)
-├── DOCUMENTATION.md (Detailed API reference)
-├── INSTALLATION.md (Installation guide)
-├── USAGE_GUIDE.md (Usage examples)
-├── README_MODULAR.md (Modular architecture)
-└── DOCS/
-    └── README.md (Additional resources)
+appdimens-dynamic/     ← README.md, DOCUMENTATION/, library/
+appdimens-dynamic-kmp/
+appdimens-sdps/
+appdimens-ssps/
+appdimens-games/       ← appdimens_games/README.md (module docs)
 ```
 
-### Flutter Documentation Tree
+### Apple / Dart / JS
 
 ```
-Flutter/
-├── README.md (Main guide)
-├── IMPLEMENTATION_SUMMARY.md (Technical details)
-└── example/
-    └── README.md (Example app guide)
-```
-
-### React Native & Web Documentation
-
-```
-ReactNative/
-├── README.md (Main guide)
-└── PROMPT_REACT_NATIVE.md (Development prompts)
-
-Web/
-├── README.md (Main guide)
-├── QUICK_START.md (Quick start)
-└── HOWTO_TEST.md (Testing guide)
+appdimens-ios/         ← INSTALLATION.md, USAGE_GUIDE.md, DOCUMENTATION.md, …
+appdimens-flutter/     ← example/, IMPLEMENTATION_SUMMARY.md, …
+appdimens-react-native/
+appdimens-web/         ← QUICK_START.md, HOWTO_TEST.md, …
 ```
 
 ---
@@ -488,7 +454,7 @@ Web/
 ### By Task
 
 #### "I want to install AppDimens"
-→ [Main README](../README.md#-installation)
+→ [Main README — install snippets](../README.md#install-snippets-confirm-version-in-submodule-readme) and the **submodule README** for your platform
 
 #### "I want to understand which strategy to use"
 → [Quick Decision Guide](MATHEMATICAL_THEORY_SIMPLIFIED.md#6-quick-decision-guide)
@@ -510,8 +476,8 @@ Web/
 → [Performance Analysis](FORMULA_COMPARISON.md#5-performance-analysis)
 
 #### "I want game development features"
-→ [Android Games](../Android/appdimens_games/README.md) or
-→ [iOS Games](../iOS/README.md#game-development-features)
+→ [Android games module](../appdimens-games/appdimens_games/README.md) or
+→ [appdimens-ios](../appdimens-ios/README.md) (Games / Metal sections in submodule docs)
 
 ---
 
@@ -610,8 +576,8 @@ Apache License 2.0 - see [LICENSE](../LICENSE) file
 
 ---
 
-**Last updated:** February 2025  
-**Version:** 2.0.0  
+**Last updated:** April 2026  
+**Scope:** Documentation index for the **appdimens** meta-repository (not a single library semver).  
 **Author:** [Jean Bodenberg](https://github.com/bodenberg)
 
 ---

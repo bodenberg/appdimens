@@ -283,4 +283,4 @@ A biblioteca agora oferece uma solução completa para dimensionamento responsiv
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a Licença Apache 2.0 - veja o arquivo [LICENSE](LICENSE) para detalhes.
+Este projeto está licenciado sob a Licença Apache 2.0 — veja o arquivo [LICENSE](../../../LICENSE) na raiz do repositório central.

@@ -5,7 +5,7 @@ title: "📚 AppDimens iOS - Documentação Técnica (Resumo)"
 
 # 📚 AppDimens iOS - Documentação Técnica (Resumo)
 
-> **Idiomas:** [English](../../../iOS/DOCUMENTATION.md) | Português (BR) | [Español](../../es/iOS/DOCUMENTATION.md)
+> **Idiomas:** [English](../../../appdimens-ios/DOCUMENTATION.md) | Português (BR) | [Español](../../es/iOS/README.md)
 
 Este resumo cobre os principais componentes, modelos matemáticos (Fixed/Dynamic), extensões SwiftUI/UIKit e utilitários. Para a versão completa, consulte o original em inglês.
 

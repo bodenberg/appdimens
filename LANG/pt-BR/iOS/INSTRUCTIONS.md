@@ -5,7 +5,7 @@ title: "📋 Instruções de Uso do Projeto AppDimens iOS"
 
 # 📋 Instruções de Uso do Projeto AppDimens iOS
 
-> **Idiomas:** [English](../../../iOS/INSTRUCTIONS.md) | Português (BR) | [Español](../../es/iOS/INSTRUCTIONS.md)
+> **Idiomas:** [English](../../../appdimens-ios/INSTRUCTIONS.md) | Português (BR) | [Español](../../es/iOS/README.md)
 
 ## 🎯 Objetivo
 
@@ -142,8 +142,8 @@ class ViewController: UIViewController {
 |---------|-----|
 | `AppDimens.fixed(16).toPx()` | `AppDimens.fixed(16).toPixels()` |
 | `AppDimens.dynamic(100).toDp()` | `AppDimens.dynamic(100).toPoints()` |
-| `16.fxdp` | `16.fxpt` |
-| `100.dydp` | `100.dypt` |
+| `16.sdp` | `16.fxpt` |
+| `100.wdp` | `100.dypt` |
 | `ScreenType.LOWEST` | `ScreenType.lowest` |
 | `UiModeType.PHONE` | `DeviceType.phone` |
 
@@ -271,7 +271,7 @@ struct PercentageLayout: View {
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a Licença Apache 2.0 - veja o arquivo [LICENSE](LICENSE) para detalhes.
+Este projeto está licenciado sob a Licença Apache 2.0 — veja o arquivo [LICENSE](../../../LICENSE) na raiz do repositório central.
 
 ---
 

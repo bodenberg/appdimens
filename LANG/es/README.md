@@ -38,9 +38,9 @@
 - Constantes pre-calculadas
 - Algoritmos de búsqueda binaria (O(log n))
 
-**♻️ Compatibilidad Total con Versiones Anteriores**
-- Las extensiones antiguas `.fxdp`/`.dydp` todavía funcionan
-- Camino suave de migración a `.balanced()`, `.defaultDp`, `.percentageDp`
+**♻️ Compatibilidad entre artefactos**
+- Los paquetes antiguos pueden seguir exponiendo `.fxdp`/`.dydp` — revisa el changelog de tu dependencia
+- Para **Android Compose** nuevo, usa **`appdimens-dynamic` 3.x** (`sdp`, `asdp`, …); consulta [PLATFORM_API_MAP.md](../../DOCS/PLATFORM_API_MAP.md) (inglés)
 
 ---
 
@@ -72,7 +72,7 @@
 
 ```kotlin
 dependencies {
-    implementation("io.github.bodenberg:appdimens-dynamic:2.0.0")
+    implementation("io.github.bodenberg:appdimens-dynamic:3.1.4")
 }
 ```
 
@@ -112,10 +112,10 @@ npm install webdimens@2.0.0
 fun MiCard() {
     Card(
         modifier = Modifier
-            .width(300.balanced().dp)      // ✨ BALANCED (RECOMENDADO) ⭐
-            .padding(16.balanced().dp)
+            .width(300.wdp)      // ✨ BALANCED (RECOMENDADO) ⭐
+            .padding(16.sdp)
     ) {
-        Text("Hola Mundo", fontSize = 18.balanced().sp)
+        Text("Hola Mundo", fontSize = 18.ssp)
     }
 }
 ```
@@ -138,11 +138,11 @@ struct MiCard: View {
 
 ```dart
 Container(
-  width: AppDimens.balanced(300).calculate(context),
-  padding: EdgeInsets.all(AppDimens.balanced(16).calculate(context)),
+  width: AppDimens.fixed(300).calculate(context),
+  padding: EdgeInsets.all(AppDimens.fixed(16).calculate(context)),
   child: Text(
     'Hola Mundo',
-    style: TextStyle(fontSize: AppDimens.balanced(18).calculate(context)),
+    style: TextStyle(fontSize: AppDimens.fixed(18).calculate(context)),
   ),
 )
 ```

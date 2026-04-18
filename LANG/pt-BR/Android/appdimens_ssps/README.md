@@ -25,4 +25,4 @@ implementation("io.github.bodenberg:appdimens-ssps:2.0.1")
 
 ---
 
-**Guia:** [../../../../Android/appdimens_ssps/README.md](../../../../Android/appdimens_ssps/README.md)
+**Guia:** [../../../../appdimens-ssps/README.md](../../../../appdimens-ssps/README.md)

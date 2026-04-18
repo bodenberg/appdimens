@@ -1,22 +1,19 @@
----
-layout: default
-title: "🔒 Security Policy"
----
-
 # 🔒 Security Policy
 
-> **Languages:** English | Português (BR) | Español
-
-> **Note:** Translation files are not yet available in other languages.
+> **Languages:** English | [Português (BR)](LANG/pt-BR/README.md) | [Español](LANG/es/README.md)
 
 ## Supported Versions
 
-We release patches for security vulnerabilities in the following versions:
+This **meta-repository** mainly holds documentation. **Security-sensitive code ships in submodule repositories** (Android, iOS, Flutter, React Native, Web, KMP). We aim to provide security patches for **currently maintained release lines** of those packages.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.0.x   | :white_check_mark: |
-| < 1.0   | :x:                |
+| Track | Supported |
+| ----- | --------- |
+| **Android `appdimens-dynamic` 3.x** | :white_check_mark: |
+| **Android `appdimens-sdps` / `appdimens-ssps` 3.x** | :white_check_mark: |
+| **Android `appdimens-games` 2.x** | :white_check_mark: (best effort) |
+| **Cross-platform 2.x** (Flutter, iOS pod/SPM, RN, `webdimens`) | :white_check_mark: |
+| **KMP `appdimens-dynamic-kmp` 4.x** | :white_check_mark: (experimental; see submodule) |
+| **Older lines** (e.g. 1.0.x) | :x: Critical fixes only by exception |
 
 ## Reporting a Vulnerability
 

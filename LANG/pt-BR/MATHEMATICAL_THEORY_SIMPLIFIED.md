@@ -7,6 +7,8 @@
 *Data: Fevereiro 2025*  
 *Versão: 2.0.0*
 
+> **Nota de API:** exemplos **Android / Jetpack Compose** referem-se ao **`appdimens-dynamic` 3.x** (`sdp`, `hdp`, `wdp`, `ssp`, `asdp` / `ahdp` / `awdp`, …). Nomes como **`balanced()`** podem aparecer em **iOS / Web / React Native** ou na **teoria** multiplataforma. Veja o [mapa de APIs](../../DOCS/PLATFORM_API_MAP.md) (inglês).
+
 > **🆕 Versão 2.0:** Este guia agora cobre **13 estratégias de escalonamento** (eram 2), com **BALANCED** como **recomendação primária** para a maioria dos apps, e **DEFAULT** como escolha secundária para apps focados em telefones.
 
 ---
@@ -198,8 +200,8 @@ Exemplo: 48dp em tablet 720dp ≈ 69.7dp
 ### Android
 
 ```kotlin
-Text("Olá", fontSize = 16.balanced().sp)
-Button(modifier = Modifier.height(48.balanced().dp))
+Text("Olá", fontSize = 16.ssp)
+Button(modifier = Modifier.height(48.sdp))
 ```
 
 ### iOS
@@ -211,7 +213,7 @@ Text("Olá").font(.system(size: AppDimens.shared.balanced(16).toPoints()))
 ### Flutter
 
 ```dart
-Text('Olá', style: TextStyle(fontSize: AppDimens.balanced(16).calculate(context)))
+Text('Olá', style: TextStyle(fontSize: AppDimens.fixed(16).calculate(context)))
 ```
 
 ---
@@ -230,16 +232,16 @@ Text('Olá', style: TextStyle(fontSize: AppDimens.balanced(16).calculate(context
 
 **Código antigo (v1.x) - Ainda funciona:**
 ```kotlin
-Text("Olá", fontSize = 16.fxsp)  // Deprecated mas funcional
+Text("Olá", fontSize = 16.ssp)  // Deprecated mas funcional
 ```
 
 **Código novo (v2.0) - Recomendado:**
 ```kotlin
 // Recomendação primária
-Text("Olá", fontSize = 16.balanced().sp)  // ⭐ BALANCED
+Text("Olá", fontSize = 16.ssp)  // ⭐ BALANCED
 
-// Secundária (equivalente ao antigo Fixed)
-Text("Olá", fontSize = 16.defaultDp.sp)  // DEFAULT
+// Secundária (telefone primeiro — tokens escalados)
+Text("Olá", fontSize = 16.ssp)
 ```
 
 ---
@@ -248,22 +250,22 @@ Text("Olá", fontSize = 16.defaultDp.sp)  // DEFAULT
 
 ### Seleção de Estratégia
 
-**Para 95% dos apps:**
+**Para 95% dos apps (Android Compose):**
 ```kotlin
-Use BALANCED ⭐
-.balanced().dp / .balanced().sp
+// Curva híbrida no eixo ≈ BALANCED
+16.asdp / 16.assp
 ```
 
-**Para apps apenas de telefone:**
+**Para layouts focados em telefone (Android Compose):**
 ```kotlin
-Use DEFAULT
-.defaultDp / .defaultSp
+// Tokens escalados ≈ DEFAULT
+16.sdp / 16.ssp
 ```
 
-**Para containers grandes:**
+**Para containers grandes (Android Compose):**
 ```kotlin
-Use PERCENTAGE
-.percentageDp.dp
+// Largura ≈ PERCENTAGE
+300.wdp
 ```
 
 ---

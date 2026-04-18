@@ -1,3 +1,0 @@
-jdk: 17
-before_install:
-  - cd Android

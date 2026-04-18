@@ -5,7 +5,7 @@ title: "🚀 AppDimens iOS - Guia de Uso"
 
 # 🚀 AppDimens iOS - Guia de Uso
 
-> **Idiomas:** [English](../../../iOS/USAGE_GUIDE.md) | Português (BR) | [Español](../../es/iOS/USAGE_GUIDE.md)
+> **Idiomas:** [English](../../../appdimens-ios/USAGE_GUIDE.md) | Português (BR) | [Español](../../es/iOS/README.md)
 
 Este guia mostra como usar AppDimens iOS com exemplos práticos e boas práticas.
 

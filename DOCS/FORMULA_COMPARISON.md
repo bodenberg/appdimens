@@ -165,9 +165,9 @@ arAdj(AR) = 1 + k_AR × ln(AR / AR₀)  [enabled by default]
 - ✅ When you want best-in-class scaling
 
 **Platform Support:**
-- Android (Jetpack Compose): `48.balanced().dp`
+- Android (Jetpack Compose): `48.sdp`
 - iOS (SwiftUI): `AppDimens.shared.balanced(48).toPoints()`
-- Flutter: `AppDimens.balanced(48).calculate(context)`
+- Flutter: `AppDimens.fixed(48).calculate(context)`
 - React Native: `balanced(48)`
 - Web: `balanced(48)`
 
@@ -650,8 +650,9 @@ Difference: 45.5dp (39% reduction with BALANCED)
 <!-- Before (SDP) -->
 <dimen name="_16sdp">32dp</dimen> <!-- on 720dp tablet -->
 
-<!-- After (AppDimens BALANCED) -->
-android:padding="16.balanced().dp" <!-- = 22.3dp on 720dp -->
+<!-- After (Jetpack Compose + appdimens-dynamic) -->
+<!-- Modifier.padding(16.asdp)  // or 16.sdp for scaled; values depend on configuration -->
+<!-- XML SDP resources remain @dimen/_16sdp via appdimens-sdps when not using Compose -->
 ```
 
 ---
@@ -1227,7 +1228,7 @@ dependencies {
     // implementation("com.intuit.sdp:sdp-android:1.1.0")
     
     // Add AppDimens
-    implementation("io.github.bodenberg:appdimens-dynamic:2.0.1")
+    implementation("io.github.bodenberg:appdimens-dynamic:3.1.4")
 }
 ```
 
@@ -1247,10 +1248,10 @@ dependencies {
 // Jetpack Compose
 Text(
     text = "Hello",
-    fontSize = 16.balanced().sp,
+    fontSize = 16.ssp,
     modifier = Modifier
-        .width(300.balanced().dp)
-        .padding(12.balanced().dp)
+        .width(300.wdp)
+        .padding(12.sdp)
 )
 ```
 
@@ -1333,7 +1334,7 @@ Text(
 Text(
     'Hello',
     style: TextStyle(
-        fontSize: AppDimens.balanced(16).calculate(context)  // Perceptual scaling ✅
+        fontSize: AppDimens.fixed(16).calculate(context)  // Perceptual scaling ✅
     ),
 )
 ```

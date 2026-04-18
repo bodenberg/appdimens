@@ -8,13 +8,13 @@
 
 ```kotlin
 // PRIMARIA: BALANCED ⭐
-16.balanced().dp
+16.sdp
 
 // SECUNDARIA: DEFAULT
-16.defaultDp
+16.sdp
 
 // Containers: PERCENTAGE
-300.percentageDp.dp
+300.wdp
 ```
 
 ---
@@ -27,4 +27,4 @@
 
 ---
 
-**Documentación:** [../../../DOCS/README.md](../../../DOCS/README.md)
+**Documentación:** [../../DOCS/README.md](../../DOCS/README.md)

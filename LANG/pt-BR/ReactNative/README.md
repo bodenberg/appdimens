@@ -3,7 +3,7 @@
 **Dimensões Responsivas Inteligentes para React Native**  
 *Versão: 2.0.0*
 
-> **Idiomas:** [English](../../../ReactNative/README.md) | Português (BR) | [Español](../../es/ReactNative/README.md)
+> **Idiomas:** [English](../../../appdimens-react-native/README.md) | Português (BR) | [Español](../../es/ReactNative/README.md)
 
 ---
 

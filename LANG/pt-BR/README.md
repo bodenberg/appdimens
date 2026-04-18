@@ -38,9 +38,9 @@
 - Constantes pré-calculadas
 - Algoritmos de busca binária (O(log n))
 
-**♻️ Compatibilidade Total com Versões Anteriores**
-- Extensões antigas `.fxdp`/`.dydp` ainda funcionam
-- Caminho suave de migração para `.balanced()`, `.defaultDp`, `.percentageDp`
+**♻️ Compatibilidade entre artefatos**
+- Pacotes antigos podem ainda expor `.fxdp`/`.dydp` — confira o changelog da dependência que você usa
+- Para **Android Compose** novo, siga o **`appdimens-dynamic` 3.x** (`sdp`, `asdp`, …); veja [PLATFORM_API_MAP.md](../../DOCS/PLATFORM_API_MAP.md) (inglês)
 
 ---
 
@@ -70,7 +70,7 @@ Em vez de tamanhos fixos que parecem minúsculos em tablets ou enormes em relóg
 
 - ✅ **Proporções perfeitas** em qualquer tamanho de tela
 - ✅ **Funciona em todo lugar**: Android, iOS, Flutter, React Native, Web
-- ✅ **API simples**: `.balanced()`, `.defaultDp`, `.percentageDp`
+- ✅ **API por plataforma**: tokens `sdp`/`asdp` no Android Compose; `balanced()` no iOS/Web/RN; `AppDimens.fixed`/`dynamic` no Flutter
 - ✅ **Cientificamente comprovado**: Baseado em pesquisa psicofísica (Weber-Fechner, Stevens)
 - ✅ **Melhor performance**: 5x mais rápido com cache lock-free e otimizações
 - ✅ **13 estratégias**: Do simples ao avançado, cobrindo todos os casos de uso
@@ -133,12 +133,12 @@ npm install webdimens@2.0.0
 fun MeuCard() {
     Card(
         modifier = Modifier
-            .width(300.balanced().dp)      // ✨ BALANCED (RECOMENDADO) ⭐
-            .padding(16.balanced().dp)
+            .width(300.wdp)      // ✨ BALANCED (RECOMENDADO) ⭐
+            .padding(16.sdp)
     ) {
         Text(
             text = "Olá Mundo",
-            fontSize = 18.balanced().sp
+            fontSize = 18.ssp
         )
     }
 }
@@ -164,11 +164,11 @@ struct MeuCard: View {
 ```dart
 Widget build(BuildContext context) {
   return Container(
-    width: AppDimens.balanced(300).calculate(context),
-    padding: EdgeInsets.all(AppDimens.balanced(16).calculate(context)),
+    width: AppDimens.fixed(300).calculate(context),
+    padding: EdgeInsets.all(AppDimens.fixed(16).calculate(context)),
     child: Text(
       'Olá Mundo',
-      style: TextStyle(fontSize: AppDimens.balanced(18).calculate(context)),
+      style: TextStyle(fontSize: AppDimens.fixed(18).calculate(context)),
     ),
   );
 }
@@ -216,9 +216,9 @@ function MeuCard() {
 
 | Estratégia | Quando Usar | Exemplo | Disponibilidade |
 |------------|-------------|---------|-----------------|
-| **BALANCED** ⭐ **RECOMENDADO** | 95% dos casos - apps multi-dispositivo (telefones, tablets, TVs) | `48.balanced().dp` | Todas as plataformas |
-| **DEFAULT** (Secundário) | Apps focados em telefones, ícones, compatibilidade | `48.defaultDp` | Todas as plataformas |
-| **PERCENTAGE** | Containers grandes, grids de largura total, elementos proporcionais | `100.percentageDp` | Todas as plataformas |
+| **BALANCED** ⭐ **RECOMENDADO** | 95% dos casos - apps multi-dispositivo (telefones, tablets, TVs) | `48.sdp` | Todas as plataformas |
+| **DEFAULT** (Secundário) | Apps focados em telefones, ícones, compatibilidade | `48.sdp` | Todas as plataformas |
+| **PERCENTAGE** | Containers grandes, grids de largura total, elementos proporcionais | Android Compose: `300.wdp` (eixo de largura); iOS/Web/RN: `percentage(...)` nos builders | Todas as plataformas |
 | **LOGARITHMIC** | Apps de TV, controle máximo em telas grandes | `48.logarithmic()` | Todas as plataformas |
 | **POWER** | Uso geral, configurável com expoente | `48.power(0.75)` | Todas as plataformas |
 | **FLUID** 🌊 | Tipografia, espaçamento com transições suaves min/max | `fluid(16, 24)` | Todas as plataformas |
@@ -272,7 +272,7 @@ AppDimens foi cientificamente comparado contra 7 outras abordagens de escaloname
 - 🤖 [Guia Android](Android/README.md)
 - 🍎 [Guia iOS](iOS/README.md)
 - 🎯 [Guia Flutter](Flutter/README.md)
-- ⚛️ [Guia React Native](../../ReactNative/README.md)
+- ⚛️ [Guia React Native](ReactNative/README.md)
 - 🌐 [Guia Web](Web/README.md)
 
 **📚 [Índice Completo da Documentação](../../DOCS/README.md)**

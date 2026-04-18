@@ -3,7 +3,7 @@ layout: default
 title: "AppDimens Flutter"
 ---
 
-> **Idiomas:** [English](../../Flutter/README.md) | [Português (BR)](../pt-BR/Flutter/README.md) | Español
+> **Idiomas:** [English](../../../appdimens-flutter/README.md) | [Português (BR)](../../pt-BR/Flutter/README.md) | Español
 
 # AppDimens Flutter
 
@@ -272,11 +272,11 @@ AppDimens.fixed(100).clearCache();
 
 ## 🤝 Contribución
 
-¡Las contribuciones son bienvenidas! Por favor, lea el [CONTRIBUTING.md](../../CONTRIBUTING.md) para detalles sobre cómo contribuir.
+¡Las contribuciones son bienvenidas! Por favor, lea el [CONTRIBUTING.md](../../../CONTRIBUTING.md) para detalles sobre cómo contribuir.
 
 ## 📄 Licencia
 
-Este proyecto está licenciado bajo la Licencia Apache 2.0 - vea el archivo [LICENSE](../../LICENSE) para detalles.
+Este proyecto está licenciado bajo la Licencia Apache 2.0 - vea el archivo [LICENSE](../../../LICENSE) para detalles.
 
 ## 📞 Soporte
 

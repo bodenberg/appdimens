@@ -9,6 +9,8 @@
 
 > **🆕 Versão 2.0:** Expandido de 2 para **13 estratégias de escalonamento**, incluindo modelos perceptuais (BALANCED⭐, LOGARITHMIC, POWER), Inferência Inteligente, e melhorias de performance de 5x.
 
+> **Android (`appdimens-dynamic` 3.x):** exemplos em Jetpack Compose usam tokens **`sdp` / `hdp` / `wdp` / `ssp`** e, para a curva híbrida no eixo, **`asdp` / `ahdp` / `awdp` / `assp`**. Nomes como **`balanced()`** continuam em **iOS, Web e React Native**. Resumo completo: [PLATFORM_API_MAP.md](../../DOCS/PLATFORM_API_MAP.md) (inglês). O documento canónico em inglês é [COMPREHENSIVE_TECHNICAL_GUIDE.md](../../DOCS/COMPREHENSIVE_TECHNICAL_GUIDE.md).
+
 ---
 
 ## Visão Geral
@@ -48,25 +50,66 @@ Tipografia → FLUID
 Jogos → FIT/FILL
 ```
 
-### API por Plataforma
+### API por plataforma (resumo)
 
-**Android:**
+Os blocos abaixo espelham a secção **4.3 / 5.3** do guia em inglês.
+
+#### BALANCED (conceito) — bindings típicos
+
+**Android (Jetpack Compose):**
 ```kotlin
-16.balanced().dp    // Primária ⭐
-16.defaultDp        // Secundária
-300.percentageDp.dp // Containers
+import com.appdimens.dynamic.compose.*
+import com.appdimens.dynamic.compose.auto.asdp
+
+// appdimens-dynamic 3.x — escalado + auto (curva híbrida no eixo)
+16.sdp
+16.ssp
+Modifier.padding(16.asdp)
+// Views/XML: ver README do submódulo (não usar cadeia JVM unificada antiga)
 ```
 
 **iOS:**
 ```swift
 AppDimens.shared.balanced(16).toPoints()
+AppDimens.shared.balanced(16).toPt()
+```
+
+**Flutter:**
+```dart
+AppDimens.fixed(16).calculate(context)
+16.0.fx.calculate(context)
+AppDimens.dynamic(300).calculate(context)
+```
+
+**React Native:**
+```typescript
+const {balanced} = useAppDimens();
+balanced(16)
+```
+
+**Web:**
+```typescript
+const {balanced} = useWebDimens();
+balanced(16)
+```
+
+#### DEFAULT (conceito) — secundário / telefone
+
+**Android:**
+```kotlin
+16.sdp   // escalado — layouts focados em telefone
+16.ssp
+16.asdp  // auto — curva híbrida no eixo
+```
+
+**iOS:**
+```swift
 AppDimens.shared.defaultScaling(16).toPoints()
 ```
 
 **Flutter:**
 ```dart
-AppDimens.balanced(16).calculate(context)
-AppDimens.defaultScaling(16).calculate(context)
+AppDimens.fixed(16).calculate(context)
 ```
 
 ---
@@ -99,10 +142,11 @@ AppDimens.defaultScaling(16).calculate(context)
 
 ## Referências
 
-- [Teoria Matemática](MATHEMATICAL_THEORY.md)
-- [Guia Simplificado](MATHEMATICAL_THEORY_SIMPLIFIED.md)
-- [Comparação de Fórmulas](FORMULA_COMPARISON.md)
+- [Teoria Matemática](../../DOCS/MATHEMATICAL_THEORY.md)
+- [Guia Simplificado](../../DOCS/MATHEMATICAL_THEORY_SIMPLIFIED.md)
+- [Comparação de Fórmulas](../../DOCS/FORMULA_COMPARISON.md)
 - [Exemplos](../../DOCS/EXAMPLES.md)
+- [Guia técnico completo (EN)](../../DOCS/COMPREHENSIVE_TECHNICAL_GUIDE.md)
 
 ---
 

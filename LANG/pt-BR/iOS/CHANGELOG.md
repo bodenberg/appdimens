@@ -5,7 +5,7 @@ title: "Changelog (iOS)"
 
 # Changelog (iOS)
 
-> **Idiomas:** [English](../../../iOS/CHANGELOG.md) | Português (BR) | [Español](../../es/iOS/CHANGELOG.md)
+> **Idiomas:** [English](../../../appdimens-ios/CHANGELOG.md) | Português (BR) | [Español](../../es/iOS/README.md)
 
 Todas as alterações relevantes da biblioteca AppDimens iOS serão documentadas aqui.
 

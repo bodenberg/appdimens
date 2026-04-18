@@ -1,6 +1,6 @@
 # 🎨 AppDimens - Practical Examples
 
-> **Languages:** English | [Português (BR)](../LANG/pt-BR/EXAMPLES.md) | [Español](../LANG/es/EXAMPLES.md)
+> **Languages:** English | [Português (BR)](../LANG/pt-BR/README.md) | [Español](../LANG/es/README.md) — full `EXAMPLES.md` translations are not mirrored under `LANG/`; use this file as canonical.
 
 **Real-World Code Samples for All Platforms**  
 *Author: Jean Bodenberg*  
@@ -54,8 +54,8 @@
 
 **Android:**
 ```kotlin
-Text("Hello", fontSize = 16.balanced().sp)  // ⭐ Primary
-Icon(modifier = Modifier.size(24.defaultDp))  // Secondary
+Text("Hello", fontSize = 16.ssp)  // ⭐ Primary
+Icon(modifier = Modifier.size(24.sdp))  // Secondary
 ```
 
 **iOS:**
@@ -65,7 +65,7 @@ Text("Hello").font(.system(size: AppDimens.shared.balanced(16).toPoints()))
 
 **Flutter:**
 ```dart
-Text('Hello', style: TextStyle(fontSize: AppDimens.balanced(16).calculate(context)))
+Text('Hello', style: TextStyle(fontSize: AppDimens.fixed(16).calculate(context)))
 ```
 
 **React Native:**
@@ -101,25 +101,25 @@ Text('Hello', style: TextStyle(fontSize: AppDimens.balanced(16).calculate(contex
 **Standard Phone (360×640, 16:9 - AR=1.78):**
 ```kotlin
 // Android
-val buttonHeight = 48.balanced().dp  // Result: 57.6dp
+val buttonHeight = 48.sdp  // Result: 57.6dp
 
 // iOS
 let height = AppDimens.shared.balanced(48)  // Result: 57.6pt
 
 // Flutter
-final height = AppDimens.balanced(48).calculate(context)  // Result: 57.6dp
+final height = AppDimens.fixed(48).calculate(context)  // Result: 57.6dp
 ```
 
 **Elongated Phone (360×800, 20:9 - AR=2.22):**
 ```kotlin
 // Android
-val buttonHeight = 48.balanced().dp  // Result: 57.9dp (+0.5%)
+val buttonHeight = 48.sdp  // Result: 57.9dp (+0.5%)
 
 // iOS
 let height = AppDimens.shared.balanced(48)  // Result: 57.9pt (+0.5%)
 
 // Flutter
-final height = AppDimens.balanced(48).calculate(context)  // Result: 57.9dp (+0.5%)
+final height = AppDimens.fixed(48).calculate(context)  // Result: 57.9dp (+0.5%)
 ```
 
 **Visual Impact:**
@@ -155,11 +155,11 @@ fun AdaptiveButton() {
     val isUnfolded = configuration.screenWidthDp > 600
     
     Button(
-        modifier = Modifier.height(48.balanced().dp)
+        modifier = Modifier.height(48.sdp)
         // Folded:   ~75dp with AR adjustment
         // Unfolded: ~85dp with different AR
     ) {
-        Text("Adaptive Button", fontSize = 16.balanced().sp)
+        Text("Adaptive Button", fontSize = 16.ssp)
     }
 }
 ```
@@ -179,12 +179,12 @@ fun SplitScreenAware() {
     
     Card(
         modifier = Modifier
-            .width(300.percentageDp.dp)    // No AR adjustment
-            .padding(16.balanced().dp)      // With AR adjustment
+            .width(300.wdp)    // No AR adjustment
+            .padding(16.sdp)      // With AR adjustment
     ) {
         Text(
             "AR-Aware Content",
-            fontSize = 16.balanced().sp
+            fontSize = 16.ssp
         )
     }
 }
@@ -195,12 +195,8 @@ fun SplitScreenAware() {
 **FLUID strategy with manual AR control:**
 
 ```kotlin
-// Android
-val textSize = fluidSp(
-    minValue = 14f,
-    maxValue = 20f,
-    applyAspectRatio = false  // Disable AR for this specific element
-)
+// Android (Compose) — see `compose.fluid` in appdimens-dynamic for full builder options
+val textSize = 14.fluidSp().fssp
 
 // iOS
 let size = AppDimens.shared.fluid(
@@ -209,12 +205,8 @@ let size = AppDimens.shared.fluid(
     applyAspectRatio: false
 )
 
-// Flutter
-final size = AppDimens.fluid(
-    14,
-    maxValue: 20,
-    applyAspectRatio: false
-).calculate(context)
+// Flutter — extension helper on num (package: appdimens)
+final size = 14.0.fluidTo(20).calculate(context)
 ```
 
 #### Example 6: Real-World Impact
@@ -226,7 +218,7 @@ final size = AppDimens.fluid(
 Card(
     modifier = Modifier
         .fillMaxWidth()
-        .height(200.defaultDp)  // Same height on all phones
+        .height(200.sdp)  // Same height on all phones
 ) {
     // On elongated phone: card looks "short" and "squashed"
 }
@@ -235,7 +227,7 @@ Card(
 Card(
     modifier = Modifier
         .fillMaxWidth()
-        .height(200.defaultDp)  // Slightly taller on elongated phones
+        .height(200.sdp)  // Slightly taller on elongated phones
 ) {
     // On elongated phone (AR=2.22): ~202dp height (+1%)
     // Maintains visual proportion
@@ -263,11 +255,11 @@ fun SocialFeedScreen() {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .padding(horizontal = 16.balanced().dp)  // ⭐ BALANCED
+                .padding(horizontal = 16.sdp)  // ⭐ BALANCED
         ) {
             items(posts) { post ->
                 PostCard(post)
-                Spacer(modifier = Modifier.height(12.balanced().dp))
+                Spacer(modifier = Modifier.height(12.sdp))
             }
         }
     }
@@ -279,7 +271,7 @@ fun FeedTopBar() {
         title = {
             Text(
                 text = "Social Feed",
-                fontSize = 20.balanced().sp  // ⭐ BALANCED
+                fontSize = 20.ssp  // ⭐ BALANCED
             )
         },
         navigationIcon = {
@@ -287,7 +279,7 @@ fun FeedTopBar() {
                 Icon(
                     imageVector = Icons.Default.Menu,
                     contentDescription = "Menu",
-                    modifier = Modifier.size(24.balanced().dp)
+                    modifier = Modifier.size(24.sdp)
                 )
             }
         },
@@ -295,11 +287,11 @@ fun FeedTopBar() {
             IconButton(onClick = { }) {
                 Icon(
                     imageVector = Icons.Default.Search,
-                    modifier = Modifier.size(24.balanced().dp)
+                    modifier = Modifier.size(24.sdp)
                 )
             }
         },
-        modifier = Modifier.height(56.balanced().dp)
+        modifier = Modifier.height(56.sdp)
     )
 }
 
@@ -307,9 +299,9 @@ fun FeedTopBar() {
 fun PostCard(post: Post) {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.balanced().dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.sdp)
     ) {
-        Column(modifier = Modifier.padding(16.balanced().dp)) {
+        Column(modifier = Modifier.padding(16.sdp)) {
             // Header: Avatar + Username
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -319,49 +311,49 @@ fun PostCard(post: Post) {
                     model = post.userAvatar,
                     contentDescription = "Avatar",
                     modifier = Modifier
-                        .size(40.balanced().dp)
+                        .size(40.sdp)
                         .clip(CircleShape)
                 )
                 
-                Spacer(modifier = Modifier.width(12.balanced().dp))
+                Spacer(modifier = Modifier.width(12.sdp))
                 
                 Column {
                     Text(
                         text = post.username,
-                        fontSize = 14.balanced().sp,
+                        fontSize = 14.ssp,
                         fontWeight = FontWeight.Bold
                     )
                     Text(
                         text = post.timestamp,
-                        fontSize = 12.balanced().sp,
+                        fontSize = 12.ssp,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
             }
             
-            Spacer(modifier = Modifier.height(12.balanced().dp))
+            Spacer(modifier = Modifier.height(12.sdp))
             
             // Post content
             Text(
                 text = post.content,
-                fontSize = 14.balanced().sp,
-                lineHeight = 20.balanced().sp
+                fontSize = 14.ssp,
+                lineHeight = 20.ssp
             )
             
             // Post image (if exists)
             post.imageUrl?.let { imageUrl ->
-                Spacer(modifier = Modifier.height(12.balanced().dp))
+                Spacer(modifier = Modifier.height(12.sdp))
                 AsyncImage(
                     model = imageUrl,
                     contentDescription = "Post image",
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(200.percentageDp.dp)  // Proportional image
-                        .clip(RoundedCornerShape(8.balanced().dp))
+                        .height(200.wdp)  // Proportional image
+                        .clip(RoundedCornerShape(8.sdp))
                 )
             }
             
-            Spacer(modifier = Modifier.height(12.balanced().dp))
+            Spacer(modifier = Modifier.height(12.sdp))
             
             // Action buttons
             Row(
@@ -371,48 +363,48 @@ fun PostCard(post: Post) {
                 Row {
                     IconButton(
                         onClick = { },
-                        modifier = Modifier.size(40.balanced().dp)
+                        modifier = Modifier.size(40.sdp)
                     ) {
                         Icon(
                             imageVector = Icons.Default.Favorite,
                             contentDescription = "Like",
-                            modifier = Modifier.size(20.balanced().dp)
+                            modifier = Modifier.size(20.sdp)
                         )
                     }
                     
                     Text(
                         text = "${post.likes}",
-                        fontSize = 14.balanced().sp,
+                        fontSize = 14.ssp,
                         modifier = Modifier.align(Alignment.CenterVertically)
                     )
                     
-                    Spacer(modifier = Modifier.width(16.balanced().dp))
+                    Spacer(modifier = Modifier.width(16.sdp))
                     
                     IconButton(
                         onClick = { },
-                        modifier = Modifier.size(40.balanced().dp)
+                        modifier = Modifier.size(40.sdp)
                     ) {
                         Icon(
                             imageVector = Icons.Default.Comment,
                             contentDescription = "Comment",
-                            modifier = Modifier.size(20.balanced().dp)
+                            modifier = Modifier.size(20.sdp)
                         )
                     }
                     
                     Text(
                         text = "${post.comments}",
-                        fontSize = 14.balanced().sp,
+                        fontSize = 14.ssp,
                         modifier = Modifier.align(Alignment.CenterVertically)
                     )
                 }
                 
                 IconButton(
                     onClick = { },
-                    modifier = Modifier.size(40.balanced().dp)
+                    modifier = Modifier.size(40.sdp)
                 ) {
                     Icon(
                         imageVector = Icons.Default.Share,
-                        modifier = Modifier.size(20.balanced().dp)
+                        modifier = Modifier.size(20.sdp)
                     )
                 }
             }
@@ -424,12 +416,12 @@ fun PostCard(post: Post) {
 fun NewPostFAB() {
     FloatingActionButton(
         onClick = { },
-        modifier = Modifier.size(56.balanced().dp)
+        modifier = Modifier.size(56.sdp)
     ) {
         Icon(
             imageVector = Icons.Default.Add,
             contentDescription = "New Post",
-            modifier = Modifier.size(24.balanced().dp)
+            modifier = Modifier.size(24.sdp)
         )
     }
 }
@@ -441,10 +433,10 @@ fun NewPostFAB() {
 @Composable
 fun ProductListScreen() {
     LazyVerticalGrid(
-        columns = GridCells.Adaptive(minSize = 160.percentageDp.dp),  // Proportional grid
-        horizontalArrangement = Arrangement.spacedBy(12.balanced().dp),
-        verticalArrangement = Arrangement.spacedBy(12.balanced().dp),
-        contentPadding = PaddingValues(16.balanced().dp)
+        columns = GridCells.Adaptive(minSize = 160.wdp),  // Proportional grid
+        horizontalArrangement = Arrangement.spacedBy(12.sdp),
+        verticalArrangement = Arrangement.spacedBy(12.sdp),
+        contentPadding = PaddingValues(16.sdp)
     ) {
         items(products) { product ->
             ProductCard(product)
@@ -456,7 +448,7 @@ fun ProductListScreen() {
 fun ProductCard(product: Product) {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(2.balanced().dp)
+        elevation = CardDefaults.cardElevation(2.sdp)
     ) {
         Column {
             // Product image
@@ -465,42 +457,42 @@ fun ProductCard(product: Product) {
                 contentDescription = product.name,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(180.percentageDp.dp)  // Proportional
-                    .clip(RoundedCornerShape(topStart = 8.balanced().dp, topEnd = 8.balanced().dp))
+                    .height(180.wdp)  // Proportional
+                    .clip(RoundedCornerShape(topStart = 8.sdp, topEnd = 8.sdp))
             )
             
-            Column(modifier = Modifier.padding(12.balanced().dp)) {
+            Column(modifier = Modifier.padding(12.sdp)) {
                 // Product name
                 Text(
                     text = product.name,
-                    fontSize = 14.balanced().sp,
+                    fontSize = 14.ssp,
                     fontWeight = FontWeight.Bold,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
                 
-                Spacer(modifier = Modifier.height(4.balanced().dp))
+                Spacer(modifier = Modifier.height(4.sdp))
                 
                 // Product price
                 Text(
                     text = "$${product.price}",
-                    fontSize = 16.balanced().sp,
+                    fontSize = 16.ssp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.primary
                 )
                 
-                Spacer(modifier = Modifier.height(8.balanced().dp))
+                Spacer(modifier = Modifier.height(8.sdp))
                 
                 // Add to cart button
                 Button(
                     onClick = { },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(40.balanced().dp)
+                        .height(40.sdp)
                 ) {
                     Text(
                         text = "Add to Cart",
-                        fontSize = 14.balanced().sp
+                        fontSize = 14.ssp
                     )
                 }
             }
@@ -509,80 +501,47 @@ fun ProductCard(product: Product) {
 }
 ```
 
-#### Using Smart API
+#### Strategy selection (Android)
+
+`appdimens-dynamic` **3.x** does **not** ship the old `AppDimens.from(...).smart()` Compose chain. Pick a **strategy package** (`compose.scaled`, `compose.auto`, `compose.percent`, …) and the matching **axis token** (`sdp`, `asdp`, `wdp`, …). iOS / Web / React Native still document `smart(...)` helpers—mirror those ideas on Android by choosing the formula you want explicitly.
 
 ```kotlin
+import com.appdimens.dynamic.compose.*
+import com.appdimens.dynamic.compose.auto.asdp
+
 @Composable
-fun SmartAPIExample() {
-    Column(modifier = Modifier.padding(16.balanced().dp)) {
-        // Smart API automatically selects best strategy
+fun StrategyPickExample() {
+    Column(modifier = Modifier.padding(16.asdp)) {
         Button(
             onClick = { },
-            modifier = Modifier.height(
-                AppDimens.from(48).smart().forElement(ElementType.BUTTON).dp
-            )
-            // → Automatically selects BALANCED for buttons on tablets
-        ) {
-            Text("Smart Button")
-        }
-        
-        // For containers
-        Box(
-            modifier = Modifier.width(
-                AppDimens.from(300).smart().forElement(ElementType.CONTAINER).dp
-            )
-            // → Automatically selects PERCENTAGE for containers
-        )
-        
-        // For text
-        Text(
-            text = "Smart Text",
-            fontSize = AppDimens.from(16).smart().forElement(ElementType.TEXT).sp
-            // → Automatically selects FLUID for text (if configured)
-        )
+            modifier = Modifier.height(48.hdp)
+        ) { Text("Primary action") }
+
+        Box(modifier = Modifier.width(300.wdp))
+
+        Text("Caption", fontSize = 14.ssp)
     }
 }
 ```
 
-### 2.2 Using Different Strategies
+### 2.2 Using different strategies
+
+Each formula maps to a **Gradle package + imports** inside `appdimens-dynamic` (scaled, auto, percent, logarithmic, power, fluid, …). The snippet below shows a few **verified Compose** entry points—open [DOCUMENTATION/README.md](../appdimens-dynamic/DOCUMENTATION/README.md) for the full matrix.
 
 ```kotlin
+import com.appdimens.dynamic.compose.*
+import com.appdimens.dynamic.compose.auto.assp
+
 @Composable
-fun AllStrategiesDemo() {
-    Column(modifier = Modifier.padding(16.balanced().dp)) {
-        // BALANCED ⭐ (Primary)
-        Text("Balanced", fontSize = 16.balanced().sp)
-        
-        // DEFAULT (Secondary - phone-focused)
-        Text("Default", fontSize = 16.defaultDp.sp)
-        
-        // PERCENTAGE (Large containers)
-        Box(modifier = Modifier.width(300.percentageDp.dp))
-        
-        // LOGARITHMIC (TV apps)
-        Text("Logarithmic", fontSize = 16.logarithmic().sp)
-        
-        // POWER (Configurable)
-        Text("Power", fontSize = 16.power(exponent = 0.75f).sp)
-        
-        // FLUID (Typography with bounds)
-        Text("Fluid", fontSize = fluidSp(14f, 20f))
-        
-        // INTERPOLATED (Moderate)
-        Text("Interpolated", fontSize = 16.interpolated().sp)
-        
-        // DIAGONAL (Physical size)
-        Box(modifier = Modifier.size(48.diagonal().dp))
-        
-        // PERIMETER (W+H)
-        Box(modifier = Modifier.size(48.perimeter().dp))
-        
-        // FIT/FILL (Games)
-        Box(modifier = Modifier.size(48.fit().dp))
-        Box(modifier = Modifier.size(48.fill().dp))
-        
-        // NONE (No scaling)
-        Divider(thickness = 1.none().dp)  // Always 1dp
+fun StrategyShowcase() {
+    Column(modifier = Modifier.padding(16.sdp)) {
+        Text("Scaled", fontSize = 16.ssp)
+        Text("Auto / hybrid", fontSize = 16.assp)
+        Box(modifier = Modifier.width(300.wdp))
+        Text("Logarithmic", fontSize = 16.logarithmicSp().logssp)
+        Text("Power", fontSize = 16.pwssp)
+        Text("Fluid", fontSize = 14.fluidSp().fssp)
+        Divider()
     }
 }
 ```
@@ -800,23 +759,23 @@ class _TaskListScreenState extends State<TaskListScreen> {
         title: Text(
           'My Tasks',
           style: TextStyle(
-            fontSize: AppDimens.balanced(20).calculate(context),
+            fontSize: AppDimens.fixed(20).calculate(context),
           ),
         ),
         actions: [
           IconButton(
             icon: Icon(Icons.search),
-            iconSize: AppDimens.balanced(24).calculate(context),
+            iconSize: AppDimens.fixed(24).calculate(context),
             onPressed: () {},
           ),
         ],
-        toolbarHeight: AppDimens.balanced(56).calculate(context),
+        toolbarHeight: AppDimens.fixed(56).calculate(context),
       ),
       body: ListView.separated(
-        padding: EdgeInsets.all(AppDimens.balanced(16).calculate(context)),
+        padding: EdgeInsets.all(AppDimens.fixed(16).calculate(context)),
         itemCount: tasks.length,
         separatorBuilder: (context, index) => SizedBox(
-          height: AppDimens.balanced(12).calculate(context),
+          height: AppDimens.fixed(12).calculate(context),
         ),
         itemBuilder: (context, index) {
           return TaskCard(task: tasks[index]);
@@ -826,7 +785,7 @@ class _TaskListScreenState extends State<TaskListScreen> {
         onPressed: () {},
         child: Icon(
           Icons.add,
-          size: AppDimens.balanced(24).calculate(context),
+          size: AppDimens.fixed(24).calculate(context),
         ),
       ),
     );
@@ -841,14 +800,14 @@ class TaskCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: AppDimens.balanced(2).calculate(context),
+      elevation: AppDimens.fixed(2).calculate(context),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(
-          AppDimens.balanced(8).calculate(context),
+          AppDimens.fixed(8).calculate(context),
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.all(AppDimens.balanced(16).calculate(context)),
+        padding: EdgeInsets.all(AppDimens.fixed(16).calculate(context)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -858,22 +817,22 @@ class TaskCard extends StatelessWidget {
               children: [
                 // Priority indicator
                 Container(
-                  width: AppDimens.balanced(8).calculate(context),
-                  height: AppDimens.balanced(8).calculate(context),
+                  width: AppDimens.fixed(8).calculate(context),
+                  height: AppDimens.fixed(8).calculate(context),
                   decoration: BoxDecoration(
                     color: task.priorityColor,
                     shape: BoxShape.circle,
                   ),
                 ),
                 
-                SizedBox(width: AppDimens.balanced(12).calculate(context)),
+                SizedBox(width: AppDimens.fixed(12).calculate(context)),
                 
                 // Task title
                 Expanded(
                   child: Text(
                     task.title,
                     style: TextStyle(
-                      fontSize: AppDimens.balanced(16).calculate(context),
+                      fontSize: AppDimens.fixed(16).calculate(context),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -881,8 +840,8 @@ class TaskCard extends StatelessWidget {
                 
                 // Checkbox
                 SizedBox(
-                  width: AppDimens.balanced(24).calculate(context),
-                  height: AppDimens.balanced(24).calculate(context),
+                  width: AppDimens.fixed(24).calculate(context),
+                  height: AppDimens.fixed(24).calculate(context),
                   child: Checkbox(
                     value: task.completed,
                     onChanged: (value) {},
@@ -891,50 +850,50 @@ class TaskCard extends StatelessWidget {
               ],
             ),
             
-            SizedBox(height: AppDimens.balanced(8).calculate(context)),
+            SizedBox(height: AppDimens.fixed(8).calculate(context)),
             
             // Task description
             Text(
               task.description,
               style: TextStyle(
-                fontSize: AppDimens.balanced(14).calculate(context),
+                fontSize: AppDimens.fixed(14).calculate(context),
                 color: Colors.grey[600],
               ),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
             
-            SizedBox(height: AppDimens.balanced(12).calculate(context)),
+            SizedBox(height: AppDimens.fixed(12).calculate(context)),
             
             // Task metadata
             Row(
               children: [
                 Icon(
                   Icons.calendar_today,
-                  size: AppDimens.balanced(16).calculate(context),
+                  size: AppDimens.fixed(16).calculate(context),
                   color: Colors.grey,
                 ),
-                SizedBox(width: AppDimens.balanced(4).calculate(context)),
+                SizedBox(width: AppDimens.fixed(4).calculate(context)),
                 Text(
                   task.dueDate,
                   style: TextStyle(
-                    fontSize: AppDimens.balanced(12).calculate(context),
+                    fontSize: AppDimens.fixed(12).calculate(context),
                     color: Colors.grey,
                   ),
                 ),
                 
-                SizedBox(width: AppDimens.balanced(16).calculate(context)),
+                SizedBox(width: AppDimens.fixed(16).calculate(context)),
                 
                 Icon(
                   Icons.label,
-                  size: AppDimens.balanced(16).calculate(context),
+                  size: AppDimens.fixed(16).calculate(context),
                   color: Colors.grey,
                 ),
-                SizedBox(width: AppDimens.balanced(4).calculate(context)),
+                SizedBox(width: AppDimens.fixed(4).calculate(context)),
                 Text(
                   task.category,
                   style: TextStyle(
-                    fontSize: AppDimens.balanced(12).calculate(context),
+                    fontSize: AppDimens.fixed(12).calculate(context),
                     color: Colors.grey,
                   ),
                 ),
@@ -953,12 +912,12 @@ class TaskCard extends StatelessWidget {
 ```dart
 // Flutter supports extensions for cleaner syntax
 Container(
-  width: 300.0.balanced(),
-  height: 200.0.defaultScaling(),
-  padding: EdgeInsets.all(16.0.balanced()),
+  width: AppDimens.fixed(300).calculate(context),
+  height: AppDimens.fixed(200).calculate(context),
+  padding: EdgeInsets.all(AppDimens.fixed(16).calculate(context)),
   child: Text(
     'With Extensions',
-    style: TextStyle(fontSize: 14.0.balanced()),
+    style: TextStyle(fontSize: AppDimens.fixed(14).calculate(context)),
   ),
 )
 ```
@@ -1319,10 +1278,10 @@ Design System Values:
 **Android:**
 ```kotlin
 object AppDimensions {
-    val spacingXS = 4.balanced().dp
-    val spacingMD = 16.balanced().dp
-    val fontBody = 14.balanced().sp
-    val buttonHeight = 48.balanced().dp
+    val spacingXS = 4.sdp
+    val spacingMD = 16.sdp
+    val fontBody = 14.ssp
+    val buttonHeight = 48.sdp
 }
 ```
 
@@ -1340,13 +1299,13 @@ enum AppDimensions {
 ```dart
 class AppDimensions {
   static double spacingXS(BuildContext context) => 
-      AppDimens.balanced(4).calculate(context);
+      AppDimens.fixed(4).calculate(context);
   static double spacingMD(BuildContext context) => 
-      AppDimens.balanced(16).calculate(context);
+      AppDimens.fixed(16).calculate(context);
   static double fontBody(BuildContext context) => 
-      AppDimens.balanced(14).calculate(context);
+      AppDimens.fixed(14).calculate(context);
   static double buttonHeight(BuildContext context) => 
-      AppDimens.balanced(48).calculate(context);
+      AppDimens.fixed(48).calculate(context);
 }
 ```
 
@@ -1378,11 +1337,9 @@ export const AppDimensions = {
 
 **Android:**
 ```kotlin
-val buttonSize = 48.balanced()
-    .screen(UiModeType.TV, 96.dp)
-    .screen(UiModeType.WATCH, 40.dp)
-    .screen(DpQualifier.SMALL_WIDTH, 600, 72.dp)
-    .dp
+import com.appdimens.dynamic.compose.*
+// TV / watch breakpoints use the builder APIs in each strategy package (see submodule docs).
+val buttonHeight = 48.hdp
 ```
 
 **iOS:**
@@ -1450,13 +1407,13 @@ let playerSize = gameAspectRatio(64)
 **Before (v1.x):**
 ```kotlin
 Text("Hello", fontSize = 16.fxsp)  // Deprecated
-Container(modifier = Modifier.width(300.dydp))  // Deprecated
+Container(modifier = Modifier.width(300.wdp))  // width-biased scaled token
 ```
 
 **After (v2.0) - Recommended:**
 ```kotlin
-Text("Hello", fontSize = 16.balanced().sp)  // ⭐ Primary
-Container(modifier = Modifier.width(300.percentageDp.dp))  // For containers
+Text("Hello", fontSize = 16.ssp)  // ⭐ Primary
+Container(modifier = Modifier.width(300.wdp))  // For containers
 ```
 
 ### 10.2 From SDP to AppDimens
@@ -1468,7 +1425,7 @@ Container(modifier = Modifier.width(300.percentageDp.dp))  // For containers
 
 **After (AppDimens):**
 ```kotlin
-Text(text = "Hello", fontSize = 16.balanced().sp)
+Text(text = "Hello", fontSize = 16.ssp)
 ```
 
 ---

@@ -5,7 +5,7 @@ title: "📱 AppDimens iOS - Estrutura Modular"
 
 # 📱 AppDimens iOS - Estrutura Modular
 
-> **Idiomas:** [English](../../../iOS/README_MODULAR.md) | Português (BR) | [Español](../../es/iOS/README_MODULAR.md)
+> **Idiomas:** [English](../../../appdimens-ios/README_MODULAR.md) | Português (BR) | [Español](../../es/iOS/README.md)
 
 [![Version](https://img.shields.io/cocoapods/v/AppDimens.svg?style=flat)](https://cocoapods.org/pods/AppDimens)
 [![License](https://img.shields.io/cocoapods/l/AppDimens.svg?style=flat)](https://cocoapods.org/pods/AppDimens)
@@ -239,10 +239,9 @@ class GameRenderer {
 
 ## 📚 Documentação Adicional
 
-- [Documentação Core](Sources/AppDimensCore/README.md)
-- [Documentação UI](Sources/AppDimensUI/README.md)
-- [Documentação Games](Sources/AppDimensGames/README.md)
-- [Guia de Migração](MIGRATION_GUIDE.md)
+- [Submódulo `appdimens-ios` (código-fonte)](../../../appdimens-ios/)
+- [Documentação detalhada (EN)](../../../appdimens-ios/DOCUMENTATION.md)
+- [Guia de migração (EN)](../../../DOCS/MATHEMATICAL_THEORY_SIMPLIFIED.md#9-migration-from-v1x)
 
 ## 🤝 Contribuição
 
@@ -250,7 +249,7 @@ Contribuições são bem-vindas! Por favor, sinta-se à vontade para enviar um P
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a Licença Apache 2.0 - veja o arquivo [LICENSE](LICENSE) para detalhes.
+Este projeto está licenciado sob a Licença Apache 2.0 — veja o arquivo [LICENSE](../../../LICENSE) na raiz do repositório central.
 
 ## 👨‍💻 Autor
 

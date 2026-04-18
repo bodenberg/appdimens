@@ -3,7 +3,7 @@
 > **Languages:** English | [Português (BR)](../LANG/pt-BR/DOCS_QUICK_REFERENCE.md) | [Español](../LANG/es/DOCS_QUICK_REFERENCE.md)
 
 **Fast Lookup for AppDimens 2.0**  
-*Version: 2.0.0 | Last Updated: February 2025*
+*Version: 2.0.0 | Last Updated: April 2026 (docs synced with submodule APIs)*
 
 > **Find anything in seconds!** This is your go-to reference for quick lookups.
 
@@ -48,22 +48,21 @@ What's your app type?
 ### Android (Kotlin)
 
 ```kotlin
-// BALANCED ⭐ (Primary)
-16.balanced().dp
-16.balanced().sp
+import com.appdimens.dynamic.compose.*
+import com.appdimens.dynamic.compose.auto.asdp
+import com.appdimens.dynamic.compose.auto.assp
 
-// DEFAULT (Secondary)
-16.defaultDp
-16.defaultSp
+// Scaled (README default): smallest-width / width / height axis
+16.sdp
+100.wdp
+48.hdp
+16.ssp
 
-// PERCENTAGE (Containers)
-300.percentageDp.dp
+// Auto (“BALANCED-like” hybrid on that axis) — see appdimens-dynamic DOCUMENTATION/auto.md
+Modifier.padding(16.asdp)
+Text("", fontSize = 16.assp)
 
-// Others
-16.logarithmic().sp
-16.power(0.75f).sp
-fluidSp(14f, 20f)
-16.smart().forElement(ElementType.BUTTON).dp
+// Other strategies live in their own packages (logarithmic, power, fluid, percent, …)
 ```
 
 ### iOS (Swift)
@@ -88,21 +87,18 @@ AppDimens.shared.smart(48).forElement(.button).toPoints()
 ### Flutter (Dart)
 
 ```dart
-// BALANCED ⭐
-AppDimens.balanced(16).calculate(context)
-16.0.balanced()
+// import appdimens + extensions (.fx / .dy) from the package
 
-// DEFAULT
-AppDimens.defaultScaling(16).calculate(context)
+// Fixed builder (log-style / general UI — tune via builder chain in submodule)
+AppDimens.fixed(16).calculate(context)
+16.0.fx.calculate(context)
 
-// PERCENTAGE
-AppDimens.percentage(300).calculate(context)
+// Dynamic builder (stronger growth / containers)
+AppDimens.dynamic(300).calculate(context)
+300.0.dy.calculate(context)
 
-// Others
-AppDimens.logarithmic(16).calculate(context)
-AppDimens.power(16, exponent: 0.75).calculate(context)
-AppDimens.fluid(14, maxValue: 20).calculate(context)
-AppDimens.smart(48).forElement(ElementType.button).calculate(context)
+// Literal % of screen (utility on AppDimens)
+AppDimens.dynamicPercentageDp(0.5, context)
 ```
 
 ### React Native (TypeScript)
@@ -185,9 +181,9 @@ FLUID:       clamp(min, interpolate(W), max)
 **Android:**
 ```kotlin
 Button(
-    modifier = Modifier.height(48.balanced().dp)
+    modifier = Modifier.height(48.sdp)
 ) {
-    Text("Click", fontSize = 16.balanced().sp)
+    Text("Click", fontSize = 16.ssp)
 }
 ```
 
@@ -201,7 +197,7 @@ Button("Click") {}
 ```dart
 ElevatedButton(
   style: ElevatedButton.styleFrom(
-    minimumSize: Size(double.infinity, AppDimens.balanced(48).calculate(context))
+    minimumSize: Size(double.infinity, AppDimens.fixed(48).calculate(context))
   ),
 )
 ```
@@ -210,7 +206,7 @@ ElevatedButton(
 
 **Android:**
 ```kotlin
-Card(modifier = Modifier.padding(16.balanced().dp))
+Card(modifier = Modifier.padding(16.sdp))
 ```
 
 **iOS:**
@@ -220,14 +216,14 @@ VStack {}.padding(AppDimens.shared.balanced(16).toPoints())
 
 **Flutter:**
 ```dart
-Container(padding: EdgeInsets.all(AppDimens.balanced(16).calculate(context)))
+Container(padding: EdgeInsets.all(AppDimens.fixed(16).calculate(context)))
 ```
 
 ### Icon Size
 
 **Android:**
 ```kotlin
-Icon(modifier = Modifier.size(24.defaultDp))  // DEFAULT for icons
+Icon(modifier = Modifier.size(24.sdp))  // scaled token; pick axis (sdp / wdp / hdp) per layout
 ```
 
 **iOS:**
@@ -238,7 +234,7 @@ Image(systemName: "heart")
 
 **Flutter:**
 ```dart
-Icon(Icons.favorite, size: AppDimens.defaultScaling(24).calculate(context))
+Icon(Icons.favorite, size: AppDimens.fixed(24).calculate(context))
 ```
 
 ---
@@ -251,6 +247,7 @@ Icon(Icons.favorite, size: AppDimens.defaultScaling(24).calculate(context))
 | **Examples** | [Examples](EXAMPLES.md) | 20min |
 | **Math details** | [Mathematical Theory](MATHEMATICAL_THEORY.md) | 45min |
 | **Comparisons** | [Formula Comparison](FORMULA_COMPARISON.md) | 30min |
+| **Per-platform APIs** | [Platform API map](PLATFORM_API_MAP.md) | 10min |
 | **Everything** | [Technical Guide](COMPREHENSIVE_TECHNICAL_GUIDE.md) | 2h |
 
 ---
@@ -259,7 +256,7 @@ Icon(Icons.favorite, size: AppDimens.defaultScaling(24).calculate(context))
 
 ### Install AppDimens
 
-**Android:** `implementation("io.github.bodenberg:appdimens-dynamic:2.0.1")`  
+**Android:** `implementation("io.github.bodenberg:appdimens-dynamic:3.1.4")`  
 **iOS:** `pod 'AppDimens', '~> 2.0.0'`  
 **Flutter:** `appdimens: ^2.0.0`  
 **RN:** `npm install appdimens-react-native@2.0.0`  
@@ -271,10 +268,9 @@ Icon(Icons.favorite, size: AppDimens.defaultScaling(24).calculate(context))
 Phone-only → **DEFAULT**  
 Containers → **PERCENTAGE**
 
-### Migrate from v1.x
+### Migrate from older unified Android docs
 
-`.fxdp` → `.balanced().dp` (or `.defaultDp`)  
-`.dydp` → `.percentageDp.dp`
+Legacy meta-docs used `.fxdp` / `.dydp` / `.balanced().dp`. On **`appdimens-dynamic` 3.x** use **`sdp` / `wdp` / `hdp` / `ssp`** (scaled) and **`asdp` / `ahdp` / `awdp` / `assp`** (auto). See the [appdimens-dynamic README](../appdimens-dynamic/README.md) and [Platform API map](PLATFORM_API_MAP.md).
 
 ---
 

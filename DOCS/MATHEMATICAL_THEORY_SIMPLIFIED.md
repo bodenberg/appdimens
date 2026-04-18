@@ -7,6 +7,8 @@
 *Date: February 2025*  
 *Version: 2.0.0*
 
+> **API note:** **Android / Jetpack Compose** examples refer to **`appdimens-dynamic` 3.x** (`sdp`, `hdp`, `wdp`, `ssp`, and **`asdp` / `ahdp` / `awdp`** for the auto / “BALANCED-like” hybrid on an axis). Names like **`balanced()`** may still appear for **iOS, Web, React Native**, or in **conceptual** multi-platform wording from older unified docs. See [Platform API map](PLATFORM_API_MAP.md).
+
 > **🆕 Version 2.0:** This guide now covers **13 scaling strategies** (up from 2), with **BALANCED** as the **primary recommendation** for most apps, and **DEFAULT** as the secondary choice for phone-focused apps.
 
 > **📚 Related Documentation:**
@@ -184,12 +186,12 @@ fun MyButton() {
     Button(
         onClick = { },
         modifier = Modifier
-            .height(48.balanced().dp)  // ⭐ BALANCED
+            .height(48.sdp)  // ⭐ BALANCED
             .fillMaxWidth()
     ) {
         Text(
             text = "Click Me",
-            fontSize = 16.balanced().sp
+            fontSize = 16.ssp
         )
     }
 }
@@ -213,11 +215,11 @@ struct MyButton: View {
 ElevatedButton(
   onPressed: () {},
   style: ElevatedButton.styleFrom(
-    minimumSize: Size(double.infinity, AppDimens.balanced(48).calculate(context)),
+    minimumSize: Size(double.infinity, AppDimens.fixed(48).calculate(context)),
   ),
   child: Text(
     'Click Me',
-    style: TextStyle(fontSize: AppDimens.balanced(16).calculate(context)),
+    style: TextStyle(fontSize: AppDimens.fixed(16).calculate(context)),
   ),
 )
 ```
@@ -306,9 +308,11 @@ Where:
 #### Android (Kotlin)
 
 ```kotlin
+import com.appdimens.dynamic.compose.*
+
 Icon(
     imageVector = Icons.Default.Favorite,
-    modifier = Modifier.size(24.defaultScaling().dp),  // DEFAULT
+    modifier = Modifier.size(24.sdp),  // scaled — conceptual DEFAULT / phone-first
     tint = Color.Red
 )
 ```
@@ -329,7 +333,7 @@ Image(systemName: "heart.fill")
 ```dart
 Icon(
   Icons.favorite,
-  size: AppDimens.defaultScaling(24).calculate(context),
+  size: AppDimens.fixed(24).calculate(context),
   color: Colors.red,
 )
 ```
@@ -351,7 +355,7 @@ Icon(
 **Example:**
 ```kotlin
 LazyVerticalGrid(
-    columns = GridCells.Adaptive(120.percentageDp.dp)
+    columns = GridCells.Adaptive(120.wdp)
 )
 ```
 
@@ -485,60 +489,60 @@ fun PostCard(post: Post) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.balanced().dp)
+            .padding(vertical = 8.sdp)
     ) {
-        Column(modifier = Modifier.padding(16.balanced().dp)) {
+        Column(modifier = Modifier.padding(16.sdp)) {
             // Header with avatar and username
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(
                     painter = rememberImagePainter(post.avatar),
                     modifier = Modifier
-                        .size(40.balanced().dp)
+                        .size(40.sdp)
                         .clip(CircleShape)
                 )
-                Spacer(modifier = Modifier.width(12.balanced().dp))
+                Spacer(modifier = Modifier.width(12.sdp))
                 Column {
                     Text(
                         text = post.username,
-                        fontSize = 14.balanced().sp,
+                        fontSize = 14.ssp,
                         fontWeight = FontWeight.Bold
                     )
                     Text(
                         text = post.timestamp,
-                        fontSize = 12.balanced().sp,
+                        fontSize = 12.ssp,
                         color = Color.Gray
                     )
                 }
             }
             
-            Spacer(modifier = Modifier.height(12.balanced().dp))
+            Spacer(modifier = Modifier.height(12.sdp))
             
             // Post content
             Text(
                 text = post.content,
-                fontSize = 14.balanced().sp,
-                lineHeight = 20.balanced().sp
+                fontSize = 14.ssp,
+                lineHeight = 20.ssp
             )
             
-            Spacer(modifier = Modifier.height(12.balanced().dp))
+            Spacer(modifier = Modifier.height(12.sdp))
             
             // Action buttons
             Row {
                 IconButton(
                     onClick = { },
-                    modifier = Modifier.size(40.balanced().dp)
+                    modifier = Modifier.size(40.sdp)
                 ) {
                     Icon(Icons.Default.Favorite, "Like")
                 }
                 IconButton(
                     onClick = { },
-                    modifier = Modifier.size(40.balanced().dp)
+                    modifier = Modifier.size(40.sdp)
                 ) {
                     Icon(Icons.Default.Comment, "Comment")
                 }
                 IconButton(
                     onClick = { },
-                    modifier = Modifier.size(40.balanced().dp)
+                    modifier = Modifier.size(40.sdp)
                 ) {
                     Icon(Icons.Default.Share, "Share")
                 }
@@ -625,10 +629,10 @@ class PostCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.symmetric(
-        vertical: AppDimens.balanced(8).calculate(context)
+        vertical: AppDimens.fixed(8).calculate(context)
       ),
       child: Padding(
-        padding: EdgeInsets.all(AppDimens.balanced(16).calculate(context)),
+        padding: EdgeInsets.all(AppDimens.fixed(16).calculate(context)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -636,24 +640,24 @@ class PostCard extends StatelessWidget {
             Row(
               children: [
                 CircleAvatar(
-                  radius: AppDimens.balanced(20).calculate(context),
+                  radius: AppDimens.fixed(20).calculate(context),
                   backgroundImage: NetworkImage(post.avatarUrl),
                 ),
-                SizedBox(width: AppDimens.balanced(12).calculate(context)),
+                SizedBox(width: AppDimens.fixed(12).calculate(context)),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       post.username,
                       style: TextStyle(
-                        fontSize: AppDimens.balanced(14).calculate(context),
+                        fontSize: AppDimens.fixed(14).calculate(context),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
                       post.timestamp,
                       style: TextStyle(
-                        fontSize: AppDimens.balanced(12).calculate(context),
+                        fontSize: AppDimens.fixed(12).calculate(context),
                         color: Colors.grey,
                       ),
                     ),
@@ -662,35 +666,35 @@ class PostCard extends StatelessWidget {
               ],
             ),
             
-            SizedBox(height: AppDimens.balanced(12).calculate(context)),
+            SizedBox(height: AppDimens.fixed(12).calculate(context)),
             
             // Content
             Text(
               post.content,
               style: TextStyle(
-                fontSize: AppDimens.balanced(14).calculate(context),
+                fontSize: AppDimens.fixed(14).calculate(context),
                 height: 1.4,
               ),
             ),
             
-            SizedBox(height: AppDimens.balanced(12).calculate(context)),
+            SizedBox(height: AppDimens.fixed(12).calculate(context)),
             
             // Actions
             Row(
               children: [
                 IconButton(
                   icon: Icon(Icons.favorite_border),
-                  iconSize: AppDimens.balanced(24).calculate(context),
+                  iconSize: AppDimens.fixed(24).calculate(context),
                   onPressed: () {},
                 ),
                 IconButton(
                   icon: Icon(Icons.comment_outlined),
-                  iconSize: AppDimens.balanced(24).calculate(context),
+                  iconSize: AppDimens.fixed(24).calculate(context),
                   onPressed: () {},
                 ),
                 IconButton(
                   icon: Icon(Icons.share_outlined),
-                  iconSize: AppDimens.balanced(24).calculate(context),
+                  iconSize: AppDimens.fixed(24).calculate(context),
                   onPressed: () {},
                 ),
               ],
@@ -769,10 +773,10 @@ val diagonal = sqrt(W² + H²) / BASE_DIAGONAL  // 5x faster
 ### Performance Tips
 
 **✅ Do:**
-- Use `.balanced()` for most cases (optimized)
-- Enable cache (enabled by default)
-- Call `warmupCache()` during app init
-- Use Smart API when possible
+- On **Android Compose**, prefer **`sdp` / `wdp` / `hdp` / `ssp`** and **`asdp` / …** when you want the hybrid curve ([Platform API map](PLATFORM_API_MAP.md))
+- Enable cache where the platform builder exposes it
+- Warm up expensive paths only if your submodule documents it
+- On **iOS / Web / RN**, keep using the **`balanced()`** helpers those packages export
 
 **❌ Don't:**
 - Disable cache unnecessarily
@@ -782,55 +786,33 @@ val diagonal = sqrt(W² + H²) / BASE_DIAGONAL  // 5x faster
 
 ---
 
-## 9. Migration from v1.x
+## 9. Migration from older snippets
 
-### Backward Compatibility
+### Backward compatibility
 
-**Good news:** v1.x code still works! Old extensions are deprecated but functional.
+Depends on **which artifact** you ship. This chapter’s **theory** still uses the names BALANCED / DEFAULT / PERCENTAGE, but **Android (`appdimens-dynamic` 3.x)** moved to **per-strategy packages** with tokens such as **`sdp`**, **`wdp`**, **`asdp`**, **`assp`**, etc.
 
-### Naming Changes
+### Naming changes (Android Compose)
 
-| v1.x          | v2.0         | Still Works? |
-|---------------|--------------|--------------|
-| `.fxdp`       | `.defaultDp` | ✅ Yes       |
-| `.dydp`       | `.percentageDp`| ✅ Yes     |
-| `.fxsp`       | `.defaultSp` | ✅ Yes       |
-| `.dysp`       | `.percentageSp`| ✅ Yes     |
-| `fixed()`     | `defaultScaling()`| ✅ Yes  |
-| `dynamic()`   | `percentage()`| ✅ Yes      |
+| Legacy meta-doc | `appdimens-dynamic` 3.x (Compose) |
+|-----------------|-----------------------------------|
+| `.fxdp` / “fixed dp” | `*.sdp` / axis-specific scaled tokens + imports from `compose.*` |
+| `.dydp` / “dynamic dp” | `*.wdp` / `compose.percent` helpers (see submodule) |
+| `.balanced().dp` (unified) | **`asdp` / `ahdp` / `awdp`** (`compose.auto`) for the hybrid curve, or **`sdp`** for plain scaled |
 
-### Recommended Migration Path
-
-**Step 1:** Start using new names for new code
+### Recommended path
 
 ```kotlin
-// Old (still works, but deprecated)
-Text("Hello", fontSize = 16.fxsp)
+import com.appdimens.dynamic.compose.*
+import com.appdimens.dynamic.compose.auto.asdp
+import com.appdimens.dynamic.compose.auto.assp
 
-// New (recommended)
-Text("Hello", fontSize = 16.balanced().sp)  // or .defaultScaling().sp
+Text("Hello", fontSize = 16.ssp)
+Button(modifier = Modifier.height(48.hdp).padding(16.asdp))
+Text("Hybrid text", fontSize = 16.assp)
 ```
 
-**Step 2:** Try BALANCED for multi-device apps
-
-```kotlin
-// Before (v1.x Fixed)
-Button(modifier = Modifier.height(48.fxdp))
-
-// After (v2.0 BALANCED - recommended)
-Button(modifier = Modifier.height(48.balanced().dp))
-```
-
-**Step 3:** Use Smart API when appropriate
-
-```kotlin
-// Automatic strategy selection
-Button(
-    modifier = Modifier.height(
-        AppDimens.from(48).smart().forElement(ElementType.BUTTON).dp
-    )
-)
-```
+For automatic “smart” selection, use the **iOS / Web / React Native** helpers documented in those submodules; on **Android** pick the strategy package explicitly.
 
 ---
 
@@ -847,22 +829,22 @@ Button(
 
 ### Strategy Selection Summary
 
-**For 95% of apps:**
+**For 95% of apps (Android Compose):**
 ```kotlin
-Use BALANCED ⭐
-.balanced().dp / .balanced().sp
+// Hybrid curve on axis ≈ conceptual BALANCED
+16.asdp / 16.assp
 ```
 
-**For phone-only apps:**
+**For phone-first layouts (Android Compose):**
 ```kotlin
-Use DEFAULT
-.defaultScaling().dp / .defaultScaling().sp
+// Scaled tokens ≈ conceptual DEFAULT / “fixed-ish” growth
+16.sdp / 16.ssp
 ```
 
-**For large containers:**
+**For large containers (Android Compose):**
 ```kotlin
-Use PERCENTAGE
-.percentageDp.dp / .percentageSp.sp
+// Width-biased scaling ≈ conceptual PERCENTAGE
+300.wdp
 ```
 
 **For special cases:**
@@ -898,11 +880,11 @@ Use PERCENTAGE
 - [Examples](EXAMPLES.md) - Ready-to-use code for all platforms
 
 **Platform-Specific:**
-- [Android Guide](../Android/README.md)
-- [iOS Guide](../iOS/README.md)
-- [Flutter Guide](../Flutter/README.md)
-- [React Native Guide](../ReactNative/README.md)
-- [Web Guide](../Web/README.md)
+- [Android Guide](../appdimens-dynamic/README.md)
+- [iOS Guide](../appdimens-ios/README.md)
+- [Flutter Guide](../appdimens-flutter/README.md)
+- [React Native Guide](../appdimens-react-native/README.md)
+- [Web Guide](../appdimens-web/README.md)
 
 **Quick Reference:**
 - [Docs Quick Reference](DOCS_QUICK_REFERENCE.md) - Fast lookup

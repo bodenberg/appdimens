@@ -1,43 +1,37 @@
----
-layout: default
-title: "📖 AppDimens Library Overview: The Core of Responsiveness"
----
-
 # 📖 AppDimens Library Overview: The Core of Responsiveness
+
+This document is maintained in the **[appdimens](https://github.com/bodenberg/appdimens) meta-repository** (documentation hub). **Released libraries** are versioned and published from **platform-specific repositories** linked as Git submodules (e.g. `appdimens-dynamic`, `appdimens-ios`). Always confirm coordinates in each submodule’s README before pinning dependencies.
 
 **AppDimens** is a unified dimension management system designed to solve a central challenge of modern UI development: **ensuring that layouts and user experiences remain consistent and visually comfortable across any screen size, ratio, or device type.**
 
 It goes beyond the limitations of standard density-independent pixels (**Dp/Pt**), treating these values as mere starting points, which are then refined by sophisticated mathematical scaling algorithms.
 
-> **Languages:** English | Português (BR) | Español
-
-> **Note:** Translation files are not yet available in other languages.
+> **Languages:** English | [Português (BR)](LANG/pt-BR/README.md) | [Español](LANG/es/README.md)
 
 ---
 
 ```kotlin
 dependencies {
-    // Core (Dynamic + 13 Strategies)
-    implementation("io.github.bodenberg:appdimens-dynamic:2.0.1")
+    // Core (Compose / Kotlin) — see appdimens-dynamic for current API
+    implementation("io.github.bodenberg:appdimens-dynamic:3.1.4")
 
-    // SDP & SSP scaling (optional)
-    implementation("io.github.bodenberg:appdimens-sdps:1.1.0")
-    implementation("io.github.bodenberg:appdimens-ssps:1.1.0")
+    // SDP & SSP (optional, XML @dimen resources)
+    implementation("io.github.bodenberg:appdimens-sdps:3.1.2")
+    implementation("io.github.bodenberg:appdimens-ssps:3.1.2")
 
-    // All in one
+    // Aggregate “all” artifact (if published for your stack) — confirm in submodule / Maven
     implementation("io.github.bodenberg:appdimens-all:2.0.1")
-    
+
     // Game development (separate dependency)
-    implementation("io.github.bodenberg:appdimens-games:1.1.0")
+    implementation("io.github.bodenberg:appdimens-games:2.0.1")
 }
 ```
 
-**🆕 Version 2.0 Features:**
+**🆕 Version 2.x / 3.x family (high level):**
 - **13 Scaling Strategies**: BALANCED⭐, DEFAULT, PERCENTAGE, LOGARITHMIC, POWER, FLUID, INTERPOLATED, DIAGONAL, PERIMETER, FIT, FILL, AUTOSIZE🆕, NONE
 - **Smart Inference**: Auto-selects best strategy for 18 element types
 - **5x Performance**: Unified lock-free cache, ln() lookup table, optimizations
-- **Backward Compatible**: Old `.fxdp`/`.dydp` still work
-```
+- **Artifact-specific compatibility**: Older tutorials may still mention `.fxdp`/`.dydp`; **Android Compose** work should follow **`appdimens-dynamic` 3.x** (`sdp`, `asdp`, …)
 
 ### 🌐 Unified Principle and Cross-Platform Compatibility
 
@@ -47,7 +41,7 @@ dependencies {
 |:---------|:-----------|:-------------------|
 | **Android** | Native. Extension libraries for **Jetpack Compose**, **XML Views**, **Data Binding**, and **Games (C++/NDK)**. | Uses dynamically adjusted `Dp`, `Sp`, and `Px`. Pre-generated SDP/SSP resources. |
 | **iOS** | Native **Swift** with **SwiftUI**, **UIKit**, and **Metal** for games. CocoaPods and Swift Package Manager support. | Uses dynamically scaled `CGFloat` for `Pt` or `Px`. Game-specific viewport scaling. |
-| **Flutter** | **Dart** package with extension methods for `double`. Platform-adaptive widgets for all Flutter targets. | Works on Android, iOS, Web, Windows, macOS, Linux with `fxdp()`, `dydp()`, `fxsp()`, `dysp()`. |
+| **Flutter** | **Dart** package with builders (`AppDimens.fixed` / `AppDimens.dynamic`) and `num` extensions (`.fx`, `.dy`, fluid helpers). | Cross-platform widgets; see `appdimens-flutter` README for the supported API surface. |
 | **React Native** | **TypeScript/JavaScript** with React hooks. Zero native dependencies, pure JS implementation. | Platform-agnostic Fixed, Dynamic, and Fluid scaling for Android and iOS. |
 | **Web** | **Framework-agnostic** core with integrations for **React**, **Vue**, **Svelte**, **Angular**, and **Vanilla JS**. | CSS-compatible output (`px`, `rem`, `clamp()`). Media query and breakpoint support. |
 
@@ -115,7 +109,7 @@ The power of AppDimens 2.0 lies in its **13 mathematical scaling strategies** ba
 
 AppDimens is optimized for **maximum runtime efficiency**.
 
-* **Cached Factors:** Mathematical adjustment factors (**FX** and **DY**) are calculated only once per screen configuration change (e.g., rotation). Results are cached (or remembered in Compose) and reused instantly.
+* **Cached factors:** Adjustment factors for each strategy are computed per **screen configuration** (e.g., rotation) and reused from the library caches / Compose `remember` paths.
 * **Low Overhead:** The final dimension calculation is simply the base Dp multiplied by the precomputed adjustment factor. This results in **negligible** performance overhead during UI rendering.
 * **Advantage over Static Solutions:** Eliminates the need to generate hundreds or thousands of XML resource files (`values-sw600dp/dimens.xml`), offering full flexibility for any Dp/Pt value.
 
@@ -132,7 +126,7 @@ AppDimens is optimized for **maximum runtime efficiency**.
 
 ### 🛑 Limitations and Considerations
 
-* **Code Dependency:** Unlike resource file–based solutions, AppDimens requires developers to use code extensions (`.fxdp`, `.dydp`) or Gateway methods.
+* **Code-first integration:** Compose/XML/Web each have a different binding; you wire dimensions in code (or generated XML resources for SDP/SSP), not only static `values-swNNNdp` trees.
 * **Physical Conversion Accuracy:** The accuracy of physical unit conversions (MM/INCH) depends on the reliability of the device’s reported density metadata (`xdpi`, `ydpi`).
 
 ---

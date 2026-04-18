@@ -151,27 +151,27 @@ An ideal solution must:
 - `Dynamic` → `PERCENTAGE` (proportional, specific use)
 
 **Backward Compatibility:**
-- ✅ Old extensions still work (`.fxdp`, `.dydp`)
-- ✅ Deprecated warnings guide migration
-- ✅ Zero breaking changes
+- ✅ Older **platform packages** may still expose deprecated entry points—confirm in the submodule you depend on
+- ✅ Meta-documentation now targets **`appdimens-dynamic` 3.x** tokens (`sdp`, `asdp`, …) for new Android Compose work
+- ⚠️ Treat legacy `.fxdp` / `.dydp` **blog examples** as historical; follow the linked Android README instead
 
 ### 3.2 Migration from v1.x
 
-**Old code (v1.x) - Still works:**
+**Old code (v1.x)** — consult the artifact you still compile against; **`appdimens-dynamic` 3.x** examples use:
 ```kotlin
-Text("Hello", fontSize = 16.fxsp)  // Deprecated but functional
+Text("Hello", fontSize = 16.ssp)
 ```
 
 **New code (v2.0) - Recommended:**
 ```kotlin
 // Primary recommendation
-Text("Hello", fontSize = 16.balanced().sp)  // ⭐ BALANCED
+Text("Hello", fontSize = 16.ssp)  // ⭐ BALANCED
 
 // Secondary (equivalent to old Fixed)
-Text("Hello", fontSize = 16.defaultDp.sp)  // DEFAULT
+Text("Hello", fontSize = 16.ssp)  // scaled typography
 
 // Large containers (equivalent to old Dynamic)
-Container(modifier = Modifier.width(300.percentageDp.dp))
+Container(modifier = Modifier.width(300.wdp))
 ```
 
 ---
@@ -214,13 +214,15 @@ f_BALANCED(x, W) = {
 
 **Android:**
 ```kotlin
-// Extension
-16.balanced().dp
-16.balanced().sp
+import com.appdimens.dynamic.compose.*
+import com.appdimens.dynamic.compose.auto.asdp
 
-// Builder
-AppDimens.balanced(16).toDp(resources)
-AppDimens.balanced(16).toSp(resources)
+// Jetpack Compose extensions (appdimens-dynamic 3.x)
+16.sdp
+16.ssp
+Modifier.padding(16.asdp)
+
+// View / XML / `code` layer: see submodule README (not the legacy AppDimens JVM chain)
 ```
 
 **iOS:**
@@ -231,8 +233,8 @@ AppDimens.shared.balanced(16).toPt()
 
 **Flutter:**
 ```dart
-AppDimens.balanced(16).calculate(context)
-16.0.balanced()
+AppDimens.fixed(16).calculate(context)
+16.0.fx.calculate(context)
 ```
 
 **React Native:**
@@ -292,9 +294,9 @@ f_DEFAULT(x, W, AR) = x × [1 + ((W-300)/1) × (0.00333 + 0.00267×ln(AR/1.78))]
 
 **Android:**
 ```kotlin
-16.defaultDp  // Extension
-16.defaultSp
-AppDimens.defaultScaling(16).toDp(resources)
+16.sdp  // scaled — phone-first layouts
+16.ssp
+16.asdp // auto — hybrid curve on axis
 ```
 
 **iOS:**
@@ -304,7 +306,7 @@ AppDimens.shared.defaultScaling(16).toPoints()
 
 **Flutter:**
 ```dart
-AppDimens.defaultScaling(16).calculate(context)
+AppDimens.fixed(16).calculate(context)
 ```
 
 ### 5.4 When to Use DEFAULT
@@ -398,11 +400,11 @@ f_POWER(x, W) = x × (W/300)^0.75
 ```kotlin
 dependencies {
     // Core library (13 strategies + Physical Units)
-    implementation("io.github.bodenberg:appdimens-dynamic:2.0.1")
+    implementation("io.github.bodenberg:appdimens-dynamic:3.1.4")
     
     // SDP/SSP (XML support)
-    implementation("io.github.bodenberg:appdimens-sdps:2.0.1")
-    implementation("io.github.bodenberg:appdimens-ssps:2.0.1")
+    implementation("io.github.bodenberg:appdimens-sdps:3.1.2")
+    implementation("io.github.bodenberg:appdimens-ssps:3.1.2")
     
     // All-in-one
     implementation("io.github.bodenberg:appdimens-all:2.0.1")
@@ -416,34 +418,35 @@ dependencies {
 
 ```kotlin
 // BALANCED (Primary) ⭐
-Text("Hello", fontSize = 16.balanced().sp)
-Box(modifier = Modifier.size(48.balanced().dp))
+Text("Hello", fontSize = 16.ssp)
+Box(modifier = Modifier.size(48.sdp))
 
 // DEFAULT (Secondary)
-Icon(modifier = Modifier.size(24.defaultDp))
+Icon(modifier = Modifier.size(24.sdp))
 
 // PERCENTAGE (Containers)
-Container(modifier = Modifier.width(300.percentageDp.dp))
+Container(modifier = Modifier.width(300.wdp))
 
 // Smart API
 Button(modifier = Modifier.height(
-    48.smart().forElement(ElementType.BUTTON).dp
+    48.sdp
 ))
 
 // FLUID (Typography)
-Text("Title", fontSize = fluidSp(16f, 24f))
+Text("Title", fontSize = 16.fluidSp().fssp)
 
 // All other strategies
-Text("Powerful", fontSize = 16.power(0.75f).sp)
-Text("Logarithmic", fontSize = 16.logarithmic().sp)
+Text("Powerful", fontSize = 16.pwssp)
+Text("Logarithmic", fontSize = 16.logarithmicSp().logssp)
 ```
 
 ### 10.3 View System API
 
 ```kotlin
-val width = 300.balanced().toPx(resources)
-val height = 48.defaultScaling().toPx(resources)
-view.layoutParams.width = width.toInt()
+// Prefer Jetpack Compose extensions in appdimens-dynamic; for classic Views use
+// XML SDP/SSP (`appdimens-sdps` / `appdimens-ssps`) or the `code` packages from the submodule.
+val widthPx = (300 * resources.displayMetrics.density).toInt() // placeholder — see submodule View integration
+view.layoutParams.width = widthPx
 ```
 
 ### 10.4 XML with SDP/SSP
@@ -455,7 +458,7 @@ view.layoutParams.width = width.toInt()
     android:layout_width="@dimen/_300sdp" />
 ```
 
-**📖 [Complete Android Guide](../Android/README.md)**
+**📖 [Complete Android Guide](../appdimens-dynamic/README.md)**
 
 ---
 
@@ -500,7 +503,7 @@ let size = AppDimens.shared.balanced(48).toPoints()
 button.frame = CGRect(x: 0, y: 0, width: size, height: size)
 ```
 
-**📖 [Complete iOS Guide](../iOS/README.md)**
+**📖 [Complete iOS Guide](../appdimens-ios/README.md)**
 
 ---
 
@@ -516,38 +519,38 @@ dependencies:
 ### 12.2 API
 
 ```dart
-// BALANCED (Primary) ⭐
+// BALANCED-style (Primary) ⭐ — fixed builder + extensions (.fx / .dy)
 Text(
   'Hello',
-  style: TextStyle(fontSize: AppDimens.balanced(16).calculate(context)),
+  style: TextStyle(fontSize: AppDimens.fixed(16).calculate(context)),
 )
 
 // Extensions
 Container(
-  width: 300.balanced(),
-  height: 200.defaultScaling(),
+  width: AppDimens.fixed(300).calculate(context),
+  height: AppDimens.fixed(200).calculate(context),
 )
 
-// Smart API
+// Button height — pick explicit builder; “smart” helpers are not on AppDimens in this package
 ElevatedButton(
   style: ElevatedButton.styleFrom(
     minimumSize: Size(
       double.infinity,
-      AppDimens.smart(48).forElement(ElementType.button).calculate(context),
+      AppDimens.fixed(48).calculate(context),
     ),
   ),
 )
 
-// FLUID
+// FLUID — extension helper on num (see appdimens_extensions.dart)
 Text(
   'Title',
   style: TextStyle(
-    fontSize: AppDimens.fluid(16, maxValue: 24).calculate(context),
+    fontSize: 16.0.fluidTo(24).calculate(context),
   ),
 )
 ```
 
-**📖 [Complete Flutter Guide](../Flutter/README.md)**
+**📖 [Complete Flutter Guide](../appdimens-flutter/README.md)**
 
 ---
 
@@ -580,7 +583,7 @@ function MyComponent() {
 ```
 {% endraw %}
 
-**📖 [Complete React Native Guide](../ReactNative/README.md)**
+**📖 [Complete React Native Guide](../appdimens-react-native/README.md)**
 
 ---
 
@@ -617,7 +620,7 @@ function MyComponent() {
 
 See platform-specific hooks and services.
 
-**📖 [Complete Web Guide](../Web/README.md)**
+**📖 [Complete Web Guide](../appdimens-web/README.md)**
 
 ---
 
@@ -629,10 +632,10 @@ See platform-specific hooks and services.
 
 ```kotlin
 // Automatically selects best strategy based on element type
-val buttonSize = 48.smart().forElement(ElementType.BUTTON).dp
+val buttonSize = 48.sdp
 // → Selects BALANCED for buttons on tablets
 
-val containerWidth = 300.smart().forElement(ElementType.CONTAINER).dp
+val containerWidth = 300.wdp
 // → Selects PERCENTAGE for containers
 ```
 
@@ -670,7 +673,7 @@ Design for one orientation, automatically adapt when rotated:
 
 ```kotlin
 // Android
-val width = 300.balanced().portraitLowest().dp
+val width = 300.wdp // orientation: see appdimens-dynamic rotation / inverter docs
 // Portrait (360x800): Uses width (360)
 // Landscape (800x360): Auto-inverts to width (800)
 
@@ -678,7 +681,7 @@ val width = 300.balanced().portraitLowest().dp
 let width = AppDimens.shared.balanced(300).portraitLowest().toPoints()
 
 // Flutter
-final width = AppDimens.balanced(300).portraitLowest().calculate(context);
+final width = AppDimens.fixed(300).portraitLowest().calculate(context);
 ```
 
 **📖 [Base Orientation Guide](BASE_ORIENTATION_GUIDE.md)**
@@ -722,7 +725,7 @@ val playerSize = games.calculatePlayerSize(64f)
 
 **Features:** C++/NDK, OpenGL ES, Vector2D, Physical units
 
-**📖 [Android Games Guide](../Android/appdimens_games/README.md)**
+**📖 [Android Games Guide](../appdimens-games/appdimens_games/README.md)**
 
 ### 18.2 iOS (Metal)
 
@@ -733,7 +736,7 @@ let playerSize = gameAspectRatio(64)
 
 **Features:** Metal/MetalKit, SIMD, 5 viewport modes
 
-**📖 [iOS Games Guide](../iOS/README.md#game-development-features)**
+**📖 [iOS Games Guide](../appdimens-ios/README.md#game-development-features)**
 
 ---
 
@@ -753,14 +756,9 @@ let playerSize = gameAspectRatio(64)
 ### 19.2 Cache Control
 
 ```kotlin
-// Global
-AppDimens.setGlobalCache(true)
-AppDimens.clearAllCaches()
-
-// Per-instance
-val size = AppDimens.balanced(48)
-    .cache(true)
-    .toDp(resources)
+// Compose: configuration-driven caching is internal to appdimens-dynamic.
+// Flutter builders expose `.cache(bool)` — see submodule README / performance notes.
+val height = 48.hdp
 ```
 
 ### 19.3 Warmup Cache
@@ -843,25 +841,25 @@ AppDimens.warmupCache(context)
 
 ### 22.1 From AppDimens v1.x
 
-**Step 1:** Update dependency to 2.0.0  
-**Step 2:** Replace `.fxdp` → `.balanced().dp` (or `.defaultDp`)  
-**Step 3:** Replace `.dydp` → `.percentageDp.dp`
+**Step 1:** Pick the submodule for your stack (Compose → `appdimens-dynamic` 3.x).  
+**Step 2:** Replace legacy unified Android chains (`.fxdp`, `.dydp`, `.balanced().dp`) with **`sdp` / `wdp` / `hdp` / `ssp`** and, for the hybrid curve, **`asdp` / `ahdp` / `awdp` / `assp`**.  
+**Step 3:** Keep **iOS / Web / RN** builder names (`balanced`, `defaultScaling`, …) as documented in those repos.
 
-**Backward compatible:** Old code still works!
+**Backward compatible:** Older **platform-specific** code may still compile inside older artifacts; the meta-docs no longer teach the retired Kotlin extension chain for `appdimens-dynamic` 3.x.
 
 ### 22.2 From SDP/SSP
 
 **Step 1:** Add AppDimens dependency  
-**Step 2:** Replace `@dimen/_16sdp` → `16.balanced().dp`  
+**Step 2:** Replace `@dimen/_16sdp` → `16.sdp`  
 **Step 3:** Remove SDP dependency and XML files
 
 **Benefits:** 40% better control, runtime flexibility
 
 ### 22.3 From Other Libraries
 
-- **CSS vw/vh** → Use `balanced()` or `fluid()`
-- **ScreenUtil** → Use `balanced()`
-- **size-matters** → Use `balanced()` or `power()`
+- **CSS vw/vh** → WebDimens `balanced()` / `fluid()` (see `appdimens-web`)
+- **ScreenUtil** → Prefer explicit **scaled** tokens on Android (`sdp` / `wdp` / `hdp`)
+- **size-matters** → Map layouts to **strategy packages** in `appdimens-dynamic`, not a single extension
 
 **📖 [Complete Migration Guides](FORMULA_COMPARISON.md#10-migration-guide-from-external-libraries)**
 
@@ -873,15 +871,15 @@ AppDimens.warmupCache(context)
 
 ### 23.1 Strategy Selection Methods
 
-**Android:**
+**Android (Jetpack Compose — `appdimens-dynamic` 3.x):**
 ```kotlin
-.balanced()      // Primary ⭐
-.defaultDp       // Secondary
-.percentageDp    // Containers
-.logarithmic()   // TV
-.power(n)        // Configurable
-.fluid(min, max) // Typography
-.smart()         // Auto-inference
+// Strategy = which package you import (scaled, auto, percent, logarithmic, power, fluid, …)
+16.sdp           // scaled — smallest-width axis
+16.asdp          // auto — hybrid “BALANCED-like” on smallest-width axis
+300.wdp          // scaled — width axis (containers)
+16.logarithmicSp().logssp
+16.pwssp
+14.fluidSp().fssp
 ```
 
 **iOS:**
@@ -895,34 +893,18 @@ AppDimens.warmupCache(context)
 .smart(_)
 ```
 
-**Flutter:**
+**Flutter (`appdimens` package):**
 ```dart
-AppDimens.balanced(_)
-AppDimens.defaultScaling(_)
-AppDimens.percentage(_)
-AppDimens.logarithmic(_)
-AppDimens.power(_, exponent:)
-AppDimens.fluid(_, maxValue:)
-AppDimens.smart(_)
+AppDimens.fixed(_)        // primary builder
+AppDimens.dynamic(_)      // aggressive / width-like growth
+_.fx / _.dy               // num extensions → builders
+_.fluidTo(max)            // fluid helper (see appdimens_extensions.dart)
+AppDimens.dynamicPercentageDp(percent, context)
 ```
 
 ### 23.2 Configuration Methods
 
-```kotlin
-// Custom screens
-.screen(UiModeType.TV, 96.dp)
-.screen(DpQualifier.SMALL_WIDTH, 600, 72.dp)
-
-// Base orientation
-.portraitLowest()
-.landscapeHighest()
-
-// Cache control
-.cache(true)
-
-// AR adjustment
-.aspectRatio(enabled = true)
-```
+Qualifier chains, orientation, cache, and AR flags are exposed on **builders inside each submodule** (e.g. `DimenLogarithmic`, `AppDimensFixed`, `WebDimensBuilder`). See [Platform API map](PLATFORM_API_MAP.md) and the linked READMEs instead of a single shared Kotlin surface.
 
 ### 23.3 Output Methods
 
@@ -969,10 +951,7 @@ A: Solutions:
 
 **Q: Migration from v1.x - sizes changed**
 
-A: 
-- `.fxdp` is now `.defaultDp` (same formula)
-- Try `.balanced()` for better multi-device support
-- Old code still works (deprecated)
+A: On **Android Compose**, move to **`sdp` / `wdp` / `hdp` / `ssp`** plus **`asdp` / …** for the hybrid curve ([appdimens-dynamic README](../appdimens-dynamic/README.md)). Legacy extension names are **not** what this meta-repo documents for 3.x.
 
 ### 24.2 FAQ
 
@@ -986,7 +965,7 @@ A:
 
 **Q: Is v2.0 compatible with v1.x?**
 
-A: Yes! 100% backward compatible. Old extensions still work.
+A: **Per artifact.** Some older binaries still ship deprecated entry points, but **`appdimens-dynamic` 3.x** teaches the **token + package-per-strategy** model—verify against the submodule changelog you actually depend on.
 
 **Q: What's the performance impact?**
 
@@ -1004,7 +983,7 @@ A: BALANCED provides 40% better oversizing control on tablets while maintaining 
 
 **Q: Can I still use the old Fixed/Dynamic?**
 
-A: Yes! `.fxdp` and `.dydp` still work (deprecated). They map to `.defaultDp` and `.percentageDp`.
+A: If your **published dependency** still exposes those symbols, consult that version’s notes. New **Compose** work should follow **`sdp` / `wdp` / `hdp`** and strategy imports from **`appdimens-dynamic`** instead of `.fxdp` / `.dydp` examples in old blog posts.
 
 **Q: When should I use PERCENTAGE instead of BALANCED?**
 
@@ -1043,11 +1022,11 @@ A: Yes! Use SDP/SSP modules for XML, or runtime calculation in code.
 
 ### Platform Guides
 
-- [Android](../Android/README.md)
-- [iOS](../iOS/README.md)
-- [Flutter](../Flutter/README.md)
-- [React Native](../ReactNative/README.md)
-- [Web](../Web/README.md)
+- [Android](../appdimens-dynamic/README.md)
+- [iOS](../appdimens-ios/README.md)
+- [Flutter](../appdimens-flutter/README.md)
+- [React Native](../appdimens-react-native/README.md)
+- [Web](../appdimens-web/README.md)
 
 ### Academic References
 

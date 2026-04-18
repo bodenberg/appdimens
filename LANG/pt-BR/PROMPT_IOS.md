@@ -37,4 +37,4 @@ AppDimens.shared.smart(48).forElement(.button).toPoints()
 
 ---
 
-**Documentação Completa:** [../../../iOS/README.md](../../../iOS/README.md)
+**Documentação Completa:** [../../appdimens-ios/README.md](../../appdimens-ios/README.md)

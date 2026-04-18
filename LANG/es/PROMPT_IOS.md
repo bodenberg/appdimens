@@ -16,4 +16,4 @@ AppDimens.shared.defaultScaling(24).toPoints()
 
 ---
 
-**Documentación:** [../../../iOS/README.md](../../../iOS/README.md)
+**Documentación:** [../../appdimens-ios/README.md](../../appdimens-ios/README.md)

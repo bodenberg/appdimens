@@ -40,9 +40,19 @@ Qual o tipo do seu app?
 ### Android
 
 ```kotlin
-16.balanced().dp   // Primária ⭐
-16.defaultDp       // Secundária
-300.percentageDp.dp // Containers
+import com.appdimens.dynamic.compose.*
+import com.appdimens.dynamic.compose.auto.asdp
+import com.appdimens.dynamic.compose.auto.assp
+
+// Escalado (README do submódulo)
+16.sdp
+100.wdp
+48.hdp
+16.ssp
+
+// Auto (curva híbrida “BALANCED” no eixo)
+Modifier.padding(16.asdp)
+Text("", fontSize = 16.assp)
 ```
 
 ### iOS
@@ -55,8 +65,9 @@ AppDimens.shared.defaultScaling(16).toPoints()
 ### Flutter
 
 ```dart
-AppDimens.balanced(16).calculate(context)
-16.0.balanced()  // Extension
+AppDimens.fixed(16).calculate(context)
+16.0.fx.calculate(context)
+AppDimens.dynamic(300).calculate(context)
 ```
 
 ---
