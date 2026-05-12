@@ -3,7 +3,7 @@
 > **Hub documentation.** Conceptual reference for scaling theory in the AppDimens family.
 > **Versions, semver, and install commands** belong only in **platform submodule READMEs** linked from [`README.md`](../README.md)—not here.
 
-> **Validated Android mapping:** Conceptual **BALANCED / DEFAULT / PERCENTAGE** line up with **`appdimens-dynamic`** packages **`auto` / `scaled` / `percent`** (see **[IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)** and **[`MATHEMATICS-AND-CALCULUS.md`](../appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md)**).
+> **Validated Android mapping:** **BALANCED→`auto`**, **FIXED + DEFAULT→`scaled`**, **DYNAMIC + catalog PERCENTAGE→`percent`** (see **[NAMING_AND_MIGRATION_1X_2X_TO_3X.md](NAMING_AND_MIGRATION_1X_2X_TO_3X.md)**, **[IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)**, **[`MATHEMATICS-AND-CALCULUS.md`](../appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md)**).
 
 ---
 
@@ -22,6 +22,7 @@ flowchart LR
 ```
 
 > **📚 Related Documentation:**
+> - [Naming & migration 1.x/2.x → 3.x](NAMING_AND_MIGRATION_1X_2X_TO_3X.md) - FIXED/DEFAULT→`scaled`, DYNAMIC→`percent`
 > - [Formula Comparison](FORMULA_COMPARISON.md) - Compare all 13 strategies (30min)
 > - [Quick Reference](DOCS_QUICK_REFERENCE.md) - Fast lookup (5min)
 > - [Examples](EXAMPLES.md) - Ready-to-use code (20min)

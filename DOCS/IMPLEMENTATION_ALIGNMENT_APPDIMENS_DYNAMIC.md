@@ -15,8 +15,8 @@ Older cross-stack narrative used **ENUM-like labels** (**BALANCED**, **DEFAULT**
 | Typical hub / cross‑platform wording | **`appdimens-dynamic` strategy** | Compose import sketch | Canonical narrative doc |
 |-------------------------------------|----------------------------------|------------------------|-------------------------|
 | **BALANCED** (hybrid phone-linear → restrained tablet growth) | **`auto`** | `com.appdimens.dynamic.compose.auto.*` (`asdp`, `ahdp`, `awdp`, `assp` …) | [`auto.md`](../appdimens-dynamic/DOCUMENTATION/auto.md) |
-| **DEFAULT** “fixed-style” baseline / SDP-style linear on 300 dp axes | **`scaled`** (default recommendation) | `com.appdimens.dynamic.compose.scaled.*` (`sdp`, `hdp`, `wdp`, `ssp` …) | [`scaled.md`](../appdimens-dynamic/DOCUMENTATION/scaled.md) |
-| **PERCENTAGE** / aggressive axis tracking | **`percent`** | `com.appdimens.dynamic.compose.percent.*` (`psdp` …) | [`percent.md`](../appdimens-dynamic/DOCUMENTATION/percent.md) |
+| **DEFAULT** *and legacy* **FIXED** (“fixed-style” baseline / SDP-style linear on 300 dp axes) | **`scaled`** (default recommendation) | `com.appdimens.dynamic.compose.scaled.*` (`sdp`, `hdp`, `wdp`, `ssp` …) | [`scaled.md`](../appdimens-dynamic/DOCUMENTATION/scaled.md) |
+| **PERCENTAGE** / legacy **DYNAMIC** (aggressive axis tracking) | **`percent`** | `com.appdimens.dynamic.compose.percent.*` (`psdp` …) | [`percent.md`](../appdimens-dynamic/DOCUMENTATION/percent.md) |
 | Stevens-style sublinear knob | **`power`** | `com.appdimens.dynamic.compose.power.*` | [`power.md`](../appdimens-dynamic/DOCUMENTATION/power.md) |
 | Bounded band / breakpoint feel | **`fluid`** | `com.appdimens.dynamic.compose.fluid.*` | [`fluid.md`](../appdimens-dynamic/DOCUMENTATION/fluid.md) |
 | Weber–Fechner style damping | **`logarithmic`** | `com.appdimens.dynamic.compose.logarithmic.*` (`logsdp` … demo) | [`logarithmic.md`](../appdimens-dynamic/DOCUMENTATION/logarithmic.md) |
@@ -28,6 +28,8 @@ Older cross-stack narrative used **ENUM-like labels** (**BALANCED**, **DEFAULT**
 | Density override curve | **`density`** | `compose.density.*` (`dsdp` …) | [`density.md`](../appdimens-dynamic/DOCUMENTATION/density.md) |
 | Container / step-based resize | **`resize`** | `compose.resize.*`, `ResizeBound` | [`resize.md`](../appdimens-dynamic/DOCUMENTATION/resize.md) |
 | Constant physical size (**NONE**) | *No strategy*: raw `Dp`/`Sp` or guarded returns | — | — |
+
+**Legacy migration (1.x / 2.x → 3.x):** **`FIXED` + `DEFAULT`** narratives both land in **`scaled`**; **`DYNAMIC`** maps to **`percent`**; **`BALANCED`** maps to **`auto`**. Expanded cheatsheet → **[`NAMING_AND_MIGRATION_1X_2X_TO_3X.md`](NAMING_AND_MIGRATION_1X_2X_TO_3X.md)**.
 
 **Prefix catalogue & mirrored `code.*` parity** → [`COMPOSE-API-CONVENTIONS.md`](../appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md).
 
@@ -66,7 +68,7 @@ This matches **`DOCUMENTATION/auto.md`** line-for-line.
 
 ---
 
-## 4 · `scaled` kernel (conceptual **DEFAULT** linear segment)
+## 4 · `scaled` kernel (legacy hub **FIXED** / **DEFAULT** — SDP-style baseline)
 
 Aspect ratio OFF: exact linear translation  
 $$Output \approx base \cdot (sw\cdot \frac{1}{300})$$
@@ -75,7 +77,7 @@ Aspect ratio ON uses precomputed **`f.arMultiplier`** (see **`MATHEMATICS-AND-CA
 
 ---
 
-## 5 · `percent` (**PERCENTAGE**)
+## 5 · `percent` (**PERCENTAGE**, legacy **DYNAMIC**)
 
 Formal reference: **`percent.md`** + §4 table in **`MATHEMATICS-AND-CALCULUS.md`**: output uses axis dp with same global inverse ratio.
 

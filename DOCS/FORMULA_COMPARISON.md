@@ -8,11 +8,12 @@
 **Complete Mathematical and Comparative Analysis**  
 *Author: Jean Bodenberg*  
 
-> **Ranking note:** Compares AppDimens modes at a **conceptual** level. **`appdimens-dynamic`** publishes discrete packages (`scaled`, `percent`, `auto`, …)—see **[IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)** for exact naming, constants, and kernels.
+> **Ranking note:** Compares AppDimens modes at a **conceptual** level. **`appdimens-dynamic`** publishes discrete packages (`scaled`, `percent`, `auto`, …)—see **[IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)** for exact naming, constants, and kernels. **Legacy Android unified labels:** FIXED+DEFAULT→`scaled`, DYNAMIC/PERCENTAGE→`percent`, BALANCED→`auto` — **[NAMING_AND_MIGRATION_1X_2X_TO_3X.md](NAMING_AND_MIGRATION_1X_2X_TO_3X.md)**.
 
 > **📚 Complementary Documentation:**
 > - [Mathematical Theory](MATHEMATICAL_THEORY.md) - Complete technical foundation (2h)
 > - [Simplified Guide](MATHEMATICAL_THEORY_SIMPLIFIED.md) - Easy version (15min)
+> - [Naming & migration 1.x/2.x → 3.x](NAMING_AND_MIGRATION_1X_2X_TO_3X.md) - Gradle package mapping (10min)
 > - [Examples](EXAMPLES.md) - Ready-to-use code (20min)
 > - [Quick Reference](DOCS_QUICK_REFERENCE.md) - Fast lookup (5min)
 
@@ -40,11 +41,11 @@
 This document provides an exhaustive comparison of **20 responsive sizing strategies**:
 
 **AppDimens Strategies (13):**
-1. BALANCED ⭐ (Primary recommendation)
-2. DEFAULT (Secondary recommendation)
+1. BALANCED ⭐ (Primary recommendation) — Android 3.x: **`auto`**
+2. DEFAULT (Secondary recommendation; legacy **FIXED** narratives) — Android 3.x: **`scaled`**
 3. LOGARITHMIC
 4. POWER
-5. PERCENTAGE
+5. PERCENTAGE (legacy **DYNAMIC**) — Android 3.x: **`percent`**
 6. FLUID
 7. INTERPOLATED
 8. DIAGONAL

@@ -22,7 +22,7 @@
 ## Cross-platform wording
 
 - [ ] Strategy names (**BALANCED**, **DEFAULT**, …) aligned with **`[PLATFORM_API_MAP.md](PLATFORM_API_MAP.md)`** + **`[IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)`** (`sdp`≠BALANCED unless you are intentionally documenting **`scaled`** only).
-- [ ] Android Compose examples cite **`sdp` / `wdp` / `hdp`** and **`asdp` / …** where relevant—not legacy unified `.balanced().dp` tutorials unless flagged as historic.
+- [ ] Android samples: **`BALANCED→asdp`**; **`FIXED`/`DEFAULT`→`sdp`/`scaled`**; **`DYNAMIC`/`PERCENTAGE`→`percent`/`psdp`** — **`[NAMING_AND_MIGRATION_1X_2X_TO_3X.md](NAMING_AND_MIGRATION_1X_2X_TO_3X.md)`**.
 
 ## Code fences in theory docs
 

@@ -147,9 +147,17 @@ An ideal solution must:
 - ✅ 5x performance improvements
 - ✅ Enhanced TypeScript/JavaScript support
 
-**Renamed (Clarity):**
-- `Fixed` → `DEFAULT` (phone-focused, secondary recommendation)
-- `Dynamic` → `PERCENTAGE` (proportional, specific use)
+**Renamed (2.x catalog clarity):**
+- `Fixed` → **DEFAULT** in long-form docs (phone-focused storyline)
+- `Dynamic` → **PERCENTAGE** in long-form docs (proportional / axis-heavy storyline)
+
+**Android `appdimens-dynamic` 3.x splits the old unified Kotlin DSL into packages** ([**full migration cheatsheet**](NAMING_AND_MIGRATION_1X_2X_TO_3X.md)):
+
+| Familiar buckets (still used in hub theory) | 3.x Gradle strategy | Typical Compose hints |
+|--------------------------------------------|---------------------|-----------------------|
+| **BALANCED** | **`auto`** | `asdp`, `assp`, … |
+| **FIXED** + **DEFAULT** | **`scaled`** | `sdp`, `ssp`, `wdp`, `hdp`, … |
+| **DYNAMIC** + **PERCENTAGE** | **`percent`** | `psdp`, … |
 
 **Backward Compatibility:**
 - ✅ Older **platform packages** may still expose deprecated entry points—confirm in the submodule you depend on
@@ -809,7 +817,7 @@ AppDimens.warmupCache(context)
 ### 22.1 From AppDimens earlier revisions
 
 **Step 1:** Pick the submodule for your stack (Compose → `appdimens-dynamic` 3.x).  
-**Step 2:** Replace legacy unified Android chains (`.fxdp`, `.dydp`, `.balanced().dp`) with **`sdp` / `wdp` / `hdp` / `ssp`** and, for the hybrid curve, **`asdp` / `ahdp` / `awdp` / `assp`**.  
+**Step 2:** Replace legacy unified Android chains (`.fxdp`, `.dydp`, `.balanced().dp`) so that **SDP-style FIXED/DEFAULT flows** land on **`sdp` / `wdp` / `hdp` / `ssp`**, **hybrid BALANCED** lands on **`asdp` / `ahdp` / `awdp` / `assp`**, and **DYNAMIC/PERCENTAGE** flows land on **`psdp`** / **`compose.percent`**. Cheat sheet **[`NAMING_AND_MIGRATION_1X_2X_TO_3X.md`](NAMING_AND_MIGRATION_1X_2X_TO_3X.md)**.  
 **Step 3:** Keep **iOS / Web / RN** builder names (`balanced`, `defaultScaling`, …) as documented in those repos.
 
 **Backward compatible:** Older **platform-specific** code may still compile inside older artifacts; the meta-docs no longer teach the retired Kotlin extension chain for `appdimens-dynamic` 3.x.

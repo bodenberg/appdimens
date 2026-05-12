@@ -324,7 +324,7 @@ Edits under **`DOCS/`** (or hub-level Markdown tied to scaling theory) should en
 
 - Follow **[`DOCS/DOCUMENTATION_REVIEW_CHECKLIST.md`](DOCS/DOCUMENTATION_REVIEW_CHECKLIST.md)**.
 - Keep **Android Compose** samples honest: **`sdp`/`ssp` → `scaled`**; **BALANCED (hybrid) → `auto` → `asdp`/`assp`/…** — see **`[DOCS/IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md`](DOCS/IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)**.
-- Grep for stale **`LANG/`** links, version pins inside `DOCS/`, and contradictory “smart” narratives on Kotlin (no fused `smart()` API in **`appdimens-dynamic`**).
+- Grep for stale **`LANG/`** links, version pins inside `DOCS/`, contradictory “smart” narratives on Kotlin, and **obsolete FIXED/DEFAULT/DYNAMIC labeling** versus **`scaled`/`percent`/`auto`** — see **`[NAMING_AND_MIGRATION_1X_2X_TO_3X.md](../DOCS/NAMING_AND_MIGRATION_1X_2X_TO_3X.md)`**.
 
 ## 🧪 Testing
 

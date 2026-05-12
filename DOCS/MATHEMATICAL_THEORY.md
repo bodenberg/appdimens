@@ -3,7 +3,7 @@
 > **Hub documentation.** Conceptual reference for scaling theory in the AppDimens family.
 > **Versions, semver, and install commands** belong only in **platform submodule READMEs** linked from [`README.md`](../README.md)—not here.
 
-> **Alignment with Jetpack Compose sources:** Interpret names like **BALANCED / DEFAULT / PERCENTAGE** in this file as **cross-platform shorthand**. The **Kotlin implementations** expose **`auto`**, **`scaled`**, **`percent`**, etc., with kernels and constants audited in **`[IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)`** and **[`MATHEMATICS-AND-CALCULUS.md`](../appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md)**. Where numbers differ between sections below and those files, prefer the **`appdimens-dynamic`** documents.
+> **Alignment with Jetpack Compose sources:** Interpret names like **BALANCED / DEFAULT / PERCENTAGE** in this file as **cross-platform shorthand**. **`BALANCED→auto`**, **`FIXED`+`DEFAULT→scaled`**, **`DYNAMIC`/PERCENTAGE→`percent`** on Android 3.x ([**migration guide**](NAMING_AND_MIGRATION_1X_2X_TO_3X.md)). The **Kotlin implementations** expose **`auto`**, **`scaled`**, **`percent`**, etc., audited in **`[IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)`** and **[`MATHEMATICS-AND-CALCULUS.md`](../appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md)**. Where numbers differ between sections below and those files, prefer the **`appdimens-dynamic`** documents.
 
 
 **Detailed Technical Documentation - Universal Mathematical Model**  
@@ -18,6 +18,7 @@
 > - [Formula Comparison](FORMULA_COMPARISON.md) - Analysis of 13 strategies + Rankings (30min)
 > - [Complete Technical Guide](COMPREHENSIVE_TECHNICAL_GUIDE.md) - Definitive document with EVERYTHING (2h)
 > - [Documentation Index](README.md) - Complete navigation
+> - [Naming & migration 1.x/2.x → 3.x](NAMING_AND_MIGRATION_1X_2X_TO_3X.md) - FIXED/DEFAULT→`scaled`, DYNAMIC→`percent`, BALANCED→`auto`
 > - [Quick Reference](DOCS_QUICK_REFERENCE.md) - Find any information in seconds
 
 ---

@@ -15,11 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `DOCS/` is **theory-only** and intentionally omits pinned coordinates.
 - See [`README.md`](README.md) for **Production vs Work in progress** status and install snippets.
-- **Phase 10 (consistency sweep):** theory/examples checked against **`IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md`** — Compose **BALANCED** = **`auto`** (`asdp`/`assp`, …); **`sdp`/`ssp` = `scaled`**. Maintainer steps documented in [`DOCS/README.md`](DOCS/README.md) (Phase 10) and [`CONTRIBUTING.md`](CONTRIBUTING.md).
+- **Phase 10 (consistency sweep):** theory/examples checked against **`IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md`** — **BALANCED→`auto`**, **FIXED+DEFAULT→`scaled`**, **DYNAMIC/PERCENTAGE→`percent`**. Guide **[`DOCS/NAMING_AND_MIGRATION_1X_2X_TO_3X.md`](DOCS/NAMING_AND_MIGRATION_1X_2X_TO_3X.md)**. Maintainer steps in [`DOCS/README.md`](DOCS/README.md) (Phase 10) and [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ### Nota sobre documentación y Android
 
-Las entradas históricas de versiones anteriores (p. ej. nombres **`.fxdp` / `.dydp`**, cadenas unificadas estilo **`.balanced().dp`**) describen **artefactos o guías unificadas** de su época. El módulo publicado actual de UI en Android es **[`appdimens-dynamic` 3.x](appdimens-dynamic/README.md)** con tokens **Compose** (`sdp`, `wdp`, `hdp`, `ssp`, `asdp`, …). El mapa conceptual frente a cada plataforma está en **[DOCS/PLATFORM_API_MAP.md](DOCS/PLATFORM_API_MAP.md)**.
+Las entradas históricas de versiones anteriores (p. ej. nombres **`.fxdp` / `.dydp`**, cadenas unificadas estilo **`.balanced().dp`**) describen **artefactos o guías unificadas** de su época. El módulo publicado actual de UI en Android es **[`appdimens-dynamic` 3.x](appdimens-dynamic/README.md)** con paquetes por estrategia: **`scaled`** (narrativas **FIXED**/ **DEFAULT**), **`percent`** (**DYNAMIC**/ **PERCENTAGE**), **`auto`** (**BALANCED**). Resumen inglés hub: **[`DOCS/NAMING_AND_MIGRATION_1X_2X_TO_3X.md`](DOCS/NAMING_AND_MIGRATION_1X_2X_TO_3X.md)**; mapa conceptual: **[`DOCS/PLATFORM_API_MAP.md`](DOCS/PLATFORM_API_MAP.md)**.
 
 ## [2.0.0] - 2025-11-02
 

@@ -67,6 +67,16 @@ Text("", fontSize = 16.assp)
 // Other strategies live in their own packages (logarithmic, power, fluid, percent, …)
 ```
 
+### Legacy 1.x / 2.x → Android 3.x (`appdimens-dynamic`)
+
+| Familiar label | Gradle strategy | Common tokens |
+|----------------|-----------------|---------------|
+| **BALANCED** | **`auto`** | `asdp`, `assp`, … |
+| **FIXED**, **DEFAULT** | **`scaled`** | `sdp`, `ssp`, `wdp`, `hdp`, … |
+| **DYNAMIC**, **PERCENTAGE** | **`percent`** | `psdp`, … |
+
+→ **[Naming & migration (full)](NAMING_AND_MIGRATION_1X_2X_TO_3X.md)** · **[Alignment sheet](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)**
+
 ### iOS (Swift)
 
 ```swift
