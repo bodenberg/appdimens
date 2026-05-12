@@ -1,111 +1,36 @@
-# Checklist de revisão — padrões em blocos de código
+# Hub documentation review checklist
 
-Análise automática: apenas dentro de cercas `` ```kotlin`` e `` ```dart`` em `DOCS/`, `LANG/`, `README.md`, `PRESENTATION.md`, `CHANGELOG.md`.
-Linhas Kotlin com comentário `// Deprecated` (migração intencional) são ignoradas.
-
-| Ficheiro | Kotlin | Dart | Rever manualmente? |
-|----------|--------|------|---------------------|
-| [CHANGELOG.md](CHANGELOG.md) | 0 | 0 | Não (nestes padrões) |
-| [DOCS/APPLICABILITY_OF_APPDIMENS.md](DOCS/APPLICABILITY_OF_APPDIMENS.md) | 0 | 0 | Não (nestes padrões) |
-| [DOCS/BASE_ORIENTATION_GUIDE.md](DOCS/BASE_ORIENTATION_GUIDE.md) | 0 | 0 | Não (nestes padrões) |
-| [DOCS/COMPREHENSIVE_TECHNICAL_GUIDE.md](DOCS/COMPREHENSIVE_TECHNICAL_GUIDE.md) | 0 | 0 | Não (nestes padrões) |
-| [DOCS/DOCS_QUICK_REFERENCE.md](DOCS/DOCS_QUICK_REFERENCE.md) | 0 | 0 | Não (nestes padrões) |
-| [DOCS/DOCUMENTATION_REVIEW_CHECKLIST.md](DOCS/DOCUMENTATION_REVIEW_CHECKLIST.md) | 0 | 0 | Não (nestes padrões) |
-| [DOCS/EXAMPLES.md](DOCS/EXAMPLES.md) | 0 | 0 | Não (nestes padrões) |
-| [DOCS/FORMULA_COMPARISON.md](DOCS/FORMULA_COMPARISON.md) | 0 | 0 | Não (nestes padrões) |
-| [DOCS/MATHEMATICAL_THEORY.md](DOCS/MATHEMATICAL_THEORY.md) | 0 | 0 | Não (nestes padrões) |
-| [DOCS/MATHEMATICAL_THEORY_SIMPLIFIED.md](DOCS/MATHEMATICAL_THEORY_SIMPLIFIED.md) | 0 | 0 | Não (nestes padrões) |
-| [DOCS/PLATFORM_API_MAP.md](DOCS/PLATFORM_API_MAP.md) | 0 | 0 | Não (nestes padrões) |
-| [DOCS/README.md](DOCS/README.md) | 0 | 0 | Não (nestes padrões) |
-| [DOCS/VALIDATION_REPORT.md](DOCS/VALIDATION_REPORT.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/README.md](LANG/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/es/Android/README.md](LANG/es/Android/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/es/Android/appdimens_all/README.md](LANG/es/Android/appdimens_all/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/es/Android/appdimens_dynamic/README.md](LANG/es/Android/appdimens_dynamic/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/es/Android/appdimens_games/README.md](LANG/es/Android/appdimens_games/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/es/Android/appdimens_sdps/README.md](LANG/es/Android/appdimens_sdps/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/es/Android/appdimens_ssps/README.md](LANG/es/Android/appdimens_ssps/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/es/COMPREHENSIVE_TECHNICAL_GUIDE.md](LANG/es/COMPREHENSIVE_TECHNICAL_GUIDE.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/es/DOCS_QUICK_REFERENCE.md](LANG/es/DOCS_QUICK_REFERENCE.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/es/FORMULA_COMPARISON.md](LANG/es/FORMULA_COMPARISON.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/es/Flutter/README.md](LANG/es/Flutter/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/es/MATHEMATICAL_THEORY.md](LANG/es/MATHEMATICAL_THEORY.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/es/MATHEMATICAL_THEORY_SIMPLIFIED.md](LANG/es/MATHEMATICAL_THEORY_SIMPLIFIED.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/es/PROMPT_ANDROID.md](LANG/es/PROMPT_ANDROID.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/es/PROMPT_IOS.md](LANG/es/PROMPT_IOS.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/es/README.md](LANG/es/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/es/ReactNative/README.md](LANG/es/ReactNative/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/es/Web/README.md](LANG/es/Web/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/es/iOS/INSTALLATION.md](LANG/es/iOS/INSTALLATION.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/es/iOS/README.md](LANG/es/iOS/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/Android/README.md](LANG/pt-BR/Android/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/Android/appdimens_all/README.md](LANG/pt-BR/Android/appdimens_all/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/Android/appdimens_dynamic/README.md](LANG/pt-BR/Android/appdimens_dynamic/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/Android/appdimens_games/README.md](LANG/pt-BR/Android/appdimens_games/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/Android/appdimens_sdps/README.md](LANG/pt-BR/Android/appdimens_sdps/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/Android/appdimens_ssps/README.md](LANG/pt-BR/Android/appdimens_ssps/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/COMPREHENSIVE_TECHNICAL_GUIDE.md](LANG/pt-BR/COMPREHENSIVE_TECHNICAL_GUIDE.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/CONTRIBUTING.md](LANG/pt-BR/CONTRIBUTING.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/DOCS_QUICK_REFERENCE.md](LANG/pt-BR/DOCS_QUICK_REFERENCE.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/FORMULA_COMPARISON.md](LANG/pt-BR/FORMULA_COMPARISON.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/Flutter/README.md](LANG/pt-BR/Flutter/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/MATHEMATICAL_THEORY.md](LANG/pt-BR/MATHEMATICAL_THEORY.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/MATHEMATICAL_THEORY_SIMPLIFIED.md](LANG/pt-BR/MATHEMATICAL_THEORY_SIMPLIFIED.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/PROMPT_ANDROID.md](LANG/pt-BR/PROMPT_ANDROID.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/PROMPT_IOS.md](LANG/pt-BR/PROMPT_IOS.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/README.md](LANG/pt-BR/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/ReactNative/README.md](LANG/pt-BR/ReactNative/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/Web/README.md](LANG/pt-BR/Web/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/iOS/CHANGELOG.md](LANG/pt-BR/iOS/CHANGELOG.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/iOS/DOCUMENTATION.md](LANG/pt-BR/iOS/DOCUMENTATION.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/iOS/IMPROVEMENTS_SUMMARY.md](LANG/pt-BR/iOS/IMPROVEMENTS_SUMMARY.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/iOS/INSTALLATION.md](LANG/pt-BR/iOS/INSTALLATION.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/iOS/INSTALLATION_GUIDE.md](LANG/pt-BR/iOS/INSTALLATION_GUIDE.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/iOS/INSTRUCTIONS.md](LANG/pt-BR/iOS/INSTRUCTIONS.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/iOS/MODULAR_IMPLEMENTATION_SUMMARY.md](LANG/pt-BR/iOS/MODULAR_IMPLEMENTATION_SUMMARY.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/iOS/PROJECT_SUMMARY.md](LANG/pt-BR/iOS/PROJECT_SUMMARY.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/iOS/README.md](LANG/pt-BR/iOS/README.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/iOS/README_MODULAR.md](LANG/pt-BR/iOS/README_MODULAR.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/iOS/TEST_RESULTS.md](LANG/pt-BR/iOS/TEST_RESULTS.md) | 0 | 0 | Não (nestes padrões) |
-| [LANG/pt-BR/iOS/USAGE_GUIDE.md](LANG/pt-BR/iOS/USAGE_GUIDE.md) | 0 | 0 | Não (nestes padrões) |
-| [PRESENTATION.md](PRESENTATION.md) | 0 | 0 | Não (nestes padrões) |
-| [README.md](README.md) | 0 | 0 | Não (nestes padrões) |
-
-## Detalhe — ficheiros com ocorrências
-
-*Nenhum padrão na lista foi encontrado em blocos Kotlin/Dart (após filtrar comentários Deprecated).*
-
-## Estatísticas
-
-- Ficheiros `.md` analisados: **65**
-- Com pelo menos um hit: **0**
-- Sem hits nestes padrões: **65**
-
-## Padrões Kotlin
-
-- `\.balanced\(\)\.d[ps]` — legacy .balanced().dp/.sp
-- `\.defaultDp\b|\.defaultSp\b` — defaultDp/defaultSp
-- `\.percentageDp` — percentageDp
-- `\.fxdp\b|\.dydp\b|\.fxsp\b|\.dysp\b` — fxdp/dydp family
-- `AppDimens\.from\(` — AppDimens.from (unified smart)
-- `defaultScaling\(\)\.d[ps]` — defaultScaling().dp
-- `\.smart\(\)\.forElement` — Android smart() chain
-
-## Padrões Dart
-
-- `AppDimens\.balanced\(` — AppDimens.balanced
-- `AppDimens\.defaultScaling\(` — AppDimens.defaultScaling static
-- `AppDimens\.smart\(` — AppDimens.smart static
-- `AppDimens\.fluid\(\s*\d+\s*,` — AppDimens.fluid(min, max)
-- `AppDimens\.percentage\(\d` — AppDimens.percentage digit
-- `\b\d+\.0\.balanced\(\)|(?<![A-Za-z.])\d+\.balanced\(\)` — num.balanced()
-
-## Como repetir
-
-```bash
-python3 scripts/scan_documentation_code_fences.py --write
-```
+> **Hub documentation.** Use this before merging edits to **`DOCS/`** or hub-level Markdown at the repo root. It does **not** replace submodule release review.
 
 ---
 
-*Swift, TypeScript, XML e texto corrido não entram nesta varredura.*
+## Scope rules
+
+| Rule | Detail |
+|------|--------|
+| No semver in `DOCS/` | Do not add Maven/npm/pub/CocoaPods pins—point to **[`README.md`](../README.md#submodule-map)** or submodule files instead. |
+| English only here | Localization lives in submodule repos if offered. Do not add `LANG/` links to non-existent folders. |
+| Theory vs installs | Explain *why* a strategy behaves as it does; link out for exact API tokens. |
+
+## Content quality
+
+- [ ] Starts with hub banner (blockquote) when missing.
+- [ ] Internal links resolve (relative paths to `README.md`, `PLATFORM_API_MAP.md`, submodules).
+- [ ] Tables and formulas render (LaTeX `$$ … $$`, pipe tables escaped correctly).
+- [ ] Mermaid blocks use quoted labels where labels contain parentheses; node IDs contain no bare spaces.
+
+## Cross-platform wording
+
+- [ ] Strategy names (**BALANCED**, **DEFAULT**, …) aligned with **`[PLATFORM_API_MAP.md](PLATFORM_API_MAP.md)`** + **`[IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)`** (`sdp`≠BALANCED unless you are intentionally documenting **`scaled`** only).
+- [ ] Android Compose examples cite **`sdp` / `wdp` / `hdp`** and **`asdp` / …** where relevant—not legacy unified `.balanced().dp` tutorials unless flagged as historic.
+
+## Code fences in theory docs
+
+- [ ] Samples are **illustrative**—add a reminder to confirm syntax in the submodule.
+- [ ] No production coordinates inside fenced snippets.
+
+## Final pass
+
+- [ ] **Math / Android:** reconcile with **[IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)** + **[`appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md`](../appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md)** (`auto` breakpoints = **BALANCED**; **`scaled`** tokens = **`sdp`** / **`ssp`**, …).
+- [ ] Grep the changed file(s) for `LANG/`, `implementation("io.github`, `pod '`, `@2.0`, `-v20` leftovers.
+- [ ] Update **`DOCS/README.md`** navigation if adding a brand-new theory page.

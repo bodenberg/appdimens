@@ -1,18 +1,27 @@
 # 📐 AppDimens: Simplified Mathematical Theory
 
-> **Languages:** English | [Português (BR)](../LANG/pt-BR/MATHEMATICAL_THEORY_SIMPLIFIED.md) | [Español](../LANG/es/MATHEMATICAL_THEORY_SIMPLIFIED.md)
+> **Hub documentation.** Conceptual reference for scaling theory in the AppDimens family.
+> **Versions, semver, and install commands** belong only in **platform submodule READMEs** linked from [`README.md`](../README.md)—not here.
+
+> **Validated Android mapping:** Conceptual **BALANCED / DEFAULT / PERCENTAGE** line up with **`appdimens-dynamic`** packages **`auto` / `scaled` / `percent`** (see **[IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)** and **[`MATHEMATICS-AND-CALCULUS.md`](../appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md)**).
+
+---
 
 **Quick & Easy Guide - Understand in 15 Minutes**  
 *Author: Jean Bodenberg*  
-*Date: February 2025*  
-*Version: 2.0.0*
 
-> **API note:** **Android / Jetpack Compose** examples refer to **`appdimens-dynamic` 3.x** (`sdp`, `hdp`, `wdp`, `ssp`, and **`asdp` / `ahdp` / `awdp`** for the auto / “BALANCED-like” hybrid on an axis). Names like **`balanced()`** may still appear for **iOS, Web, React Native**, or in **conceptual** multi-platform wording from older unified docs. See [Platform API map](PLATFORM_API_MAP.md).
+> **API note:** Jetpack Compose snippets refer to the **current `appdimens-dynamic` submodule** (`sdp`, `hdp`, `wdp`, `ssp`, and `asdp` / `ahdp` / `awdp` for hybrid auto axes). Other platforms may expose `balanced()` style builders—see [Platform API map](PLATFORM_API_MAP.md).
 
-> **🆕 Version 2.0:** This guide now covers **13 scaling strategies** (up from 2), with **BALANCED** as the **primary recommendation** for most apps, and **DEFAULT** as the secondary choice for phone-focused apps.
+> **Scope:** Thirteen scaling strategies, **BALANCED** primary, **DEFAULT** secondary—confirm Compose vs builder APIs via [Platform API map](PLATFORM_API_MAP.md).
+
+```mermaid
+flowchart LR
+  phone["Phones"] --> Balanced["Strategy BALANCED"]
+  tablet["Tablets_TV"] --> Balanced
+  Balanced --> grow["Controlled growth curve"]
+```
 
 > **📚 Related Documentation:**
-> - [Complete Mathematical Theory](MATHEMATICAL_THEORY.md) - Deep technical details (2h read)
 > - [Formula Comparison](FORMULA_COMPARISON.md) - Compare all 13 strategies (30min)
 > - [Quick Reference](DOCS_QUICK_REFERENCE.md) - Fast lookup (5min)
 > - [Examples](EXAMPLES.md) - Ready-to-use code (20min)
@@ -22,7 +31,7 @@
 ## 📋 Table of Contents
 
 1. [The Problem We're Solving](#1-the-problem-were-solving)
-2. [Version 2.0: What's New](#2-version-20-whats-new)
+2. [Current catalog highlights](#2-current-catalog-whats-new)
 3. [PRIMARY: BALANCED Strategy (Recommended)](#3-primary-balanced-strategy-recommended)
 4. [SECONDARY: DEFAULT Strategy (Phone-Focused)](#4-secondary-default-strategy-phone-focused)
 5. [Other Useful Strategies](#5-other-useful-strategies)
@@ -72,16 +81,16 @@ AppDimens offers **13 smart strategies** that scale intelligently based on psych
 
 ---
 
-## 2. Version 2.0: What's New
+## 2. Current catalog highlights
 
-### Evolution from v1.x
+### Evolution from earlier revisions
 
-**AppDimens v1.x:**
+**AppDimens earlier revisions:**
 - ✅ 2 strategies: Fixed, Dynamic
 - ✅ Logarithmic scaling
 - ✅ Aspect ratio compensation
 
-**AppDimens v2.0:** ⭐ Major Update
+**Unified catalog highlights**
 - ✅ **13 strategies** (from 2)
 - ✅ **BALANCED** - New primary recommendation (hybrid linear-logarithmic)
 - ✅ **Perceptual models** (Weber-Fechner, Stevens' Power Law)
@@ -91,10 +100,10 @@ AppDimens offers **13 smart strategies** that scale intelligently based on psych
 
 ### Naming Changes
 
-For clarity, v2.0 renamed the original strategies:
+For clarity, current catalog renamed the original strategies:
 
-| v1.x Name | v2.0 Name   | When to Use                    |
-|-----------|-------------|--------------------------------|
+| Legacy name | Canonical name | Typical use |
+|-------------|----------------|-------------|
 | Fixed     | DEFAULT     | Phone-focused apps, icons      |
 | Dynamic   | PERCENTAGE  | Large containers, proportional |
 
@@ -104,7 +113,7 @@ For clarity, v2.0 renamed the original strategies:
 
 ## 3. PRIMARY: BALANCED Strategy (Recommended)
 
-> **🆕 v2.0 Primary Recommendation:** Use **BALANCED** for 95% of applications, especially those targeting multiple device form factors.
+> **Primary recommendation:** **BALANCED** suits most multi-form-factor products—verify builders in submodule docs.
 
 ### How It Works
 
@@ -186,12 +195,12 @@ fun MyButton() {
     Button(
         onClick = { },
         modifier = Modifier
-            .height(48.sdp)  // ⭐ BALANCED
+            .height(48.asdp)  // auto — hybrid BALANCED curve
             .fillMaxWidth()
     ) {
         Text(
             text = "Click Me",
-            fontSize = 16.ssp
+            fontSize = 16.assp
         )
     }
 }
@@ -256,7 +265,7 @@ const {balanced} = useWebDimens();
 
 ### How It Works
 
-**DEFAULT** (formerly "Fixed" in v1.x) provides:
+**DEFAULT** (formerly "Fixed" in earlier revisions) provides:
 - **~97% linear growth** component
 - **~3% logarithmic adjustment** based on aspect ratio
 - Automatic compensation for elongated screens (20:9, 21:9)
@@ -296,7 +305,7 @@ Where:
 - Phone-only applications (320-480dp range)
 - Apps with elongated screens (20:9, 21:9 aspect ratios)
 - Icons and small UI elements
-- Backward compatibility with AppDimens v1.x
+- Backward compatibility with AppDimens earlier revisions
 - When you want slightly more control than BALANCED on phones
 
 **❌ Consider Alternatives:**
@@ -483,66 +492,65 @@ Result = Base × max(Width/300, Height/533)
 
 #### Android (Jetpack Compose)
 
+> **Same BALANCED scenario:** use **`auto`** tokens (**`asdp` / `assp`**). Plain **`sdp` / `ssp`** map to **`scaled`**, not the hybrid curve.
+
 ```kotlin
 @Composable
 fun PostCard(post: Post) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.sdp)
+            .padding(vertical = 8.asdp)
     ) {
-        Column(modifier = Modifier.padding(16.sdp)) {
-            // Header with avatar and username
+        Column(modifier = Modifier.padding(16.asdp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(
                     painter = rememberImagePainter(post.avatar),
                     modifier = Modifier
-                        .size(40.sdp)
+                        .size(40.asdp)
                         .clip(CircleShape)
                 )
-                Spacer(modifier = Modifier.width(12.sdp))
+                Spacer(modifier = Modifier.width(12.asdp))
                 Column {
                     Text(
                         text = post.username,
-                        fontSize = 14.ssp,
+                        fontSize = 14.assp,
                         fontWeight = FontWeight.Bold
                     )
                     Text(
                         text = post.timestamp,
-                        fontSize = 12.ssp,
+                        fontSize = 12.assp,
                         color = Color.Gray
                     )
                 }
             }
-            
-            Spacer(modifier = Modifier.height(12.sdp))
-            
-            // Post content
+
+            Spacer(modifier = Modifier.height(12.asdp))
+
             Text(
                 text = post.content,
-                fontSize = 14.ssp,
-                lineHeight = 20.ssp
+                fontSize = 14.assp,
+                lineHeight = 20.assp
             )
-            
-            Spacer(modifier = Modifier.height(12.sdp))
-            
-            // Action buttons
+
+            Spacer(modifier = Modifier.height(12.asdp))
+
             Row {
                 IconButton(
                     onClick = { },
-                    modifier = Modifier.size(40.sdp)
+                    modifier = Modifier.size(40.asdp)
                 ) {
                     Icon(Icons.Default.Favorite, "Like")
                 }
                 IconButton(
                     onClick = { },
-                    modifier = Modifier.size(40.sdp)
+                    modifier = Modifier.size(40.asdp)
                 ) {
                     Icon(Icons.Default.Comment, "Comment")
                 }
                 IconButton(
                     onClick = { },
-                    modifier = Modifier.size(40.sdp)
+                    modifier = Modifier.size(40.asdp)
                 ) {
                     Icon(Icons.Default.Share, "Share")
                 }
@@ -711,11 +719,11 @@ class PostCard extends StatelessWidget {
 
 ## 8. Performance & Optimization
 
-### Version 2.0 Performance Improvements
+### Current catalog Performance Improvements
 
 **5x Overall Speedup** through mathematical optimizations:
 
-| Optimization            | v1.x     | v2.0     | Improvement |
+| Optimization            | earlier revisions     | current catalog     | Improvement |
 |-------------------------|----------|----------|-------------|
 | **Cache (Views)**       | 0.005µs  | 0.001µs  | **5x** ⭐   |
 | **Ln() calculation**    | 0.012µs  | 0.001µs  | **10-20x*** |
@@ -743,7 +751,7 @@ Lookup time: 0.001µs (vs 0.012µs for Math.log())
 
 #### 2. Unified Lock-Free Cache (5x faster)
 
-**Problem:** v1.x Views cache had thread-safe locks (slow)
+**Problem:** earlier revisions Views cache had thread-safe locks (slow)
 
 **Solution:** Lock-free design with Int hash keys
 
@@ -790,7 +798,7 @@ val diagonal = sqrt(W² + H²) / BASE_DIAGONAL  // 5x faster
 
 ### Backward compatibility
 
-Depends on **which artifact** you ship. This chapter’s **theory** still uses the names BALANCED / DEFAULT / PERCENTAGE, but **Android (`appdimens-dynamic` 3.x)** moved to **per-strategy packages** with tokens such as **`sdp`**, **`wdp`**, **`asdp`**, **`assp`**, etc.
+Depends on **which artifact** you ship. This chapter’s **theory** still uses the names BALANCED / DEFAULT / PERCENTAGE, but **Android `appdimens-dynamic`** publishes **per-strategy packages**: **`sdp`** / **`wdp`** (**`scaled`**), **`asdp`** / **`assp`** (**`auto`**, hybrid BALANCED), **`psdp`**, …
 
 ### Naming changes (Android Compose)
 
@@ -820,8 +828,8 @@ For automatic “smart” selection, use the **iOS / Web / React Native** helper
 
 ### Quick Recap
 
-**🆕 Version 2.0 Highlights:**
-- ✅ **13 strategies** (vs 2 in v1.x)
+**🆕 Current catalog Highlights:**
+- ✅ **13 strategies** (vs 2 in earlier revisions)
 - ✅ **BALANCED** primary recommendation ⭐
 - ✅ **5x performance** improvement
 - ✅ **Smart Inference** system
@@ -863,11 +871,11 @@ For automatic “smart” selection, use the **iOS / Web / React Native** helper
 
 ### Next Steps
 
-1. **Install AppDimens 2.0** on your platform
+1. **Install AppDimens** on your platform
 2. **Start with BALANCED** for new code
 3. **Read examples** for your platform
 4. **Experiment** with different strategies
-5. **Migrate gradually** from v1.x (if applicable)
+5. **Migrate gradually** from earlier revisions (if applicable)
 
 ---
 
@@ -893,8 +901,6 @@ For automatic “smart” selection, use the **iOS / Web / React Native** helper
 ---
 
 **Document created by:** Jean Bodenberg  
-**Last updated:** February 2025  
-**Version:** 2.0.0  
 **License:** Apache 2.0  
 **Repository:** https://github.com/bodenberg/appdimens
 
@@ -903,4 +909,4 @@ For automatic “smart” selection, use the **iOS / Web / React Native** helper
 **[⬆ Back to Top](#-appdimens-simplified-mathematical-theory)**
 
 *"Simplicity is the ultimate sophistication. Complex mathematics, simple API."*  
-— AppDimens v2.0 Philosophy
+— AppDimens Philosophy

@@ -1,17 +1,18 @@
 # 📚 AppDimens: Complete Technical Guide
 
-> **Languages:** English | [Português (BR)](../LANG/pt-BR/COMPREHENSIVE_TECHNICAL_GUIDE.md) | [Español](../LANG/es/COMPREHENSIVE_TECHNICAL_GUIDE.md)
+> **Hub documentation.** Conceptual reference for scaling theory in the AppDimens family.
+> **Versions, semver, and install commands** belong only in **platform submodule READMEs** linked from [`README.md`](../README.md)—not here.
+
+---
 
 **Comprehensive Technical Documentation - Everything You Need to Know**  
 *Author: Jean Bodenberg*  
-*Date: February 2025*  
-*Version: 2.0.0*
 
-> **🆕 Version 2.0:** Expanded from 2 to **13 scaling strategies**, including perceptual models (BALANCED⭐, LOGARITHMIC, POWER), Smart Inference, and 5x performance improvements.
+> **🆕 Current catalog:** Expanded from 2 to **13 scaling strategies**, including perceptual models (BALANCED⭐, LOGARITHMIC, POWER), Smart Inference, and 5x performance improvements.
 
 > **The most comprehensive responsive sizing library, combining mathematical rigor with practical simplicity.**
 
-> **📚 This is the DEFINITIVE document.** Everything about AppDimens 2.0 is here. For quick starts, see [Simplified Guide](MATHEMATICAL_THEORY_SIMPLIFIED.md).
+> **📚 This is the DEFINITIVE document.** Everything about AppDimens is here. For quick starts, see [Simplified Guide](MATHEMATICAL_THEORY_SIMPLIFIED.md).
 
 ---
 
@@ -19,8 +20,8 @@
 
 ### Part I: Introduction
 1. [The Responsive Sizing Problem](#1-the-responsive-sizing-problem)
-2. [The AppDimens 2.0 Solution](#2-the-appdimens-20-solution)
-3. [Version 2.0 Major Changes](#3-version-20-major-changes)
+2. [The AppDimens Solution](#2-the-appdimens-20-solution)
+3. [Current catalog Major Changes](#3-version-20-major-changes)
 
 ### Part II: Strategy Reference (All 13)
 4. [PRIMARY: BALANCED Strategy](#4-primary-balanced-strategy)
@@ -94,13 +95,13 @@ An ideal solution must:
 
 ---
 
-## 2. The AppDimens 2.0 Solution
+## 2. The AppDimens Solution
 
 ### 2.1 Core Innovations
 
-**Version 2.0 introduces:**
+**Current catalog introduces:**
 
-1. **13 Scaling Strategies** (vs 2 in v1.x)
+1. **13 Scaling Strategies** (vs 2 in earlier revisions)
    - Perceptual: BALANCED ⭐, LOGARITHMIC, POWER
    - Legacy: DEFAULT, PERCENTAGE
    - Utility: FLUID, INTERPOLATED, DIAGONAL, PERIMETER
@@ -135,7 +136,7 @@ An ideal solution must:
 
 ---
 
-## 3. Version 2.0 Major Changes
+## 3. Current catalog Major Changes
 
 ### 3.1 What Changed
 
@@ -155,23 +156,14 @@ An ideal solution must:
 - ✅ Meta-documentation now targets **`appdimens-dynamic` 3.x** tokens (`sdp`, `asdp`, …) for new Android Compose work
 - ⚠️ Treat legacy `.fxdp` / `.dydp` **blog examples** as historical; follow the linked Android README instead
 
-### 3.2 Migration from v1.x
+### 3.2 Migration from earlier revisions
 
-**Old code (v1.x)** — consult the artifact you still compile against; **`appdimens-dynamic` 3.x** examples use:
+**Old code (earlier revisions)** — illustrative; **`appdimens-dynamic`** uses explicit strategy tokens (`sdp`, `asdp`, …).
+
+**Compose — distinguish strategies:**
 ```kotlin
-Text("Hello", fontSize = 16.ssp)
-```
-
-**New code (v2.0) - Recommended:**
-```kotlin
-// Primary recommendation
-Text("Hello", fontSize = 16.ssp)  // ⭐ BALANCED
-
-// Secondary (equivalent to old Fixed)
-Text("Hello", fontSize = 16.ssp)  // scaled typography
-
-// Large containers (equivalent to old Dynamic)
-Container(modifier = Modifier.width(300.wdp))
+Text("Hybrid (BALANCED → auto)", fontSize = 16.assp)
+Text("Phone-first scaled (DEFAULT → scaled)", fontSize = 16.ssp)
 ```
 
 ---
@@ -315,7 +307,7 @@ AppDimens.fixed(16).calculate(context)
 - Phone-focused apps (320-480dp)
 - Icons and small elements
 - Apps with elongated screens (20:9, 21:9)
-- Backward compatibility with v1.x
+- Backward compatibility with earlier revisions
 
 **📖 [Complete DEFAULT Documentation](MATHEMATICAL_THEORY.md#3-secondary-recommendation---default-strategy-formerly-fixed)**
 
@@ -367,7 +359,7 @@ f_POWER(x, W) = x × (W/300)^0.75
 | **DIAGONAL** | `x × √(W²+H²)/611.63` | Physical size | 72/100 |
 | **PERIMETER** | `x × (W+H)/833` | W+H balance | 70/100 |
 
-**📖 [All Utility Strategies](MATHEMATICAL_THEORY.md#5-extended-strategy-catalog-v20)**
+**📖 [All Utility Strategies](MATHEMATICAL_THEORY.md#5-extended-strategy-catalog)**
 
 ---
 
@@ -397,47 +389,34 @@ f_POWER(x, W) = x × (W/300)^0.75
 
 ### 10.1 Installation
 
+Coordinates are maintained per artifact in **submodule READMEs**. Start from [`README.md`](../README.md#submodule-map), then open `appdimens-dynamic`, `appdimens-sdps`, `appdimens-ssps`, or `appdimens-games` as needed—do **not** pin versions from this theory document.
+
 ```kotlin
 dependencies {
-    // Core library (13 strategies + Physical Units)
-    implementation("io.github.bodenberg:appdimens-dynamic:3.1.4")
-    
-    // SDP/SSP (XML support)
-    implementation("io.github.bodenberg:appdimens-sdps:3.1.2")
-    implementation("io.github.bodenberg:appdimens-ssps:3.1.2")
-    
-    // All-in-one
-    implementation("io.github.bodenberg:appdimens-all:2.0.1")
-    
-    // Games (C++/NDK)
-    implementation("io.github.bodenberg:appdimens-games:2.0.1")
+    // See submodule README for exact maven coordinates (dynamic, sdps, ssps, games, …).
 }
 ```
 
 ### 10.2 Jetpack Compose API
 
 ```kotlin
-// BALANCED (Primary) ⭐
-Text("Hello", fontSize = 16.ssp)
-Box(modifier = Modifier.size(48.sdp))
+// Hybrid BALANCED (strategy `auto` — `compose.auto`)
+Text("Hello", fontSize = 16.assp)
+Box(modifier = Modifier.size(48.asdp))
 
-// DEFAULT (Secondary)
+// Phone-first scaled baseline (`scaled` — hub “DEFAULT-ish”; not the hybrid curve)
 Icon(modifier = Modifier.size(24.sdp))
 
-// PERCENTAGE (Containers)
-Container(modifier = Modifier.width(300.wdp))
+// Width-heavy proportional patterns (`percent` helpers / `*.wdp` axis)
+Surface(modifier = Modifier.width(300.wdp))
 
-// Smart API
-Button(modifier = Modifier.height(
-    48.sdp
-))
+// Smart-style fusion is **not** exposed as `smart(...)` on Android — choose tokens explicitly:
+Button(modifier = Modifier.height(48.asdp))
 
 // FLUID (Typography)
 Text("Title", fontSize = 16.fluidSp().fssp)
 
-// All other strategies
-Text("Powerful", fontSize = 16.pwssp)
-Text("Logarithmic", fontSize = 16.logarithmicSp().logssp)
+// Other strategies expose their own entry points (`pwssp`, `logssp`, …) — peek `DOCUMENTATION/`.
 ```
 
 ### 10.3 View System API
@@ -466,15 +445,7 @@ view.layoutParams.width = widthPx
 
 ### 11.1 Installation
 
-**CocoaPods:**
-```ruby
-pod 'AppDimens', '~> 2.0.0'
-```
-
-**SPM:**
-```swift
-.package(url: "https://github.com/bodenberg/appdimens.git", from: "2.0.0")
-```
+Use CocoaPods **or** Swift Package Manager exactly as documented in **[appdimens-ios/README.md](../appdimens-ios/README.md)** and [`INSTALLATION.md`](../appdimens-ios/INSTALLATION.md)—coordinates change independently of this hub.
 
 ### 11.2 SwiftUI API
 
@@ -511,10 +482,7 @@ button.frame = CGRect(x: 0, y: 0, width: size, height: size)
 
 ### 12.1 Installation
 
-```yaml
-dependencies:
-  appdimens: ^2.0.0
-```
+See **[appdimens-flutter/pubspec.yaml](../appdimens-flutter/pubspec.yaml)** for the published constraint line—do **not** copy versions from hub theory docs.
 
 ### 12.2 API
 
@@ -558,9 +526,7 @@ Text(
 
 ### 13.1 Installation
 
-```bash
-npm install appdimens-react-native@2.0.0
-```
+See **[appdimens-react-native/package.json](../appdimens-react-native/package.json)** and submodule README—install there, not here.
 
 ### 13.2 API
 
@@ -591,9 +557,7 @@ function MyComponent() {
 
 ### 14.1 Installation
 
-```bash
-npm install webdimens@2.0.0
-```
+Follow **[appdimens-web/package.json](../appdimens-web/package.json)** and [`QUICK_START.md`](../appdimens-web/QUICK_START.md).
 
 ### 14.2 React API
 
@@ -628,15 +592,18 @@ See platform-specific hooks and services.
 
 ## 15. Smart Inference System
 
-### 15.1 Automatic Strategy Selection
+### 15.1 Conceptual inference (Android = explicit tokens)
+
+Kotlin/Compose ships **explicit** strategy extensions only. Patterns below illustrate how other stacks might map element types—you still pick **`sdp`**, **`asdp`**, **`wdp`**, … at each call site.
 
 ```kotlin
-// Automatically selects best strategy based on element type
-val buttonSize = 48.sdp
-// → Selects BALANCED for buttons on tablets
+// Human analogy: BUTTON on tablet ⇒ prefer hybrid curve (if you were wrapping logic yourself)
+val buttonSize = 48.asdp // `auto`
 
-val containerWidth = 300.wdp
-// → Selects PERCENTAGE for containers
+// Containers often lean on proportional width cues
+val containerWidth = 300.wdp // width-axis token (wire to `percent` strategy when needed)
+
+// ⚠️ `48.sdp` **never** silently means “tablet BALANCED” — it invokes **`scaled`**.
 ```
 
 ### 15.2 Element Types (18)
@@ -661,7 +628,7 @@ val containerWidth = 300.wdp
 - WATCH (< 240dp)
 - AUTO (context-dependent)
 
-**📖 [Complete Smart Inference](MATHEMATICAL_THEORY.md#6-smart-inference-system-v20)**
+**📖 [Complete Smart Inference](MATHEMATICAL_THEORY.md#6-smart-inference-system)**
 
 ---
 
@@ -742,11 +709,11 @@ let playerSize = gameAspectRatio(64)
 
 ## 19. Cache and Performance
 
-### 19.1 Version 2.0 Optimizations
+### 19.1 Current catalog Optimizations
 
 **5x Overall Improvement:**
 
-| Optimization | v1.x | v2.0 | Speedup |
+| Optimization | earlier revisions | current catalog | Speedup |
 |--------------|------|------|---------|
 | **Views cache** | 0.005µs | 0.001µs | **5x** |
 | **Ln() calculation** | 0.012µs | 0.001µs | **10-20x** |
@@ -768,7 +735,7 @@ val height = 48.hdp
 AppDimens.warmupCache(context)
 ```
 
-**📖 [Performance Details](MATHEMATICAL_THEORY.md#7-mathematical-optimizations-v20)**
+**📖 [Performance Details](MATHEMATICAL_THEORY.md#7-mathematical-optimizations)**
 
 ---
 
@@ -839,7 +806,7 @@ AppDimens.warmupCache(context)
 
 ## 22. Migration Guides
 
-### 22.1 From AppDimens v1.x
+### 22.1 From AppDimens earlier revisions
 
 **Step 1:** Pick the submodule for your stack (Compose → `appdimens-dynamic` 3.x).  
 **Step 2:** Replace legacy unified Android chains (`.fxdp`, `.dydp`, `.balanced().dp`) with **`sdp` / `wdp` / `hdp` / `ssp`** and, for the hybrid curve, **`asdp` / `ahdp` / `awdp` / `assp`**.  
@@ -949,7 +916,7 @@ A: Solutions:
 2. Call `warmupCache()` during init
 3. Use appropriate strategy (PERCENTAGE is fastest)
 
-**Q: Migration from v1.x - sizes changed**
+**Q: Migration from earlier revisions - sizes changed**
 
 A: On **Android Compose**, move to **`sdp` / `wdp` / `hdp` / `ssp`** plus **`asdp` / …** for the hybrid curve ([appdimens-dynamic README](../appdimens-dynamic/README.md)). Legacy extension names are **not** what this meta-repo documents for 3.x.
 
@@ -963,11 +930,9 @@ A:
 - Large containers → **PERCENTAGE**
 - Typography → **FLUID**
 
-**Q: Is v2.0 compatible with v1.x?**
+**Q: Do newer Android scaling tokens replace every legacy extension?**
 
-A: **Per artifact.** Some older binaries still ship deprecated entry points, but **`appdimens-dynamic` 3.x** teaches the **token + package-per-strategy** model—verify against the submodule changelog you actually depend on.
-
-**Q: What's the performance impact?**
+A: **Per artifact.** Deprecated chains may still compile on older pins, but modern work should follow the **`appdimens-dynamic` README** (token + explicit strategy packages). Confirm with the submodule changelog you ship.
 
 A: Negligible (< 0.002µs per calculation with cache)
 
@@ -1038,10 +1003,8 @@ A: Yes! Use SDP/SSP modules for XML, or runtime calculation in code.
 ---
 
 **Document created by:** Jean Bodenberg  
-**Last updated:** February 2025  
-**Version:** 2.0.0  
 **License:** Apache 2.0  
-**Repository:** https://github.com/bodenberg/appdimens
+**Repository hub:** https://github.com/bodenberg/appdimens (theory-only in `DOCS/`; implementations in submodules)
 
 ---
 

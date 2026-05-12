@@ -1,15 +1,17 @@
 # 📐 AppDimens: Mathematical Theory and Scientific Foundation
 
-> **Languages:** English | [Português (BR)](../LANG/pt-BR/MATHEMATICAL_THEORY.md) | [Español](../LANG/es/MATHEMATICAL_THEORY.md)
+> **Hub documentation.** Conceptual reference for scaling theory in the AppDimens family.
+> **Versions, semver, and install commands** belong only in **platform submodule READMEs** linked from [`README.md`](../README.md)—not here.
+
+> **Alignment with Jetpack Compose sources:** Interpret names like **BALANCED / DEFAULT / PERCENTAGE** in this file as **cross-platform shorthand**. The **Kotlin implementations** expose **`auto`**, **`scaled`**, **`percent`**, etc., with kernels and constants audited in **`[IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)`** and **[`MATHEMATICS-AND-CALCULUS.md`](../appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md)**. Where numbers differ between sections below and those files, prefer the **`appdimens-dynamic`** documents.
+
 
 **Detailed Technical Documentation - Universal Mathematical Model**  
 *Author: Jean Bodenberg*  
-*Date: February 2025*  
-*Version: 2.0.0*
 
 > **Note:** This documentation presents the fundamental mathematical theory of AppDimens, universally applicable to any platform (Android, iOS, Flutter, React Native, Web). Specific implementations are examples of the practical application of these models.
 
-> **🆕 Version 2.0 Major Update:** This version introduces **13 scaling strategies** (up from 2), including perceptual models based on psychophysics (Weber-Fechner, Stevens), Smart Inference system, and significant mathematical optimizations (5x performance improvement). **BALANCED** is now the **recommended primary strategy** for multi-device apps, while **DEFAULT** (formerly Fixed) serves as the secondary recommendation for phone-focused applications.
+> **Scope:** The catalog documents **13 scaling strategies**, including perceptual models (Weber-Fechner, Stevens), Smart Inference concepts, and performance-oriented implementations. **BALANCED** is the **primary recommendation** for multi-device layouts, while **DEFAULT** suits phone-heavy products—always confirm bindings in submodule docs.
 
 > **📚 Complementary Documentation:**
 > - [Simplified Guide](MATHEMATICAL_THEORY_SIMPLIFIED.md) - For beginners (15min)
@@ -25,27 +27,42 @@
 1. [Overview and Context](#1-overview-and-context)
 2. [NEW: Primary Recommendation - BALANCED Strategy](#2-new-primary-recommendation---balanced-strategy)
 3. [Secondary Recommendation - DEFAULT Strategy (formerly Fixed)](#3-secondary-recommendation---default-strategy-formerly-fixed)
-4. [Additional Perceptual Models (v2.0)](#4-additional-perceptual-models-v20)
-5. [Extended Strategy Catalog (v2.0)](#5-extended-strategy-catalog-v20)
-6. [Smart Inference System (v2.0)](#6-smart-inference-system-v20)
-7. [Mathematical Optimizations (v2.0)](#7-mathematical-optimizations-v20)
+4. [Additional Perceptual Models](#4-additional-perceptual-models)
+5. [Extended Strategy Catalog](#5-extended-strategy-catalog)
+6. [Smart Inference System](#6-smart-inference-system)
+7. [Mathematical Optimizations](#7-mathematical-optimizations)
 8. [Advanced Mathematical Foundation](#8-advanced-mathematical-foundation)
 9. [Comparative Analysis of Scaling Models](#9-comparative-analysis-of-scaling-models)
 10. [State of the Art and Innovation](#10-state-of-the-art-and-innovation)
 11. [Practical Applications and Validation](#11-practical-applications-and-validation)
 12. [References and Technical Discussions](#12-references-and-technical-discussions)
 
+### Strategy picker (conceptual)
+
+```mermaid
+flowchart TD
+  q["What are you sizing?"]
+  q --> multi["Phones + tablets + TV"]
+  q --> phone["Phone-first product"]
+  q --> game["Fullscreen game canvas"]
+  q --> typo["Fluid typography bands"]
+  multi --> balanced["Prefer BALANCED hybrid"]
+  phone --> defaulted["Prefer DEFAULT scaled curve"]
+  game --> ff["Prefer FIT letterbox vs FILL cover"]
+  typo --> fluid["Prefer FLUID min-max"]
+```
+
 ---
 
 ## 1. Overview and Context
 
-### 1.1 The Evolution from v1.x to v2.0
+### 1.1 Evolution of the strategy catalog
 
-**AppDimens v1.x** introduced 2 strategies:
+**AppDimens earlier revisions** introduced 2 strategies:
 - **Fixed (FX)** - Logarithmic scaling with aspect ratio compensation
 - **Dynamic (DY)** - Proportional linear scaling
 
-**AppDimens v2.0** expands to **13 strategies** with major innovations:
+**AppDimens (unified catalog)** expands to **13 strategies** with major innovations:
 - **3 perceptual models** based on psychophysics (BALANCED ⭐, LOGARITHMIC, POWER)
 - **2 renamed legacy models** for clarity (DEFAULT, PERCENTAGE)
 - **8 utility strategies** for specific use cases
@@ -75,7 +92,7 @@ Size in Pixels = Base Value × (Device DPI / Reference DPI)
 - ❌ **Geometric ignorance**: Does not adjust for different aspect ratios (4:3 vs 21:9)
 - ❌ **Weber-Fechner Law violation**: Does not consider logarithmic human perception of relative size
 
-### 1.3 The AppDimens 2.0 Solution
+### 1.3 The AppDimens Solution
 
 AppDimens proposes a system based on **non-linear mathematical functions** that model responsive scaling as a **multi-dimensional transformation problem**:
 
@@ -99,7 +116,7 @@ AppDimens proposes a system based on **non-linear mathematical functions** that 
 - `AR₀ = 1.78` = Reference aspect ratio (16:9)
 - `T = 480` = Transition point (for hybrid strategies)
 
-#### 1.3.2 Version 2.0 Strategy Overview
+#### 1.3.2 Current catalog Strategy Overview
 
 **🆕 Primary Recommendation:**
 - **BALANCED** ⭐ - Hybrid linear-logarithmic (linear on phones, logarithmic on tablets/TVs)
@@ -118,7 +135,7 @@ AppDimens proposes a system based on **non-linear mathematical functions** that 
 
 ## 2. NEW: Primary Recommendation - BALANCED Strategy
 
-> **🆕 Version 2.0:** **BALANCED** is now the **recommended primary strategy** for most applications, especially those targeting multiple device form factors.
+> **🆕 Current catalog:** **BALANCED** is now the **recommended primary strategy** for most applications, especially those targeting multiple device form factors.
 
 ### 2.1 Theoretical Foundation
 
@@ -352,37 +369,37 @@ Note: First derivative is NOT continuous (design choice for distinct behaviors)
 
 #### Android (Kotlin - Jetpack Compose)
 
+> **`appdimens-dynamic`:** **`sdp` / `ssp` = package `scaled` (hub DEFAULT / baseline linear \(\times\) \(W/W_0\)).** **`asdp` / `assp` = package `auto` (hub BALANCED / hybrid curve).** See **[IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)**.
+
 ```kotlin
 @Composable
 fun BalancedExample() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.sdp)  // ⭐ BALANCED - Primary recommendation
+            .padding(16.asdp)
     ) {
-        // Button with balanced sizing
         Button(
             onClick = { },
             modifier = Modifier
-                .height(48.sdp)
+                .height(48.asdp)
                 .fillMaxWidth()
         ) {
             Text(
                 text = "Click Me",
-                fontSize = 16.ssp
+                fontSize = 16.assp
             )
         }
-        
-        // Card with balanced dimensions
+
         Card(
             modifier = Modifier
-                .width(300.wdp)
-                .padding(vertical = 12.sdp)
+                .width(300.awdp)
+                .padding(vertical = 12.asdp)
         ) {
             Text(
-                text = "Balanced Card",
-                fontSize = 14.ssp,
-                modifier = Modifier.padding(16.sdp)
+                text = "BALANCED axis (auto)",
+                fontSize = 14.assp,
+                modifier = Modifier.padding(16.asdp)
             )
         }
     }
@@ -571,7 +588,7 @@ function BalancedComponent() {
 
 ### 2.8 Aspect Ratio (AR) Compensation
 
-> **📐 Version 2.0:** Six strategies now support automatic aspect ratio compensation to maintain visual balance across devices with different screen proportions (18:9, 19.5:9, 20:9, 21:9, etc.).
+> **📐 Current catalog:** Six strategies now support automatic aspect ratio compensation to maintain visual balance across devices with different screen proportions (18:9, 19.5:9, 20:9, 21:9, etc.).
 
 #### 2.8.1 The Aspect Ratio Problem
 
@@ -679,7 +696,7 @@ Impact: Negligible (<0.1% of total calculation time)
 
 ## 3. Secondary Recommendation - DEFAULT Strategy (formerly Fixed)
 
-> **🔄 Version 2.0 Naming Update:** The original "Fixed" model has been renamed to **DEFAULT** to avoid confusion with the new BALANCED strategy. It is now recommended as a **secondary choice** for phone-focused applications.
+> **🔄 Current catalog Naming Update:** The original "Fixed" model has been renamed to **DEFAULT** to avoid confusion with the new BALANCED strategy. It is now recommended as a **secondary choice** for phone-focused applications.
 
 ### 3.1 Theoretical Foundation
 
@@ -802,7 +819,7 @@ Result: ~79.2dp (+65% growth from base)
 #### ✅ Recommended For:
 
 1. **Phone-focused applications** (320-480dp range)
-2. **Backward compatibility** with AppDimens v1.x
+2. **Backward compatibility** with AppDimens earlier revisions
 3. **Icons and small elements** (benefits from AR compensation)
 4. **Apps with elongated screens** (benefits from AR adjustment)
 5. **When you need slightly more control than BALANCED on phones**
@@ -815,9 +832,9 @@ Result: ~79.2dp (+65% growth from base)
 
 ---
 
-## 4. Additional Perceptual Models (v2.0)
+## 4. Additional Perceptual Models
 
-> **🆕 Version 2.0:** AppDimens introduces two additional perceptual scaling models based on psychophysics research.
+> **🆕 Current catalog:** AppDimens introduces two additional perceptual scaling models based on psychophysics research.
 
 ### 4.1 LOGARITHMIC Strategy (Pure Weber-Fechner)
 
@@ -930,9 +947,9 @@ arAdj(AR) = 1 + k_AR × ln(AR / AR₀)  [enabled by default]
 
 ---
 
-## 5. Extended Strategy Catalog (v2.0)
+## 5. Extended Strategy Catalog
 
-> **🆕 Version 2.0:** Beyond the core perceptual models, AppDimens offers 8 additional strategies for specific use cases.
+> **🆕 Current catalog:** Beyond the core perceptual models, AppDimens offers 8 additional strategies for specific use cases.
 
 ### 5.1 PERCENTAGE Strategy (formerly Dynamic)
 
@@ -1137,9 +1154,11 @@ f_NONE(B) = B
 
 ---
 
-## 6. Smart Inference System (v2.0)
+## 6. Smart Inference System
 
-> **🆕 Version 2.0:** Automatic strategy selection based on element type and device context using a weight-based decision system.
+> **Platform caveat:** **`appdimens-dynamic`** (Compose) exposes **explicit strategy packages** only—there is **no** Kotlin `smart().forElement` builder. Sections **6–6.5** document a **conceptual inference model** mirrored on stacks that ship smart builders (historically iOS / Web snippets). Anything labelled **ANDROID** mixing `48.sdp` with **BALANCED** inference is strictly **didactic**, because **`sdp` always invokes the `scaled` module**, not **`auto`** (`asdp`). See **`[IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)`**.
+
+> **🆕 Current catalog:** Automatic strategy selection narrative below keeps **marketing-level guidance** aligned with UX research—not runtime dispatch on Kotlin.
 
 ### 6.1 Weight-Based Inference Algorithm
 
@@ -1227,8 +1246,8 @@ function inferStrategy(
 #### Example 1: Button on Tablet
 
 ```kotlin
-// Android
-val size = 48.sdp
+// Android — no fused `.smart()` in Compose; illustration assumes inference chose BALANCED → use AUTO tokens:
+val size = 48.asdp // compose.auto.*
 
 Inference Process:
 1. Element: BUTTON
@@ -1301,9 +1320,9 @@ final size = AppDimens.fixed(48).calculate(context);
 
 ---
 
-## 7. Mathematical Optimizations (v2.0)
+## 7. Mathematical Optimizations 
 
-> **🆕 Version 2.0:** Significant performance improvements through mathematical optimizations, achieving **5x overall speedup**.
+> **🆕 Current catalog:** Significant performance improvements through mathematical optimizations, achieving **5x overall speedup**.
 
 ### 7.1 Ln() Lookup Table (10-20x faster)
 
@@ -1370,7 +1389,7 @@ Hit rate: 85-95% (most common scenarios)
 
 **Optimization:** Eliminate repeated calculations through pre-computation.
 
-**Before (v1.x):**
+**Before (earlier revisions):**
 
 ```kotlin
 // Calculated every time
@@ -1379,7 +1398,7 @@ val perimeter = (W + H) / (W₀ + H₀)
 val invBaseWidth = 1.0 / BASE_WIDTH_DP
 ```
 
-**After (v2.0):**
+**After :**
 
 ```kotlin
 // Pre-calculated constants (compile-time)
@@ -1396,7 +1415,7 @@ val ratio = W * INV_BASE_WIDTH_DP  // Multiplication faster than division
 
 **Performance Gains:**
 
-| Operation | v1.x (µs) | v2.0 (µs) | Speedup |
+| Operation | earlier revisions (µs) | current catalog (µs) | Speedup |
 |-----------|-----------|-----------|---------|
 | DIAGONAL  | 0.015     | 0.003     | 5x      |
 | PERIMETER | 0.012     | 0.002     | 6x      |
@@ -1409,18 +1428,18 @@ val ratio = W * INV_BASE_WIDTH_DP  // Multiplication faster than division
 
 ### 7.3 Unified Lock-Free Cache
 
-**Problem in v1.x:**
+**Problem in earlier revisions:**
 - Compose: Fast cache (0.001µs) ✓
 - Views: Slow cache (0.005µs) ✗ (thread-safe locks)
 - Memory: 280 bytes/entry (object overhead)
 - Multi-thread: 25% parallelism (lock contention)
 
-**Solution in v2.0:**
+**Unified runtime approach:**
 
 ```kotlin
 /**
  * Ultra-fast lock-free cache using Int hash keys.
- * 5x faster than v1.x, 5x less memory, 100% parallelism.
+ * 5x faster than earlier revisions, 5x less memory, 100% parallelism.
  */
 class AutoCacheFast {
     private val cache = IntArray(1024) { 0 }  // Ring buffer
@@ -1454,7 +1473,7 @@ class AutoCacheFast {
 
 **Performance Comparison:**
 
-| Metric                  | v1.x (Views) | v2.0 (Unified) | Improvement |
+| Metric                  | earlier revisions (Views) | current catalog (Unified) | Improvement |
 |-------------------------|--------------|----------------|-------------|
 | **Lookup time**         | 0.005µs      | 0.001µs        | **5x**      |
 | **Memory per entry**    | 280 bytes    | 56 bytes       | **5x**      |
@@ -1517,9 +1536,9 @@ fun findBestPreset(presets: FloatArray, targetSize: Float): Float {
 
 ### 7.5 Performance Summary
 
-**Overall Improvements (v1.x → v2.0):**
+**Overall Improvements (earlier revisions → current catalog):**
 
-| Component              | v1.x      | v2.0      | Improvement |
+| Component              | earlier revisions      | current catalog      | Improvement |
 |------------------------|-----------|-----------|-------------|
 | **Views XML cache**    | 0.005µs   | 0.001µs   | **5x**      |
 | **Ln() calculation**   | 0.012µs   | 0.001µs   | **10-20x*** |
@@ -1532,7 +1551,7 @@ fun findBestPreset(presets: FloatArray, targetSize: Float): Float {
 
 **Net Result:**
 - **5x overall performance improvement** across all strategies
-- **11 new strategies added** with same or better performance than v1.x
+- **11 new strategies added** with same or better performance than earlier revisions
 - **Zero performance regression** (all improvements, no losses)
 
 ---
@@ -1685,11 +1704,11 @@ LOGARITHMIC:
 
 ## 10. State of the Art and Innovation
 
-### 10.1 AppDimens Innovations (v2.0)
+### 10.1 AppDimens Innovations 
 
 **🆕 First in Industry:**
 
-1. **✅ 13 Scaling Strategies** (vs 2 in v1.x, vs 1-2 in all competitors)
+1. **✅ 13 Scaling Strategies** (vs 2 in earlier revisions, vs 1-2 in all competitors)
    - Only library with perceptual models (Weber-Fechner, Stevens)
    - Only library with hybrid strategies (BALANCED)
    - Only library with Smart Inference
@@ -1708,9 +1727,9 @@ LOGARITHMIC:
    - Ln() lookup table (10-20x faster)
    - Unified lock-free cache (5x faster)
    - Pre-calculated constants
-   - 5x overall performance vs v1.x
+   - 5x overall performance vs earlier revisions
 
-5. **✅ Aspect Ratio Compensation (v1.x feature)**
+5. **✅ Aspect Ratio Compensation (earlier revisions feature)**
    - Only library that considers AR in DEFAULT strategy
    - Handles 4:3, 16:9, 18:9, 19:9, 20:9, 21:9 automatically
 
@@ -1812,11 +1831,12 @@ START: What type of app are you building?
 **Implementation:**
 
 ```kotlin
-// Android
+// Android — BALANCED = `auto` (`asdp` / `assp`), not `.sdp`
+
 @Composable
 fun SocialFeed() {
     LazyColumn(
-        modifier = Modifier.padding(16.sdp)
+        modifier = Modifier.padding(16.asdp)
     ) {
         items(posts) { post ->
             PostCard(post)
@@ -1829,45 +1849,42 @@ fun PostCard(post: Post) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.sdp)
+            .padding(vertical = 8.asdp)
     ) {
-        Column(modifier = Modifier.padding(16.sdp)) {
-            // Profile
+        Column(modifier = Modifier.padding(16.asdp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(
                     painter = rememberImagePainter(post.avatar),
-                    modifier = Modifier.size(40.sdp)
+                    modifier = Modifier.size(40.asdp)
                 )
-                Spacer(modifier = Modifier.width(12.sdp))
+                Spacer(modifier = Modifier.width(12.asdp))
                 Text(
                     text = post.username,
-                    fontSize = 14.ssp,
+                    fontSize = 14.assp,
                     fontWeight = FontWeight.Bold
                 )
             }
-            
-            Spacer(modifier = Modifier.height(12.sdp))
-            
-            // Content
+
+            Spacer(modifier = Modifier.height(12.asdp))
+
             Text(
                 text = post.content,
-                fontSize = 14.ssp,
-                lineHeight = 20.ssp
+                fontSize = 14.assp,
+                lineHeight = 20.assp
             )
-            
-            Spacer(modifier = Modifier.height(12.sdp))
-            
-            // Actions
+
+            Spacer(modifier = Modifier.height(12.asdp))
+
             Row {
                 IconButton(
                     onClick = { },
-                    modifier = Modifier.size(40.sdp)
+                    modifier = Modifier.size(40.asdp)
                 ) {
                     Icon(Icons.Default.Favorite, contentDescription = "Like")
                 }
                 IconButton(
                     onClick = { },
-                    modifier = Modifier.size(40.sdp)
+                    modifier = Modifier.size(40.asdp)
                 ) {
                     Icon(Icons.Default.Comment, contentDescription = "Comment")
                 }
@@ -1902,7 +1919,7 @@ fun PostCard(post: Post) {
 - Phone-focused (320-480dp range)
 - Benefits from AR compensation (elongated phones)
 - Slightly more control than pure linear
-- Backward compatible with v1.x
+- Backward compatible with earlier revisions
 
 **Implementation:**
 
@@ -1992,9 +2009,9 @@ class PhotoGallery extends StatelessWidget {
 | PERCENTAGE    | 0.0003        | 98%            | 56             |
 | FLUID         | 0.0018        | 85%            | 56             |
 
-**Comparison with v1.x:**
+**Comparison with earlier revisions:**
 
-| Component          | v1.x     | v2.0     | Improvement |
+| Component          | earlier revisions     | current catalog     | Improvement |
 |--------------------|----------|----------|-------------|
 | Fixed (now DEFAULT)| 0.0015µs | 0.0015µs | Same        |
 | Dynamic (now %)    | 0.0003µs | 0.0003µs | Same        |
@@ -2049,7 +2066,7 @@ class PhotoGallery extends StatelessWidget {
 **Academic Format:**
 
 ```
-Bodenberg, J. (2025). AppDimens 2.0: A Comprehensive Mathematical Framework 
+Bodenberg, J. (2025). AppDimens: A Comprehensive Mathematical Framework 
 for Perceptual UI Scaling Based on Psychophysics. Technical Documentation. 
 https://github.com/bodenberg/appdimens
 ```
@@ -2058,7 +2075,7 @@ https://github.com/bodenberg/appdimens
 
 ```bibtex
 @techreport{bodenberg2025appdimens,
-  title={AppDimens 2.0: A Comprehensive Mathematical Framework for 
+  title={AppDimens: A Comprehensive Mathematical Framework for 
          Perceptual UI Scaling Based on Psychophysics},
   author={Bodenberg, Jean},
   year={2025},
@@ -2073,15 +2090,15 @@ https://github.com/bodenberg/appdimens
 
 ## 13. Conclusion: Evolution and Recommendations
 
-### 13.1 Version 2.0 Summary
+### 13.1 Summary
 
 **Major Achievements:**
-- **13 scaling strategies** (vs 2 in v1.x)
+- **13 scaling strategies** (vs 2 in earlier revisions)
 - **BALANCED** as new primary recommendation ⭐
 - **Perceptual models** based on psychophysics
 - **Smart Inference** with automatic strategy selection
 - **5x performance improvement** through optimizations
-- **Full backward compatibility** with v1.x
+- **Full backward compatibility** with earlier revisions
 
 ### 13.2 Strategy Recommendations
 
@@ -2098,7 +2115,7 @@ https://github.com/bodenberg/appdimens
 ✅ DEFAULT - For phone-only applications
    - ~97% linear growth
    - Logarithmic AR compensation
-   - Backward compatible with v1.x
+   - Backward compatible with earlier revisions
 ```
 
 **Specific Use Cases:**
@@ -2117,7 +2134,7 @@ https://github.com/bodenberg/appdimens
 - Design systems requiring visual consistency
 - Projects valuing perceptual scaling over pure proportionality
 - Apps with accessibility requirements
-- When backward compatibility with v1.x is needed
+- When backward compatibility with earlier revisions is needed
 - When scientific foundation (psychophysics) is valued
 
 **⚠️ Consider Alternatives:**
@@ -2142,7 +2159,7 @@ https://github.com/bodenberg/appdimens
 
 ### 13.5 Final Note
 
-> **This document presents the FUNDAMENTAL MATHEMATICAL THEORY of AppDimens 2.0**, which is **independent of platform, language, or framework**. 
+> **This document presents the FUNDAMENTAL MATHEMATICAL THEORY of AppDimens**, which is **independent of platform, language, or framework**. 
 >
 > The 13 strategies described can be implemented in any system requiring responsive UI scaling. The implementations in Android, iOS, Flutter, React Native, and Web are **practical examples** of this universal theory.
 >
@@ -2151,19 +2168,17 @@ https://github.com/bodenberg/appdimens
 ---
 
 **Document created by:** Jean Bodenberg  
-**Last updated:** February 2025  
-**Version:** 2.0.0  
 **License:** Apache 2.0  
 **Repository:** https://github.com/bodenberg/appdimens
 
-**Version 2.0 Highlights:**
-- 🆕 13 scaling strategies (from 2 in v1.x)
+**Current catalog Highlights:**
+- 🆕 13 scaling strategies (from 2 in earlier revisions)
 - 🆕 BALANCED ⭐ primary recommendation
 - 🆕 Perceptual models: LOGARITHMIC, POWER
 - 🆕 Smart Inference with 18 element types
 - 🆕 Mathematical optimizations (5x performance)
 - ♻️ Renamed: Fixed→DEFAULT, Dynamic→PERCENTAGE
-- ✅ Full backward compatibility with v1.x
+- ✅ Full backward compatibility with earlier revisions
 
 ---
 

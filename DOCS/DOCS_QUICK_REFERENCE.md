@@ -1,9 +1,11 @@
 # ⚡ AppDimens Quick Reference
 
-> **Languages:** English | [Português (BR)](../LANG/pt-BR/DOCS_QUICK_REFERENCE.md) | [Español](../LANG/es/DOCS_QUICK_REFERENCE.md)
+> **Hub documentation.** Conceptual reference for scaling theory in the AppDimens family.
+> **Versions, semver, and install commands** belong only in **platform submodule READMEs** linked from [`README.md`](../README.md)—not here.
 
-**Fast Lookup for AppDimens 2.0**  
-*Version: 2.0.0 | Last Updated: April 2026 (docs synced with submodule APIs)*
+---
+
+**Fast Lookup for AppDimens**  
 
 > **Find anything in seconds!** This is your go-to reference for quick lookups.
 
@@ -181,6 +183,16 @@ FLUID:       clamp(min, interpolate(W), max)
 **Android:**
 ```kotlin
 Button(
+    modifier = Modifier.height(48.asdp)
+) {
+    Text("Click", fontSize = 16.assp)
+}
+```
+
+**Scaled-only baseline (Compose `scaled`, hub DEFAULT-ish):**
+
+```kotlin
+Button(
     modifier = Modifier.height(48.sdp)
 ) {
     Text("Click", fontSize = 16.ssp)
@@ -206,6 +218,10 @@ ElevatedButton(
 
 **Android:**
 ```kotlin
+// Hybrid BALANCED (auto)
+Card(modifier = Modifier.padding(16.asdp))
+
+// Scaled baseline (sdp)
 Card(modifier = Modifier.padding(16.sdp))
 ```
 
@@ -254,13 +270,9 @@ Icon(Icons.favorite, size: AppDimens.fixed(24).calculate(context))
 
 ## 🔧 Common Tasks
 
-### Install AppDimens
+### Install coordinates
 
-**Android:** `implementation("io.github.bodenberg:appdimens-dynamic:3.1.4")`  
-**iOS:** `pod 'AppDimens', '~> 2.0.0'`  
-**Flutter:** `appdimens: ^2.0.0`  
-**RN:** `npm install appdimens-react-native@2.0.0`  
-**Web:** `npm install webdimens@2.0.0`
+Maven, CocoaPods, pub, npm, etc. belong in **each submodule README** only. Navigate from the **[repository README submodule map](../README.md#submodule-map)** and copy the pinned line from the artifact you integrate.
 
 ### Choose Strategy
 
@@ -270,7 +282,7 @@ Containers → **PERCENTAGE**
 
 ### Migrate from older unified Android docs
 
-Legacy meta-docs used `.fxdp` / `.dydp` / `.balanced().dp`. On **`appdimens-dynamic` 3.x** use **`sdp` / `wdp` / `hdp` / `ssp`** (scaled) and **`asdp` / `ahdp` / `awdp` / `assp`** (auto). See the [appdimens-dynamic README](../appdimens-dynamic/README.md) and [Platform API map](PLATFORM_API_MAP.md).
+Legacy meta-docs used `.fxdp` / `.dydp` / `.balanced().dp`. Modern **Android Compose** work follows the **`appdimens-dynamic` README** (`sdp` / `wdp` / `hdp` / `ssp` and `asdp` / …). See the [appdimens-dynamic README](../appdimens-dynamic/README.md) and [Platform API map](PLATFORM_API_MAP.md).
 
 ---
 

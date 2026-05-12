@@ -1,13 +1,14 @@
 # 🔬 Detailed Comparison: Responsive Sizing Strategies
 
-> **Languages:** English | [Português (BR)](../LANG/pt-BR/FORMULA_COMPARISON.md) | [Español](../LANG/es/FORMULA_COMPARISON.md)
+> **Hub documentation.** Conceptual reference for scaling theory in the AppDimens family.
+> **Versions, semver, and install commands** belong only in **platform submodule READMEs** linked from [`README.md`](../README.md)—not here.
+
+---
 
 **Complete Mathematical and Comparative Analysis**  
 *Author: Jean Bodenberg*  
-*Date: February 2025*  
-*Version: 2.0.0*
 
-> **🆕 Version 2.0 Major Update:** Now comparing **13 AppDimens strategies** including new perceptual models (BALANCED, LOGARITHMIC, POWER) alongside traditional approaches. The analysis has been expanded to include Smart Inference, performance optimizations, and comprehensive rankings by use case. **BALANCED** is now the **#1 recommended strategy** for multi-device applications.
+> **Ranking note:** Compares AppDimens modes at a **conceptual** level. **`appdimens-dynamic`** publishes discrete packages (`scaled`, `percent`, `auto`, …)—see **[IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)** for exact naming, constants, and kernels.
 
 > **📚 Complementary Documentation:**
 > - [Mathematical Theory](MATHEMATICAL_THEORY.md) - Complete technical foundation (2h)
@@ -20,7 +21,7 @@
 ## 📋 Table of Contents
 
 1. [Overview and Comparison Methodology](#1-overview-and-comparison-methodology)
-2. [AppDimens 13 Strategies (v2.0)](#2-appdimens-13-strategies-v20)
+2. [AppDimens 13 Strategies ](#2-appdimens-13-strategies)
 3. [Traditional Formulas (External Libraries)](#3-traditional-formulas-external-libraries)
 4. [Complete Numerical Comparison](#4-complete-numerical-comparison)
 5. [Performance Analysis](#5-performance-analysis)
@@ -90,9 +91,9 @@ All strategies tested with:
 
 ---
 
-## 2. AppDimens 13 Strategies (v2.0)
+## 2. AppDimens 13 Strategies 
 
-> **🆕 Version 2.0:** AppDimens now offers 13 scaling strategies, organized into categories based on use case and mathematical foundation.
+> **🆕 Current catalog:** AppDimens now offers 13 scaling strategies, organized into categories based on use case and mathematical foundation.
 
 ### 2.1 Core Perceptual Models (Primary Recommendations)
 
@@ -165,7 +166,7 @@ arAdj(AR) = 1 + k_AR × ln(AR / AR₀)  [enabled by default]
 - ✅ When you want best-in-class scaling
 
 **Platform Support:**
-- Android (Jetpack Compose): `48.sdp`
+- Android (Jetpack Compose): **`48.asdp`** for the **BALANCED** (**`auto`**) hybrid — **`48.sdp` binds `scaled` (DEFAULT-axis)**, not BALANCED. See **`[IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)`**.
 - iOS (SwiftUI): `AppDimens.shared.balanced(48).toPoints()`
 - Flutter: `AppDimens.fixed(48).calculate(context)`
 - React Native: `balanced(48)`
@@ -298,7 +299,7 @@ arAdj(AR) = 1 + k_AR × ln(AR / AR₀)  [enabled by default]
 
 ---
 
-### 2.2 Legacy Models (Renamed in v2.0)
+### 2.2 Legacy model naming
 
 #### 2.2.1 DEFAULT (formerly "Fixed")
 
@@ -319,7 +320,7 @@ AR = aspect ratio
 - Compensates for elongated screens (20:9, 21:9)
 
 **Characteristics:**
-- ✅ **Backward compatible:** Same as AppDimens v1.x Fixed
+- ✅ **Backward compatible:** Same as AppDimens earlier revisions Fixed
 - ✅ **AR compensation:** Adjusts for aspect ratio variations
 - ✅ **Phone-optimized:** Best for 320-480dp range
 - ⚠️ **Less control:** More aggressive than BALANCED on tablets
@@ -354,7 +355,7 @@ AR = aspect ratio
 
 **When to Use:**
 - ✅ Phone-focused apps (320-480dp)
-- ✅ Backward compatibility with v1.x
+- ✅ Backward compatibility with earlier revisions
 - ✅ Apps with elongated screens
 - ✅ Icons and small elements
 
@@ -582,7 +583,7 @@ f_FILL(x, W, H) = x × max(W/W₀, H/H₀)
 - ✅ **Dynamic:** Adjusts to container size
 - ✅ **Efficient:** O(log n) binary search
 - ✅ **Flexible:** Preset or uniform modes
-- 🆕 **New in v2.0:** Unique to AppDimens
+- 🆕 **New in current catalog:** Unique to AppDimens
 
 **Scoring:**
 - Innovation: 100/100 ⭐⭐⭐⭐⭐
@@ -867,7 +868,7 @@ SDP                140%       ╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱�
 | **Traditional DP** | 0.0001 | N/A | 0 |
 
 **Performance Notes:**
-- ⭐ **AppDimens v2.0:** 5x faster than v1.x (unified cache)
+- ⭐ **AppDimens:** 5x faster than earlier revisions (unified cache)
 - ⭐ **PERCENTAGE fastest:** Only multiplication (0.0003µs)
 - ⭐ **LOGARITHMIC optimized:** Ln() lookup table (0.0010µs vs 0.012µs)
 - ⚠️ **SDP limitation:** Pre-calculated but 2MB of XML resources
@@ -877,7 +878,7 @@ SDP                140%       ╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱�
 
 | Library | Static Resources | Runtime Memory | Total |
 |---------|------------------|----------------|-------|
-| **AppDimens v2.0** | 0 KB | ~60 KB (cache) | ~60 KB |
+| **AppDimens (unified catalog)** | 0 KB | ~60 KB (cache) | ~60 KB |
 | **SDP/SSP** | 2,048 KB (XML) | 0 KB | 2,048 KB |
 | **Flutter ScreenUtil** | 0 KB | ~80 KB | ~80 KB |
 | **Traditional DP** | 0 KB | 0 KB | 0 KB |
@@ -888,13 +889,13 @@ SDP                140%       ╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱�
 
 **Test:** 4 threads simultaneously calculating dimensions
 
-| Strategy | v1.x Throughput | v2.0 Throughput | Improvement |
+| Strategy | earlier revisions Throughput | current catalog Throughput | Improvement |
 |----------|----------------|----------------|-------------|
 | **BALANCED** | 25% | 100% | **4x** ⭐ |
 | **DEFAULT** | 25% | 100% | **4x** ⭐ |
 | **All strategies** | 25% | 100% | **4x** ⭐ |
 
-**Reason:** Lock-free cache in v2.0 (no thread contention)
+**Reason:** Lock-free cache in current catalog (no thread contention)
 
 ---
 
@@ -1063,7 +1064,7 @@ I₀ = reference intensity
 **Primary:** **DEFAULT** (Score: 82/100)
 - ✅ Optimized for 320-480dp range
 - ✅ AR compensation for elongated screens
-- ✅ Backward compatible with v1.x
+- ✅ Backward compatible with earlier revisions
 
 **Secondary:** BALANCED (93/100)
 - ✅ Also works well on phones
@@ -1172,7 +1173,7 @@ START: What are you building?
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│           AppDimens 2.0 Quick Reference             │
+│           AppDimens Quick Reference             │
 ├─────────────────────────────────────────────────────┤
 │                                                     │
 │  🏆 PRIMARY RECOMMENDATION                          │
@@ -1186,7 +1187,7 @@ START: What are you building?
 │  ══════════════════════════                         │
 │  DEFAULT (#4, 82/100)                              │
 │  - Phone-focused apps (320-480dp)                  │
-│  - Backward compatible with v1.x                   │
+│  - Backward compatible with earlier revisions                   │
 │  - Apps with elongated screens                     │
 │                                                     │
 │  🎯 SPECIFIC USE CASES                              │
@@ -1228,7 +1229,7 @@ dependencies {
     // implementation("com.intuit.sdp:sdp-android:1.1.0")
     
     // Add AppDimens
-    implementation("io.github.bodenberg:appdimens-dynamic:3.1.4")
+    // implementation("io.github.bodenberg:appdimens-dynamic:<see submodule>")
 }
 ```
 
@@ -1243,15 +1244,15 @@ dependencies {
     android:padding="@dimen/_12sdp" />
 ```
 
-**After (AppDimens BALANCED - Recommended):**
+**After (`appdimens-dynamic` Compose — hybrid BALANCED / `auto`):**
 ```kotlin
-// Jetpack Compose
+// Imports: compose.auto.* for asdp/assp/awdp
 Text(
     text = "Hello",
-    fontSize = 16.ssp,
+    fontSize = 16.assp,
     modifier = Modifier
-        .width(300.wdp)
-        .padding(12.sdp)
+        .width(300.awdp)
+        .padding(12.asdp)
 )
 ```
 
@@ -1364,34 +1365,32 @@ Text(
 - ❌ **Traditional DP:** No adaptation
 
 **Performance:**
-- ⭐ **AppDimens v2.0:** 5x faster than v1.x
+- ⭐ **AppDimens:** 5x faster than earlier revisions
 - ⭐ **Lock-free cache:** 100% parallelism
 - ⭐ **Ln() lookup:** 10-20x faster (85-95% hit rate)
 
 ### 11.2 Final Recommendations
 
 **For New Projects:**
-- Use **BALANCED** for 95% of UI elements
+- Use **BALANCED** for 95% of UI elements (**Android Compose:** strategy **`auto`** — `asdp` / `assp` / … — not plain `sdp` / `ssp`)
 - Use **FLUID** for typography with bounds
 - Use **PERCENTAGE** sparingly (large containers only)
 
 **For Existing Projects:**
-- Migrate from **SDP/SSP** → **BALANCED** (40% improvement)
+- Migrate from **SDP/SSP** → **AppDimens BALANCED (`auto` tokens on Compose)** or keep **`scaled`** (`sdp`/`ssp`) when a single curve is enough (40% tablet oversizing story targets the hybrid)
 - Migrate from **CSS vw/vh** → **BALANCED** or **FLUID**
 - Migrate from **ScreenUtil** → **BALANCED**
 
-**Version 2.0 Highlights:**
-- ✅ 13 strategies (vs 2 in v1.x)
+**Current catalog Highlights:**
+- ✅ 13 strategies (vs 2 in earlier revisions)
 - ✅ BALANCED as primary recommendation
 - ✅ 5x performance improvement
-- ✅ Smart Inference system
+- ✅ Smart Inference concept (stacks with `smart()` builders); **Android Compose** still uses **explicit** extensions per call — see alignment doc
 - ✅ Full backward compatibility
 
 ---
 
 **Document created by:** Jean Bodenberg  
-**Last updated:** February 2025  
-**Version:** 2.0.0  
 **License:** Apache 2.0  
 **Repository:** https://github.com/bodenberg/appdimens
 
@@ -1400,4 +1399,4 @@ Text(
 **[⬆ Back to Top](#-detailed-comparison-responsive-sizing-strategies)**
 
 *"In mathematics, elegance is not a luxury—it's a necessity. BALANCED achieves both mathematical elegance and practical excellence."*  
-— AppDimens v2.0 Comparative Analysis
+— AppDimens Comparative Analysis

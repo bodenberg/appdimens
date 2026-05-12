@@ -1,6 +1,6 @@
 # 📝 Changelog
 
-> **Languages:** English | [Português (BR)](LANG/pt-BR/README.md) | [Español](LANG/es/README.md)
+> **Languages:** English (hub). Localization is maintained per submodule repository when offered.
 
 **Scope:** High-level history for the **appdimens** documentation hub and coordinated releases. **Each Git submodule** (e.g. `appdimens-dynamic`, `appdimens-ios`) may maintain its own detailed changelog — check that repository for library-specific fixes.
 
@@ -10,6 +10,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+### Hub documentation
+
+- `DOCS/` is **theory-only** and intentionally omits pinned coordinates.
+- See [`README.md`](README.md) for **Production vs Work in progress** status and install snippets.
+- **Phase 10 (consistency sweep):** theory/examples checked against **`IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md`** — Compose **BALANCED** = **`auto`** (`asdp`/`assp`, …); **`sdp`/`ssp` = `scaled`**. Maintainer steps documented in [`DOCS/README.md`](DOCS/README.md) (Phase 10) and [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ### Nota sobre documentación y Android
 

@@ -1,7 +1,5 @@
 # 🔒 Security Policy
 
-> **Languages:** English | [Português (BR)](LANG/pt-BR/README.md) | [Español](LANG/es/README.md)
-
 ## Supported Versions
 
 This **meta-repository** mainly holds documentation. **Security-sensitive code ships in submodule repositories** (Android, iOS, Flutter, React Native, Web, KMP). We aim to provide security patches for **currently maintained release lines** of those packages.
@@ -12,7 +10,7 @@ This **meta-repository** mainly holds documentation. **Security-sensitive code s
 | **Android `appdimens-sdps` / `appdimens-ssps` 3.x** | :white_check_mark: |
 | **Android `appdimens-games` 2.x** | :white_check_mark: (best effort) |
 | **Cross-platform 2.x** (Flutter, iOS pod/SPM, RN, `webdimens`) | :white_check_mark: |
-| **KMP `appdimens-dynamic-kmp` 4.x** | :white_check_mark: (experimental; see submodule) |
+| **KMP `appdimens-dynamic-kmp`** (test **`4.0.x`**, GA **`1.0.0`** TBD) | :white_check_mark: (pre-production / test artifacts only until **1.0.0**) |
 | **Older lines** (e.g. 1.0.x) | :x: Critical fixes only by exception |
 
 ## Reporting a Vulnerability

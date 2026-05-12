@@ -1,13 +1,14 @@
 # 🔄 Base Orientation Guide - Auto-Inversion Feature
 
-> **Languages:** English | [Português (BR)](../LANG/pt-BR/README.md) | [Español](../LANG/es/README.md) — there is no separate translated file for this topic under `LANG/`; use this document as canonical.
+> **Hub documentation.** Conceptual reference for scaling theory in the AppDimens family.
+> **Versions, semver, and install commands** belong only in **platform submodule READMEs** linked from [`README.md`](../README.md)—not here.
+
+---
 
 **Complete Guide to Orientation-Aware Dimension Scaling**  
 *Author: Jean Bodenberg*  
-*Date: February 2025*  
-*Version: 2.0.0*
 
-> **🆕 Version 2.0:** Base Orientation now works with all 13 scaling strategies, including BALANCED, DEFAULT, LOGARITHMIC, POWER, and others.
+> **🆕 Current catalog:** Base Orientation now works with all 13 scaling strategies, including BALANCED, DEFAULT, LOGARITHMIC, POWER, and others.
 
 ---
 
@@ -233,8 +234,6 @@ Container(
 ---
 
 **Document created by:** Jean Bodenberg  
-**Last updated:** February 2025  
-**Version:** 2.0.0  
 **Repository:** https://github.com/bodenberg/appdimens
 
 ---

@@ -1,17 +1,18 @@
 # 🔍 Validation Report: Theory vs Implementation
 
-> **Languages:** English | [Português (BR)](../LANG/pt-BR/README.md) | [Español](../LANG/es/README.md) — full translation of this report is not mirrored under `LANG/`; use this file as the source of truth.
+> **Hub documentation.** Conceptual reference for scaling theory in the AppDimens family.
+> **Versions, semver, and install commands** belong only in **platform submodule READMEs** linked from [`README.md`](../README.md)—not here.
 
-**Complete Validation of AppDimens 2.0**  
+---
+
+**Complete Validation of AppDimens**  
 *Author: Jean Bodenberg*  
-*Date: February 2025*  
-*Version: 2.0.0*
 
 ---
 
 ## 📋 Executive Summary
 
-✅ **COMPLETE VALIDATION**: AppDimens 2.0 implementations across all 5 platforms (Android, iOS, Flutter, React Native, Web) **exactly match** the mathematical formulas documented in [MATHEMATICAL_THEORY.md](MATHEMATICAL_THEORY.md).
+✅ **COMPLETE VALIDATION**: AppDimens implementations across all 5 platforms (Android, iOS, Flutter, React Native, Web) **exactly match** the mathematical formulas documented in [MATHEMATICAL_THEORY.md](MATHEMATICAL_THEORY.md).
 
 **Status:** ✅ **APPROVED - 100% Compliance**
 
@@ -145,7 +146,7 @@ All 13 strategies validated:
 
 ## 3. Performance Validation
 
-### 3.1 v2.0 Optimization Targets
+### 3.1 Optimization targets
 
 | Optimization | Target | Measured | Status |
 |--------------|--------|----------|--------|
@@ -194,18 +195,18 @@ All 13 strategies validated:
 
 ## 5. Smart Inference Validation
 
-### 5.1 Element Type Inference
+### 5.1 Element Type Inference (conceptual — Kotlin)
 
-**Test:** Button on 720dp tablet
+**Test:** Button on a 720 dp tablet, **assuming** Smart Inference resolves to **BALANCED**.
 
 ```kotlin
-val size = 48.sdp
+val size = 48.asdp  // Compose: explicit `auto` token — **no** runtime `smart()` chain in Kotlin
 ```
 
-**Expected:** BALANCED strategy (weight: 1.1)  
-**All platforms:** BALANCED ✅
+**Conceptual expectation:** BALANCED weighting (tables in §Smart Inference docs).  
+**Reality gap:** Compose requires **explicit** `sdp`/`asdp`/… picks per call site (`appdimens-dynamic`).
 
-**Result:** ✅ **Smart inference works correctly**
+**Result:** ⚠️ **Documented heuristic only unless you wrap your own dispatcher** ([alignment doc](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)).
 
 ---
 
@@ -213,19 +214,16 @@ val size = 48.sdp
 
 ### Validation Summary
 
-- ✅ **Constants:** 100% match
-- ✅ **Formulas:** 100% match
-- ✅ **Results:** 100% consistent cross-platform
-- ✅ **Performance:** All targets exceeded
-- ✅ **Features:** All working as documented
+- ✅ **Constants / formulae tables:** Match reference docs when pairing the correct strategy token (**`sdp`≠`auto`** unless the math coincides on narrow widths).
+- ✅ **Numerical benchmarks:** Stable for the audited rows (strategy names aligned to tokens above).
+- ✅ **Performance:** Targets in companion notes still met after cache refactors (**see submodule `PERFORMANCE.md`**).
+- ⚠️ **Smart Inference on Android Compose:** **not** fused into the Kotlin API — explicit **`asdp`/`sdp`/…** only (§5).
 
-**Overall Grade:** ✅ **A+ (100% Compliance)**
+**Overall Grade:** ✅ **Aligned with submodule theory + audited alignment doc**
 
-**Certification:** AppDimens 2.0 is **production-ready** for all platforms.
+**Certification:** Mathematical models in [MATHEMATICAL_THEORY.md](MATHEMATICAL_THEORY.md) were checked against the **reference implementations available at validation time**. Submodule **maturity and production status** vary—see **[`README.md`](../README.md)** (Production vs Work in progress) before shipping a product dependency.
 
 ---
 
 **Document created by:** Jean Bodenberg  
-**Last updated:** February 2025  
-**Version:** 2.0.0  
 **Repository:** https://github.com/bodenberg/appdimens

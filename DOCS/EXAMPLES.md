@@ -1,19 +1,18 @@
 # 🎨 AppDimens - Practical Examples
 
-> **Languages:** English | [Português (BR)](../LANG/pt-BR/README.md) | [Español](../LANG/es/README.md) — full `EXAMPLES.md` translations are not mirrored under `LANG/`; use this file as canonical.
-
-**Real-World Code Samples for All Platforms**  
-*Author: Jean Bodenberg*  
-*Date: February 2025*  
-*Version: 2.0.0*
-
-> **🆕 Version 2.0:** Now featuring **13 scaling strategies** with **BALANCED** as primary recommendation and **DEFAULT** as secondary. All examples updated to showcase the new Smart API.
+> **Hub documentation.** Conceptual reference for scaling theory in the AppDimens family.
+> **Versions, semver, and install commands** belong only in **platform submodule READMEs** linked from [`README.md`](../README.md)—not here.
 
 ---
 
+**Real-World Code Samples for All Platforms**  
+*Author: Jean Bodenberg*  
+
+> **Illustrative only:** Examples mirror **13 strategies** with **BALANCED** as default narrative. Copy **real install lines and builder names** from submodule READMEs—not from this file.
+
 ## 📋 Table of Contents
 
-1. [Version 2.0 Quick Start](#1-version-20-quick-start)
+1. [Catalog quick start](#1-current-catalog-quick-start)
 2. [Android Examples](#2-android-examples)
 3. [iOS Examples](#3-ios-examples)
 4. [Flutter Examples](#4-flutter-examples)
@@ -26,7 +25,7 @@
 
 ---
 
-## 1. Version 2.0 Quick Start
+## 1. Current catalog Quick Start
 
 ### 1.1 Strategy Selection Guide
 
@@ -38,7 +37,7 @@
 **Use DEFAULT (Secondary) for:**
 - Phone-focused apps
 - Icons and small elements
-- Backward compatibility with v1.x
+- Backward compatibility with earlier revisions
 
 **Use PERCENTAGE for:**
 - Very large containers
@@ -84,7 +83,7 @@ Text('Hello', style: TextStyle(fontSize: AppDimens.fixed(16).calculate(context))
 
 ### 1.2 Aspect Ratio (AR) Impact Examples
 
-> **📐 Version 2.0:** Six strategies now support automatic aspect ratio compensation. Here are practical examples showing the impact.
+> **📐 Current catalog:** Six strategies now support automatic aspect ratio compensation. Here are practical examples showing the impact.
 
 #### Understanding AR
 
@@ -100,8 +99,8 @@ Text('Hello', style: TextStyle(fontSize: AppDimens.fixed(16).calculate(context))
 
 **Standard Phone (360×640, 16:9 - AR=1.78):**
 ```kotlin
-// Android
-val buttonHeight = 48.sdp  // Result: 57.6dp
+// Android — align with hybrid BALANCED (`auto`): use `.asdp` (not `.sdp`)
+val buttonHeight = 48.asdp  // Result: ~57.6dp in the phone-linear region
 
 // iOS
 let height = AppDimens.shared.balanced(48)  // Result: 57.6pt
@@ -113,7 +112,7 @@ final height = AppDimens.fixed(48).calculate(context)  // Result: 57.6dp
 **Elongated Phone (360×800, 20:9 - AR=2.22):**
 ```kotlin
 // Android
-val buttonHeight = 48.sdp  // Result: 57.9dp (+0.5%)
+val buttonHeight = 48.asdp  // Result: ~57.9dp (+0.5% vs AR-neutral when AR tweaks apply)
 
 // iOS
 let height = AppDimens.shared.balanced(48)  // Result: 57.9pt (+0.5%)
@@ -155,11 +154,11 @@ fun AdaptiveButton() {
     val isUnfolded = configuration.screenWidthDp > 600
     
     Button(
-        modifier = Modifier.height(48.sdp)
+        modifier = Modifier.height(48.asdp)
         // Folded:   ~75dp with AR adjustment
         // Unfolded: ~85dp with different AR
     ) {
-        Text("Adaptive Button", fontSize = 16.ssp)
+        Text("Adaptive Button", fontSize = 16.assp)
     }
 }
 ```
@@ -179,12 +178,12 @@ fun SplitScreenAware() {
     
     Card(
         modifier = Modifier
-            .width(300.wdp)    // No AR adjustment
-            .padding(16.sdp)      // With AR adjustment
+            .width(300.wdp)    // width-axis / proportional pattern
+            .padding(16.sdpa)   // scaled (`sdp`) **with** `applyAspectRatio = true`
     ) {
         Text(
             "AR-Aware Content",
-            fontSize = 16.ssp
+            fontSize = 16.sspa
         )
     }
 }
@@ -244,6 +243,8 @@ Card(
 
 #### Social Media Feed (Multi-Device App)
 
+> **Semantics:** Scenario uses **BALANCED** ⇒ Compose **`auto`** tokens (**`asdp`**, **`assp`**). Plain **`sdp` / `ssp`** follow **`scaled`** (DEFAULT-axis), **not** this hybrid curve.
+
 ```kotlin
 @Composable
 fun SocialFeedScreen() {
@@ -255,11 +256,11 @@ fun SocialFeedScreen() {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .padding(horizontal = 16.sdp)  // ⭐ BALANCED
+                .padding(horizontal = 16.asdp)
         ) {
             items(posts) { post ->
                 PostCard(post)
-                Spacer(modifier = Modifier.height(12.sdp))
+                Spacer(modifier = Modifier.height(12.asdp))
             }
         }
     }
@@ -271,7 +272,7 @@ fun FeedTopBar() {
         title = {
             Text(
                 text = "Social Feed",
-                fontSize = 20.ssp  // ⭐ BALANCED
+                fontSize = 20.assp
             )
         },
         navigationIcon = {
@@ -279,7 +280,7 @@ fun FeedTopBar() {
                 Icon(
                     imageVector = Icons.Default.Menu,
                     contentDescription = "Menu",
-                    modifier = Modifier.size(24.sdp)
+                    modifier = Modifier.size(24.asdp)
                 )
             }
         },
@@ -287,11 +288,11 @@ fun FeedTopBar() {
             IconButton(onClick = { }) {
                 Icon(
                     imageVector = Icons.Default.Search,
-                    modifier = Modifier.size(24.sdp)
+                    modifier = Modifier.size(24.asdp)
                 )
             }
         },
-        modifier = Modifier.height(56.sdp)
+        modifier = Modifier.height(56.asdp)
     )
 }
 
@@ -299,9 +300,9 @@ fun FeedTopBar() {
 fun PostCard(post: Post) {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.sdp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.asdp)
     ) {
-        Column(modifier = Modifier.padding(16.sdp)) {
+        Column(modifier = Modifier.padding(16.asdp)) {
             // Header: Avatar + Username
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -311,50 +312,50 @@ fun PostCard(post: Post) {
                     model = post.userAvatar,
                     contentDescription = "Avatar",
                     modifier = Modifier
-                        .size(40.sdp)
+                        .size(40.asdp)
                         .clip(CircleShape)
                 )
-                
-                Spacer(modifier = Modifier.width(12.sdp))
-                
+
+                Spacer(modifier = Modifier.width(12.asdp))
+
                 Column {
                     Text(
                         text = post.username,
-                        fontSize = 14.ssp,
+                        fontSize = 14.assp,
                         fontWeight = FontWeight.Bold
                     )
                     Text(
                         text = post.timestamp,
-                        fontSize = 12.ssp,
+                        fontSize = 12.assp,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
             }
-            
-            Spacer(modifier = Modifier.height(12.sdp))
-            
+
+            Spacer(modifier = Modifier.height(12.asdp))
+
             // Post content
             Text(
                 text = post.content,
-                fontSize = 14.ssp,
-                lineHeight = 20.ssp
+                fontSize = 14.assp,
+                lineHeight = 20.assp
             )
-            
+
             // Post image (if exists)
             post.imageUrl?.let { imageUrl ->
-                Spacer(modifier = Modifier.height(12.sdp))
+                Spacer(modifier = Modifier.height(12.asdp))
                 AsyncImage(
                     model = imageUrl,
                     contentDescription = "Post image",
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(200.wdp)  // Proportional image
-                        .clip(RoundedCornerShape(8.sdp))
+                        .clip(RoundedCornerShape(8.asdp))
                 )
             }
-            
-            Spacer(modifier = Modifier.height(12.sdp))
-            
+
+            Spacer(modifier = Modifier.height(12.asdp))
+
             // Action buttons
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -363,48 +364,48 @@ fun PostCard(post: Post) {
                 Row {
                     IconButton(
                         onClick = { },
-                        modifier = Modifier.size(40.sdp)
+                        modifier = Modifier.size(40.asdp)
                     ) {
                         Icon(
                             imageVector = Icons.Default.Favorite,
                             contentDescription = "Like",
-                            modifier = Modifier.size(20.sdp)
+                            modifier = Modifier.size(20.asdp)
                         )
                     }
-                    
+
                     Text(
                         text = "${post.likes}",
-                        fontSize = 14.ssp,
+                        fontSize = 14.assp,
                         modifier = Modifier.align(Alignment.CenterVertically)
                     )
-                    
-                    Spacer(modifier = Modifier.width(16.sdp))
-                    
+
+                    Spacer(modifier = Modifier.width(16.asdp))
+
                     IconButton(
                         onClick = { },
-                        modifier = Modifier.size(40.sdp)
+                        modifier = Modifier.size(40.asdp)
                     ) {
                         Icon(
                             imageVector = Icons.Default.Comment,
                             contentDescription = "Comment",
-                            modifier = Modifier.size(20.sdp)
+                            modifier = Modifier.size(20.asdp)
                         )
                     }
-                    
+
                     Text(
                         text = "${post.comments}",
-                        fontSize = 14.ssp,
+                        fontSize = 14.assp,
                         modifier = Modifier.align(Alignment.CenterVertically)
                     )
                 }
-                
+
                 IconButton(
                     onClick = { },
-                    modifier = Modifier.size(40.sdp)
+                    modifier = Modifier.size(40.asdp)
                 ) {
                     Icon(
                         imageVector = Icons.Default.Share,
-                        modifier = Modifier.size(20.sdp)
+                        modifier = Modifier.size(20.asdp)
                     )
                 }
             }
@@ -416,12 +417,12 @@ fun PostCard(post: Post) {
 fun NewPostFAB() {
     FloatingActionButton(
         onClick = { },
-        modifier = Modifier.size(56.sdp)
+        modifier = Modifier.size(56.asdp)
     ) {
         Icon(
             imageVector = Icons.Default.Add,
             contentDescription = "New Post",
-            modifier = Modifier.size(24.sdp)
+            modifier = Modifier.size(24.asdp)
         )
     }
 }
@@ -1178,7 +1179,7 @@ function StatCard({stat}: {stat: StatCard}) {
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/webdimens@2.0.0/dist/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/webdimens@<see submodule for version>/dist/index.js"></script>
   <style>
     body {
       font-family: -apple-system, system-ui, sans-serif;
@@ -1191,7 +1192,7 @@ function StatCard({stat}: {stat: StatCard}) {
   <div id="app"></div>
   
   <script type="module">
-    import {balanced, fluid} from 'https://cdn.jsdelivr.net/npm/webdimens@2.0.0/dist/index.mjs';
+    import {balanced, fluid} from 'https://cdn.jsdelivr.net/npm/webdimens@<see submodule for version>/dist/index.mjs';
     
     // Apply dimensions
     const app = document.getElementById('app');
@@ -1278,10 +1279,12 @@ Design System Values:
 **Android:**
 ```kotlin
 object AppDimensions {
+    // Cross-platform parity with iOS `balanced` ⇒ Compose strategy `auto`
+    val spacingMD = 16.asdp
+    val fontBody = 14.assp
+    val buttonHeight = 48.asdp
+    // If you deliberately want ONLY the `scaled` curve, keep sdp/ssp counters:
     val spacingXS = 4.sdp
-    val spacingMD = 16.sdp
-    val fontBody = 14.ssp
-    val buttonHeight = 48.sdp
 }
 ```
 
@@ -1402,15 +1405,15 @@ let playerSize = gameAspectRatio(64)
 
 ## 10. Migration Examples
 
-### 10.1 From v1.x to v2.0
+### 10.1 From earlier revisions to current catalog
 
-**Before (v1.x):**
+**Before (earlier revisions):**
 ```kotlin
 Text("Hello", fontSize = 16.fxsp)  // Deprecated
 Container(modifier = Modifier.width(300.wdp))  // width-biased scaled token
 ```
 
-**After (v2.0) - Recommended:**
+**After  - Recommended:**
 ```kotlin
 Text("Hello", fontSize = 16.ssp)  // ⭐ Primary
 Container(modifier = Modifier.width(300.wdp))  // For containers
@@ -1446,8 +1449,6 @@ Text(text = "Hello", fontSize = 16.ssp)
 ---
 
 **Document created by:** Jean Bodenberg  
-**Last updated:** February 2025  
-**Version:** 2.0.0  
 **Repository:** https://github.com/bodenberg/appdimens
 
 ---

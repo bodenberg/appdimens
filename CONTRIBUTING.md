@@ -2,8 +2,6 @@
 
 Thank you for your interest in contributing to AppDimens! This document provides guidelines and information for contributors.
 
-> **Languages:** English | [Português (BR)](LANG/pt-BR/CONTRIBUTING.md) | [Español](LANG/es/README.md) (community docs under `LANG/es/`)
-
 ## 📋 Table of Contents
 
 1. [Code of Conduct](#code-of-conduct)
@@ -319,6 +317,14 @@ When making code changes:
 2. **Update User Guides**: Update installation and usage guides
 3. **Add Examples**: Add examples for new features
 4. **Update README**: Update main README if needed
+
+### Hub theory (`DOCS/`) — Phase 10 consistency sweep
+
+Edits under **`DOCS/`** (or hub-level Markdown tied to scaling theory) should end with **Phase 10** before merge:
+
+- Follow **[`DOCS/DOCUMENTATION_REVIEW_CHECKLIST.md`](DOCS/DOCUMENTATION_REVIEW_CHECKLIST.md)**.
+- Keep **Android Compose** samples honest: **`sdp`/`ssp` → `scaled`**; **BALANCED (hybrid) → `auto` → `asdp`/`assp`/…** — see **`[DOCS/IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md`](DOCS/IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)**.
+- Grep for stale **`LANG/`** links, version pins inside `DOCS/`, and contradictory “smart” narratives on Kotlin (no fused `smart()` API in **`appdimens-dynamic`**).
 
 ## 🧪 Testing
 
