@@ -62,7 +62,7 @@ Convenience only—**canonical lines live in each submodule README.**
 
 ### Android — `appdimens-dynamic` (Production)
 
-Compose / Kotlin calculators: `sdp`, `wdp`, `hdp`, `ssp`, `asdp`, …  
+Compose / Kotlin / Java calculators: `sdp`, `wdp`, `hdp`, `ssp`, `asdp`, …  
 → **[appdimens-dynamic/README.md](appdimens-dynamic/README.md)**
 
 ```kotlin
@@ -73,6 +73,7 @@ dependencies {
 
 ### Android — `appdimens-sdps` & `appdimens-ssps` (Production)
 
+Compose / XML / Kotlin / Java
 → **[appdimens-sdps/README.md](appdimens-sdps/README.md)** · **[appdimens-ssps/README.md](appdimens-ssps/README.md)**
 
 ```kotlin
