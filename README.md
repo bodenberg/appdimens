@@ -41,8 +41,8 @@ Standalone repos (folder = submodule in this clone). **Confirm semver in the sub
 | Submodule | Platform | Coordinate (snapshot) | Status |
 |-----------|----------|----------------------|--------|
 | [appdimens-dynamic/](appdimens-dynamic/) | Android (Compose, Kotlin/Java) | `io.github.bodenberg:appdimens-dynamic:3.1.5` | Production |
-| [appdimens-sdps/](appdimens-sdps/) | Android XML `@dimen/_*sdp` | `io.github.bodenberg:appdimens-sdps:3.1.2` | Production |
-| [appdimens-ssps/](appdimens-ssps/) | Android XML `@dimen/_*ssp` | `io.github.bodenberg:appdimens-ssps:3.1.2` | Production |
+| [appdimens-sdps/](appdimens-sdps/) | Android (XML, Compose, Kotlin/Java) `@dimen/_*sdp` | `io.github.bodenberg:appdimens-sdps:3.1.2` | Production |
+| [appdimens-ssps/](appdimens-ssps/) | Android (XML, Compose, Kotlin/Java) `@dimen/_*ssp` | `io.github.bodenberg:appdimens-ssps:3.1.2` | Production |
 | [appdimens-games/](appdimens-games/) | Games (Kotlin + NDK) | `…appdimens-games:2.0.1` | Work in progress |
 | [appdimens-ios/](appdimens-ios/) | Apple platforms | CocoaPods SPM `2.0.0` (see submodule) | Work in progress |
 | [appdimens-dynamic-kmp/](appdimens-dynamic-kmp/) | Kotlin Multiplatform | **Test:** `…appdimens-dynamic:4.0.0` — not GA · first stable KMP tracked as **1.0.0** | Work in progress |
@@ -194,6 +194,26 @@ flowchart LR
   RN --> rn["react-native<br/>2.0.0 WIP"]
   Web --> webdimens["webdimens<br/>2.0.0 WIP"]
 ```
+
+### `dynamic` vs `sdps` / `ssps` — two delivery models
+
+Both families solve the same problem (responsive Android dimensions) but ship through **fundamentally different pipelines**. Pick by *how* you want the values computed and consumed, not by *what* they look like at the call site.
+
+| Aspect | **`appdimens-dynamic`** (Compose · Kotlin · Java) | **`appdimens-sdps` / `appdimens-ssps`** (XML · Compose · Kotlin · Java) |
+|---|---|---|
+| **Computation** | **Runtime**, on the device, against the live `Configuration` (width, height, density, orientation, font scale, fold state). | **Pre-calculated** at build time of the library — values baked into `res/values-sw###dp/dimens.xml` buckets. |
+| **Storage** | In-memory **LRU cache** keyed by `(token, strategy, configuration)`. First call computes, subsequent calls are O(1) lookups. | Plain Android dimension resources resolved by the platform's resource manager. |
+| **Strategies available** | **13+ named strategies** — `scaled`, `percent`, `auto`, `logarithmic`, `power`, `fluid`, `interpolated`, `diagonal`, `perimeter`, `fit`, `fill`, `autosize`, `none`. Each tuned for a different scenario (multi-form-factor, TV/perceptual, games, fluid type, geometry-aware, container-fit). | **One scaling curve per family**: `sdps` ≈ SDP-style width-based linear, `ssps` ≈ SSP-style scaled-pixel linear. No alternative kernels. |
+| **Knobs at the call site** | Per-call: base orientation, min/max bounds, axis (`w` / `h` / diagonal / perimeter), interpolation, percentage, fold/insets awareness. | None — pick the token (`@dimen/_16sdp`) and you get whatever bucket the device falls into. |
+| **APK / AAR cost** | Tiny — just the calculator code, no resource tables. | Larger — hundreds of pre-baked dimension entries × dozens of `sw###` buckets. |
+| **XML support** | **Compose / Kotlin / Java only** (computed values, no `@dimen` indirection). | **Full XML** (`@dimen/_16sdp`) **plus** Compose / Kotlin / Java helpers reading the same baked tables. |
+| **Responsiveness granularity** | **Continuous** — exact value for the current screen, recomputed on configuration changes. | **Stepped** — value snaps to the nearest `sw` bucket Android picks. |
+| **Best when you need** | Different math per surface (TV vs phone vs fold vs game HUD), bounded fluid type, percentage layouts, geometry-driven sizing, or anything that must react to runtime state. | A drop-in replacement for hard-coded `dp`/`sp` in legacy XML, predictable values you can inspect in the layout editor, zero runtime overhead. |
+| **Trade-off** | Slightly higher CPU on first access per key (then cached); requires Compose or programmatic access. | No flexibility — one curve, fixed buckets, larger artifact, but works **everywhere** including pure XML projects and Data Binding. |
+
+> **Rule of thumb:** reach for `sdps`/`ssps` when you're modernizing an XML codebase or want zero-thought drop-in tokens; reach for `dynamic` when you need to **choose the scaling math** per use case (e.g. `auto` for layout, `fluid` for body text, `percent` for a hero card, `fit`/`fill` for a game viewport) and want values that track the live configuration.
+>
+> **Both families are production-ready** — there is no "better" option in the abstract. The recommendation depends on **your project's context**: stack (XML-only, Compose-only, mixed), legacy constraints, artifact-size budget, design-system needs, and whether you want a single fixed curve or per-surface control. Many apps even mix both: `sdps`/`ssps` for legacy XML screens and `dynamic` for new Compose surfaces that need richer scaling behavior.
 
 ### 13 strategies (skim)
 
