@@ -6,7 +6,7 @@ This folder explains **ideas, vocabulary, and the mathematical theory** shared a
 > **What this folder is**
 >
 > - Shared **vocabulary** (BALANCED, DEFAULT, PERCENTAGE, …) and how it maps onto each stack's tokens.
-> - Formal **mathematics** of every kernel (formulas, constants, invariants).
+> - Formal **mathematics** of every kernel (formulas, constants, invariants). **[THEORY.md](THEORY.md)** is tuned for [GitHub’s math renderer](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions) (KaTeX subset); the submodule [MATHEMATICS-AND-CALCULUS.md](../appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md) may use richer LaTeX.
 > - **Migration paths** between AppDimens versions and from third-party libraries.
 > - Cross-platform **API mapping** and orientation semantics.
 >

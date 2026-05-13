@@ -27,6 +27,8 @@ and in [MIGRATION.md](MIGRATION.md).
 > - **§11 + appendices** hold references, the Gradle ↔ hub-label table, and source pointers.
 >
 > Companion docs: **[GUIDE.md](GUIDE.md)** (tactical decisions), **[PLATFORMS.md](PLATFORMS.md)** (concept ↔ API map across stacks), **[MIGRATION.md](MIGRATION.md)** (legacy ↔ modern tokens), **[ORIENTATION.md](ORIENTATION.md)** (rotation + inverters), **[EXAMPLES.md](EXAMPLES.md)** (long-form snippets).
+>
+> **GitHub math:** Inline and display math use a [KaTeX-compatible subset](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions). This file avoids macros that GitHub rejects (for example `\operatorname`), and uses plain symbols such as $(0,\infty)$ and $C$ instead of `\mathbb{R}_{>0}` / `\mathcal{C}` where those caused rendering issues.
 
 ---
 
@@ -73,10 +75,10 @@ even though their compositional canvases differ qualitatively.
 The library therefore models token sizing as a **family of one‑dimensional
 maps**
 
-$$f_S\colon \mathbb{R}_{>0} \times \mathcal{C} \longrightarrow \mathbb{R}_{>0},
+$$f_S\colon (0,\infty) \times C \longrightarrow (0,\infty),
 \qquad (b, c) \mapsto f_S(b, c),$$
 
-where $b$ is the **base token** (a design‑time `dp`/`sp`), $c \in \mathcal{C}$
+where $b$ is the **base token** (a design‑time `dp`/`sp`), $c \in C$
 is a snapshot of `android.content.res.Configuration` (after orientation
 plumbing), and $S$ selects a **kernel** — `scaled`, `auto`, `percent`, `power`,
 `logarithmic`, `fluid`, `interpolated`, `diagonal`, `perimeter`, `fill`, `fit`,
@@ -109,11 +111,9 @@ that surface in every public surface:
 
 A central abstraction is the **kernel vs. mould** decomposition. Each output is
 
-$$f_S(b, c) \;=\; \underbrace{K_S(b, d)}_{\text{kernel}} \cdot
-\underbrace{M_\rho(c)}_{\text{optional aspect mould}},$$
+$$f_S(b, c) \;=\; K_S(b, d) \cdot M_\rho(c),$$
 
-where $d$ is the effective axis (`smallest‑width`, `width`, or `height` after
-inverters) and $M_\rho$ collapses to $1$ unless the call site asked for the
+where $K_S(b,d)$ is the **kernel** factor and $M_\rho(c)$ is the **optional aspect mould** (equals $1$ when aspect handling is off). The effective axis $d$ is `smallest‑width`, `width`, or `height` after inverters; $M_\rho$ collapses to $1$ unless the call site asked for the
 mould. This separation is what lets phone‑first designs ignore aspect ratio
 entirely and what lets aspect‑sensitive surfaces enable it precisely where it
 matters, without rewriting kernels.
@@ -419,9 +419,10 @@ inverter. See
 A "viewport units"‑style band, clamped outside it:
 
 $$\boxed{\,K_{\text{fluid}}(b, d) \;=\;
-\operatorname{clamp}\!\bigl( \operatorname{lerp}(0.8\,b,\,1.2\,b;\;t(d)),
-\;0.8\,b,\;1.2\,b\bigr),\quad
+\max\!\Bigl(\min\!\bigl((1-t(d))\cdot 0.8\,b + t(d)\cdot 1.2\,b,\;1.2\,b\bigr),\;0.8\,b\Bigr),\quad
 t(d) = \frac{d - 320}{768 - 320}.\,}$$
+
+(Linear blend between $0.8\,b$ and $1.2\,b$ in $t$, then clamped to $[0.8\,b,\,1.2\,b]$ — GitHub math does not support `\operatorname{lerp}` / `\operatorname{clamp}`.)
 
 **Growth profile.** Linear in $d$ inside $[320, 768]$ (the modern phone band);
 constant outside. The kernel never moves more than $\pm 20\%$ off the base —
@@ -510,15 +511,14 @@ in `factors.density`.
 [`ResizeMath.kt`](../appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/core/ResizeMath.kt)
 and the parallel Compose helpers in
 [`compose.resize`](../appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/compose/resize/).
-Given a fitness predicate $\phi\colon \mathbb{R}_{>0} \to \{\text{true},
-\text{false}\}$ that is non‑increasing on $\{\phi = \text{true}\}$, it returns
+Given a fitness predicate $\phi\colon (0,\infty) \to \{\mathrm{true},\,\mathrm{false}\}$ that is non‑increasing on the set where $\phi$ is true, it returns
 the **largest** candidate from a discretised step table that still satisfies
 $\phi$:
 
 $$\boxed{\,f_{\text{resize}}(\phi,\,b_{\min},\,b_{\max},\,\Delta)
-\;=\; \max\!\bigl\{\,x \in \mathcal{C}_{\min,\max,\Delta} \;:\; \phi(x)\bigr\},\,}$$
+\;=\; \max\!\bigl\{\,x \in C_{\min,\max,\Delta} \;:\; \phi(x)\bigr\},\,}$$
 
-with $\mathcal{C}_{\min,\max,\Delta} = \{b_{\min} + i\Delta : 0 \le i,\;
+with $C_{\min,\max,\Delta} = \{b_{\min} + i\Delta : 0 \le i,\;
 b_{\min} + i\Delta \le b_{\max}\}$. The candidate set is materialised once as
 a primitive `FloatArray` (`buildResizeStepsPx`), then explored by binary
 search (`findLargestFittingResizePx`); when no candidate fits, the result is
@@ -532,9 +532,9 @@ $sw$/$w$/$h$ via `ResizeBound`. All call sites live **inside**
 `BoxWithConstraints` so the predicate has the real parent rectangle, not the
 window rectangle.
 
-**Complexity.** $\mathcal{O}(\log N)$ predicate evaluations for $N$
+**Complexity.** $O(\log N)$ predicate evaluations for $N$
 candidates; the table is bounded to $\le 4096$ entries (`MAX_RESIZE_STEPS`).
-Memory is $\mathcal{O}(N)$ but allocated as a single primitive array — no
+Memory is $O(N)$ but allocated as a single primitive array — no
 auto‑boxing in the hot path.
 
 ---
