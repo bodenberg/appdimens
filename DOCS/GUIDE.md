@@ -338,7 +338,7 @@ See **[appdimens-react-native/package.json](https://github.com/bodenberg/appdime
 
 ### 13.2 API
 
-
+{% raw %}
 ```typescript
 import {useAppDimens} from 'appdimens-react-native';
 
@@ -355,7 +355,7 @@ function MyComponent() {
   );
 }
 ```
-
+{% endraw %}
 
 **📖 [Complete React Native Guide](https://github.com/bodenberg/appdimens-react-native/blob/main/README.md)**
 
@@ -369,7 +369,7 @@ Follow **[appdimens-web/package.json](https://github.com/bodenberg/appdimens-web
 
 ### 14.2 React API
 
-
+{% raw %}
 ```typescript
 import {useWebDimens} from 'webdimens/react';
 
@@ -386,7 +386,7 @@ function MyComponent() {
   );
 }
 ```
-
+{% endraw %}
 
 ### 14.3 Vue, Svelte, Angular
 

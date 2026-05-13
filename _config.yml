@@ -1,0 +1,17 @@
+# GitHub Pages (Jekyll) — hub repository
+# Submodule trees are independent repos; excluding them avoids Liquid parsing
+# their Markdown (JSX `{{ … }}`, etc.) and keeps the site to hub + DOCS.
+
+title: AppDimens
+description: Documentation hub for responsive sizing across platforms
+
+exclude:
+  - appdimens-dynamic
+  - appdimens-dynamic-kmp
+  - appdimens-sdps
+  - appdimens-ssps
+  - appdimens-games
+  - appdimens-flutter
+  - appdimens-ios
+  - appdimens-react-native
+  - appdimens-web

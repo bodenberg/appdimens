@@ -87,14 +87,18 @@ Text('Hello', style: TextStyle(fontSize: AppDimens.fixed(16).calculate(context))
 ```
 
 **React Native:**
+{% raw %}
 ```typescript
 <Text style={{fontSize: balanced(16)}}>Hello</Text>
 ```
+{% endraw %}
 
 **Web:**
+{% raw %}
 ```typescript
 <h2 style={{fontSize: balanced(16)}}>Hello</h2>
 ```
+{% endraw %}
 
 ### 1.2 Aspect Ratio (AR) Impact Examples
 
@@ -944,6 +948,7 @@ Container(
 
 ### 5.1 Complete App - Weather App
 
+{% raw %}
 ```typescript
 import React from 'react';
 import {View, Text, StyleSheet, ScrollView, Image} from 'react-native';
@@ -1046,9 +1051,11 @@ export default function WeatherScreen() {
   );
 }
 ```
+{% endraw %}
 
 ### 5.2 Using Different Strategies
 
+{% raw %}
 ```typescript
 import {useAppDimens} from 'appdimens-react-native';
 
@@ -1082,6 +1089,7 @@ function AllStrategiesExample() {
   );
 }
 ```
+{% endraw %}
 
 ---
 
@@ -1089,6 +1097,7 @@ function AllStrategiesExample() {
 
 ### 6.1 React - Dashboard Example
 
+{% raw %}
 ```typescript
 import React from 'react';
 import {useWebDimens} from 'webdimens/react';
@@ -1181,6 +1190,7 @@ function StatCard({stat}: {stat: StatCard}) {
   );
 }
 ```
+{% endraw %}
 
 ### 6.2 Vanilla JavaScript
 

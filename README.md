@@ -294,6 +294,7 @@ Container(
 
 ### React Native (`appdimens-react-native`, work in progress)
 
+{% raw %}
 ```tsx
 const { balanced } = useAppDimens();
 
@@ -303,6 +304,7 @@ return (
   </View>
 );
 ```
+{% endraw %}
 
 → [`appdimens-react-native/`](https://github.com/bodenberg/appdimens-react-native/tree/main).
 
