@@ -15,11 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `DOCS/` is **theory-only** and intentionally omits pinned coordinates.
 - See [`README.md`](README.md) for **Production vs Work in progress** status and install snippets.
-- **Phase 10 (consistency sweep):** theory/examples checked against **`IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md`** — **BALANCED→`auto`**, **FIXED+DEFAULT→`scaled`**, **DYNAMIC/PERCENTAGE→`percent`**. Guide **[`DOCS/NAMING_AND_MIGRATION_1X_2X_TO_3X.md`](DOCS/NAMING_AND_MIGRATION_1X_2X_TO_3X.md)**. Maintainer steps in [`DOCS/README.md`](DOCS/README.md) (Phase 10) and [`CONTRIBUTING.md`](CONTRIBUTING.md).
+- **Docs refactor:** Consolidated Markdown into **`THEORY.md`**, **`GUIDE.md`**, **`PLATFORMS.md`**, **`MIGRATION.md`**, **`ORIENTATION.md`**; removed legacy checklist/report files—follow [`CONTRIBUTING.md`](CONTRIBUTING.md) for upkeep steps.
 
 ### Nota sobre documentación y Android
 
-Las entradas históricas de versiones anteriores (p. ej. nombres **`.fxdp` / `.dydp`**, cadenas unificadas estilo **`.balanced().dp`**) describen **artefactos o guías unificadas** de su época. El módulo publicado actual de UI en Android es **[`appdimens-dynamic` 3.x](appdimens-dynamic/README.md)** con paquetes por estrategia: **`scaled`** (narrativas **FIXED**/ **DEFAULT**), **`percent`** (**DYNAMIC**/ **PERCENTAGE**), **`auto`** (**BALANCED**). Resumen inglés hub: **[`DOCS/NAMING_AND_MIGRATION_1X_2X_TO_3X.md`](DOCS/NAMING_AND_MIGRATION_1X_2X_TO_3X.md)**; mapa conceptual: **[`DOCS/PLATFORM_API_MAP.md`](DOCS/PLATFORM_API_MAP.md)**.
+Las entradas históricas de versiones anteriores (p. ej. nombres **`.fxdp` / `.dydp`**, cadenas unificadas estilo **`.balanced().dp`**) describen **artefactos o guías unificadas** de su época. El módulo publicado actual de UI en Android es **[`appdimens-dynamic` 3.x](appdimens-dynamic/README.md)** con paquetes por estrategia: **`scaled`** (narrativas **FIXED**/ **DEFAULT**), **`percent`** (**DYNAMIC**/ **PERCENTAGE**), **`auto`** (**BALANCED**). Resumen rápido en inglés: **[`DOCS/MIGRATION.md`](DOCS/MIGRATION.md)**; tabla conceptual/API: **[`DOCS/PLATFORMS.md`](DOCS/PLATFORMS.md)**.
 
 ## [2.0.0] - 2025-11-02
 
@@ -304,9 +304,8 @@ const cardWidth = fixed(300).portraitLowest().toPx();
 
 - **CRITICAL:** Todos os exemplos matemáticos recalculados com nova precisão
 - **HTML Demos:** `DOCS/html/SCALING_COMPARISON*.html` atualizados (quando presentes no repositório)
-- **MATHEMATICAL_THEORY.md:** Fórmulas e exemplos atualizados
-- **COMPREHENSIVE_TECHNICAL_GUIDE.md:** Seção de constantes revisada
-- **FORMULA_COMPARISON.md:** Comparações recalculadas
+- **MATHEMATICAL_THEORY.md / FORMULA_COMPARISON.md:** Fórmulas e comparações recalculadas (hoje **`DOCS/THEORY.md`**)
+- **COMPREHENSIVE_TECHNICAL_GUIDE.md:** Seção de constantes revisada (hoje **`DOCS/GUIDE.md`**)
 - **README.md:** Versões atualizadas para 1.1.0 em todas as plataformas
 - **Traduções:** Documentação pt-BR e es atualizada
 
@@ -723,7 +722,7 @@ We use [Semantic Versioning](https://semver.org/) for version numbers:
 
 ## Migration Guide
 
-For migration between major versions, see the **README and documentation** inside each submodule (e.g. [appdimens-dynamic](appdimens-dynamic/README.md), [appdimens-ios](appdimens-ios/README.md)) and the theory docs under [DOCS/](DOCS/README.md) (e.g. migration section in [MATHEMATICAL_THEORY_SIMPLIFIED.md](DOCS/MATHEMATICAL_THEORY_SIMPLIFIED.md#9-migration-from-v1x)).
+For migration between major versions, see the **README and documentation** inside each submodule (e.g. [appdimens-dynamic](appdimens-dynamic/README.md), [appdimens-ios](appdimens-ios/README.md)) plus the consolidated hub essays under **[`DOCS/README.md`](DOCS/README.md)** (start with **`MIGRATION.md`**).
 
 ## Contributing
 

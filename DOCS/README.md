@@ -1,110 +1,95 @@
-# AppDimens — Theory & Concept Index
+# AppDimens documentation hub
 
-> **Hub documentation.** This section is **version-agnostic conceptual reference**. It does not pin library versions, semver, or install commands—for those, open the **[platform submodule README](../README.md#submodule-map)** you depend on (`appdimens-dynamic`, `appdimens-ios`, `webdimens`, …).
+This folder explains **ideas, vocabulary, and the mathematical theory** shared across every AppDimens platform library. It is **theory-only**: no semver, no install lines, no platform-specific build configuration. **Submodule READMEs remain the authority** for pinned versions, Gradle / npm / Swift / pub manifests, and exact API signatures.
 
-> **Validated Android math & names:** **`BALANCED→auto`**, **`FIXED`+`DEFAULT→scaled`**, **`DYNAMIC`/PERCENTAGE→`percent`**. Full 1.x/2.x→3.x guide: **[`NAMING_AND_MIGRATION_1X_2X_TO_3X.md`](NAMING_AND_MIGRATION_1X_2X_TO_3X.md)**. Kernels/constants: **[`IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md`](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)** + **[`MATHEMATICS-AND-CALCULUS.md`](../appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md)**.
+> [!NOTE]
+> **What this folder is**
+>
+> - Shared **vocabulary** (BALANCED, DEFAULT, PERCENTAGE, …) and how it maps onto each stack's tokens.
+> - Formal **mathematics** of every kernel (formulas, constants, invariants).
+> - **Migration paths** between AppDimens versions and from third-party libraries.
+> - Cross-platform **API mapping** and orientation semantics.
+>
+> **What it is not** — install lines, version numbers, or production build advice. Those live with the source code, in the submodule README you ship.
 
----
-
-## Phase 10 — Hub consistency sweep (maintainers)
-
-After any large edit to theory, examples, or comparisons, run the **Phase 10** pass so Android naming stays aligned with **`appdimens-dynamic`**:
-
-1. **[`DOCUMENTATION_REVIEW_CHECKLIST.md`](DOCUMENTATION_REVIEW_CHECKLIST.md)** — work through every checkbox.
-2. **Grep the hub (not submodules)** for drift, e.g. `LANG/`, pinned coordinates in `DOCS/`, **Kotlin samples that mislabel strategies** (`sdp` as BALANCED, etc.), or docs that omit **FIXED/DEFAULT→`scaled`** and **DYNAMIC→`percent`**.
-3. Reconcile math and tokens with **[`IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md`](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)** and submodule **[`MATHEMATICS-AND-CALCULUS.md`](../appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md)**.
-
----
-
-## What belongs in this hub
-
-| Content | Lives here (`DOCS/`) | Lives in submodules |
-|---------|---------------------|---------------------|
-| Scaling strategy intuition | Yes | Thin pointer |
-| Verified formulas vs **Android Dynamic** runtime | **`IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md`** + links into [`appdimens-dynamic/DOCUMENTATION/`](../appdimens-dynamic/DOCUMENTATION/README.md) | Source of truth for constants & kernels |
-| Build coordinates & APIs | No | Submodule README |
+**Android Compose naming reminder:** conceptual **BALANCED** is published as Gradle strategy **`auto`** (tokens `asdp`, `assp`, `ahdp`, `awdp`, …); **DEFAULT / FIXED** is **`scaled`** (`sdp`, `ssp`, `wdp`, `hdp`, `sem`, …); **PERCENTAGE / DYNAMIC** is **`percent`** (`psdp`, …). The complete mapping lives in [MIGRATION.md](MIGRATION.md), [PLATFORMS.md](PLATFORMS.md), and the canonical submodule reference [`appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md`](../appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md).
 
 ---
 
-## Where to read first
+## Choose your learning path
 
 ```mermaid
 flowchart TD
     startGoal["Pick your goal"]
-    startGoal --> theoryPath["Understand theory"]
-    startGoal --> shipPath["Ship with dependency"]
-    theoryPath --> alignDoc["IMPLEMENTATION_ALIGNMENT_…Dynamic.md"]
-    alignDoc --> migDoc["NAMING_AND_MIGRATION_1X_2X_TO_3X.md"]
-    migDoc --> simplifiedDoc["MATHEMATICAL_THEORY_SIMPLIFIED.md"]
-    simplifiedDoc --> fullDoc["MATHEMATICAL_THEORY.md"]
-    simplifiedDoc --> compareDoc["FORMULA_COMPARISON.md"]
-    shipPath --> hubReadme["Main README submodule map"]
-    hubReadme --> subReadme["Submodule README"]
+    startGoal --> shipPath["Ship today"]
+    startGoal --> theoryPath["Understand the math"]
+    startGoal --> migratePath["Migrate from 1.x / 2.x / SDP-SSP"]
+    startGoal --> portPath["Port across stacks"]
+    startGoal --> rotatePath["Handle rotation / foldables"]
+    startGoal --> recipePath["Copy-paste recipes"]
+    shipPath --> guideDoc["GUIDE.md"]
+    guideDoc --> submoduleA["Submodule README"]
+    theoryPath --> theoryDoc["THEORY.md"]
+    theoryPath --> mathDoc["appdimens-dynamic MATHEMATICS-AND-CALCULUS.md"]
+    migratePath --> migDoc["MIGRATION.md"]
+    portPath --> platDoc["PLATFORMS.md"]
+    rotatePath --> orientDoc["ORIENTATION.md"]
+    recipePath --> exDoc["EXAMPLES.md"]
 ```
 
-1. **[Main hub README](../README.md)** — production vs work-in-progress modules  
-2. **[1.x/2.x → 3.x naming](NAMING_AND_MIGRATION_1X_2X_TO_3X.md)** — FIXED/DEFAULT→`scaled`, DYNAMIC→`percent`, BALANCED→`auto`  
-3. **[Android alignment sheet](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)** — terminology ↔ `appdimens-dynamic` facts  
-4. **[Quick reference](DOCS_QUICK_REFERENCE.md)**  
-5. **[Simplified theory](MATHEMATICAL_THEORY_SIMPLIFIED.md)**  
-6. **[Examples](EXAMPLES.md)** *(illustrative only)*  
+| If your goal is… | Start here | Then go to |
+|------------------|-----------|------------|
+| **Ship today.** Pick a strategy, write some code, move on. | [GUIDE.md](GUIDE.md) — decision tree, FAQs, common patterns | Submodule README for your stack |
+| **Understand the math.** Why these kernels? What are the formulas and invariants? | [THEORY.md](THEORY.md) — formal taxonomy, axioms, comparisons | [`MATHEMATICS-AND-CALCULUS.md`](../appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md) |
+| **Migrate** from 1.x / 2.x (unified DSL, `.fxdp`, `.dydp`) or from SDP/SSP | [MIGRATION.md](MIGRATION.md) — legacy ↔ Compose 3.x packages | The submodule changelog you ship |
+| **Port** across Android / iOS / KMP / Flutter / RN / Web | [PLATFORMS.md](PLATFORMS.md) — concept ↔ submodule API, verified constants | The matching submodule README |
+| **Rotate / foldable** your UI without proportion drift | [ORIENTATION.md](ORIENTATION.md) — base orientation + inverter tokens | [`COMPOSE-API-CONVENTIONS.md`](../appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md) |
+| **Copy-paste recipes** per stack | [EXAMPLES.md](EXAMPLES.md) — long-form snippets | The submodule's `app/` sample where available |
+
+The repository **[root README](../README.md)** answers the higher-level questions (*what is AppDimens? what problem does it solve? why pick it? where do I install?*) and routes here for theory and there for code.
 
 ---
 
-## Core theory
+## Document map
 
-| Document | Audience |
-|----------|----------|
-| [MATHEMATICAL_THEORY_SIMPLIFIED.md](MATHEMATICAL_THEORY_SIMPLIFIED.md) | Intuitive pass |
-| [MATHEMATICAL_THEORY.md](MATHEMATICAL_THEORY.md) | Full derivations & strategy catalog prose |
-| [FORMULA_COMPARISON.md](FORMULA_COMPARISON.md) | Side-by-side discussion |
-| [IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md) | **Kotlin reference alignment** |
+| File | Audience | What you'll find |
+|------|----------|-------------------|
+| [THEORY.md](THEORY.md) | Engineers / academics | Formal kernel taxonomy, axioms, formulas, AR multiplier, numerical comparisons, references |
+| [GUIDE.md](GUIDE.md) | Day-to-day developers | Decision tree, troubleshooting, strategy-per-use-case patterns |
+| [EXAMPLES.md](EXAMPLES.md) | Developers shipping a screen | Copy-paste recipes per platform (Android, iOS, Flutter, RN, Web) |
+| [MIGRATION.md](MIGRATION.md) | Teams upgrading from 1.x / 2.x / SDP-SSP | Legacy naming ↔ `appdimens-dynamic` 3.x cheat sheet |
+| [PLATFORMS.md](PLATFORMS.md) | Cross-platform / design-system maintainers | Concept ↔ API map across all stacks, verified Kotlin constants |
+| [ORIENTATION.md](ORIENTATION.md) | Designers / engineers handling rotation | Base orientation, axis inverters, foldable semantics |
+| [html/](html/) | Visual learners | Interactive scaling comparison pages |
+| [`*.pdf`](.) | Slide-deck consumers | Precision-scaling whitepapers and visual reports |
 
----
-
-## Application guidance
-
-| Document | Topic |
-|----------|-------|
-| [NAMING_AND_MIGRATION_1X_2X_TO_3X.md](NAMING_AND_MIGRATION_1X_2X_TO_3X.md) | **FIXED/DEFAULT→`scaled`**, **DYNAMIC→`percent`**, **BALANCED→`auto`** (1.x/2.x vs 3.x) |
-| [COMPREHENSIVE_TECHNICAL_GUIDE.md](COMPREHENSIVE_TECHNICAL_GUIDE.md) | Long-form narrative across stacks |
-| [APPLICABILITY_OF_APPDIMENS.md](APPLICABILITY_OF_APPDIMENS.md) | When AppDimens helps |
-| [BASE_ORIENTATION_GUIDE.md](BASE_ORIENTATION_GUIDE.md) | Base orientation semantics |
-| [VALIDATION_REPORT.md](VALIDATION_REPORT.md) | Methodological notes |
-| [DOCUMENTATION_REVIEW_CHECKLIST.md](DOCUMENTATION_REVIEW_CHECKLIST.md) | Maintainer checklist |
-| [PLATFORM_API_MAP.md](PLATFORM_API_MAP.md) | Concepts → submodule bindings |
+Static and interactive visual assets live under **[html/](html/README.md)** and the PDF essays in this same folder. Raster comparisons: **[`../IMAGES/README.md`](../IMAGES/README.md)**.
 
 ---
 
-## Interactive & visual assets
+## Glossary
 
-| Resource | Description |
-|----------|--------------|
-| [html/README.md](html/README.md) | Static HTML scaling comparisons |
-| [../IMAGES/README.md](../IMAGES/README.md) | Raster gallery |
-| [PDFs in `DOCS/`](AppDimens_Precision_Scaling.pdf) | Deep-dive publications |
-| [README visual resources](../README.md#visual-resources) | One-click shields + thumbnails |
+Quick definitions for the terms that recur across every file in this folder.
 
----
-
-## Scaling strategies (conceptual)
-
-Cross-platform prose often uses thirteen **concept buckets**. **`appdimens-dynamic`** expresses them with lowercase **strategy packages**: `scaled`, `percent`, `power`, `fluid`, `auto`, plus `diagonal`, `fill`, `fit`, `interpolated`, `logarithmic`, `perimeter`, `density`, and the separate **`resize`** subsystem (constraint-based sizing). **Legacy Android unified names:** **FIXED** and **DEFAULT** both map to **`scaled`**; **DYNAMIC** (**PERCENTAGE** in the 2.x catalog) maps to **`percent`**; **BALANCED** maps to **`auto`** — details in **[`NAMING_AND_MIGRATION_1X_2X_TO_3X.md`](NAMING_AND_MIGRATION_1X_2X_TO_3X.md)** and the **[alignment sheet](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)**.
-
-Formal math for Android kernels: **[`MATHEMATICS-AND-CALCULUS.md`](../appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md)**.
-
----
-
-## Submodule documentation layout
-
-- **Android (Compose)** → `appdimens-dynamic/DOCUMENTATION/`  
-- **Android SDP/SSP** → `appdimens-sdps`, `appdimens-ssps`  
-- Other stacks → folders linked from **[`README.md`](../README.md)**  
+| Term | Meaning |
+|------|---------|
+| **Hub label** | Stack-neutral name used in this folder (BALANCED, DEFAULT, PERCENTAGE, DYNAMIC). |
+| **Kernel** | The 1-D map `f_S(b, c)` that turns a base value `b` into an output, given a `Configuration` `c`. Each kernel has a name and an entry in [`appdimens-dynamic/DOCUMENTATION/`](../appdimens-dynamic/DOCUMENTATION/). |
+| **`auto` / BALANCED** | Hybrid kernel: linear for axes ≤ 480 dp, logarithmic above. The recommended primary for multi-form-factor apps. ([`auto.md`](../appdimens-dynamic/DOCUMENTATION/auto.md)) |
+| **`scaled` / DEFAULT / FIXED** | Linear-proportional kernel anchored at 300 dp. The SDP-style baseline. ([`scaled.md`](../appdimens-dynamic/DOCUMENTATION/scaled.md)) |
+| **`percent` / PERCENTAGE / DYNAMIC** | Axis-heavy proportional kernel. ([`percent.md`](../appdimens-dynamic/DOCUMENTATION/percent.md)) |
+| **SDP** | Scalable density-independent pixel. Pre-computed `@dimen/_*sdp` resources in [`appdimens-sdps`](../appdimens-sdps/). |
+| **SSP** | Scalable sp (text equivalent). Pre-computed `@dimen/_*ssp` in [`appdimens-ssps`](../appdimens-ssps/). |
+| **Hinge** | The axis-dp threshold where the `auto` kernel switches from linear to logarithmic. Constant: **480 dp**. |
+| **AR multiplier** | The optional aspect-ratio compensation referenced to 16:9 (AR = 1.78). Folded in by the `a` suffix on Compose tokens (`16.sdpa`, `16.asdpa`, …) and by builder options on iOS / Flutter / RN / Web. ([THEORY.md §4](THEORY.md#4-the-aspect-ratio-mould-the-optional-a-suffix)) |
+| **Inverter** | A token suffix (`Ph`, `Lw`, `Lh`) that swaps the driving axis based on current orientation, so portrait-authored designs survive landscape rotation. ([ORIENTATION.md](ORIENTATION.md)) |
+| **Qualifier** | A `DpQualifier` (`SMALLEST_WIDTH`, `SCREEN_WIDTH`, `SCREEN_HEIGHT`) used by `*Qualifier` facilitators to override sizing per breakpoint. |
+| **Fast bypass** | Optimization where simple no-AR kernels (`scaled`, `auto`, `percent`, `fluid`) skip the cache and compute a 2 ns multiply directly. ([`appdimens-dynamic/PERFORMANCE.md`](../appdimens-dynamic/PERFORMANCE.md)) |
 
 ---
 
 <div align="center">
 
-[↑ Main README](../README.md) · [Naming 1.x/2.x→3.x](NAMING_AND_MIGRATION_1X_2X_TO_3X.md) · [Alignment (Android Dynamic)](IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md) · [Examples](EXAMPLES.md) · [Phase 10 sweep](#phase-10--hub-consistency-sweep-maintainers)
+[← Root README](../README.md) · [Guide](GUIDE.md) · [Theory](THEORY.md) · [Examples](EXAMPLES.md) · [Migration](MIGRATION.md) · [Platforms](PLATFORMS.md) · [Orientation](ORIENTATION.md)
 
 </div>

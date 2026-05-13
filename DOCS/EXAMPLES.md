@@ -1,18 +1,36 @@
-# 🎨 AppDimens - Practical Examples
+# APPDIMENS practical examples
 
-> **Hub documentation.** Conceptual reference for scaling theory in the AppDimens family.
-> **Versions, semver, and install commands** belong only in **platform submodule READMEs** linked from [`README.md`](../README.md)—not here.
+Illustrative samples for **all published kernels**. **Confirm coordinates, imports, and builder names inside the submodule you ship — this hub never pins semver.**
+
+Related reading: **[GUIDE.md](GUIDE.md)** (decision tree) · **[THEORY.md](THEORY.md)** (formal math) · **[PLATFORMS.md](PLATFORMS.md)** (concept ↔ API) · **[MIGRATION.md](MIGRATION.md)** (legacy ↔ modern tokens) · **[ORIENTATION.md](ORIENTATION.md)** (rotation) · **[Hub README](../README.md)** (project overview).
 
 ---
 
-**Real-World Code Samples for All Platforms**  
-*Author: Jean Bodenberg*  
+**Jean Bodenberg**
 
-> **Illustrative only:** Examples mirror **13 strategies** with **BALANCED** as default narrative. Copy **real install lines and builder names** from submodule READMEs—not from this file.
+## Quick index by use case
 
-## 📋 Table of Contents
+Jump straight to the snippet that matches your task. Each link drops you inside this file; deep links to the submodule kernel docs are listed alongside.
 
-1. [Catalog quick start](#1-current-catalog-quick-start)
+| Use case | Snippet section | Hub kernel | Submodule kernel doc |
+|----------|------------------|------------|------------------------|
+| **Recommended starting point** (multi-device app) | [§1 Quick start](#11-strategy-selection-guide) · [§2.1 Compose feed](#21-jetpack-compose---complete-app-example) | `auto` (BALANCED) | [`auto.md`](../appdimens-dynamic/DOCUMENTATION/auto.md) |
+| **Phone-first / SDP-style baseline** | [§2 Android examples](#2-android-examples) | `scaled` (DEFAULT) | [`scaled.md`](../appdimens-dynamic/DOCUMENTATION/scaled.md) |
+| **Containers / proportional grids** | [§7 Cross-Platform Patterns](#7-cross-platform-patterns) | `percent` | [`percent.md`](../appdimens-dynamic/DOCUMENTATION/percent.md) |
+| **Typography with min / max band** | [§1.2 Quick examples](#12-quick-examples-all-platforms) · [§8 Advanced Use Cases](#8-advanced-use-cases) | `fluid` | [`fluid.md`](../appdimens-dynamic/DOCUMENTATION/fluid.md) |
+| **TV / huge tablets — damp growth** | [§8 Advanced Use Cases](#8-advanced-use-cases) | `logarithmic` / `power` | [`logarithmic.md`](../appdimens-dynamic/DOCUMENTATION/logarithmic.md) · [`power.md`](../appdimens-dynamic/DOCUMENTATION/power.md) |
+| **Aspect-ratio aware** (foldables / 21:9 phones) | [§1.2 AR examples](#12-aspect-ratio-ar-impact-examples) | `*a` suffix on `scaled` / `auto` / `interpolated` / `logarithmic` / `power` | [THEORY.md §4](THEORY.md#4-the-aspect-ratio-mould-the-optional-a-suffix) |
+| **Game UI / HUD on arbitrary viewports** | [§9 Game Development](#9-game-development) | `fit` / `fill` | [`fit.md`](../appdimens-dynamic/DOCUMENTATION/fit.md) · [`fill.md`](../appdimens-dynamic/DOCUMENTATION/fill.md) |
+| **Real-world measurements** (mm / cm / inch) | [§8 Advanced Use Cases](#8-advanced-use-cases) | physical units | [`physical-units.md`](../appdimens-dynamic/DOCUMENTATION/physical-units.md) |
+| **Container-fit titles / squares** | [§8 Advanced Use Cases](#8-advanced-use-cases) | `resize` | [`resize.md`](../appdimens-dynamic/DOCUMENTATION/resize.md) |
+| **Rotation / foldable adaptation** | [§7 Cross-Platform Patterns](#7-cross-platform-patterns) | inverter suffixes (`*Ph`, `*Lw`, `*Lh`) | [ORIENTATION.md](ORIENTATION.md) |
+| **Migrating from 1.x / 2.x / SDP-SSP** | [§10 Migration Examples](#10-migration-examples) | — | [MIGRATION.md](MIGRATION.md) |
+
+---
+
+## Table of contents
+
+1. [Unified catalog quick start](#1-unified-catalog-quick-start)
 2. [Android Examples](#2-android-examples)
 3. [iOS Examples](#3-ios-examples)
 4. [Flutter Examples](#4-flutter-examples)
@@ -25,19 +43,19 @@
 
 ---
 
-## 1. Current catalog Quick Start
+## 1. Unified catalog quick start
 
-### 1.1 Strategy Selection Guide
+### 1.1 Strategy selection guide
 
-**Use BALANCED ⭐ (Primary) for:**
+**Use BALANCED (primary narrative) when:**
 - 95% of applications
 - Multi-device apps (phones, tablets, TVs)
 - Buttons, spacing, padding, text
 
-**Use DEFAULT (Secondary) for:**
+**Use DEFAULT / scaled storyline when:**
 - Phone-focused apps
 - Icons and small elements
-- Backward compatibility with earlier revisions
+- Migrating installs that depended on SDP-style sizing
 
 **Use PERCENTAGE for:**
 - Very large containers
@@ -53,8 +71,9 @@
 
 **Android:**
 ```kotlin
-Text("Hello", fontSize = 16.ssp)  // ⭐ Primary
-Icon(modifier = Modifier.size(24.sdp))  // Secondary
+Text("Hybrid BALANCED (auto)", fontSize = 16.assp)
+Text("Scaled baseline", fontSize = 16.ssp)
+Icon(modifier = Modifier.size(24.sdp))
 ```
 
 **iOS:**
@@ -68,22 +87,18 @@ Text('Hello', style: TextStyle(fontSize: AppDimens.fixed(16).calculate(context))
 ```
 
 **React Native:**
-{% raw %}
 ```typescript
 <Text style={{fontSize: balanced(16)}}>Hello</Text>
 ```
-{% endraw %}
 
 **Web:**
-{% raw %}
 ```typescript
 <h2 style={{fontSize: balanced(16)}}>Hello</h2>
 ```
-{% endraw %}
 
 ### 1.2 Aspect Ratio (AR) Impact Examples
 
-> **📐 Current catalog:** Six strategies now support automatic aspect ratio compensation. Here are practical examples showing the impact.
+Several strategies optionally fold **aspect-ratio compensation**. The samples below visualize how AR tails affect raw numbers.
 
 #### Understanding AR
 
@@ -929,7 +944,6 @@ Container(
 
 ### 5.1 Complete App - Weather App
 
-{% raw %}
 ```typescript
 import React from 'react';
 import {View, Text, StyleSheet, ScrollView, Image} from 'react-native';
@@ -1032,11 +1046,9 @@ export default function WeatherScreen() {
   );
 }
 ```
-{% endraw %}
 
 ### 5.2 Using Different Strategies
 
-{% raw %}
 ```typescript
 import {useAppDimens} from 'appdimens-react-native';
 
@@ -1070,7 +1082,6 @@ function AllStrategiesExample() {
   );
 }
 ```
-{% endraw %}
 
 ---
 
@@ -1078,7 +1089,6 @@ function AllStrategiesExample() {
 
 ### 6.1 React - Dashboard Example
 
-{% raw %}
 ```typescript
 import React from 'react';
 import {useWebDimens} from 'webdimens/react';
@@ -1171,7 +1181,6 @@ function StatCard({stat}: {stat: StatCard}) {
   );
 }
 ```
-{% endraw %}
 
 ### 6.2 Vanilla JavaScript
 
@@ -1405,18 +1414,18 @@ let playerSize = gameAspectRatio(64)
 
 ## 10. Migration Examples
 
-### 10.1 From earlier revisions to current catalog
+### 10.1 Migrating unified Android DSL snippets
 
-**Before (earlier revisions):**
+**Before (legacy unified posts):**
 ```kotlin
-Text("Hello", fontSize = 16.fxsp)  // Deprecated
-Container(modifier = Modifier.width(300.wdp))  // width-biased scaled token
+Text("Hello", fontSize = 16.fxsp) // historical sample
+Modifier.width(300.wdp)
 ```
 
-**After  - Recommended:**
+**After (explicit strategies in 3.x):**
 ```kotlin
-Text("Hello", fontSize = 16.ssp)  // ⭐ Primary
-Container(modifier = Modifier.width(300.wdp))  // For containers
+Text("Hybrid", fontSize = 16.assp) // BALANCED -> auto package
+Surface(modifier = Modifier.width(300.wdp))
 ```
 
 ### 10.2 From SDP to AppDimens
@@ -1435,22 +1444,20 @@ Text(text = "Hello", fontSize = 16.ssp)
 
 ## Conclusion
 
-**Key Takeaways:**
-- ✅ Use **BALANCED** for 95% of apps (primary)
-- ✅ Use **DEFAULT** for phone-focused apps (secondary)
-- ✅ 13 strategies cover all use cases
-- ✅ Works consistently across all 5 platforms
+**Key takeaways**
+- Narrative **BALANCED** always maps to Compose **`auto`** (`assp`, `asdp`, …).
+- Narrative **DEFAULT** / **FIXED** maps to Compose **`scaled`** (`ssp`, `sdp`, …) plus axis tokens (`wdp`, `hdp`, `sem`, …).
+- The remaining twelve conceptual modes each have their own Gradle packages spelled out in **[THEORY.md §5](THEORY.md#5-strategy-catalogue)** and **[PLATFORMS.md](PLATFORMS.md)**.
+- Submodule canonical kernel docs live under **[`appdimens-dynamic/DOCUMENTATION/`](../appdimens-dynamic/DOCUMENTATION/)** — start with [`auto.md`](../appdimens-dynamic/DOCUMENTATION/auto.md), [`scaled.md`](../appdimens-dynamic/DOCUMENTATION/scaled.md), [`percent.md`](../appdimens-dynamic/DOCUMENTATION/percent.md).
 
-**📖 More Resources:**
-- [Complete Technical Guide](COMPREHENSIVE_TECHNICAL_GUIDE.md)
-- [Mathematical Theory](MATHEMATICAL_THEORY.md)
-- [Platform Guides](README.md#platform-specific-guides)
-
----
-
-**Document created by:** Jean Bodenberg  
-**Repository:** https://github.com/bodenberg/appdimens
+**Where to go next**
+- [GUIDE.md](GUIDE.md) — tactical strategy decisions, FAQ, troubleshooting
+- [THEORY.md](THEORY.md) — formal math, axioms, comparisons
+- [PLATFORMS.md](PLATFORMS.md) — concept ↔ API map across stacks
+- [MIGRATION.md](MIGRATION.md) — legacy ↔ modern tokens
+- [ORIENTATION.md](ORIENTATION.md) — rotation and inverter semantics
+- [Documentation index](README.md) · [Hub README](../README.md)
 
 ---
 
-**[⬆ Back to Top](#-appdimens---practical-examples)**
+**Jean Bodenberg** · https://github.com/bodenberg/appdimens

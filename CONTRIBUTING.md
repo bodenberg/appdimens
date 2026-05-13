@@ -318,13 +318,16 @@ When making code changes:
 3. **Add Examples**: Add examples for new features
 4. **Update README**: Update main README if needed
 
-### Hub theory (`DOCS/`) — Phase 10 consistency sweep
+### Hub theory (`DOCS/`) checklist
 
-Edits under **`DOCS/`** (or hub-level Markdown tied to scaling theory) should end with **Phase 10** before merge:
+Contributions touching **`DOCS/`** still need careful cross-links—there is **no semver** pinned there.
 
-- Follow **[`DOCS/DOCUMENTATION_REVIEW_CHECKLIST.md`](DOCS/DOCUMENTATION_REVIEW_CHECKLIST.md)**.
-- Keep **Android Compose** samples honest: **`sdp`/`ssp` → `scaled`**; **BALANCED (hybrid) → `auto` → `asdp`/`assp`/…** — see **`[DOCS/IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md`](DOCS/IMPLEMENTATION_ALIGNMENT_APPDIMENS_DYNAMIC.md)**.
-- Grep for stale **`LANG/`** links, version pins inside `DOCS/`, contradictory “smart” narratives on Kotlin, and **obsolete FIXED/DEFAULT/DYNAMIC labeling** versus **`scaled`/`percent`/`auto`** — see **`[NAMING_AND_MIGRATION_1X_2X_TO_3X.md](../DOCS/NAMING_AND_MIGRATION_1X_2X_TO_3X.md)`**.
+Before opening a hub PR please:
+
+1. **`DOCS/` stays versionless** — never bake Maven/npm/CocoaPods lines into prose; hyperlink submodules instead.
+2. **Android Compose samples stay honest**: **`sdp`/`ssp` → `scaled`**; **BALANCED hybrid → `auto` → `asdp`/`assp`/…**. Full tables live in [`DOCS/PLATFORMS.md`](DOCS/PLATFORMS.md) and [`DOCS/MIGRATION.md`](DOCS/MIGRATION.md).
+3. **Grep the diff** for dead `LANG/` links, accidental dependency pins (`implementation("`, `pod '`), and marketing language that contradicts Kotlin sources.
+4. **Run link spot checks** (`README.md`, `DOCS/*.md`) when adding new pages — update [`DOCS/README.md`](DOCS/README.md) when you mint a fresh doc slug.
 
 ## 🧪 Testing
 
