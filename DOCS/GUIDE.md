@@ -78,7 +78,7 @@ An ideal solution must:
 
 **Today's catalog exposes:**
 
-1. **14 Scaling Modes** (vs 2 in the original fixed/dynamic split — cross-checked against the `appdimens-dynamic` documentation [summary table](../appdimens-dynamic/DOCUMENTATION/README.md#summary))
+1. **14 Scaling Modes** (vs 2 in the original fixed/dynamic split — cross-checked against the `appdimens-dynamic` documentation [summary table](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/README.md#summary))
    - Perceptual: **BALANCED** (`auto`), **LOGARITHMIC**, **POWER**
    - Linear / proportional: **DEFAULT / FIXED** (`scaled`), **PERCENTAGE / DYNAMIC** (`percent`)
    - Utility: **FLUID**, **INTERPOLATED**, **DIAGONAL**, **PERIMETER**
@@ -102,7 +102,7 @@ An ideal solution must:
    - ~5 ns cache hit, ~2 ns raw multiply on Snapdragon 888 hardware
    - 128-byte shard padding to avoid false sharing on ARM64
    - SIMD-friendly batching via `getBatch()`
-   - Fast-bypass for simple no-AR kernels — full report in **[`appdimens-dynamic/PERFORMANCE.md`](../appdimens-dynamic/PERFORMANCE.md)**
+   - Fast-bypass for simple no-AR kernels — full report in **[`appdimens-dynamic/PERFORMANCE.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/PERFORMANCE.md)**
 
 ### 2.2 Quick Comparison
 
@@ -119,7 +119,7 @@ An ideal solution must:
 ### 3.1 What changed since the legacy fixed/dynamic split
 
 **Expanded surface area:**
-- ✅ 12 additional kernels (14 total scaling modes today, cross-checked against the [`appdimens-dynamic/DOCUMENTATION/` summary table](../appdimens-dynamic/DOCUMENTATION/README.md#summary))
+- ✅ 12 additional kernels (14 total scaling modes today, cross-checked against the [`appdimens-dynamic/DOCUMENTATION/` summary table](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/README.md#summary))
 - ✅ `auto` (BALANCED) as the recommended primary for multi-form-factor apps
 - ✅ Element-type heuristics published on iOS / Flutter / RN / Web tracks (Android keeps explicit tokens — see [§15](#15-element-type-inference-cross-platform-note))
 - ✅ Hardware-validated sub-microsecond hot path (see [§19](#19-cache-and-performance))
@@ -160,7 +160,7 @@ Heavy math, derivation, and benchmarking live in **[THEORY.md](THEORY.md)**. Use
 
 ### 14-mode rollup
 
-Aligned with the canonical [`appdimens-dynamic/DOCUMENTATION/` summary table](../appdimens-dynamic/DOCUMENTATION/README.md#summary). Conceptual buckets on the left, Gradle / Compose surface on the right.
+Aligned with the canonical [`appdimens-dynamic/DOCUMENTATION/` summary table](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/README.md#summary). Conceptual buckets on the left, Gradle / Compose surface on the right.
 
 | Hub bucket | Gradle / Compose hint (`appdimens-dynamic`) | When it shines |
 |------------|---------------------------------------------|----------------|
@@ -245,7 +245,7 @@ view.layoutParams.width = widthPx
     android:layout_width="@dimen/_300sdp" />
 ```
 
-**📖 [Complete Android Guide](../appdimens-dynamic/README.md)**
+**📖 [Complete Android Guide](https://github.com/bodenberg/appdimens-dynamic/blob/main/README.md)**
 
 ---
 
@@ -253,7 +253,7 @@ view.layoutParams.width = widthPx
 
 ### 11.1 Installation
 
-Use CocoaPods **or** Swift Package Manager exactly as documented in **[appdimens-ios/README.md](../appdimens-ios/README.md)** and [`INSTALLATION.md`](../appdimens-ios/INSTALLATION.md)—coordinates change independently of this hub.
+Use CocoaPods **or** Swift Package Manager exactly as documented in **[appdimens-ios/README.md](https://github.com/bodenberg/appdimens-ios/blob/main/README.md)** and [`INSTALLATION.md`](https://github.com/bodenberg/appdimens-ios/blob/main/INSTALLATION.md)—coordinates change independently of this hub.
 
 ### 11.2 SwiftUI API
 
@@ -282,7 +282,7 @@ let size = AppDimens.shared.balanced(48).toPoints()
 button.frame = CGRect(x: 0, y: 0, width: size, height: size)
 ```
 
-**📖 [Complete iOS Guide](../appdimens-ios/README.md)**
+**📖 [Complete iOS Guide](https://github.com/bodenberg/appdimens-ios/blob/main/README.md)**
 
 ---
 
@@ -290,7 +290,7 @@ button.frame = CGRect(x: 0, y: 0, width: size, height: size)
 
 ### 12.1 Installation
 
-See **[appdimens-flutter/pubspec.yaml](../appdimens-flutter/pubspec.yaml)** for the published constraint line—do **not** copy versions from hub theory docs.
+See **[appdimens-flutter/pubspec.yaml](https://github.com/bodenberg/appdimens-flutter/blob/main/pubspec.yaml)** for the published constraint line—do **not** copy versions from hub theory docs.
 
 ### 12.2 API
 
@@ -326,7 +326,7 @@ Text(
 )
 ```
 
-**📖 [Complete Flutter Guide](../appdimens-flutter/README.md)**
+**📖 [Complete Flutter Guide](https://github.com/bodenberg/appdimens-flutter/blob/main/README.md)**
 
 ---
 
@@ -334,7 +334,7 @@ Text(
 
 ### 13.1 Installation
 
-See **[appdimens-react-native/package.json](../appdimens-react-native/package.json)** and submodule README—install there, not here.
+See **[appdimens-react-native/package.json](https://github.com/bodenberg/appdimens-react-native/blob/main/package.json)** and submodule README—install there, not here.
 
 ### 13.2 API
 
@@ -357,7 +357,7 @@ function MyComponent() {
 ```
 
 
-**📖 [Complete React Native Guide](../appdimens-react-native/README.md)**
+**📖 [Complete React Native Guide](https://github.com/bodenberg/appdimens-react-native/blob/main/README.md)**
 
 ---
 
@@ -365,7 +365,7 @@ function MyComponent() {
 
 ### 14.1 Installation
 
-Follow **[appdimens-web/package.json](../appdimens-web/package.json)** and [`QUICK_START.md`](../appdimens-web/QUICK_START.md).
+Follow **[appdimens-web/package.json](https://github.com/bodenberg/appdimens-web/blob/main/package.json)** and [`QUICK_START.md`](https://github.com/bodenberg/appdimens-web/blob/main/QUICK_START.md).
 
 ### 14.2 React API
 
@@ -392,7 +392,7 @@ function MyComponent() {
 
 See platform-specific hooks and services.
 
-**📖 [Complete Web Guide](../appdimens-web/README.md)**
+**📖 [Complete Web Guide](https://github.com/bodenberg/appdimens-web/blob/main/README.md)**
 
 ---
 
@@ -467,7 +467,7 @@ let width = AppDimens.shared.balanced(300).portraitLowest().toPoints()
 final width = AppDimens.fixed(300).portraitLowest().calculate(context);
 ```
 
-**Rotation semantics, base-orientation matrix, and the full inverter catalogue:** **[ORIENTATION.md](ORIENTATION.md)** · Compose surface in [`COMPOSE-API-CONVENTIONS.md`](../appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md).
+**Rotation semantics, base-orientation matrix, and the full inverter catalogue:** **[ORIENTATION.md](ORIENTATION.md)** · Compose surface in [`COMPOSE-API-CONVENTIONS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md).
 
 ---
 
@@ -508,7 +508,7 @@ val playerSize = games.calculatePlayerSize(64f)
 
 **Features:** C++/NDK, OpenGL ES, Vector2D, Physical units
 
-**📖 [Android Games Guide](../appdimens-games/appdimens_games/README.md)**
+**📖 [Android Games Guide](https://github.com/bodenberg/appdimens-games/blob/main/appdimens_games/README.md)**
 
 ### 18.2 iOS (Metal)
 
@@ -519,7 +519,7 @@ let playerSize = gameAspectRatio(64)
 
 **Features:** Metal/MetalKit, SIMD, 5 viewport modes
 
-**📖 [iOS Games Guide](../appdimens-ios/README.md#game-development-features)**
+**📖 [iOS Games Guide](https://github.com/bodenberg/appdimens-ios/blob/main/README.md#game-development-features)**
 
 ---
 
@@ -545,7 +545,7 @@ let playerSize = gameAspectRatio(64)
 | Batch resolution (100 items) | ~169 ns | `getBatch()` API |
 | JVM cache hit (Ubuntu, JVM 17) | **~1 ns** | Local development baseline |
 
-Full methodology, R8 deltas, and per-device variability: **[`appdimens-dynamic/PERFORMANCE.md`](../appdimens-dynamic/PERFORMANCE.md)**.
+Full methodology, R8 deltas, and per-device variability: **[`appdimens-dynamic/PERFORMANCE.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/PERFORMANCE.md)**.
 
 ### 19.3 Cache control
 
@@ -560,7 +560,7 @@ override fun onConfigurationChanged(newConfig: Configuration) {
 
 Per-instance cache toggles (`.cache(true/false)`) and warm-up helpers vary per submodule — confirm in the README you ship.
 
-**Performance internals:** [`appdimens-dynamic/PERFORMANCE.md`](../appdimens-dynamic/PERFORMANCE.md) · [THEORY.md §9 — Engineering invariants](THEORY.md#9-engineering-invariants-no-curves-here)
+**Performance internals:** [`appdimens-dynamic/PERFORMANCE.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/PERFORMANCE.md) · [THEORY.md §9 — Engineering invariants](THEORY.md#9-engineering-invariants-no-curves-here)
 
 ---
 
@@ -570,7 +570,7 @@ Per-instance cache toggles (`.cache(true/false)`) and warm-up helpers vary per s
 
 ### 20.1 Honest categorical trade-offs
 
-The hub does **not** publish a single global "score / 100" ranking — comparisons depend heavily on form-factor mix, design philosophy, and what you measure. The categorical trade-offs below are reproducible from the kernels shipped in [`appdimens-dynamic/DOCUMENTATION/`](../appdimens-dynamic/DOCUMENTATION/) and the formulas in [THEORY.md §8–10](THEORY.md#8-numerical-comparison-across-a-sweep-of-sw).
+The hub does **not** publish a single global "score / 100" ranking — comparisons depend heavily on form-factor mix, design philosophy, and what you measure. The categorical trade-offs below are reproducible from the kernels shipped in [`appdimens-dynamic/DOCUMENTATION/`](https://github.com/bodenberg/appdimens-dynamic/tree/main/DOCUMENTATION) and the formulas in [THEORY.md §8–10](THEORY.md#8-numerical-comparison-across-a-sweep-of-sw).
 
 | Approach | What it does well | What AppDimens adds |
 |----------|--------------------|---------------------|
@@ -581,7 +581,7 @@ The hub does **not** publish a single global "score / 100" ranking — compariso
 
 ### 20.2 AppDimens vs raw SDP/SSP (illustrative)
 
-For a **48 dp button** on a 720 dp wide canvas (reproducible from `DimenAutoDp` / `DimenSdp` — see [`auto.md`](../appdimens-dynamic/DOCUMENTATION/auto.md) and [`scaled.md`](../appdimens-dynamic/DOCUMENTATION/scaled.md)):
+For a **48 dp button** on a 720 dp wide canvas (reproducible from `DimenAutoDp` / `DimenSdp` — see [`auto.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/auto.md) and [`scaled.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/scaled.md)):
 
 | Aspect | AppDimens `auto` (BALANCED) | Linear SDP/SSP |
 |--------|------------------------------|----------------|
@@ -589,7 +589,7 @@ For a **48 dp button** on a 720 dp wide canvas (reproducible from `DimenAutoDp` 
 | **Tablet (720 dp) result** | ~70 dp (10% of width) | ~115 dp (16% of width) |
 | **TV (1080 dp) result** | ~85 dp (8% of width) | ~173 dp (16% of width) |
 | **Aspect-ratio compensation** | Opt-in via `a` suffix | Not modeled |
-| **Performance** | ~5 ns cache hit / ~2 ns no-AR multiply ([`PERFORMANCE.md`](../appdimens-dynamic/PERFORMANCE.md)) | ~0 ns (pre-computed) |
+| **Performance** | ~5 ns cache hit / ~2 ns no-AR multiply ([`PERFORMANCE.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/PERFORMANCE.md)) | ~0 ns (pre-computed) |
 | **Flexibility** | 14 scaling modes per call-site | 1 curve per artifact |
 | **XML resources** | Via `appdimens-sdps` / `appdimens-ssps` (same baked tables) | XML resource tables |
 
@@ -601,7 +601,7 @@ For a **48 dp button** on a 720 dp wide canvas (reproducible from `DimenAutoDp` 
 
 ### 21.1 Hot-path costs (recap)
 
-Hardware-validated numbers on Snapdragon 888 / Android 14 — see `§19.2` above and **[`appdimens-dynamic/PERFORMANCE.md`](../appdimens-dynamic/PERFORMANCE.md)** for the full report.
+Hardware-validated numbers on Snapdragon 888 / Android 14 — see `§19.2` above and **[`appdimens-dynamic/PERFORMANCE.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/PERFORMANCE.md)** for the full report.
 
 | Operation | Result | Status |
 |-----------|--------|--------|
@@ -617,7 +617,7 @@ With **R8 + minify** on release builds the dashboard-style harness drops further
 
 - Padded shard layout: 128-byte guards to avoid false sharing (~2.5 KB extra memory).
 - The library performs Configuration-driven caching only where it amortizes the lookup cost — the simplest no-AR kernels bypass storage entirely.
-- See the architecture diagram at the bottom of [`PERFORMANCE.md`](../appdimens-dynamic/PERFORMANCE.md).
+- See the architecture diagram at the bottom of [`PERFORMANCE.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/PERFORMANCE.md).
 
 **Engineering invariants:** [THEORY.md §9](THEORY.md#9-engineering-invariants-no-curves-here)
 
@@ -635,7 +635,7 @@ With **R8 + minify** on release builds the dashboard-style harness drops further
 
 ### 22.2 From third-party SDP / SSP libraries
 
-**Step 1:** Add the AppDimens artifact for your stack — for Android XML, swap your existing third-party SDP/SSP library for [`appdimens-sdps`](../appdimens-sdps/README.md) / [`appdimens-ssps`](../appdimens-ssps/README.md). Resource names (`@dimen/_16sdp`, `@dimen/_18ssp`, …) match.
+**Step 1:** Add the AppDimens artifact for your stack — for Android XML, swap your existing third-party SDP/SSP library for [`appdimens-sdps`](https://github.com/bodenberg/appdimens-sdps/blob/main/README.md) / [`appdimens-ssps`](https://github.com/bodenberg/appdimens-ssps/blob/main/README.md). Resource names (`@dimen/_16sdp`, `@dimen/_18ssp`, …) match.
 **Step 2:** For Compose / runtime code, replace `@dimen/_16sdp` → `16.sdp` (the `scaled` kernel, same baseline). For the hybrid BALANCED curve switch to `16.asdp` (`auto`).
 **Step 3:** Remove the previous SDP dependency.
 
@@ -737,7 +737,7 @@ A: Solutions:
 
 **Q: Migration from earlier revisions - sizes changed**
 
-A: On **Android Compose**, move to **`sdp` / `wdp` / `hdp` / `ssp`** plus **`asdp` / …** for the hybrid curve ([appdimens-dynamic README](../appdimens-dynamic/README.md)). Legacy extension names are **not** what this meta-repo documents for 3.x.
+A: On **Android Compose**, move to **`sdp` / `wdp` / `hdp` / `ssp`** plus **`asdp` / …** for the hybrid curve ([appdimens-dynamic README](https://github.com/bodenberg/appdimens-dynamic/blob/main/README.md)). Legacy extension names are **not** what this meta-repo documents for 3.x.
 
 ### 24.2 FAQ
 
@@ -807,11 +807,11 @@ A: Yes! Use SDP/SSP modules for XML, or runtime calculation in code.
 
 ### Platform Guides
 
-- [Android](../appdimens-dynamic/README.md)
-- [iOS](../appdimens-ios/README.md)
-- [Flutter](../appdimens-flutter/README.md)
-- [React Native](../appdimens-react-native/README.md)
-- [Web](../appdimens-web/README.md)
+- [Android](https://github.com/bodenberg/appdimens-dynamic/blob/main/README.md)
+- [iOS](https://github.com/bodenberg/appdimens-ios/blob/main/README.md)
+- [Flutter](https://github.com/bodenberg/appdimens-flutter/blob/main/README.md)
+- [React Native](https://github.com/bodenberg/appdimens-react-native/blob/main/README.md)
+- [Web](https://github.com/bodenberg/appdimens-web/blob/main/README.md)
 
 ### Academic References
 

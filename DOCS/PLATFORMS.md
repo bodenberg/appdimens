@@ -2,7 +2,7 @@
 
 English-only companion to the submodule READMEs. **Strategy names here are conceptual** until you paste the submodule API you integrate. Migrating unified Android labels (`FIXED / DEFAULT / BALANCED`): **[MIGRATION.md](MIGRATION.md)**.
 
-Authoritative Compose math + prefix catalogue: **[`appdimens-dynamic/DOCUMENTATION/`](../appdimens-dynamic/DOCUMENTATION/)** — [`MATHEMATICS-AND-CALCULUS.md`](../appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md), [`README.md`](../appdimens-dynamic/DOCUMENTATION/README.md), [`COMPOSE-API-CONVENTIONS.md`](../appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md).
+Authoritative Compose math + prefix catalogue: **[`appdimens-dynamic/DOCUMENTATION/`](https://github.com/bodenberg/appdimens-dynamic/tree/main/DOCUMENTATION)** — [`MATHEMATICS-AND-CALCULUS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md), [`README.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/README.md), [`COMPOSE-API-CONVENTIONS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md).
 
 ```mermaid
 flowchart LR
@@ -18,15 +18,15 @@ Always reconfirm semver in the submodule README before pinning — this column i
 
 | Submodule | Platform | Status |
 |-----------|----------|--------|
-| [`appdimens-dynamic`](../appdimens-dynamic/) | Android (Compose + Kotlin + Java) | **Production** |
-| [`appdimens-sdps`](../appdimens-sdps/) | Android (XML + Compose) | **Production** |
-| [`appdimens-ssps`](../appdimens-ssps/) | Android (XML + Compose, text) | **Production** |
-| [`appdimens-games`](../appdimens-games/) | Android (Kotlin + NDK + OpenGL ES) | Work in progress |
-| [`appdimens-ios`](../appdimens-ios/) | iOS / macOS (UIKit + SwiftUI + Metal) | Work in progress |
-| [`appdimens-dynamic-kmp`](../appdimens-dynamic-kmp/) | Kotlin Multiplatform | Work in progress |
-| [`appdimens-flutter`](../appdimens-flutter/) | Flutter (Android / iOS / Web / desktop) | Work in progress |
-| [`appdimens-react-native`](../appdimens-react-native/) | React Native | Work in progress |
-| [`appdimens-web`](../appdimens-web/) | Web (vanilla / React / Vue / Svelte / Angular) | Work in progress |
+| [`appdimens-dynamic`](https://github.com/bodenberg/appdimens-dynamic/tree/main) | Android (Compose + Kotlin + Java) | **Production** |
+| [`appdimens-sdps`](https://github.com/bodenberg/appdimens-sdps/tree/main) | Android (XML + Compose) | **Production** |
+| [`appdimens-ssps`](https://github.com/bodenberg/appdimens-ssps/tree/main) | Android (XML + Compose, text) | **Production** |
+| [`appdimens-games`](https://github.com/bodenberg/appdimens-games/tree/main) | Android (Kotlin + NDK + OpenGL ES) | Work in progress |
+| [`appdimens-ios`](https://github.com/bodenberg/appdimens-ios/tree/main) | iOS / macOS (UIKit + SwiftUI + Metal) | Work in progress |
+| [`appdimens-dynamic-kmp`](https://github.com/bodenberg/appdimens-dynamic-kmp/tree/main) | Kotlin Multiplatform | Work in progress |
+| [`appdimens-flutter`](https://github.com/bodenberg/appdimens-flutter/tree/main) | Flutter (Android / iOS / Web / desktop) | Work in progress |
+| [`appdimens-react-native`](https://github.com/bodenberg/appdimens-react-native/tree/main) | React Native | Work in progress |
+| [`appdimens-web`](https://github.com/bodenberg/appdimens-web/tree/main) | Web (vanilla / React / Vue / Svelte / Angular) | Work in progress |
 
 ---
 
@@ -36,12 +36,12 @@ Concrete syntax lives beside the source — not in this table. Snapshot for orie
 
 | Concept | Android Compose (`appdimens-dynamic`) | iOS (`AppDimens`) | Web (`webdimens`) | Flutter (`appdimens`) | React Native (`appdimens-react-native`) |
 |---------|----------------------------------------|-------------------|-------------------|----------------------|----------------------------------------|
-| Hybrid **BALANCED** curve | **`auto`** — `asdp`, `ahdp`, `awdp`, `assp`, … [`auto.md`](../appdimens-dynamic/DOCUMENTATION/auto.md) | `AppDimens.shared.balanced(_).toPoints()` | `balanced(_)` builder | `.fixed`, `.fx` per Flutter submodule | `balanced(_)` |
-| SDP-style baseline (**DEFAULT / FIXED** narrative) | **`scaled`** — `sdp`, `wdp`, `hdp`, `ssp`, `sem`, … [`scaled.md`](../appdimens-dynamic/DOCUMENTATION/scaled.md) | Submodule README | `defaultScaling`-style helpers where published | Same fixed-style helpers | `defaultScaling(_)` |
+| Hybrid **BALANCED** curve | **`auto`** — `asdp`, `ahdp`, `awdp`, `assp`, … [`auto.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/auto.md) | `AppDimens.shared.balanced(_).toPoints()` | `balanced(_)` builder | `.fixed`, `.fx` per Flutter submodule | `balanced(_)` |
+| SDP-style baseline (**DEFAULT / FIXED** narrative) | **`scaled`** — `sdp`, `wdp`, `hdp`, `ssp`, `sem`, … [`scaled.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/scaled.md) | Submodule README | `defaultScaling`-style helpers where published | Same fixed-style helpers | `defaultScaling(_)` |
 | Logarithmic damping | Prefer explicit `logarithmic` or AR-aware `scaled` tokens — no mythical `defaultDp` | `defaultScaling`, `logarithmic` | `defaultScaling`, `logarithmic` | builder-specific | Helpers as exposed |
-| **PERCENTAGE** / legacy **DYNAMIC** | **`percent`** — `psdp`, `pwdp`, `phdp`, … [`percent.md`](../appdimens-dynamic/DOCUMENTATION/percent.md) | `percentage(_)` | `percentage(_)` | Dynamic builders `.dy` | `percentage(_)` |
+| **PERCENTAGE** / legacy **DYNAMIC** | **`percent`** — `psdp`, `pwdp`, `phdp`, … [`percent.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/percent.md) | `percentage(_)` | `percentage(_)` | Dynamic builders `.dy` | `percentage(_)` |
 | Raw XML SDP/SSP | Separate artifacts `appdimens-sdps`, `appdimens-ssps` | — | — | — | — |
-| Native games | [`appdimens-games`](../appdimens-games/appdimens_games/README.md) façade | submodule Metal layer | — | — | — |
+| Native games | [`appdimens-games`](https://github.com/bodenberg/appdimens-games/blob/main/appdimens_games/README.md) façade | submodule Metal layer | — | — | — |
 | Builder **smart** chaining | Compose tree uses **explicit tokens** (`sdp`, `asdp`, …) — no fused `smart().forElement` | `.smart(_).forElement(_)` variants | Equivalent hooks where published | Equivalent hooks | Equivalent hooks |
 
 ---
@@ -52,13 +52,13 @@ Real-world measurements where they matter (kiosks, AR, accessibility touch targe
 
 | Concept | Android Compose / `code` | iOS | Flutter | React Native | Web |
 |---------|---------------------------|-----|---------|---------------|-----|
-| Millimetres | `10.mm` (Compose); `DimenPhysicalUnits.toDpFromMm(10f)` ([`physical-units.md`](../appdimens-dynamic/DOCUMENTATION/physical-units.md)) | `AppDimensPhysicalUnits.mm(10)` | `AppDimensPhysicalUnits.mmToPixels(10, context)` | `physicalUnits.mm(10)` | `webdimens.mm(10)` |
+| Millimetres | `10.mm` (Compose); `DimenPhysicalUnits.toDpFromMm(10f)` ([`physical-units.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/physical-units.md)) | `AppDimensPhysicalUnits.mm(10)` | `AppDimensPhysicalUnits.mmToPixels(10, context)` | `physicalUnits.mm(10)` | `webdimens.mm(10)` |
 | Centimetres | `8.cm` (Compose) | `AppDimensPhysicalUnits.cm(8)` | `AppDimensPhysicalUnits.cmToPixels(8, context)` | `physicalUnits.cm(8)` | `webdimens.cm(8)` |
 | Inches | `5.inch` (Compose) | `AppDimensPhysicalUnits.inch(5)` | `AppDimensPhysicalUnits.inchToPixels(5, context)` | `physicalUnits.inch(5)` | `webdimens.inch(5)` |
 
-The Android implementation uses `displayMetrics.xdpi` / `ydpi` — see [`physical-units.md`](../appdimens-dynamic/DOCUMENTATION/physical-units.md) for the formal definition and per-axis caveats.
+The Android implementation uses `displayMetrics.xdpi` / `ydpi` — see [`physical-units.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/physical-units.md) for the formal definition and per-axis caveats.
 
-**Sources of truth:** [`appdimens-dynamic` README](../appdimens-dynamic/README.md) · Flutter [`appdimens.dart`](../appdimens-flutter/lib/src/appdimens.dart) · Web [`WebDimensBuilder.ts`](../appdimens-web/src/core/WebDimensBuilder.ts) · RN [`AppDimensBuilder.ts`](../appdimens-react-native/src/core/AppDimensBuilder.ts) · iOS examples / [`USAGE_GUIDE.md`](../appdimens-ios/USAGE_GUIDE.md).
+**Sources of truth:** [`appdimens-dynamic` README](https://github.com/bodenberg/appdimens-dynamic/blob/main/README.md) · Flutter [`appdimens.dart`](https://github.com/bodenberg/appdimens-flutter/blob/main/lib/src/appdimens.dart) · Web [`WebDimensBuilder.ts`](https://github.com/bodenberg/appdimens-web/blob/main/src/core/WebDimensBuilder.ts) · RN [`AppDimensBuilder.ts`](https://github.com/bodenberg/appdimens-react-native/blob/main/src/core/AppDimensBuilder.ts) · iOS examples / [`USAGE_GUIDE.md`](https://github.com/bodenberg/appdimens-ios/blob/main/USAGE_GUIDE.md).
 
 ---
 
@@ -68,28 +68,28 @@ Older hub prose used ENUM-like headings. **`appdimens-dynamic`** implements each
 
 | Cross-platform wording | Gradle strategy | Compose import sketch | Doc |
 |------------------------|----------------|------------------------|-----|
-| **BALANCED** | `auto` | `com.appdimens.dynamic.compose.auto.*` | [`auto.md`](../appdimens-dynamic/DOCUMENTATION/auto.md) |
-| **DEFAULT** / **FIXED** | `scaled` | `compose.scaled.*` (`sdp`, `wdp`, `hdp`, `ssp`) | [`scaled.md`](../appdimens-dynamic/DOCUMENTATION/scaled.md) |
-| **PERCENTAGE** / legacy **DYNAMIC** | `percent` | `compose.percent.*` | [`percent.md`](../appdimens-dynamic/DOCUMENTATION/percent.md) |
-| Steven’s law knob | `power` | `compose.power.*` | [`power.md`](../appdimens-dynamic/DOCUMENTATION/power.md) |
-| Clamp / band typography | `fluid` | `compose.fluid.*` | [`fluid.md`](../appdimens-dynamic/DOCUMENTATION/fluid.md) |
-| Weber–Fechner style | `logarithmic` | `compose.logarithmic.*` | [`logarithmic.md`](../appdimens-dynamic/DOCUMENTATION/logarithmic.md) |
-| Blend vs linear | `interpolated` | `compose.interpolated.*` | [`interpolated.md`](../appdimens-dynamic/DOCUMENTATION/interpolated.md) |
-| Hypotenuse feel | `diagonal` | `compose.diagonal.*` | [`diagonal.md`](../appdimens-dynamic/DOCUMENTATION/diagonal.md) |
-| W+H pacing | `perimeter` | `compose.perimeter.*` | [`perimeter.md`](../appdimens-dynamic/DOCUMENTATION/perimeter.md) |
-| Letterbox | `fit` | `compose.fit.*` | [`fit.md`](../appdimens-dynamic/DOCUMENTATION/fit.md) |
-| Cover | `fill` | `compose.fill.*` | [`fill.md`](../appdimens-dynamic/DOCUMENTATION/fill.md) |
-| Density knobs | `density` | `compose.density.*` | [`density.md`](../appdimens-dynamic/DOCUMENTATION/density.md) |
-| Constraint resize | `resize` | `compose.resize.*`, `ResizeBound` | [`resize.md`](../appdimens-dynamic/DOCUMENTATION/resize.md) |
+| **BALANCED** | `auto` | `com.appdimens.dynamic.compose.auto.*` | [`auto.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/auto.md) |
+| **DEFAULT** / **FIXED** | `scaled` | `compose.scaled.*` (`sdp`, `wdp`, `hdp`, `ssp`) | [`scaled.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/scaled.md) |
+| **PERCENTAGE** / legacy **DYNAMIC** | `percent` | `compose.percent.*` | [`percent.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/percent.md) |
+| Steven’s law knob | `power` | `compose.power.*` | [`power.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/power.md) |
+| Clamp / band typography | `fluid` | `compose.fluid.*` | [`fluid.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fluid.md) |
+| Weber–Fechner style | `logarithmic` | `compose.logarithmic.*` | [`logarithmic.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/logarithmic.md) |
+| Blend vs linear | `interpolated` | `compose.interpolated.*` | [`interpolated.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/interpolated.md) |
+| Hypotenuse feel | `diagonal` | `compose.diagonal.*` | [`diagonal.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/diagonal.md) |
+| W+H pacing | `perimeter` | `compose.perimeter.*` | [`perimeter.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/perimeter.md) |
+| Letterbox | `fit` | `compose.fit.*` | [`fit.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fit.md) |
+| Cover | `fill` | `compose.fill.*` | [`fill.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fill.md) |
+| Density knobs | `density` | `compose.density.*` | [`density.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/density.md) |
+| Constraint resize | `resize` | `compose.resize.*`, `ResizeBound` | [`resize.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/resize.md) |
 | **NONE** | — | Plain `Dp`/`Sp` or guard rails | — |
 
-Prefix naming rules: [`COMPOSE-API-CONVENTIONS.md`](../appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md)
+Prefix naming rules: [`COMPOSE-API-CONVENTIONS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md)
 
 ---
 
 ## Constants checked against Kotlin
 
-Compared with [`DesignScaleConstants.kt`](../appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/core/DesignScaleConstants.kt):
+Compared with [`DesignScaleConstants.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/core/DesignScaleConstants.kt):
 
 | Constant | Value | Meaning |
 |-----------|-------|---------|
@@ -146,16 +146,16 @@ Treat this as reassurance that narratives match reference implementations — no
 
 When prose in this hub disagrees with the submodule, **the submodule wins**. Use this list when porting concepts, verifying signatures, or filing shipping bugs.
 
-- **Android `appdimens-dynamic`** — [README](../appdimens-dynamic/README.md) · [`DOCUMENTATION/README.md`](../appdimens-dynamic/DOCUMENTATION/README.md) · [`MATHEMATICS-AND-CALCULUS.md`](../appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md) · [`COMPOSE-API-CONVENTIONS.md`](../appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md) · [`PERFORMANCE.md`](../appdimens-dynamic/PERFORMANCE.md) · [`R8-PROGUARD.md`](../appdimens-dynamic/R8-PROGUARD.md)
-- **Android `appdimens-sdps`** — [README](../appdimens-sdps/README.md)
-- **Android `appdimens-ssps`** — [README](../appdimens-ssps/README.md)
-- **Android `appdimens-games`** — [submodule root](../appdimens-games/) · [`appdimens_games/`](../appdimens-games/appdimens_games/)
-- **Apple `appdimens-ios`** — [submodule root](../appdimens-ios/) (UIKit + SwiftUI + Metal)
-- **Kotlin Multiplatform `appdimens-dynamic-kmp`** — [submodule root](../appdimens-dynamic-kmp/)
-- **Flutter `appdimens-flutter`** — [submodule root](../appdimens-flutter/) · `lib/src/`
-- **React Native `appdimens-react-native`** — [submodule root](../appdimens-react-native/) · `src/core/`
-- **Web `webdimens`** — [submodule root](../appdimens-web/) · `src/core/`
+- **Android `appdimens-dynamic`** — [README](https://github.com/bodenberg/appdimens-dynamic/blob/main/README.md) · [`DOCUMENTATION/README.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/README.md) · [`MATHEMATICS-AND-CALCULUS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md) · [`COMPOSE-API-CONVENTIONS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md) · [`PERFORMANCE.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/PERFORMANCE.md) · [`R8-PROGUARD.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/R8-PROGUARD.md)
+- **Android `appdimens-sdps`** — [README](https://github.com/bodenberg/appdimens-sdps/blob/main/README.md)
+- **Android `appdimens-ssps`** — [README](https://github.com/bodenberg/appdimens-ssps/blob/main/README.md)
+- **Android `appdimens-games`** — [submodule root](https://github.com/bodenberg/appdimens-games/tree/main) · [`appdimens_games/`](https://github.com/bodenberg/appdimens-games/tree/main/appdimens_games)
+- **Apple `appdimens-ios`** — [submodule root](https://github.com/bodenberg/appdimens-ios/tree/main) (UIKit + SwiftUI + Metal)
+- **Kotlin Multiplatform `appdimens-dynamic-kmp`** — [submodule root](https://github.com/bodenberg/appdimens-dynamic-kmp/tree/main)
+- **Flutter `appdimens-flutter`** — [submodule root](https://github.com/bodenberg/appdimens-flutter/tree/main) · `lib/src/`
+- **React Native `appdimens-react-native`** — [submodule root](https://github.com/bodenberg/appdimens-react-native/tree/main) · `src/core/`
+- **Web `webdimens`** — [submodule root](https://github.com/bodenberg/appdimens-web/tree/main) · `src/core/`
 
 ---
 
-[← Documentation index](README.md) · [`appdimens-dynamic` README](../appdimens-dynamic/README.md) · [GUIDE](GUIDE.md) · [THEORY](THEORY.md) · [MIGRATION](MIGRATION.md) · [ORIENTATION](ORIENTATION.md)
+[← Documentation index](README.md) · [`appdimens-dynamic` README](https://github.com/bodenberg/appdimens-dynamic/blob/main/README.md) · [GUIDE](GUIDE.md) · [THEORY](THEORY.md) · [MIGRATION](MIGRATION.md) · [ORIENTATION](ORIENTATION.md)

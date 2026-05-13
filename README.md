@@ -17,6 +17,24 @@
 
 </div>
 
+### Platform repositories (quick reference)
+
+Each implementation lives in its **own GitHub repository** (not only the submodules in this hub). Status reflects the current product line described in that repo’s README.
+
+| Repository | Platform | Status |
+|------------|----------|--------|
+| [appdimens-dynamic](https://github.com/bodenberg/appdimens-dynamic) | Android — Jetpack Compose, Kotlin Views, Java Views | **Production** |
+| [appdimens-sdps](https://github.com/bodenberg/appdimens-sdps) | Android — XML `@dimen` SDP-style resources (+ Compose tokens) | **Production** |
+| [appdimens-ssps](https://github.com/bodenberg/appdimens-ssps) | Android — XML SSP-style text resources (+ Compose tokens) | **Production** |
+| [appdimens-games](https://github.com/bodenberg/appdimens-games) | Android — game / NDK sizing helpers | Work in progress |
+| [appdimens-ios](https://github.com/bodenberg/appdimens-ios) | Apple — iOS / iPadOS / macOS (UIKit, SwiftUI, Metal) | Work in progress |
+| [appdimens-dynamic-kmp](https://github.com/bodenberg/appdimens-dynamic-kmp) | Kotlin Multiplatform | Work in progress |
+| [appdimens-flutter](https://github.com/bodenberg/appdimens-flutter) | Flutter — Android, iOS, Web, desktop | Work in progress |
+| [appdimens-react-native](https://github.com/bodenberg/appdimens-react-native) | React Native — iOS & Android | Work in progress |
+| [appdimens-web](https://github.com/bodenberg/appdimens-web) | Web — vanilla JS, React, Vue, Svelte, Angular | Work in progress |
+
+Details, coordinates, and semver: see **[Platform matrix](#platform-matrix)** below.
+
 > [!TIP]
 > **TL;DR** — Plain `dp` / `sp` / `pt` / `px` factor out **density** but not **canvas extent** or **aspect ratio**. AppDimens models token sizing as a **family of one-dimensional maps** with explicit kernels (linear, hybrid linear–logarithmic, Weber–Fechner, Stevens, fluid clamp, geometric, letterbox/fill, density buckets, constraint-based resize) and gives you the **same vocabulary on every platform** so a `16.sdp` on Android Compose, a `balanced(16)` on iOS / Flutter / React Native, and a `webdimens.balanced(16)` on the Web all describe the same idea.
 
@@ -26,22 +44,23 @@ This repository is the **documentation hub**. Each platform library ships from i
 
 ## Table of contents
 
-1. [What is AppDimens?](#what-is-appdimens)
-2. [The problem it solves](#the-problem-it-solves)
-3. [How AppDimens solves it](#how-appdimens-solves-it)
-4. [Why AppDimens (advantages)](#why-appdimens-advantages)
-5. [When to use AppDimens (scenarios)](#when-to-use-appdimens-scenarios)
-6. [The 14 scaling kernels at a glance](#the-14-scaling-kernels-at-a-glance)
-7. [Quick start (multi-stack)](#quick-start-multi-stack)
-8. [Platform matrix](#platform-matrix)
-9. [Hub vs submodules — who owns what](#hub-vs-submodules--who-owns-what)
-10. [Documentation map (`DOCS/`)](#documentation-map-docs)
-11. [Performance snapshot](#performance-snapshot)
-12. [Comparison with alternatives](#comparison-with-alternatives)
-13. [FAQ](#faq)
-14. [Roadmap & status](#roadmap--status)
-15. [Contributing, security, license](#contributing-security-license)
-16. [Author](#author)
+1. [Platform repositories (quick reference)](#platform-repositories-quick-reference)
+2. [What is AppDimens?](#what-is-appdimens)
+3. [The problem it solves](#the-problem-it-solves)
+4. [How AppDimens solves it](#how-appdimens-solves-it)
+5. [Why AppDimens (advantages)](#why-appdimens-advantages)
+6. [When to use AppDimens (scenarios)](#when-to-use-appdimens-scenarios)
+7. [The 14 scaling kernels at a glance](#the-14-scaling-kernels-at-a-glance)
+8. [Quick start (multi-stack)](#quick-start-multi-stack)
+9. [Platform matrix](#platform-matrix)
+10. [Hub vs submodules — who owns what](#hub-vs-submodules--who-owns-what)
+11. [Documentation map (`DOCS/`)](#documentation-map-docs)
+12. [Performance snapshot](#performance-snapshot)
+13. [Comparison with alternatives](#comparison-with-alternatives)
+14. [FAQ](#faq)
+15. [Roadmap & status](#roadmap--status)
+16. [Contributing, security, license](#contributing-security-license)
+17. [Author](#author)
 
 ---
 
@@ -84,7 +103,7 @@ Concretely, for a **48 dp button**:
 | **Linear SDP / SSP** | 58 dp (16%) ✅ | 115 dp (16%) ❌ huge | 173 dp (16%) ❌ enormous | Over-scales |
 | **AppDimens `auto` (BALANCED)** | 58 dp (16%) ✅ | ~70 dp (10%) ✅ | ~85 dp (8%) ✅ | Calibrated everywhere |
 
-The 720 dp / 1080 dp rows above are reproducible from `DimenAutoDp` ([`auto.md`](appdimens-dynamic/DOCUMENTATION/auto.md), hinge at 480 dp, `ln` gain 0.4).
+The 720 dp / 1080 dp rows above are reproducible from `DimenAutoDp` ([`auto.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/auto.md), hinge at 480 dp, `ln` gain 0.4).
 
 ---
 
@@ -112,7 +131,7 @@ Every kernel obeys four invariants ([THEORY.md §1.2](DOCS/THEORY.md#1-problem-s
 3. **Bounded growth.** Output is sandwiched between linear and logarithmic envelopes — no runaway tablets/TVs.
 4. **Aspect-ratio aware (opt-in).** The optional `a` suffix folds in an AR multiplier referenced to 16:9.
 
-The verified constants (cross-checked against [`DesignScaleConstants.kt`](appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/core/DesignScaleConstants.kt)):
+The verified constants (cross-checked against [`DesignScaleConstants.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/core/DesignScaleConstants.kt)):
 
 | Constant | Value | Meaning |
 |----------|-------|---------|
@@ -124,7 +143,7 @@ The verified constants (cross-checked against [`DesignScaleConstants.kt`](appdim
 | `auto` hinge | measured axis **480 dp** | BALANCED switches from linear to log here |
 | `auto` ln gain | `0.4f` | Log damping coefficient |
 
-For the full math, see [DOCS/THEORY.md](DOCS/THEORY.md) and the canonical [`MATHEMATICS-AND-CALCULUS.md`](appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md) inside `appdimens-dynamic`.
+For the full math, see [DOCS/THEORY.md](DOCS/THEORY.md) and the canonical [`MATHEMATICS-AND-CALCULUS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md) inside `appdimens-dynamic`.
 
 ---
 
@@ -134,11 +153,11 @@ Each bullet below either points to a verifiable file in this repository or a mea
 
 ### Engineering
 
-- **Explicit kernels per call-site.** No surprise behaviour — `16.sdp` is **always** the `scaled` kernel and `16.asdp` is **always** the `auto` kernel. The Kotlin extension you write is the formula you read. ([`COMPOSE-API-CONVENTIONS.md`](appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md))
-- **Zero-XML option.** Pure code-driven sizing via [`appdimens-dynamic`](appdimens-dynamic/README.md). Or pre-baked `@dimen` resources via [`appdimens-sdps`](appdimens-sdps/README.md) / [`appdimens-ssps`](appdimens-ssps/README.md) when you want XML tooling and zero-runtime cost.
-- **Sub-microsecond hot path.** Padded, sharded, lock-free cache. **~5 ns** cache hit, **~2 ns** raw multiply (Snapdragon 888 hardware capture, see [`appdimens-dynamic/PERFORMANCE.md`](appdimens-dynamic/PERFORMANCE.md)).
+- **Explicit kernels per call-site.** No surprise behaviour — `16.sdp` is **always** the `scaled` kernel and `16.asdp` is **always** the `auto` kernel. The Kotlin extension you write is the formula you read. ([`COMPOSE-API-CONVENTIONS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md))
+- **Zero-XML option.** Pure code-driven sizing via [`appdimens-dynamic`](https://github.com/bodenberg/appdimens-dynamic/blob/main/README.md). Or pre-baked `@dimen` resources via [`appdimens-sdps`](https://github.com/bodenberg/appdimens-sdps/blob/main/README.md) / [`appdimens-ssps`](https://github.com/bodenberg/appdimens-ssps/blob/main/README.md) when you want XML tooling and zero-runtime cost.
+- **Sub-microsecond hot path.** Padded, sharded, lock-free cache. **~5 ns** cache hit, **~2 ns** raw multiply (Snapdragon 888 hardware capture, see [`appdimens-dynamic/PERFORMANCE.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/PERFORMANCE.md)).
 - **Foldable & multi-window aware.** Effective-axis selection consults `WindowManager` fold state and `isInMultiWindowMode`. Both behaviours are opt-out per call via the `i` / `ia` suffixes ([THEORY.md §3](DOCS/THEORY.md#3-effective-axis-selection-qualifier-inverter-multi-window)).
-- **R8 / ProGuard ready.** AARs ship `consumer-rules.pro` and `res/raw/keep.xml` so apps can use `minifyEnabled`, R8 full mode (`android.enableR8.fullMode=true`), and `shrinkResources` without extra rules. See [`appdimens-dynamic/R8-PROGUARD.md`](appdimens-dynamic/R8-PROGUARD.md).
+- **R8 / ProGuard ready.** AARs ship `consumer-rules.pro` and `res/raw/keep.xml` so apps can use `minifyEnabled`, R8 full mode (`android.enableR8.fullMode=true`), and `shrinkResources` without extra rules. See [`appdimens-dynamic/R8-PROGUARD.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/R8-PROGUARD.md).
 - **Test- and preview-friendly.** Kernels are pure functions of `(base, Configuration)` — works identically inside `@Preview`, unit tests, and `BoxWithConstraints`.
 
 ### Design
@@ -146,7 +165,7 @@ Each bullet below either points to a verifiable file in this repository or a mea
 - **Perceptual scaling.** Not just proportional — kernels like `auto`, `logarithmic`, `power` damp growth on large canvases the way human visual perception expects (Weber–Fechner, Stevens). ([THEORY.md §5](DOCS/THEORY.md#5-strategy-catalogue))
 - **Aspect-ratio compensation, opt-in.** The `a` suffix folds an AR multiplier referenced to 16:9. Elongated phones / foldables / wide TVs keep their visual weight without bespoke `remember` blocks.
 - **Orientation inverters.** Authored portrait but the device rotates? The `*Ph`, `*Lw`, `*Lh` token families switch the driving axis automatically. ([DOCS/ORIENTATION.md](DOCS/ORIENTATION.md))
-- **Physical units (mm / cm / inch).** Real-world measurements where they matter (kiosks, AR, accessibility hit targets). ([`physical-units.md`](appdimens-dynamic/DOCUMENTATION/physical-units.md))
+- **Physical units (mm / cm / inch).** Real-world measurements where they matter (kiosks, AR, accessibility hit targets). ([`physical-units.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/physical-units.md))
 
 ### Ecosystem
 
@@ -155,7 +174,7 @@ Each bullet below either points to a verifiable file in this repository or a mea
 
 ### Maintenance & honesty
 
-- **Every kernel is cited** to a Kotlin file under [`appdimens-dynamic/DOCUMENTATION/`](appdimens-dynamic/DOCUMENTATION/) and a regression test under `appdimens-dynamic/library/`.
+- **Every kernel is cited** to a Kotlin file under [`appdimens-dynamic/DOCUMENTATION/`](https://github.com/bodenberg/appdimens-dynamic/tree/main/DOCUMENTATION) and a regression test under `appdimens-dynamic/library/`.
 - **Hub theory is reproducible.** Numerical comparisons in [DOCS/THEORY.md §8](DOCS/THEORY.md) come from the same kernels you ship.
 - **No marketing-rank claims.** The hub does not pretend a single global "best library" ranking. Categorical trade-offs vs other tools are discussed honestly in [Comparison with alternatives](#comparison-with-alternatives).
 
@@ -165,16 +184,16 @@ Each bullet below either points to a verifiable file in this repository or a mea
 
 | Scenario | Why AppDimens helps | Suggested entry point |
 |----------|--------------------|------------------------|
-| **Multi-form-factor product** (phones + tablets + foldables in one binary) | `auto` (BALANCED) keeps the same UI calibrated on a 360 dp phone *and* a 720 dp tablet, without the SDP overshoot | [`appdimens-dynamic` quick start](appdimens-dynamic/README.md#quick-start--scaled-compose) → tokens `asdp` / `assp` |
-| **TV / large-screen companion app** | `logarithmic` and `auto` damp growth on canvases beyond 480 dp instead of inflating linearly | [`logarithmic.md`](appdimens-dynamic/DOCUMENTATION/logarithmic.md) · [`auto.md`](appdimens-dynamic/DOCUMENTATION/auto.md) |
+| **Multi-form-factor product** (phones + tablets + foldables in one binary) | `auto` (BALANCED) keeps the same UI calibrated on a 360 dp phone *and* a 720 dp tablet, without the SDP overshoot | [`appdimens-dynamic` quick start](https://github.com/bodenberg/appdimens-dynamic/blob/main/README.md#quick-start--scaled-compose) → tokens `asdp` / `assp` |
+| **TV / large-screen companion app** | `logarithmic` and `auto` damp growth on canvases beyond 480 dp instead of inflating linearly | [`logarithmic.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/logarithmic.md) · [`auto.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/auto.md) |
 | **Cross-platform design system** | Same vocabulary on Android / iOS / KMP / Flutter / RN / Web — design tokens travel verbatim | [DOCS/PLATFORMS.md](DOCS/PLATFORMS.md) |
-| **XML view system with breakpoint resources** | `@dimen/_16sdp`, `_18ssp`, `_300wdp`, … shipped pre-computed; no runtime cost | [`appdimens-sdps`](appdimens-sdps/README.md) · [`appdimens-ssps`](appdimens-ssps/README.md) |
-| **Typography with hard min/max bounds** | `fluid` clamps a typographic band (e.g. 16–24 sp between 320–768 dp) the same way CSS `clamp()` would, with optional AR | [`fluid.md`](appdimens-dynamic/DOCUMENTATION/fluid.md) |
-| **Game UI / HUD on arbitrary viewports** | `fit` (letterbox) and `fill` (cover) keep the HUD intact across aspect ratios | [`fit.md`](appdimens-dynamic/DOCUMENTATION/fit.md) · [`fill.md`](appdimens-dynamic/DOCUMENTATION/fill.md) |
-| **Native game rendering (NDK / Metal)** | Specialized modules with C++/NDK on Android (`appdimens-games`) and Metal on iOS | [`appdimens-games/`](appdimens-games/) |
-| **Real-world physical sizing** (kiosks, AR, accessibility targets) | `mm` / `cm` / `inch` helpers on every stack | [`physical-units.md`](appdimens-dynamic/DOCUMENTATION/physical-units.md) |
+| **XML view system with breakpoint resources** | `@dimen/_16sdp`, `_18ssp`, `_300wdp`, … shipped pre-computed; no runtime cost | [`appdimens-sdps`](https://github.com/bodenberg/appdimens-sdps/blob/main/README.md) · [`appdimens-ssps`](https://github.com/bodenberg/appdimens-ssps/blob/main/README.md) |
+| **Typography with hard min/max bounds** | `fluid` clamps a typographic band (e.g. 16–24 sp between 320–768 dp) the same way CSS `clamp()` would, with optional AR | [`fluid.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fluid.md) |
+| **Game UI / HUD on arbitrary viewports** | `fit` (letterbox) and `fill` (cover) keep the HUD intact across aspect ratios | [`fit.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fit.md) · [`fill.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fill.md) |
+| **Native game rendering (NDK / Metal)** | Specialized modules with C++/NDK on Android (`appdimens-games`) and Metal on iOS | [`appdimens-games/`](https://github.com/bodenberg/appdimens-games/tree/main) |
+| **Real-world physical sizing** (kiosks, AR, accessibility targets) | `mm` / `cm` / `inch` helpers on every stack | [`physical-units.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/physical-units.md) |
 | **Rotation- / foldable-sensitive layouts** | Base-orientation + `*Ph` / `*Lw` / `*Lh` inverters | [DOCS/ORIENTATION.md](DOCS/ORIENTATION.md) |
-| **Container-fit titles / square widgets** | `resize` builders (`autoResizeTextSp`, `autoResizeSquareSize`) pick the largest size in a min..max range that still fits | [`resize.md`](appdimens-dynamic/DOCUMENTATION/resize.md) |
+| **Container-fit titles / square widgets** | `resize` builders (`autoResizeTextSp`, `autoResizeSquareSize`) pick the largest size in a min..max range that still fits | [`resize.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/resize.md) |
 
 > **When AppDimens is overkill** — single-form-factor prototypes with rigid hand-tuned mockups, or marketing microsites already handled by CSS `clamp()` / media queries.
 
@@ -182,24 +201,24 @@ Each bullet below either points to a verifiable file in this repository or a mea
 
 ## The 14 scaling kernels at a glance
 
-Sourced from [`appdimens-dynamic/DOCUMENTATION/`](appdimens-dynamic/DOCUMENTATION/) and cross-checked in [DOCS/THEORY.md §5](DOCS/THEORY.md#5-strategy-catalogue) and [DOCS/PLATFORMS.md](DOCS/PLATFORMS.md). Tokens shown are Compose 3.x; iOS / Flutter / RN / Web use builder names — see [PLATFORMS.md](DOCS/PLATFORMS.md).
+Sourced from [`appdimens-dynamic/DOCUMENTATION/`](https://github.com/bodenberg/appdimens-dynamic/tree/main/DOCUMENTATION) and cross-checked in [DOCS/THEORY.md §5](DOCS/THEORY.md#5-strategy-catalogue) and [DOCS/PLATFORMS.md](DOCS/PLATFORMS.md). Tokens shown are Compose 3.x; iOS / Flutter / RN / Web use builder names — see [PLATFORMS.md](DOCS/PLATFORMS.md).
 
 | # | Kernel | Hub label | Compose token sketch | Primary use case | Reference |
 |---|--------|-----------|----------------------|------------------|-----------|
-| 1 | `scaled` | **DEFAULT / FIXED** | `sdp`, `hdp`, `wdp`, `ssp`, `sem`, `sdpa` | Phone-first SDP-style baseline (most common) | [`scaled.md`](appdimens-dynamic/DOCUMENTATION/scaled.md) |
-| 2 | `auto` | **BALANCED** | `asdp`, `ahdp`, `awdp`, `assp` | Multi-device hybrid (linear under 480 dp, logarithmic above) | [`auto.md`](appdimens-dynamic/DOCUMENTATION/auto.md) |
-| 3 | `percent` | **PERCENTAGE / DYNAMIC** | `psdp`, `phdp`, `pwdp`, plus literal `space*` percentages | Axis-heavy / proportional containers and grids | [`percent.md`](appdimens-dynamic/DOCUMENTATION/percent.md) |
-| 4 | `power` | Stevens-style | `pwsdp`, `pwssp` | Configurable sublinear curve (exponent 0.6–0.9) | [`power.md`](appdimens-dynamic/DOCUMENTATION/power.md) |
-| 5 | `logarithmic` | Weber–Fechner | `logsdp`, `logssp` | Maximum damping on TV / very large tablets | [`logarithmic.md`](appdimens-dynamic/DOCUMENTATION/logarithmic.md) |
-| 6 | `fluid` | Clamp band | `fsdp`, `fssp` | Typography / spacing between explicit min/max | [`fluid.md`](appdimens-dynamic/DOCUMENTATION/fluid.md) |
-| 7 | `interpolated` | Fixed–linear blend | `isdp`, `issp` | Moderate scaling (50% linear / 50% fixed) | [`interpolated.md`](appdimens-dynamic/DOCUMENTATION/interpolated.md) |
-| 8 | `diagonal` | Euclidean | `dsdp`, `dssp` | Scale by screen diagonal (true physical feel) | [`diagonal.md`](appdimens-dynamic/DOCUMENTATION/diagonal.md) |
-| 9 | `perimeter` | L¹ | `psdp` (perimeter package), `pssp` | Scale by `W + H` perimeter | [`perimeter.md`](appdimens-dynamic/DOCUMENTATION/perimeter.md) |
-| 10 | `fit` | Letterbox | `fitsdp`, `fitssp` | Game / canvas content that must not crop | [`fit.md`](appdimens-dynamic/DOCUMENTATION/fit.md) |
-| 11 | `fill` | Cover | `fillsdp`, `fillssp` | Game / canvas content that must fill | [`fill.md`](appdimens-dynamic/DOCUMENTATION/fill.md) |
-| 12 | `density` | DPI-bucket | `densdp`, `denssp` | Scale only when the dpi bucket changes | [`density.md`](appdimens-dynamic/DOCUMENTATION/density.md) |
-| 13 | `resize` | Constraint geometry | `autoResizeTextSp`, `autoResizeSquareSize`, `ResizeBound` | Pick the largest size in a min..max range that fits | [`resize.md`](appdimens-dynamic/DOCUMENTATION/resize.md) |
-| 14 | `physical units` | Real-world | `10.mm`, `8.cm`, `5.inch` | Real-world measurements (kiosks, AR, accessibility) | [`physical-units.md`](appdimens-dynamic/DOCUMENTATION/physical-units.md) |
+| 1 | `scaled` | **DEFAULT / FIXED** | `sdp`, `hdp`, `wdp`, `ssp`, `sem`, `sdpa` | Phone-first SDP-style baseline (most common) | [`scaled.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/scaled.md) |
+| 2 | `auto` | **BALANCED** | `asdp`, `ahdp`, `awdp`, `assp` | Multi-device hybrid (linear under 480 dp, logarithmic above) | [`auto.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/auto.md) |
+| 3 | `percent` | **PERCENTAGE / DYNAMIC** | `psdp`, `phdp`, `pwdp`, plus literal `space*` percentages | Axis-heavy / proportional containers and grids | [`percent.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/percent.md) |
+| 4 | `power` | Stevens-style | `pwsdp`, `pwssp` | Configurable sublinear curve (exponent 0.6–0.9) | [`power.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/power.md) |
+| 5 | `logarithmic` | Weber–Fechner | `logsdp`, `logssp` | Maximum damping on TV / very large tablets | [`logarithmic.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/logarithmic.md) |
+| 6 | `fluid` | Clamp band | `fsdp`, `fssp` | Typography / spacing between explicit min/max | [`fluid.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fluid.md) |
+| 7 | `interpolated` | Fixed–linear blend | `isdp`, `issp` | Moderate scaling (50% linear / 50% fixed) | [`interpolated.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/interpolated.md) |
+| 8 | `diagonal` | Euclidean | `dsdp`, `dssp` | Scale by screen diagonal (true physical feel) | [`diagonal.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/diagonal.md) |
+| 9 | `perimeter` | L¹ | `psdp` (perimeter package), `pssp` | Scale by `W + H` perimeter | [`perimeter.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/perimeter.md) |
+| 10 | `fit` | Letterbox | `fitsdp`, `fitssp` | Game / canvas content that must not crop | [`fit.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fit.md) |
+| 11 | `fill` | Cover | `fillsdp`, `fillssp` | Game / canvas content that must fill | [`fill.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fill.md) |
+| 12 | `density` | DPI-bucket | `densdp`, `denssp` | Scale only when the dpi bucket changes | [`density.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/density.md) |
+| 13 | `resize` | Constraint geometry | `autoResizeTextSp`, `autoResizeSquareSize`, `ResizeBound` | Pick the largest size in a min..max range that fits | [`resize.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/resize.md) |
+| 14 | `physical units` | Real-world | `10.mm`, `8.cm`, `5.inch` | Real-world measurements (kiosks, AR, accessibility) | [`physical-units.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/physical-units.md) |
 
 Plus a conceptual **`NONE`** (raw `Dp` / `Sp`) for surfaces that must stay constant.
 
@@ -228,7 +247,7 @@ Box(
 }
 ```
 
-→ [`appdimens-dynamic/README.md#quick-start--scaled-compose`](appdimens-dynamic/README.md#quick-start--scaled-compose) for full install line and `AppDimensProvider` setup.
+→ [`appdimens-dynamic/README.md#quick-start--scaled-compose`](https://github.com/bodenberg/appdimens-dynamic/blob/main/README.md#quick-start--scaled-compose) for full install line and `AppDimensProvider` setup.
 
 ### Android — XML resources (`appdimens-sdps` + `appdimens-ssps`, production)
 
@@ -241,7 +260,7 @@ Box(
     android:text="Hello" />
 ```
 
-→ [`appdimens-sdps/README.md`](appdimens-sdps/README.md) · [`appdimens-ssps/README.md`](appdimens-ssps/README.md).
+→ [`appdimens-sdps/README.md`](https://github.com/bodenberg/appdimens-sdps/blob/main/README.md) · [`appdimens-ssps/README.md`](https://github.com/bodenberg/appdimens-ssps/blob/main/README.md).
 
 ### iOS — SwiftUI (`appdimens-ios`, work in progress)
 
@@ -252,11 +271,11 @@ Text("Hello")
     .frame(width: AppDimens.shared.balanced(300).toPoints())
 ```
 
-→ [`appdimens-ios/`](appdimens-ios/) for current install status.
+→ [`appdimens-ios/`](https://github.com/bodenberg/appdimens-ios/tree/main) for current install status.
 
 ### Kotlin Multiplatform (`appdimens-dynamic-kmp`, work in progress)
 
-KMP test line publishes under the same Maven artifact ID; **do not mix blindly** with Android `3.1.x`. The KMP track is aiming at its first stable `1.0.0` and is documented inside [`appdimens-dynamic-kmp/`](appdimens-dynamic-kmp/).
+KMP test line publishes under the same Maven artifact ID; **do not mix blindly** with Android `3.1.x`. The KMP track is aiming at its first stable `1.0.0` and is documented inside [`appdimens-dynamic-kmp/`](https://github.com/bodenberg/appdimens-dynamic-kmp/tree/main).
 
 ### Flutter (`appdimens-flutter`, work in progress)
 
@@ -271,7 +290,7 @@ Container(
 )
 ```
 
-→ [`appdimens-flutter/`](appdimens-flutter/).
+→ [`appdimens-flutter/`](https://github.com/bodenberg/appdimens-flutter/tree/main).
 
 ### React Native (`appdimens-react-native`, work in progress)
 
@@ -285,7 +304,7 @@ return (
 );
 ```
 
-→ [`appdimens-react-native/`](appdimens-react-native/).
+→ [`appdimens-react-native/`](https://github.com/bodenberg/appdimens-react-native/tree/main).
 
 ### Web — `webdimens` (work in progress)
 
@@ -296,7 +315,7 @@ document.getElementById('title')!.style.fontSize = webdimens.balanced(24);
 document.getElementById('container')!.style.padding  = webdimens.balanced(16);
 ```
 
-→ [`appdimens-web/`](appdimens-web/) for framework-specific (React / Vue / Svelte / Angular) hooks.
+→ [`appdimens-web/`](https://github.com/bodenberg/appdimens-web/tree/main) for framework-specific (React / Vue / Svelte / Angular) hooks.
 
 ---
 
@@ -306,15 +325,15 @@ Each folder below is its own Git submodule. **Always confirm semver in the submo
 
 | Submodule | Platform | What it ships | Status | Illustrative coordinate |
 |-----------|----------|----------------|--------|--------------------------|
-| [`appdimens-dynamic/`](appdimens-dynamic/) | Android (Compose, Kotlin, Java) | Runtime kernels — all **14 scaling modes** (12 strategies + Resize + Physical units) | **Production** | `io.github.bodenberg:appdimens-dynamic:3.1.5` |
-| [`appdimens-sdps/`](appdimens-sdps/) | Android (XML, Compose, Kotlin, Java) | Pre-computed `@dimen/_*sdp` / `_*hdp` / `_*wdp` resources + Compose tokens | **Production** | `io.github.bodenberg:appdimens-sdps:3.1.2` |
-| [`appdimens-ssps/`](appdimens-ssps/) | Android (XML, Compose, Kotlin, Java) | Pre-computed `@dimen/_*ssp` text resources + Compose tokens | **Production** | `io.github.bodenberg:appdimens-ssps:3.1.2` |
-| [`appdimens-games/`](appdimens-games/) | Android (Kotlin + C++/NDK + OpenGL ES) | Specialized game-loop dimension types, Vector2D / Rectangle, viewport modes | Work in progress | `io.github.bodenberg:appdimens-games:2.0.1` |
-| [`appdimens-ios/`](appdimens-ios/) | iOS / macOS (UIKit + SwiftUI + Metal) | `AppDimens.shared.balanced(_)` / `defaultScaling(_)` / `smart(_)` / fluid + Metal games | Work in progress | CocoaPods `2.0.0` / SPM (see submodule) |
-| [`appdimens-dynamic-kmp/`](appdimens-dynamic-kmp/) | Kotlin Multiplatform | Same vocabulary as `appdimens-dynamic`, multiplatform targets | Work in progress | Test line `…appdimens-dynamic:4.0.0` — first KMP stable aimed at `1.0.0` |
-| [`appdimens-flutter/`](appdimens-flutter/) | Flutter (Android / iOS / Web / desktop) | `AppDimens.fixed(_)`, `.dynamic(_)`, `.fluidTo(_)`, `.cm` / `.mm` extensions | Work in progress | `appdimens: ^2.0.0` |
-| [`appdimens-react-native/`](appdimens-react-native/) | React Native (iOS / Android) | `useAppDimens()` hook with `balanced` / `defaultScaling` / `smart` / `fluid` | Work in progress | `appdimens-react-native@2.0.0` |
-| [`appdimens-web/`](appdimens-web/) | Web (vanilla / React / Vue / Svelte / Angular) | `webdimens.balanced(_)` + framework-specific hooks/services | Work in progress | `webdimens@2.0.0` |
+| [`appdimens-dynamic/`](https://github.com/bodenberg/appdimens-dynamic/tree/main) | Android (Compose, Kotlin, Java) | Runtime kernels — all **14 scaling modes** (12 strategies + Resize + Physical units) | **Production** | `io.github.bodenberg:appdimens-dynamic:3.1.5` |
+| [`appdimens-sdps/`](https://github.com/bodenberg/appdimens-sdps/tree/main) | Android (XML, Compose, Kotlin, Java) | Pre-computed `@dimen/_*sdp` / `_*hdp` / `_*wdp` resources + Compose tokens | **Production** | `io.github.bodenberg:appdimens-sdps:3.1.2` |
+| [`appdimens-ssps/`](https://github.com/bodenberg/appdimens-ssps/tree/main) | Android (XML, Compose, Kotlin, Java) | Pre-computed `@dimen/_*ssp` text resources + Compose tokens | **Production** | `io.github.bodenberg:appdimens-ssps:3.1.2` |
+| [`appdimens-games/`](https://github.com/bodenberg/appdimens-games/tree/main) | Android (Kotlin + C++/NDK + OpenGL ES) | Specialized game-loop dimension types, Vector2D / Rectangle, viewport modes | Work in progress | `io.github.bodenberg:appdimens-games:2.0.1` |
+| [`appdimens-ios/`](https://github.com/bodenberg/appdimens-ios/tree/main) | iOS / macOS (UIKit + SwiftUI + Metal) | `AppDimens.shared.balanced(_)` / `defaultScaling(_)` / `smart(_)` / fluid + Metal games | Work in progress | CocoaPods `2.0.0` / SPM (see submodule) |
+| [`appdimens-dynamic-kmp/`](https://github.com/bodenberg/appdimens-dynamic-kmp/tree/main) | Kotlin Multiplatform | Same vocabulary as `appdimens-dynamic`, multiplatform targets | Work in progress | Test line `…appdimens-dynamic:4.0.0` — first KMP stable aimed at `1.0.0` |
+| [`appdimens-flutter/`](https://github.com/bodenberg/appdimens-flutter/tree/main) | Flutter (Android / iOS / Web / desktop) | `AppDimens.fixed(_)`, `.dynamic(_)`, `.fluidTo(_)`, `.cm` / `.mm` extensions | Work in progress | `appdimens: ^2.0.0` |
+| [`appdimens-react-native/`](https://github.com/bodenberg/appdimens-react-native/tree/main) | React Native (iOS / Android) | `useAppDimens()` hook with `balanced` / `defaultScaling` / `smart` / `fluid` | Work in progress | `appdimens-react-native@2.0.0` |
+| [`appdimens-web/`](https://github.com/bodenberg/appdimens-web/tree/main) | Web (vanilla / React / Vue / Svelte / Angular) | `webdimens.balanced(_)` + framework-specific hooks/services | Work in progress | `webdimens@2.0.0` |
 
 **GitHub mirrors** — [dynamic](https://github.com/bodenberg/appdimens-dynamic) · [kmp](https://github.com/bodenberg/appdimens-dynamic-kmp) · [sdps](https://github.com/bodenberg/appdimens-sdps) · [ssps](https://github.com/bodenberg/appdimens-ssps) · [games](https://github.com/bodenberg/appdimens-games) · [ios](https://github.com/bodenberg/appdimens-ios) · [flutter](https://github.com/bodenberg/appdimens-flutter) · [react-native](https://github.com/bodenberg/appdimens-react-native) · [web](https://github.com/bodenberg/appdimens-web).
 
@@ -379,10 +398,10 @@ The `DOCS/` folder is **theory-only** — concepts, math, cross-platform mapping
 | Goal | Read | Then |
 |------|------|------|
 | **I want to ship today** | [DOCS/GUIDE.md](DOCS/GUIDE.md) — strategy decision tree, FAQs, common patterns | Submodule README for your stack |
-| **I want to understand the math** | [DOCS/THEORY.md](DOCS/THEORY.md) — formal kernels, axioms, comparisons | [`MATHEMATICS-AND-CALCULUS.md`](appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md) |
+| **I want to understand the math** | [DOCS/THEORY.md](DOCS/THEORY.md) — formal kernels, axioms, comparisons | [`MATHEMATICS-AND-CALCULUS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md) |
 | **I'm migrating from 1.x / 2.x / SDP–SSP** | [DOCS/MIGRATION.md](DOCS/MIGRATION.md) — legacy `.fxdp` / `.dydp` / unified DSL → Compose 3.x packages | The submodule changelog you ship |
 | **I'm porting across stacks** | [DOCS/PLATFORMS.md](DOCS/PLATFORMS.md) — concept ↔ submodule API, verified constants | The matching submodule README |
-| **I rotate / foldable my UI** | [DOCS/ORIENTATION.md](DOCS/ORIENTATION.md) — base orientation, `*Ph` / `*Lw` / `*Lh` inverters | [`COMPOSE-API-CONVENTIONS.md`](appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md) |
+| **I rotate / foldable my UI** | [DOCS/ORIENTATION.md](DOCS/ORIENTATION.md) — base orientation, `*Ph` / `*Lw` / `*Lh` inverters | [`COMPOSE-API-CONVENTIONS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md) |
 | **I want copy-paste recipes** | [DOCS/EXAMPLES.md](DOCS/EXAMPLES.md) — long-form snippets per stack | The submodule's `app/` sample where available |
 
 ### Visual & interactive resources
@@ -397,7 +416,7 @@ The `DOCS/` folder is **theory-only** — concepts, math, cross-platform mapping
 
 ## Performance snapshot
 
-Numbers captured on **Xiaomi 2107113SG (Snapdragon 888 · Android 14)** physical hardware, debug build without minify. Full methodology, R8 deltas, and per-device variability discussed in [`appdimens-dynamic/PERFORMANCE.md`](appdimens-dynamic/PERFORMANCE.md).
+Numbers captured on **Xiaomi 2107113SG (Snapdragon 888 · Android 14)** physical hardware, debug build without minify. Full methodology, R8 deltas, and per-device variability discussed in [`appdimens-dynamic/PERFORMANCE.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/PERFORMANCE.md).
 
 | Operation | Result | Notes |
 |-----------|--------|-------|
@@ -410,7 +429,7 @@ Numbers captured on **Xiaomi 2107113SG (Snapdragon 888 · Android 14)** physical
 | **JVM cache hit (local)** | **~1 ns** | Linux + JVM 17 |
 | **Real-world (1 000-item Compose scroll)** | ~996 ms total / ~996 µs per item | Indistinguishable from baseline; 0% jank at 120 FPS |
 
-With R8 + minify on release builds, the dashboard-style harness drops further (~125–155 ns micro combined, ~367–380 ns per-item macro). See the **Build variants & R8** note at the top of [`PERFORMANCE.md`](appdimens-dynamic/PERFORMANCE.md).
+With R8 + minify on release builds, the dashboard-style harness drops further (~125–155 ns micro combined, ~367–380 ns per-item macro). See the **Build variants & R8** note at the top of [`PERFORMANCE.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/PERFORMANCE.md).
 
 ---
 
@@ -447,7 +466,7 @@ Yes. Every kernel is a pure function of `(base, Configuration)`. Compose preview
 By design no. Effective-axis selection consults `Configuration` and `WindowManager` fold state. For authored portrait → device landscape (or vice versa), use the `*Ph` / `*Lw` / `*Lh` inverter tokens. See [DOCS/ORIENTATION.md](DOCS/ORIENTATION.md).
 
 **Is the cache thread-safe?**
-Yes. It is a lock-free **padded sharded cache** (128-byte shards to avoid false sharing on ARM64) with bypass for the simplest no-AR multiplies. Details in [`appdimens-dynamic/PERFORMANCE.md`](appdimens-dynamic/PERFORMANCE.md).
+Yes. It is a lock-free **padded sharded cache** (128-byte shards to avoid false sharing on ARM64) with bypass for the simplest no-AR multiplies. Details in [`appdimens-dynamic/PERFORMANCE.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/PERFORMANCE.md).
 
 **Can I keep some sizes truly constant?**
 Yes — use raw `Dp` / `Sp` (or `.dp` / `.sp` Compose extensions) for icons that must stay 24 dp everywhere. The conceptual **`NONE`** kernel is exactly this.
@@ -461,7 +480,7 @@ On Compose, the old unified DSL (`.fxdp`, `.dydp`, `.balanced().dp`) was split i
 
 - ✅ **Production:** `appdimens-dynamic`, `appdimens-sdps`, `appdimens-ssps` (Android).
 - 🔄 **Work in progress:** `appdimens-ios`, `appdimens-dynamic-kmp` (first stable aimed at `1.0.0`), `appdimens-flutter`, `appdimens-react-native`, `appdimens-web`, `appdimens-games`.
-- 🧪 **Hub theory:** kernel taxonomy and verified constants are stable; benchmark deltas continue to track new device classes ([`PERFORMANCE.md`](appdimens-dynamic/PERFORMANCE.md)).
+- 🧪 **Hub theory:** kernel taxonomy and verified constants are stable; benchmark deltas continue to track new device classes ([`PERFORMANCE.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/PERFORMANCE.md)).
 
 Issues about **this hub repo** (typos, dead links, missing concept docs) → [Hub issues](https://github.com/bodenberg/appdimens/issues). **Shipping bugs** (compile errors, wrong numbers, build problems) belong in the **submodule repository** you depend on so they reach the maintainers and CI of that artifact.
 

@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Nota sobre documentación y Android
 
-Las entradas históricas de versiones anteriores (p. ej. nombres **`.fxdp` / `.dydp`**, cadenas unificadas estilo **`.balanced().dp`**) describen **artefactos o guías unificadas** de su época. El módulo publicado actual de UI en Android es **[`appdimens-dynamic` 3.x](appdimens-dynamic/README.md)** con paquetes por estrategia: **`scaled`** (narrativas **FIXED**/ **DEFAULT**), **`percent`** (**DYNAMIC**/ **PERCENTAGE**), **`auto`** (**BALANCED**). Resumen rápido en inglés: **[`DOCS/MIGRATION.md`](DOCS/MIGRATION.md)**; tabla conceptual/API: **[`DOCS/PLATFORMS.md`](DOCS/PLATFORMS.md)**.
+Las entradas históricas de versiones anteriores (p. ej. nombres **`.fxdp` / `.dydp`**, cadenas unificadas estilo **`.balanced().dp`**) describen **artefactos o guías unificadas** de su época. El módulo publicado actual de UI en Android es **[`appdimens-dynamic` 3.x](https://github.com/bodenberg/appdimens-dynamic/blob/main/README.md)** con paquetes por estrategia: **`scaled`** (narrativas **FIXED**/ **DEFAULT**), **`percent`** (**DYNAMIC**/ **PERCENTAGE**), **`auto`** (**BALANCED**). Resumen rápido en inglés: **[`DOCS/MIGRATION.md`](DOCS/MIGRATION.md)**; tabla conceptual/API: **[`DOCS/PLATFORMS.md`](DOCS/PLATFORMS.md)**.
 
 ## [2.0.0] - 2025-11-02
 
@@ -722,7 +722,7 @@ We use [Semantic Versioning](https://semver.org/) for version numbers:
 
 ## Migration Guide
 
-For migration between major versions, see the **README and documentation** inside each submodule (e.g. [appdimens-dynamic](appdimens-dynamic/README.md), [appdimens-ios](appdimens-ios/README.md)) plus the consolidated hub essays under **[`DOCS/README.md`](DOCS/README.md)** (start with **`MIGRATION.md`**).
+For migration between major versions, see the **README and documentation** inside each submodule (e.g. [appdimens-dynamic](https://github.com/bodenberg/appdimens-dynamic/blob/main/README.md), [appdimens-ios](https://github.com/bodenberg/appdimens-ios/blob/main/README.md)) plus the consolidated hub essays under **[`DOCS/README.md`](DOCS/README.md)** (start with **`MIGRATION.md`**).
 
 ## Contributing
 

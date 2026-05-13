@@ -5,10 +5,10 @@ A formal, library-faithful account of the scaling kernels published by
 Day‑to‑day decisions live in **[GUIDE.md](GUIDE.md)** and runnable recipes in
 **[EXAMPLES.md](EXAMPLES.md)**. When prose here disagrees with the submodule
 documents, the submodule is the source of truth:
-**[`MATHEMATICS-AND-CALCULUS.md`](../appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md)**,
-**[`COMPOSE-API-CONVENTIONS.md`](../appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md)**,
+**[`MATHEMATICS-AND-CALCULUS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md)**,
+**[`COMPOSE-API-CONVENTIONS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md)**,
 and the per‑strategy files under
-[`appdimens-dynamic/DOCUMENTATION/`](../appdimens-dynamic/DOCUMENTATION/).
+[`appdimens-dynamic/DOCUMENTATION/`](https://github.com/bodenberg/appdimens-dynamic/tree/main/DOCUMENTATION).
 
 **Naming legend.** The hub uses the conceptual labels **BALANCED**, **DEFAULT**,
 **PERCENTAGE**, **DYNAMIC** because they are stack‑neutral. The Compose 3.x
@@ -21,7 +21,7 @@ and in [MIGRATION.md](MIGRATION.md).
 > **How to read this file**
 >
 > - **§1–§4** set up the problem, the notation, the effective-axis selection (qualifier, inverter, multi-window), and the AR multiplier folded in by the optional `a` suffix.
-> - **§5 — Strategy catalogue** is the kernel-by-kernel reference, aligned with the 14 modes shipped by `appdimens-dynamic` (see the [submodule summary table](../appdimens-dynamic/DOCUMENTATION/README.md#summary)).
+> - **§5 — Strategy catalogue** is the kernel-by-kernel reference, aligned with the 14 modes shipped by `appdimens-dynamic` (see the [submodule summary table](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/README.md#summary)).
 > - **§6–§7** cover the constraint-based `resize` subsystem and the physical-unit helpers (mm / cm / inch).
 > - **§8–§10** are quantitative and comparative — numerical sweeps, engineering invariants, and honest categorical trade-offs vs other libraries.
 > - **§11 + appendices** hold references, the Gradle ↔ hub-label table, and source pointers.
@@ -92,7 +92,7 @@ that surface in every public surface:
 1. **Reference fixed point.** Every kernel satisfies $f_S(b,c_{0}) = b$ when the
    snapshot $c_0$ matches the reference frame
    $(W_0, H_0, \rho_0) = (300\,\text{dp},\,533\,\text{dp},\,1.78)$
-   [`DesignScaleConstants.kt`](../appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/core/DesignScaleConstants.kt).
+   [`DesignScaleConstants.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/core/DesignScaleConstants.kt).
 2. **Monotone growth (in the relevant axis).** For the strategies that scale
    with device extent, $f_S$ is non‑decreasing in the chosen axis $d$. Two
    strategies break this on purpose — `fluid` saturates outside a band,
@@ -103,9 +103,9 @@ that surface in every public surface:
 4. **Strategies are modular.** Compose package
    `com.appdimens.dynamic.compose.<strategy>` does not import from another
    strategy package; all coupling goes through `core`
-   [`DimenCache`](../appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/core/DimenCache.kt)
+   [`DimenCache`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/core/DimenCache.kt)
    and
-   [`DimenCalculationPlumbing`](../appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/core/DimenCalculationPlumbing.kt).
+   [`DimenCalculationPlumbing`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/core/DimenCalculationPlumbing.kt).
 
 ### 1.3 Two pillars
 
@@ -123,9 +123,9 @@ matters, without rewriting kernels.
 ## 2. Notation, units, and reference frame
 
 The constants below are **canonical** in
-[`DesignScaleConstants.kt`](../appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/core/DesignScaleConstants.kt)
+[`DesignScaleConstants.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/core/DesignScaleConstants.kt)
 and
-[`DimenCache.kt`](../appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/core/DimenCache.kt).
+[`DimenCache.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/core/DimenCache.kt).
 
 | Symbol | Definition | Value | Source |
 |:---:|:---|:---|:---|
@@ -154,7 +154,7 @@ resource‑qualifier conventions [\[1, §Configuration\]](#11-references).
 The library publishes outputs in `Float` (IEEE 754 32‑bit) throughout. Test
 suites validate curves to a deterministic delta of $< 0.05\,\text{dp}$, which
 is one order of magnitude tighter than the visual resolution of a $1\,\text{dp}$
-unit; cf. [`StrategyModuleFormulasTest`](../appdimens-dynamic/library/src/test/java/com/appdimens/dynamic/modules/StrategyModuleFormulasTest.kt).
+unit; cf. [`StrategyModuleFormulasTest`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/test/java/com/appdimens/dynamic/modules/StrategyModuleFormulasTest.kt).
 
 ---
 
@@ -162,7 +162,7 @@ unit; cf. [`StrategyModuleFormulasTest`](../appdimens-dynamic/library/src/test/j
 
 Before any kernel is evaluated, three short layers of plumbing decide *which
 side of the window* the formula reads. They are implemented in
-[`DimenCalculationPlumbing.kt`](../appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/core/DimenCalculationPlumbing.kt).
+[`DimenCalculationPlumbing.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/core/DimenCalculationPlumbing.kt).
 
 ### 3.1 Qualifier
 
@@ -285,24 +285,24 @@ the call behind the multi‑window bypass. Implementation pointers are in
 
 The roster aligns one-for-one with the **14 scaling modes** listed in the
 submodule
-[`appdimens-dynamic/DOCUMENTATION/README.md` summary](../appdimens-dynamic/DOCUMENTATION/README.md#summary):
+[`appdimens-dynamic/DOCUMENTATION/README.md` summary](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/README.md#summary):
 
 | # | Section | Kernel | Hub label | Submodule doc |
 |---|---------|--------|-----------|----------------|
-| 1 | [§5.1](#51-scaled--linear-proportional-kernel-default) | `scaled` | DEFAULT / FIXED | [`scaled.md`](../appdimens-dynamic/DOCUMENTATION/scaled.md) |
-| 2 | [§5.2](#52-auto--piecewise-linearlogarithmic-kernel-balanced) | `auto` | BALANCED | [`auto.md`](../appdimens-dynamic/DOCUMENTATION/auto.md) |
-| 3 | [§5.3](#53-percent--linear-kernel--literal-space-percentages-percentage) | `percent` | PERCENTAGE / DYNAMIC | [`percent.md`](../appdimens-dynamic/DOCUMENTATION/percent.md) |
-| 4 | [§5.4](#54-power--stevens-style-sublinear-kernel) | `power` | Stevens-style | [`power.md`](../appdimens-dynamic/DOCUMENTATION/power.md) |
-| 5 | [§5.5](#55-logarithmic--weberfechner-damped-kernel) | `logarithmic` | Weber–Fechner | [`logarithmic.md`](../appdimens-dynamic/DOCUMENTATION/logarithmic.md) |
-| 6 | [§5.6](#56-fluid--clamped-affine-band) | `fluid` | Clamp band | [`fluid.md`](../appdimens-dynamic/DOCUMENTATION/fluid.md) |
-| 7 | [§5.7](#57-interpolated--fixedlinear-midpoint) | `interpolated` | Fixed–linear blend | [`interpolated.md`](../appdimens-dynamic/DOCUMENTATION/interpolated.md) |
-| 8 | [§5.8](#58-diagonal--euclidean-kernel) | `diagonal` | Euclidean | [`diagonal.md`](../appdimens-dynamic/DOCUMENTATION/diagonal.md) |
-| 9 | [§5.9](#59-perimeter--l1-kernel) | `perimeter` | $L^{1}$ | [`perimeter.md`](../appdimens-dynamic/DOCUMENTATION/perimeter.md) |
-| 10 | [§5.10](#510-fill-and-fit--extremum-ratios) | `fit` | Letterbox | [`fit.md`](../appdimens-dynamic/DOCUMENTATION/fit.md) |
-| 11 | [§5.10](#510-fill-and-fit--extremum-ratios) | `fill` | Cover | [`fill.md`](../appdimens-dynamic/DOCUMENTATION/fill.md) |
-| 12 | [§5.11](#511-density--dpi-bucket-kernel) | `density` | DPI-bucket | [`density.md`](../appdimens-dynamic/DOCUMENTATION/density.md) |
-| 13 | [§6](#6-constraint-based-geometry-the-resize-subsystem) | `resize` | Constraint geometry | [`resize.md`](../appdimens-dynamic/DOCUMENTATION/resize.md) |
-| 14 | [§7](#7-physical-units-mm-cm-in) | physical units | Real-world | [`physical-units.md`](../appdimens-dynamic/DOCUMENTATION/physical-units.md) |
+| 1 | [§5.1](#51-scaled--linear-proportional-kernel-default) | `scaled` | DEFAULT / FIXED | [`scaled.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/scaled.md) |
+| 2 | [§5.2](#52-auto--piecewise-linearlogarithmic-kernel-balanced) | `auto` | BALANCED | [`auto.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/auto.md) |
+| 3 | [§5.3](#53-percent--linear-kernel--literal-space-percentages-percentage) | `percent` | PERCENTAGE / DYNAMIC | [`percent.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/percent.md) |
+| 4 | [§5.4](#54-power--stevens-style-sublinear-kernel) | `power` | Stevens-style | [`power.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/power.md) |
+| 5 | [§5.5](#55-logarithmic--weberfechner-damped-kernel) | `logarithmic` | Weber–Fechner | [`logarithmic.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/logarithmic.md) |
+| 6 | [§5.6](#56-fluid--clamped-affine-band) | `fluid` | Clamp band | [`fluid.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fluid.md) |
+| 7 | [§5.7](#57-interpolated--fixedlinear-midpoint) | `interpolated` | Fixed–linear blend | [`interpolated.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/interpolated.md) |
+| 8 | [§5.8](#58-diagonal--euclidean-kernel) | `diagonal` | Euclidean | [`diagonal.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/diagonal.md) |
+| 9 | [§5.9](#59-perimeter--l1-kernel) | `perimeter` | $L^{1}$ | [`perimeter.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/perimeter.md) |
+| 10 | [§5.10](#510-fill-and-fit--extremum-ratios) | `fit` | Letterbox | [`fit.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fit.md) |
+| 11 | [§5.10](#510-fill-and-fit--extremum-ratios) | `fill` | Cover | [`fill.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fill.md) |
+| 12 | [§5.11](#511-density--dpi-bucket-kernel) | `density` | DPI-bucket | [`density.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/density.md) |
+| 13 | [§6](#6-constraint-based-geometry-the-resize-subsystem) | `resize` | Constraint geometry | [`resize.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/resize.md) |
+| 14 | [§7](#7-physical-units-mm-cm-in) | physical units | Real-world | [`physical-units.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/physical-units.md) |
 
 Plus a conceptual **NONE** (raw `Dp` / `Sp`) for surfaces that must stay constant.
 
@@ -348,7 +348,7 @@ the visual signature of the BALANCED curve: phones grow linearly, tablets
 breathe.
 
 **Implementation.** `calculateAutoDpCompose` in
-[`DimenAutoDp.kt`](../appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/compose/auto/DimenAutoDp.kt).
+[`DimenAutoDp.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/compose/auto/DimenAutoDp.kt).
 The phone leg reduces to the same pre‑aggregated `factors.scale` as `scaled`.
 
 ### 5.3 `percent` — linear kernel + literal `space*` percentages (PERCENTAGE)
@@ -360,7 +360,7 @@ $$K_{\text{percent}}(b, d) \;=\; b\,d\,\iota \;=\; K_{\text{scaled}}(b, d).$$
 
 What distinguishes `percent` is its second surface — the **literal**
 `space*` family in
-[`DimenPercentSpace.kt`](../appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/compose/percent/DimenPercentSpace.kt).
+[`DimenPercentSpace.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/compose/percent/DimenPercentSpace.kt).
 Here the receiver is read as a percentage in $[0, 100]$:
 
 $$\text{spaceW}(p)\;=\;\frac{p}{100}\,\cdot\,\text{screenWidthDp},$$
@@ -412,7 +412,7 @@ idea to *device extent*, treating the canvas as the stimulus.
 
 **Pre‑aggregation.** `factors.logScale` caches the result for $sw$+default
 inverter. See
-[`DimenLogarithmicDp.kt`](../appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/compose/logarithmic/DimenLogarithmicDp.kt).
+[`DimenLogarithmicDp.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/compose/logarithmic/DimenLogarithmicDp.kt).
 
 ### 5.6 `fluid` — clamped affine band
 
@@ -456,7 +456,7 @@ $$\boxed{\,K_{\text{diag}}(b, c) \;=\; b\,\frac{\sqrt{s_{\min}^2 + s_{\max}^2}}{
 The qualifier `SMALL_WIDTH`/`WIDTH`/`HEIGHT` does not change the diagonal — the
 formula always reads both sides of the window. `factors.diagonalScale` caches
 the scalar per configuration; cf.
-[`DimenDiagonalDp.kt`](../appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/compose/diagonal/DimenDiagonalDp.kt).
+[`DimenDiagonalDp.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/compose/diagonal/DimenDiagonalDp.kt).
 
 **Geometric interpretation.** $K_{\text{diag}}$ is the $L^{2}$ norm of the
 window normalised to the reference frame. For canvases within the same aspect
@@ -508,9 +508,9 @@ in `factors.density`.
 ## 6. Constraint‑based geometry: the `resize` subsystem
 
 `resize` is **not** a scaling curve. It is a constraint‑solving subsystem in
-[`ResizeMath.kt`](../appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/core/ResizeMath.kt)
+[`ResizeMath.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/core/ResizeMath.kt)
 and the parallel Compose helpers in
-[`compose.resize`](../appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/compose/resize/).
+[`compose.resize`](https://github.com/bodenberg/appdimens-dynamic/tree/main/library/src/main/java/com/appdimens/dynamic/compose/resize).
 Given a fitness predicate $\phi\colon (0,\infty) \to \{\mathrm{true},\,\mathrm{false}\}$ that is non‑increasing on the set where $\phi$ is true, it returns
 the **largest** candidate from a discretised step table that still satisfies
 $\phi$:
@@ -542,7 +542,7 @@ auto‑boxing in the hot path.
 ## 7. Physical units (mm, cm, in)
 
 The `physical-units` module in
-[`compose/units/DimenPhysicalUnits.kt`](../appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/compose/units/DimenPhysicalUnits.kt)
+[`compose/units/DimenPhysicalUnits.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/compose/units/DimenPhysicalUnits.kt)
 and `code.units.DimenPhysicalUnits` is **orthogonal** to the scaling kernels.
 It maps real‑world lengths to `dp`/`sp`/`px` through Android's
 `TypedValue` machinery — specifically `COMPLEX_UNIT_MM` and `COMPLEX_UNIT_IN`
@@ -586,7 +586,7 @@ Notes on the table:
 For canvas‑isotropic kernels (`diagonal`, `perimeter`, `fill`, `fit`) the
 table is two‑dimensional in $(s_{\min}, s_{\max})$. A representative slice
 appears in the Compose tests under
-[`StrategyModuleFormulasTest.kt`](../appdimens-dynamic/library/src/test/java/com/appdimens/dynamic/modules/StrategyModuleFormulasTest.kt).
+[`StrategyModuleFormulasTest.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/test/java/com/appdimens/dynamic/modules/StrategyModuleFormulasTest.kt).
 
 ---
 
@@ -619,7 +619,7 @@ The kernels above are stated as mathematical objects. Their implementation in
 
 None of the above changes the analytical output for a given $(b, c, S)$
 triple; they are pure performance scaffolding. Tests in
-[`DimenCacheTest`](../appdimens-dynamic/library/src/test/java/com/appdimens/dynamic/core/DimenCacheTest.kt)
+[`DimenCacheTest`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/test/java/com/appdimens/dynamic/core/DimenCacheTest.kt)
 and `StrategyModuleFormulasTest` guarantee that the cached path agrees with
 the analytic formula to the IEEE 754 tolerance noted in
 [§2](#2-notation-units-and-reference-frame).
@@ -719,12 +719,12 @@ kernel.
 
 [6] Bodenberg, J. *AppDimens Dynamic — Mathematics and Calculus.* Companion
 formal reference; consult for current implementation deltas.
-[`MATHEMATICS-AND-CALCULUS.md`](../appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md).
+[`MATHEMATICS-AND-CALCULUS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md).
 
 [7] Bodenberg, J. *AppDimens Dynamic — Compose API Conventions.* Complete
 catalogue of the `Number` and `TextUnit` extensions, inverters, and
 builders.
-[`COMPOSE-API-CONVENTIONS.md`](../appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md).
+[`COMPOSE-API-CONVENTIONS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md).
 
 ### Suggested citation
 
@@ -793,15 +793,15 @@ When inspecting the library, the most informative files for each kernel are:
 
 The aspect‑ratio mould of [§4](#4-the-aspect-ratio-mould-the-optional-a-suffix)
 is shared across kernels via
-[`DimenCache.calculateRawScaling`](../appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/core/DimenCache.kt)
+[`DimenCache.calculateRawScaling`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/core/DimenCache.kt)
 and the lookup table in
-[`core/AspectRatioLookup.kt`](../appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/core/AspectRatioLookup.kt).
+[`core/AspectRatioLookup.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/core/AspectRatioLookup.kt).
 The shared screen plumbing — inverters, multi‑window heuristics, and
 `readScreenDp` — lives in
-[`core/DimenCalculationPlumbing.kt`](../appdimens-dynamic/library/src/main/java/com/appdimens/dynamic/core/DimenCalculationPlumbing.kt).
+[`core/DimenCalculationPlumbing.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/core/DimenCalculationPlumbing.kt).
 For an exhaustive index of the `Number` / `TextUnit` surface (suffixes,
 inverters, `*a`/`*i`/`*ia`, builders) consult
-[`COMPOSE-API-CONVENTIONS.md`](../appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md).
+[`COMPOSE-API-CONVENTIONS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md).
 
 ---
 
@@ -814,9 +814,9 @@ inverters, `*a`/`*i`/`*ia`, builders) consult
 | Migrate from 1.x / 2.x or from third-party SDP / SSP | **[MIGRATION.md](MIGRATION.md)** |
 | Rotation & base orientation semantics | **[ORIENTATION.md](ORIENTATION.md)** |
 | Long-form code recipes per stack | **[EXAMPLES.md](EXAMPLES.md)** |
-| Canonical submodule math | **[`appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md`](../appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md)** |
-| Canonical Compose API surface | **[`appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md`](../appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md)** |
-| Performance methodology | **[`appdimens-dynamic/PERFORMANCE.md`](../appdimens-dynamic/PERFORMANCE.md)** |
+| Canonical submodule math | **[`appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md)** |
+| Canonical Compose API surface | **[`appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md)** |
+| Performance methodology | **[`appdimens-dynamic/PERFORMANCE.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/PERFORMANCE.md)** |
 
 ---
 

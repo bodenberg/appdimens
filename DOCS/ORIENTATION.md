@@ -106,7 +106,7 @@ Compose **does not** expose a `.portraitLowest()` chain on tokens. Instead, inve
 
 The same suffix pattern is published on text tokens (`32.sspPh`, `32.sspLw`, `50.hspLw`, `50.wspLh`, …).
 
-Full suffix catalogue (axis + `a` / `i` / `ia` AR/multi-window flags + inverters): **[`COMPOSE-API-CONVENTIONS.md`](../appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md)**.
+Full suffix catalogue (axis + `a` / `i` / `ia` AR/multi-window flags + inverters): **[`COMPOSE-API-CONVENTIONS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md)**.
 
 ### iOS / Flutter / RN / Web — builder-style chains
 
@@ -209,7 +209,7 @@ Surface(modifier = Modifier.width(400.wdp))
 
 | Platform | Notes |
 |----------|-------|
-| Android | Configuration changes propagate through Compose when wired per submodule guides; inverter tokens (`*Ph`, `*Lw`, `*Lh`) are the canonical surface — see [`COMPOSE-API-CONVENTIONS.md`](../appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md) |
+| Android | Configuration changes propagate through Compose when wired per submodule guides; inverter tokens (`*Ph`, `*Lw`, `*Lh`) are the canonical surface — see [`COMPOSE-API-CONVENTIONS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md) |
 | iOS | Trait collection churn triggers sizing refresh; orientation builders on the dimension chain |
 | Flutter | `MediaQuery` rebuild semantics; builder-style `.portraitLowest()` / `.landscapeHighest()` chains |
 | React Native / Web | Window resize APIs supply refreshed constraints; builder chains as on Flutter |
@@ -218,7 +218,7 @@ Surface(modifier = Modifier.width(400.wdp))
 
 ## Where to go next
 
-- **Compose surface (suffixes, inverters, AR / multi-window flags):** [`COMPOSE-API-CONVENTIONS.md`](../appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md)
+- **Compose surface (suffixes, inverters, AR / multi-window flags):** [`COMPOSE-API-CONVENTIONS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md)
 - **Concept ↔ API map across stacks:** [PLATFORMS.md](PLATFORMS.md)
 - **Why these inverters exist (axis selection theory):** [THEORY.md §3](THEORY.md#3-effective-axis-selection-qualifier-inverter-multi-window)
 - **Tactical patterns:** [GUIDE.md](GUIDE.md)

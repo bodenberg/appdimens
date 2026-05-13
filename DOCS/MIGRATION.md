@@ -1,6 +1,6 @@
 # Naming and migration — 1.x / 2.x → `appdimens-dynamic` 3.x (Android)
 
-How **historic AppDimens** labels map onto **`appdimens-dynamic`** Gradle **strategy packages** and **Compose extensions**. Exact formulae: [`MATHEMATICS-AND-CALCULUS.md`](../appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md). Verified Kotlin constants / package roster: **[PLATFORMS.md](PLATFORMS.md)**.
+How **historic AppDimens** labels map onto **`appdimens-dynamic`** Gradle **strategy packages** and **Compose extensions**. Exact formulae: [`MATHEMATICS-AND-CALCULUS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md). Verified Kotlin constants / package roster: **[PLATFORMS.md](PLATFORMS.md)**.
 
 ---
 
@@ -79,7 +79,7 @@ The three migrations below are the ones that cover **the vast majority** of real
 +}
 ```
 
-Kernel doc: **[`auto.md`](../appdimens-dynamic/DOCUMENTATION/auto.md)**.
+Kernel doc: **[`auto.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/auto.md)**.
 
 ### 4.2 DEFAULT / FIXED — `.fxdp` / `.defaultDp` → `scaled` package
 
@@ -99,7 +99,7 @@ Kernel doc: **[`auto.md`](../appdimens-dynamic/DOCUMENTATION/auto.md)**.
 +)
 ```
 
-Kernel doc: **[`scaled.md`](../appdimens-dynamic/DOCUMENTATION/scaled.md)**.
+Kernel doc: **[`scaled.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/scaled.md)**.
 
 ### 4.3 PERCENTAGE / DYNAMIC — `.dydp` → `percent` package
 
@@ -119,7 +119,7 @@ Kernel doc: **[`scaled.md`](../appdimens-dynamic/DOCUMENTATION/scaled.md)**.
 +)
 ```
 
-Kernel doc: **[`percent.md`](../appdimens-dynamic/DOCUMENTATION/percent.md)**.
+Kernel doc: **[`percent.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/percent.md)**.
 
 ---
 
@@ -127,7 +127,7 @@ Kernel doc: **[`percent.md`](../appdimens-dynamic/DOCUMENTATION/percent.md)**.
 
 If your app currently depends on a third-party Intuit-style SDP/SSP package (`com.intuit.sdp:sdp-android:*` or similar), the path is short and **non-destructive**: the resource names (`@dimen/_16sdp`, `@dimen/_18ssp`, …) match.
 
-**Step 1 — swap the dependency.** Replace the third-party SDP/SSP with [`io.github.bodenberg:appdimens-sdps`](../appdimens-sdps/README.md) and [`io.github.bodenberg:appdimens-ssps`](../appdimens-ssps/README.md). XML keeps working:
+**Step 1 — swap the dependency.** Replace the third-party SDP/SSP with [`io.github.bodenberg:appdimens-sdps`](https://github.com/bodenberg/appdimens-sdps/blob/main/README.md) and [`io.github.bodenberg:appdimens-ssps`](https://github.com/bodenberg/appdimens-ssps/blob/main/README.md). XML keeps working:
 
 ```xml
 <!-- Unchanged -->
@@ -168,7 +168,7 @@ You do **not** have to migrate everything at once; SDP/SSP XML resources and `ap
 | [THEORY.md](THEORY.md) | Derivations, axioms, kernel formulas |
 | [GUIDE.md](GUIDE.md) | Tactical patterns, decision tree |
 | [EXAMPLES.md](EXAMPLES.md) | Long-form snippets per stack |
-| [`appdimens-dynamic/DOCUMENTATION/README.md`](../appdimens-dynamic/DOCUMENTATION/README.md) | Submodule kernel catalogue |
-| [`appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md`](../appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md) | Full Compose token / suffix index |
+| [`appdimens-dynamic/DOCUMENTATION/README.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/README.md) | Submodule kernel catalogue |
+| [`appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md) | Full Compose token / suffix index |
 
  [← Documentation index](README.md) · [Hub README](../README.md)

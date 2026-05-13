@@ -14,15 +14,15 @@ Jump straight to the snippet that matches your task. Each link drops you inside 
 
 | Use case | Snippet section | Hub kernel | Submodule kernel doc |
 |----------|------------------|------------|------------------------|
-| **Recommended starting point** (multi-device app) | [§1 Quick start](#11-strategy-selection-guide) · [§2.1 Compose feed](#21-jetpack-compose---complete-app-example) | `auto` (BALANCED) | [`auto.md`](../appdimens-dynamic/DOCUMENTATION/auto.md) |
-| **Phone-first / SDP-style baseline** | [§2 Android examples](#2-android-examples) | `scaled` (DEFAULT) | [`scaled.md`](../appdimens-dynamic/DOCUMENTATION/scaled.md) |
-| **Containers / proportional grids** | [§7 Cross-Platform Patterns](#7-cross-platform-patterns) | `percent` | [`percent.md`](../appdimens-dynamic/DOCUMENTATION/percent.md) |
-| **Typography with min / max band** | [§1.2 Quick examples](#12-quick-examples-all-platforms) · [§8 Advanced Use Cases](#8-advanced-use-cases) | `fluid` | [`fluid.md`](../appdimens-dynamic/DOCUMENTATION/fluid.md) |
-| **TV / huge tablets — damp growth** | [§8 Advanced Use Cases](#8-advanced-use-cases) | `logarithmic` / `power` | [`logarithmic.md`](../appdimens-dynamic/DOCUMENTATION/logarithmic.md) · [`power.md`](../appdimens-dynamic/DOCUMENTATION/power.md) |
+| **Recommended starting point** (multi-device app) | [§1 Quick start](#11-strategy-selection-guide) · [§2.1 Compose feed](#21-jetpack-compose---complete-app-example) | `auto` (BALANCED) | [`auto.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/auto.md) |
+| **Phone-first / SDP-style baseline** | [§2 Android examples](#2-android-examples) | `scaled` (DEFAULT) | [`scaled.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/scaled.md) |
+| **Containers / proportional grids** | [§7 Cross-Platform Patterns](#7-cross-platform-patterns) | `percent` | [`percent.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/percent.md) |
+| **Typography with min / max band** | [§1.2 Quick examples](#12-quick-examples-all-platforms) · [§8 Advanced Use Cases](#8-advanced-use-cases) | `fluid` | [`fluid.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fluid.md) |
+| **TV / huge tablets — damp growth** | [§8 Advanced Use Cases](#8-advanced-use-cases) | `logarithmic` / `power` | [`logarithmic.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/logarithmic.md) · [`power.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/power.md) |
 | **Aspect-ratio aware** (foldables / 21:9 phones) | [§1.2 AR examples](#12-aspect-ratio-ar-impact-examples) | `*a` suffix on `scaled` / `auto` / `interpolated` / `logarithmic` / `power` | [THEORY.md §4](THEORY.md#4-the-aspect-ratio-mould-the-optional-a-suffix) |
-| **Game UI / HUD on arbitrary viewports** | [§9 Game Development](#9-game-development) | `fit` / `fill` | [`fit.md`](../appdimens-dynamic/DOCUMENTATION/fit.md) · [`fill.md`](../appdimens-dynamic/DOCUMENTATION/fill.md) |
-| **Real-world measurements** (mm / cm / inch) | [§8 Advanced Use Cases](#8-advanced-use-cases) | physical units | [`physical-units.md`](../appdimens-dynamic/DOCUMENTATION/physical-units.md) |
-| **Container-fit titles / squares** | [§8 Advanced Use Cases](#8-advanced-use-cases) | `resize` | [`resize.md`](../appdimens-dynamic/DOCUMENTATION/resize.md) |
+| **Game UI / HUD on arbitrary viewports** | [§9 Game Development](#9-game-development) | `fit` / `fill` | [`fit.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fit.md) · [`fill.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fill.md) |
+| **Real-world measurements** (mm / cm / inch) | [§8 Advanced Use Cases](#8-advanced-use-cases) | physical units | [`physical-units.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/physical-units.md) |
+| **Container-fit titles / squares** | [§8 Advanced Use Cases](#8-advanced-use-cases) | `resize` | [`resize.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/resize.md) |
 | **Rotation / foldable adaptation** | [§7 Cross-Platform Patterns](#7-cross-platform-patterns) | inverter suffixes (`*Ph`, `*Lw`, `*Lh`) | [ORIENTATION.md](ORIENTATION.md) |
 | **Migrating from 1.x / 2.x / SDP-SSP** | [§10 Migration Examples](#10-migration-examples) | — | [MIGRATION.md](MIGRATION.md) |
 
@@ -542,7 +542,7 @@ fun StrategyPickExample() {
 
 ### 2.2 Using different strategies
 
-Each formula maps to a **Gradle package + imports** inside `appdimens-dynamic` (scaled, auto, percent, logarithmic, power, fluid, …). The snippet below shows a few **verified Compose** entry points—open [DOCUMENTATION/README.md](../appdimens-dynamic/DOCUMENTATION/README.md) for the full matrix.
+Each formula maps to a **Gradle package + imports** inside `appdimens-dynamic` (scaled, auto, percent, logarithmic, power, fluid, …). The snippet below shows a few **verified Compose** entry points—open [DOCUMENTATION/README.md](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/README.md) for the full matrix.
 
 ```kotlin
 import com.appdimens.dynamic.compose.*
@@ -1448,7 +1448,7 @@ Text(text = "Hello", fontSize = 16.ssp)
 - Narrative **BALANCED** always maps to Compose **`auto`** (`assp`, `asdp`, …).
 - Narrative **DEFAULT** / **FIXED** maps to Compose **`scaled`** (`ssp`, `sdp`, …) plus axis tokens (`wdp`, `hdp`, `sem`, …).
 - The remaining twelve conceptual modes each have their own Gradle packages spelled out in **[THEORY.md §5](THEORY.md#5-strategy-catalogue)** and **[PLATFORMS.md](PLATFORMS.md)**.
-- Submodule canonical kernel docs live under **[`appdimens-dynamic/DOCUMENTATION/`](../appdimens-dynamic/DOCUMENTATION/)** — start with [`auto.md`](../appdimens-dynamic/DOCUMENTATION/auto.md), [`scaled.md`](../appdimens-dynamic/DOCUMENTATION/scaled.md), [`percent.md`](../appdimens-dynamic/DOCUMENTATION/percent.md).
+- Submodule canonical kernel docs live under **[`appdimens-dynamic/DOCUMENTATION/`](https://github.com/bodenberg/appdimens-dynamic/tree/main/DOCUMENTATION)** — start with [`auto.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/auto.md), [`scaled.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/scaled.md), [`percent.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/percent.md).
 
 **Where to go next**
 - [GUIDE.md](GUIDE.md) — tactical strategy decisions, FAQ, troubleshooting
