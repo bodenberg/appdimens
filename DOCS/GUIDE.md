@@ -28,10 +28,12 @@ What's your UI?
 └── Fullscreen games → FIT or FILL
 ```
 
-When AppDimens is overkill:
+### Related tooling choices
 
-- Truly single-form-factor prototypes with rigid mockups → raw `dp/pt` plus manual tweaks.
-- Marketing microsites handled entirely in CSS breakpoints → vanilla CSS (`clamp()`, media queries) may be simpler than loading a sizing library.
+Some teams address the same sizing concerns with other stacks:
+
+- Single-form-factor prototypes with rigid mockups often use raw `dp/pt` plus manual tweaks.
+- Web-only marketing pages handled entirely in CSS often standardize on `clamp()` and media queries without a cross-platform sizing library.
 
 ---
 

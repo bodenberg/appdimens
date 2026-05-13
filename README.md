@@ -195,8 +195,6 @@ Each bullet below either points to a verifiable file in this repository or a mea
 | **Rotation- / foldable-sensitive layouts** | Base-orientation + `*Ph` / `*Lw` / `*Lh` inverters | [DOCS/ORIENTATION.md](DOCS/ORIENTATION.md) |
 | **Container-fit titles / square widgets** | `resize` builders (`autoResizeTextSp`, `autoResizeSquareSize`) pick the largest size in a min..max range that still fits | [`resize.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/resize.md) |
 
-> **When AppDimens is overkill** — single-form-factor prototypes with rigid hand-tuned mockups, or marketing microsites already handled by CSS `clamp()` / media queries.
-
 ---
 
 ## The 14 scaling kernels at a glance
@@ -446,7 +444,7 @@ The hub does **not** publish a single global "score / 100" ranking — compariso
 | **CSS `vw` / `vh` / `clamp()` / container queries** | First-class in modern browsers, no JS | A single vocabulary that travels off the Web (iOS / Android / Flutter / RN) — `appdimens-web` integrates `clamp()`-style behaviour as the `fluid` kernel |
 | **`ScreenUtil` / `size-matters` / similar libraries** | Single dependency, friendly API | Strategy-per-call-site instead of a single global curve; foldable + multi-window heuristics; AR compensation; reproducible math doc per kernel |
 
-If you are already happy with one of the above on a phone-only product, AppDimens may be overkill — see [GUIDE.md](DOCS/GUIDE.md) "Fast path / When AppDimens is overkill".
+If your product already standardizes on one of the rows above, keep comparing trade-offs against your form-factor mix; the [fast path in GUIDE.md](DOCS/GUIDE.md#fast-path-about-30-seconds) summarizes kernel choice in one screen.
 
 ---
 
