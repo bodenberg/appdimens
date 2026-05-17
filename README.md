@@ -3,11 +3,11 @@
 
 # AppDimens — Smart Responsive Dimensions for Any Screen
 
-**A family of responsive sizing libraries that replaces fragile `dp` / `sp` / `pt` / `px` with explicit, perceptual scaling kernels — same vocabulary, same math, across Android, Apple, KMP, Flutter, React Native and the Web.**
+**A family of responsive sizing libraries that replaces fragile `dp` / `sp` / `pt` / `px` with explicit, perceptual scaling kernels — same vocabulary, same math, across Android, .NET for Android / MAUI, Apple, KMP, Flutter, React Native and the Web.**
 
 [![Repo](https://img.shields.io/badge/repo-documentation%20hub-1d4ed8.svg?logo=github)](https://github.com/bodenberg/appdimens)
 [![License](https://img.shields.io/badge/license-Apache%202.0-15803d.svg)](LICENSE)
-[![Platforms](https://img.shields.io/badge/platforms-Android%20%7C%20iOS%20%7C%20KMP%20%7C%20Flutter%20%7C%20RN%20%7C%20Web-f59e0b.svg)](#platform-matrix)
+[![Platforms](https://img.shields.io/badge/platforms-Android%20%7C%20.NET%20%7C%20iOS%20%7C%20KMP%20%7C%20Flutter%20%7C%20RN%20%7C%20Web-f59e0b.svg)](#platform-matrix)
 [![Scaling modes](https://img.shields.io/badge/scaling%20modes-14-7c3aed.svg)](#the-14-scaling-kernels-at-a-glance)
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-0d9488.svg?logo=githubsponsors&logoColor=white)](CONTRIBUTING.md)
 
@@ -26,6 +26,7 @@ Each implementation lives in its **own GitHub repository** (not only the submodu
 | [appdimens-dynamic](https://github.com/bodenberg/appdimens-dynamic) | Android — Jetpack Compose, Kotlin Views, Java Views | **Production** |
 | [appdimens-sdps](https://github.com/bodenberg/appdimens-sdps) | Android — XML `@dimen` SDP-style resources (+ Compose tokens) | **Production** |
 | [appdimens-ssps](https://github.com/bodenberg/appdimens-ssps) | Android — XML SSP-style text resources (+ Compose tokens) | **Production** |
+| [appdimens-net-binding](https://github.com/bodenberg/appdimens-net-binding) | **.NET 10 for Android** / **.NET MAUI** (Android) — C# bindings over the Maven AARs | **Production** |
 | [appdimens-games](https://github.com/bodenberg/appdimens-games) | Android — game / NDK sizing helpers | Work in progress |
 | [appdimens-ios](https://github.com/bodenberg/appdimens-ios) | Apple — iOS / iPadOS / macOS (UIKit, SwiftUI, Metal) | Work in progress |
 | [appdimens-dynamic-kmp](https://github.com/bodenberg/appdimens-dynamic-kmp) | Kotlin Multiplatform | Work in progress |
@@ -68,7 +69,7 @@ This repository is the **documentation hub**. Each platform library ships from i
 
 **AppDimens** is a multi-platform family of responsive sizing libraries. You write **a single base value** at the call-site — `16.sdp`, `balanced(16)`, `webdimens.balanced(16)` — and the library transforms it through an **explicit, named kernel** that reflects the current screen `Configuration` (width, height, aspect ratio, density, orientation, multi-window flags, fold state).
 
-The hub publishes the **shared vocabulary** (BALANCED, DEFAULT, PERCENTAGE, …) and the **mathematical reference** for every kernel. Each platform repository (`appdimens-dynamic`, `appdimens-sdps`, `appdimens-ssps`, `appdimens-ios`, `appdimens-dynamic-kmp`, `appdimens-flutter`, `appdimens-react-native`, `appdimens-web`, `appdimens-games`) implements that vocabulary natively, so design tokens travel across stacks without translation.
+The hub publishes the **shared vocabulary** (BALANCED, DEFAULT, PERCENTAGE, …) and the **mathematical reference** for every kernel. Each platform repository (`appdimens-dynamic`, `appdimens-sdps`, `appdimens-ssps`, `appdimens-net-binding`, `appdimens-ios`, `appdimens-dynamic-kmp`, `appdimens-flutter`, `appdimens-react-native`, `appdimens-web`, `appdimens-games`) implements that vocabulary natively, so design tokens travel across stacks without translation.
 
 Two operating tracks coexist:
 
@@ -169,7 +170,7 @@ Each bullet below either points to a verifiable file in this repository or a mea
 
 ### Ecosystem
 
-- **Six platform tracks** under one vocabulary — see [Platform matrix](#platform-matrix). Android Compose + XML, Apple (UIKit + SwiftUI), Kotlin Multiplatform, Flutter, React Native, Web (vanilla / React / Vue / Svelte / Angular), and a games surface with Android NDK + iOS Metal.
+- **Seven platform tracks** under one vocabulary — see [Platform matrix](#platform-matrix). Android Compose + XML, **.NET for Android / MAUI** (NuGet bindings), Apple (UIKit + SwiftUI), Kotlin Multiplatform, Flutter, React Native, Web (vanilla / React / Vue / Svelte / Angular), and a games surface with Android NDK + iOS Metal.
 - **Compose 3.x package split.** Each kernel is its own Gradle source package (`compose.scaled`, `compose.auto`, `compose.percent`, …). You import what you use and nothing else — the binary footprint stays small.
 
 ### Maintenance & honesty
@@ -188,6 +189,7 @@ Each bullet below either points to a verifiable file in this repository or a mea
 | **TV / large-screen companion app** | `logarithmic` and `auto` damp growth on canvases beyond 480 dp instead of inflating linearly | [`logarithmic.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/logarithmic.md) · [`auto.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/auto.md) |
 | **Cross-platform design system** | Same vocabulary on Android / iOS / KMP / Flutter / RN / Web — design tokens travel verbatim | [DOCS/PLATFORMS.md](DOCS/PLATFORMS.md) |
 | **XML view system with breakpoint resources** | `@dimen/_16sdp`, `_18ssp`, `_300wdp`, … shipped pre-computed; no runtime cost | [`appdimens-sdps`](https://github.com/bodenberg/appdimens-sdps/blob/main/README.md) · [`appdimens-ssps`](https://github.com/bodenberg/appdimens-ssps/blob/main/README.md) |
+| **.NET MAUI / .NET for Android app** | Same Android AARs and `@dimen` resources via NuGet — C# APIs (`DimenSdp`, `DimenSsp`, runtime `AppDimens`) | [`appdimens-net-binding`](https://github.com/bodenberg/appdimens-net-binding) · [NuGet](https://www.nuget.org/packages?q=Bodenberg.AppDimens) |
 | **Typography with hard min/max bounds** | `fluid` clamps a typographic band (e.g. 16–24 sp between 320–768 dp) the same way CSS `clamp()` would, with optional AR | [`fluid.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fluid.md) |
 | **Game UI / HUD on arbitrary viewports** | `fit` (letterbox) and `fill` (cover) keep the HUD intact across aspect ratios | [`fit.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fit.md) · [`fill.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fill.md) |
 | **Native game rendering (NDK / Metal)** | Specialized modules with C++/NDK on Android (`appdimens-games`) and Metal on iOS | [`appdimens-games/`](https://github.com/bodenberg/appdimens-games/tree/main) |
@@ -259,6 +261,40 @@ Box(
 ```
 
 → [`appdimens-sdps/README.md`](https://github.com/bodenberg/appdimens-sdps/blob/main/README.md) · [`appdimens-ssps/README.md`](https://github.com/bodenberg/appdimens-ssps/blob/main/README.md).
+
+### .NET for Android / MAUI (`appdimens-net-binding`, production)
+
+Bindings for **.NET 10** (`net10.0-android`) that embed the upstream Maven AARs, run **Xamarin.Android** binding generation, and expose the Kotlin/Java APIs to C#. Pick the same three artifacts you would on Gradle:
+
+| NuGet package | Android library | Focus |
+|---------------|-----------------|-------|
+| [Bodenberg.AppDimens.Sdps](https://www.nuget.org/packages/Bodenberg.AppDimens.Sdps) | [appdimens-sdps](https://github.com/bodenberg/appdimens-sdps) | Layout + typography — SDP/HDP/WDP and SSP/HSP/WSP via `@dimen` + code |
+| [Bodenberg.AppDimens.Ssps](https://www.nuget.org/packages/Bodenberg.AppDimens.Ssps) | [appdimens-ssps](https://github.com/bodenberg/appdimens-ssps) | Typography only — SSP/HSP/WSP |
+| [Bodenberg.AppDimens.Dynamic](https://www.nuget.org/packages/Bodenberg.AppDimens.Dynamic) | [appdimens-dynamic](https://github.com/bodenberg/appdimens-dynamic) | Runtime kernels — all scaling strategies, no pre-built XML grids |
+
+```bash
+dotnet add package Bodenberg.AppDimens.Sdps --version 3.5.1.4
+# or Bodenberg.AppDimens.Ssps / Bodenberg.AppDimens.Dynamic
+```
+
+```csharp
+using Com.Appdimens.Sdps.Code;
+
+public class MainActivity : Activity
+{
+    protected override void OnCreate(Bundle? savedInstanceState)
+    {
+        base.OnCreate(savedInstanceState);
+        DimenSdp.WarmupSdpsFactors(this);
+        float paddingPx = DimenSdp.Sdp(this, 16);
+        float titlePx   = DimenSsp.Ssp(this, 18);
+    }
+}
+```
+
+XML layouts use the same bundled resources as on Gradle (`@dimen/_16sdp`, `@dimen/_18ssp`, …). **Jetpack Compose** extensions in the AAR are not fully surfaced in C# — prefer **`DimenSdp` / `DimenSsp`** in Activities/Fragments, XML `@dimen`, or the **`ScaledDp` / `ScaledSp`** builders where generated.
+
+**Requirements:** .NET **10** with Android or MAUI workload, **API 24+**, JDK **17 or 21**, Android SDK platform **36+** for local binding builds. Binding source, smoke tests, and publish notes: [`appdimens-net-binding`](https://github.com/bodenberg/appdimens-net-binding).
 
 ### iOS — SwiftUI (`appdimens-ios`, work in progress)
 
@@ -334,8 +370,9 @@ Each folder below is its own Git submodule. **Always confirm semver in the submo
 | [`appdimens-flutter/`](https://github.com/bodenberg/appdimens-flutter/tree/main) | Flutter (Android / iOS / Web / desktop) | `AppDimens.fixed(_)`, `.dynamic(_)`, `.fluidTo(_)`, `.cm` / `.mm` extensions | Work in progress | `appdimens: ^2.0.0` |
 | [`appdimens-react-native/`](https://github.com/bodenberg/appdimens-react-native/tree/main) | React Native (iOS / Android) | `useAppDimens()` hook with `balanced` / `defaultScaling` / `smart` / `fluid` | Work in progress | `appdimens-react-native@2.0.0` |
 | [`appdimens-web/`](https://github.com/bodenberg/appdimens-web/tree/main) | Web (vanilla / React / Vue / Svelte / Angular) | `webdimens.balanced(_)` + framework-specific hooks/services | Work in progress | `webdimens@2.0.0` |
+| [`appdimens-net-binding/`](https://github.com/bodenberg/appdimens-net-binding/tree/main) | **.NET 10 for Android** / **.NET MAUI** (Android) | NuGet bindings — embeds Maven AARs, C# over `DimenDp` / `DimenSsp` / `AppDimens` APIs | **Production** | `Bodenberg.AppDimens.Sdps` · `Ssps` · `Dynamic` **3.5.1.4** ([NuGet](https://www.nuget.org/packages?q=Bodenberg.AppDimens)) |
 
-**GitHub mirrors** — [dynamic](https://github.com/bodenberg/appdimens-dynamic) · [kmp](https://github.com/bodenberg/appdimens-dynamic-kmp) · [sdps](https://github.com/bodenberg/appdimens-sdps) · [ssps](https://github.com/bodenberg/appdimens-ssps) · [games](https://github.com/bodenberg/appdimens-games) · [ios](https://github.com/bodenberg/appdimens-ios) · [flutter](https://github.com/bodenberg/appdimens-flutter) · [react-native](https://github.com/bodenberg/appdimens-react-native) · [web](https://github.com/bodenberg/appdimens-web).
+**GitHub mirrors** — [dynamic](https://github.com/bodenberg/appdimens-dynamic) · [kmp](https://github.com/bodenberg/appdimens-dynamic-kmp) · [sdps](https://github.com/bodenberg/appdimens-sdps) · [ssps](https://github.com/bodenberg/appdimens-ssps) · [**.net-binding**](https://github.com/bodenberg/appdimens-net-binding) · [games](https://github.com/bodenberg/appdimens-games) · [ios](https://github.com/bodenberg/appdimens-ios) · [flutter](https://github.com/bodenberg/appdimens-flutter) · [react-native](https://github.com/bodenberg/appdimens-react-native) · [web](https://github.com/bodenberg/appdimens-web).
 
 ### Clone with submodules
 
@@ -362,6 +399,7 @@ flowchart LR
   AndroidGroup --> dyn["appdimens-dynamic Production"]
   AndroidGroup --> sdps["appdimens-sdps Production"]
   AndroidGroup --> ssps["appdimens-ssps Production"]
+  AndroidGroup --> dotnet["appdimens-net-binding Production"]
   AndroidGroup --> games["appdimens-games WIP"]
   Apple --> ios["appdimens-ios WIP"]
   KMP --> kmpArtifact["appdimens-dynamic-kmp WIP"]
@@ -478,7 +516,7 @@ On Compose, the old unified DSL (`.fxdp`, `.dydp`, `.balanced().dp`) was split i
 
 ## Roadmap & status
 
-- ✅ **Production:** `appdimens-dynamic`, `appdimens-sdps`, `appdimens-ssps` (Android).
+- ✅ **Production:** `appdimens-dynamic`, `appdimens-sdps`, `appdimens-ssps` (Android); [`appdimens-net-binding`](https://github.com/bodenberg/appdimens-net-binding) (**.NET 10 for Android** / **MAUI** — [Bodenberg.AppDimens.Sdps](https://www.nuget.org/packages/Bodenberg.AppDimens.Sdps), [Ssps](https://www.nuget.org/packages/Bodenberg.AppDimens.Ssps), [Dynamic](https://www.nuget.org/packages/Bodenberg.AppDimens.Dynamic)).
 - 🔄 **Work in progress:** `appdimens-ios`, `appdimens-dynamic-kmp` (first stable aimed at `1.0.0`), `appdimens-flutter`, `appdimens-react-native`, `appdimens-web`, `appdimens-games`.
 - 🧪 **Hub theory:** kernel taxonomy and verified constants are stable; benchmark deltas continue to track new device classes ([`PERFORMANCE.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/PERFORMANCE.md)).
 
