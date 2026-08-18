@@ -1,0 +1,69 @@
+# AppDimens — Documentation Hub
+
+> AppDimens is a multi-platform family of responsive sizing libraries that replaces fragile `dp` / `sp` / `pt` / `px` with explicit, perceptual scaling kernels. The same vocabulary (BALANCED, DEFAULT, PERCENTAGE, …) and the same math travel across Android (Jetpack Compose + XML), .NET for Android / MAUI, Apple (iOS / macOS), Kotlin Multiplatform, Flutter, React Native and the Web. This repository is the **documentation hub**: it publishes the shared vocabulary, the mathematical theory of every scaling kernel, cross-platform API mapping and migration paths. Each platform implementation ships from its own GitHub repository (included here as Git submodules) with its own semver, install line and changelog — the hub never pins versions.
+
+## Key topics
+
+- [README — project overview, platform table, quick start](README.md)
+- [Docs hub index](DOCS/README.md)
+- [Practical guide — decision tree and patterns](DOCS/GUIDE.md)
+- [Theory — kernel formulas, axioms, comparisons](DOCS/THEORY.md)
+- [Examples — copy-paste recipes per stack](DOCS/EXAMPLES.md)
+- [Platforms — concept ↔ API mapping across all stacks](DOCS/PLATFORMS.md)
+- [Migration — 1.x / 2.x / SDP–SSP cheat sheet](DOCS/MIGRATION.md)
+- [Orientation — base orientation and inverters](DOCS/ORIENTATION.md)
+- [Image gallery](IMAGES/README.md)
+- [Changelog — coordinated releases](CHANGELOG.md)
+
+## Platform repositories (submodules)
+
+- [appdimens-dynamic](https://github.com/bodenberg/appdimens-dynamic) — Android runtime kernels, **3.1.9**, Production — [LLMS.txt](https://github.com/bodenberg/appdimens-dynamic/blob/main/LLMS.txt)
+- [appdimens-sdps](https://github.com/bodenberg/appdimens-sdps) — Android XML `@dimen` SDP-style resources, **3.1.7**, Production — [LLMS.txt](https://github.com/bodenberg/appdimens-sdps/blob/main/LLMS.txt)
+- [appdimens-ssps](https://github.com/bodenberg/appdimens-ssps) — Android XML SSP-style text resources, **3.1.7**, Production
+- [appdimens-kmp](https://github.com/bodenberg/appdimens-kmp) — Kotlin Multiplatform, **1.0.1**, Production — [LLMS.txt](https://github.com/bodenberg/appdimens-kmp/blob/main/LLMS.txt)
+- [appdimens-net-binding](https://github.com/bodenberg/appdimens-net-binding) — .NET 10 for Android / MAUI NuGet bindings, **3.5.1.4**, Production
+- [appdimens-ios](https://github.com/bodenberg/appdimens-ios) — Apple UIKit + SwiftUI + Metal, **3.1.6**
+- [appdimens-flutter](https://github.com/bodenberg/appdimens-flutter) — Flutter (Android / iOS / Web / desktop)
+- [appdimens-react-native](https://github.com/bodenberg/appdimens-react-native) — React Native (iOS & Android)
+- [appdimens-web](https://github.com/bodenberg/appdimens-web) — Web (vanilla / React / Vue / Svelte / Angular)
+- [appdimens-games](https://github.com/bodenberg/appdimens-games) — Android game / NDK sizing helpers
+
+## Scaling strategies (the 14 kernels)
+
+- [Scaled (default)](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/scaled.md) — linear SDP-style baseline
+- [Auto](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/auto.md) — hybrid linear + logarithmic (BALANCED, recommended)
+- [Percent](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/percent.md) — axis-heavy proportional scaling
+- [Power](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/power.md) — Stevens-style sublinear curve
+- [Logarithmic](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/logarithmic.md) — Weber–Fechner damping for large screens
+- [Fluid](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fluid.md) — clamp band (CSS `clamp()`-like)
+- [Interpolated](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/interpolated.md) — fixed–linear blend
+- [Diagonal](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/diagonal.md) — Euclidean diagonal scaling
+- [Perimeter](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/perimeter.md) — W + H perimeter scaling
+- [Fit](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fit.md) — letterbox (contain)
+- [Fill](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/fill.md) — cover
+- [Density](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/density.md) — DPI-bucket scaling
+- [Resize](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/resize.md) — constraint-based auto-fit
+- [Physical units](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/physical-units.md) — real-world mm / cm / inch
+
+## Key concepts
+
+- **Hub label** — stack-neutral name (BALANCED, DEFAULT, PERCENTAGE, DYNAMIC) mapped to each platform's tokens.
+- **Kernel** — the one-dimensional map `f_S(b, c)` turning a base value `b` into an output given a `Configuration` `c`.
+- **`auto` / BALANCED** — linear below 480 dp, logarithmic above (hinge constant 480 dp, ln gain 0.4).
+- **`scaled` / DEFAULT** — linear-proportional anchored at 300 dp.
+- **Aspect-ratio suffix `a`** — optional AR multiplier referenced to 16:9 (1.78).
+- **Inverters (`*Ph`, `*Lw`, `*Lh`)** — swap the driving axis on rotation.
+- **Two operating tracks** — runtime computation (dynamic, iOS, KMP, Flutter, RN, Web) and pre-computed `@dimen` resources (sdps, ssps); you can mix both.
+
+## Documentation format
+
+- The hub `DOCS/` folder is **theory-only** — no semver, no install lines. The submodule READMEs are the source of truth for versions and APIs.
+- When prose in the hub disagrees with a submodule, the submodule wins.
+- Math renders with GitHub's KaTeX subset; the canonical reference is `appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md`.
+
+## Additional
+
+- [Contributing](CONTRIBUTING.md)
+- [Code of conduct](CODE_OF_CONDUCT.md)
+- [Security](SECURITY.md)
+- [License — Apache 2.0](LICENSE)

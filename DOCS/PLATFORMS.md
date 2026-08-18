@@ -23,7 +23,7 @@ Always reconfirm semver in the submodule README before pinning — this column i
 | [`appdimens-ssps`](https://github.com/bodenberg/appdimens-ssps/tree/main) | Android (XML + Compose, text) | **Production** |
 | [`appdimens-games`](https://github.com/bodenberg/appdimens-games/tree/main) | Android (Kotlin + NDK + OpenGL ES) | Work in progress |
 | [`appdimens-ios`](https://github.com/bodenberg/appdimens-ios/tree/main) | iOS / macOS (UIKit + SwiftUI + Metal) | Work in progress |
-| [`appdimens-dynamic-kmp`](https://github.com/bodenberg/appdimens-dynamic-kmp/tree/main) | Kotlin Multiplatform | Work in progress |
+| [`appdimens-kmp`](https://github.com/bodenberg/appdimens-kmp/tree/main) | Kotlin Multiplatform | **Production** |
 | [`appdimens-flutter`](https://github.com/bodenberg/appdimens-flutter/tree/main) | Flutter (Android / iOS / Web / desktop) | Work in progress |
 | [`appdimens-react-native`](https://github.com/bodenberg/appdimens-react-native/tree/main) | React Native | Work in progress |
 | [`appdimens-web`](https://github.com/bodenberg/appdimens-web/tree/main) | Web (vanilla / React / Vue / Svelte / Angular) | Work in progress |
@@ -151,7 +151,7 @@ When prose in this hub disagrees with the submodule, **the submodule wins**. Use
 - **Android `appdimens-ssps`** — [README](https://github.com/bodenberg/appdimens-ssps/blob/main/README.md)
 - **Android `appdimens-games`** — [submodule root](https://github.com/bodenberg/appdimens-games/tree/main) · [`appdimens_games/`](https://github.com/bodenberg/appdimens-games/tree/main/appdimens_games)
 - **Apple `appdimens-ios`** — [submodule root](https://github.com/bodenberg/appdimens-ios/tree/main) (UIKit + SwiftUI + Metal)
-- **Kotlin Multiplatform `appdimens-dynamic-kmp`** — [submodule root](https://github.com/bodenberg/appdimens-dynamic-kmp/tree/main)
+- **Kotlin Multiplatform `appdimens-kmp`** — [submodule root](https://github.com/bodenberg/appdimens-kmp/tree/main)
 - **Flutter `appdimens-flutter`** — [submodule root](https://github.com/bodenberg/appdimens-flutter/tree/main) · `lib/src/`
 - **React Native `appdimens-react-native`** — [submodule root](https://github.com/bodenberg/appdimens-react-native/tree/main) · `src/core/`
 - **Web `webdimens`** — [submodule root](https://github.com/bodenberg/appdimens-web/tree/main) · `src/core/`

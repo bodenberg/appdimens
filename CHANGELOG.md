@@ -11,6 +11,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Coordinated submodule update — 2026-08-17
+
+All production-track submodules now point at the **latest `main`** of their repositories; hub documentation and status tables were refreshed to match.
+
+- 🔗 **Submodule pointers updated** (each now tracks its upstream `main`):
+  - `appdimens-dynamic` → **3.1.9**
+  - `appdimens-sdps` → **3.1.7**
+  - `appdimens-ssps` → **3.1.7**
+  - `appdimens-dynamic-kmp` → **1.0.1** (promoted to **Production**) — **renamed** to `appdimens-kmp` (upstream repo renamed to `bodenberg/appdimens-kmp`)
+  - `appdimens-ios` → **3.1.6**
+- 📄 **Official `LLMS.txt`** added at the repository root for LLM-friendly discovery, following the per-submodule convention.
+- 📚 **Docs updated:** `README.md` (status table, platform matrix, KMP quick start, roadmap), `DOCS/PLATFORMS.md` (status snapshot), `SECURITY.md` (KMP supported-versions row), `CHANGELOG.md` (this entry).
+
 ### Hub documentation
 
 - `DOCS/` is **theory-only** and intentionally omits pinned coordinates.

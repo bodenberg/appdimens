@@ -46,7 +46,7 @@ This project adheres to a code of conduct. By participating, you are expected to
 
 1. **Open in Android Studio**:
    ```bash
-   cd appdimens-dynamic   # or appdimens-sdps, appdimens-ssps, appdimens-games, appdimens-dynamic-kmp
+   cd appdimens-dynamic   # or appdimens-sdps, appdimens-ssps, appdimens-games, appdimens-kmp
    # Open Android Studio and import the project
    ```
 

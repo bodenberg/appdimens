@@ -3,9 +3,9 @@
 	url = https://github.com/bodenberg/appdimens-dynamic
 	branch = main
 
-[submodule "appdimens-dynamic-kmp"]
-	path = appdimens-dynamic-kmp
-	url = https://github.com/bodenberg/appdimens-dynamic-kmp
+[submodule "appdimens-kmp"]
+	path = appdimens-kmp
+	url = https://github.com/bodenberg/appdimens-kmp
 	branch = main
 
 [submodule "appdimens-sdps"]

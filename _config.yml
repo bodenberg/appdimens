@@ -7,7 +7,7 @@ description: Documentation hub for responsive sizing across platforms
 
 exclude:
   - appdimens-dynamic
-  - appdimens-dynamic-kmp
+  - appdimens-kmp
   - appdimens-sdps
   - appdimens-ssps
   - appdimens-games

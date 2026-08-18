@@ -10,7 +10,7 @@ This **meta-repository** mainly holds documentation. **Security-sensitive code s
 | **Android `appdimens-sdps` / `appdimens-ssps` 3.x** | :white_check_mark: |
 | **Android `appdimens-games` 2.x** | :white_check_mark: (best effort) |
 | **Cross-platform 2.x** (Flutter, iOS pod/SPM, RN, `webdimens`) | :white_check_mark: |
-| **KMP `appdimens-dynamic-kmp`** (test **`4.0.x`**, GA **`1.0.0`** TBD) | :white_check_mark: (pre-production / test artifacts only until **1.0.0**) |
+| **KMP `appdimens-kmp` 1.x** (GA **`1.0.1`**) | :white_check_mark: |
 | **Older lines** (e.g. 1.0.x) | :x: Critical fixes only by exception |
 
 ## Reporting a Vulnerability
