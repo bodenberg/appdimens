@@ -27,10 +27,10 @@ Each implementation lives in its **own GitHub repository** (not only the submodu
 | [appdimens-sdps](https://github.com/bodenberg/appdimens-sdps) | Android — XML `@dimen` SDP-style resources (+ Compose tokens) | **Production** |
 | [appdimens-ssps](https://github.com/bodenberg/appdimens-ssps) | Android — XML SSP-style text resources (+ Compose tokens) | **Production** |
 | [appdimens-net-binding](https://github.com/bodenberg/appdimens-net-binding) | **.NET 10 for Android** / **.NET MAUI** (Android) — C# bindings over the Maven AARs | **Production** |
-| [appdimens-games](https://github.com/bodenberg/appdimens-games) | Android — game / NDK sizing helpers | Work in progress |
+| [appdimens-games](https://github.com/bodenberg/appdimens-games) | Android — game / NDK sizing helpers | **Production** |
 | [appdimens-ios](https://github.com/bodenberg/appdimens-ios) | Apple — iOS / iPadOS / macOS (UIKit, SwiftUI, Metal) | Work in progress |
 | [appdimens-kmp](https://github.com/bodenberg/appdimens-kmp) | Kotlin Multiplatform | **Production** |
-| [appdimens-flutter](https://github.com/bodenberg/appdimens-flutter) | Flutter — Android, iOS, Web, desktop | Work in progress |
+| [appdimens-flutter](https://github.com/bodenberg/appdimens-flutter) | Flutter — Android, iOS, Web, desktop | **Production** |
 | [appdimens-react-native](https://github.com/bodenberg/appdimens-react-native) | React Native — iOS & Android | Work in progress |
 | [appdimens-web](https://github.com/bodenberg/appdimens-web) | Web — vanilla JS, React, Vue, Svelte, Angular | Work in progress |
 
@@ -319,20 +319,19 @@ implementation("io.github.bodenberg:appdimens-kmp-percent") // optional strategy
 
 Packages use `com.appdimens.kmp.*` — keep the KMP artifact distinct from the Android `com.appdimens.dynamic.*` one. Full guide: [`appdimens-kmp/`](https://github.com/bodenberg/appdimens-kmp/tree/main).
 
-### Flutter (`appdimens-flutter`, work in progress)
+### Flutter (`appdimens-flutter`, production)
 
 ```dart
-Container(
-  width: AppDimens.fixed(300).calculate(context),
-  padding: EdgeInsets.all(AppDimens.fixed(16).calculate(context)),
-  child: Text(
-    'Hello',
-    style: TextStyle(fontSize: AppDimens.fixed(16).calculate(context)),
-  ),
-)
+import 'package:appdimens_flutter/appdimens.dart';
+
+Box(
+  width: 100.wdp,
+  height: 48.hdp,
+).padding(EdgeInsets.all(16.sdp))
+ .child(Text('Hello', fontSize: 16.ssp));
 ```
 
-→ [`appdimens-flutter/`](https://github.com/bodenberg/appdimens-flutter/tree/main).
+→ [`appdimens-flutter/`](https://github.com/bodenberg/appdimens-flutter/tree/main) — pub.dev `appdimens_flutter ^3.2.0` (+ per-strategy satellites and the `appdimens_bom` all-in-one package).
 
 ### React Native (`appdimens-react-native`, work in progress)
 
@@ -372,10 +371,10 @@ Each folder below is its own Git submodule. **Always confirm semver in the submo
 | [`appdimens-dynamic/`](https://github.com/bodenberg/appdimens-dynamic/tree/main) | Android (Compose, Kotlin, Java) | Runtime kernels — all **14 scaling modes** (12 strategies + Resize + Physical units) | **Production** | `io.github.bodenberg:appdimens-dynamic:3.1.9` |
 | [`appdimens-sdps/`](https://github.com/bodenberg/appdimens-sdps/tree/main) | Android (XML, Compose, Kotlin, Java) | Pre-computed `@dimen/_*sdp` / `_*hdp` / `_*wdp` resources + Compose tokens | **Production** | `io.github.bodenberg:appdimens-sdps:3.1.7` |
 | [`appdimens-ssps/`](https://github.com/bodenberg/appdimens-ssps/tree/main) | Android (XML, Compose, Kotlin, Java) | Pre-computed `@dimen/_*ssp` text resources + Compose tokens | **Production** | `io.github.bodenberg:appdimens-ssps:3.1.7` |
-| [`appdimens-games/`](https://github.com/bodenberg/appdimens-games/tree/main) | Android (Kotlin + C++/NDK + OpenGL ES) | Specialized game-loop dimension types, Vector2D / Rectangle, viewport modes | Work in progress | `io.github.bodenberg:appdimens-games:2.0.1` |
+| [`appdimens-games/`](https://github.com/bodenberg/appdimens-games/tree/main) | Android (Kotlin + C++/NDK + OpenGL ES) | Specialized game-loop dimension types, Vector2D / Rectangle, viewport modes | **Production** | `io.github.bodenberg:appdimens-games:3.0.0` |
 | [`appdimens-ios/`](https://github.com/bodenberg/appdimens-ios/tree/main) | iOS / macOS (UIKit + SwiftUI + Metal) | `AppDimens.shared.balanced(_)` / `defaultScaling(_)` / `smart(_)` / fluid + Metal games | Work in progress | SwiftPM `3.1.6` (see submodule) |
 | [`appdimens-kmp/`](https://github.com/bodenberg/appdimens-kmp/tree/main) | Kotlin Multiplatform | Same vocabulary as `appdimens-dynamic`, multiplatform targets | **Production** | `io.github.bodenberg:appdimens-kmp:1.0.1` |
-| [`appdimens-flutter/`](https://github.com/bodenberg/appdimens-flutter/tree/main) | Flutter (Android / iOS / Web / desktop) | `AppDimens.fixed(_)`, `.dynamic(_)`, `.fluidTo(_)`, `.cm` / `.mm` extensions | Work in progress | `appdimens: ^2.0.0` |
+| [`appdimens-flutter/`](https://github.com/bodenberg/appdimens-flutter/tree/main) | Flutter (Android / iOS / Web / desktop) | Suffix grammar `16.sdp` / `wdp` / `hdp` / `ssp`, per-strategy satellite packages, `appdimens_bom` | **Production** | pub.dev `appdimens_flutter ^3.2.0` |
 | [`appdimens-react-native/`](https://github.com/bodenberg/appdimens-react-native/tree/main) | React Native (iOS / Android) | `useAppDimens()` hook with `balanced` / `defaultScaling` / `smart` / `fluid` | Work in progress | `appdimens-react-native@2.0.0` |
 | [`appdimens-web/`](https://github.com/bodenberg/appdimens-web/tree/main) | Web (vanilla / React / Vue / Svelte / Angular) | `webdimens.balanced(_)` + framework-specific hooks/services | Work in progress | `webdimens@2.0.0` |
 | [`appdimens-net-binding/`](https://github.com/bodenberg/appdimens-net-binding/tree/main) | **.NET 10 for Android** / **.NET MAUI** (Android) | NuGet bindings — embeds Maven AARs, C# over `DimenDp` / `DimenSsp` / `AppDimens` APIs | **Production** | `Bodenberg.AppDimens.Sdps` · `Ssps` · `Dynamic` **3.5.1.4** ([NuGet](https://www.nuget.org/packages?q=Bodenberg.AppDimens)) |
@@ -408,10 +407,10 @@ flowchart LR
   AndroidGroup --> sdps["appdimens-sdps Production"]
   AndroidGroup --> ssps["appdimens-ssps Production"]
   AndroidGroup --> dotnet["appdimens-net-binding Production"]
-  AndroidGroup --> games["appdimens-games WIP"]
+  AndroidGroup --> games["appdimens-games Production"]
   Apple --> ios["appdimens-ios WIP"]
   KMP --> kmpArtifact["appdimens-kmp Production"]
-  Flutter --> flu["appdimens-flutter WIP"]
+  Flutter --> flu["appdimens-flutter Production"]
   RN --> rn["appdimens-react-native WIP"]
   Web --> webdimens["webdimens WIP"]
 ```
@@ -524,8 +523,8 @@ On Compose, the old unified DSL (`.fxdp`, `.dydp`, `.balanced().dp`) was split i
 
 ## Roadmap & status
 
-- ✅ **Production:** `appdimens-dynamic` (**3.1.9**), `appdimens-sdps` / `appdimens-ssps` (**3.1.7**) (Android); `appdimens-kmp` (**1.0.1**, Kotlin Multiplatform); [`appdimens-net-binding`](https://github.com/bodenberg/appdimens-net-binding) (**.NET 10 for Android** / **MAUI** — [Bodenberg.AppDimens.Sdps](https://www.nuget.org/packages/Bodenberg.AppDimens.Sdps), [Ssps](https://www.nuget.org/packages/Bodenberg.AppDimens.Ssps), [Dynamic](https://www.nuget.org/packages/Bodenberg.AppDimens.Dynamic)).
-- 🔄 **Work in progress:** `appdimens-ios`, `appdimens-flutter`, `appdimens-react-native`, `appdimens-web`, `appdimens-games`.
+- ✅ **Production:** `appdimens-dynamic` (**3.1.9**), `appdimens-sdps` / `appdimens-ssps` (**3.1.7**) (Android); `appdimens-kmp` (**1.0.1**, Kotlin Multiplatform); `appdimens-flutter` (**3.2.0**, pub.dev); `appdimens-games` (**3.0.0**, Android NDK); [`appdimens-net-binding`](https://github.com/bodenberg/appdimens-net-binding) (**.NET 10 for Android** / **MAUI** — [Bodenberg.AppDimens.Sdps](https://www.nuget.org/packages/Bodenberg.AppDimens.Sdps), [Ssps](https://www.nuget.org/packages/Bodenberg.AppDimens.Ssps), [Dynamic](https://www.nuget.org/packages/Bodenberg.AppDimens.Dynamic)).
+- 🔄 **Work in progress:** `appdimens-ios`, `appdimens-react-native`, `appdimens-web`.
 - 🧪 **Hub theory:** kernel taxonomy and verified constants are stable; benchmark deltas continue to track new device classes ([`PERFORMANCE.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/PERFORMANCE.md)).
 
 Issues about **this hub repo** (typos, dead links, missing concept docs) → [Hub issues](https://github.com/bodenberg/appdimens/issues). **Shipping bugs** (compile errors, wrong numbers, build problems) belong in the **submodule repository** you depend on so they reach the maintainers and CI of that artifact.

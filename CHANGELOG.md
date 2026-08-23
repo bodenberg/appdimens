@@ -11,6 +11,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Coordinated submodule update — 2026-08-23
+
+All submodules now point at the **latest `main`** of their repositories. `appdimens-flutter` and `appdimens-games` were **promoted to Production**; only `appdimens-ios`, `appdimens-react-native` and `appdimens-web` remain in development.
+
+- 🔗 **Submodule pointers updated** (each now tracks its upstream `main`):
+  - `appdimens-dynamic` → **3.1.9** (Production)
+  - `appdimens-sdps` → **3.1.7** (Production)
+  - `appdimens-ssps` → **3.1.7** (Production)
+  - `appdimens-kmp` → **1.0.1** (Production)
+  - `appdimens-games` → **3.0.0** (promoted to **Production**, replaces deprecated 2.0.1)
+  - `appdimens-flutter` → **3.2.0** (promoted to **Production** — published on pub.dev: `appdimens_flutter`, satellites and `appdimens_bom`)
+  - `appdimens-ios` → latest `main` (Work in progress)
+  - `appdimens-react-native` → latest `main` (Work in progress)
+  - `appdimens-web` → latest `main` (Work in progress)
+- 📚 **Docs updated:** `README.md` (status table, Flutter quick start rewritten for the 3.2.0 suffix API, platform matrix coordinates for games 3.0.0 / flutter 3.2.0, mermaid diagram, roadmap), `DOCS/PLATFORMS.md` (status snapshot), `LLMS.txt` (versions and statuses), `CHANGELOG.md` (this entry).
+
 ### Coordinated submodule update — 2026-08-17
 
 All production-track submodules now point at the **latest `main`** of their repositories; hub documentation and status tables were refreshed to match.

@@ -22,11 +22,11 @@
 - [appdimens-ssps](https://github.com/bodenberg/appdimens-ssps) — Android XML SSP-style text resources, **3.1.7**, Production
 - [appdimens-kmp](https://github.com/bodenberg/appdimens-kmp) — Kotlin Multiplatform, **1.0.1**, Production — [LLMS.txt](https://github.com/bodenberg/appdimens-kmp/blob/main/LLMS.txt)
 - [appdimens-net-binding](https://github.com/bodenberg/appdimens-net-binding) — .NET 10 for Android / MAUI NuGet bindings, **3.5.1.4**, Production
-- [appdimens-ios](https://github.com/bodenberg/appdimens-ios) — Apple UIKit + SwiftUI + Metal, **3.1.6**
-- [appdimens-flutter](https://github.com/bodenberg/appdimens-flutter) — Flutter (Android / iOS / Web / desktop)
-- [appdimens-react-native](https://github.com/bodenberg/appdimens-react-native) — React Native (iOS & Android)
-- [appdimens-web](https://github.com/bodenberg/appdimens-web) — Web (vanilla / React / Vue / Svelte / Angular)
-- [appdimens-games](https://github.com/bodenberg/appdimens-games) — Android game / NDK sizing helpers
+- [appdimens-ios](https://github.com/bodenberg/appdimens-ios) — Apple UIKit + SwiftUI + Metal, **3.1.6**, Work in progress
+- [appdimens-flutter](https://github.com/bodenberg/appdimens-flutter) — Flutter (Android / iOS / Web / desktop), **3.2.0**, Production
+- [appdimens-react-native](https://github.com/bodenberg/appdimens-react-native) — React Native (iOS & Android), Work in progress
+- [appdimens-web](https://github.com/bodenberg/appdimens-web) — Web (vanilla / React / Vue / Svelte / Angular), Work in progress
+- [appdimens-games](https://github.com/bodenberg/appdimens-games) — Android game / NDK sizing helpers, **3.0.0**, Production
 
 ## Scaling strategies (the 14 kernels)
 

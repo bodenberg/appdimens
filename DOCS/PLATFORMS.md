@@ -21,10 +21,10 @@ Always reconfirm semver in the submodule README before pinning — this column i
 | [`appdimens-dynamic`](https://github.com/bodenberg/appdimens-dynamic/tree/main) | Android (Compose + Kotlin + Java) | **Production** |
 | [`appdimens-sdps`](https://github.com/bodenberg/appdimens-sdps/tree/main) | Android (XML + Compose) | **Production** |
 | [`appdimens-ssps`](https://github.com/bodenberg/appdimens-ssps/tree/main) | Android (XML + Compose, text) | **Production** |
-| [`appdimens-games`](https://github.com/bodenberg/appdimens-games/tree/main) | Android (Kotlin + NDK + OpenGL ES) | Work in progress |
+| [`appdimens-games`](https://github.com/bodenberg/appdimens-games/tree/main) | Android (Kotlin + NDK + OpenGL ES) | **Production** |
 | [`appdimens-ios`](https://github.com/bodenberg/appdimens-ios/tree/main) | iOS / macOS (UIKit + SwiftUI + Metal) | Work in progress |
 | [`appdimens-kmp`](https://github.com/bodenberg/appdimens-kmp/tree/main) | Kotlin Multiplatform | **Production** |
-| [`appdimens-flutter`](https://github.com/bodenberg/appdimens-flutter/tree/main) | Flutter (Android / iOS / Web / desktop) | Work in progress |
+| [`appdimens-flutter`](https://github.com/bodenberg/appdimens-flutter/tree/main) | Flutter (Android / iOS / Web / desktop) | **Production** |
 | [`appdimens-react-native`](https://github.com/bodenberg/appdimens-react-native/tree/main) | React Native | Work in progress |
 | [`appdimens-web`](https://github.com/bodenberg/appdimens-web/tree/main) | Web (vanilla / React / Vue / Svelte / Angular) | Work in progress |
 
