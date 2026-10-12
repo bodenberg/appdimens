@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Submodule update — 2026-10-12 — `appdimens-web` 3.2.1
+
+- 🔗 `appdimens-web` → **3.2.1** (npm `webdimens`): fixes the scaled strategy being dropped by bundlers that honour `sideEffects` (Vite / Rolldown, esbuild); strategies now register **on demand** when a token is used, so `import 'webdimens/<strategy>'` is no longer required; new `install({ strategies })` option for hand-written CSS / PostCSS; full English + Portuguese docs in `docs/`.
+- 📚 Hub docs updated: README, `DOCS/GUIDE.md`, `DOCS/EXAMPLES.md`, `DOCS/PLATFORMS.md`, `DOCS/MIGRATION.md`, `DOCS/README.md`, `DOCS/THEORY.md`, `LLMS.txt`, `skills/SKILL.md`, `SECURITY.md` (version, CDN URL, no more manual strategy import on the Web).
+
 ### Coordinated submodule update — 2026-10-12 — everything in production
 
 All submodules now point at the **latest `main`** of their repositories, and **every library is in production**. `appdimens-ios`, `appdimens-react-native` and `appdimens-web` left "work in progress"; `appdimens-net-binding` was added to the hub as a submodule.

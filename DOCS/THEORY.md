@@ -4,7 +4,7 @@
 > **In plain words.** This page is the *math* behind AppDimens: the exact formula each strategy uses to turn your `16` into the right size for the current screen.
 > **You don't need it to use the libraries** — for that, read the [Beginner's Guide](GUIDE.md) and [Examples](EXAMPLES.md).
 > Read on if you want to know *why* the sizes come out the way they do, or to check that every platform computes the same numbers.
-> The formulas are identical in all AppDimens libraries (Android, KMP, iOS, Flutter, React Native, Web, .NET, Games — all at 3.2.0, .NET at 3.6.1).
+> The formulas are identical in all AppDimens libraries (Android, KMP, iOS, Flutter, React Native, Web, .NET, Games — all at 3.2.0, Web at 3.2.1, .NET at 3.6.1).
 
 A formal, library-faithful account of the scaling kernels published by
 **`appdimens-dynamic`** (Jetpack Compose 3.x and parallel Kotlin View bindings).

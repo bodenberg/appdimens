@@ -72,7 +72,7 @@ Every platform has its **own repository** (linked below). This repository is the
 | **Apple** — iOS, iPadOS, macOS, tvOS, watchOS, visionOS (SwiftUI, UIKit) | [appdimens-ios](https://github.com/bodenberg/appdimens-ios) | **3.2.0** | Swift Package Manager: `https://github.com/bodenberg/appdimens-ios` from `3.2.0` | [Beginner guide](https://github.com/bodenberg/appdimens-ios/blob/main/GUIDE-FOR-BEGINNERS.md) |
 | **Flutter** — Android, iOS, web, desktop | [appdimens-flutter](https://github.com/bodenberg/appdimens-flutter) | **3.2.0** | `flutter pub add appdimens_flutter` | [Beginner guide](https://github.com/bodenberg/appdimens-flutter/blob/main/GUIDE-FOR-BEGINNERS.md) |
 | **React Native** — iOS & Android | [appdimens-react-native](https://github.com/bodenberg/appdimens-react-native) | **3.2.0** | `npm install appdimens-react-native` | [Docs](https://github.com/bodenberg/appdimens-react-native/blob/main/docs/README.md) |
-| **Web** — HTML/CSS, React, Vue, Svelte, Angular | [appdimens-web](https://github.com/bodenberg/appdimens-web) (npm `webdimens`) | **3.2.0** | `npm install webdimens` | [README](https://github.com/bodenberg/appdimens-web/blob/main/README.md) · [PT-BR](https://github.com/bodenberg/appdimens-web/blob/main/README.pt-BR.md) |
+| **Web** — HTML/CSS, React, Vue, Svelte, Angular | [appdimens-web](https://github.com/bodenberg/appdimens-web) (npm `webdimens`) | **3.2.1** | `npm install webdimens` | [Getting started](https://github.com/bodenberg/appdimens-web/blob/main/docs/getting-started.md) · [PT-BR](https://github.com/bodenberg/appdimens-web/blob/main/docs/pt-BR/getting-started.md) |
 | **.NET** — MAUI, WPF, WinForms, WinUI 3, .NET for Android | [appdimens-net-binding](https://github.com/bodenberg/appdimens-net-binding) | **3.6.1** | `dotnet add package Bodenberg.AppDimens.Maui.Sdps` | [Docs](https://github.com/bodenberg/appdimens-net-binding/blob/main/docs/README.md) |
 | **Games** — Android, C/C++/NDK, OpenGL ES, Vulkan, Unity/C# | [appdimens-games](https://github.com/bodenberg/appdimens-games) | **3.2.0** | `implementation("io.github.bodenberg:appdimens-games:3.2.0")` | [Beginner guide](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/GUIDE-FOR-BEGINNERS.md) |
 
@@ -125,7 +125,7 @@ import { sdp, ssp } from 'appdimens-react-native';
 **Web**
 ```html
 <!-- No build step: the CDN script installs itself -->
-<script src="https://cdn.jsdelivr.net/npm/webdimens@3.2.0/dist/webdimens.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/webdimens@3.2.1/dist/webdimens.global.js"></script>
 <p class="p:16sdp fs:18ssp">Hello</p>
 <!-- With npm: import { install } from 'webdimens'; install(); -->
 ```
@@ -271,7 +271,7 @@ Only need one platform? Just use that library's repository directly.
 
 - **Como usar:** troque `16.dp` por `16.sdp` e `16.sp` por `16.ssp`. A biblioteca ajusta o valor sozinha para a tela atual.
 - **Celular + tablet/TV no mesmo app?** Use `16.asdp` / `16.assp` (estratégia *auto*): cresce normalmente no celular e desacelera em telas grandes.
-- **Todas as bibliotecas estão em produção**, na versão **3.2.0** (o pacote .NET está na **3.6.1**).
+- **Todas as bibliotecas estão em produção**, na versão **3.2.0** (Web na **3.2.1**, .NET na **3.6.1**).
 - **Escolha sua plataforma** na tabela [📦 Pick your platform](#-pick-your-platform) — cada uma tem guia para iniciantes.
 - **Mesmos nomes em todas as plataformas:** `sdp`, `ssp`, `asdp`… significam a mesma coisa no Android, iOS, Flutter, React Native, Web e .NET.
 - **Assistentes de IA:** cada biblioteca traz uma *skill*; a skill geral do hub está em [`skills/SKILL.md`](skills/SKILL.md).

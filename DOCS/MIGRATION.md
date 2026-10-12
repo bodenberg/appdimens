@@ -2,7 +2,7 @@
 
 **What is this page for?** If your project uses an older AppDimens version, this page tells you **what changed** and **what to type now**. If you are starting fresh, you don't need it — go to the [Guide](GUIDE.md).
 
-> Today every library is **3.2.0** (the .NET packages are **3.6.1**) and all of them are **in production**.
+> Today every library is **3.2.0** (Web **3.2.1**, .NET **3.6.1**) and all of them are **in production**.
 
 ---
 
@@ -110,13 +110,12 @@ Full table: [Flutter MIGRATION.md](https://github.com/bodenberg/appdimens-flutte
 
 Details: [CHANGELOG](https://github.com/bodenberg/appdimens-react-native/blob/main/CHANGELOG.md) · [Migration from Android names](https://github.com/bodenberg/appdimens-react-native/blob/main/docs/MIGRATION-FROM-ANDROID.md)
 
-### Web (`appdimens-web`, npm `webdimens`) — 2.x → 3.2.0 ⚠️ breaking
+### Web (`appdimens-web`, npm `webdimens`) — 2.x → 3.2.1 ⚠️ breaking
 
 3.2 is a **rewrite** that mirrors the Android API. The BALANCED builder and the `Fixed` / `Dynamic` / `Fluid` classes were removed.
 
 ```diff
 -webdimens.balanced(16)
-+import 'webdimens/auto';
 +<div class="p:16asdp">…</div>      <!-- or asdp(16) in JS -->
 ```
 

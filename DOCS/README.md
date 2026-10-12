@@ -2,7 +2,7 @@
 
 Welcome! This folder explains AppDimens for **every platform at once**. Code for a specific platform lives in that platform's own repository — the pages here tell you where to go.
 
-> All AppDimens libraries are **in production** — version **3.2.0** (.NET packages **3.6.1**).
+> All AppDimens libraries are **in production** — version **3.2.0** (Web **3.2.1**, .NET **3.6.1**).
 
 ---
 

@@ -1,6 +1,6 @@
 # AppDimens — Documentation Hub
 
-> AppDimens is a family of responsive sizing libraries: you write a design size once (`16.sdp`, `sdp(16)`, `16sdp`, `@dimen/_16sdp`, `{sdp:16}`) and it scales to the current screen — phones, tablets, foldables, TVs, desktops and the web. The same token names and the same math are used on Android (Jetpack Compose, Kotlin, Java, XML), Kotlin Multiplatform, Apple platforms (SwiftUI, UIKit), Flutter, React Native, the Web, .NET (MAUI, WPF, WinForms, WinUI, .NET for Android) and Android games. This repository is the hub: it includes every library as a Git submodule and explains the shared ideas. All libraries are in production at version 3.2.0 (the .NET packages are 3.6.1).
+> AppDimens is a family of responsive sizing libraries: you write a design size once (`16.sdp`, `sdp(16)`, `16sdp`, `@dimen/_16sdp`, `{sdp:16}`) and it scales to the current screen — phones, tablets, foldables, TVs, desktops and the web. The same token names and the same math are used on Android (Jetpack Compose, Kotlin, Java, XML), Kotlin Multiplatform, Apple platforms (SwiftUI, UIKit), Flutter, React Native, the Web, .NET (MAUI, WPF, WinForms, WinUI, .NET for Android) and Android games. This repository is the hub: it includes every library as a Git submodule and explains the shared ideas. All libraries are in production at version 3.2.0 (Web 3.2.1, .NET 3.6.1).
 
 ## Start here
 
@@ -23,7 +23,7 @@
 - [appdimens-ios](https://github.com/bodenberg/appdimens-ios) — iOS, iPadOS, macOS, tvOS, watchOS, visionOS (SwiftUI, UIKit, AppKit, Metal), 3.2.0, Swift Package Manager product `AppDimensDynamic`
 - [appdimens-flutter](https://github.com/bodenberg/appdimens-flutter) — Flutter, 3.2.0, pub.dev `appdimens_flutter` (+ `appdimens_<strategy>`, `appdimens_bom`) — [LLMS.txt](https://github.com/bodenberg/appdimens-flutter/blob/main/LLMS.txt)
 - [appdimens-react-native](https://github.com/bodenberg/appdimens-react-native) — React Native, 3.2.0, npm `appdimens-react-native` — [LLMS.txt](https://github.com/bodenberg/appdimens-react-native/blob/main/LLMS.txt)
-- [appdimens-web](https://github.com/bodenberg/appdimens-web) — Web (HTML/CSS, React, Vue, Svelte, Angular), 3.2.0, npm `webdimens` — [LLMS.txt](https://github.com/bodenberg/appdimens-web/blob/main/LLMS.txt)
+- [appdimens-web](https://github.com/bodenberg/appdimens-web) — Web (HTML/CSS, React, Vue, Svelte, Angular), 3.2.1, npm `webdimens` — [LLMS.txt](https://github.com/bodenberg/appdimens-web/blob/main/LLMS.txt)
 - [appdimens-net-binding](https://github.com/bodenberg/appdimens-net-binding) — .NET MAUI, WPF, WinForms, WinUI 3, .NET for Android, 3.6.1, NuGet `Bodenberg.AppDimens.*` and `AppDimens.Net.*` — [LLMS.txt](https://github.com/bodenberg/appdimens-net-binding/blob/main/LLMS.txt)
 - [appdimens-games](https://github.com/bodenberg/appdimens-games) — Android games (Kotlin, Java, C/C++/NDK, OpenGL ES, Vulkan, DirectX, Unity/C#), 3.2.0, Maven `io.github.bodenberg:appdimens-games` — [LLMS.txt](https://github.com/bodenberg/appdimens-games/blob/main/LLMS.txt)
 

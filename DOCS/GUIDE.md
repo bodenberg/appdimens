@@ -2,7 +2,7 @@
 
 **What is this page for?** It explains AppDimens in plain words: what problem it solves, which library to install, which "strategy" to choose, and the few rules you need to know. No math required. (If you like math, see [THEORY.md](THEORY.md).)
 
-> All AppDimens libraries are **in production**. Current version: **3.2.0** (the .NET packages are **3.6.1**).
+> All AppDimens libraries are **in production**. Current version: **3.2.0** (Web **3.2.1**, .NET **3.6.1**).
 
 ---
 
@@ -49,7 +49,7 @@ Copy-paste code for every platform: **[EXAMPLES.md](EXAMPLES.md)**.
 
 **Android: XML or Compose?** If your screens are XML layouts, use `appdimens-sdps` + `appdimens-ssps` (ready-made `@dimen/_16sdp` resources). If you use Jetpack Compose or set sizes in code, use `appdimens-dynamic`. Using both in the same app is fine.
 
-Each library has its own beginner guide: [Android](https://github.com/bodenberg/appdimens-dynamic/blob/main/GUIDE-FOR-BEGINNERS.md) · [KMP](https://github.com/bodenberg/appdimens-kmp/blob/main/GUIDE-FOR-BEGINNERS.md) · [iOS](https://github.com/bodenberg/appdimens-ios/blob/main/GUIDE-FOR-BEGINNERS.md) · [Flutter](https://github.com/bodenberg/appdimens-flutter/blob/main/GUIDE-FOR-BEGINNERS.md) · [Games](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/GUIDE-FOR-BEGINNERS.md) · [React Native docs](https://github.com/bodenberg/appdimens-react-native/blob/main/docs/README.md) · [Web README](https://github.com/bodenberg/appdimens-web/blob/main/README.md) · [.NET docs](https://github.com/bodenberg/appdimens-net-binding/blob/main/docs/README.md)
+Each library has its own beginner guide: [Android](https://github.com/bodenberg/appdimens-dynamic/blob/main/GUIDE-FOR-BEGINNERS.md) · [KMP](https://github.com/bodenberg/appdimens-kmp/blob/main/GUIDE-FOR-BEGINNERS.md) · [iOS](https://github.com/bodenberg/appdimens-ios/blob/main/GUIDE-FOR-BEGINNERS.md) · [Flutter](https://github.com/bodenberg/appdimens-flutter/blob/main/GUIDE-FOR-BEGINNERS.md) · [Games](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/GUIDE-FOR-BEGINNERS.md) · [React Native docs](https://github.com/bodenberg/appdimens-react-native/blob/main/docs/README.md) · [Web getting started](https://github.com/bodenberg/appdimens-web/blob/main/docs/getting-started.md) · [.NET docs](https://github.com/bodenberg/appdimens-net-binding/blob/main/docs/README.md)
 
 ---
 
@@ -135,7 +135,7 @@ A game or a canvas?                     → fit / fill (ftsdp / flsdp)
 | **resize** | `autoResizeTextSp(…)`, `AutoResizeText` | Picks the biggest size that still fits a box. | Titles that must fit one line |
 | **units** | `10.mm`, `2.cm`, `1.inch` | Real-world sizes. | Kiosks, printing, touch targets |
 
-The **scaled** strategy is always included. The others are **optional modules** — install only the ones you use (e.g. Android `appdimens-dynamic-auto`, Flutter `appdimens_auto`, React Native `appdimens-react-native/auto`, Web `webdimens/auto`). The per-platform names of every strategy are listed in [PLATFORMS.md](PLATFORMS.md).
+The **scaled** strategy is always included. The others are **optional modules** — install only the ones you use (e.g. Android `appdimens-dynamic-auto`, Flutter `appdimens_auto`, React Native `appdimens-react-native/auto`). On the Web you don't install anything extra: strategies load automatically when you use their tokens. The per-platform names of every strategy are listed in [PLATFORMS.md](PLATFORMS.md).
 
 > **Tip:** don't mix many strategies on one screen. Pick one for layout (usually `scaled` or `auto`) and keep it consistent.
 
