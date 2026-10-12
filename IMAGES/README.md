@@ -2,7 +2,7 @@
 
 PNG files live in this folder for the **`appdimens` meta-repository** only. Screenshots shipped by platform libraries appear in submodule repos.
 
-Interactive PDFs live under [`DOCS/`](../DOCS/) and thumbnails also appear near the footer of **[`README.md`](../README.md#visual-resources)**.
+Interactive PDFs live under [`DOCS/`](../DOCS/) and thumbnails also appear near the footer of **[`README.md`](../README.md#-documentation)**.
 
 ---
 

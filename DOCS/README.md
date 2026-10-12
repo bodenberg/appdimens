@@ -1,95 +1,64 @@
-# AppDimens documentation hub
+# AppDimens documentation
 
-This folder explains **ideas, vocabulary, and the mathematical theory** shared across every AppDimens platform library. It is **theory-only**: no semver, no install lines, no platform-specific build configuration. **Submodule READMEs remain the authority** for pinned versions, Gradle / npm / Swift / pub manifests, and exact API signatures.
+Welcome! This folder explains AppDimens for **every platform at once**. Code for a specific platform lives in that platform's own repository — the pages here tell you where to go.
 
-> [!NOTE]
-> **What this folder is**
->
-> - Shared **vocabulary** (BALANCED, DEFAULT, PERCENTAGE, …) and how it maps onto each stack's tokens.
-> - Formal **mathematics** of every kernel (formulas, constants, invariants). **[THEORY.md](THEORY.md)** is tuned for [GitHub’s math renderer](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions) (KaTeX subset); the submodule [MATHEMATICS-AND-CALCULUS.md](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md) may use richer LaTeX.
-> - **Migration paths** between AppDimens versions and from third-party libraries.
-> - Cross-platform **API mapping** and orientation semantics.
->
-> **What it is not** — install lines, version numbers, or production build advice. Those live with the source code, in the submodule README you ship.
-
-**Android Compose naming reminder:** conceptual **BALANCED** is published as Gradle strategy **`auto`** (tokens `asdp`, `assp`, `ahdp`, `awdp`, …); **DEFAULT / FIXED** is **`scaled`** (`sdp`, `ssp`, `wdp`, `hdp`, `sem`, …); **PERCENTAGE / DYNAMIC** is **`percent`** (`psdp`, …). The complete mapping lives in [MIGRATION.md](MIGRATION.md), [PLATFORMS.md](PLATFORMS.md), and the canonical submodule reference [`appdimens-dynamic/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md).
+> All AppDimens libraries are **in production** — version **3.2.0** (.NET packages **3.6.1**).
 
 ---
 
-## Choose your learning path
+## Where should I start?
+
+| I want to… | Read | Time |
+|------------|------|------|
+| Understand AppDimens and choose what to install | [GUIDE.md](GUIDE.md) — beginner's guide | 10 min |
+| Copy working code for my platform | [EXAMPLES.md](EXAMPLES.md) | 2 min |
+| See how a feature is written on each platform | [PLATFORMS.md](PLATFORMS.md) | 5 min |
+| Upgrade from an older version | [MIGRATION.md](MIGRATION.md) | 5 min |
+| Handle rotation, split screen, foldables | [ORIENTATION.md](ORIENTATION.md) | 5 min |
+| Understand the math behind each strategy | [THEORY.md](THEORY.md) | 30+ min |
 
 ```mermaid
-flowchart TD
-    startGoal["Pick your goal"]
-    startGoal --> shipPath["Ship today"]
-    startGoal --> theoryPath["Understand the math"]
-    startGoal --> migratePath["Migrate from 1.x / 2.x / SDP-SSP"]
-    startGoal --> portPath["Port across stacks"]
-    startGoal --> rotatePath["Handle rotation / foldables"]
-    startGoal --> recipePath["Copy-paste recipes"]
-    shipPath --> guideDoc["GUIDE.md"]
-    guideDoc --> submoduleA["Submodule README"]
-    theoryPath --> theoryDoc["THEORY.md"]
-    theoryPath --> mathDoc["appdimens-dynamic MATHEMATICS-AND-CALCULUS.md"]
-    migratePath --> migDoc["MIGRATION.md"]
-    portPath --> platDoc["PLATFORMS.md"]
-    rotatePath --> orientDoc["ORIENTATION.md"]
-    recipePath --> exDoc["EXAMPLES.md"]
+flowchart LR
+    A["New to AppDimens?"] --> B["GUIDE.md"]
+    B --> C["EXAMPLES.md"]
+    C --> D["Your platform's README"]
+    B -. curious about the math .-> E["THEORY.md"]
 ```
 
-| If your goal is… | Start here | Then go to |
-|------------------|-----------|------------|
-| **Ship today.** Pick a strategy, write some code, move on. | [GUIDE.md](GUIDE.md) — decision tree, FAQs, common patterns | Submodule README for your stack |
-| **Understand the math.** Why these kernels? What are the formulas and invariants? | [THEORY.md](THEORY.md) — formal taxonomy, axioms, comparisons | [`MATHEMATICS-AND-CALCULUS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md) |
-| **Migrate** from 1.x / 2.x (unified DSL, `.fxdp`, `.dydp`) or from SDP/SSP | [MIGRATION.md](MIGRATION.md) — legacy ↔ Compose 3.x packages | The submodule changelog you ship |
-| **Port** across Android / iOS / KMP / Flutter / RN / Web | [PLATFORMS.md](PLATFORMS.md) — concept ↔ submodule API, verified constants | The matching submodule README |
-| **Rotate / foldable** your UI without proportion drift | [ORIENTATION.md](ORIENTATION.md) — base orientation + inverter tokens | [`COMPOSE-API-CONVENTIONS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md) |
-| **Copy-paste recipes** per stack | [EXAMPLES.md](EXAMPLES.md) — long-form snippets | The submodule's `app/` sample where available |
+---
 
-The repository **[root README](../README.md)** answers the higher-level questions (*what is AppDimens? what problem does it solve? why pick it? where do I install?*) and routes here for theory and there for code.
+## Visual material
+
+- **Interactive comparisons:** [html/SCALING_COMPARISON_COMPLETE.html](html/SCALING_COMPARISON_COMPLETE.html) · [html/SCALING_COMPARISON_2.html](html/SCALING_COMPARISON_2.html) ([about](html/README.md))
+- **Papers (PDF):** [Precision scaling](AppDimens_Precision_Scaling.pdf) · [Android scaling](AppDimens_Precision_Android_Scaling.pdf) · [UI scaling](AppDimens_Precision_UI_Scaling.pdf) · [Beyond DP](Beyond_DP_Scaling.pdf)
+- **Images:** [../IMAGES/README.md](../IMAGES/README.md)
 
 ---
 
-## Document map
+## Glossary (plain words)
 
-| File | Audience | What you'll find |
-|------|----------|-------------------|
-| [THEORY.md](THEORY.md) | Engineers / academics | Formal kernel taxonomy, axioms, formulas, AR multiplier, numerical comparisons, references |
-| [GUIDE.md](GUIDE.md) | Day-to-day developers | Decision tree, troubleshooting, strategy-per-use-case patterns |
-| [EXAMPLES.md](EXAMPLES.md) | Developers shipping a screen | Copy-paste recipes per platform (Android, iOS, Flutter, RN, Web) |
-| [MIGRATION.md](MIGRATION.md) | Teams upgrading from 1.x / 2.x / SDP-SSP | Legacy naming ↔ `appdimens-dynamic` 3.x cheat sheet |
-| [PLATFORMS.md](PLATFORMS.md) | Cross-platform / design-system maintainers | Concept ↔ API map across all stacks, verified Kotlin constants |
-| [ORIENTATION.md](ORIENTATION.md) | Designers / engineers handling rotation | Base orientation, axis inverters, foldable semantics |
-| [html/](html/) | Visual learners | Interactive scaling comparison pages |
-| [`*.pdf`](.) | Slide-deck consumers | Precision-scaling whitepapers and visual reports |
-
-Static and interactive visual assets live under **[html/](html/README.md)** and the PDF essays in this same folder. Raster comparisons: **[`../IMAGES/README.md`](../IMAGES/README.md)**.
-
----
-
-## Glossary
-
-Quick definitions for the terms that recur across every file in this folder.
-
-| Term | Meaning |
+| Word | Meaning |
 |------|---------|
-| **Hub label** | Stack-neutral name used in this folder (BALANCED, DEFAULT, PERCENTAGE, DYNAMIC). |
-| **Kernel** | The 1-D map `f_S(b, c)` that turns a base value `b` into an output, given a `Configuration` `c`. Each kernel has a name and an entry in [`appdimens-dynamic/DOCUMENTATION/`](https://github.com/bodenberg/appdimens-dynamic/tree/main/DOCUMENTATION). |
-| **`auto` / BALANCED** | Hybrid kernel: linear for axes ≤ 480 dp, logarithmic above. The recommended primary for multi-form-factor apps. ([`auto.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/auto.md)) |
-| **`scaled` / DEFAULT / FIXED** | Linear-proportional kernel anchored at 300 dp. The SDP-style baseline. ([`scaled.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/scaled.md)) |
-| **`percent` / PERCENTAGE / DYNAMIC** | Axis-heavy proportional kernel. ([`percent.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/percent.md)) |
-| **SDP** | Scalable density-independent pixel. Pre-computed `@dimen/_*sdp` resources in [`appdimens-sdps`](https://github.com/bodenberg/appdimens-sdps/tree/main). |
-| **SSP** | Scalable sp (text equivalent). Pre-computed `@dimen/_*ssp` in [`appdimens-ssps`](https://github.com/bodenberg/appdimens-ssps/tree/main). |
-| **Hinge** | The axis-dp threshold where the `auto` kernel switches from linear to logarithmic. Constant: **480 dp**. |
-| **AR multiplier** | The optional aspect-ratio compensation referenced to 16:9 (AR = 1.78). Folded in by the `a` suffix on Compose tokens (`16.sdpa`, `16.asdpa`, …) and by builder options on iOS / Flutter / RN / Web. ([THEORY.md §4](THEORY.md#4-the-aspect-ratio-mould-the-optional-a-suffix)) |
-| **Inverter** | A token suffix (`Ph`, `Lw`, `Lh`) that swaps the driving axis based on current orientation, so portrait-authored designs survive landscape rotation. ([ORIENTATION.md](ORIENTATION.md)) |
-| **Qualifier** | A `DpQualifier` (`SMALLEST_WIDTH`, `SCREEN_WIDTH`, `SCREEN_HEIGHT`) used by `*Qualifier` facilitators to override sizing per breakpoint. |
-| **Fast bypass** | Optimization where simple no-AR kernels (`scaled`, `auto`, `percent`, `fluid`) skip the cache and compute a 2 ns multiply directly. ([`appdimens-dynamic/PERFORMANCE.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/PERFORMANCE.md)) |
+| **dp / pt / px** | The usual units apps use for sizes. They keep sizes physically constant, so they look small on big screens. |
+| **sdp** | "Scalable dp": a size that follows the **smallest side** of the screen. `16.sdp` = 16 on a 300-wide reference phone. |
+| **ssp** | The same idea for **text**; respects the user's font-size setting. |
+| **sem** | Text that **ignores** the user's font-size setting. |
+| **wdp / hdp** | Sizes that follow the screen **width** / **height**. |
+| **Strategy** | The rule used to grow a size: `scaled` (proportional), `auto` (proportional, then calmer), `fluid`, `percent`… See [GUIDE.md](GUIDE.md#5-which-strategy-should-i-choose). |
+| **Prefix** | Letters before the name that pick the strategy: `a`sdp = auto, `f`sdp = fluid, `log`sdp = logarithmic… |
+| **Suffix / ending** | Letters after the name that tweak it: `a` (screen shape), `i` (ignore split screen), `Px` (pixels), `Ph`/`Lw` (rotation). |
+| **Inverter** | An ending (`Ph`, `Lw`, …) that changes which side of the screen is measured when the device rotates. See [ORIENTATION.md](ORIENTATION.md). |
+| **Reference screen** | The 300 × 533 design canvas all calculations start from. |
+| **auto turning point** | 480: up to this width `auto` grows like `scaled`, then slows down. |
+| **SDP / SSP resources** | Ready-made Android `@dimen/_16sdp` / `@dimen/_14ssp` values from `appdimens-sdps` / `appdimens-ssps`. |
+| **BOM** | A Gradle "bill of materials" that keeps all AppDimens modules on the same version. |
+| **Skill** | Instructions that teach AI coding assistants to use a library correctly. Hub skill: [../skills/SKILL.md](../skills/SKILL.md). |
+| **Old names** | BALANCED = `auto`, DEFAULT/FIXED = `scaled`, PERCENTAGE/DYNAMIC = `percent`. See [MIGRATION.md](MIGRATION.md). |
 
 ---
 
 <div align="center">
 
-[← Root README](../README.md) · [Guide](GUIDE.md) · [Theory](THEORY.md) · [Examples](EXAMPLES.md) · [Migration](MIGRATION.md) · [Platforms](PLATFORMS.md) · [Orientation](ORIENTATION.md)
+[← Hub README](../README.md) · [Guide](GUIDE.md) · [Examples](EXAMPLES.md) · [Platforms](PLATFORMS.md) · [Migration](MIGRATION.md) · [Orientation](ORIENTATION.md) · [Theory](THEORY.md)
 
 </div>

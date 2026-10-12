@@ -1,5 +1,11 @@
 # APPDIMENS — mathematical theory
 
+> [!TIP]
+> **In plain words.** This page is the *math* behind AppDimens: the exact formula each strategy uses to turn your `16` into the right size for the current screen.
+> **You don't need it to use the libraries** — for that, read the [Beginner's Guide](GUIDE.md) and [Examples](EXAMPLES.md).
+> Read on if you want to know *why* the sizes come out the way they do, or to check that every platform computes the same numbers.
+> The formulas are identical in all AppDimens libraries (Android, KMP, iOS, Flutter, React Native, Web, .NET, Games — all at 3.2.0, .NET at 3.6.1).
+
 A formal, library-faithful account of the scaling kernels published by
 **`appdimens-dynamic`** (Jetpack Compose 3.x and parallel Kotlin View bindings).
 Day‑to‑day decisions live in **[GUIDE.md](GUIDE.md)** and runnable recipes in
@@ -154,7 +160,7 @@ resource‑qualifier conventions [\[1, §Configuration\]](#11-references).
 The library publishes outputs in `Float` (IEEE 754 32‑bit) throughout. Test
 suites validate curves to a deterministic delta of $< 0.05\,\text{dp}$, which
 is one order of magnitude tighter than the visual resolution of a $1\,\text{dp}$
-unit; cf. [`StrategyModuleFormulasTest`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/test/java/com/appdimens/dynamic/modules/StrategyModuleFormulasTest.kt).
+unit; cf. the per-strategy `*FormulasTest` suites (e.g. [`AutoFormulasTest`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library-auto/src/test/java/com/appdimens/dynamic/compose/auto/AutoFormulasTest.kt)).
 
 ---
 
@@ -348,7 +354,7 @@ the visual signature of the BALANCED curve: phones grow linearly, tablets
 breathe.
 
 **Implementation.** `calculateAutoDpCompose` in
-[`DimenAutoDp.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/compose/auto/DimenAutoDp.kt).
+[`DimenAutoDp.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library-auto/src/main/java/com/appdimens/dynamic/compose/auto/DimenAutoDp.kt).
 The phone leg reduces to the same pre‑aggregated `factors.scale` as `scaled`.
 
 ### 5.3 `percent` — linear kernel + literal `space*` percentages (PERCENTAGE)
@@ -360,7 +366,7 @@ $$K_{\text{percent}}(b, d) \;=\; b\,d\,\iota \;=\; K_{\text{scaled}}(b, d).$$
 
 What distinguishes `percent` is its second surface — the **literal**
 `space*` family in
-[`DimenPercentSpace.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/compose/percent/DimenPercentSpace.kt).
+[`DimenPercentSpace.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library-percent/src/main/java/com/appdimens/dynamic/compose/percent/DimenPercentSpace.kt).
 Here the receiver is read as a percentage in $[0, 100]$:
 
 $$\text{spaceW}(p)\;=\;\frac{p}{100}\,\cdot\,\text{screenWidthDp},$$
@@ -412,7 +418,7 @@ idea to *device extent*, treating the canvas as the stimulus.
 
 **Pre‑aggregation.** `factors.logScale` caches the result for $sw$+default
 inverter. See
-[`DimenLogarithmicDp.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/compose/logarithmic/DimenLogarithmicDp.kt).
+[`DimenLogarithmicDp.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library-logarithmic/src/main/java/com/appdimens/dynamic/compose/logarithmic/DimenLogarithmicDp.kt).
 
 ### 5.6 `fluid` — clamped affine band
 
@@ -456,7 +462,7 @@ $$\boxed{\,K_{\text{diag}}(b, c) \;=\; b\,\frac{\sqrt{s_{\min}^2 + s_{\max}^2}}{
 The qualifier `SMALL_WIDTH`/`WIDTH`/`HEIGHT` does not change the diagonal — the
 formula always reads both sides of the window. `factors.diagonalScale` caches
 the scalar per configuration; cf.
-[`DimenDiagonalDp.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/compose/diagonal/DimenDiagonalDp.kt).
+[`DimenDiagonalDp.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library-diagonal/src/main/java/com/appdimens/dynamic/compose/diagonal/DimenDiagonalDp.kt).
 
 **Geometric interpretation.** $K_{\text{diag}}$ is the $L^{2}$ norm of the
 window normalised to the reference frame. For canvases within the same aspect
@@ -510,7 +516,7 @@ in `factors.density`.
 `resize` is **not** a scaling curve. It is a constraint‑solving subsystem in
 [`ResizeMath.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/core/ResizeMath.kt)
 and the parallel Compose helpers in
-[`compose.resize`](https://github.com/bodenberg/appdimens-dynamic/tree/main/library/src/main/java/com/appdimens/dynamic/compose/resize).
+[`compose.resize`](https://github.com/bodenberg/appdimens-dynamic/tree/main/library-resize/src/main/java/com/appdimens/dynamic/compose/resize).
 Given a fitness predicate $\phi\colon (0,\infty) \to \{\mathrm{true},\,\mathrm{false}\}$ that is non‑increasing on the set where $\phi$ is true, it returns
 the **largest** candidate from a discretised step table that still satisfies
 $\phi$:
@@ -542,7 +548,7 @@ auto‑boxing in the hot path.
 ## 7. Physical units (mm, cm, in)
 
 The `physical-units` module in
-[`compose/units/DimenPhysicalUnits.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/main/java/com/appdimens/dynamic/compose/units/DimenPhysicalUnits.kt)
+[`compose/units/DimenPhysicalUnits.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library-units/src/main/java/com/appdimens/dynamic/compose/units/DimenPhysicalUnits.kt)
 and `code.units.DimenPhysicalUnits` is **orthogonal** to the scaling kernels.
 It maps real‑world lengths to `dp`/`sp`/`px` through Android's
 `TypedValue` machinery — specifically `COMPLEX_UNIT_MM` and `COMPLEX_UNIT_IN`
@@ -585,8 +591,8 @@ Notes on the table:
 
 For canvas‑isotropic kernels (`diagonal`, `perimeter`, `fill`, `fit`) the
 table is two‑dimensional in $(s_{\min}, s_{\max})$. A representative slice
-appears in the Compose tests under
-[`StrategyModuleFormulasTest.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/test/java/com/appdimens/dynamic/modules/StrategyModuleFormulasTest.kt).
+appears in
+the per-strategy `*FormulasTest` suites (e.g. [`AutoFormulasTest.kt`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library-auto/src/test/java/com/appdimens/dynamic/compose/auto/AutoFormulasTest.kt)).
 
 ---
 
@@ -620,7 +626,7 @@ The kernels above are stated as mathematical objects. Their implementation in
 None of the above changes the analytical output for a given $(b, c, S)$
 triple; they are pure performance scaffolding. Tests in
 [`DimenCacheTest`](https://github.com/bodenberg/appdimens-dynamic/blob/main/library/src/test/java/com/appdimens/dynamic/core/DimenCacheTest.kt)
-and `StrategyModuleFormulasTest` guarantee that the cached path agrees with
+and the per-strategy `*FormulasTest` suites guarantee that the cached path agrees with
 the analytic formula to the IEEE 754 tolerance noted in
 [§2](#2-notation-units-and-reference-frame).
 
@@ -750,7 +756,7 @@ no semantic drift.
 | Hub label | Gradle strategy | Compose package | Token stems |
 |:---|:---|:---|:---|
 | **BALANCED** | `auto` | `com.appdimens.dynamic.compose.auto` | `asdp`, `ahdp`, `awdp`, `assp`, … |
-| **DEFAULT** | `scaled` | `com.appdimens.dynamic.compose.scaled` | `sdp`, `hdp`, `wdp`, `ssp`, `sem`, … |
+| **DEFAULT** | `scaled` | `com.appdimens.dynamic.compose` | `sdp`, `hdp`, `wdp`, `ssp`, `sem`, … |
 | **PERCENTAGE** | `percent` | `com.appdimens.dynamic.compose.percent` | `psdp`, `pssp`, `spaceW`, `spaceSw`, … |
 | **DYNAMIC** | `percent` (linear path) | — | same as `percent` token surface |
 | — | `power` | `com.appdimens.dynamic.compose.power` | `pwsdp`, `pwhdp`, `pwwdp`, … |

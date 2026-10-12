@@ -23,7 +23,9 @@ This project adheres to a code of conduct. By participating, you are expected to
 ### Prerequisites
 
 - **Android Development**: Android Studio, JDK 11+, Android SDK
-- **iOS Development**: Xcode 12+, Swift 5.0+, iOS 13.0+
+- **iOS Development**: Xcode 15+, Swift 5.9+, iOS 13.0+
+- **Flutter / React Native / Web**: Flutter SDK, Node.js (see each README)
+- **.NET**: .NET 10 SDK (see `appdimens-net-binding/global.json`)
 - **General**: Git, GitHub account
 
 ### Fork and Clone
@@ -35,6 +37,7 @@ This project adheres to a code of conduct. By participating, you are expected to
    cd appdimens
    ```
    If you already cloned without submodules: `git submodule update --init --recursive`
+   To move every library to its latest `main`: `git submodule update --init --remote`
 3. Add the upstream repository:
    ```bash
    git remote add upstream https://github.com/bodenberg/appdimens.git
@@ -62,22 +65,21 @@ This project adheres to a code of conduct. By participating, you are expected to
 
 ### iOS Setup (submodule: `appdimens-ios`)
 
-1. **Open in Xcode**:
+1. **Open in Xcode** (Swift Package):
    ```bash
    cd appdimens-ios
-   open AppDimens.xcodeproj
+   open Package.swift
    ```
 
-2. **Install Dependencies**:
-   - CocoaPods: `pod install`
-   - Swift Package Manager: Automatic
+2. **Run Tests**: `swift test` (or Product → Test, ⌘U, in Xcode)
 
-3. **Run Tests**:
-   - In Xcode: Product → Test (⌘+U)
+### Flutter / React Native / Web / .NET
 
-### Flutter / React Native / Web
+Work in the corresponding submodule directory (`appdimens-flutter`, `appdimens-react-native`, `appdimens-web`, `appdimens-net-binding`). Follow each project’s `README`, `package.json`, `pubspec.yaml` or `.csproj` for install, test, and lint commands.
 
-Work in the corresponding submodule directory (`appdimens-flutter`, `appdimens-react-native`, `appdimens-web`). Follow each project’s `README`, `package.json`, or `pubspec.yaml` for install, test, and lint commands.
+### Hub documentation
+
+Hub docs live in `README.md`, `DOCS/`, `LLMS.txt` and `skills/SKILL.md`. Keep them **simple and beginner-friendly**, and keep versions in sync with the libraries (currently **3.2.0**, .NET **3.6.1**) whenever submodules are bumped.
 
 ## 📝 Contributing Guidelines
 
@@ -386,8 +388,9 @@ We follow [Semantic Versioning](https://semver.org/):
 
 ### Release Files
 
-- **Android**: AAR files, Maven coordinates
-- **iOS**: Framework, CocoaPods, Swift Package Manager
+- **Android / KMP / Games**: Maven Central (`io.github.bodenberg:*`)
+- **iOS**: Swift Package Manager (Git tag)
+- **Flutter**: pub.dev · **React Native / Web**: npm · **.NET**: NuGet
 - **Documentation**: Updated documentation and examples
 
 ## 🏷 Labels and Milestones

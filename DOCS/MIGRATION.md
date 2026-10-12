@@ -1,174 +1,156 @@
-# Naming and migration — 1.x / 2.x → `appdimens-dynamic` 3.x (Android)
+# Migration — upgrading to AppDimens 3.2
 
-How **historic AppDimens** labels map onto **`appdimens-dynamic`** Gradle **strategy packages** and **Compose extensions**. Exact formulae: [`MATHEMATICS-AND-CALCULUS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/MATHEMATICS-AND-CALCULUS.md). Verified Kotlin constants / package roster: **[PLATFORMS.md](PLATFORMS.md)**.
+**What is this page for?** If your project uses an older AppDimens version, this page tells you **what changed** and **what to type now**. If you are starting fresh, you don't need it — go to the [Guide](GUIDE.md).
 
----
-
-## 1 · The core triple (what most migrations touch)
-
-Older docs talked about several familiar buckets. On **Compose 3.x** the code you ship daily collapses into **three** strategies:
-
-| Concept in older samples & unified APIs | Mental model | **`appdimens-dynamic` strategy** | Compose hints |
-|------------------------------------------|--------------|----------------------------------|---------------|
-| **BALANCED** — hybrid (linear phones, restrained tail tablets/TVs) | Default narrative for mixed form factors | **`auto`** | `asdp`, `ahdp`, `awdp`, `assp`, … (`import …compose.auto.*`) |
-| **FIXED** and **DEFAULT** — SDP‑style baseline (legacy `.fxdp`, **`defaultScaling`**) | Stretch anchored at ~300 dp logic | **`scaled`** | `sdp`, `ssp`, `hdp`, `wdp`; AR-aware **`sdpa`** / **`sspa`**, … |
-| **DYNAMIC** — axis-heavy sizing (legacy `.dydp`, proportional grids) | Strong tracking on logical axes | **`percent`** | `psdp`, … (`import …compose.percent.*`) |
-
-**Important**
-
-- **BALANCED** is **`auto`**, **not** `scaled`. Prefer **`16.asdp` / `16.assp`** when you want the hybrid curve, not bare **`sdp` / `ssp`**.
-- **`FIXED`** and **DEFAULT** (2.x rename of the Fixed storyline) map to the **same **`scaled`** package**—pick axis tokens instead of imagining a second Gradle module.
-
-The 2.x doc set renamed *Fixed → **DEFAULT*** and *Dynamic → **PERCENTAGE*** purely for readability. Narrative hubs still mention those buckets; Gradle uses **`scaled`** and **`percent`**.
+> Today every library is **3.2.0** (the .NET packages are **3.6.1**) and all of them are **in production**.
 
 ---
 
-## 2 · Version timeline (abbreviated)
+## 1. Old names → new names (all platforms)
 
-| Era | Android surface | What tutorials emphasized |
-|-----|-----------------|----------------------------|
-| **1.x** | Unified DSL: fixed DP vs dynamic DP (`.fxdp`, `.dydp` in archived posts) | “Fixed vs dynamic” split |
-| **2.x** | Same engines; prose standardized DEFAULT / PERCENTAGE / BALANCED | Shared vocabulary across stacks |
-| **3.x** | Explicit packages (`scaled`, `percent`, `auto`, …) + imports | Compose tokens `sdp`, `psdp`, `asdp`, … |
+Older versions described sizes with concept names. In 3.2 the names are short tokens that are **identical on every platform**:
 
-Breaking notes live inside **`appdimens-dynamic`**—not duplicated here.
+| Old name / old API | New (3.2) | Example |
+|--------------------|-----------|---------|
+| DEFAULT, FIXED, `.fxdp`, `fx`, `fixed(…)`, `defaultScaling(…)` | **scaled** | `16.sdp`, `16.ssp` |
+| BALANCED, `balanced(…)`, `.balanced().dp` | **auto** | `16.asdp`, `16.assp` |
+| DYNAMIC, PERCENTAGE, `.dydp`, `dy`, `dynamic(…)` | **percent** (or **scaled** if you just want proportional growth) | `16.psdp`, `10.spaceW` |
+| `fluid(min, max)` / `AppDimensFluid(…)` | **fluid** | `16.fsdp`, `16.fssp` |
+| NONE | plain `dp` / `sp` / `pt` / `px` | `1.dp` |
 
----
+> **Careful:** BALANCED is **`auto`** (`asdp`), not `scaled` (`sdp`).
 
-## 3 · Cheatsheet: “I used to call things like…”
-
-Assume the modern **`AppDimensProvider`** / Compose setup described in that submodule README.
-
-| Legacy-ish intent | Land on 3.x |
-|-------------------|-----------|
-| “Balanced / hybrid curve” | **`auto`**: `16.asdp`, `16.assp`, optionally `ahdp` / `awdp` |
-| “Default / fixed SDP stretch” | **`scaled`**: `16.sdp`, `100.wdp`, `48.hdp`, `16.ssp`; add `sdpa` / `sspa` when you need documented AR tails |
-| “Dynamic proportional axis” | **`percent`**: `psdp`, other `compose.percent` helpers |
-| Old unified `.balanced().dp` snippets | Fork by intent (`asdp` vs `sdp`); avoid pasting monolithic DSL chains verbatim |
-
-Hooks like **`smart().forElement(…)`** remain **literature for platforms that expose Smart builders**. Kotlin **`appdimens-dynamic`** still prefers **explicit** extensions per callsite unless you dispatch yourself.
+The other strategies (`power`, `interpolated`, `logarithmic`, `diagonal`, `perimeter`, `fit`, `fill`, `density`, `resize`, `units`) are explained in the [Guide](GUIDE.md#all-14-strategies-in-plain-words). Their names on each platform: [PLATFORMS.md](PLATFORMS.md#3-strategies-on-each-platform).
 
 ---
 
-## 4 · Before / after — Compose diffs (the core triple)
+## 2. Upgrade steps per platform
 
-The three migrations below are the ones that cover **the vast majority** of real-world Android Compose porting. Each block is a faithful before/after, with package imports and the matching kernel doc.
+### Android — Compose / Kotlin / Java (`appdimens-dynamic`)
 
-### 4.1 BALANCED — unified `.balanced().dp` → `auto` package
+```kotlin
+dependencies {
+    implementation(platform("io.github.bodenberg:appdimens-dynamic-bom:3.2.0"))
+    implementation("io.github.bodenberg:appdimens-dynamic")
+    // add each strategy you import, e.g.:
+    implementation("io.github.bodenberg:appdimens-dynamic-auto")
+}
+```
+
+- Since 3.1.6 each strategy is a **separate module**. If you import `com.appdimens.dynamic.compose.auto.*` without adding `appdimens-dynamic-auto`, the build tells you exactly which line to add.
+- Kotlin package names did not change.
+- Details: [README](https://github.com/bodenberg/appdimens-dynamic/blob/main/README.md) · [MODULES.md](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/MODULES.md)
+
+**Typical edit:**
 
 ```diff
--import com.appdimens.dynamic.compose.*
--
--Box(
--    Modifier
--        .padding(16.balanced().dp)
--        .height(48.balanced().dp)
--) {
--    Text("Hybrid", fontSize = 16.balanced().sp)
--}
+-Modifier.padding(16.balanced().dp)
 +import com.appdimens.dynamic.compose.auto.asdp
-+import com.appdimens.dynamic.compose.auto.assp
-+import com.appdimens.dynamic.compose.scaled.hdp // axis token stays under `scaled`
-+
-+Box(
-+    Modifier
-+        .padding(16.asdp)
-+        .height(48.asdp)
-+) {
-+    Text("Hybrid", fontSize = 16.assp)
-+}
++Modifier.padding(16.asdp)
 ```
 
-Kernel doc: **[`auto.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/auto.md)**.
+### Android — XML (`appdimens-sdps`, `appdimens-ssps`)
 
-### 4.2 DEFAULT / FIXED — `.fxdp` / `.defaultDp` → `scaled` package
+Only the version changes; resource names (`@dimen/_16sdp`, `@dimen/_14ssp`) are the same.
+
+```kotlin
+implementation("io.github.bodenberg:appdimens-sdps:3.2.0")
+implementation("io.github.bodenberg:appdimens-ssps:3.2.0")
+```
+
+### Kotlin Multiplatform (`appdimens-kmp`) — 1.0.x → 3.2.0
+
+The version number **jumped from 1.0.1 to 3.2.0** so that all AppDimens libraries share one version. The API is the same family API.
+
+```kotlin
+implementation(platform("io.github.bodenberg:appdimens-kmp-bom:3.2.0"))
+implementation("io.github.bodenberg:appdimens-kmp")
+```
+
+Details: [CHANGELOG](https://github.com/bodenberg/appdimens-kmp/blob/main/CHANGELOG.md)
+
+### Apple (`appdimens-ios`) — 3.1.x → 3.2.0
+
+```swift
+.package(url: "https://github.com/bodenberg/appdimens-ios", from: "3.2.0")
+```
+
+- New: zero-argument accessors (`16.sdp`, `16.ssp`) — no configuration object needed in most code.
+- SwiftUI: add `.appDimens()` once per window. UIKit: call `AppDimens.startAutomaticUpdates()`.
+- Details: [iOS migration guide](https://github.com/bodenberg/appdimens-ios/blob/main/Documentation/MIGRATION.md) · [CHANGELOG](https://github.com/bodenberg/appdimens-ios/blob/main/CHANGELOG.md)
+
+### Flutter (`appdimens-flutter`) — 2.x → 3.2.0 ⚠️ breaking
+
+3.2 is a **rewrite**. The package is now `appdimens_flutter` and the old `fx` / `dy` builders are gone.
+
+```bash
+flutter pub add appdimens_flutter
+```
+
+| Old (2.x) | New (3.2) |
+|-----------|-----------|
+| `100.0.fx` / `100.dy` | `100.sdp` |
+| `AppDimens.fixed(100).calculate(ctx)` | `100.sdp` |
+| `fxFontSize(18, ctx)` | `18.ssp` |
+| `AppDimensFluid(16, 24)` | `16.fsdp` (package `appdimens_fluid`) |
+| `AppDimensProvider` | `AppDimensApp(child: …)` |
+
+Full table: [Flutter MIGRATION.md](https://github.com/bodenberg/appdimens-flutter/blob/main/MIGRATION.md)
+
+### React Native (`appdimens-react-native`) — 2.x → 3.2.0 ⚠️ breaking
+
+3.2 is a **rewrite** that mirrors the Android API. `balanced`, `fx`, `dy` and `AppDimensBuilder` were removed.
 
 ```diff
--import com.appdimens.dynamic.compose.*
--
--Icon(
--    imageVector = Icons.Default.Favorite,
--    modifier = Modifier.size(24.fxdp) // legacy 1.x — phone-first SDP stretch
--)
-+import com.appdimens.dynamic.compose.scaled.sdp
-+import com.appdimens.dynamic.compose.scaled.sdpa // when you want the documented AR tail
-+
-+Icon(
-+    imageVector = Icons.Default.Favorite,
-+    modifier = Modifier.size(24.sdp) // or 24.sdpa when AR-awareness matters
-+)
+-import { balanced } from 'appdimens-react-native';
+-padding: balanced(16)
++import { asdp } from 'appdimens-react-native/auto';
++padding: asdp(16)
 ```
 
-Kernel doc: **[`scaled.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/scaled.md)**.
+Details: [CHANGELOG](https://github.com/bodenberg/appdimens-react-native/blob/main/CHANGELOG.md) · [Migration from Android names](https://github.com/bodenberg/appdimens-react-native/blob/main/docs/MIGRATION-FROM-ANDROID.md)
 
-### 4.3 PERCENTAGE / DYNAMIC — `.dydp` → `percent` package
+### Web (`appdimens-web`, npm `webdimens`) — 2.x → 3.2.0 ⚠️ breaking
+
+3.2 is a **rewrite** that mirrors the Android API. The BALANCED builder and the `Fixed` / `Dynamic` / `Fluid` classes were removed.
 
 ```diff
--import com.appdimens.dynamic.compose.*
--
--Surface(
--    modifier = Modifier
--        .width(300.dydp)  // legacy 1.x — axis-heavy proportional stretch
--)
-+import com.appdimens.dynamic.compose.percent.psdp
-+import com.appdimens.dynamic.compose.scaled.wdp // when you want the explicit width-axis token
-+
-+Surface(
-+    modifier = Modifier
-+        .width(300.psdp)  // or 300.wdp if you really want the `scaled` width axis
-+)
+-webdimens.balanced(16)
++import 'webdimens/auto';
++<div class="p:16asdp">…</div>      <!-- or asdp(16) in JS -->
 ```
 
-Kernel doc: **[`percent.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/percent.md)**.
+Details: [CHANGELOG](https://github.com/bodenberg/appdimens-web/blob/main/CHANGELOG.md) · [README](https://github.com/bodenberg/appdimens-web/blob/main/README.md)
+
+### .NET (`appdimens-net-binding`) → 3.6.1
+
+```bash
+dotnet add package Bodenberg.AppDimens.Maui.Sdps --version 3.6.1
+```
+
+- The Android bindings (`Bodenberg.AppDimens.Sdps`, `.Ssps`, `.Dynamic`) now wrap the native libraries **3.2.0**.
+- New in 3.6.1: WPF, Windows Forms and WinUI 3 packages, and `AppDimens.Net.*` (C# port of `appdimens-kmp`).
+- Details: [README](https://github.com/bodenberg/appdimens-net-binding/blob/main/README.md)
+
+### Games (`appdimens-games`) — 2.0.1 / 3.0.0 → 3.2.0
+
+```kotlin
+implementation(platform("io.github.bodenberg:appdimens-games-bom:3.2.0"))
+implementation("io.github.bodenberg:appdimens-games")
+```
+
+3.x replaced the deprecated 2.0.1 API with the same family names used on Android (`sdp`, `asdp`, `flsdp`…). Details: [README](https://github.com/bodenberg/appdimens-games/blob/main/README.md)
 
 ---
 
-## 5 · Migrating from third-party SDP / SSP libraries
+## 3. Checklist
 
-If your app currently depends on a third-party Intuit-style SDP/SSP package (`com.intuit.sdp:sdp-android:*` or similar), the path is short and **non-destructive**: the resource names (`@dimen/_16sdp`, `@dimen/_18ssp`, …) match.
-
-**Step 1 — swap the dependency.** Replace the third-party SDP/SSP with [`io.github.bodenberg:appdimens-sdps`](https://github.com/bodenberg/appdimens-sdps/blob/main/README.md) and [`io.github.bodenberg:appdimens-ssps`](https://github.com/bodenberg/appdimens-ssps/blob/main/README.md). XML keeps working:
-
-```xml
-<!-- Unchanged -->
-<TextView
-    android:layout_width="@dimen/_300sdp"
-    android:padding="@dimen/_16sdp"
-    android:textSize="@dimen/_18ssp" />
-```
-
-**Step 2 — adopt runtime tokens gradually inside Compose.** Where you currently read an `@dimen` value, write the Kotlin extension instead:
-
-```diff
--// Compose reading XML resources today
--Box(modifier = Modifier.padding(dimensionResource(R.dimen._16sdp)))
-+
-+import com.appdimens.dynamic.compose.scaled.sdp
-+Box(modifier = Modifier.padding(16.sdp))
-```
-
-**Step 3 — switch hot UI surfaces to BALANCED (`auto`) where it helps.** Buttons, cards, spacing on multi-form-factor screens benefit most from the hybrid curve:
-
-```diff
--import com.appdimens.dynamic.compose.scaled.sdp
--Box(modifier = Modifier.padding(16.sdp))
-+import com.appdimens.dynamic.compose.auto.asdp
-+Box(modifier = Modifier.padding(16.asdp))
-```
-
-You do **not** have to migrate everything at once; SDP/SSP XML resources and `appdimens-dynamic` runtime tokens are designed to coexist in the same app. The two tracks share the same 300 dp design reference, so values stay consistent.
+1. Update the dependency to the version above.
+2. Search your code for old names (`balanced`, `fx`, `dy`, `fixed`, `dynamic`, `defaultScaling`) and replace them using the table in section 1.
+3. Add the module of every extra strategy you use (e.g. `…-auto`).
+4. Do the one-time setup your platform needs (Flutter `AppDimensApp`, SwiftUI `.appDimens()`, Web `install()`, MAUI `builder.UseAppDimensSdps()`).
+5. Run the app on a phone and a tablet and compare.
 
 ---
 
-## 6 · Related hub pages
-
-| Page | Purpose |
-|------|---------|
-| [PLATFORMS.md](PLATFORMS.md) | Full strategy roster, constants vs `DesignScaleConstants.kt`, kernels |
-| [THEORY.md](THEORY.md) | Derivations, axioms, kernel formulas |
-| [GUIDE.md](GUIDE.md) | Tactical patterns, decision tree |
-| [EXAMPLES.md](EXAMPLES.md) | Long-form snippets per stack |
-| [`appdimens-dynamic/DOCUMENTATION/README.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/README.md) | Submodule kernel catalogue |
-| [`appdimens-dynamic/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md`](https://github.com/bodenberg/appdimens-dynamic/blob/main/DOCUMENTATION/COMPOSE-API-CONVENTIONS.md) | Full Compose token / suffix index |
-
- [← Documentation index](README.md) · [Hub README](../README.md)
+[← Documentation index](README.md) · [Guide](GUIDE.md) · [Platforms](PLATFORMS.md) · [Examples](EXAMPLES.md) · [Back to the hub](../README.md)

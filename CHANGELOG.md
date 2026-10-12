@@ -11,6 +11,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Coordinated submodule update — 2026-10-12 — everything in production
+
+All submodules now point at the **latest `main`** of their repositories, and **every library is in production**. `appdimens-ios`, `appdimens-react-native` and `appdimens-web` left "work in progress"; `appdimens-net-binding` was added to the hub as a submodule.
+
+- 🔗 **Submodule pointers updated:**
+  - `appdimens-dynamic` → **3.2.0**
+  - `appdimens-sdps` → **3.2.0**
+  - `appdimens-ssps` → **3.2.0**
+  - `appdimens-kmp` → **3.2.0** (version aligned with the family; was 1.0.1)
+  - `appdimens-games` → **3.2.0**
+  - `appdimens-flutter` → **3.2.0**
+  - `appdimens-ios` → **3.2.0** (promoted to **Production**)
+  - `appdimens-react-native` → **3.2.0** (promoted to **Production** — rewrite mirroring the Android API)
+  - `appdimens-web` → **3.2.0** (promoted to **Production** — npm `webdimens`, rewrite mirroring the Android API)
+  - `appdimens-net-binding` → **3.6.1** (**new submodule** — .NET MAUI, WPF, WinForms, WinUI 3, .NET for Android)
+- 📚 **Docs rewritten for beginners:** `README.md` (simple overview, platform table with install lines, first line of code per platform, Portuguese summary), `DOCS/GUIDE.md`, `DOCS/EXAMPLES.md`, `DOCS/PLATFORMS.md`, `DOCS/MIGRATION.md`, `DOCS/ORIENTATION.md`, `DOCS/README.md`; `DOCS/THEORY.md` gained a plain-words intro.
+- 🧹 **Removed obsolete APIs from the docs** (`balanced(…)`, `AppDimens.shared.…toPoints()`, `webdimens.balanced`, `defaultScaling`, Flutter `fx`/`dy`) and fixed strategy prefixes (diagonal `dgsdp`, perimeter `prsdp`, fit `ftsdp`, fill `flsdp`, density `dsdp`).
+- 🔢 **Fixed the 48 dp `auto` comparison** in the README (tablet 720 dp → 88 dp, TV 1080 dp → 98 dp, per `DimenAutoDp.kt`).
+- 🤖 **New hub AI skill** [`skills/SKILL.md`](skills/SKILL.md) that routes to each library's own skill; `LLMS.txt` updated.
+- 🛡️ `SECURITY.md` supported-versions table, `CONTRIBUTING.md` setup notes and `_config.yml` exclusions updated for all 10 libraries.
+
 ### Coordinated submodule update — 2026-08-23
 
 All submodules now point at the **latest `main`** of their repositories. `appdimens-flutter` and `appdimens-games` were **promoted to Production**; only `appdimens-ios`, `appdimens-react-native` and `appdimens-web` remain in development.
