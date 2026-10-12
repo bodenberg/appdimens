@@ -2,7 +2,7 @@
 
 Static pages for visually comparing scaling strategies. **Open locally** for the most predictable behavior (`file:///…`); GitHub sometimes serves raw HTML differently depending on CSP.
 
-See also **Visual resources** in the **[main README](../../README.md#visual-resources)** (PDF badges, HTML buttons, thumbnails).
+See also **Visual resources** in the **[main README](../../README.md#-documentation)** (PDF badges, HTML buttons, thumbnails).
 
 **Raw GitHub (replace branch / username as needed)**  
 Example pattern:  

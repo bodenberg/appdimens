@@ -51,7 +51,7 @@ A **48 dp button** on different screens:
 |----------|----------------|-----------------|--------------|--------|
 | Plain `dp` / `sp` / `pt` / `px` | 48 (13% of the screen) ✅ | 48 (6.7%) ❌ tiny | 48 (4.4%) ❌ lost | Same number, shrinks visually |
 | Simple proportional scaling | 58 (16%) ✅ | 115 (16%) ❌ huge | 173 (16%) ❌ giant | Grows too much |
-| **AppDimens `auto`** | **58 (16%)** ✅ | **~70 (10%)** ✅ | **~85 (8%)** ✅ | Looks right everywhere |
+| **AppDimens `auto`** | **58 (16%)** ✅ | **88 (12%)** ✅ | **98 (9%)** ✅ | Grows, but calmly — looks right everywhere |
 
 <div align="center">
    <img src="IMAGES/button_comparison.png" alt="Button size comparison across devices" width="640"/>

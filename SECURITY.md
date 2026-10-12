@@ -2,16 +2,20 @@
 
 ## Supported Versions
 
-This **meta-repository** mainly holds documentation. **Security-sensitive code ships in submodule repositories** (Android, iOS, Flutter, React Native, Web, KMP). We aim to provide security patches for **currently maintained release lines** of those packages.
+This **hub repository** mainly holds documentation. **Security-sensitive code ships in the library repositories** (included here as submodules). All of them are in production and receive security fixes on their current release line.
 
-| Track | Supported |
-| ----- | --------- |
-| **Android `appdimens-dynamic` 3.x** | :white_check_mark: |
-| **Android `appdimens-sdps` / `appdimens-ssps` 3.x** | :white_check_mark: |
-| **Android `appdimens-games` 2.x** | :white_check_mark: (best effort) |
-| **Cross-platform 2.x** (Flutter, iOS pod/SPM, RN, `webdimens`) | :white_check_mark: |
-| **KMP `appdimens-kmp` 1.x** (GA **`1.0.1`**) | :white_check_mark: |
-| **Older lines** (e.g. 1.0.x) | :x: Critical fixes only by exception |
+| Library | Supported |
+| ------- | --------- |
+| `appdimens-dynamic` 3.2.x (Android) | :white_check_mark: |
+| `appdimens-sdps` / `appdimens-ssps` 3.2.x (Android XML) | :white_check_mark: |
+| `appdimens-kmp` 3.2.x (Kotlin Multiplatform) | :white_check_mark: |
+| `appdimens-ios` 3.2.x (Apple platforms) | :white_check_mark: |
+| `appdimens-flutter` 3.2.x (`appdimens_flutter`) | :white_check_mark: |
+| `appdimens-react-native` 3.2.x | :white_check_mark: |
+| `appdimens-web` 3.2.x (`webdimens`) | :white_check_mark: |
+| `appdimens-games` 3.2.x | :white_check_mark: |
+| `appdimens-net-binding` 3.6.x (NuGet) | :white_check_mark: |
+| Older lines (1.x, 2.x, 3.0.x, 3.1.x) | :x: Please upgrade — see [DOCS/MIGRATION.md](DOCS/MIGRATION.md) |
 
 ## Reporting a Vulnerability
 
