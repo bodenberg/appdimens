@@ -12,7 +12,7 @@ This **hub repository** mainly holds documentation. **Security-sensitive code sh
 | `appdimens-ios` 3.2.x (Apple platforms) | :white_check_mark: |
 | `appdimens-flutter` 3.2.x (`appdimens_flutter`) | :white_check_mark: |
 | `appdimens-react-native` 3.2.x | :white_check_mark: |
-| `appdimens-web` 3.2.x (`webdimens`) | :white_check_mark: |
+| `appdimens-web` 3.2.x (`webdimens`, latest 3.2.1) | :white_check_mark: |
 | `appdimens-games` 3.2.x | :white_check_mark: |
 | `appdimens-net-binding` 3.6.x (NuGet) | :white_check_mark: |
 | Older lines (1.x, 2.x, 3.0.x, 3.1.x) | :x: Please upgrade — see [DOCS/MIGRATION.md](DOCS/MIGRATION.md) |

@@ -2,7 +2,7 @@
 
 Every example on this page does the **same thing**: 16 of spacing, a 48-tall box and 16-size text. AppDimens then makes them look right on phones, tablets, foldables and TVs — automatically.
 
-> **Versions:** every library is **3.2.0** (the .NET packages are **3.6.1**). All of them are in production.
+> **Versions:** every library is **3.2.0**, except Web (**3.2.1**) and .NET (**3.6.1**). All of them are in production.
 > **Not sure which strategy to use?** Start with `sdp` / `ssp`. If your app also runs on tablets or TVs, try the `auto` versions (`asdp` / `assp`). See the [Guide](GUIDE.md).
 
 **Jump to:** [Android Compose](#android--jetpack-compose-appdimens-dynamic) · [Android Views](#android--kotlin--java-views-appdimens-dynamic) · [Android XML](#android--xml-appdimens-sdps--appdimens-ssps) · [KMP](#kotlin-multiplatform-appdimens-kmp) · [iOS](#apple--ios--macos-appdimens-ios) · [Flutter](#flutter-appdimens-flutter) · [React Native](#react-native-appdimens-react-native) · [Web](#web-appdimens-web--npm-webdimens) · [.NET](#net-appdimens-net-binding) · [Games](#games-appdimens-games) · [Comparison](#the-same-token-on-every-platform)
@@ -277,7 +277,7 @@ npm install webdimens
 or, without any build step:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/webdimens@3.2.0/dist/webdimens.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/webdimens@3.2.1/dist/webdimens.global.js"></script>
 ```
 
 **2. Start it once** (not needed with the CDN script)
@@ -301,16 +301,15 @@ import { sdp, ssp } from 'webdimens';
 element.style.padding = `${sdp(16)}px`;
 ```
 
-**5. `auto`**
+**5. `auto`** — just write the token; since 3.2.1 every strategy loads automatically the first time it is used
 
-```js
-import 'webdimens/auto';   // registers the auto tokens
-```
 ```html
 <div class="p:16asdp fs:16assp">Hello</div>
 ```
 
-📘 [README](https://github.com/bodenberg/appdimens-web/blob/main/README.md) · [README em português](https://github.com/bodenberg/appdimens-web/blob/main/README.pt-BR.md)
+Only CSS you write by hand (`calc(16 * var(--asdp))`) or PostCSS output needs it listed: `install({ strategies: ['auto'] })`.
+
+📘 [Getting started](https://github.com/bodenberg/appdimens-web/blob/main/docs/getting-started.md) · [Guia em português](https://github.com/bodenberg/appdimens-web/blob/main/docs/pt-BR/getting-started.md) · [README](https://github.com/bodenberg/appdimens-web/blob/main/README.md)
 
 ---
 

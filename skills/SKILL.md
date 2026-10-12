@@ -5,7 +5,7 @@ description: Use this skill for any responsive sizing question in a project that
 
 # AppDimens — hub skill (routes to the right library)
 
-AppDimens is one family of responsive-size libraries with **the same names and the same math on every platform**. All libraries are **in production**: version **3.2.0** (the .NET packages are **3.6.1**).
+AppDimens is one family of responsive-size libraries with **the same names and the same math on every platform**. All libraries are **in production**: version **3.2.0** (Web `webdimens` **3.2.1**, .NET **3.6.1**).
 
 ## Step 1 — pick the library
 
@@ -18,7 +18,7 @@ AppDimens is one family of responsive-size libraries with **the same names and t
 | iOS / macOS / tvOS / watchOS / visionOS | `appdimens-ios` | SwiftPM `.package(url: "https://github.com/bodenberg/appdimens-ios", from: "3.2.0")`, product `AppDimensDynamic` | [appdimens-ios/skills/appdimens-ios/SKILL.md](https://github.com/bodenberg/appdimens-ios/blob/main/skills/appdimens-ios/SKILL.md) |
 | Flutter | `appdimens-flutter` | `flutter pub add appdimens_flutter` (+ `appdimens_<strategy>` or `appdimens_bom`) | [appdimens-flutter/skills/SKILL.md](https://github.com/bodenberg/appdimens-flutter/blob/main/skills/SKILL.md) |
 | React Native | `appdimens-react-native` | `npm install appdimens-react-native` (strategies: `appdimens-react-native/<strategy>`) | [appdimens-react-native/skills/SKILL.md](https://github.com/bodenberg/appdimens-react-native/blob/main/skills/SKILL.md) |
-| Web | `appdimens-web` (npm `webdimens`) | `npm install webdimens` then `install()`; strategies: `import 'webdimens/<strategy>'` | [appdimens-web/skills/SKILL.md](https://github.com/bodenberg/appdimens-web/blob/main/skills/SKILL.md) |
+| Web | `appdimens-web` (npm `webdimens`) | `npm install webdimens` (3.2.1) then `install()`; strategies load automatically when a token is used (hand-written CSS/PostCSS: `install({ strategies: ['auto'] })`) | [appdimens-web/skills/SKILL.md](https://github.com/bodenberg/appdimens-web/blob/main/skills/SKILL.md) |
 | .NET MAUI / WPF / WinForms / WinUI / .NET for Android | `appdimens-net-binding` | `dotnet add package Bodenberg.AppDimens.Maui.Sdps` (MAUI) · `Bodenberg.AppDimens.Sdps.Wpf` / `.WinForms` / `.WinUI` · `AppDimens.Net.Sdk` (all strategies) · Android: `Bodenberg.AppDimens.Sdps` / `.Ssps` / `.Dynamic` | [appdimens-net-binding/skill/SKILL.md](https://github.com/bodenberg/appdimens-net-binding/blob/main/skill/SKILL.md) |
 | Android games (Kotlin, C/C++/NDK, GL/Vulkan, Unity) | `appdimens-games` | `implementation(platform("io.github.bodenberg:appdimens-games-bom:3.2.0"))` + `implementation("io.github.bodenberg:appdimens-games")` (+ `appdimens-games-native`) | [appdimens-games/skills/SKILL.md](https://github.com/bodenberg/appdimens-games/blob/main/skills/SKILL.md) |
 
@@ -76,7 +76,7 @@ Obsolete names — never generate them: `balanced(…)`, `.balanced().dp`, `webd
 
 1. Default to `sdp` for sizes and `ssp` for text. Recommend `asdp`/`assp` when the app targets tablets/TVs too.
 2. Text: `ssp` (accessible). Use `sem` only for text that must not follow the user's font scale.
-3. Every non-scaled strategy needs its module/package/import (e.g. `appdimens-dynamic-auto`, `appdimens_auto`, `appdimens-react-native/auto`, `webdimens/auto`). Add it when you use the token.
+3. Every non-scaled strategy needs its module/package/import (e.g. `appdimens-dynamic-auto`, `appdimens_auto`, `appdimens-react-native/auto`). Add it when you use the token. Exception: Web 3.2.1+ registers strategies automatically.
 4. Keep one strategy per screen; don't mix many.
 5. Don't scale hairlines (`1.dp`) or platform-mandated sizes.
 6. Values update automatically on rotation/split screen/fold; use the `i` flag for values that must keep full-screen size (game HUDs).
