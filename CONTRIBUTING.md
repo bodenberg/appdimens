@@ -75,7 +75,7 @@ This project adheres to a code of conduct. By participating, you are expected to
 
 ### Flutter / React Native / Web / .NET
 
-Work in the corresponding submodule directory (`appdimens-flutter`, `appdimens-react-native`, `appdimens-web`, `appdimens-net-binding`). Follow each project’s `README`, `package.json`, `pubspec.yaml` or `.csproj` for install, test, and lint commands.
+Work in the corresponding submodule directory (`appdimens-flutter`, `appdimens-react-native`, `appdimens-web`, `appdimens-net-binding`, `appdimens-skills`). Follow each project’s `README`, `package.json`, `pubspec.yaml` or `.csproj` for install, test, and lint commands.
 
 ### Hub documentation
 

@@ -52,7 +52,7 @@ flowchart LR
 | **auto turning point** | 480: up to this width `auto` grows like `scaled`, then slows down. |
 | **SDP / SSP resources** | Ready-made Android `@dimen/_16sdp` / `@dimen/_14ssp` values from `appdimens-sdps` / `appdimens-ssps`. |
 | **BOM** | A Gradle "bill of materials" that keeps all AppDimens modules on the same version. |
-| **Skill** | Instructions that teach AI coding assistants to use a library correctly. Hub skill: [../skills/SKILL.md](../skills/SKILL.md). |
+| **Skill** | Instructions that teach AI coding assistants to use a library correctly. Install them all with `npx appdimens-skills` ([appdimens-skills](https://github.com/bodenberg/appdimens-skills)); hub skill: [../skills/SKILL.md](../skills/SKILL.md). |
 | **Old names** | BALANCED = `auto`, DEFAULT/FIXED = `scaled`, PERCENTAGE/DYNAMIC = `percent`. See [MIGRATION.md](MIGRATION.md). |
 
 ---

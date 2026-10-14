@@ -15,6 +15,7 @@ This **hub repository** mainly holds documentation. **Security-sensitive code sh
 | `appdimens-web` 3.2.x (`webdimens`, latest 3.2.1) | :white_check_mark: |
 | `appdimens-games` 3.2.x | :white_check_mark: |
 | `appdimens-net-binding` 3.6.x (NuGet) | :white_check_mark: |
+| `appdimens-skills` 0.1.x (npm, AI agent skills + CLI) | :white_check_mark: |
 | Older lines (1.x, 2.x, 3.0.x, 3.1.x) | :x: Please upgrade — see [DOCS/MIGRATION.md](DOCS/MIGRATION.md) |
 
 ## Reporting a Vulnerability
