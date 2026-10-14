@@ -12,6 +12,7 @@
 - [Orientation — rotation, split screen, foldables, inverters](DOCS/ORIENTATION.md)
 - [Theory — formulas of every strategy](DOCS/THEORY.md)
 - [AI skill for the whole family](skills/SKILL.md)
+- [appdimens-skills — installable skill pack for every AI agent (`npx appdimens-skills`)](https://github.com/bodenberg/appdimens-skills)
 - [Changelog](CHANGELOG.md)
 
 ## Libraries (all Production)
@@ -26,6 +27,7 @@
 - [appdimens-web](https://github.com/bodenberg/appdimens-web) — Web (HTML/CSS, React, Vue, Svelte, Angular), 3.2.1, npm `webdimens` — [LLMS.txt](https://github.com/bodenberg/appdimens-web/blob/main/LLMS.txt)
 - [appdimens-net-binding](https://github.com/bodenberg/appdimens-net-binding) — .NET MAUI, WPF, WinForms, WinUI 3, .NET for Android, 3.6.1, NuGet `Bodenberg.AppDimens.*` and `AppDimens.Net.*` — [LLMS.txt](https://github.com/bodenberg/appdimens-net-binding/blob/main/LLMS.txt)
 - [appdimens-games](https://github.com/bodenberg/appdimens-games) — Android games (Kotlin, Java, C/C++/NDK, OpenGL ES, Vulkan, DirectX, Unity/C#), 3.2.0, Maven `io.github.bodenberg:appdimens-games` — [LLMS.txt](https://github.com/bodenberg/appdimens-games/blob/main/LLMS.txt)
+- [appdimens-skills](https://github.com/bodenberg/appdimens-skills) — skill pack for AI coding agents (Claude Code, Codex, Gemini CLI, OpenClaw, Hermes, Cursor, Copilot, Windsurf) covering every library above, 0.1.0, npm `appdimens-skills` (`npx appdimens-skills`); includes a `kit` CLI (`detect`, `normalize`, `compare`, `lint`)
 
 ## Token grammar (identical on every platform)
 

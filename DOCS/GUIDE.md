@@ -163,7 +163,15 @@ On Android, the libraries already include their R8/ProGuard rules — nothing to
 
 ## 8. Using an AI coding assistant?
 
-Each library ships a **skill** (instructions for AI assistants such as Claude Code). Point your assistant to:
+A **skill** is a set of instructions for AI assistants (Claude Code, Codex, Gemini CLI, Cursor, Copilot, Windsurf…). The easiest way to get them all is one command:
+
+```bash
+npx appdimens-skills
+```
+
+It installs [appdimens-skills](https://github.com/bodenberg/appdimens-skills) for the AI tools it finds on your computer. Your assistant will then ask (or detect) **which screen your design was made for**, understand **what each element should do**, pick the right library and values, and **check its own edits**. It works from Figma, Claude Design, existing screens or brand-new screens.
+
+You can also point your assistant to:
 
 - the hub skill — [`skills/SKILL.md`](../skills/SKILL.md) — which routes to the right library, or
 - the skill inside the library you use (listed in the [README](../README.md#-ai-coding-assistants-skills)).

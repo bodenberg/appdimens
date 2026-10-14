@@ -46,3 +46,7 @@
 	path = appdimens-net-binding
 	url = https://github.com/bodenberg/appdimens-net-binding
 	branch = main
+[submodule "appdimens-skills"]
+	path = appdimens-skills
+	url = https://github.com/bodenberg/appdimens-skills
+	branch = main

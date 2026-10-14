@@ -170,10 +170,30 @@ There are 14 strategies in total (also `power`, `interpolated`, `diagonal`, `per
 
 ## 🤖 AI coding assistants (skills)
 
-Each library ships a **skill** — a set of instructions that teaches AI coding assistants (Claude Code, Cursor, Copilot…) how to use it correctly.
+A **skill** is a set of instructions that teaches AI coding assistants (Claude Code, Codex, Gemini CLI, Cursor, Copilot, Windsurf…) how to use AppDimens correctly.
+
+### ⭐ Easiest: install them all with one command — [appdimens-skills](https://github.com/bodenberg/appdimens-skills)
+
+```bash
+npx appdimens-skills
+```
+
+The installer finds the AI tools on your computer and the platforms in your project, and asks what to install. Your assistant then:
+
+1. figures out **which screen the design was made for** (e.g. the Figma frame size),
+2. understands **what each element should do** (list, grid, card, fixed line…),
+3. picks the **right AppDimens library, strategy and value**, and
+4. **checks its own work** after each edit (a built-in validator).
+
+It covers every AppDimens library and four workflows: from **Figma**, from **Claude Design**, **converting existing screens**, and **creating new screens**. Claude Code users can also install it as a plugin: `/plugin marketplace add bodenberg/appdimens-skills`.
+
+### Per-library skills
+
+Each library also ships its own skill with the detailed API:
 
 | Where | Skill |
 |-------|-------|
+| All libraries, one installer | [appdimens-skills](https://github.com/bodenberg/appdimens-skills) (`npx appdimens-skills`) |
 | This hub (routes to the right library) | [`skills/SKILL.md`](skills/SKILL.md) |
 | Android Compose | [appdimens-dynamic/skills](https://github.com/bodenberg/appdimens-dynamic/tree/main/skills) |
 | Kotlin Multiplatform | [appdimens-kmp/skills](https://github.com/bodenberg/appdimens-kmp/tree/main/skills) |
@@ -181,7 +201,7 @@ Each library ships a **skill** — a set of instructions that teaches AI coding 
 | Flutter | [appdimens-flutter/skills](https://github.com/bodenberg/appdimens-flutter/tree/main/skills) |
 | React Native | [appdimens-react-native/skills](https://github.com/bodenberg/appdimens-react-native/tree/main/skills) |
 | Web | [appdimens-web/skills](https://github.com/bodenberg/appdimens-web/tree/main/skills) |
-| .NET | [appdimens-net-binding/skill](https://github.com/bodenberg/appdimens-net-binding/tree/main/skill) |
+| .NET | [appdimens-net-binding/skills](https://github.com/bodenberg/appdimens-net-binding/tree/main/skills) (4 skills: SDPS, AppDimens.Net, Android XML, Android Dynamic) |
 | Games | [appdimens-games/skills](https://github.com/bodenberg/appdimens-games/tree/main/skills) |
 
 For AI tools that read a summary file, see [`LLMS.txt`](LLMS.txt).
@@ -230,7 +250,7 @@ This hub includes every library as a **Git submodule** (a link to another reposi
 ```text
 appdimens/                   ← you are here (the hub: docs + shared ideas)
 ├── DOCS/                    ← guides, examples, theory, migration
-├── skills/                  ← AI assistant skill for the whole family
+├── skills/                  ← hub AI skill (routes to the right library)
 ├── appdimens-dynamic/       ← Android Compose / Kotlin / Java
 ├── appdimens-sdps/          ← Android XML sizes
 ├── appdimens-ssps/          ← Android XML text sizes
@@ -240,7 +260,8 @@ appdimens/                   ← you are here (the hub: docs + shared ideas)
 ├── appdimens-react-native/  ← React Native
 ├── appdimens-web/           ← Web (npm: webdimens)
 ├── appdimens-net-binding/   ← .NET (MAUI, WPF, WinForms, WinUI, Android)
-└── appdimens-games/         ← Games (Android, NDK, Unity)
+├── appdimens-games/         ← Games (Android, NDK, Unity)
+└── appdimens-skills/        ← AI assistant skills for every library (npx appdimens-skills)
 ```
 
 Clone everything:
@@ -274,7 +295,7 @@ Only need one platform? Just use that library's repository directly.
 - **Todas as bibliotecas estão em produção**, na versão **3.2.0** (Web na **3.2.1**, .NET na **3.6.1**).
 - **Escolha sua plataforma** na tabela [📦 Pick your platform](#-pick-your-platform) — cada uma tem guia para iniciantes.
 - **Mesmos nomes em todas as plataformas:** `sdp`, `ssp`, `asdp`… significam a mesma coisa no Android, iOS, Flutter, React Native, Web e .NET.
-- **Assistentes de IA:** cada biblioteca traz uma *skill*; a skill geral do hub está em [`skills/SKILL.md`](skills/SKILL.md).
+- **Assistentes de IA:** rode `npx appdimens-skills` para instalar as skills de todas as bibliotecas no seu Claude Code, Codex, Cursor, Copilot etc. ([appdimens-skills](https://github.com/bodenberg/appdimens-skills)). Cada biblioteca também traz a sua *skill*; a skill do hub está em [`skills/SKILL.md`](skills/SKILL.md).
 
 ---
 

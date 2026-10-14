@@ -16,3 +16,4 @@ exclude:
   - appdimens-react-native
   - appdimens-web
   - appdimens-net-binding
+  - appdimens-skills
