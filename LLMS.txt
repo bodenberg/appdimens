@@ -11,6 +11,7 @@
 - [Migration — old names (BALANCED, fx, dy, balanced()) to 3.2](DOCS/MIGRATION.md)
 - [Orientation — rotation, split screen, foldables, inverters](DOCS/ORIENTATION.md)
 - [Theory — formulas of every strategy](DOCS/THEORY.md)
+- [Custom strategies — your own scaling rule on every platform (code, text, JSON)](DOCS/CUSTOM.md)
 - [AI skill for the whole family](skills/SKILL.md)
 - [appdimens-skills — installable skill pack for every AI agent (`npx appdimens-skills`)](https://github.com/bodenberg/appdimens-skills)
 - [Changelog](CHANGELOG.md)
@@ -46,6 +47,7 @@
 - power: `pwsdp` · fluid: `fsdp` · interpolated: `isdp` · logarithmic: `logsdp`
 - diagonal: `dgsdp` · perimeter: `prsdp` · fit: `ftsdp` · fill: `flsdp` · density: `dsdp`
 - resize: `autoResizeTextSp`, `AutoResizeText` · units: `mm`, `cm`, `inch`
+- custom (new, every library; your own rule): tokens `cdp` / `csp`; factor in code `CustomScaleStrategy { (width / 360f).coerceIn(0.85f, 1.8f) }`, value in code `scalingFormula { base * pow(sw / 360f, 0.8f) }`, text `scalingFormula("base * pow(sw / 360, 0.8)")`, or a shared strategies JSON (`custom-strategy.schema.json`); same names and numbers everywhere — see DOCS/CUSTOM.md
 
 Obsolete names (do not use): `balanced(…)`, `webdimens.balanced`, `defaultScaling`, `.fxdp`, `.dydp`, `fx`, `dy`, `densdp`, `fillsdp`, `fitsdp`.
 

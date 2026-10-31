@@ -56,6 +56,7 @@ and in [MIGRATION.md](MIGRATION.md).
    - 5.9 [`perimeter` — $L^{1}$ kernel](#59-perimeter--l1-kernel)
    - 5.10 [`fill` and `fit` — extremum ratios](#510-fill-and-fit--extremum-ratios)
    - 5.11 [`density` — dpi‑bucket kernel](#511-density--dpi-bucket-kernel)
+   - 5.12 [`custom` — user‑defined kernel](#512-custom--user-defined-kernel)
 6. [Constraint‑based geometry: the `resize` subsystem](#6-constraint-based-geometry-the-resize-subsystem)
 7. [Physical units (mm, cm, in)](#7-physical-units-mm-cm-in)
 8. [Numerical comparison across a sweep of $sw$](#8-numerical-comparison-across-a-sweep-of-sw)
@@ -508,6 +509,38 @@ canvas extent. Two devices with identical $sw$ but different `densityDpi`
 diverge — typically the opposite of what `sw`‑based responsive layout wants.
 Reserve for asset alignment, stroke widths, and legacy bitmaps; cache lives
 in `factors.density`.
+
+### 5.12 `custom` — user‑defined kernel
+
+The custom module lets the application supply the kernel. With an axis
+$a \in \{sw, w, h, \min, \max, \text{diag}, \text{per}\}$, a reference frame
+$R$ (default 300 × 533), a curve $C$, a multiplier $m$, the optional
+aspect‑ratio mould $\mathcal{A}$ of §4 and factor bounds $[f_{\min}, f_{\max}]$:
+
+$$r = \frac{a(\text{window})}{a(R)}, \qquad
+f = \operatorname{clamp}\!\big(C(r)\cdot m\cdot\mathcal{A},\; f_{\min},\, f_{\max}\big),$$
+
+$$\boxed{\,K_{\text{custom}}(b, c) \;=\; F\big(\operatorname{clamp}(b\,f,\; v_{\min}, v_{\max})\big)\,}$$
+
+where $C$ is one of linear ($r$), power ($r^{e}$), logarithmic
+($1 + k\ln r$), interpolated ($1 + (r-1)t$), constant, piecewise‑linear
+breakpoints over the absolute axis value, a text expression, or code; and $F$
+is an optional per‑value formula (identity by default). Rules
+(device class, orientation, axis ranges, multi‑window) replace any of these
+parameters before $f$ is computed, in declaration order.
+
+Two one‑line shortcuts cover most needs: a **factor** written in code replaces
+$f$ entirely, and a **formula** written in code or text replaces the boxed
+expression. With the defaults ($R = 300 \times 533$, linear $C$, axis $sw$)
+$K_{\text{custom}} = b \cdot sw/300 = K_{\text{scaled}}$.
+
+Cost: $f$ depends only on the window, so it is computed once per window and
+each value costs one multiply. A per‑value $F$ makes the kernel value‑dependent
+(cached per window where the platform has a cache), except when $F$ has the
+shape $b \cdot E$ with $E$ independent of $b$ — then $E$ is evaluated once per
+window and the result is bit‑identical. The text language, the JSON format and
+the numbers are shared by every library and checked by a 540‑case
+cross‑platform fixture. Guide: [CUSTOM.md](CUSTOM.md).
 
 ---
 

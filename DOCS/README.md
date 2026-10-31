@@ -16,6 +16,7 @@ Welcome! This folder explains AppDimens for **every platform at once**. Code for
 | Upgrade from an older version | [MIGRATION.md](MIGRATION.md) | 5 min |
 | Handle rotation, split screen, foldables | [ORIENTATION.md](ORIENTATION.md) | 5 min |
 | Understand the math behind each strategy | [THEORY.md](THEORY.md) | 30+ min |
+| Write my own scaling rule (custom strategies) | [CUSTOM.md](CUSTOM.md) | 10 min |
 
 ```mermaid
 flowchart LR
@@ -53,6 +54,7 @@ flowchart LR
 | **SDP / SSP resources** | Ready-made Android `@dimen/_16sdp` / `@dimen/_14ssp` values from `appdimens-sdps` / `appdimens-ssps`. |
 | **BOM** | A Gradle "bill of materials" that keeps all AppDimens modules on the same version. |
 | **Skill** | Instructions that teach AI coding assistants to use a library correctly. Install them all with `npx appdimens-skills` ([appdimens-skills](https://github.com/bodenberg/appdimens-skills)); hub skill: [../skills/SKILL.md](../skills/SKILL.md). |
+| **Custom strategy** | Your own scaling rule, written as one line of code (`CustomScaleStrategy { … }`, `scalingFormula { … }`), as text or as JSON; used with `cdp` / `csp`. See [CUSTOM.md](CUSTOM.md). |
 | **Old names** | BALANCED = `auto`, DEFAULT/FIXED = `scaled`, PERCENTAGE/DYNAMIC = `percent`. See [MIGRATION.md](MIGRATION.md). |
 
 ---

@@ -83,6 +83,7 @@ Obsolete names — never generate them: `balanced(…)`, `.balanced().dp`, `webd
 5. Don't scale hairlines (`1.dp`) or platform-mandated sizes.
 6. Values update automatically on rotation/split screen/fold; use the `i` flag for values that must keep full-screen size (game HUDs).
 7. Reference canvas 300 × 533; `16.sdp` = 16 × (smallest side / 300).
+8. No built-in passes QA, or the user wants their own formula, per-device rules or a shared strategies JSON → the **custom** module of the library (`CustomScaleStrategy { … }` factor, `scalingFormula { … }` value, text formulas for JSON; tokens `cdp` / `csp`). See [DOCS/CUSTOM.md](../DOCS/CUSTOM.md) and the `appdimens-custom-strategies` skill of [appdimens-skills](https://github.com/bodenberg/appdimens-skills).
 
 ## Hub docs
 
@@ -92,3 +93,4 @@ Obsolete names — never generate them: `balanced(…)`, `.balanced().dp`, `webd
 - Upgrading old code: [DOCS/MIGRATION.md](../DOCS/MIGRATION.md)
 - Rotation / split screen / foldables: [DOCS/ORIENTATION.md](../DOCS/ORIENTATION.md)
 - Math: [DOCS/THEORY.md](../DOCS/THEORY.md)
+- Custom strategies (your own rule, all platforms): [DOCS/CUSTOM.md](../DOCS/CUSTOM.md)
