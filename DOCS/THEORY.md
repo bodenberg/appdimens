@@ -520,12 +520,13 @@ aspect‑ratio mould $\mathcal{A}$ of §4 and factor bounds $[f_{\min}, f_{\max}
 $$r = \frac{a(\text{window})}{a(R)}, \qquad
 f = \operatorname{clamp}\!\big(C(r)\cdot m\cdot\mathcal{A},\; f_{\min},\, f_{\max}\big),$$
 
-$$\boxed{\,K_{\text{custom}}(b, c) \;=\; F\big(\operatorname{clamp}(b\,f,\; v_{\min}, v_{\max})\big)\,}$$
+$$s = \operatorname{clamp}(b\,f,\; v_{\min}, v_{\max}), \qquad
+\boxed{\,K_{\text{custom}}(b, c) \;=\; \begin{cases} F(b, s, f) & \text{if a formula is set}\\ s & \text{otherwise}\end{cases}\,}$$
 
 where $C$ is one of linear ($r$), power ($r^{e}$), logarithmic
 ($1 + k\ln r$), interpolated ($1 + (r-1)t$), constant, piecewise‑linear
 breakpoints over the absolute axis value, a text expression, or code; and $F$
-is an optional per‑value formula (identity by default). Rules
+is an optional per‑value formula. $F$ receives the original value $b$ and returns the final value: it replaces $s$, it does not compound with it; $s$ and $f$ are available to it only for post‑processing (e.g. $\max(s, b)$). Rules
 (device class, orientation, axis ranges, multi‑window) replace any of these
 parameters before $f$ is computed, in declaration order.
 
