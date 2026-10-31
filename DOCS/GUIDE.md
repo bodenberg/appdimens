@@ -141,7 +141,7 @@ The **scaled** strategy is always included. The others are **optional modules** 
 
 ### None of them fits? Write your own
 
-The **custom** module (new on every platform) lets you write the rule yourself, in one line, with autocomplete:
+The **custom** module (new in every code library; not in the Android XML resource libraries) lets you write the rule yourself, in one line, with autocomplete:
 
 ```kotlin
 val Product = CustomScaleStrategy { (width / 360f).coerceIn(0.85f, 1.80f) }   // a factor

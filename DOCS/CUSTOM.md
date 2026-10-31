@@ -1,6 +1,6 @@
 # 🧪 Custom strategies — your own scaling, on every platform
 
-> **Status:** new module in every library, on each repository's `main` branch after its pull request is merged; not in a published release yet.
+> **Status:** new module in every code library (Android, KMP, iOS, Flutter, React Native, Web, .NET, games), on each repository's `main` branch after its pull request is merged; not in a published release yet. The Android XML resource libraries (`appdimens-sdps` / `appdimens-ssps`) offer only the scaled strategy and have no custom module.
 
 The 14 built-in strategies (`sdp`, `asdp`, `psdp`…) cover most apps. When yours needs **its own growth law** — a different design frame, a formula of your own, different behavior on tablets, TVs or watches — the **custom** module lets you define it once and use it like any other token. The math and the JSON format are identical on every platform, and a shared 540-case fixture checks that every library gives the same numbers.
 
@@ -69,10 +69,11 @@ Schema: [`custom-strategy.schema.json`](https://github.com/bodenberg/appdimens-s
 ```
 ratio  = axis(window) / axis(reference)                       // e.g. sw / 300
 factor = clamp( curve(ratio) × multiplier × AR , min, max )   // once per window
-value  = formula( clampValue( base × factor ) )               // per value, only if needed
+scaled = clampValue( base × factor )                          // the configured result
+value  = formula ? formula(base, scaled, factor) : scaled     // per value, only if a formula is set
 ```
 
-`CustomScaleStrategy` replaces the `factor` line; `scalingFormula` replaces the `value` line. Screen-only strategies cost one multiply per value, like the built-ins; per-value formulas are cached per window where the platform has a cache. Details: [THEORY.md §5.12](THEORY.md#512-custom--user-defined-kernel).
+`CustomScaleStrategy` replaces the `factor` line. A formula (`scalingFormula { … }` or text) **replaces** the result: it receives the original `base` (the 16 in `16.cdp`) and returns the final value. It does not compound with the default scaling. `scaled` and `factor` are only there if you want to post-process the configured strategy, for example `max(scaled, base)`; a formula that does not read them ignores them. Screen-only strategies cost one multiply per value, like the built-ins; per-value formulas are cached per window where the platform has a cache. Details: [THEORY.md §5.12](THEORY.md#512-custom--user-defined-kernel).
 
 ## 5. Full documentation per library
 

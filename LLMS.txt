@@ -47,7 +47,7 @@
 - power: `pwsdp` · fluid: `fsdp` · interpolated: `isdp` · logarithmic: `logsdp`
 - diagonal: `dgsdp` · perimeter: `prsdp` · fit: `ftsdp` · fill: `flsdp` · density: `dsdp`
 - resize: `autoResizeTextSp`, `AutoResizeText` · units: `mm`, `cm`, `inch`
-- custom (new, every library; your own rule): tokens `cdp` / `csp`; factor in code `CustomScaleStrategy { (width / 360f).coerceIn(0.85f, 1.8f) }`, value in code `scalingFormula { base * pow(sw / 360f, 0.8f) }`, text `scalingFormula("base * pow(sw / 360, 0.8)")`, or a shared strategies JSON (`custom-strategy.schema.json`); same names and numbers everywhere — see DOCS/CUSTOM.md
+- custom (new, every code library — not the Android XML resource libraries sdps/ssps; your own rule): tokens `cdp` / `csp`; factor in code `CustomScaleStrategy { (width / 360f).coerceIn(0.85f, 1.8f) }`, value in code `scalingFormula { base * pow(sw / 360f, 0.8f) }`, text `scalingFormula("base * pow(sw / 360, 0.8)")`, or a shared strategies JSON (`custom-strategy.schema.json`); same names and numbers everywhere — see DOCS/CUSTOM.md
 
 Obsolete names (do not use): `balanced(…)`, `webdimens.balanced`, `defaultScaling`, `.fxdp`, `.dydp`, `fx`, `dy`, `densdp`, `fillsdp`, `fitsdp`.
 

@@ -168,7 +168,7 @@ There are 14 strategies in total (also `power`, `interpolated`, `diagonal`, `per
 
 ### 🧪 None of them fits? Write your own
 
-Every library has a new **custom** module: write the rule yourself, in one line, with autocomplete — or keep it as text in a JSON file shared by all your apps and platforms.
+Every code library (Android, KMP, iOS, Flutter, React Native, Web, .NET, games) has a new **custom** module: write the rule yourself, in one line, with autocomplete — or keep it as text in a JSON file shared by all your apps and platforms.
 
 ```kotlin
 val Product = CustomScaleStrategy { (width / 360f).coerceIn(0.85f, 1.80f) }   // factor × every value
@@ -176,7 +176,7 @@ val Hud = scalingFormula { base * pow(sw / 360f, 0.8f) }                      //
 Modifier.padding(16.cdp(Product))
 ```
 
-Same names and same numbers on Android, KMP, iOS, Flutter, React Native, Web, .NET and games. **[DOCS/CUSTOM.md](DOCS/CUSTOM.md)** shows the syntax on each platform, the shared JSON format and links to every library's guides.
+Same names and same numbers on Android, KMP, iOS, Flutter, React Native, Web, .NET and games. Not available in the Android XML resource libraries (`appdimens-sdps` / `appdimens-ssps`), which offer only the scaled strategy. **[DOCS/CUSTOM.md](DOCS/CUSTOM.md)** shows the syntax on each platform, the shared JSON format and links to every library's guides.
 
 ---
 
