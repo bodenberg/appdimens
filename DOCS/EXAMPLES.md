@@ -380,6 +380,44 @@ val text   = 16.ssp(context)
 
 ---
 
+## Your own strategy (custom module, every platform)
+
+The same rule — "width over 360, between 85% and 180%" — on each platform:
+
+```kotlin
+// Android · KMP · Games (Kotlin)
+val Product = CustomScaleStrategy { (width / 360f).coerceIn(0.85f, 1.80f) }
+Modifier.padding(16.cdp(Product))
+```
+
+```swift
+// iOS (AppDimensCustom)
+let product = CustomScaleStrategy { s in s.clamp(s.width / 360, 0.85, 1.8) }
+.padding(16.cdp(product))
+```
+
+```dart
+// Flutter (appdimens_custom)
+final product = customScaleStrategy((s) => s.clamp(s.width / 360, 0.85, 1.8));
+SizedBox(width: 48.cdpWith(product));
+```
+
+```ts
+// React Native (appdimens-react-native/custom) · Web (webdimens/custom)
+const product = customScaleStrategy(({ width, clamp }) => clamp(width / 360, 0.85, 1.8));
+const padding = cdp(16, product);
+```
+
+```csharp
+// .NET (AppDimens.Net.Custom) · Unity: CustomGames.CustomScaleStrategy(...)
+var product = CustomScaleStrategy.Create(s => s.Clamp(s.Width / 360f, 0.85f, 1.8f));
+var padding = 16f.Cdp(product);
+```
+
+The same rule as text works everywhere and in JSON: `"formula": "base * clamp(width / 360, 0.85, 1.8)"`. More in [CUSTOM.md](CUSTOM.md).
+
+---
+
 ## The same token on every platform
 
 | What you want | Compose · KMP · iOS · Flutter | React Native | Web | Android XML | .NET MAUI |

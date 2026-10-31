@@ -86,6 +86,21 @@ The **scaled** strategy is always included. The rest are optional modules — in
 
 The Android XML libraries (`appdimens-sdps` / `appdimens-ssps`) offer the **scaled** strategy only.
 
+### Custom strategies (your own rule)
+
+| Platform | Module / import | Factor in code | Use |
+|----------|-----------------|----------------|-----|
+| Android | `appdimens-dynamic-custom` · `com.appdimens.dynamic.custom` | `CustomScaleStrategy { … }` | `16.cdp(s)`, `14.csp(s)` |
+| KMP | `appdimens-kmp-custom` · `com.appdimens.kmp.custom` | `CustomScaleStrategy { … }` | `16.cdp(s)`, `16.cdp(appContext, s)` |
+| iOS | `AppDimensCustom` product | `CustomScaleStrategy { s in … }` | `16.cdp(s)`, `@CustomDimension` |
+| Flutter | `appdimens_custom` | `customScaleStrategy((s) => …)` | `16.cdpWith(s)`, `16.cdpFormula('…')` |
+| React Native | `appdimens-react-native/custom` | `customScaleStrategy((scope) => …)` | `cdp(16, s)`, `useCustomStrategy` |
+| Web | `webdimens/custom` | `customScaleStrategy((scope) => …)` | `cdp(16, s)`, `s.css(16)` |
+| .NET | `AppDimens.Net.Custom` | `CustomScaleStrategy.Create(s => …)` | `16f.Cdp(s)` |
+| Games | `appdimens-games-custom` · Unity `AppDimensGamesCustom.cs` | `CustomScaleStrategy { … }` · `CustomGames.CustomScaleStrategy(s => …)` | `64.cdp(s)` · `64f.Cdp(s)` |
+
+`c` = custom: `cdp` for layout, `csp` for text. The formula form (`scalingFormula`), the text formulas and the JSON file are described in [CUSTOM.md](CUSTOM.md).
+
 ---
 
 ## 4. Constants shared by every platform
