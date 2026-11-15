@@ -17,3 +17,8 @@ exclude:
   - appdimens-web
   - appdimens-net-binding
   - appdimens-skills
+  - appdimens-qt
+  - appdimens-gtk
+  - appdimens-lvgl
+  - appdimens-py
+  - appdimens-roku

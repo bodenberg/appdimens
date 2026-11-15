@@ -11,12 +11,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Custom strategies — new module in every code library (pull requests open)
+### New platforms — 2026-11-15 — Qt, GTK, LVGL, Roku, Python/Blender · Games 3.3.0 on every platform
+
+- ➕ **New submodule [`appdimens-roku`](https://github.com/bodenberg/appdimens-roku) 3.2.0** — Roku BrightScript / SceneGraph: coordinate space from the manifest's `ui_resolutions` (FHD/HD/SD, firmware autoscale), modes reference (px at 1920×1080 → coordinates) / tv (Android TV 960×540 dp) / pixel, 432 token methods, safe zones, integer font sizes; tested in brs-engine (10 560 parity factors, SceneGraph example) and validated with the BrighterScript compiler.
+- 🧪 **Custom strategies on the new ports:** Python `appdimens.custom`, the C99 single header `appdimens_custom.h` (GTK, Qt, LVGL, native games, Unreal) and Roku `AppDimensCustom.brs` — each reproduces the shared 540-case fixture.
+- 🗂️ `appdimens-games` is organized **by platform**: `android/` (Gradle build and every Android module, same Maven coordinates), `native/`, `engines/{unity,unreal,godot}`, `dotnet/`; per-folder READMEs and a repository map.
+- 🔧 `appdimens-flutter`: `verify` fixed on Flutter 3.50 (apps and tests use `package:material_ui`).
+- 🔗 `appdimens-skills` → **0.3.0**: Roku skill and detection, custom strategies on the new ports, and a directory-ready `plugin/` folder (no hooks or executables).
+- ➕ **New submodule [`appdimens-qt`](https://github.com/bodenberg/appdimens-qt) 3.2.0** — Qt 5.12+ / Qt 6, Widgets + QML: per-window scope (size, per-monitor fractional DPR, DPI, rotation, screen moves), 172 reactive QML factor properties, responsive Qt Style Sheets, C++ literals.
+- ➕ **New submodule [`appdimens-gtk`](https://github.com/bodenberg/appdimens-gtk) 3.2.0** — GTK 3/4 GObject scope (fractional scale, monitor DPI, text scaling, tiling) with responsive GTK CSS and GObject Introspection, plus the **portable C99 single-header core** `appdimens.h` (float/double, freestanding no-libm, Q16.16 fixed point) shared by GTK, LVGL, Qt and Games.
+- ➕ **New submodule [`appdimens-lvgl`](https://github.com/bodenberg/appdimens-lvgl) 3.2.0** — LVGL 8.3/9: integer-only hot path (no FPU), automatic update on resolution/rotation, responsive style bindings, font picking; ESP-IDF, PlatformIO, Arduino, Zephyr, CMake.
+- ➕ **New submodule [`appdimens-py`](https://github.com/bodenberg/appdimens-py) 3.2.0** — pure Python 3.7+ with adapters for Tkinter, Qt for Python, Kivy, pygame, pyglet/arcade, wxPython, Dear PyGui, Panda3D, and a **Blender 2.80 → 4.x add-on/Extension**.
+- 🔗 `appdimens-games` → **3.3.0**: cross-platform native SDK (Windows, Proton/Wine, Linux, Steam Deck, macOS, iOS, Android, Web, consoles), Unity UPM package, Unreal Engine 5 plugin, Godot 4 addon, .NET package; viewports and projections for OpenGL/Vulkan/D3D11/D3D12/Metal/WebGPU; FSR/DLSS/XeSS/MetalFX/TSR presets, jitter, mip bias, dynamic resolution; Hor+/Vert-/hybrid FOV; safe areas, LOD helpers; fixes the NDK snapshot publication race.
+- 🧪 Every new port is parity-tested against vectors generated from **appdimens-dynamic's own kernels** (`appdimens-dynamic/tools/parity`, 528 factors × 20 screens, float32 tolerance); the Web port agrees to 2.9e-7.
+- 🔗 `appdimens-dynamic` → parity harness `tools/parity` + family section in the README.
+- 🔗 `appdimens-skills` → **0.2.0**: new `qt`, `gtk`, `lvgl`, `python` skills, multi-engine `games` skill, detection of Qt/GTK/LVGL/Python/Blender/Unity/Unreal/Godot projects.
+- 📚 Hub docs: README (platform table, first lines of code, skills, tree, FAQ, PT-BR), `DOCS/PLATFORMS.md`, `DOCS/EXAMPLES.md`, `LLMS.txt`, `skills/SKILL.md`.
+
+### Custom strategies — new module in every code library (merged 2026-11-15)
 
 - 🧪 **Custom strategies** ([DOCS/CUSTOM.md](DOCS/CUSTOM.md)): every code library (Android, KMP, iOS, Flutter, React Native, Web, .NET, games) gains a `custom` module to define your own scaling rule, used with the new `cdp` / `csp` tokens. The Android XML resource libraries (`appdimens-sdps` / `appdimens-ssps`) keep the scaled strategy only.
   - One typed line with autocomplete: `CustomScaleStrategy { (width / 360f).coerceIn(0.85f, 1.8f) }` (factor) and `scalingFormula { base * pow(sw / 360f, 0.8f) }` (value), with each platform's idiom (Swift closures, Dart `customScaleStrategy` / `scalingFormulaOf`, TypeScript scope objects, C# `CustomScaleStrategy.Create`).
   - Text formulas for JSON and remote config, a full configuration (reference frame, axes, curves, bounds, aspect ratio, font-scale policy, rules per device / screen range / orientation / multi-window, presets) and one cross-platform JSON document (`custom-strategy.schema.json`), checked by a shared 540-case fixture.
-  - Pull requests: appdimens-dynamic#16, appdimens-kmp#4, appdimens-ios#13, appdimens-flutter#7, appdimens-react-native#4, appdimens-web#4, appdimens-net-binding#6, appdimens-games#41, appdimens-skills#7. Submodule pointers move once they are merged.
+  - Pull requests: appdimens-dynamic#16, appdimens-kmp#4, appdimens-ios#13, appdimens-flutter#7, appdimens-react-native#4, appdimens-web#4, appdimens-net-binding#6, appdimens-games#41, appdimens-skills#7. All merged; submodule pointers updated to each repository's `main`.
 - 📚 Hub docs: new [DOCS/CUSTOM.md](DOCS/CUSTOM.md); README section and docs table, `DOCS/GUIDE.md` §5, `DOCS/PLATFORMS.md` §3, `DOCS/EXAMPLES.md`, `DOCS/THEORY.md` §5.12, `DOCS/README.md` (index + glossary), `LLMS.txt` and `skills/SKILL.md`.
 
 ### Submodule update — 2026-10-14 — new `appdimens-skills`

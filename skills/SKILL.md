@@ -1,6 +1,6 @@
 ---
 name: appdimens
-description: Use this skill for any responsive sizing question in a project that uses (or should use) AppDimens on any platform — Android (Jetpack Compose, Kotlin, Java, XML @dimen), Kotlin Multiplatform, iOS/macOS (SwiftUI, UIKit), Flutter, React Native, Web (webdimens), .NET (MAUI, WPF, WinForms, WinUI, .NET for Android) or Android games. Trigger when the user mentions AppDimens, appdimens-*, webdimens, sdp, hdp, wdp, ssp, sem, asdp, "16sdp", @dimen/_16sdp, {sdp:16}, making UI look right on tablets/foldables/TVs, or choosing a scaling strategy. This hub skill picks the right library, install line and token names, then defers to that library's own skill.
+description: Use this skill for any responsive sizing question in a project that uses (or should use) AppDimens on any platform — Android (Jetpack Compose, Kotlin, Java, XML @dimen), Kotlin Multiplatform, iOS/macOS (SwiftUI, UIKit), Flutter, React Native, Web (webdimens), .NET (MAUI, WPF, WinForms, WinUI, .NET for Android), Qt (Widgets/QML), GTK 3/4, LVGL (embedded), Roku (BrightScript/SceneGraph), Python (Tkinter, PySide, Kivy, pygame, Blender) or games on any engine/platform (Unity, Unreal, Godot, C/C++, Android; Windows, Linux, Steam Deck, Proton, macOS, iOS, Web, consoles). Trigger when the user mentions AppDimens, appdimens-*, webdimens, sdp, hdp, wdp, ssp, sem, asdp, "16sdp", @dimen/_16sdp, {sdp:16}, making UI look right on tablets/foldables/TVs, or choosing a scaling strategy. This hub skill picks the right library, install line and token names, then defers to that library's own skill.
 ---
 
 # AppDimens — hub skill (routes to the right library)
@@ -20,7 +20,12 @@ AppDimens is one family of responsive-size libraries with **the same names and t
 | React Native | `appdimens-react-native` | `npm install appdimens-react-native` (strategies: `appdimens-react-native/<strategy>`) | [appdimens-react-native/skills/SKILL.md](https://github.com/bodenberg/appdimens-react-native/blob/main/skills/SKILL.md) |
 | Web | `appdimens-web` (npm `webdimens`) | `npm install webdimens` (3.2.1) then `install()`; strategies load automatically when a token is used (hand-written CSS/PostCSS: `install({ strategies: ['auto'] })`) | [appdimens-web/skills/SKILL.md](https://github.com/bodenberg/appdimens-web/blob/main/skills/SKILL.md) |
 | .NET MAUI / WPF / WinForms / WinUI / .NET for Android | `appdimens-net-binding` | `dotnet add package Bodenberg.AppDimens.Maui.Sdps` (MAUI) · `Bodenberg.AppDimens.Sdps.Wpf` / `.WinForms` / `.WinUI` · `AppDimens.Net.Sdk` (all strategies) · Android: `Bodenberg.AppDimens.Sdps` / `.Ssps` / `.Dynamic` | [appdimens-net-binding/skills/](https://github.com/bodenberg/appdimens-net-binding/tree/main/skills) (`appdimens-sdps-net`, `appdimens-net`, `appdimens-android-sdps-ssps`, `appdimens-android-dynamic`) |
-| Android games (Kotlin, C/C++/NDK, GL/Vulkan, Unity) | `appdimens-games` | `implementation(platform("io.github.bodenberg:appdimens-games-bom:3.2.0"))` + `implementation("io.github.bodenberg:appdimens-games")` (+ `appdimens-games-native`) | [appdimens-games/skills/SKILL.md](https://github.com/bodenberg/appdimens-games/blob/main/skills/SKILL.md) |
+| Qt 5.12+ / Qt 6 (Widgets, QML) | `appdimens-qt` | CMake `add_subdirectory(appdimens-qt)` → `AppDimens::Qt` (or `appdimens-qt.pri`); `AppDimens::Scope::registerQmlTypes()` | [appdimens-qt/skills/appdimens-qt/SKILL.md](https://github.com/bodenberg/appdimens-qt/blob/main/skills/appdimens-qt/SKILL.md) |
+| GTK 3 / GTK 4 (C, PyGObject, GJS, Vala) · any C/C++ toolkit | `appdimens-gtk` | Meson `-Dgtk=4` / CMake; pkg-config `appdimens-gtk4`; core only: `include/appdimens/appdimens.h` | [appdimens-gtk/skills/appdimens-gtk/SKILL.md](https://github.com/bodenberg/appdimens-gtk/blob/main/skills/appdimens-gtk/SKILL.md) |
+| LVGL 8.3 / 9 (ESP32, STM32, RP2040, Zephyr, Arduino, embedded Linux) | `appdimens-lvgl` | ESP-IDF component, PlatformIO `bodenberg/appdimens-lvgl`, Arduino, Zephyr module, CMake | [appdimens-lvgl/skills/appdimens-lvgl/SKILL.md](https://github.com/bodenberg/appdimens-lvgl/blob/main/skills/appdimens-lvgl/SKILL.md) |
+| Roku (BrightScript / SceneGraph channels) | `appdimens-roku` | copy `source/AppDimens.brs`, `AppDimensTokens.brs` (+ `AppDimensCustom.brs`) | [appdimens-roku/skills/appdimens-roku/SKILL.md](https://github.com/bodenberg/appdimens-roku/blob/main/skills/appdimens-roku/SKILL.md) |
+| Python (Tkinter, PySide/PyQt, Kivy, pygame, pyglet, wx, Dear PyGui, Panda3D) · Blender | `appdimens-py` | `pip install appdimens`; Blender: add-on zip from `scripts/build_blender_addon.py` | [appdimens-py/skills/appdimens-py/SKILL.md](https://github.com/bodenberg/appdimens-py/blob/main/skills/appdimens-py/SKILL.md) |
+| Games — Unity, Unreal Engine 5, Godot 4, C/C++ engines, .NET engines, Android (any platform/graphics API/upscaler) | `appdimens-games` | Unity UPM `…appdimens-games.git?path=/engines/unity/com.bodenberg.appdimens.games` · UE5 plugin `engines/unreal/AppDimens` · Godot `engines/godot/addons/appdimens` · CMake `native/` · Android `implementation(platform("io.github.bodenberg:appdimens-games-bom:3.3.0"))` | [appdimens-games/skills/SKILL.md](https://github.com/bodenberg/appdimens-games/blob/main/skills/SKILL.md) |
 
 **Full skill pack:** [appdimens-skills](https://github.com/bodenberg/appdimens-skills) (`npx appdimens-skills`) installs, for every agent (Claude Code, Codex, Gemini CLI, Cursor, Copilot, Windsurf…), a core `layout-intent` skill (base screen + layout intent → strategy/token), workflow skills (`design-to-code`, `claude-design`, `code-edit`, `new-screen`), one platform skill per library, a `kit` CLI to compute base values (`npx appdimens-skills kit normalize …`) and a validator (`kit lint`). If it is installed in the project (`.claude/skills/`, `.agents/skills/`, `.appdimens/`), prefer it; in this hub it lives in `appdimens-skills/skills/`.
 
@@ -36,7 +41,14 @@ If the library's own skill is available (in this hub it lives in the submodule f
 | Flutter | `AppDimensApp(child: MaterialApp(...))` |
 | Web | `import { install } from 'webdimens'; install();` (the CDN script installs itself) |
 | .NET MAUI | `builder.UseAppDimensSdps();` in `MauiProgram.cs` |
-| Games | `GameScreen.updateFromContext(context)` on resize |
+| Games (Android) | `GameScreen.updateFromContext(context)` on resize |
+| Games (Unity / Unreal / Godot) | automatic (`AppDimensScreen` / engine subsystem / autoload); UE5: DPI Scale Rule = `AppDimensDPIScalingRule` |
+| Games (C/C++) | `adg_metrics_from_surface()` on swapchain resize (or `adg_publish_px()` with the C ABI) |
+| Qt | `AppDimens::Scope::registerQmlTypes()` before loading QML; Widgets: `new AppDimens::Scope(&window, &window)` |
+| GTK | `appdimens_scope_new_for_widget(window)` |
+| LVGL | `lv_appdimens_init(NULL)` after registering the display |
+| Roku | `ad = AppDimens()` in each component `init()` (include `source/AppDimens.brs` + `AppDimensTokens.brs`) |
+| Python | an adapter: `bind_tk(root, scope)`, `metrics_from_qt(widget)`, `bind_kivy(scope)`, `metrics_from_pygame(surface)` |
 
 ## Step 3 — write the tokens
 

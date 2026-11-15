@@ -36,6 +36,9 @@ Inside the braces of the code forms, your IDE autocompletes every name you can u
 | .NET (`AppDimens.Net.Custom`) | `CustomScaleStrategy.Create(s => s.Clamp(s.Width / 360f, 0.85f, 1.8f))` | `ScalingStrategy.Formula(s => s.Base * s.Pow(s.Sw / 360f, 0.8f))` | `16f.Cdp(s)` · `16f.Cdp("…")` |
 | Android games (`appdimens-games-custom`) | same as Android | same as Android | `64.cdp(s)` (px) · Compose `64.cdp(s)` |
 | Unity / C# (games) | `CustomGames.CustomScaleStrategy(s => s.Clamp(s.Width / 360f, 0.85f, 1.8f))` | `CustomGames.Formula(s => s.Base * s.Pow(s.Sw / 360f, 0.8f))` | `64f.Cdp(s)` (dp) |
+| Python (`appdimens.custom`) | `c.custom_scale_strategy(lambda s: s.clamp(s.width / 360, 0.85, 1.8))` | `c.scaling_formula(lambda f: f.base * f.pow(f.sw / 360, 0.8))` | `c.cdp(16, s)` · `c.cdp(16, "base * …")` |
+| C / C++ — GTK, Qt, LVGL, native games, Unreal (`appdimens_custom.h`) | `adc_custom_factor("product", fn, user)` | `adc_custom_formula("hud", fn, user)` · `adc_formula("base * …", err, n)` | `adc_dp(s, metrics, 16)` · `adc_sp` · `adc_px` |
+| Roku (`AppDimensCustom.brs`) | `AppDimens_CustomFactor("product", function(s) … end function)` | `AppDimens_CustomFormula("hud", function(base, s) … end function)` | `ad.cdp(16, s)` · `ad.cdp(16, "base * …")` · `ad.csp` |
 
 > Differences worth knowing: Dart has no overloading, so text formulas use `cdpFormula`; Swift text helpers `throw`; Apple falls back to a factor of 1 when a factor is not finite (the others throw); in Games the Kotlin short names return px and the C# ones dp.
 
@@ -86,7 +89,10 @@ value  = formula ? formula(base, scaled, factor) : scaled     // per value, only
 | React Native (`appdimens-react-native`) | [docs/custom/](https://github.com/bodenberg/appdimens-react-native/blob/main/docs/custom/README.md) |
 | Web (`appdimens-web`) | [docs/custom/](https://github.com/bodenberg/appdimens-web/blob/main/docs/custom/README.md) · [pt-BR](https://github.com/bodenberg/appdimens-web/blob/main/docs/pt-BR/custom/README.md) |
 | .NET (`appdimens-net-binding`) | [docs/AppDimens.Net.Custom/](https://github.com/bodenberg/appdimens-net-binding/blob/main/docs/AppDimens.Net.Custom/README.md) |
-| Games — Kotlin and Unity C# (`appdimens-games`) | [DOCUMENTATION/strategies/custom/](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/strategies/custom/README.md) |
+| Games — Kotlin and Unity C# (`appdimens-games`) | [DOCUMENTATION/strategies/custom/](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/strategies/custom/README.md) · native C/C++ + Unreal: [DOCUMENTATION/CUSTOM-NATIVE.md](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/CUSTOM-NATIVE.md) |
+| Python (`appdimens-py`) | [docs/CUSTOM.md](https://github.com/bodenberg/appdimens-py/blob/main/docs/CUSTOM.md) |
+| Qt / GTK / LVGL (`appdimens_custom.h`) | [Qt](https://github.com/bodenberg/appdimens-qt/blob/main/docs/CUSTOM.md) · [GTK](https://github.com/bodenberg/appdimens-gtk/blob/main/docs/CUSTOM.md) · [LVGL](https://github.com/bodenberg/appdimens-lvgl/blob/main/docs/CUSTOM.md) |
+| Roku (`appdimens-roku`) | [docs/CUSTOM.md](https://github.com/bodenberg/appdimens-roku/blob/main/docs/CUSTOM.md) |
 | AI agents (`appdimens-skills`) | [skills/appdimens-custom-strategies](https://github.com/bodenberg/appdimens-skills/tree/main/skills/appdimens-custom-strategies) |
 
 Each set has the same guides: quick start, code formulas, text formulas, configuration, JSON format, API reference, performance, cookbook and troubleshooting.
