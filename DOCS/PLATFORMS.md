@@ -28,6 +28,8 @@ Every library is **in production**.
 | [appdimens-py](https://github.com/bodenberg/appdimens-py) | Python 3.7+ — Tkinter, Qt for Python, Kivy, pygame, pyglet, wx, Dear PyGui, Panda3D, Blender 2.80 → 4.x | 3.2.0 | `pip install appdimens` | [README](https://github.com/bodenberg/appdimens-py/blob/main/README.md) · [Blender](https://github.com/bodenberg/appdimens-py/blob/main/docs/BLENDER.md) | [skills/](https://github.com/bodenberg/appdimens-py/tree/main/skills) |
 | [appdimens-games](https://github.com/bodenberg/appdimens-games) | Games — Unity, Unreal Engine 5, Godot 4, C/C++ engines, .NET engines, Android; Windows, Linux, Steam Deck, Proton, macOS, iOS, Web, consoles; OpenGL, Vulkan, D3D11/12, Metal, WebGPU; FSR/DLSS/XeSS | 3.3.0 | Unity UPM · UE5 plugin · Godot addon · CMake `native/` · Maven `io.github.bodenberg:appdimens-games:3.3.0` | [Engines](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/ENGINES.md) · [Docs](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/README.md) | [skills/](https://github.com/bodenberg/appdimens-games/tree/main/skills) |
 
+**appdimens-games layout:** one folder per platform — `android/` (Gradle: Kotlin, Compose, Java, NDK), `native/` (C/C++ SDK), `engines/unity`, `engines/unreal`, `engines/godot`, `dotnet/` (.NET package and C# drop-in).
+
 **Where they are published:** Maven Central (Android, KMP, Games for Android) · Swift Package Manager (iOS) · pub.dev (Flutter) · npm (React Native, Web) · NuGet (.NET) · PyPI (Python) · ESP-IDF / PlatformIO / Arduino registries (LVGL) · source builds for Qt, GTK, Roku and the game-engine packages (Unity UPM, Unreal, Godot).
 
 ### .NET packages — which one?
