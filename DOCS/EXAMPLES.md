@@ -366,8 +366,8 @@ ad->bindStyleSheet(&window, "QPushButton { min-height: 44asdp; padding: 0 16sdp;
 ```
 ```qml
 import AppDimens 1.0
-Rectangle { width: 280 * AppDimens.asdp; radius: 12 * AppDimens.sdp
-            Text { font.pixelSize: 14 * AppDimens.ssp } }
+Rectangle { width: AppDimens.asdp(280); radius: AppDimens.sdp(12)
+            Text { font.pixelSize: AppDimens.ssp(14) } }
 ```
 
 📘 [README](https://github.com/bodenberg/appdimens-qt/blob/main/README.md)
@@ -451,14 +451,14 @@ XeSS, MetalFX, TSR. Design at a reference resolution (default 1920×1080): value
 to the HUD root, `AppDimensCamera` to the camera.
 
 ```csharp
-float bar = AppDimensScreen.Asdp(320);                                  // calm on 4K / ultrawide
+float bar = 320f.ASdp();                                  // calm on 4K / ultrawide
 AppDimensUpscaling.ApplyToPipeline(Upscaler.Dlss, UpscaleQuality.Quality);
 ```
 
 **Unreal Engine 5** — DPI Scale Rule = Custom → `AppDimensDPIScalingRule`; Blueprint/C++:
 
 ```cpp
-float Bar = UAppDimensLibrary::Asdp(320.f);
+float Bar = UAppDimensLibrary::ASdp(320.f);
 Camera->SetFieldOfView(UAppDimensLibrary::HorizontalFovForAspect(EAppDimensFovPolicy::Hybrid, 90.f, 16.f / 9.f, Aspect));
 ```
 

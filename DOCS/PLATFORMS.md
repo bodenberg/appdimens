@@ -64,7 +64,8 @@ Notes:
 - **Flutter / iOS / KMP / Compose** all use the exact same `16.sdp` syntax.
 - **Web:** `16sdp` is written inside classes (`class="p:16sdp fs:14ssp"`), in CSS through PostCSS/Sass, or in JS with `sdp(16)` / `dimen('16sdp')`.
 - **Games** (Android) use the Android names; game code returns pixels: `48.sdp(context)`. Other engines: Unity `AppDimensScreen.Sdp(48)`, Godot `AppDimens.sdp(48)`, Unreal `UAppDimensLibrary::Sdp(48)`, C/C++ `adg_ref_px(&m, AD_SCALED, 48)` — values in px at the reference resolution (1080p).
-- **Qt (QML):** factor properties — `16 * AppDimens.sdp`, `14 * AppDimens.ssp`; Widgets/C++: `scope->dimen("16sdp")`, literals `16_sdp`.
+- **Qt:** QML `AppDimens.sdp(16)`, `AppDimens.ssp(14)` (reactive), C++ `ad->sdp(16)`, `AppDimens::sdp(16)`, literals `16_sdp`, style sheets `padding: 16sdp`.
+- **Games:** C# `64f.ASdp()`, GDScript `AppDimens.asdp(64)`, C++ `appdimens::asdp(64)` / `64_asdp`, Unreal `UAppDimensLibrary::ASdp(64)`.
 - **GTK:** CSS tokens `padding: 16sdp`, C `appdimens_scope_px(ad, "16sdp")`, core `ad_sdp(m, 16)`.
 - **LVGL:** integer pixels `lv_ad_sdp(16)`, `lv_ad_ssp(14)`.
 - **Roku:** methods on the instance — `ad.sdp(16)`, `ad.asdpa(24)`, `ad.fontSize(32)`, `ad.resolve("hdpLw", 16)`, `ad.dimen("16sdp")`.
