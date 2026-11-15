@@ -18,7 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ➕ **New submodule [`appdimens-lvgl`](https://github.com/bodenberg/appdimens-lvgl) 3.2.0** — LVGL 8.3/9: integer-only hot path (no FPU), automatic update on resolution/rotation, responsive style bindings, font picking; ESP-IDF, PlatformIO, Arduino, Zephyr, CMake.
 - ➕ **New submodule [`appdimens-py`](https://github.com/bodenberg/appdimens-py) 3.2.0** — pure Python 3.7+ with adapters for Tkinter, Qt for Python, Kivy, pygame, pyglet/arcade, wxPython, Dear PyGui, Panda3D, and a **Blender 2.80 → 4.x add-on/Extension**.
 - 🔗 `appdimens-games` → **3.3.0**: cross-platform native SDK (Windows, Proton/Wine, Linux, Steam Deck, macOS, iOS, Android, Web, consoles), Unity UPM package, Unreal Engine 5 plugin, Godot 4 addon, .NET package; viewports and projections for OpenGL/Vulkan/D3D11/D3D12/Metal/WebGPU; FSR/DLSS/XeSS/MetalFX/TSR presets, jitter, mip bias, dynamic resolution; Hor+/Vert-/hybrid FOV; safe areas, LOD helpers; fixes the NDK snapshot publication race.
-- 🧪 Every new port is parity-tested against vectors generated from the reference implementation (528 factors × 20 screens).
+- 🧪 Every new port is parity-tested against vectors generated from **appdimens-dynamic's own kernels** (`appdimens-dynamic/tools/parity`, 528 factors × 20 screens, float32 tolerance); the Web port agrees to 2.9e-7.
+- 🔗 `appdimens-dynamic` → parity harness `tools/parity` + family section in the README.
 - 🔗 `appdimens-skills` → **0.2.0**: new `qt`, `gtk`, `lvgl`, `python` skills, multi-engine `games` skill, detection of Qt/GTK/LVGL/Python/Blender/Unity/Unreal/Godot projects.
 - 📚 Hub docs: README (platform table, first lines of code, skills, tree, FAQ, PT-BR), `DOCS/PLATFORMS.md`, `DOCS/EXAMPLES.md`, `LLMS.txt`, `skills/SKILL.md`.
 
