@@ -412,7 +412,7 @@ sub init()
     ad = AppDimens()
     safe = ad.safeRect("title")                     ' Roku title-safe zone
     card.translation = [safe.x, safe.y]
-    card.width = ad.sdp(720)
+    card.width = sdp(720)                           ' global token, like sdp(16) on the Web
     font.size = ad.fontSize(28, "logarithmic")      ' long TV text
 end sub
 ```

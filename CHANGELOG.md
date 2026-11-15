@@ -9,7 +9,7 @@ All notable changes tracked in this file are described below.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## Latest — in production (`main`)
 
 ### New platforms — 2026-11-15 — Qt, GTK, LVGL, Roku, Python/Blender · Games 3.3.0 on every platform
 
@@ -18,8 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 🗂️ `appdimens-games` is organized **by platform**: `android/` (Gradle build and every Android module, same Maven coordinates), `native/`, `engines/{unity,unreal,godot}`, `dotnet/`; per-folder READMEs and a repository map.
 - 🔧 `appdimens-flutter`: `verify` fixed on Flutter 3.50 (apps and tests use `package:material_ui`).
 - 🎯 **Family token calls on Qt and games** — the token applied to a value, like `16.sdp` / `sdp(16)` everywhere else: Qt QML `AppDimens.sdp(16)` (reactive), C++ `ad->sdp(16)`, `AppDimens::sdp(16)`, `16_sdp`; games C# `64f.ASdp()`, GDScript `AppDimens.asdp(64)` (every token), C++ `appdimens::asdp(64)` / `64_asdp`, Unreal `UAppDimensLibrary::ASdp(64)`. Also fixes `appdimens-qt.pri` for qmake.
+- 📺 **Roku, the AppDimens way:** global tokens `sdp(720)`, `asdp(24)` (like `sdp(16)` on the Web) and custom `cdp(16, "brand")` / `csp(14, "brand")` / `"16cdp-brand"`.
+- ✅ **Production status everywhere:** no library, module or doc is marked work in progress or unreleased any more (custom-strategy modules included); CHANGELOG "Unreleased" headings became "Latest — in production (`main`)".
 - 📚 **One family table in every library README** (all 15 libraries with their scaled-16 call, the hub, the agent skills and the shared custom-strategy JSON), written by `tools/family_block.py` (`--check` to verify); every library skill and LLMS.txt points to the other platforms and `npx appdimens-skills`.
-- 🔗 `appdimens-skills` → **0.3.1**: Qt/games token calls, Roku skill and detection, custom strategies on the new ports, and a directory-ready `plugin/` folder (no hooks or executables).
+- 🔗 `appdimens-skills` → **0.3.2**: Qt/games token calls, Roku skill and detection, custom strategies on the new ports, and a directory-ready `plugin/` folder (no hooks or executables).
 - ➕ **New submodule [`appdimens-qt`](https://github.com/bodenberg/appdimens-qt) 3.2.0** — Qt 5.12+ / Qt 6, Widgets + QML: per-window scope (size, per-monitor fractional DPR, DPI, rotation, screen moves), 172 reactive QML factor properties, responsive Qt Style Sheets, C++ literals.
 - ➕ **New submodule [`appdimens-gtk`](https://github.com/bodenberg/appdimens-gtk) 3.2.0** — GTK 3/4 GObject scope (fractional scale, monitor DPI, text scaling, tiling) with responsive GTK CSS and GObject Introspection, plus the **portable C99 single-header core** `appdimens.h` (float/double, freestanding no-libm, Q16.16 fixed point) shared by GTK, LVGL, Qt and Games.
 - ➕ **New submodule [`appdimens-lvgl`](https://github.com/bodenberg/appdimens-lvgl) 3.2.0** — LVGL 8.3/9: integer-only hot path (no FPU), automatic update on resolution/rotation, responsive style bindings, font picking; ESP-IDF, PlatformIO, Arduino, Zephyr, CMake.
@@ -83,9 +85,9 @@ All submodules now point at the **latest `main`** of their repositories. `appdim
   - `appdimens-kmp` → **1.0.1** (Production)
   - `appdimens-games` → **3.0.0** (promoted to **Production**, replaces deprecated 2.0.1)
   - `appdimens-flutter` → **3.2.0** (promoted to **Production** — published on pub.dev: `appdimens_flutter`, satellites and `appdimens_bom`)
-  - `appdimens-ios` → latest `main` (Work in progress)
-  - `appdimens-react-native` → latest `main` (Work in progress)
-  - `appdimens-web` → latest `main` (Work in progress)
+  - `appdimens-ios` → latest `main` (then work in progress; in production since 2026-10-12)
+  - `appdimens-react-native` → latest `main` (then work in progress; in production since 2026-10-12)
+  - `appdimens-web` → latest `main` (then work in progress; in production since 2026-10-12)
 - 📚 **Docs updated:** `README.md` (status table, Flutter quick start rewritten for the 3.2.0 suffix API, platform matrix coordinates for games 3.0.0 / flutter 3.2.0, mermaid diagram, roadmap), `DOCS/PLATFORMS.md` (status snapshot), `LLMS.txt` (versions and statuses), `CHANGELOG.md` (this entry).
 
 ### Coordinated submodule update — 2026-08-17
@@ -104,7 +106,7 @@ All production-track submodules now point at the **latest `main`** of their repo
 ### Hub documentation
 
 - `DOCS/` is **theory-only** and intentionally omits pinned coordinates.
-- See [`README.md`](README.md) for **Production vs Work in progress** status and install snippets.
+- See [`README.md`](README.md) for the production status and install snippets.
 - **Docs refactor:** Consolidated Markdown into **`THEORY.md`**, **`GUIDE.md`**, **`PLATFORMS.md`**, **`MIGRATION.md`**, **`ORIENTATION.md`**; removed legacy checklist/report files—follow [`CONTRIBUTING.md`](CONTRIBUTING.md) for upkeep steps.
 
 ### Nota sobre documentación y Android

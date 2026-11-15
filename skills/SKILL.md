@@ -47,7 +47,7 @@ If the library's own skill is available (in this hub it lives in the submodule f
 | Qt | `AppDimens::Scope::registerQmlTypes()` before loading QML; Widgets: `new AppDimens::Scope(&window, &window)` |
 | GTK | `appdimens_scope_new_for_widget(window)` |
 | LVGL | `lv_appdimens_init(NULL)` after registering the display |
-| Roku | `ad = AppDimens()` in each component `init()` (include `source/AppDimens.brs` + `AppDimensTokens.brs`) |
+| Roku | include `source/AppDimens.brs` + `AppDimensTokens.brs`, then `sdp(720)` (global, like the Web) or `ad = AppDimens()` → `ad.sdp(720)` |
 | Python | an adapter: `bind_tk(root, scope)`, `metrics_from_qt(widget)`, `bind_kivy(scope)`, `metrics_from_pygame(surface)` |
 
 ## Step 3 — write the tokens

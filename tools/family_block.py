@@ -24,7 +24,7 @@ ROWS = [
     ("Qt 5/6 — QML, Widgets", "appdimens-qt", "`AppDimens.sdp(16)` · `16_sdp`"),
     ("GTK 3/4 and portable C99", "appdimens-gtk", "`16sdp` (CSS) · `ad_sdp(&m, 16)`"),
     ("LVGL 8/9 — MCUs, embedded Linux", "appdimens-lvgl", "`lv_ad_sdp(16)`"),
-    ("Roku — BrightScript / SceneGraph", "appdimens-roku", "`ad.sdp(16)`"),
+    ("Roku — BrightScript / SceneGraph", "appdimens-roku", "`sdp(16)` · `ad.sdp(16)`"),
     ("Python — Tkinter, Qt, Kivy, pygame, Blender", "appdimens-py", "`ad.sdp(16)`"),
     ("Games — Unity, Unreal, Godot, C/C++, .NET, Android", "appdimens-games",
      "`64f.ASdp()` · `AppDimens.asdp(64)` · `appdimens::asdp(64)`"),
