@@ -160,8 +160,8 @@ lv_obj_set_style_pad_all(label, lv_ad_sdp(16), 0);
 
 **Roku (BrightScript / SceneGraph)**
 ```brightscript
-ad = AppDimens()                      ' reads ui_resolutions: FHD, HD or SD coordinates
-card.width = ad.sdp(720) : font.size = ad.fontSize(32)
+card.width = sdp(720)                 ' like sdp(16) on the Web; reads ui_resolutions (FHD, HD, SD)
+font.size = AppDimens().fontSize(32) : pad = cdp(16, "brand")   ' custom strategy
 ```
 
 **Python / Blender**

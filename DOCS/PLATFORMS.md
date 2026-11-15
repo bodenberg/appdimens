@@ -68,7 +68,7 @@ Notes:
 - **Games:** C# `64f.ASdp()`, GDScript `AppDimens.asdp(64)`, C++ `appdimens::asdp(64)` / `64_asdp`, Unreal `UAppDimensLibrary::ASdp(64)`.
 - **GTK:** CSS tokens `padding: 16sdp`, C `appdimens_scope_px(ad, "16sdp")`, core `ad_sdp(m, 16)`.
 - **LVGL:** integer pixels `lv_ad_sdp(16)`, `lv_ad_ssp(14)`.
-- **Roku:** methods on the instance — `ad.sdp(16)`, `ad.asdpa(24)`, `ad.fontSize(32)`, `ad.resolve("hdpLw", 16)`, `ad.dimen("16sdp")`.
+- **Roku:** global tokens like the Web — `sdp(16)`, `asdpa(24)`, custom `cdp(16, "brand")` — or the instance: `ad.sdp(16)`, `ad.fontSize(32)`, `ad.resolve("hdpLw", 16)`, `ad.dimen("16cdp-brand")`.
 - **Python:** `ad.sdp(16)`, `ad.ssp(14)`, `ad.dimen("16sdp")`, any token as an attribute (`ad.hdpLw`).
 - **C / C++ (any toolkit):** `ad_sdp(&m, 16)`, `ad_dp(&m, AD_AUTO, AD_SLOT(AD_VAR_S_PH, AD_FLAG_A), 16)`, `ad_dimen(&m, "16sdp", &out)`.
 - `—` means "not offered by that library" or "use the library's own API" — check its README.
