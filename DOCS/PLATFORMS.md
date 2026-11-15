@@ -24,10 +24,11 @@ Every library is **in production**.
 | [appdimens-qt](https://github.com/bodenberg/appdimens-qt) | Qt 5.12+ / Qt 6 — Widgets, QML; Windows, macOS, Linux, Android, iOS, embedded | 3.2.0 | CMake `AppDimens::Qt` · qmake `appdimens-qt.pri` | [README](https://github.com/bodenberg/appdimens-qt/blob/main/README.md) | [skills/](https://github.com/bodenberg/appdimens-qt/tree/main/skills) |
 | [appdimens-gtk](https://github.com/bodenberg/appdimens-gtk) | GTK 3.22+ / GTK 4 (C, PyGObject, GJS, Vala, Rust) + portable C99 core `appdimens.h` | 3.2.0 | Meson / CMake, pkg-config `appdimens-gtk4` | [README](https://github.com/bodenberg/appdimens-gtk/blob/main/README.md) | [skills/](https://github.com/bodenberg/appdimens-gtk/tree/main/skills) |
 | [appdimens-lvgl](https://github.com/bodenberg/appdimens-lvgl) | LVGL 8.3 / 9.x — MCUs (no FPU needed) and embedded Linux | 3.2.0 | ESP-IDF · PlatformIO · Arduino · Zephyr · CMake | [README](https://github.com/bodenberg/appdimens-lvgl/blob/main/README.md) | [skills/](https://github.com/bodenberg/appdimens-lvgl/tree/main/skills) |
+| [appdimens-roku](https://github.com/bodenberg/appdimens-roku) | Roku BrightScript / SceneGraph — FHD, HD and SD coordinate spaces | 3.2.0 | copy `source/AppDimens*.brs` | [README](https://github.com/bodenberg/appdimens-roku/blob/main/README.md) | [skills/](https://github.com/bodenberg/appdimens-roku/tree/main/skills) |
 | [appdimens-py](https://github.com/bodenberg/appdimens-py) | Python 3.7+ — Tkinter, Qt for Python, Kivy, pygame, pyglet, wx, Dear PyGui, Panda3D, Blender 2.80 → 4.x | 3.2.0 | `pip install appdimens` | [README](https://github.com/bodenberg/appdimens-py/blob/main/README.md) · [Blender](https://github.com/bodenberg/appdimens-py/blob/main/docs/BLENDER.md) | [skills/](https://github.com/bodenberg/appdimens-py/tree/main/skills) |
 | [appdimens-games](https://github.com/bodenberg/appdimens-games) | Games — Unity, Unreal Engine 5, Godot 4, C/C++ engines, .NET engines, Android; Windows, Linux, Steam Deck, Proton, macOS, iOS, Web, consoles; OpenGL, Vulkan, D3D11/12, Metal, WebGPU; FSR/DLSS/XeSS | 3.3.0 | Unity UPM · UE5 plugin · Godot addon · CMake `native/` · Maven `io.github.bodenberg:appdimens-games:3.3.0` | [Engines](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/ENGINES.md) · [Docs](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/README.md) | [skills/](https://github.com/bodenberg/appdimens-games/tree/main/skills) |
 
-**Where they are published:** Maven Central (Android, KMP, Games for Android) · Swift Package Manager (iOS) · pub.dev (Flutter) · npm (React Native, Web) · NuGet (.NET) · PyPI (Python) · ESP-IDF / PlatformIO / Arduino registries (LVGL) · source builds for Qt, GTK and the game-engine packages (Unity UPM, Unreal, Godot).
+**Where they are published:** Maven Central (Android, KMP, Games for Android) · Swift Package Manager (iOS) · pub.dev (Flutter) · npm (React Native, Web) · NuGet (.NET) · PyPI (Python) · ESP-IDF / PlatformIO / Arduino registries (LVGL) · source builds for Qt, GTK, Roku and the game-engine packages (Unity UPM, Unreal, Godot).
 
 ### .NET packages — which one?
 
@@ -64,6 +65,7 @@ Notes:
 - **Qt (QML):** factor properties — `16 * AppDimens.sdp`, `14 * AppDimens.ssp`; Widgets/C++: `scope->dimen("16sdp")`, literals `16_sdp`.
 - **GTK:** CSS tokens `padding: 16sdp`, C `appdimens_scope_px(ad, "16sdp")`, core `ad_sdp(m, 16)`.
 - **LVGL:** integer pixels `lv_ad_sdp(16)`, `lv_ad_ssp(14)`.
+- **Roku:** methods on the instance — `ad.sdp(16)`, `ad.asdpa(24)`, `ad.fontSize(32)`, `ad.resolve("hdpLw", 16)`, `ad.dimen("16sdp")`.
 - **Python:** `ad.sdp(16)`, `ad.ssp(14)`, `ad.dimen("16sdp")`, any token as an attribute (`ad.hdpLw`).
 - **C / C++ (any toolkit):** `ad_sdp(&m, 16)`, `ad_dp(&m, AD_AUTO, AD_SLOT(AD_VAR_S_PH, AD_FLAG_A), 16)`, `ad_dimen(&m, "16sdp", &out)`.
 - `—` means "not offered by that library" or "use the library's own API" — check its README.

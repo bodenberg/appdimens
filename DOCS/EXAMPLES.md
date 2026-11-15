@@ -402,6 +402,25 @@ lv_ad_style_bind(&style, LV_STYLE_RADIUS, AD_SCALED, AD_SLOT(AD_VAR_S, 0), 10); 
 
 ---
 
+## Roku (`appdimens-roku`)
+
+BrightScript / SceneGraph channels. Mock-ups in px at 1920×1080; AppDimens reads the manifest's `ui_resolutions`
+(one entry → firmware autoscale, several → the device's FHD/HD/SD coordinates).
+
+```brightscript
+sub init()
+    ad = AppDimens()
+    safe = ad.safeRect("title")                     ' Roku title-safe zone
+    card.translation = [safe.x, safe.y]
+    card.width = ad.sdp(720)
+    font.size = ad.fontSize(28, "logarithmic")      ' long TV text
+end sub
+```
+
+📘 [README](https://github.com/bodenberg/appdimens-roku/blob/main/README.md)
+
+---
+
 ## Python (`appdimens-py`)
 
 Python 3.7+ — Tkinter, PySide/PyQt, Kivy, pygame, pyglet, wx, Dear PyGui, Panda3D and Blender.

@@ -66,3 +66,7 @@
 	path = appdimens-py
 	url = https://github.com/bodenberg/appdimens-py
 	branch = main
+[submodule "appdimens-roku"]
+	path = appdimens-roku
+	url = https://github.com/bodenberg/appdimens-roku
+	branch = main

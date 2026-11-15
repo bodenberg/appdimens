@@ -11,8 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### New platforms — 2026-11-15 — Qt, GTK, LVGL, Python/Blender · Games 3.3.0 on every platform
+### New platforms — 2026-11-15 — Qt, GTK, LVGL, Roku, Python/Blender · Games 3.3.0 on every platform
 
+- ➕ **New submodule [`appdimens-roku`](https://github.com/bodenberg/appdimens-roku) 3.2.0** — Roku BrightScript / SceneGraph: coordinate space from the manifest's `ui_resolutions` (FHD/HD/SD, firmware autoscale), modes reference (px at 1920×1080 → coordinates) / tv (Android TV 960×540 dp) / pixel, 432 token methods, safe zones, integer font sizes; tested in brs-engine (10 560 parity factors, SceneGraph example) and validated with the BrighterScript compiler.
+- 🧪 **Custom strategies on the new ports:** Python `appdimens.custom`, the C99 single header `appdimens_custom.h` (GTK, Qt, LVGL, native games, Unreal) and Roku `AppDimensCustom.brs` — each reproduces the shared 540-case fixture.
+- 🔗 `appdimens-skills` → **0.3.0**: Roku skill and detection, custom strategies on the new ports, and a directory-ready `plugin/` folder (no hooks or executables).
 - ➕ **New submodule [`appdimens-qt`](https://github.com/bodenberg/appdimens-qt) 3.2.0** — Qt 5.12+ / Qt 6, Widgets + QML: per-window scope (size, per-monitor fractional DPR, DPI, rotation, screen moves), 172 reactive QML factor properties, responsive Qt Style Sheets, C++ literals.
 - ➕ **New submodule [`appdimens-gtk`](https://github.com/bodenberg/appdimens-gtk) 3.2.0** — GTK 3/4 GObject scope (fractional scale, monitor DPI, text scaling, tiling) with responsive GTK CSS and GObject Introspection, plus the **portable C99 single-header core** `appdimens.h` (float/double, freestanding no-libm, Q16.16 fixed point) shared by GTK, LVGL, Qt and Games.
 - ➕ **New submodule [`appdimens-lvgl`](https://github.com/bodenberg/appdimens-lvgl) 3.2.0** — LVGL 8.3/9: integer-only hot path (no FPU), automatic update on resolution/rotation, responsive style bindings, font picking; ESP-IDF, PlatformIO, Arduino, Zephyr, CMake.
