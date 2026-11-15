@@ -143,7 +143,7 @@ import { sdp, ssp } from 'appdimens-react-native';
 **Qt (QML)**
 ```qml
 import AppDimens 1.0
-Text { text: "Hello"; font.pixelSize: 18 * AppDimens.ssp; padding: 16 * AppDimens.sdp }
+Text { text: "Hello"; font.pixelSize: AppDimens.ssp(18); padding: AppDimens.sdp(16) }
 ```
 
 **GTK (C)**
