@@ -139,6 +139,18 @@ The **scaled** strategy is always included. The others are **optional modules** 
 
 > **Tip:** don't mix many strategies on one screen. Pick one for layout (usually `scaled` or `auto`) and keep it consistent.
 
+### None of them fits? Write your own
+
+The **custom** module (new in every code library; not in the Android XML resource libraries) lets you write the rule yourself, in one line, with autocomplete:
+
+```kotlin
+val Product = CustomScaleStrategy { (width / 360f).coerceIn(0.85f, 1.80f) }   // a factor
+val Hud = scalingFormula { base * pow(sw / 360f, 0.8f) }                      // the final value
+Modifier.padding(16.cdp(Product))
+```
+
+You can also keep the formula as text in a JSON file shared by all your apps, and add rules per device (tablet, TV, watch). Same names and same numbers on Android, iOS, Flutter, React Native, the Web, KMP, .NET and games. Everything is explained in **[CUSTOM.md](CUSTOM.md)**.
+
 ---
 
 ## 6. Good habits

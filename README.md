@@ -166,6 +166,18 @@ There are 14 strategies in total (also `power`, `interpolated`, `diagonal`, `per
 
 `sdp` = scales with the **smallest side** of the screen · `wdp` = with the **width** · `hdp` = with the **height** · `ssp` = for **text** (respects the user's font size) · `sem` = for text that **ignores** the user's font size.
 
+### 🧪 None of them fits? Write your own
+
+Every code library (Android, KMP, iOS, Flutter, React Native, Web, .NET, games) has a new **custom** module: write the rule yourself, in one line, with autocomplete — or keep it as text in a JSON file shared by all your apps and platforms.
+
+```kotlin
+val Product = CustomScaleStrategy { (width / 360f).coerceIn(0.85f, 1.80f) }   // factor × every value
+val Hud = scalingFormula { base * pow(sw / 360f, 0.8f) }                      // final value (base = 16)
+Modifier.padding(16.cdp(Product))
+```
+
+Same names and same numbers on Android, KMP, iOS, Flutter, React Native, Web, .NET and games. Not available in the Android XML resource libraries (`appdimens-sdps` / `appdimens-ssps`), which offer only the scaled strategy. **[DOCS/CUSTOM.md](DOCS/CUSTOM.md)** shows the syntax on each platform, the shared JSON format and links to every library's guides.
+
 ---
 
 ## 🤖 AI coding assistants (skills)
@@ -218,6 +230,7 @@ For AI tools that read a summary file, see [`LLMS.txt`](LLMS.txt).
 | Upgrade from an older version | [DOCS/MIGRATION.md](DOCS/MIGRATION.md) |
 | Handle rotation and foldables | [DOCS/ORIENTATION.md](DOCS/ORIENTATION.md) |
 | Understand the math | [DOCS/THEORY.md](DOCS/THEORY.md) |
+| Write my own scaling rule (custom strategies) | [DOCS/CUSTOM.md](DOCS/CUSTOM.md) |
 | See pictures and comparisons | [IMAGES/README.md](IMAGES/README.md) · [interactive comparison](DOCS/html/SCALING_COMPARISON_COMPLETE.html) |
 | Read the papers (PDF) | [Precision scaling](DOCS/AppDimens_Precision_Scaling.pdf) · [Android](DOCS/AppDimens_Precision_Android_Scaling.pdf) · [UI](DOCS/AppDimens_Precision_UI_Scaling.pdf) · [Beyond DP](DOCS/Beyond_DP_Scaling.pdf) |
 
@@ -294,6 +307,7 @@ Only need one platform? Just use that library's repository directly.
 - **Celular + tablet/TV no mesmo app?** Use `16.asdp` / `16.assp` (estratégia *auto*): cresce normalmente no celular e desacelera em telas grandes.
 - **Todas as bibliotecas estão em produção**, na versão **3.2.0** (Web na **3.2.1**, .NET na **3.6.1**).
 - **Escolha sua plataforma** na tabela [📦 Pick your platform](#-pick-your-platform) — cada uma tem guia para iniciantes.
+- **Nenhuma estratégia serve?** O novo módulo *custom* deixa você escrever a sua própria regra em uma linha, com autocomplete (`CustomScaleStrategy { (width / 360f).coerceIn(0.85f, 1.8f) }`), ou em texto num JSON compartilhado entre apps e plataformas — veja [DOCS/CUSTOM.md](DOCS/CUSTOM.md).
 - **Mesmos nomes em todas as plataformas:** `sdp`, `ssp`, `asdp`… significam a mesma coisa no Android, iOS, Flutter, React Native, Web e .NET.
 - **Assistentes de IA:** rode `npx appdimens-skills` para instalar as skills de todas as bibliotecas no seu Claude Code, Codex, Cursor, Copilot etc. ([appdimens-skills](https://github.com/bodenberg/appdimens-skills)). Cada biblioteca também traz a sua *skill*; a skill do hub está em [`skills/SKILL.md`](skills/SKILL.md).
 

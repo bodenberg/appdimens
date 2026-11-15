@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Custom strategies — new module in every code library (pull requests open)
+
+- 🧪 **Custom strategies** ([DOCS/CUSTOM.md](DOCS/CUSTOM.md)): every code library (Android, KMP, iOS, Flutter, React Native, Web, .NET, games) gains a `custom` module to define your own scaling rule, used with the new `cdp` / `csp` tokens. The Android XML resource libraries (`appdimens-sdps` / `appdimens-ssps`) keep the scaled strategy only.
+  - One typed line with autocomplete: `CustomScaleStrategy { (width / 360f).coerceIn(0.85f, 1.8f) }` (factor) and `scalingFormula { base * pow(sw / 360f, 0.8f) }` (value), with each platform's idiom (Swift closures, Dart `customScaleStrategy` / `scalingFormulaOf`, TypeScript scope objects, C# `CustomScaleStrategy.Create`).
+  - Text formulas for JSON and remote config, a full configuration (reference frame, axes, curves, bounds, aspect ratio, font-scale policy, rules per device / screen range / orientation / multi-window, presets) and one cross-platform JSON document (`custom-strategy.schema.json`), checked by a shared 540-case fixture.
+  - Pull requests: appdimens-dynamic#16, appdimens-kmp#4, appdimens-ios#13, appdimens-flutter#7, appdimens-react-native#4, appdimens-web#4, appdimens-net-binding#6, appdimens-games#41, appdimens-skills#7. Submodule pointers move once they are merged.
+- 📚 Hub docs: new [DOCS/CUSTOM.md](DOCS/CUSTOM.md); README section and docs table, `DOCS/GUIDE.md` §5, `DOCS/PLATFORMS.md` §3, `DOCS/EXAMPLES.md`, `DOCS/THEORY.md` §5.12, `DOCS/README.md` (index + glossary), `LLMS.txt` and `skills/SKILL.md`.
+
 ### Submodule update — 2026-10-14 — new `appdimens-skills`
 
 - ➕ **New submodule [`appdimens-skills`](https://github.com/bodenberg/appdimens-skills) 0.1.0** (npm `appdimens-skills`): one installer (`npx appdimens-skills`) that adds AppDimens skills to Claude Code, OpenAI Codex, Gemini CLI, OpenClaw, Hermes, Cursor, GitHub Copilot and Windsurf — core `layout-intent` skill, 4 workflows (Figma, Claude Design, existing screens, new screens), one skill per library, a `kit` CLI and a validation hook.
