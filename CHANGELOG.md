@@ -11,6 +11,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### New platforms — 2026-11-15 — Qt, GTK, LVGL, Python/Blender · Games 3.3.0 on every platform
+
+- ➕ **New submodule [`appdimens-qt`](https://github.com/bodenberg/appdimens-qt) 3.2.0** — Qt 5.12+ / Qt 6, Widgets + QML: per-window scope (size, per-monitor fractional DPR, DPI, rotation, screen moves), 172 reactive QML factor properties, responsive Qt Style Sheets, C++ literals.
+- ➕ **New submodule [`appdimens-gtk`](https://github.com/bodenberg/appdimens-gtk) 3.2.0** — GTK 3/4 GObject scope (fractional scale, monitor DPI, text scaling, tiling) with responsive GTK CSS and GObject Introspection, plus the **portable C99 single-header core** `appdimens.h` (float/double, freestanding no-libm, Q16.16 fixed point) shared by GTK, LVGL, Qt and Games.
+- ➕ **New submodule [`appdimens-lvgl`](https://github.com/bodenberg/appdimens-lvgl) 3.2.0** — LVGL 8.3/9: integer-only hot path (no FPU), automatic update on resolution/rotation, responsive style bindings, font picking; ESP-IDF, PlatformIO, Arduino, Zephyr, CMake.
+- ➕ **New submodule [`appdimens-py`](https://github.com/bodenberg/appdimens-py) 3.2.0** — pure Python 3.7+ with adapters for Tkinter, Qt for Python, Kivy, pygame, pyglet/arcade, wxPython, Dear PyGui, Panda3D, and a **Blender 2.80 → 4.x add-on/Extension**.
+- 🔗 `appdimens-games` → **3.3.0**: cross-platform native SDK (Windows, Proton/Wine, Linux, Steam Deck, macOS, iOS, Android, Web, consoles), Unity UPM package, Unreal Engine 5 plugin, Godot 4 addon, .NET package; viewports and projections for OpenGL/Vulkan/D3D11/D3D12/Metal/WebGPU; FSR/DLSS/XeSS/MetalFX/TSR presets, jitter, mip bias, dynamic resolution; Hor+/Vert-/hybrid FOV; safe areas, LOD helpers; fixes the NDK snapshot publication race.
+- 🧪 Every new port is parity-tested against vectors generated from the reference implementation (528 factors × 20 screens).
+- 🔗 `appdimens-skills` → **0.2.0**: new `qt`, `gtk`, `lvgl`, `python` skills, multi-engine `games` skill, detection of Qt/GTK/LVGL/Python/Blender/Unity/Unreal/Godot projects.
+- 📚 Hub docs: README (platform table, first lines of code, skills, tree, FAQ, PT-BR), `DOCS/PLATFORMS.md`, `DOCS/EXAMPLES.md`, `LLMS.txt`, `skills/SKILL.md`.
+
 ### Submodule update — 2026-10-14 — new `appdimens-skills`
 
 - ➕ **New submodule [`appdimens-skills`](https://github.com/bodenberg/appdimens-skills) 0.1.0** (npm `appdimens-skills`): one installer (`npx appdimens-skills`) that adds AppDimens skills to Claude Code, OpenAI Codex, Gemini CLI, OpenClaw, Hermes, Cursor, GitHub Copilot and Windsurf — core `layout-intent` skill, 4 workflows (Figma, Claude Design, existing screens, new screens), one skill per library, a `kit` CLI and a validation hook.

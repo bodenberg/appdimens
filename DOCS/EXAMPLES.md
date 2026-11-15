@@ -354,29 +354,124 @@ var padding = 16.Sdp();   // in C#
 
 ---
 
+## Qt (`appdimens-qt`)
+
+Qt 5.12+ / Qt 6 — Widgets and QML on Windows, macOS, Linux, Android, iOS and embedded.
+
+```cpp
+// main.cpp
+AppDimens::Scope::registerQmlTypes();            // QML module "AppDimens 1.0"
+auto *ad = new AppDimens::Scope(&window, &window);  // Widgets: follows the window, DPR and monitor
+ad->bindStyleSheet(&window, "QPushButton { min-height: 44asdp; padding: 0 16sdp; font-size: 14assp; }");
+```
+```qml
+import AppDimens 1.0
+Rectangle { width: 280 * AppDimens.asdp; radius: 12 * AppDimens.sdp
+            Text { font.pixelSize: 14 * AppDimens.ssp } }
+```
+
+📘 [README](https://github.com/bodenberg/appdimens-qt/blob/main/README.md)
+
+---
+
+## GTK (`appdimens-gtk`)
+
+GTK 3 / GTK 4 in C (and PyGObject, GJS, Vala, Rust via GObject Introspection).
+
+```c
+AppDimensScope *ad = appdimens_scope_new_for_widget(window);   // size, fractional scale, DPI, text scaling
+appdimens_scope_add_css(ad, ".card { padding: 16sdp; border-radius: 12sdp; } .title { font-size: 20assp; }");
+gtk_widget_set_margin_top(box, appdimens_scope_px(ad, "8sdp"));
+```
+
+📘 [README](https://github.com/bodenberg/appdimens-gtk/blob/main/README.md) — the portable C99 core `appdimens.h` works in any C/C++ toolkit.
+
+---
+
+## LVGL (`appdimens-lvgl`)
+
+LVGL 8.3 / 9.x on ESP32, STM32, RP2040, NXP, Zephyr, Arduino and embedded Linux (integer-only hot path).
+
+```c
+lv_appdimens_init(NULL);                                         // follows resolution and rotation
+lv_obj_set_size(btn, lv_ad_sdp(120), lv_ad_asdp(44));
+lv_ad_style_bind(&style, LV_STYLE_RADIUS, AD_SCALED, AD_SLOT(AD_VAR_S, 0), 10);   // re-applied on change
+```
+
+📘 [README](https://github.com/bodenberg/appdimens-lvgl/blob/main/README.md)
+
+---
+
+## Python (`appdimens-py`)
+
+Python 3.7+ — Tkinter, PySide/PyQt, Kivy, pygame, pyglet, wx, Dear PyGui, Panda3D and Blender.
+
+```python
+import appdimens as ad
+from appdimens.integrations import bind_tk
+scope = ad.Dimens(); bind_tk(root, scope)
+label.configure(padx=round(scope.sdpPx(16)), font=("Helvetica", -round(scope.asspPx(18))))
+
+# Blender add-on API
+from appdimens_blender import region_dimens, render_dimens
+blf.size(0, region_dimens(context.region).sspPx(13))
+text_obj.data.size = render_dimens(scene).asdp(0.12)
+```
+
+📘 [README](https://github.com/bodenberg/appdimens-py/blob/main/README.md) · [Blender](https://github.com/bodenberg/appdimens-py/blob/main/docs/BLENDER.md)
+
+---
+
 ## Games (`appdimens-games`)
 
-Android games — Compose, Kotlin, Java, C/C++/NDK, OpenGL ES, Vulkan, DirectX and Unity/C#.
+Every game platform, engine and graphics API — Unity, Unreal Engine 5, Godot 4, custom C/C++ and .NET engines, Android;
+Windows, Linux, Steam Deck, Proton, macOS, iOS, Web, consoles; OpenGL, Vulkan, Direct3D 11/12, Metal, WebGPU; FSR, DLSS,
+XeSS, MetalFX, TSR. Design at a reference resolution (default 1920×1080): values are pixels at the reference.
 
-**1. Install**
+**Unity** — UPM package `com.bodenberg.appdimens.games`: add `AppDimensCanvasScaler` to the Canvas, `AppDimensSafeArea`
+to the HUD root, `AppDimensCamera` to the camera.
 
-```kotlin
-implementation(platform("io.github.bodenberg:appdimens-games-bom:3.2.0"))
-implementation("io.github.bodenberg:appdimens-games")          // core
-implementation("io.github.bodenberg:appdimens-games-native")   // optional: C/C++/JNI
+```csharp
+float bar = AppDimensScreen.Asdp(320);                                  // calm on 4K / ultrawide
+AppDimensUpscaling.ApplyToPipeline(Upscaler.Dlss, UpscaleQuality.Quality);
 ```
 
-**2. Use** (game code returns **pixels**)
+**Unreal Engine 5** — DPI Scale Rule = Custom → `AppDimensDPIScalingRule`; Blueprint/C++:
 
-```kotlin
-val hud    = 48.sdp(context)    // HUD element
-val locked = 48.sdpi(context)   // never changes when the window is resized
-val text   = 16.ssp(context)
+```cpp
+float Bar = UAppDimensLibrary::Asdp(320.f);
+Camera->SetFieldOfView(UAppDimensLibrary::HorizontalFovForAspect(EAppDimensFovPolicy::Hybrid, 90.f, 16.f / 9.f, Aspect));
 ```
 
-**Which strategy for which element?** HUD → `sdp` · gameplay ⭐ → `asdp` · background → `flsdp` (fill) · board that must stay fully visible → `ftsdp` (fit) · text → `fsdp` · TV → `logsdp`.
+**Godot 4** — addon `addons/appdimens` (autoload `AppDimens`):
 
-📘 [Beginner guide](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/GUIDE-FOR-BEGINNERS.md) · [Native engines](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/NATIVE-GAME-ENGINES.md)
+```gdscript
+$Health.custom_minimum_size.x = AppDimens.asdp(320)
+AppDimensGames.configure_3d_scaling(get_viewport(), AppDimensGames.Upscaler.FSR2, AppDimensGames.Quality.QUALITY)
+```
+
+**C / C++ (any engine, any graphics API)**
+
+```c
+adg_surface s; adg_surface_default(&s, w, h); ad_metrics m; adg_metrics_from_surface(&m, &s);
+float bar = adg_ref_px(&m, AD_AUTO, 320);
+adg_viewport vp = adg_viewport_compute(ADG_VIEW_INTEGER, w, h, 320, 180);      // pixel art
+adg_viewport_f vk = adg_native_viewport(&vp, 1);                               // VkViewport (Y flipped)
+adg_render_size r = adg_upscale_render_size(ADG_UPSCALER_FSR3, ADG_Q_QUALITY, w, h);
+```
+
+**Android** (Compose · Kotlin · Java · NDK)
+
+```kotlin
+implementation(platform("io.github.bodenberg:appdimens-games-bom:3.3.0"))
+implementation("io.github.bodenberg:appdimens-games")
+val hud = 48.sdp(context); val locked = 48.sdpi(context); val text = 16.ssp(context)
+```
+
+**Which strategy for which element?** HUD/menus → `asdp` · crosshair, minimap, anything that must never overflow → `ftsdp` ·
+background → `flsdp` · pixel art → integer viewport · TV → `logsdp` + 10-foot text minimums.
+
+📘 [Engines](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/ENGINES.md) · [Cross-platform](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/CROSS-PLATFORM.md) · [Graphics APIs](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/GRAPHICS-APIS.md) · [Upscaling](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/UPSCALING.md) · [Genres](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/GENRES.md)
 
 ---
 

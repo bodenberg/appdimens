@@ -3,12 +3,12 @@
 
 # AppDimens — Sizes That Look Right on Every Screen
 
-**Write `16` once. AppDimens makes it look the right size on phones, tablets, foldables, TVs, desktops and the web.**
+**Write `16` once. AppDimens makes it look the right size on phones, tablets, foldables, TVs, desktops, the web, embedded displays — and in games on every platform.**
 
 [![Release](https://img.shields.io/badge/release-3.2.0-1d4ed8.svg)](#-pick-your-platform)
 [![Status](https://img.shields.io/badge/status-all%20projects%20in%20production-15803d.svg)](#-pick-your-platform)
 [![License](https://img.shields.io/badge/license-Apache%202.0-15803d.svg)](LICENSE)
-[![Platforms](https://img.shields.io/badge/platforms-Android%20%7C%20iOS%20%7C%20KMP%20%7C%20Flutter%20%7C%20React%20Native%20%7C%20Web%20%7C%20.NET%20%7C%20Games-f59e0b.svg)](#-pick-your-platform)
+[![Platforms](https://img.shields.io/badge/platforms-Android%20%7C%20iOS%20%7C%20KMP%20%7C%20Flutter%20%7C%20React%20Native%20%7C%20Web%20%7C%20.NET%20%7C%20Qt%20%7C%20GTK%20%7C%20LVGL%20%7C%20Python%20%7C%20Games-f59e0b.svg)](#-pick-your-platform)
 
 [![Beginner guide](https://img.shields.io/badge/Start%20here-Beginner%20guide-7c3aed?style=for-the-badge&logo=gitbook&logoColor=white&labelColor=5b21b6)](DOCS/GUIDE.md)
 [![Examples](https://img.shields.io/badge/Copy%20%26%20paste-Examples-15803d?style=for-the-badge&logo=markdown&logoColor=white&labelColor=14532d)](DOCS/EXAMPLES.md)
@@ -33,7 +33,7 @@ Tablet  →    38 dp   ✅ same proportion
 TV      →    58 dp   ✅ still readable
 ```
 
-- ✅ **Same names on every platform** — `sdp`, `ssp`, `asdp`… mean the same thing on Android, iOS, Flutter, React Native, Web and .NET.
+- ✅ **Same names on every platform** — `sdp`, `ssp`, `asdp`… mean the same thing on Android, iOS, Flutter, React Native, Web, .NET, Qt, GTK, LVGL, Python and in games.
 - ✅ **Production-ready** — every library below is published and stable.
 - ✅ **Tiny and fast** — a calculation takes a few nanoseconds.
 - ✅ **Free and open source** — Apache 2.0.
@@ -74,10 +74,14 @@ Every platform has its **own repository** (linked below). This repository is the
 | **React Native** — iOS & Android | [appdimens-react-native](https://github.com/bodenberg/appdimens-react-native) | **3.2.0** | `npm install appdimens-react-native` | [Docs](https://github.com/bodenberg/appdimens-react-native/blob/main/docs/README.md) |
 | **Web** — HTML/CSS, React, Vue, Svelte, Angular | [appdimens-web](https://github.com/bodenberg/appdimens-web) (npm `webdimens`) | **3.2.1** | `npm install webdimens` | [Getting started](https://github.com/bodenberg/appdimens-web/blob/main/docs/getting-started.md) · [PT-BR](https://github.com/bodenberg/appdimens-web/blob/main/docs/pt-BR/getting-started.md) |
 | **.NET** — MAUI, WPF, WinForms, WinUI 3, .NET for Android | [appdimens-net-binding](https://github.com/bodenberg/appdimens-net-binding) | **3.6.1** | `dotnet add package Bodenberg.AppDimens.Maui.Sdps` | [Docs](https://github.com/bodenberg/appdimens-net-binding/blob/main/docs/README.md) |
-| **Games** — Android, C/C++/NDK, OpenGL ES, Vulkan, Unity/C# | [appdimens-games](https://github.com/bodenberg/appdimens-games) | **3.2.0** | `implementation("io.github.bodenberg:appdimens-games:3.2.0")` | [Beginner guide](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/GUIDE-FOR-BEGINNERS.md) |
+| **Qt** — Widgets & QML, Qt 5.12+ / Qt 6 (Windows, macOS, Linux, Android, iOS, embedded) | [appdimens-qt](https://github.com/bodenberg/appdimens-qt) | **3.2.0** | CMake `add_subdirectory(appdimens-qt)` → `AppDimens::Qt` · qmake `appdimens-qt.pri` | [README](https://github.com/bodenberg/appdimens-qt/blob/main/README.md) |
+| **GTK** — GTK 3 / GTK 4 (C, PyGObject, GJS, Vala, Rust) + portable C99 core | [appdimens-gtk](https://github.com/bodenberg/appdimens-gtk) | **3.2.0** | `meson setup build -Dgtk=4` · pkg-config `appdimens-gtk4` | [README](https://github.com/bodenberg/appdimens-gtk/blob/main/README.md) |
+| **LVGL** — v8.3 / v9 on MCUs and embedded Linux (ESP32, STM32, RP2040, Zephyr…) | [appdimens-lvgl](https://github.com/bodenberg/appdimens-lvgl) | **3.2.0** | ESP-IDF component · PlatformIO `bodenberg/appdimens-lvgl` · Arduino · CMake | [README](https://github.com/bodenberg/appdimens-lvgl/blob/main/README.md) |
+| **Python** — Tkinter, PySide/PyQt, Kivy, pygame, pyglet, wx, Dear PyGui, Panda3D, **Blender** | [appdimens-py](https://github.com/bodenberg/appdimens-py) | **3.2.0** | `pip install appdimens` · Blender add-on zip | [README](https://github.com/bodenberg/appdimens-py/blob/main/README.md) |
+| **Games** — Unity, Unreal Engine 5, Godot 4, custom C/C++ engines, .NET engines, Android; Windows, Linux, Steam Deck, Proton, macOS, iOS, Web, consoles; OpenGL, Vulkan, Direct3D 11/12, Metal, WebGPU; FSR, DLSS, XeSS | [appdimens-games](https://github.com/bodenberg/appdimens-games) | **3.3.0** | Unity UPM · UE5 plugin · Godot addon · CMake `native/` · `implementation("io.github.bodenberg:appdimens-games:3.3.0")` | [Engines](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/ENGINES.md) · [Beginner guide](https://github.com/bodenberg/appdimens-games/blob/main/DOCUMENTATION/GUIDE-FOR-BEGINNERS.md) |
 
 > [!NOTE]
-> All libraries are **in production**. Android, KMP and Games are on **Maven Central**, Flutter on **pub.dev**, React Native and Web on **npm**, .NET on **NuGet**, iOS via **Swift Package Manager**. Each repository's README is the final word on its install line.
+> All libraries are **in production**. Android, KMP and Games (Android) are on **Maven Central**, Flutter on **pub.dev**, React Native and Web on **npm**, .NET on **NuGet**, iOS via **Swift Package Manager**, Python on **PyPI**, LVGL on the **ESP-IDF / PlatformIO / Arduino** registries; Qt, GTK and the game-engine packages build from source (CMake, Meson, Unity UPM, Unreal and Godot plugins). Each repository's README is the final word on its install line.
 
 ---
 
@@ -133,6 +137,35 @@ import { sdp, ssp } from 'appdimens-react-native';
 **.NET MAUI (XAML)**
 ```xml
 <Label Text="Hello" Padding="{sdp:16}" FontSize="{ssp:18}" />
+```
+
+**Qt (QML)**
+```qml
+import AppDimens 1.0
+Text { text: "Hello"; font.pixelSize: 18 * AppDimens.ssp; padding: 16 * AppDimens.sdp }
+```
+
+**GTK (C)**
+```c
+AppDimensScope *ad = appdimens_scope_new_for_widget(window);
+appdimens_scope_add_css(ad, "label { padding: 16sdp; font-size: 18ssp; }");
+```
+
+**LVGL**
+```c
+lv_appdimens_init(NULL);
+lv_obj_set_style_pad_all(label, lv_ad_sdp(16), 0);
+```
+
+**Python / Blender**
+```python
+import appdimens as ad
+pad, text = ad.sdp(16), ad.ssp(18)          # Blender: appdimens_blender.region_dimens(context.region)
+```
+
+**Games (Unity · Unreal · Godot · C/C++)**
+```c
+float hud = adg_ref_px(&m, AD_AUTO, 320);   // 320 px at 1080p → right size at 720p, 4K, 21:9, Steam Deck
 ```
 
 More complete, copy-paste examples for every platform: **[DOCS/EXAMPLES.md](DOCS/EXAMPLES.md)**.
@@ -202,6 +235,10 @@ Each library also ships its own skill with the detailed API:
 | React Native | [appdimens-react-native/skills](https://github.com/bodenberg/appdimens-react-native/tree/main/skills) |
 | Web | [appdimens-web/skills](https://github.com/bodenberg/appdimens-web/tree/main/skills) |
 | .NET | [appdimens-net-binding/skills](https://github.com/bodenberg/appdimens-net-binding/tree/main/skills) (4 skills: SDPS, AppDimens.Net, Android XML, Android Dynamic) |
+| Qt | [appdimens-qt/skills](https://github.com/bodenberg/appdimens-qt/tree/main/skills) |
+| GTK | [appdimens-gtk/skills](https://github.com/bodenberg/appdimens-gtk/tree/main/skills) |
+| LVGL | [appdimens-lvgl/skills](https://github.com/bodenberg/appdimens-lvgl/tree/main/skills) |
+| Python / Blender | [appdimens-py/skills](https://github.com/bodenberg/appdimens-py/tree/main/skills) |
 | Games | [appdimens-games/skills](https://github.com/bodenberg/appdimens-games/tree/main/skills) |
 
 For AI tools that read a summary file, see [`LLMS.txt`](LLMS.txt).
@@ -224,6 +261,10 @@ For AI tools that read a summary file, see [`LLMS.txt`](LLMS.txt).
 ---
 
 ## ❓ FAQ
+
+**Does it work for games outside Android?** Yes. `appdimens-games` 3.3 ships a Unity package, an Unreal Engine 5 plugin, a Godot 4 addon, a .NET package and a portable C/C++ SDK — Windows, Linux, Steam Deck, Proton, macOS, iOS, Web and consoles; OpenGL, Vulkan, Direct3D 11/12, Metal and WebGPU; FSR, DLSS, XeSS, MetalFX and TSR presets.
+
+**Embedded displays and desktop toolkits?** Yes: LVGL (integer-only hot path for MCUs without FPU), Qt (Widgets/QML), GTK (3/4) and Python (Tkinter, PySide, Kivy, pygame, Blender).
 
 **Do I need to learn math to use it?** No. Replace `dp` with `sdp` and `sp` with `ssp`. The math is there if you are curious ([THEORY.md](DOCS/THEORY.md)).
 
@@ -260,7 +301,11 @@ appdimens/                   ← you are here (the hub: docs + shared ideas)
 ├── appdimens-react-native/  ← React Native
 ├── appdimens-web/           ← Web (npm: webdimens)
 ├── appdimens-net-binding/   ← .NET (MAUI, WPF, WinForms, WinUI, Android)
-├── appdimens-games/         ← Games (Android, NDK, Unity)
+├── appdimens-qt/            ← Qt 5/6 — Widgets & QML
+├── appdimens-gtk/           ← GTK 3/4 + portable C99 core
+├── appdimens-lvgl/          ← LVGL v8/v9 (MCUs, embedded Linux)
+├── appdimens-py/            ← Python (Tk, Qt, Kivy, pygame…) + Blender add-on
+├── appdimens-games/         ← Games: Unity, Unreal, Godot, C/C++, .NET, Android — every platform & graphics API
 └── appdimens-skills/        ← AI assistant skills for every library (npx appdimens-skills)
 ```
 
@@ -292,7 +337,9 @@ Only need one platform? Just use that library's repository directly.
 
 - **Como usar:** troque `16.dp` por `16.sdp` e `16.sp` por `16.ssp`. A biblioteca ajusta o valor sozinha para a tela atual.
 - **Celular + tablet/TV no mesmo app?** Use `16.asdp` / `16.assp` (estratégia *auto*): cresce normalmente no celular e desacelera em telas grandes.
-- **Todas as bibliotecas estão em produção**, na versão **3.2.0** (Web na **3.2.1**, .NET na **3.6.1**).
+- **Todas as bibliotecas estão em produção**, na versão **3.2.0** (Web na **3.2.1**, .NET na **3.6.1**, Games na **3.3.0**).
+- **Novas plataformas:** **Qt** (Widgets/QML, Qt 5 e 6), **GTK** (3 e 4), **LVGL** (microcontroladores, sem FPU), **Python** (Tkinter, PySide, Kivy, pygame e **Blender**).
+- **Jogos em todas as plataformas:** `appdimens-games` 3.3 atende Unity, Unreal Engine 5, Godot 4, engines próprias em C/C++ e .NET — Windows, Linux, Steam Deck, Proton, macOS, iOS, Android, Web e consoles; OpenGL, Vulkan, DirectX 11/12, Metal e WebGPU; presets de FSR, DLSS, XeSS, MetalFX e TSR; FOV para ultrawide; jogos 2D, pixel art, 3D, FPS, mundo aberto e AAA.
 - **Escolha sua plataforma** na tabela [📦 Pick your platform](#-pick-your-platform) — cada uma tem guia para iniciantes.
 - **Mesmos nomes em todas as plataformas:** `sdp`, `ssp`, `asdp`… significam a mesma coisa no Android, iOS, Flutter, React Native, Web e .NET.
 - **Assistentes de IA:** rode `npx appdimens-skills` para instalar as skills de todas as bibliotecas no seu Claude Code, Codex, Cursor, Copilot etc. ([appdimens-skills](https://github.com/bodenberg/appdimens-skills)). Cada biblioteca também traz a sua *skill*; a skill do hub está em [`skills/SKILL.md`](skills/SKILL.md).
